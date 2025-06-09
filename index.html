@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Manual do Hambúrguer Perfeito v8 - Início</title>
+    <title>Manual do Hambúrguer Perfeito v10 - Início</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@400;700&family=Roboto:wght@400;500&display=swap');
@@ -27,6 +27,9 @@
             color: white;
             cursor: not-allowed;
         }
+        .recipe-link {
+            @apply text-orange-600 hover:text-orange-800 text-sm font-semibold transition-colors duration-200;
+        }
     </style>
 </head>
 <body class="bg-amber-50 text-stone-800">
@@ -44,24 +47,24 @@
             <div id="mobile-menu" class="hidden md:hidden mt-4 flex flex-col space-y-2">
                  <a href="#inicio" class="nav-link text-stone-600 hover:text-orange-900 transition-colors duration-300">Início</a>
                 <a href="#fundamentos" class="nav-link text-stone-600 hover:text-orange-900 transition-colors duration-300">Fundamentos</a>
-                <a href="#receita" class="nav-link text-stone-600 hover:text-orange-900 transition-colors duration-300">Receita Interativa</a>
+                <a href="#receitas" class="nav-link text-stone-600 hover:text-orange-900 transition-colors duration-300">Receitas</a>
                 <a href="blends.html" target="_blank" class="nav-link text-stone-600 hover:text-orange-900 transition-colors duration-300">Blends</a>
                 <a href="molhos.html" target="_blank" class="nav-link text-stone-600 hover:text-orange-900 transition-colors duration-300">Molhos</a>
                 <a href="pao.html" target="_blank" class="nav-link text-stone-600 hover:text-orange-900 transition-colors duration-300">Pão Caseiro</a>
                 <a href="queijo.html" target="_blank" class="nav-link text-stone-600 hover:text-orange-900 transition-colors duration-300">Queijos</a>
                 <a href="salada.html" target="_blank" class="nav-link text-stone-600 hover:text-orange-900 transition-colors duration-300">Salada</a>
-                <a href="#galeria" class="nav-link text-stone-600 hover:text-orange-900 transition-colors duration-300">Galeria</a>
+                <a href="galeria.html" target="_blank" class="nav-link text-stone-600 hover:text-orange-900 transition-colors duration-300">Galeria da Comunidade</a>
             </div>
              <div class="hidden md:flex justify-center space-x-6 text-sm pt-2">
                  <a href="#inicio" class="nav-link text-stone-600 hover:text-orange-900 transition-colors duration-300">Início</a>
                 <a href="#fundamentos" class="nav-link text-stone-600 hover:text-orange-900 transition-colors duration-300">Fundamentos</a>
-                <a href="#receita" class="nav-link text-stone-600 hover:text-orange-900 transition-colors duration-300">Receita Interativa</a>
+                <a href="#receitas" class="nav-link text-stone-600 hover:text-orange-900 transition-colors duration-300">Receitas</a>
                 <a href="blends.html" target="_blank" class="nav-link text-stone-600 hover:text-orange-900 transition-colors duration-300">Blends</a>
                 <a href="molhos.html" target="_blank" class="nav-link text-stone-600 hover:text-orange-900 transition-colors duration-300">Molhos</a>
                 <a href="pao.html" target="_blank" class="nav-link text-stone-600 hover:text-orange-900 transition-colors duration-300">Pão Caseiro</a>
                 <a href="queijo.html" target="_blank" class="nav-link text-stone-600 hover:text-orange-900 transition-colors duration-300">Queijos</a>
                 <a href="salada.html" target="_blank" class="nav-link text-stone-600 hover:text-orange-900 transition-colors duration-300">Salada</a>
-                <a href="#galeria" class="nav-link text-stone-600 hover:text-orange-900 transition-colors duration-300">Galeria</a>
+                <a href="galeria.html" target="_blank" class="nav-link text-stone-600 hover:text-orange-900 transition-colors duration-300">Galeria da Comunidade</a>
             </div>
         </nav>
     </header>
@@ -71,7 +74,7 @@
         <section id="inicio" class="text-center min-h-[70vh] flex flex-col justify-center items-center">
             <h1 class="text-4xl md:text-6xl font-bold text-orange-900 leading-tight mb-6">O Destino Final do Hambúrguer Artesanal</h1>
             <p class="max-w-4xl mx-auto text-lg text-stone-700">
-                Bem-vindo ao seu manual completo para se tornar um mestre hamburgueiro. Aqui, encontrará tudo o que precisa num só lugar: explore a nossa **calculadora interativa**, mergulhe em guias de **blends, queijos e molhos**, aprenda a fazer o seu próprio **pão artesanal** e muito mais. Prepare-se para uma jornada de sabor.
+                Bem-vindo ao seu manual completo para se tornar um mestre hamburgueiro. Aqui, encontrará tudo o que precisa num só lugar: explore as nossas **receitas interativas**, mergulhe em guias de **blends, queijos e molhos**, e aprenda a fazer o seu próprio **pão artesanal**.
             </p>
         </section>
 
@@ -95,49 +98,111 @@
 
         <div class="border-t border-amber-200 my-16"></div>
 
-        <section id="receita" class="py-16">
-             <div class="text-center mb-12">
-                <h2 class="text-3xl md:text-4xl font-bold text-orange-900">Receita Clássica Interativa</h2>
-                <p class="mt-4 max-w-2xl mx-auto text-stone-700">Esta é a sua ferramenta principal. Use a calculadora para ajustar os ingredientes e os temporizadores para cozinhar com precisão. Chega de adivinhação!</p>
-            </div>
-
-            <div class="bg-white p-8 rounded-lg shadow-lg">
-                <div class="mb-8">
-                    <label for="burger-calculator" class="block text-xl font-bold text-orange-800 mb-2">Quantos hambúrgueres vai fazer?</label>
-                    <input type="number" id="burger-calculator" value="2" min="1" max="20" class="w-full md:w-1/4 p-2 border border-amber-300 rounded-lg focus:ring-2 focus:ring-orange-400 focus:border-orange-400">
-                </div>
-
-                <h3 class="text-2xl font-bold text-orange-800 mb-6">Ingredientes Calculados</h3>
-                <ul id="ingredient-list" class="grid grid-cols-1 md:grid-cols-2 gap-x-8 gap-y-4 mb-10">
-                    <li><span class="text-amber-500 font-bold mr-2">✓</span> <strong>Carne:</strong> <span id="qty-carne">300</span>g de acém/peito moído</li>
-                    <li><span class="text-amber-500 font-bold mr-2">✓</span> <strong>Pão de Hambúrguer:</strong> <span id="qty-pao">2</span></li>
-                    <li><span class="text-amber-500 font-bold mr-2">✓</span> <strong>Queijo:</strong> <span id="qty-queijo">4</span> <span id="label-queijo">fatias</span></li>
-                    <li><span class="text-amber-500 font-bold mr-2">✓</span> <strong>Tomate:</strong> <span id="qty-tomate">4</span> <span id="label-tomate">rodelas</span></li>
-                    <li><span class="text-amber-500 font-bold mr-2">✓</span> <strong>Manteiga/Óleo:</strong> <span id="qty-oleo">1</span> <span id="label-oleo">colher de sopa</span></li>
-                </ul>
-                
-                <h3 class="text-2xl font-bold text-orange-800 mb-8">Passo a Passo com Temporizadores</h3>
-                <div class="space-y-6">
-                    <div class="p-6 rounded-lg bg-amber-50/50 border border-amber-200"><h4 class="font-bold text-lg text-stone-800 mb-2"><span class="bg-orange-800 text-white rounded-full w-8 h-8 inline-flex items-center justify-center mr-3">1</span> Prepare a Carne</h4><p class="text-stone-700">Divida a carne em porções iguais (150g cada). Molde bolas e achate-as gentilmente para formar discos de 2cm de altura. Pressione o centro com o polegar. Leve ao frigorífico por 10 minutos para firmar.</p></div>
-                    <div class="p-6 rounded-lg bg-amber-50/50 border border-amber-200"><h4 class="font-bold text-lg text-stone-800 mb-2"><span class="bg-orange-800 text-white rounded-full w-8 h-8 inline-flex items-center justify-center mr-3">2</span> Aqueça e Sele</h4><p class="text-stone-700 mb-3">Aqueça bem a frigideira em lume médio-alto. Tempere os hambúrgueres com sal e pimenta e coloque-os na frigideira. Sele por 2-3 minutos SEM MEXER.</p> <div class="flex items-center gap-4"><button class="timer-btn bg-orange-400 text-white px-4 py-2 rounded-lg hover:bg-orange-500 transition" data-time="180">Temporizador (3 min)</button><span class="timer-display text-lg font-mono font-bold text-orange-800"></span></div></div>
-                    <div class="p-6 rounded-lg bg-amber-50/50 border border-amber-200"><h4 class="font-bold text-lg text-stone-800 mb-2"><span class="bg-orange-800 text-white rounded-full w-8 h-8 inline-flex items-center justify-center mr-3">3</span> Vire e Derreta</h4><p class="text-stone-700 mb-3">Vire os hambúrgueres e coloque o queijo por cima. Cozinhe por mais 2-3 minutos. Toste o pão na mesma frigideira enquanto isso.</p><div class="flex items-center gap-4"><button class="timer-btn bg-orange-400 text-white px-4 py-2 rounded-lg hover:bg-orange-500 transition" data-time="180">Temporizador (3 min)</button><span class="timer-display text-lg font-mono font-bold text-orange-800"></span></div></div>
-                    <div class="p-6 rounded-lg bg-amber-50/50 border border-amber-200"><h4 class="font-bold text-lg text-stone-800 mb-2"><span class="bg-orange-800 text-white rounded-full w-8 h-8 inline-flex items-center justify-center mr-3">4</span> Monte e Sirva</h4><p class="text-stone-700">Deixe a carne descansar por 1 minuto. Monte na ordem: pão, molho, alface, hambúrguer com queijo, tomate e o topo do pão. Sirva imediatamente!</p></div>
-                </div>
-            </div>
-        </section>
-
-        <div class="border-t border-amber-200 my-16"></div>
-
-        <section id="galeria" class="py-16">
+        <section id="receitas" class="py-16">
             <div class="text-center mb-12">
-                <h2 class="text-3xl md:text-4xl font-bold text-orange-900">Galeria de Inspiração</h2>
-                <p class="mt-4 max-w-2xl mx-auto text-stone-700">Depois de dominar o clássico, o céu é o limite. Inspire-se com estas variações para as suas próximas criações.</p>
+                <h2 class="text-3xl md:text-4xl font-bold text-orange-900">Receitas e Ferramentas</h2>
+                <p class="mt-4 max-w-2xl mx-auto text-stone-700">Use a nossa calculadora para a receita clássica ou inspire-se com as nossas fichas de montagem detalhadas.</p>
             </div>
-            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-                <div class="group interactive-card bg-white rounded-lg shadow-md overflow-hidden"><img src="https://placehold.co/400x300/E1914A/FFFFFF?text=Bacon+Crocante" alt="Hambúrguer com bacon crocante" class="w-full h-48 object-cover group-hover:scale-105 transition-transform duration-300"><div class="p-4"><h4 class="text-xl font-bold text-stone-800">Clássico com Bacon</h4><p class="text-stone-600 text-sm">Adicione fatias de bacon crocante para uma explosão de sabor e textura.</p></div></div>
-                <div class="group interactive-card bg-white rounded-lg shadow-md overflow-hidden"><img src="https://placehold.co/400x300/8B5E34/FFFFFF?text=Cebola+Caramelizada" alt="Hambúrguer com cebola caramelizada" class="w-full h-48 object-cover group-hover:scale-105 transition-transform duration-300"><div class="p-4"><h4 class="text-xl font-bold text-stone-800">Doçura da Cebola</h4><p class="text-stone-600 text-sm">A cebola caramelizada lentamente adiciona uma camada de doçura complexa.</p></div></div>
-                <div class="group interactive-card bg-white rounded-lg shadow-md overflow-hidden"><img src="https://placehold.co/400x300/2A62B8/FFFFFF?text=Queijo+Gorgonzola" alt="Hambúrguer com queijo gorgonzola" class="w-full h-48 object-cover group-hover:scale-105 transition-transform duration-300"><div class="p-4"><h4 class="text-xl font-bold text-stone-800">Ousadia do Gorgonzola</h4><p class="text-stone-600 text-sm">Para quem gosta de sabores intensos, o queijo gorgonzola é a escolha ideal.</p></div></div>
-                <div class="group interactive-card bg-white rounded-lg shadow-md overflow-hidden"><img src="https://placehold.co/400x300/50C878/FFFFFF?text=Op%C3%A7%C3%A3o+Vegetariana" alt="Hambúrguer vegetariano" class="w-full h-48 object-cover group-hover:scale-105 transition-transform duration-300"><div class="p-4"><h4 class="text-xl font-bold text-stone-800">Versão Vegetariana</h4><p class="text-stone-600 text-sm">Explore hambúrgueres de cogumelos, grão-de-bico ou lentilha.</p></div></div>
+
+            <div class="space-y-16">
+                <!-- Calculadora Interativa -->
+                <div class="bg-white p-8 rounded-lg shadow-lg">
+                    <h3 class="text-2xl font-bold text-orange-800 mb-2">Calculadora para o Hambúrguer Clássico</h3>
+                    <p class="text-stone-600 mb-8">Não sabe as quantidades? Diga-nos quantos hambúrgueres quer fazer e nós ajustamos a receita para si.</p>
+                    <div class="mb-8">
+                        <label for="burger-calculator" class="block text-xl font-bold text-orange-800 mb-2">Quantos hambúrgueres vai fazer?</label>
+                        <input type="number" id="burger-calculator" value="2" min="1" max="20" class="w-full md:w-1/4 p-2 border border-amber-300 rounded-lg focus:ring-2 focus:ring-orange-400 focus:border-orange-400">
+                    </div>
+
+                    <h4 class="text-2xl font-bold text-orange-800 mb-6">Ingredientes Calculados</h4>
+                    <ul id="ingredient-list" class="grid grid-cols-1 md:grid-cols-2 gap-x-8 gap-y-4 mb-10">
+                        <li><span class="text-amber-500 font-bold mr-2">✓</span> <strong>Carne:</strong> <span id="qty-carne">300</span>g de acém/peito moído</li>
+                        <li><span class="text-amber-500 font-bold mr-2">✓</span> <strong>Pão de Hambúrguer:</strong> <span id="qty-pao">2</span></li>
+                        <li><span class="text-amber-500 font-bold mr-2">✓</span> <strong>Queijo:</strong> <span id="qty-queijo">4</span> <span id="label-queijo">fatias</span></li>
+                        <li><span class="text-amber-500 font-bold mr-2">✓</span> <strong>Tomate:</strong> <span id="qty-tomate">4</span> <span id="label-tomate">rodelas</span></li>
+                        <li><span class="text-amber-500 font-bold mr-2">✓</span> <strong>Manteiga/Óleo:</strong> <span id="qty-oleo">1</span> <span id="label-oleo">colher de sopa</span></li>
+                    </ul>
+                    
+                    <h4 class="text-2xl font-bold text-orange-800 mb-8">Passo a Passo com Temporizadores</h4>
+                    <div class="space-y-6">
+                        <div class="p-6 rounded-lg bg-amber-50/50 border border-amber-200"><h5 class="font-bold text-lg text-stone-800 mb-2"><span class="bg-orange-800 text-white rounded-full w-8 h-8 inline-flex items-center justify-center mr-3">1</span> Prepare a Carne</h5><p class="text-stone-700">Divida a carne em porções iguais (150g cada). Molde bolas e achate-as gentilmente. Pressione o centro com o polegar e leve ao frigorífico por 10 minutos.</p></div>
+                        <div class="p-6 rounded-lg bg-amber-50/50 border border-amber-200"><h5 class="font-bold text-lg text-stone-800 mb-2"><span class="bg-orange-800 text-white rounded-full w-8 h-8 inline-flex items-center justify-center mr-3">2</span> Aqueça e Sele</h5><p class="text-stone-700 mb-3">Aqueça a frigideira em lume médio-alto. Tempere a carne e sele por 2-3 minutos SEM MEXER.</p> <div class="flex items-center gap-4"><button class="timer-btn bg-orange-400 text-white px-4 py-2 rounded-lg hover:bg-orange-500 transition" data-time="180">Temporizador (3 min)</button><span class="timer-display text-lg font-mono font-bold text-orange-800"></span></div></div>
+                        <div class="p-6 rounded-lg bg-amber-50/50 border border-amber-200"><h5 class="font-bold text-lg text-stone-800 mb-2"><span class="bg-orange-800 text-white rounded-full w-8 h-8 inline-flex items-center justify-center mr-3">3</span> Vire e Derreta</h5><p class="text-stone-700 mb-3">Vire os hambúrgueres, coloque o queijo e cozinhe por mais 2-3 minutos. Toste o pão.</p><div class="flex items-center gap-4"><button class="timer-btn bg-orange-400 text-white px-4 py-2 rounded-lg hover:bg-orange-500 transition" data-time="180">Temporizador (3 min)</button><span class="timer-display text-lg font-mono font-bold text-orange-800"></span></div></div>
+                        <div class="p-6 rounded-lg bg-amber-50/50 border border-amber-200"><h5 class="font-bold text-lg text-stone-800 mb-2"><span class="bg-orange-800 text-white rounded-full w-8 h-8 inline-flex items-center justify-center mr-3">4</span> Monte e Sirva</h5><p class="text-stone-700">Deixe a carne descansar por 1 minuto. Monte e sirva imediatamente!</p></div>
+                    </div>
+                </div>
+
+                <!-- Fichas de Montagem -->
+                <div class="space-y-12">
+                    <div class="text-center">
+                        <h3 class="text-3xl font-bold text-orange-900">Fichas de Montagem</h3>
+                    </div>
+                    <!-- Card do Clássico com Bacon -->
+                    <div class="bg-white p-8 rounded-lg shadow-lg">
+                        <div class="grid grid-cols-1 md:grid-cols-3 gap-8 items-start">
+                            <div class="md:col-span-1"><img src="https://placehold.co/400x400/E1914A/FFFFFF?text=Cl%C3%A1ssico+com+Bacon" alt="Hambúrguer Clássico com Bacon" class="rounded-lg w-full"></div>
+                            <div class="md:col-span-2">
+                                <h4 class="text-3xl font-bold text-orange-800 mb-6">Clássico com Bacon</h4>
+                                <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
+                                    <div>
+                                        <h5 class="font-bold text-lg mb-2 text-stone-700">Componentes</h5>
+                                        <ul class="space-y-2 text-stone-600">
+                                            <li class="flex justify-between items-center"><span>Pão Brioche</span> <a href="pao.html" target="_blank" class="recipe-link">[Ver Receita]</a></li>
+                                            <li class="flex justify-between items-center"><span>Blend Clássico</span> <a href="blends.html" target="_blank" class="recipe-link">[Ver Guia]</a></li>
+                                            <li class="flex justify-between items-center"><span>Queijo Cheddar</span> <a href="queijo.html" target="_blank" class="recipe-link">[Ver Guia]</a></li>
+                                            <li class="flex justify-between items-center"><span>Molho Especial</span> <a href="molhos.html" target="_blank" class="recipe-link">[Ver Receita]</a></li>
+                                            <li class="flex justify-between items-center"><span>Salada Simples</span> <a href="salada.html" target="_blank" class="recipe-link">[Ver Guia]</a></li>
+                                            <li class="flex justify-between items-center"><span>Bacon Frito</span> <span></span></li>
+                                        </ul>
+                                    </div>
+                                    <div>
+                                        <h5 class="font-bold text-lg mb-2 text-stone-700">Como Montar</h5>
+                                        <ol class="list-decimal list-inside space-y-2 text-stone-600">
+                                            <li>Toste as duas metades do pão na frigideira.</li>
+                                            <li>Passe o Molho Especial na base do pão.</li>
+                                            <li>Coloque as folhas de alface e as rodelas de tomate.</li>
+                                            <li>Adicione o hambúrguer com o queijo já derretido.</li>
+                                            <li>Coroe com 3 a 4 fatias de bacon crocante.</li>
+                                            <li>Feche com a tampa do pão.</li>
+                                        </ol>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                     <!-- Card do Ousadia do Gorgonzola -->
+                    <div class="bg-white p-8 rounded-lg shadow-lg">
+                        <div class="grid grid-cols-1 md:grid-cols-3 gap-8 items-start">
+                            <div class="md:col-span-1"><img src="https://placehold.co/400x400/2A62B8/FFFFFF?text=Ousadia+do+Gorgonzola" alt="Hambúrguer com Gorgonzola" class="rounded-lg w-full"></div>
+                            <div class="md:col-span-2">
+                                <h4 class="text-3xl font-bold text-orange-800 mb-6">Ousadia do Gorgonzola</h4>
+                                <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
+                                    <div>
+                                        <h5 class="font-bold text-lg mb-2 text-stone-700">Componentes</h5>
+                                        <ul class="space-y-2 text-stone-600">
+                                            <li class="flex justify-between items-center"><span>Pão Australiano</span> <span class="text-sm text-stone-500">(sugestão)</span></li>
+                                            <li class="flex justify-between items-center"><span>Blend Saboroso</span> <a href="blends.html" target="_blank" class="recipe-link">[Ver Guia]</a></li>
+                                            <li class="flex justify-between items-center"><span>Queijo Gorgonzola</span> <a href="queijo.html" target="_blank" class="recipe-link">[Ver Guia]</a></li>
+                                            <li class="flex justify-between items-center"><span>Cebola Caramelizada</span> <span></span></li>
+                                            <li class="flex justify-between items-center"><span>Rúcula</span> <a href="salada.html" target="_blank" class="recipe-link">[Ver Guia]</a></li>
+                                        </ul>
+                                    </div>
+                                    <div>
+                                        <h5 class="font-bold text-lg mb-2 text-stone-700">Como Montar</h5>
+                                        <ol class="list-decimal list-inside space-y-2 text-stone-600">
+                                            <li>Toste as duas metades do pão.</li>
+                                            <li>Coloque um punhado de folhas de rúcula na base.</li>
+                                            <li>Adicione o hambúrguer quente.</li>
+                                            <li>Esfarele o queijo gorgonzola sobre a carne quente.</li>
+                                            <li>Adicione uma porção generosa de cebola caramelizada.</li>
+                                            <li>Feche com a tampa do pão.</li>
+                                        </ol>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
         </section>
     </main>
@@ -153,7 +218,7 @@
             const menuBtn = document.getElementById('menu-btn');
             const mobileMenu = document.getElementById('mobile-menu');
             menuBtn.addEventListener('click', () => mobileMenu.classList.toggle('hidden'));
-            document.querySelectorAll('#mobile-menu a').forEach(link => {
+            document.querySelectorAll('#mobile-menu a, .nav-link').forEach(link => {
                 link.addEventListener('click', (e) => {
                     if (!e.target.hasAttribute('target')) {
                         mobileMenu.classList.add('hidden');
