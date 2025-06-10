@@ -7,34 +7,19 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@400;700&family=Roboto:wght@400;500&display=swap');
-        body {
-            font-family: 'Roboto', sans-serif;
-            background-color: #FDFCF8;
-            color: #4B4B4B;
-        }
-        h1, h2, h3, .nav-link {
-            font-family: 'Roboto Slab', serif;
-        }
+        body { font-family: 'Roboto', sans-serif; background-color: #FDFCF8; color: #4B4B4B; }
+        h1, h2, h3, .nav-link { font-family: 'Roboto Slab', serif; }
     </style>
 </head>
 <body class="bg-amber-50 text-stone-800">
-
     <header class="bg-white/80 backdrop-blur-lg sticky top-0 z-50 shadow-sm">
         <nav class="container mx-auto px-6 py-3">
             <div class="flex justify-between items-center">
-                <a href="index.html" class="text-2xl font-bold text-orange-900">
-                    Hambúrguer Perfeito
-                </a>
-                <div class="hidden md:flex space-x-6 text-sm">
-                    <a href="index.html" class="nav-link text-stone-600 hover:text-orange-900 transition-colors duration-300">Voltar ao Início</a>
-                </div>
-                <div class="md:hidden">
-                    <a href="index.html" class="text-sm nav-link text-stone-600 hover:text-orange-900">Voltar</a>
-                </div>
+                <a href="index.html" class="text-2xl font-bold text-orange-900">Hambúrguer Perfeito</a>
+                <a href="index.html" class="nav-link text-stone-600 hover:text-orange-900 transition-colors duration-300">Voltar ao Início</a>
             </div>
         </nav>
     </header>
-
     <main class="container mx-auto px-6 py-8 md:py-12">
         <section id="guia-blends" class="py-16">
             <div class="text-center mb-12">
@@ -42,65 +27,36 @@
                 <p class="mt-4 max-w-2xl mx-auto text-stone-700">A escolha da base do seu hambúrguer é crucial. Explore nossas sugestões de blends de carne e alternativas para todos os gostos.</p>
             </div>
             <div class="space-y-12 max-w-4xl mx-auto">
-                <!-- Blends de Carne -->
                 <div class="bg-white p-8 rounded-lg shadow-lg">
                     <h3 class="text-2xl font-bold text-orange-800 mb-4">🥩 Blends de Carne Bovina</h3>
                     <p class="mb-6 text-stone-600">O segredo de um hambúrguer suculento está na proporção de gordura, idealmente em torno de 20%. Peça sempre para o seu açougueiro moer a carne na hora.</p>
                     <div class="space-y-4">
-                        <div>
-                            <h4 class="font-bold text-lg text-stone-700">Blend Clássico (Equilibrado)</h4>
-                            <p class="text-stone-600"><strong>Composição:</strong> 80% Acém + 20% Peito. <br><strong>Por quê?</strong> O acém oferece um ótimo sabor de carne e o peito entra com a gordura necessária para a suculência, resultando num blend com excelente custo-benefício.</p>
-                        </div>
+                        <div><h4 class="font-bold text-lg text-stone-700">Blend Clássico (Equilibrado)</h4><p class="text-stone-600"><strong>Composição:</strong> 80% Acém + 20% Peito. <br><strong>Por quê?</strong> O acém oferece um ótimo sabor de carne e o peito entra com a gordura necessária para a suculência, resultando num blend com excelente custo-benefício.</p></div>
                         <div class="border-t border-amber-200 my-4"></div>
-                        <div>
-                            <h4 class="font-bold text-lg text-stone-700">Blend Saboroso</h4>
-                            <p class="text-stone-600"><strong>Composição:</strong> 50% Fraldinha + 30% Acém + 20% Gordura de Peito ou Bacon. <br><strong>Por quê?</strong> A fraldinha tem um sabor mais intenso e marcante. O bacon, se usado, adiciona um toque defumado irresistível.</p>
-                        </div>
-                         <div class="border-t border-amber-200 my-4"></div>
-                        <div>
-                            <h4 class="font-bold text-lg text-stone-700">Blend Premium</h4>
-                            <p class="text-stone-600"><strong>Composição:</strong> 70% Brisket (peito bovino) + 30% Short Rib (costela). <br><strong>Por quê?</strong> Uma combinação popular nos EUA, oferece uma textura e um sabor amanteigado incríveis, graças à gordura entremeada da costela.</p>
-                        </div>
+                        <div><h4 class="font-bold text-lg text-stone-700">Blend Saboroso</h4><p class="text-stone-600"><strong>Composição:</strong> 50% Fraldinha + 30% Acém + 20% Gordura de Peito ou Bacon. <br><strong>Por quê?</strong> A fraldinha tem um sabor mais intenso e marcante. O bacon, se usado, adiciona um toque defumado irresistível.</p></div>
+                        <div class="border-t border-amber-200 my-4"></div>
+                        <div><h4 class="font-bold text-lg text-stone-700">Blend Premium</h4><p class="text-stone-600"><strong>Composição:</strong> 70% Brisket (peito bovino) + 30% Short Rib (costela). <br><strong>Por quê?</strong> Uma combinação popular nos EUA, oferece uma textura e um sabor amanteigado incríveis, graças à gordura entremeada da costela.</p></div>
                     </div>
                 </div>
-
-                <!-- Blends de Frango -->
                 <div class="bg-white p-8 rounded-lg shadow-lg">
                     <h3 class="text-2xl font-bold text-orange-800 mb-4">🍗 Hambúrguer de Frango</h3>
                     <p class="mb-6 text-stone-600">Para um hambúrguer de frango que não seja seco, o segredo é usar cortes com mais gordura e adicionar temperos que realcem o sabor.</p>
-                    <div class="space-y-4">
-                        <div>
-                            <h4 class="font-bold text-lg text-stone-700">Blend de Frango Suculento</h4>
-                            <p class="text-stone-600"><strong>Composição:</strong> 100% Sobrecoxa de frango moída. <br><strong>Tempero Sugerido:</strong> Sal, pimenta, páprica doce e um pouco de alho em pó. <br><strong>Por quê?</strong> A sobrecoxa é mais suculenta que o peito de frango. A pele (moída junto, opcionalmente) adiciona gordura e sabor.</p>
-                        </div>
-                    </div>
+                    <div class="space-y-4"><div><h4 class="font-bold text-lg text-stone-700">Blend de Frango Suculento</h4><p class="text-stone-600"><strong>Composição:</strong> 100% Sobrecoxa de frango moída. <br><strong>Tempero Sugerido:</strong> Sal, pimenta, páprica doce e um pouco de alho em pó. <br><strong>Por quê?</strong> A sobrecoxa é mais suculenta que o peito de frango. A pele (moída junto, opcionalmente) adiciona gordura e sabor.</p></div></div>
                 </div>
-
-                <!-- Blends Vegetais -->
                 <div class="bg-white p-8 rounded-lg shadow-lg">
                     <h3 class="text-2xl font-bold text-orange-800 mb-4">🌱 Opções Vegetarianas e Veganas</h3>
                     <p class="mb-6 text-stone-600">Fazer um bom hambúrguer sem carne é sobre criar texturas e sabores umami. Use ingredientes que dão liga e profundidade.</p>
                     <div class="space-y-4">
-                        <div>
-                            <h4 class="font-bold text-lg text-stone-700">Hambúrguer de Cogumelos (Vegetariano)</h4>
-                            <p class="text-stone-600"><strong>Ingredientes Principais:</strong> Cogumelos Portobello ou Paris, cebola, alho, aveia em flocos, queijo parmesão ralado (para dar liga e sabor). <br><strong>Preparo:</strong> Refogue os cogumelos picados com cebola e alho até secarem. Processe com os outros ingredientes, molde e leve à frigideira.</p>
-                        </div>
+                        <div><h4 class="font-bold text-lg text-stone-700">Hambúrguer de Cogumelos (Vegetariano)</h4><p class="text-stone-600"><strong>Ingredientes Principais:</strong> Cogumelos Portobello ou Paris, cebola, alho, aveia em flocos, queijo parmesão ralado (para dar liga e sabor). <br><strong>Preparo:</strong> Refogue os cogumelos picados com cebola e alho até secarem. Processe com os outros ingredientes, molde e leve à frigideira.</p></div>
                         <div class="border-t border-amber-200 my-4"></div>
-                        <div>
-                            <h4 class="font-bold text-lg text-stone-700">Hambúrguer de Feijão Preto (Vegano)</h4>
-                            <p class="text-stone-600"><strong>Ingredientes Principais:</strong> Feijão preto cozido e amassado, farinha de rosca ou de aveia, cebola, coentro, cominho em pó e páprica defumada. <br><strong>Preparo:</strong> Misture o feijão amassado com os temperos e a farinha até dar ponto de modelar. Grelhe com um fio de azeite.</p>
-                        </div>
+                        <div><h4 class="font-bold text-lg text-stone-700">Hambúrguer de Feijão Preto (Vegano)</h4><p class="text-stone-600"><strong>Ingredientes Principais:</strong> Feijão preto cozido e amassado, farinha de rosca ou de aveia, cebola, coentro, cominho em pó e páprica defumada. <br><strong>Preparo:</strong> Misture o feijão amassado com os temperos e a farinha até dar ponto de modelar. Grelhe com um fio de azeite.</p></div>
                     </div>
                 </div>
             </div>
         </section>
     </main>
-
     <footer class="bg-white mt-16">
-        <div class="container mx-auto px-6 py-4 text-center text-stone-600">
-            <p>&copy; 2024 Manual Interativo do Hambúrguer. Cozinhar nunca foi tão fácil.</p>
-        </div>
+        <div class="container mx-auto px-6 py-4 text-center text-stone-600"><p>&copy; 2024 Manual Interativo do Hambúrguer. Cozinhar nunca foi tão fácil.</p></div>
     </footer>
-
 </body>
 </html>
