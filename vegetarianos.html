@@ -66,28 +66,46 @@
             <div class="bg-white p-8 rounded-lg shadow-lg"><div class="grid grid-cols-1 md:grid-cols-3 gap-8 items-start"><div class="md:col-span-1"><img src="https://placehold.co/400x400/0ea5e9/FFFFFF?text=Ervilha+e+Hortel%C3%A3" alt="Hambúrguer de Ervilha e Hortelã" class="rounded-lg w-full"></div><div class="md:col-span-2"><h3 class="text-3xl font-bold text-orange-800 mb-6">Ervilha e Hortelã</h3><div class="grid grid-cols-1 lg:grid-cols-2 gap-6"><div><h4 class="font-bold text-lg mb-2 text-stone-700">Componentes</h4><ul class="space-y-2 text-stone-600"><li><span>Pão Ciabatta</span></li><li><span>Hamb. de Ervilha e Hortelã</span></li><li class="flex justify-between items-center"><span>Queijo Feta</span><a href="queijo.html" class="recipe-link">[Ver Guia]</a></li><li><span>Molho de Iogurte</span></li></ul></div><div><h4 class="font-bold text-lg mb-2 text-stone-700">Como Montar</h4><ol class="list-decimal list-inside space-y-2 text-stone-600"><li>Grelhe o hambúrguer.</li><li>Toste o pão.</li><li>Passe o molho de iogurte.</li><li>Coloque o hambúrguer e esfarele o queijo por cima.</li></ol></div></div></div></div></div>
         </div>
     </main>
-    <!-- Floating Action Button -->
-    <div id="fab-container" class="fab-container">
-        <div id="fab-menu" class="fab-menu flex-col items-end gap-3 mb-4 hidden absolute bottom-full right-0 w-64">
-            <a href="profissionais.html">🏆 Profissionais</a>
-            <a href="bovinos.html">🥩 Bovinos</a>
-            <a href="frango.html">🍗 Frango</a>
-            <a href="vegetarianos.html" class="font-bold bg-amber-100">🍄 Vegetarianos</a>
-            <a href="veganos.html">🌱 Veganos</a>
-        </div>
-        <button id="fab-button" class="fab-button">
-            <svg xmlns="http://www.w3.org/2000/svg" class="h-10 w-10" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16" /></svg>
-        </button>
+   <!-- Floating Action Button -->
+<div id="fab-container" class="fab-container">
+    <div id="fab-menu" class="fab-menu flex-col items-end gap-3 mb-4 hidden absolute bottom-full right-0 w-64">
+        <a href="profissionais.html">🏆 Profissionais</a>
+        <a href="bovinos.html">🥩 Bovinos</a>
+        <a href="frango.html">🍗 Frango</a>
+        <a href="vegetarianos.html">🍄 Vegetarianos</a>
+        <a href="veganos.html">🌱 Veganos</a>
+        <a href="porco-cordeiro.html">🐖 Porco & Cordeiro</a>
     </div>
+    <button id="fab-button" class="fab-button">
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-10 w-10" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16" /></svg>
+    </button>
+</div>
     <footer class="bg-white mt-16"><div class="container mx-auto px-6 py-4 text-center text-stone-600"><p>&copy; 2024 Manual Interativo do Hambúrguer.</p></div></footer>
-    <script>
-        document.addEventListener('DOMContentLoaded', () => {
-            const fabContainer = document.getElementById('fab-container');
-            const fabButton = document.getElementById('fab-button');
-            const fabMenu = document.getElementById('fab-menu');
-            fabButton.addEventListener('click', (e) => { e.stopPropagation(); fabMenu.classList.toggle('hidden'); fabMenu.classList.toggle('flex'); fabContainer.classList.toggle('open'); });
-            document.addEventListener('click', (event) => { if (!fabContainer.contains(event.target)) { fabMenu.classList.add('hidden'); fabMenu.classList.remove('flex'); fabContainer.classList.remove('open'); }});
-        });
-    </script>
+   <script>
+    document.addEventListener('DOMContentLoaded', () => {
+        const fabContainer = document.getElementById('fab-container');
+        const fabButton = document.getElementById('fab-button');
+        const fabMenu = document.getElementById('fab-menu');
+
+        // Garante que os elementos existem antes de adicionar os eventos
+        if (fabButton && fabMenu && fabContainer) {
+            fabButton.addEventListener('click', (e) => {
+                e.stopPropagation(); // Impede que o clique se propague para o documento
+                fabMenu.classList.toggle('hidden');
+                fabMenu.classList.toggle('flex');
+                fabContainer.classList.toggle('open');
+            });
+            
+            // Fecha o menu se clicar fora dele
+            document.addEventListener('click', (event) => {
+                if (fabContainer.classList.contains('open') && !fabContainer.contains(event.target)) {
+                    fabMenu.classList.add('hidden');
+                    fabMenu.classList.remove('flex');
+                    fabContainer.classList.remove('open');
+                }
+            });
+        }
+    });
+</script>
 </body>
 </html>
