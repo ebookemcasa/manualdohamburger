@@ -4,188 +4,45 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Receitas de Hambúrgueres Profissionais - Hambúrguer Perfeito</title>
-    <!-- Tailwind CSS via CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
-    <!-- Google Fonts -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@700;900&family=Roboto:wght@400;500&display=swap" rel="stylesheet">
-    
     <style>
-        /* Estilos base e customizações que não são facilmente feitas com Tailwind puro */
-        body {
-            font-family: 'Roboto', sans-serif;
-            background-color: #1c1917; /* stone-900 */
-            color: #e7e5e4; /* stone-200 */
-            background-image: linear-gradient(rgba(28, 25, 23, 0.97), rgba(28, 25, 23, 0.97)), url('https://images.unsplash.com/photo-1598214886806-2c88b8165e23?q=80&w=2070&auto=format&fit=crop');
+        @import url('https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@700;900&family=Roboto:wght@400;500&display=swap');
+        body { 
+            font-family: 'Roboto', sans-serif; 
+            background-color: #1c1917; 
+            color: #e7e5e4;
+            background-image: linear-gradient(rgba(28, 25, 23, 0.96), rgba(28, 25, 23, 0.96)), url('https://images.unsplash.com/photo-1598214886806-2c88b8165e23?q=80&w=2070&auto=format&fit=crop');
             background-attachment: fixed;
             background-size: cover;
         }
-
-        h1, h2, h3, h4, .nav-link {
-            font-family: 'Roboto Slab', serif;
-            font-weight: 700;
-        }
-
-        /* Estilos para o menu flutuante (FAB) */
-        .fab-container {
-            position: fixed;
-            bottom: 2rem;
-            right: 2rem;
-            z-index: 50;
-        }
-        
-        .fab-menu {
-            transition: transform 0.3s ease-in-out, opacity 0.3s ease-in-out;
-            transform-origin: bottom right;
-        }
-
-        /* Classe para controlar a visibilidade e animação do menu */
-        .fab-container:not(.open) .fab-menu {
-            transform: scale(0.9) translateY(10px);
-            opacity: 0;
-            pointer-events: none; /* Impede cliques no menu escondido */
-        }
-        
-        .fab-container.open .fab-menu {
-            transform: scale(1) translateY(0);
-            opacity: 1;
-        }
+        h1, h2, h3, h4, .nav-link { font-family: 'Roboto Slab', serif; font-weight: 700; }
+        .recipe-link { @apply text-orange-400 hover:text-orange-500 text-sm font-semibold transition-colors duration-200; }
+        .fab-container { position: fixed; bottom: 2rem; right: 2rem; z-index: 50; }
+        .fab-menu { transition: all 0.3s ease; transform: scale(0); transform-origin: bottom right; }
+        .fab-container.open .fab-menu { transform: scale(1); }
+        .fab-menu a { @apply bg-stone-700 text-stone-200 w-full text-left px-4 py-3 rounded-lg shadow-xl hover:bg-stone-600 transition-all duration-200 flex items-center gap-3 text-lg; }
+        .fab-button { @apply bg-orange-600 text-white w-20 h-20 rounded-full flex items-center justify-center shadow-lg hover:bg-orange-700 transition-transform duration-200 hover:scale-110; }
     </style>
 </head>
 <body class="antialiased">
-
-    <!-- Cabeçalho -->
-    <header class="bg-stone-900/80 backdrop-blur-lg sticky top-0 z-40 shadow-xl">
+    <header class="bg-stone-900/80 backdrop-blur-lg sticky top-0 z-50 shadow-md">
         <nav class="container mx-auto px-6 py-4">
             <div class="flex justify-between items-center">
                 <a href="index.html" class="text-2xl font-black text-white tracking-wider">Hambúrguer<span class="text-orange-500">Perfeito</span></a>
-                <a href="index.html" class="nav-link text-stone-300 hover:text-orange-500 transition-colors duration-300">Voltar ao Início</a>
+                <a href="index.html" class="nav-link text-stone-300 hover:text-orange-500 transition-colors">Voltar ao Início</a>
             </div>
         </nav>
     </header>
-
-    <!-- Conteúdo Principal -->
     <main class="container mx-auto px-6 py-8 md:py-12">
         <section class="text-center mb-16">
             <h1 class="text-4xl md:text-5xl font-black text-white">Hambúrgueres <span class="text-orange-500">Profissionais</span></h1>
             <p class="mt-4 max-w-2xl mx-auto text-stone-400">Receitas de alto nível, com blends e combinações para uma experiência gourmet.</p>
         </section>
-
-        <!-- Grid de Receitas -->
         <div class="space-y-12">
-            
-            <!-- Template de Receita (aplicado a todas abaixo) -->
-            <!-- Receita 1: Wagyu Clássico -->
-            <div class="bg-stone-800/60 p-6 md:p-8 rounded-2xl shadow-lg backdrop-blur-sm transition-transform duration-300 hover:scale-[1.02] hover:shadow-orange-900/50">
-                <div class="grid grid-cols-1 md:grid-cols-3 gap-8 items-start">
-                    <div class="md:col-span-1">
-                        <img src="https://images.unsplash.com/photo-1610445528246-aea24ef2d623?q=80&w=1974&auto=format&fit=crop" 
-                             alt="Hambúrguer Wagyu Clássico" 
-                             class="rounded-lg w-full h-full object-cover aspect-square shadow-md"
-                             onerror="this.onerror=null;this.src='https://placehold.co/600x600/1c1917/e7e5e4?text=Wagyu+Clássico';">
-                    </div>
-                    <div class="md:col-span-2">
-                        <h3 class="text-3xl font-bold text-white mb-6">Wagyu Clássico</h3>
-                        <div class="grid grid-cols-1 lg:grid-cols-2 gap-x-8 gap-y-6">
-                            <div>
-                                <h4 class="font-bold text-lg mb-3 text-orange-400 border-b border-orange-400/20 pb-2">Componentes</h4>
-                                <ul class="space-y-2 text-stone-300">
-                                    <li class="flex justify-between items-center"><span>Pão Brioche</span> <a href="pao.html" class="text-orange-400 hover:text-orange-500 text-sm font-semibold transition-colors">[Ver Receita]</a></li>
-                                    <li class="flex justify-between items-center"><span>Blend Wagyu (250g)</span><a href="blends.html" class="text-orange-400 hover:text-orange-500 text-sm font-semibold transition-colors">[Ver Guia]</a></li>
-                                    <li class="flex justify-between items-center"><span>Queijo Gruyère</span> <a href="queijo.html" class="text-orange-400 hover:text-orange-500 text-sm font-semibold transition-colors">[Ver Guia]</a></li>
-                                    <li class="flex justify-between items-center"><span>Maionese Trufada</span></li>
-                                    <li class="flex justify-between items-center"><span>Rúcula</span><a href="salada.html" class="text-orange-400 hover:text-orange-500 text-sm font-semibold transition-colors">[Ver Guia]</a></li>
-                                </ul>
-                            </div>
-                            <div>
-                                <h4 class="font-bold text-lg mb-3 text-orange-400 border-b border-orange-400/20 pb-2">Como Montar</h4>
-                                <ol class="list-decimal list-inside space-y-2 text-stone-300">
-                                    <li>Grelhe o hambúrguer de Wagyu ao ponto desejado.</li>
-                                    <li>Nos últimos minutos, coloque o queijo Gruyère para derreter.</li>
-                                    <li>Toste o pão brioche na gordura da carne.</li>
-                                    <li>Passe a maionese trufada na base e na tampa do pão.</li>
-                                    <li>Coloque o hambúrguer e finalize com a rúcula.</li>
-                                </ol>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Receita 2: Angus ao Barbecue -->
-            <div class="bg-stone-800/60 p-6 md:p-8 rounded-2xl shadow-lg backdrop-blur-sm transition-transform duration-300 hover:scale-[1.02] hover:shadow-orange-900/50">
-                <div class="grid grid-cols-1 md:grid-cols-3 gap-8 items-start">
-                    <div class="md:col-span-1">
-                        <img src="https://images.unsplash.com/photo-1551782450-a2132b4ba21d?q=80&w=1964&auto=format&fit=crop" 
-                             alt="Hambúrguer Angus ao Barbecue" 
-                             class="rounded-lg w-full h-full object-cover aspect-square shadow-md"
-                             onerror="this.onerror=null;this.src='https://placehold.co/600x600/1c1917/e7e5e4?text=Angus+BBQ';">
-                    </div>
-                    <div class="md:col-span-2">
-                        <h3 class="text-3xl font-bold text-white mb-6">Angus ao Barbecue</h3>
-                        <div class="grid grid-cols-1 lg:grid-cols-2 gap-x-8 gap-y-6">
-                            <div>
-                                <h4 class="font-bold text-lg mb-3 text-orange-400 border-b border-orange-400/20 pb-2">Componentes</h4>
-                                <ul class="space-y-2 text-stone-300">
-                                    <li class="flex justify-between items-center"><span>Pão de Batata</span></li>
-                                    <li class="flex justify-between items-center"><span>Blend Angus (230g)</span><a href="blends.html" class="text-orange-400 hover:text-orange-500 text-sm font-semibold transition-colors">[Ver Guia]</a></li>
-                                    <li class="flex justify-between items-center"><span>Cheddar Envelhecido</span> <a href="queijo.html" class="text-orange-400 hover:text-orange-500 text-sm font-semibold transition-colors">[Ver Guia]</a></li>
-                                    <li class="flex justify-between items-center"><span>Bacon Crocante</span></li>
-                                    <li class="flex justify-between items-center"><span>Molho Barbecue</span></li>
-                                </ul>
-                            </div>
-                            <div>
-                                <h4 class="font-bold text-lg mb-3 text-orange-400 border-b border-orange-400/20 pb-2">Como Montar</h4>
-                                <ol class="list-decimal list-inside space-y-2 text-stone-300">
-                                    <li>Grelhe o hambúrguer e o bacon.</li>
-                                    <li>Derreta o queijo sobre a carne.</li>
-                                    <li>Toste o pão de batata.</li>
-                                    <li>Passe molho barbecue na base, coloque o hambúrguer com queijo, o bacon e mais barbecue.</li>
-                                </ol>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            
-            <!-- Receita 3: Black Angus com Brie -->
-            <div class="bg-stone-800/60 p-6 md:p-8 rounded-2xl shadow-lg backdrop-blur-sm transition-transform duration-300 hover:scale-[1.02] hover:shadow-orange-900/50">
-                <div class="grid grid-cols-1 md:grid-cols-3 gap-8 items-start">
-                    <div class="md:col-span-1">
-                        <img src="https://images.unsplash.com/photo-1605478376483-5243a44d856b?q=80&w=1974&auto=format&fit=crop" 
-                             alt="Hambúrguer Black Angus com Brie" 
-                             class="rounded-lg w-full h-full object-cover aspect-square shadow-md"
-                             onerror="this.onerror=null;this.src='https://placehold.co/600x600/1c1917/e7e5e4?text=Angus+e+Brie';">
-                    </div>
-                    <div class="md:col-span-2">
-                        <h3 class="text-3xl font-bold text-white mb-6">Black Angus com Brie</h3>
-                        <div class="grid grid-cols-1 lg:grid-cols-2 gap-x-8 gap-y-6">
-                            <div>
-                                <h4 class="font-bold text-lg mb-3 text-orange-400 border-b border-orange-400/20 pb-2">Componentes</h4>
-                                <ul class="space-y-2 text-stone-300">
-                                    <li class="flex justify-between items-center"><span>Pão Artesanal</span></li>
-                                    <li class="flex justify-between items-center"><span>Blend Black Angus (250g)</span><a href="blends.html" class="text-orange-400 hover:text-orange-500 text-sm font-semibold transition-colors">[Ver Guia]</a></li>
-                                    <li class="flex justify-between items-center"><span>Queijo Brie</span><a href="queijo.html" class="text-orange-400 hover:text-orange-500 text-sm font-semibold transition-colors">[Ver Guia]</a></li>
-                                    <li class="flex justify-between items-center"><span>Cebola Caramelizada</span></li>
-                                    <li class="flex justify-between items-center"><span>Rúcula</span><a href="salada.html" class="text-orange-400 hover:text-orange-500 text-sm font-semibold transition-colors">[Ver Guia]</a></li>
-                                </ul>
-                            </div>
-                            <div>
-                                <h4 class="font-bold text-lg mb-3 text-orange-400 border-b border-orange-400/20 pb-2">Como Montar</h4>
-                                <ol class="list-decimal list-inside space-y-2 text-stone-300">
-                                    <li>Grelhe o hambúrguer.</li>
-                                    <li>Coloque fatias de Brie sobre a carne quente para amolecer.</li>
-                                    <li>Toste o pão.</li>
-                                    <li>Coloque a rúcula na base, adicione o hambúrguer com queijo e finalize com a cebola caramelizada.</li>
-                                </ol>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            
-	<div class="bg-stone-800/50 p-6 md:p-8 rounded-lg shadow-lg backdrop-blur-sm"><div class="grid grid-cols-1 md:grid-cols-3 gap-8 items-start"><div class="md:col-span-1"><img src="https://images.unsplash.com/photo-1551782450-a2132b4ba21d?q=80&w=1964&auto=format&fit=crop" alt="Hambúrguer Angus ao Barbecue" class="rounded-lg w-full h-full object-cover"></div><div class="md:col-span-2"><h3 class="text-3xl font-bold text-white mb-6">Angus ao Barbecue</h3><div class="grid grid-cols-1 lg:grid-cols-2 gap-x-8 gap-y-6"><div><h4 class="font-bold text-lg mb-2 text-orange-400">Componentes</h4><ul class="space-y-2 text-stone-300"><li class="flex justify-between items-center border-b border-stone-700 py-1"><span>Pão de Batata</span></li><li class="flex justify-between items-center border-b border-stone-700 py-1"><span>Blend Angus (230g)</span><a href="blends.html" class="recipe-link">[Ver Guia]</a></li><li class="flex justify-between items-center border-b border-stone-700 py-1"><span>Cheddar Envelhecido</span> <a href="queijo.html" class="recipe-link">[Ver Guia]</a></li><li class="border-b border-stone-700 py-1"><span>Bacon Crocante</span></li><li class="border-b border-stone-700 py-1"><span>Molho Barbecue</span></li></ul></div><div><h4 class="font-bold text-lg mb-2 text-orange-400">Como Montar</h4><ol class="list-decimal list-inside space-y-2 text-stone-300"><li>Grelhe o hambúrguer e o bacon.</li><li>Derreta o queijo sobre a carne.</li><li>Toste o pão de batata.</li><li>Passe molho barbecue na base.</li><li>Coloque o hambúrguer com queijo.</li><li>Adicione o bacon e mais um fio de barbecue por cima.</li></ol></div></div></div></div></div>
+            <!-- Receita 1 -->
+            <div class="bg-stone-800/50 p-6 md:p-8 rounded-lg shadow-lg backdrop-blur-sm"><div class="grid grid-cols-1 md:grid-cols-3 gap-8 items-start"><div class="md:col-span-1"><img src="https://images.unsplash.com/photo-1610445528246-aea24ef2d623?q=80&w=1974&auto=format&fit=crop" alt="Hambúrguer Wagyu Clássico" class="rounded-lg w-full h-full object-cover"></div><div class="md:col-span-2"><h3 class="text-3xl font-bold text-white mb-6">Wagyu Clássico</h3><div class="grid grid-cols-1 lg:grid-cols-2 gap-x-8 gap-y-6"><div><h4 class="font-bold text-lg mb-2 text-orange-400">Componentes</h4><ul class="space-y-2 text-stone-300"><li class="flex justify-between items-center border-b border-stone-700 py-1"><span>Pão Brioche</span> <a href="pao.html" class="recipe-link">[Ver Receita]</a></li><li class="flex justify-between items-center border-b border-stone-700 py-1"><span>Blend Wagyu (250g)</span><a href="blends.html" class="recipe-link">[Ver Guia]</a></li><li class="flex justify-between items-center border-b border-stone-700 py-1"><span>Queijo Gruyère</span> <a href="queijo.html" class="recipe-link">[Ver Guia]</a></li><li class="border-b border-stone-700 py-1"><span>Maionese Trufada</span></li><li class="flex justify-between items-center border-b border-stone-700 py-1"><span>Rúcula</span><a href="salada.html" class="recipe-link">[Ver Guia]</a></li></ul></div><div><h4 class="font-bold text-lg mb-2 text-orange-400">Como Montar</h4><ol class="list-decimal list-inside space-y-2 text-stone-300"><li>Grelhe o hambúrguer de Wagyu ao ponto desejado.</li><li>Nos últimos minutos, coloque o queijo Gruyère para derreter.</li><li>Toste o pão brioche na gordura da carne.</li><li>Passe a maionese trufada na base e na tampa do pão.</li><li>Coloque o hambúrguer.</li><li>Finalize com um punhado de rúcula fresca.</li></ol></div></div></div></div></div>
+            <!-- Receita 2 -->
+            <div class="bg-stone-800/50 p-6 md:p-8 rounded-lg shadow-lg backdrop-blur-sm"><div class="grid grid-cols-1 md:grid-cols-3 gap-8 items-start"><div class="md:col-span-1"><img src="https://images.unsplash.com/photo-1551782450-a2132b4ba21d?q=80&w=1964&auto=format&fit=crop" alt="Hambúrguer Angus ao Barbecue" class="rounded-lg w-full h-full object-cover"></div><div class="md:col-span-2"><h3 class="text-3xl font-bold text-white mb-6">Angus ao Barbecue</h3><div class="grid grid-cols-1 lg:grid-cols-2 gap-x-8 gap-y-6"><div><h4 class="font-bold text-lg mb-2 text-orange-400">Componentes</h4><ul class="space-y-2 text-stone-300"><li class="flex justify-between items-center border-b border-stone-700 py-1"><span>Pão de Batata</span></li><li class="flex justify-between items-center border-b border-stone-700 py-1"><span>Blend Angus (230g)</span><a href="blends.html" class="recipe-link">[Ver Guia]</a></li><li class="flex justify-between items-center border-b border-stone-700 py-1"><span>Cheddar Envelhecido</span> <a href="queijo.html" class="recipe-link">[Ver Guia]</a></li><li class="border-b border-stone-700 py-1"><span>Bacon Crocante</span></li><li class="border-b border-stone-700 py-1"><span>Molho Barbecue</span></li></ul></div><div><h4 class="font-bold text-lg mb-2 text-orange-400">Como Montar</h4><ol class="list-decimal list-inside space-y-2 text-stone-300"><li>Grelhe o hambúrguer e o bacon.</li><li>Derreta o queijo sobre a carne.</li><li>Toste o pão de batata.</li><li>Passe molho barbecue na base.</li><li>Coloque o hambúrguer com queijo.</li><li>Adicione o bacon e mais um fio de barbecue por cima.</li></ol></div></div></div></div></div>
             <!-- Receita 3 -->
             <div class="bg-stone-800/50 p-6 md:p-8 rounded-lg shadow-lg backdrop-blur-sm"><div class="grid grid-cols-1 md:grid-cols-3 gap-8 items-start"><div class="md:col-span-1"><img src="https://images.unsplash.com/photo-1605478376483-5243a44d856b?q=80&w=1974&auto=format&fit=crop" alt="Hambúrguer Black Angus com Brie" class="rounded-lg w-full h-full object-cover"></div><div class="md:col-span-2"><h3 class="text-3xl font-bold text-white mb-6">Black Angus com Brie</h3><div class="grid grid-cols-1 lg:grid-cols-2 gap-x-8 gap-y-6"><div><h4 class="font-bold text-lg mb-2 text-orange-400">Componentes</h4><ul class="space-y-2 text-stone-300"><li><span>Pão Artesanal</span></li><li><span>Blend Black Angus (250g)</span><a href="blends.html" class="recipe-link">[Ver Guia]</a></li><li class="flex justify-between items-center border-b border-stone-700 py-1"><span>Queijo Brie</span> <a href="queijo.html" class="recipe-link">[Ver Guia]</a></li><li class="border-b border-stone-700 py-1"><span>Cebola Caramelizada</span></li><li class="flex justify-between items-center border-b border-stone-700 py-1"><span>Rúcula</span><a href="salada.html" class="recipe-link">[Ver Guia]</a></li></ul></div><div><h4 class="font-bold text-lg mb-2 text-orange-400">Como Montar</h4><ol class="list-decimal list-inside space-y-2 text-stone-300"><li>Grelhe o hambúrguer.</li><li>Coloque fatias de queijo Brie sobre a carne quente para amolecer.</li><li>Toste o pão artesanal.</li><li>Coloque a rúcula na base.</li><li>Adicione o hambúrguer com o queijo.</li><li>Coroe com uma generosa porção de cebola caramelizada.</li></ol></div></div></div></div></div>
             <!-- Receita 4 -->
@@ -213,59 +70,31 @@
             <!-- Receita 15 -->
             <div class="bg-stone-800/50 p-6 md:p-8 rounded-lg shadow-lg backdrop-blur-sm"><div class="grid grid-cols-1 md:grid-cols-3 gap-8 items-start"><div class="md:col-span-1"><img src="https://images.unsplash.com/photo-1605478376483-5243a44d856b?q=80&w=1974&auto=format&fit=crop" alt="Hambúrguer com Pistache" class="rounded-lg w-full h-full object-cover"></div><div class="md:col-span-2"><h3 class="text-3xl font-bold text-white mb-6">Pistache e Mortadela</h3><div class="grid grid-cols-1 lg:grid-cols-2 gap-x-8 gap-y-6"><div><h4 class="font-bold text-lg mb-2 text-orange-400">Componentes</h4><ul class="space-y-2 text-stone-300"><li><span>Pão Italiano</span></li><li><span>Blend Saboroso</span></li><li><span>Queijo Caciocavallo</span></li><li><span>Mortadela com pistache em fatias finas</span></li><li><span>Maionese de Limão Siciliano</span></li></ul></div><div><h4 class="font-bold text-lg mb-2 text-orange-400">Como Montar</h4><ol class="list-decimal list-inside space-y-2 text-stone-300"><li>Grelhe o hambúrguer e derreta o queijo.</li><li>Grelhe rapidamente as fatias de mortadela.</li><li>Toste o pão.</li><li>Passe a maionese na base.</li><li>Monte o hambúrguer com a mortadela por cima.</li></ol></div></div></div></div></div>
         </div>
-             <!-- ... Outras receitas podem ser adicionadas aqui seguindo o mesmo padrão ... -->
-
-        </div>
     </main>
-
-    <!-- Menu Flutuante (FAB) -->
+    <!-- Floating Action Button -->
     <div id="fab-container" class="fab-container">
-        <div id="fab-menu" class="fab-menu absolute bottom-full right-0 w-64 mb-4">
-            <div class="flex flex-col items-end gap-3">
-                <a href="profissionais.html" class="font-bold bg-stone-600 text-white w-full text-left px-4 py-3 rounded-lg shadow-xl hover:bg-orange-600 transition-all duration-200 flex items-center gap-3 text-lg">🏆 Profissionais</a>
-                <a href="bovinos.html" class="bg-stone-700 text-stone-200 w-full text-left px-4 py-3 rounded-lg shadow-xl hover:bg-stone-600 transition-all duration-200 flex items-center gap-3 text-lg">🥩 Bovinos</a>
-                <a href="frango.html" class="bg-stone-700 text-stone-200 w-full text-left px-4 py-3 rounded-lg shadow-xl hover:bg-stone-600 transition-all duration-200 flex items-center gap-3 text-lg">🍗 Frango</a>
-                <a href="vegetarianos.html" class="bg-stone-700 text-stone-200 w-full text-left px-4 py-3 rounded-lg shadow-xl hover:bg-stone-600 transition-all duration-200 flex items-center gap-3 text-lg">🍄 Vegetarianos</a>
-            </div>
+        <div id="fab-menu" class="fab-menu flex-col items-end gap-3 mb-4 hidden absolute bottom-full right-0 w-64">
+            <a href="profissionais.html" class="font-bold bg-stone-600">🏆 Profissionais</a>
+            <a href="bovinos.html">🥩 Bovinos</a>
+            <a href="frango.html">🍗 Frango</a>
+            <a href="vegetarianos.html">🍄 Vegetarianos</a>
+            <a href="veganos.html">🌱 Veganos</a>
+            <a href="porco-cordeiro.html">🐖 Porco & Cordeiro</a>
         </div>
-        <button id="fab-button" class="bg-orange-600 text-white w-20 h-20 rounded-full flex items-center justify-center shadow-lg hover:bg-orange-700 transition-transform duration-200 hover:scale-110 focus:outline-none focus:ring-4 focus:ring-orange-400/50">
-            <svg id="fab-icon-open" xmlns="http://www.w3.org/2000/svg" class="h-10 w-10" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16" /></svg>
-            <svg id="fab-icon-close" xmlns="http://www.w3.org/2000/svg" class="h-10 w-10 hidden" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" /></svg>
+        <button id="fab-button" class="fab-button">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-10 w-10" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16" /></svg>
         </button>
     </div>
-
-    <!-- Rodapé -->
-    <footer class="bg-stone-900 border-t border-stone-800 mt-16">
-        <div class="container mx-auto px-6 py-8 text-center text-stone-400">
-            <p>&copy; 2024 Manual Interativo do Hambúrguer.</p>
-        </div>
+    <footer class="bg-stone-900 border-t border-stone-800">
+        <div class="container mx-auto px-6 py-8 text-center text-stone-400"><p>&copy; 2024 Manual Interativo do Hambúrguer.</p></div>
     </footer>
-
     <script>
         document.addEventListener('DOMContentLoaded', () => {
             const fabContainer = document.getElementById('fab-container');
             const fabButton = document.getElementById('fab-button');
-            const iconOpen = document.getElementById('fab-icon-open');
-            const iconClose = document.getElementById('fab-icon-close');
-
-            // Função para alternar o menu
-            const toggleMenu = () => {
-                fabContainer.classList.toggle('open');
-                iconOpen.classList.toggle('hidden');
-                iconClose.classList.toggle('hidden');
-            };
-
-            fabButton.addEventListener('click', (e) => {
-                e.stopPropagation(); // Impede que o clique no botão feche o menu imediatamente
-                toggleMenu();
-            });
-
-            // Fecha o menu se clicar fora dele
-            document.addEventListener('click', (event) => {
-                if (fabContainer.classList.contains('open') && !fabContainer.contains(event.target)) {
-                    toggleMenu();
-                }
-            });
+            const fabMenu = document.getElementById('fab-menu');
+            fabButton.addEventListener('click', (e) => { e.stopPropagation(); fabMenu.classList.toggle('hidden'); fabMenu.classList.toggle('flex'); fabContainer.classList.toggle('open'); });
+            document.addEventListener('click', (event) => { if (!fabContainer.contains(event.target)) { fabMenu.classList.add('hidden'); fabMenu.classList.remove('flex'); fabContainer.classList.remove('open'); }});
         });
     </script>
 </body>
