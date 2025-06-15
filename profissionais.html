@@ -103,7 +103,29 @@
     pepperRatio: 5 
 },
 
-                { id: 'iberico', name: 'O Ibérico', image: 'imagens/pro_o_iberico.jpg', description: 'Uma viagem à Espanha, combinando a carne Angus com o famoso queijo Manchego e o presunto Pata Negra.', components: [ {name: 'Pão de Azeite', qty: 1, unit: 'unid.'}, {name: 'Queijo Manchego', qty: 2, unit: 'fatias'}, {name: 'Presunto Pata Negra', qty: 3, unit: 'fatias'}, {name: 'Maionese de Páprica', qty: 1, unit: 'colher'} ], steps: [ { title: 'Grelhar a Carne', description: 'Grelhe o hambúrguer Angus até ao ponto desejado. Nos últimos segundos, coloque o queijo Manchego para derreter ligeiramente.'}, { title: 'Montar o Prato', description: 'Toste o pão, passe a maionese de páprica na base, coloque o hambúrguer com queijo e cubra com as fatias de presunto Pata Negra.'} ], baseWeight: 0.220, blendName: 'Blend Angus', blendDetails: '100% Carne Angus. Use Acém ou um corte similar para um bom equilíbrio de sabor e gordura.', saltRatio: 18, pepperRatio: 4 },
+{ 
+    id: 'iberico', 
+    name: 'O Ibérico', 
+    image: 'imagens/pro_o_iberico.jpg', 
+    description: 'Uma viagem à Espanha, combinando a carne Angus com o famoso queijo Manchego e o presunto Pata Negra.', 
+    components: [ 
+        {name: 'Pão de Azeite', qty: 1, unit: 'unid.'}, 
+        {name: 'Queijo Manchego', qty: 2, unit: 'fatias'}, 
+        {name: 'Presunto Pata Negra', qty: 3, unit: 'fatias'}, 
+        {name: 'Maionese de Páprica', qty: 1, unit: 'colher'}
+    ], 
+    steps: [ 
+        { title: 'O Toque de Páprica', description: 'Comece por preparar a maionese. Misture uma maionese de boa qualidade com uma colher de chá de páprica doce (ou defumada, para um sabor mais intenso). Deixe na geladeira para apurar o sabor.'}, 
+        { title: 'Grelhar a Carne', description: 'Tempere o seu hambúrguer Angus e grelhe em lume médio-alto. Para um hambúrguer de 220g, cerca de 4 minutos de cada lado devem ser suficientes para um ponto médio.', timer: 240 }, 
+        { title: 'O Queijo Manchego', description: 'Este queijo tem um sabor forte e não precisa de derreter completamente. Coloque as fatias sobre o hambúrguer apenas nos últimos 30 segundos de cozedura, para que ele amoleça e liberte os seus aromas.', timer: 30}, 
+        { title: 'A Montagem Final', description: 'Toste levemente o pão de azeite. Passe a maionese de páprica na base, coloque o hambúrguer com o queijo e, por fim, adicione as fatias de presunto Pata Negra por cima, deixando-as cair naturalmente.'} 
+    ], 
+    baseWeight: 0.220, 
+    blendName: 'Blend Angus', 
+    blendDetails: '100% Carne Angus. Use Acém ou um corte similar para um bom equilíbrio de sabor e gordura que complementa os ingredientes curados.', 
+    saltRatio: 18, 
+    pepperRatio: 4 
+},
                 { id: 'bourbon', name: 'O Bourbon', image: 'imagens/pro_o_bourbon.jpg', description: 'Sabores complexos e defumados, com a doçura da cebola caramelizada no uísque Bourbon.', components: [ {name: 'Pão Brioche', qty: 1, unit: 'unid.'}, {name: 'Queijo Gouda Defumado', qty: 2, unit: 'fatias'}, {name: 'Cebola Caramelizada no Bourbon', qty: 2, unit: 'colheres'}, {name: 'Bacon', qty: 3, unit: 'fatias'} ], steps: [ { title: 'Preparar a Cebola', description: 'Fatie uma cebola e cozinhe em lume baixo com manteiga. Quando estiver macia, adicione uma dose de Bourbon e deixe evaporar.'}, { title: 'Grelhar', description: 'Frite o bacon e, na mesma gordura, grelhe o hambúrguer. Derreta o queijo por cima.'}, { title: 'Montar', description: 'Toste o pão, coloque o hambúrguer com queijo, a cebola caramelizada e o bacon.'} ], baseWeight: 0.220, blendName: 'Blend Premium', blendDetails: '70% Peito + 30% Fraldinha. O peito oferece a gordura e a fraldinha o sabor intenso que combina com o Bourbon.', saltRatio: 18, pepperRatio: 6 },
                 { id: 'triplo', name: 'Triplo Queijo', image: 'imagens/pro_triplo_queijo.jpg', description: 'Para os verdadeiros amantes de queijo, uma fusão de Cheddar, Provolone e Gorgonzola numa explosão de sabor.', components: [ {name: 'Pão de Batata', qty: 1, unit: 'unid.'}, {name: 'Cheddar', qty: 1, unit: 'fatia'}, {name: 'Provolone', qty: 1, unit: 'fatia'}, {name: 'Gorgonzola', qty: 15, unit: 'g'}, {name: 'Cebola Roxa', qty: 2, unit: 'rodelas'} ], steps: [ { title: 'Grelhar e Derreter', description: 'Grelhe o hambúrguer por 3 minutos. Vire, coloque os três queijos por cima e abafe por mais 3 minutos para derreterem juntos.', timer: 180 }, { title: 'Finalizar', description: 'Toste o pão. Coloque o hambúrguer com a crosta de queijos e adicione as rodelas de cebola roxa para um toque crocante.'} ], baseWeight: 0.200, blendName: 'Blend Clássico', blendDetails: '80% Acém + 20% Peito. Um blend neutro para deixar os queijos brilharem.', saltRatio: 20, pepperRatio: 5 },
                 { id: 'doce-salgado', name: 'Doce & Salgado', image: 'imagens/pro_doce_salgado.jpg', description: 'Uma combinação gourmet que une a cremosidade do queijo de cabra com a doçura dos figos e o luxo do mel trufado.', components: [ {name: 'Pão Australiano', qty: 1, unit: 'unid.'}, {name: 'Queijo de Cabra', qty: 30, unit: 'g'}, {name: 'Figos Frescos', qty: 2, unit: 'unid.'}, {name: 'Mel Trufado', qty: 1, unit: 'fio'} ], steps: [ { title: 'Grelhar a Carne', description: 'Grelhe o hambúrguer de blend saboroso até o ponto desejado.'}, { title: 'Montar', description: 'Toste o pão. Espalhe o queijo de cabra na base. Coloque o hambúrguer quente para amolecer o queijo, adicione os figos fatiados e finalize com um fio de mel trufado.'} ], baseWeight: 0.220, blendName: 'Blend Saboroso', blendDetails: '50% Fraldinha + 30% Acém + 20% Gordura de Peito. Um blend com sabor para equilibrar o doce.', saltRatio: 15, pepperRatio: 5 },
