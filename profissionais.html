@@ -22,6 +22,8 @@
         .fab-container.open .fab-menu { transform: scale(1); }
         .fab-menu a { @apply bg-stone-700 text-stone-200 w-full text-left px-4 py-3 rounded-lg shadow-xl hover:bg-stone-600 transition-all duration-200 flex items-center gap-3 text-lg; }
         .fab-button { @apply bg-orange-600 text-white w-20 h-20 rounded-full flex items-center justify-center shadow-lg hover:bg-orange-700 transition-transform duration-200 hover:scale-110; }
+        .modal-overlay { transition: opacity 0.3s ease; }
+        .timer-btn.active { background-color: #fb923c; color: white; cursor: not-allowed; }
     </style>
 </head>
 <body class="antialiased">
@@ -38,63 +40,192 @@
             <h1 class="text-4xl md:text-5xl font-black text-white">Hambúrgueres <span class="text-orange-500">Profissionais</span></h1>
             <p class="mt-4 max-w-2xl mx-auto text-stone-400">Receitas de alto nível, com blends e combinações para uma experiência gourmet.</p>
         </section>
-        <div class="space-y-12">
-            <!-- Receita 1 -->
-            <div class="bg-stone-800/50 p-6 md:p-8 rounded-lg shadow-lg backdrop-blur-sm"><div class="grid grid-cols-1 md:grid-cols-3 gap-8 items-start"><div class="md:col-span-1"><img src="imagens/pro_wagyu_classico.jpg" alt="Hambúrguer Wagyu Clássico" class="rounded-lg w-full h-full object-cover"></div><div class="md:col-span-2"><h3 class="text-3xl font-bold text-white mb-6">Wagyu Clássico</h3><div class="grid grid-cols-1 lg:grid-cols-2 gap-x-8 gap-y-6"><div><h4 class="font-bold text-lg mb-2 text-orange-400">Componentes</h4><ul class="space-y-2 text-stone-300"><li class="flex justify-between items-center border-b border-stone-700 py-1"><span>Pão Brioche</span> <a href="pao.html" class="recipe-link">[Ver Receita]</a></li><li class="flex justify-between items-center border-b border-stone-700 py-1"><span>Blend Wagyu (250g)</span><a href="blends.html" class="recipe-link">[Ver Guia]</a></li><li class="flex justify-between items-center border-b border-stone-700 py-1"><span>Queijo Gruyère</span> <a href="queijo.html" class="recipe-link">[Ver Guia]</a></li><li class="border-b border-stone-700 py-1"><span>Maionese Trufada</span></li><li class="flex justify-between items-center border-b border-stone-700 py-1"><span>Rúcula</span><a href="salada.html" class="recipe-link">[Ver Guia]</a></li></ul></div><div><h4 class="font-bold text-lg mb-2 text-orange-400">Como Montar</h4><ol class="list-decimal list-inside space-y-2 text-stone-300"><li>Grelhe o hambúrguer de Wagyu ao ponto desejado.</li><li>Nos últimos minutos, coloque o queijo Gruyère para derreter.</li><li>Toste o pão brioche na gordura da carne.</li><li>Passe a maionese trufada na base e na tampa do pão.</li><li>Coloque o hambúrguer.</li><li>Finalize com um punhado de rúcula fresca.</li></ol></div></div></div></div></div>
-            <!-- Receita 2 -->
-            <div class="bg-stone-800/50 p-6 md:p-8 rounded-lg shadow-lg backdrop-blur-sm"><div class="grid grid-cols-1 md:grid-cols-3 gap-8 items-start"><div class="md:col-span-1"><img src="imagens/pro_angus_bbq.jpg" alt="Hambúrguer Angus ao Barbecue" class="rounded-lg w-full h-full object-cover"></div><div class="md:col-span-2"><h3 class="text-3xl font-bold text-white mb-6">Angus ao Barbecue</h3><div class="grid grid-cols-1 lg:grid-cols-2 gap-x-8 gap-y-6"><div><h4 class="font-bold text-lg mb-2 text-orange-400">Componentes</h4><ul class="space-y-2 text-stone-300"><li class="flex justify-between items-center border-b border-stone-700 py-1"><span>Pão de Batata</span></li><li class="flex justify-between items-center border-b border-stone-700 py-1"><span>Blend Angus (230g)</span><a href="blends.html" class="recipe-link">[Ver Guia]</a></li><li class="flex justify-between items-center border-b border-stone-700 py-1"><span>Cheddar Envelhecido</span> <a href="queijo.html" class="recipe-link">[Ver Guia]</a></li><li class="border-b border-stone-700 py-1"><span>Bacon Crocante</span></li><li class="border-b border-stone-700 py-1"><span>Molho Barbecue</span></li></ul></div><div><h4 class="font-bold text-lg mb-2 text-orange-400">Como Montar</h4><ol class="list-decimal list-inside space-y-2 text-stone-300"><li>Grelhe o hambúrguer e o bacon.</li><li>Derreta o queijo sobre a carne.</li><li>Toste o pão de batata.</li><li>Passe molho barbecue na base.</li><li>Coloque o hambúrguer com queijo.</li><li>Adicione o bacon e mais um fio de barbecue por cima.</li></ol></div></div></div></div></div>
-            <!-- Receita 3 -->
-            <div class="bg-stone-800/50 p-6 md:p-8 rounded-lg shadow-lg backdrop-blur-sm"><div class="grid grid-cols-1 md:grid-cols-3 gap-8 items-start"><div class="md:col-span-1"><img src="imagens/pro_black_angus_brie.jpg" alt="Hambúrguer Black Angus com Brie" class="rounded-lg w-full h-full object-cover"></div><div class="md:col-span-2"><h3 class="text-3xl font-bold text-white mb-6">Black Angus com Brie</h3><div class="grid grid-cols-1 lg:grid-cols-2 gap-x-8 gap-y-6"><div><h4 class="font-bold text-lg mb-2 text-orange-400">Componentes</h4><ul class="space-y-2 text-stone-300"><li><span>Pão Artesanal</span></li><li><span>Blend Black Angus (250g)</span><a href="blends.html" class="recipe-link">[Ver Guia]</a></li><li class="flex justify-between items-center border-b border-stone-700 py-1"><span>Queijo Brie</span> <a href="queijo.html" class="recipe-link">[Ver Guia]</a></li><li class="border-b border-stone-700 py-1"><span>Cebola Caramelizada</span></li><li class="flex justify-between items-center border-b border-stone-700 py-1"><span>Rúcula</span><a href="salada.html" class="recipe-link">[Ver Guia]</a></li></ul></div><div><h4 class="font-bold text-lg mb-2 text-orange-400">Como Montar</h4><ol class="list-decimal list-inside space-y-2 text-stone-300"><li>Grelhe o hambúrguer.</li><li>Coloque fatias de queijo Brie sobre a carne quente para amolecer.</li><li>Toste o pão artesanal.</li><li>Coloque a rúcula na base.</li><li>Adicione o hambúrguer com o queijo.</li><li>Coroe com uma generosa porção de cebola caramelizada.</li></ol></div></div></div></div></div>
-            <!-- Receita 4 -->
-            <div class="bg-stone-800/50 p-6 md:p-8 rounded-lg shadow-lg backdrop-blur-sm"><div class="grid grid-cols-1 md:grid-cols-3 gap-8 items-start"><div class="md:col-span-1"><img src="imagens/pro_kobe_madeira.jpg" alt="Hambúrguer Kobe com Molho Madeira" class="rounded-lg w-full h-full object-cover"></div><div class="md:col-span-2"><h3 class="text-3xl font-bold text-white mb-6">Kobe com Molho Madeira</h3><div class="grid grid-cols-1 lg:grid-cols-2 gap-x-8 gap-y-6"><div><h4 class="font-bold text-lg mb-2 text-orange-400">Componentes</h4><ul class="space-y-2 text-stone-300"><li><span>Pão Ciabatta</span></li><li><span>Blend Kobe (200g)</span><a href="blends.html" class="recipe-link">[Ver Guia]</a></li><li class="flex justify-between items-center border-b border-stone-700 py-1"><span>Queijo Suíço</span> <a href="queijo.html" class="recipe-link">[Ver Guia]</a></li><li class="border-b border-stone-700 py-1"><span>Molho Madeira</span></li><li class="flex justify-between items-center border-b border-stone-700 py-1"><span>Alface Romana</span><a href="salada.html" class="recipe-link">[Ver Guia]</a></li></ul></div><div><h4 class="font-bold text-lg mb-2 text-orange-400">Como Montar</h4><ol class="list-decimal list-inside space-y-2 text-stone-300"><li>Grelhe o hambúrguer Kobe e derreta o queijo suíço.</li><li>Toste o pão ciabatta.</li><li>Coloque a alface romana na base do pão.</li><li>Adicione o hambúrguer.</li><li>Regue generosamente com o molho madeira quente.</li><li>Sirva imediatamente.</li></ol></div></div></div></div></div>
-            <!-- Receita 5 -->
-            <div class="bg-stone-800/50 p-6 md:p-8 rounded-lg shadow-lg backdrop-blur-sm"><div class="grid grid-cols-1 md:grid-cols-3 gap-8 items-start"><div class="md:col-span-1"><img src="imagens/pro_fraldinha_gorgonzola.jpg" alt="Hambúrguer de Fraldinha com Gorgonzola" class="rounded-lg w-full h-full object-cover"></div><div class="md:col-span-2"><h3 class="text-3xl font-bold text-white mb-6">Fraldinha com Gorgonzola</h3><div class="grid grid-cols-1 lg:grid-cols-2 gap-x-8 gap-y-6"><div><h4 class="font-bold text-lg mb-2 text-orange-400">Componentes</h4><ul class="space-y-2 text-stone-300"><li><span>Pão de Centeio</span></li><li><span>Blend Fraldinha (240g)</span><a href="blends.html" class="recipe-link">[Ver Guia]</a></li><li class="flex justify-between items-center border-b border-stone-700 py-1"><span>Queijo Gorgonzola</span> <a href="queijo.html" class="recipe-link">[Ver Guia]</a></li><li class="flex justify-between items-center border-b border-stone-700 py-1"><span>Maionese de Alho</span> <a href="molhos.html" class="recipe-link">[Ver Receita]</a></li><li class="flex justify-between items-center border-b border-stone-700 py-1"><span>Tomate</span><a href="salada.html" class="recipe-link">[Ver Guia]</a></li></ul></div><div><h4 class="font-bold text-lg mb-2 text-orange-400">Como Montar</h4><ol class="list-decimal list-inside space-y-2 text-stone-300"><li>Grelhe o hambúrguer de fraldinha.</li><li>Toste o pão de centeio.</li><li>Passe a maionese de alho na base.</li><li>Coloque o hambúrguer.</li><li>Esfarele o queijo gorgonzola sobre a carne quente.</li><li>Adicione as fatias de tomate.</li></ol></div></div></div></div></div>
-            <!-- Receita 6 -->
-            <div class="bg-stone-800/50 p-6 md:p-8 rounded-lg shadow-lg backdrop-blur-sm"><div class="grid grid-cols-1 md:grid-cols-3 gap-8 items-start"><div class="md:col-span-1"><img src="imagens/pro_o_iberico.jpg" alt="Hambúrguer Ibérico" class="rounded-lg w-full h-full object-cover"></div><div class="md:col-span-2"><h3 class="text-3xl font-bold text-white mb-6">O Ibérico</h3><div class="grid grid-cols-1 lg:grid-cols-2 gap-x-8 gap-y-6"><div><h4 class="font-bold text-lg mb-2 text-orange-400">Componentes</h4><ul class="space-y-2 text-stone-300"><li class="border-b border-stone-700 py-1">Pão de Azeite</li><li>Blend Angus (220g)</li><li>Queijo Manchego</li><li>Presunto Pata Negra</li><li>Maionese de Páprica</li></ul></div><div><h4 class="font-bold text-lg mb-2 text-orange-400">Como Montar</h4><ol class="list-decimal list-inside space-y-2 text-stone-300"><li>Grelhe o hambúrguer e derreta o queijo Manchego.</li><li>Toste o pão.</li><li>Passe a maionese de páprica na base.</li><li>Coloque o hambúrguer com queijo.</li><li>Adicione as fatias de presunto Pata Negra por cima.</li></ol></div></div></div></div></div>
-            <!-- Receita 7 -->
-            <div class="bg-stone-800/50 p-6 md:p-8 rounded-lg shadow-lg backdrop-blur-sm"><div class="grid grid-cols-1 md:grid-cols-3 gap-8 items-start"><div class="md:col-span-1"><img src="imagens/pro_o_bourbon.jpg" alt="Hambúrguer Bourbon" class="rounded-lg w-full h-full object-cover"></div><div class="md:col-span-2"><h3 class="text-3xl font-bold text-white mb-6">O Bourbon</h3><div class="grid grid-cols-1 lg:grid-cols-2 gap-x-8 gap-y-6"><div><h4 class="font-bold text-lg mb-2 text-orange-400">Componentes</h4><ul class="space-y-2 text-stone-300"><li class="border-b border-stone-700 py-1">Pão Brioche</li><li>Blend Premium (220g)</li><li>Queijo Gouda Defumado</li><li>Cebola caramelizada no Bourbon</li><li>Bacon</li></ul></div><div><h4 class="font-bold text-lg mb-2 text-orange-400">Como Montar</h4><ol class="list-decimal list-inside space-y-2 text-stone-300"><li>Prepare a cebola caramelizada, deglaceando a panela com uísque Bourbon no final.</li><li>Grelhe o hambúrguer e o bacon.</li><li>Derreta o queijo por cima da carne.</li><li>Toste o pão, coloque o hambúrguer, a cebola e o bacon.</li></ol></div></div></div></div></div>
-            <!-- Receita 8 -->
-            <div class="bg-stone-800/50 p-6 md:p-8 rounded-lg shadow-lg backdrop-blur-sm"><div class="grid grid-cols-1 md:grid-cols-3 gap-8 items-start"><div class="md:col-span-1"><img src="imagens/pro_triplo_queijo.jpg" alt="Hambúrguer Triplo Queijo" class="rounded-lg w-full h-full object-cover"></div><div class="md:col-span-2"><h3 class="text-3xl font-bold text-white mb-6">Triplo Queijo</h3><div class="grid grid-cols-1 lg:grid-cols-2 gap-x-8 gap-y-6"><div><h4 class="font-bold text-lg mb-2 text-orange-400">Componentes</h4><ul class="space-y-2 text-stone-300"><li class="border-b border-stone-700 py-1">Pão de Batata</li><li>Blend Clássico (200g)</li><li>Cheddar, Provolone, Gorgonzola</li><li>Cebola Roxa</li></ul></div><div><h4 class="font-bold text-lg mb-2 text-orange-400">Como Montar</h4><ol class="list-decimal list-inside space-y-2 text-stone-300"><li>Grelhe o hambúrguer.</li><li>Nos últimos minutos, adicione os três queijos sobre a carne para derreterem juntos.</li><li>Toste o pão.</li><li>Coloque o hambúrguer na base.</li><li>Finalize com rodelas finas de cebola roxa para cortar a gordura.</li></ol></div></div></div></div></div>
-            <!-- Receita 9 -->
-            <div class="bg-stone-800/50 p-6 md:p-8 rounded-lg shadow-lg backdrop-blur-sm"><div class="grid grid-cols-1 md:grid-cols-3 gap-8 items-start"><div class="md:col-span-1"><img src="imagens/pro_doce_salgado.jpg" alt="Hambúrguer Doce e Salgado" class="rounded-lg w-full h-full object-cover"></div><div class="md:col-span-2"><h3 class="text-3xl font-bold text-white mb-6">Doce & Salgado</h3><div class="grid grid-cols-1 lg:grid-cols-2 gap-x-8 gap-y-6"><div><h4 class="font-bold text-lg mb-2 text-orange-400">Componentes</h4><ul class="space-y-2 text-stone-300"><li class="border-b border-stone-700 py-1">Pão Australiano</li><li>Blend Saboroso (220g)</li><li>Queijo de Cabra</li><li>Figos Frescos Fatiados</li><li>Fio de Mel Trufado</li></ul></div><div><h4 class="font-bold text-lg mb-2 text-orange-400">Como Montar</h4><ol class="list-decimal list-inside space-y-2 text-stone-300"><li>Grelhe o hambúrguer.</li><li>Toste o pão.</li><li>Espalhe o queijo de cabra na base do pão.</li><li>Coloque o hambúrguer quente para amolecer o queijo.</li><li>Disponha as fatias de figo por cima.</li><li>Finalize com um fio de mel trufado.</li></ol></div></div></div></div></div>
-            <!-- Receita 10 -->
-            <div class="bg-stone-800/50 p-6 md:p-8 rounded-lg shadow-lg backdrop-blur-sm"><div class="grid grid-cols-1 md:grid-cols-3 gap-8 items-start"><div class="md:col-span-1"><img src="imagens/pro_umami_bomb.jpg" alt="Hambúrguer Umami" class="rounded-lg w-full h-full object-cover"></div><div class="md:col-span-2"><h3 class="text-3xl font-bold text-white mb-6">Umami Bomb</h3><div class="grid grid-cols-1 lg:grid-cols-2 gap-x-8 gap-y-6"><div><h4 class="font-bold text-lg mb-2 text-orange-400">Componentes</h4><ul class="space-y-2 text-stone-300"><li class="border-b border-stone-700 py-1">Pão Brioche</li><li>Blend Premium (220g)</li><li>Lascas de Parmesão</li><li>Cogumelos Shiitake Salteados</li><li>Maionese de Missô</li></ul></div><div><h4 class="font-bold text-lg mb-2 text-orange-400">Como Montar</h4><ol class="list-decimal list-inside space-y-2 text-stone-300"><li>Salteie os cogumelos em azeite e shoyu.</li><li>Grelhe o hambúrguer.</li><li>Toste o pão.</li><li>Passe a maionese de missô na base.</li><li>Coloque o hambúrguer, os cogumelos e as lascas de parmesão.</li></ol></div></div></div></div></div>
-            <!-- Receita 11 -->
-            <div class="bg-stone-800/50 p-6 md:p-8 rounded-lg shadow-lg backdrop-blur-sm"><div class="grid grid-cols-1 md:grid-cols-3 gap-8 items-start"><div class="md:col-span-1"><img src="imagens/pro_o_argentino.jpg" alt="Hambúrguer Argentino" class="rounded-lg w-full h-full object-cover"></div><div class="md:col-span-2"><h3 class="text-3xl font-bold text-white mb-6">O Argentino</h3><div class="grid grid-cols-1 lg:grid-cols-2 gap-x-8 gap-y-6"><div><h4 class="font-bold text-lg mb-2 text-orange-400">Componentes</h4><ul class="space-y-2 text-stone-300"><li class="border-b border-stone-700 py-1">Pão de Campanha</li><li>Blend de Fraldinha (250g)</li><li>Queijo Provolone</li><li>Molho Chimichurri</li><li>Linguiça Chorizo Grelhada</li></ul></div><div><h4 class="font-bold text-lg mb-2 text-orange-400">Como Montar</h4><ol class="list-decimal list-inside space-y-2 text-stone-300"><li>Grelhe o hambúrguer e a linguiça aberta ao meio.</li><li>Derreta o queijo sobre a carne.</li><li>Toste o pão.</li><li>Coloque o hambúrguer, a linguiça e cubra com chimichurri.</li></ol></div></div></div></div></div>
-            <!-- Receita 12 -->
-            <div class="bg-stone-800/50 p-6 md:p-8 rounded-lg shadow-lg backdrop-blur-sm"><div class="grid grid-cols-1 md:grid-cols-3 gap-8 items-start"><div class="md:col-span-1"><img src="imagens/pro_rub_cafe.jpg" alt="Hambúrguer com Rub de Café" class="rounded-lg w-full h-full object-cover"></div><div class="md:col-span-2"><h3 class="text-3xl font-bold text-white mb-6">Rub de Café e Cacau</h3><div class="grid grid-cols-1 lg:grid-cols-2 gap-x-8 gap-y-6"><div><h4 class="font-bold text-lg mb-2 text-orange-400">Componentes</h4><ul class="space-y-2 text-stone-300"><li class="border-b border-stone-700 py-1">Pão Australiano</li><li>Blend Saboroso com "Rub"</li><li>Queijo Gouda</li><li>Maionese de Bacon</li></ul></div><div><h4 class="font-bold text-lg mb-2 text-orange-400">Como Montar</h4><ol class="list-decimal list-inside space-y-2 text-stone-300"><li>Crie um "rub" (tempero seco) com café moído, cacau em pó, pimenta e sal.</li><li>Passe o rub na carne antes de grelhar.</li><li>Grelhe o hambúrguer e derreta o queijo Gouda.</li><li>Toste o pão e passe a maionese de bacon.</li><li>Monte o hambúrguer.</li></ol></div></div></div></div></div>
-            <!-- Receita 13 -->
-            <div class="bg-stone-800/50 p-6 md:p-8 rounded-lg shadow-lg backdrop-blur-sm"><div class="grid grid-cols-1 md:grid-cols-3 gap-8 items-start"><div class="md:col-span-1"><img src="imagens/pro_blue_bacon.jpg" alt="Hambúrguer Blue Bacon" class="rounded-lg w-full h-full object-cover"></div><div class="md:col-span-2"><h3 class="text-3xl font-bold text-white mb-6">Blue Bacon</h3><div class="grid grid-cols-1 lg:grid-cols-2 gap-x-8 gap-y-6"><div><h4 class="font-bold text-lg mb-2 text-orange-400">Componentes</h4><ul class="space-y-2 text-stone-300"><li class="border-b border-stone-700 py-1">Pão de Hambúrguer</li><li>Blend Clássico (200g)</li><li>Queijo Gorgonzola</li><li>Bacon em cubos</li><li>Cebola Roxa</li></ul></div><div><h4 class="font-bold text-lg mb-2 text-orange-400">Como Montar</h4><ol class="list-decimal list-inside space-y-2 text-stone-300"><li>Frite o bacon em cubos até ficar crocante.</li><li>Grelhe o hambúrguer.</li><li>Esfarele o gorgonzola sobre a carne quente.</li><li>Toste o pão.</li><li>Monte com o hambúrguer, o bacon crocante e rodelas de cebola roxa.</li></ol></div></div></div></div></div>
-            <!-- Receita 14 -->
-            <div class="bg-stone-800/50 p-6 md:p-8 rounded-lg shadow-lg backdrop-blur-sm"><div class="grid grid-cols-1 md:grid-cols-3 gap-8 items-start"><div class="md:col-span-1"><img src="imagens/pro_steakhouse.jpg" alt="Hambúrguer Steakhouse" class="rounded-lg w-full h-full object-cover"></div><div class="md:col-span-2"><h3 class="text-3xl font-bold text-white mb-6">Steakhouse Clássico</h3><div class="grid grid-cols-1 lg:grid-cols-2 gap-x-8 gap-y-6"><div><h4 class="font-bold text-lg mb-2 text-orange-400">Componentes</h4><ul class="space-y-2 text-stone-300"><li class="border-b border-stone-700 py-1">Pão de Hambúrguer</li><li>Blend Premium (240g)</li><li>Queijo Provolone</li><li>Molho A1 (ou similar)</li><li>Cogumelos salteados</li></ul></div><div><h4 class="font-bold text-lg mb-2 text-orange-400">Como Montar</h4><ol class="list-decimal list-inside space-y-2 text-stone-300"><li>Salteie os cogumelos.</li><li>Grelhe o hambúrguer e derreta o queijo.</li><li>Toste o pão.</li><li>Passe o molho A1 na base.</li><li>Coloque o hambúrguer.</li><li>Cubra com os cogumelos.</li></ol></div></div></div></div></div>
-            <!-- Receita 15 -->
-            <div class="bg-stone-800/50 p-6 md:p-8 rounded-lg shadow-lg backdrop-blur-sm"><div class="grid grid-cols-1 md:grid-cols-3 gap-8 items-start"><div class="md:col-span-1"><img src="imagens/pro_pistache_mortadela.jpg" alt="Hambúrguer com Pistache" class="rounded-lg w-full h-full object-cover"></div><div class="md:col-span-2"><h3 class="text-3xl font-bold text-white mb-6">Pistache e Mortadela</h3><div class="grid grid-cols-1 lg:grid-cols-2 gap-x-8 gap-y-6"><div><h4 class="font-bold text-lg mb-2 text-orange-400">Componentes</h4><ul class="space-y-2 text-stone-300"><li class="border-b border-stone-700 py-1">Pão Italiano</li><li>Blend Saboroso</li><li>Queijo Caciocavallo</li><li>Mortadela com pistache em fatias finas</li><li>Maionese de Limão Siciliano</li></ul></div><div><h4 class="font-bold text-lg mb-2 text-orange-400">Como Montar</h4><ol class="list-decimal list-inside space-y-2 text-stone-300"><li>Grelhe o hambúrguer e derreta o queijo.</li><li>Grelhe rapidamente as fatias de mortadela.</li><li>Toste o pão.</li><li>Passe a maionese na base.</li><li>Monte o hambúrguer com a mortadela por cima.</li></ol></div></div></div></div></div>
+        <div id="recipe-list" class="space-y-12">
+            <!-- As 15 receitas serão geradas aqui pelo JavaScript -->
         </div>
     </main>
-    <!-- Floating Action Button -->
-    <div id="fab-container" class="fab-container">
-        <div id="fab-menu" class="fab-menu flex-col items-end gap-3 mb-4 hidden absolute bottom-full right-0 w-64">
-            <a href="profissionais.html" class="font-bold bg-stone-600">🏆 Profissionais</a>
-            <a href="bovinos.html">🥩 Bovinos</a>
-            <a href="frango.html">🍗 Frango</a>
-            <a href="vegetarianos.html">🍄 Vegetarianos</a>
-            <a href="veganos.html">🌱 Veganos</a>
-            <a href="porco-cordeiro.html">🐖 Porco & Cordeiro</a>
-        </div>
-        <button id="fab-button" class="fab-button">
-            <svg xmlns="http://www.w3.org/2000/svg" class="h-10 w-10" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16" /></svg>
-        </button>
-    </div>
-    <footer class="bg-stone-900 border-t border-stone-800">
+
+    <!-- Modals serão gerados e inseridos aqui pelo JavaScript -->
+    <div id="modals-container"></div>
+    
+    <footer class="bg-stone-900 border-t border-stone-800 mt-16">
         <div class="container mx-auto px-6 py-8 text-center text-stone-400"><p>&copy; 2024 Manual Interativo do Hambúrguer.</p></div>
     </footer>
     <script>
         document.addEventListener('DOMContentLoaded', () => {
-            const fabContainer = document.getElementById('fab-container');
-            const fabButton = document.getElementById('fab-button');
-            const fabMenu = document.getElementById('fab-menu');
-            fabButton.addEventListener('click', (e) => { e.stopPropagation(); fabMenu.classList.toggle('hidden'); fabMenu.classList.toggle('flex'); fabContainer.classList.toggle('open'); });
-            document.addEventListener('click', (event) => { if (!fabContainer.contains(event.target)) { fabMenu.classList.add('hidden'); fabMenu.classList.remove('flex'); fabContainer.classList.remove('open'); }});
+            const recipes = [
+                { id: 'wagyu', name: 'Wagyu Clássico', image: 'imagens/pro_wagyu_classico.jpg', description: 'Uma combinação de luxo com a suculência da carne Wagyu, a complexidade do queijo Gruyère e o toque sofisticado da maionese trufada.', components: [ {name: 'Pão Brioche', qty: 1, unit: 'unid.'}, {name: 'Queijo Gruyère', qty: 2, unit: 'fatias'}, {name: 'Rúcula', qty: 1, unit: 'punhado'}, {name: 'Maionese Trufada', qty: 1, unit: 'colher'} ], steps: [ { title: 'A Preparação (Mise en Place)', description: 'Retire a carne do frigorífico 20 minutos antes de cozinhar para que atinja a temperatura ambiente. Isto garante um cozimento uniforme. Prepare todos os outros ingredientes: rale o queijo, lave a rúcula, separe o pão.' }, { title: 'O Temperar Perfeito', description: 'O segredo de uma carne de qualidade é temperar **imediatamente** antes de ir para a chapa. Polvilhe sal e pimenta generosamente apenas no lado que vai tocar a frigideira primeiro. Não misture o sal na carne antes de moldar, pois isso desidrata-a.' }, { title: 'A Selagem (Maillard)', description: 'Aqueça uma frigideira de ferro ou de fundo grosso em lume médio-alto até ficar **muito quente**. Coloque o hambúrguer com o lado temperado para baixo. Ouça o chiado! Deixe-o selar por 3-4 minutos **sem tocar ou pressionar**. É aqui que a magia da crosta acontece.', timer: 210 }, { title: 'Virar e Finalizar', description: 'Tempere o lado de cima, vire o hambúrguer e coloque as fatias de queijo Gruyère por cima. Cozinhe por mais 3-4 minutos. Para um derretimento perfeito, pode borrifar um pouco de água na frigideira (longe da carne) e abafar com uma tampa por 30 segundos.', timer: 210 }, { title: 'Montagem de Mestre', description: 'Deixe a carne descansar por 1 minuto. Toste o pão na gordura que ficou na frigideira. Passe maionese trufada na base e tampa. Coloque o hambúrguer, o punhado de rúcula e feche. Sirva imediatamente.' } ], baseWeight: 0.250, blendName: 'Blend Wagyu', blendDetails: '100% Carne Wagyu moída com aproximadamente 25-30% de gordura. Peça ao seu açougueiro para moer cortes como Acém ou Peito de Wagyu.', saltRatio: 20, pepperRatio: 5 },
+                { id: 'angus', name: 'Angus ao Barbecue', image: 'imagens/pro_angus_bbq.jpg', description: 'A combinação perfeita do sabor marcante da carne Angus com a doçura do barbecue e a crocância do bacon.', components: [ {name: 'Pão de Batata', qty: 1, unit: 'unid.'}, {name: 'Cheddar Envelhecido', qty: 2, unit: 'fatias'}, {name: 'Bacon Crocante', qty: 3, unit: 'fatias'}, {name: 'Molho Barbecue', qty: 2, unit: 'colheres'} ], steps: [ { title: 'Preparar o Bacon', description: 'Frite as fatias de bacon numa frigideira em lume médio até ficarem douradas e crocantes. Retire e reserve em papel toalha.'}, { title: 'Grelhar o Hambúrguer', description: 'Na mesma frigideira, aproveitando a gordura do bacon, grelhe o hambúrguer Angus por 3-4 minutos de cada lado para um ponto médio.', timer: 210 }, { title: 'Adicionar o Queijo', description: 'No último minuto de cozedura, coloque as fatias de cheddar envelhecido sobre o hambúrguer para derreterem.'}, { title: 'Montagem Final', description: 'Toste o pão. Na base, espalhe molho barbecue, coloque o hambúrguer com queijo, as fatias de bacon e mais um fio de barbecue por cima. Feche e sirva.'} ], baseWeight: 0.230, blendName: 'Blend Angus', blendDetails: '100% Carne Angus. Recomendamos um corte como o Acém ou Peito de Angus, que já possuem uma boa proporção de gordura.', saltRatio: 18, pepperRatio: 6 },
+                { id: 'brie', name: 'Black Angus com Brie', image: 'imagens/pro_black_angus_brie.jpg', description: 'Uma receita sofisticada que une a intensidade do Black Angus com a cremosidade do queijo Brie e a doçura da cebola caramelizada.', components: [ {name: 'Pão Artesanal', qty: 1, unit: 'unid.'}, {name: 'Queijo Brie', qty: 3, unit: 'fatias'}, {name: 'Cebola Caramelizada', qty: 2, unit: 'colheres'}, {name: 'Rúcula', qty: 1, unit: 'punhado'} ], steps: [ { title: 'Preparar a Cebola', description: 'Fatie uma cebola em rodelas finas e cozinhe em lume baixo com manteiga por 20-30 minutos, até ficar dourada e macia.'}, { title: 'Grelhar a Carne', description: 'Grelhe o hambúrguer Black Angus na chapa quente, 4 minutos de cada lado para um ponto médio-mal passado.', timer: 240 }, { title: 'Derreter o Brie', description: 'Coloque as fatias de queijo Brie sobre o hambúrguer no último minuto para que amoleçam ligeiramente sem derreter por completo.'}, { title: 'Montagem Elegante', description: 'Toste o pão. Coloque a rúcula na base, o hambúrguer com o queijo e coroe com uma generosa porção de cebola caramelizada.'} ], baseWeight: 0.250, blendName: 'Blend Black Angus', blendDetails: '100% Black Angus. Utilize cortes como a Ponta de Agulha (Short Rib) para um sabor mais rico e gordo.', saltRatio: 20, pepperRatio: 5 },
+                { id: 'kobe', name: 'Kobe com Molho Madeira', image: 'imagens/pro_kobe_madeira.jpg', description: 'A delicadeza da carne Kobe elevada por um clássico molho madeira, criando um prato digno de um restaurante de luxo.', components: [ {name: 'Pão Ciabatta', qty: 1, unit: 'unid.'}, {name: 'Queijo Suíço', qty: 2, unit: 'fatias'}, {name: 'Molho Madeira', qty: 3, unit: 'colheres'}, {name: 'Alface Romana', qty: 2, unit: 'folhas'} ], steps: [ { title: 'O Molho Madeira', description: 'Prepare um molho madeira clássico reduzindo vinho da Madeira com caldo de carne e cogumelos.'}, { title: 'Grelhar o Kobe', description: 'Devido à sua delicadeza, grelhe o hambúrguer Kobe por apenas 2-3 minutos de cada lado em lume alto.', timer: 150 }, { title: 'Montar', description: 'Toste o pão ciabatta. Na base, coloque a alface, o hambúrguer com o queijo suíço derretido por cima e regue generosamente com o molho madeira quente.'} ], baseWeight: 0.200, blendName: 'Blend Kobe', blendDetails: '100% carne Kobe. Devido ao seu alto marmoreio, não é preciso adicionar gordura extra. É a experiência de luxo máxima.', saltRatio: 15, pepperRatio: 4 },
+                { id: 'gorgonzola', name: 'Fraldinha com Gorgonzola', image: 'imagens/pro_fraldinha_gorgonzola.jpg', description: 'O sabor intenso da fraldinha encontra a potência do queijo gorgonzola, equilibrado pela frescura do tomate e da maionese de alho.', components: [ {name: 'Pão de Centeio', qty: 1, unit: 'unid.'}, {name: 'Queijo Gorgonzola', qty: 30, unit: 'g'}, {name: 'Maionese de Alho', qty: 1, unit: 'colher'}, {name: 'Tomate', qty: 2, unit: 'rodelas'} ], steps: [ { title: 'Grelhar a Fraldinha', description: 'Grelhe o hambúrguer de fraldinha por 4 minutos de cada lado para um ponto médio.', timer: 240 }, { title: 'O Queijo', description: 'Retire o hambúrguer da chapa e, enquanto descansa, esfarele o queijo gorgonzola por cima para que derreta com o calor residual.'}, { title: 'A Montagem', description: 'Toste o pão. Passe a maionese de alho na base, coloque o hambúrguer com o queijo e finalize com as rodelas de tomate fresco.'} ], baseWeight: 0.240, blendName: 'Blend Fraldinha', blendDetails: '70% Fraldinha + 30% Peito. A Fraldinha tem um sabor intenso e o peito adiciona a gordura necessária para a suculência.', saltRatio: 20, pepperRatio: 5 },
+                { id: 'iberico', name: 'O Ibérico', image: 'imagens/pro_o_iberico.jpg', description: 'Uma viagem à Espanha, combinando a carne Angus com o famoso queijo Manchego e o presunto Pata Negra.', components: [ {name: 'Pão de Azeite', qty: 1, unit: 'unid.'}, {name: 'Queijo Manchego', qty: 2, unit: 'fatias'}, {name: 'Presunto Pata Negra', qty: 3, unit: 'fatias'}, {name: 'Maionese de Páprica', qty: 1, unit: 'colher'} ], steps: [ { title: 'Grelhar a Carne', description: 'Grelhe o hambúrguer Angus até ao ponto desejado. Nos últimos segundos, coloque o queijo Manchego para derreter ligeiramente.'}, { title: 'Montar o Prato', description: 'Toste o pão, passe a maionese de páprica na base, coloque o hambúrguer com queijo e cubra com as fatias de presunto Pata Negra.'} ], baseWeight: 0.220, blendName: 'Blend Angus', blendDetails: '100% Carne Angus. Use Acém ou um corte similar para um bom equilíbrio de sabor e gordura.', saltRatio: 18, pepperRatio: 4 },
+                { id: 'bourbon', name: 'O Bourbon', image: 'imagens/pro_o_bourbon.jpg', description: 'Sabores complexos e defumados, com a doçura da cebola caramelizada no uísque Bourbon.', components: [ {name: 'Pão Brioche', qty: 1, unit: 'unid.'}, {name: 'Queijo Gouda Defumado', qty: 2, unit: 'fatias'}, {name: 'Cebola Caramelizada no Bourbon', qty: 2, unit: 'colheres'}, {name: 'Bacon', qty: 3, unit: 'fatias'} ], steps: [ { title: 'Preparar a Cebola', description: 'Fatie uma cebola e cozinhe em lume baixo com manteiga. Quando estiver macia, adicione uma dose de Bourbon e deixe evaporar.'}, { title: 'Grelhar', description: 'Frite o bacon e, na mesma gordura, grelhe o hambúrguer. Derreta o queijo por cima.'}, { title: 'Montar', description: 'Toste o pão, coloque o hambúrguer com queijo, a cebola caramelizada e o bacon.'} ], baseWeight: 0.220, blendName: 'Blend Premium', blendDetails: '70% Peito + 30% Fraldinha. O peito oferece a gordura e a fraldinha o sabor intenso que combina com o Bourbon.', saltRatio: 18, pepperRatio: 6 },
+                { id: 'triplo', name: 'Triplo Queijo', image: 'imagens/pro_triplo_queijo.jpg', description: 'Para os verdadeiros amantes de queijo, uma fusão de Cheddar, Provolone e Gorgonzola numa explosão de sabor.', components: [ {name: 'Pão de Batata', qty: 1, unit: 'unid.'}, {name: 'Cheddar', qty: 1, unit: 'fatia'}, {name: 'Provolone', qty: 1, unit: 'fatia'}, {name: 'Gorgonzola', qty: 15, unit: 'g'}, {name: 'Cebola Roxa', qty: 2, unit: 'rodelas'} ], steps: [ { title: 'Grelhar e Derreter', description: 'Grelhe o hambúrguer por 3 minutos. Vire, coloque os três queijos por cima e abafe por mais 3 minutos para derreterem juntos.', timer: 180 }, { title: 'Finalizar', description: 'Toste o pão. Coloque o hambúrguer com a crosta de queijos e adicione as rodelas de cebola roxa para um toque crocante.'} ], baseWeight: 0.200, blendName: 'Blend Clássico', blendDetails: '80% Acém + 20% Peito. Um blend neutro para deixar os queijos brilharem.', saltRatio: 20, pepperRatio: 5 },
+                { id: 'doce-salgado', name: 'Doce & Salgado', image: 'imagens/pro_doce_salgado.jpg', description: 'Uma combinação gourmet que une a cremosidade do queijo de cabra com a doçura dos figos e o luxo do mel trufado.', components: [ {name: 'Pão Australiano', qty: 1, unit: 'unid.'}, {name: 'Queijo de Cabra', qty: 30, unit: 'g'}, {name: 'Figos Frescos', qty: 2, unit: 'unid.'}, {name: 'Mel Trufado', qty: 1, unit: 'fio'} ], steps: [ { title: 'Grelhar a Carne', description: 'Grelhe o hambúrguer de blend saboroso até o ponto desejado.'}, { title: 'Montar', description: 'Toste o pão. Espalhe o queijo de cabra na base. Coloque o hambúrguer quente para amolecer o queijo, adicione os figos fatiados e finalize com um fio de mel trufado.'} ], baseWeight: 0.220, blendName: 'Blend Saboroso', blendDetails: '50% Fraldinha + 30% Acém + 20% Gordura de Peito. Um blend com sabor para equilibrar o doce.', saltRatio: 15, pepperRatio: 5 },
+                { id: 'umami', name: 'Umami Bomb', image: 'imagens/pro_umami_bomb.jpg', description: 'A quinta essência do sabor. Uma explosão de umami com cogumelos shiitake, parmesão e maionese de missô.', components: [ {name: 'Pão Brioche', qty: 1, unit: 'unid.'}, {name: 'Lascas de Parmesão', qty: 1, unit: 'colher'}, {name: 'Cogumelos Shiitake', qty: 50, unit: 'g'}, {name: 'Maionese de Missô', qty: 1, unit: 'colher'} ], steps: [ { title: 'Preparar os Cogumelos', description: 'Salteie os cogumelos fatiados em azeite e shoyu até dourarem.'}, { title: 'Grelhar e Montar', description: 'Grelhe o hambúrguer. Toste o pão, passe a maionese de missô na base, coloque o hambúrguer, os cogumelos e as lascas de parmesão.'} ], baseWeight: 0.220, blendName: 'Blend Premium', blendDetails: '70% Peito + 30% Costela. A gordura da costela contribui para o sabor umami.', saltRatio: 18, pepperRatio: 4 },
+                { id: 'argentino', name: 'O Argentino', image: 'imagens/pro_o_argentino.jpg', description: 'Toda a paixão do churrasco argentino, com o sabor intenso da fraldinha e o toque picante do chimichurri.', components: [ {name: 'Pão de Campanha', qty: 1, unit: 'unid.'}, {name: 'Queijo Provolone', qty: 2, unit: 'fatias'}, {name: 'Molho Chimichurri', qty: 2, unit: 'colheres'}, {name: 'Linguiça Chorizo', qty: 1, unit: 'unid.'} ], steps: [ { title: 'Grelhar Tudo', description: 'Abra a linguiça ao meio e grelhe junto com o hambúrguer.'}, { title: 'Derreter e Montar', description: 'Derreta o queijo sobre a carne. Toste o pão. Coloque o hambúrguer, a linguiça e cubra com chimichurri fresco.'} ], baseWeight: 0.250, blendName: 'Blend de Fraldinha', blendDetails: '100% Fraldinha, com a sua própria gordura. O sabor intenso é ideal para o chimichurri.', saltRatio: 22, pepperRatio: 6 },
+                { id: 'cafe', name: 'Rub de Café e Cacau', image: 'imagens/pro_rub_cafe.jpg', description: 'Uma experiência sensorial única, onde um tempero seco de café e cacau cria uma crosta escura e complexa na carne.', components: [ {name: 'Pão Australiano', qty: 1, unit: 'unid.'}, {name: 'Queijo Gouda', qty: 2, unit: 'fatias'}, {name: 'Maionese de Bacon', qty: 1, unit: 'colher'}, {name: 'Tempero Rub', qty: 1, unit: 'colher'} ], steps: [ { title: 'Preparar o Rub', description: 'Crie o "rub" (tempero seco) com café moído fino, cacau em pó, páprica defumada, sal e pimenta.'}, { title: 'Grelhar', description: 'Passe o rub por toda a superfície do hambúrguer e grelhe. Derreta o queijo Gouda por cima.'}, { title: 'Finalizar', description: 'Toste o pão, passe a maionese de bacon e monte o hambúrguer.'} ], baseWeight: 0.220, blendName: 'Blend Saboroso', blendDetails: 'Um blend com uma boa percentagem de gordura, como 70% Peito e 30% Acém, para suportar a crosta seca do rub.', saltRatio: 18, pepperRatio: 6 },
+                { id: 'blue', name: 'Blue Bacon', image: 'imagens/pro_blue_bacon.jpg', description: 'A combinação clássica e infalível do queijo azul picante com o salgado do bacon crocante.', components: [ {name: 'Pão de Hambúrguer', qty: 1, unit: 'unid.'}, {name: 'Queijo Gorgonzola', qty: 30, unit: 'g'}, {name: 'Bacon em cubos', qty: 50, unit: 'g'}, {name: 'Cebola Roxa', qty: 2, unit: 'rodelas'} ], steps: [ { title: 'O Bacon', description: 'Frite o bacon em cubos até ficar bem crocante e reserve.'}, { title: 'A Carne', description: 'Grelhe o hambúrguer. No final, esfarele o gorgonzola sobre a carne quente para derreter.'}, { title: 'Montagem', description: 'Toste o pão. Coloque o hambúrguer, o bacon crocante e as rodelas de cebola roxa.'} ], baseWeight: 0.200, blendName: 'Blend Clássico', blendDetails: '80% Acém + 20% Peito. Um blend equilibrado que não compete com os sabores fortes do queijo e do bacon.', saltRatio: 20, pepperRatio: 5 },
+                { id: 'steakhouse', name: 'Steakhouse Clássico', image: 'imagens/pro_steakhouse.jpg', description: 'O sabor autêntico de uma steakhouse, com o molho intenso A1 e a suculência dos cogumelos salteados.', components: [ {name: 'Pão de Hambúrguer', qty: 1, unit: 'unid.'}, {name: 'Queijo Provolone', qty: 2, unit: 'fatias'}, {name: 'Molho A1 (ou similar)', qty: 1, unit: 'colher'}, {name: 'Cogumelos salteados', qty: 50, unit: 'g'} ], steps: [ { title: 'Os Cogumelos', description: 'Salteie cogumelos fatiados em manteiga, alho e um pouco de vinho branco.'}, { title: 'Grelhar', description: 'Grelhe o hambúrguer premium e derreta o queijo por cima.'}, { title: 'Montar', description: 'Toste o pão, passe o molho A1 na base, adicione o hambúrguer e cubra com os cogumelos.'} ], baseWeight: 0.240, blendName: 'Blend Premium', blendDetails: '70% Peito + 30% Fraldinha. Um blend rico que aguenta a intensidade do molho steak.', saltRatio: 20, pepperRatio: 5 },
+                { id: 'pistache', name: 'Pistache e Mortadela', image: 'imagens/pro_pistache_mortadela.jpg', description: 'Uma criação italiana que combina a textura crocante do pistache na mortadela com a cremosidade do queijo Caciocavallo.', components: [ {name: 'Pão Italiano', qty: 1, unit: 'unid.'}, {name: 'Queijo Caciocavallo', qty: 2, unit: 'fatias'}, {name: 'Mortadela com pistache', qty: 3, unit: 'fatias'}, {name: 'Maionese de Limão Siciliano', qty: 1, unit: 'colher'} ], steps: [ { title: 'Grelhar Tudo', description: 'Grelhe o hambúrguer e, numa chapa ao lado, grelhe rapidamente as fatias de mortadela até ficarem levemente crocantes.'}, { title: 'Finalizar', description: 'Derreta o queijo sobre a carne. Toste o pão, passe a maionese, coloque o hambúrguer e a mortadela grelhada por cima.'} ], baseWeight: 0.220, blendName: 'Blend Saboroso', blendDetails: '50% Acém, 30% Paleta, 20% Toucinho. Um blend de porco e boi funciona bem aqui.', saltRatio: 20, pepperRatio: 5 }
+            ];
+
+            const recipeListContainer = document.getElementById('recipe-list');
+            const modalsContainer = document.getElementById('modals-container');
+
+            recipes.forEach(recipe => {
+                const recipeCard = document.createElement('div');
+                recipeCard.className = 'bg-stone-800/50 p-6 md:p-8 rounded-lg shadow-lg backdrop-blur-sm';
+                recipeCard.innerHTML = `
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-8 items-center">
+                        <div class="md:col-span-1">
+                            <img src="${recipe.image}" alt="${recipe.name}" class="rounded-lg w-full h-full object-cover" onerror="this.onerror=null;this.src='https://placehold.co/400x400/333/FFF?text=Imagem+Indispon%C3%ADvel';">
+                        </div>
+                        <div class="md:col-span-2 text-center">
+                            <h3 class="text-3xl font-bold text-white mb-4">${recipe.name}</h3>
+                            <p class="text-stone-400 mb-6">${recipe.description}</p>
+                            <button data-modal-target="modal-${recipe.id}" class="open-modal-btn inline-block bg-orange-600 text-white font-bold px-6 py-3 rounded-lg hover:bg-orange-700 transition-colors">Ver Ficha Técnica</button>
+                        </div>
+                    </div>
+                `;
+                recipeListContainer.appendChild(recipeCard);
+
+                const modal = document.createElement('div');
+                modal.id = `modal-${recipe.id}`;
+                modal.className = 'modal-overlay fixed inset-0 bg-black bg-opacity-75 flex items-center justify-center p-4 hidden opacity-0 z-50';
+                modal.innerHTML = `
+                    <div class="bg-stone-900/80 backdrop-blur-xl w-full max-w-4xl max-h-[90vh] overflow-y-auto p-8 rounded-2xl shadow-2xl border border-stone-700">
+                        <div class="flex justify-between items-center mb-6">
+                            <h2 class="text-3xl md:text-4xl font-black text-white">Ficha Técnica: <span class="text-orange-500">${recipe.name}</span></h2>
+                            <button class="close-modal-btn text-4xl text-stone-400 hover:text-white">&times;</button>
+                        </div>
+                        <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+                            <div>
+                                <h3 class="text-2xl font-bold text-orange-400 mb-4">Planeamento</h3>
+                                <div class="bg-stone-800 p-4 rounded-lg">
+                                    <label for="kg-input-${recipe.id}" class="block text-lg text-stone-300 mb-2">Quilos de carne:</label>
+                                    <input type="number" id="kg-input-${recipe.id}" value="${recipe.baseWeight}" min="0.1" step="0.05" class="w-full p-2 border border-stone-600 bg-stone-700 text-white rounded-lg">
+                                </div>
+                                <div class="mt-6">
+                                    <h4 class="font-bold text-lg mb-2 text-orange-400">Ingredientes Necessários:</h4>
+                                    <ul class="space-y-3 text-stone-300" id="ingredient-list-${recipe.id}">
+                                    </ul>
+                                </div>
+                                <div class="mt-6">
+                                     <h4 class="font-bold text-lg mb-2 text-orange-400">Blend de Carne Recomendado <a href="blends.html" class="recipe-link">[Guia Completo]</a></h4>
+                                     <p class="text-stone-400 text-sm bg-stone-800 p-3 rounded-lg">${recipe.blendDetails}</p>
+                                </div>
+                            </div>
+                            <div>
+                                <h3 class="text-2xl font-bold text-orange-400 mb-4">Tutorial de Preparo</h3>
+                                <div class="space-y-6">
+                                    ${recipe.steps.map((step, index) => `
+                                        <div class="p-4 rounded-lg bg-stone-800">
+                                            <h4 class="font-bold text-lg text-white mb-2"><span class="bg-orange-600 text-white rounded-full w-8 h-8 inline-flex items-center justify-center mr-3">${index + 1}</span> ${step.title}</h4>
+                                            <p class="text-stone-300">${step.description}</p>
+                                            ${step.timer ? `<div class="mt-3 flex items-center gap-4"><button class="timer-btn bg-orange-500 text-white px-4 py-2 rounded-lg hover:bg-orange-600 transition" data-time="${step.timer}">Timer (${Math.floor(step.timer/60)}m ${step.timer%60}s)</button><span class="timer-display text-lg font-mono font-bold text-orange-400"></span></div>` : ''}
+                                        </div>
+                                    `).join('')}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                `;
+                modalsContainer.appendChild(modal);
+            });
+
+            // Lógica dos Modais
+            document.querySelectorAll('.open-modal-btn').forEach(button => {
+                button.addEventListener('click', () => {
+                    const modal = document.getElementById(button.dataset.modalTarget);
+                    document.body.style.overflow = 'hidden';
+                    modal.classList.remove('hidden');
+                    setTimeout(() => modal.classList.remove('opacity-0'), 10);
+                });
+            });
+
+            const closeModal = (modal) => {
+                document.body.style.overflow = '';
+                modal.classList.add('opacity-0');
+                setTimeout(() => modal.classList.add('hidden'), 300);
+            };
+
+            document.querySelectorAll('.close-modal-btn').forEach(button => {
+                button.addEventListener('click', () => {
+                    const modal = button.closest('.modal-overlay');
+                    closeModal(modal);
+                });
+            });
+
+            document.querySelectorAll('.modal-overlay').forEach(modal => {
+                 modal.addEventListener('click', (e) => {
+                    if (e.target === modal) {
+                        closeModal(modal);
+                    }
+                });
+            });
+            
+            recipes.forEach(recipe => {
+                const kgInput = document.getElementById(`kg-input-${recipe.id}`);
+                const ingredientList = document.getElementById(`ingredient-list-${recipe.id}`);
+
+                const updateQuantities = () => {
+                    const kg = parseFloat(kgInput.value) || 0;
+                    const burgerCount = (kg > 0 && recipe.baseWeight > 0) ? Math.max(1, Math.round(kg / recipe.baseWeight)) : 1;
+
+                    let html = `<li class="flex justify-between items-center border-b border-stone-700 py-1 font-bold"><span>${recipe.blendName}</span> <span>${burgerCount} x ${Math.round(recipe.baseWeight * 1000)}g</span></li>`;
+                    recipe.components.forEach(comp => {
+                        let link = comp.link ? `<a href="${comp.link}" class="recipe-link" target="_blank">[Ver Guia]</a>` : '';
+                        let finalQty = (comp.qty * burgerCount).toFixed(0);
+                        html += `<li class="flex justify-between items-center border-b border-stone-700 py-1"><span>${comp.name}</span> <span class="text-right">${finalQty} ${comp.unit} ${link}</span></li>`;
+                    });
+
+                    const salt = (kg * (recipe.saltRatio || 20)).toFixed(1);
+                    const pepper = (kg * (recipe.pepperRatio || 5)).toFixed(1);
+                    
+                    html += `<li class="mt-4 pt-4 border-t border-stone-700 font-bold text-orange-400">Temperos (${kg.toFixed(2)} kg):</li>`;
+                    html += `<li class="flex justify-between items-center"><span>Sal de Parrilla</span><span>${salt} g</span></li>`;
+                    html += `<li class="flex justify-between items-center"><span>Pimenta Preta moída</span><span>${pepper} g</span></li>`;
+                    
+                    ingredientList.innerHTML = html;
+                };
+
+                if(kgInput && ingredientList) {
+                    kgInput.addEventListener('input', updateQuantities);
+                    updateQuantities();
+                }
+            });
+
+            const timerButtons = document.querySelectorAll('.timer-btn');
+            let activeTimers = {};
+            timerButtons.forEach(button => {
+                button.addEventListener('click', (e) => {
+                    const timerId = `timer-${Math.random()}`;
+                    if (button.classList.contains('active')) return;
+
+                    let timeInSeconds = parseInt(e.target.dataset.time, 10);
+                    const display = e.target.nextElementSibling;
+                    
+                    button.classList.add('active');
+                    button.disabled = true;
+
+                    activeTimers[timerId] = setInterval(() => {
+                        const minutes = Math.floor(timeInSeconds / 60);
+                        const seconds = timeInSeconds % 60;
+                        display.textContent = `${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
+                        if (timeInSeconds <= 0) {
+                            clearInterval(activeTimers[timerId]);
+                            delete activeTimers[timerId];
+                            display.textContent = "Tempo esgotado!";
+                            button.classList.remove('active');
+                            button.disabled = false;
+                        } else {
+                            timeInSeconds--;
+                        }
+                    }, 1000);
+                });
+            });
         });
     </script>
 </body>
