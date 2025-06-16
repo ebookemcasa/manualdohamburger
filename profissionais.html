@@ -187,7 +187,29 @@
     saltRatio: 20, 
     pepperRatio: 5 
 },
-                { id: 'doce-salgado', name: 'Doce & Salgado', image: 'imagens/pro_doce_salgado.jpg', description: 'Uma combinação gourmet que une a cremosidade do queijo de cabra com a doçura dos figos e o luxo do mel trufado.', components: [ {name: 'Pão Australiano', qty: 1, unit: 'unid.'}, {name: 'Queijo de Cabra', qty: 30, unit: 'g'}, {name: 'Figos Frescos', qty: 2, unit: 'unid.'}, {name: 'Mel Trufado', qty: 1, unit: 'fio'} ], steps: [ { title: 'Grelhar a Carne', description: 'Grelhe o hambúrguer de blend saboroso até o ponto desejado.'}, { title: 'Montar', description: 'Toste o pão. Espalhe o queijo de cabra na base. Coloque o hambúrguer quente para amolecer o queijo, adicione os figos fatiados e finalize com um fio de mel trufado.'} ], baseWeight: 0.220, blendName: 'Blend Saboroso', blendDetails: '50% Fraldinha + 30% Acém + 20% Gordura de Peito. Um blend com sabor para equilibrar o doce.', saltRatio: 15, pepperRatio: 5 },
+{ 
+    id: 'doce-salgado', 
+    name: 'Doce & Salgado', 
+    image: 'imagens/pro_doce_salgado.jpg', 
+    description: 'Uma combinação gourmet que une a cremosidade do queijo de cabra com a doçura dos figos e o luxo do mel trufado.', 
+    components: [ 
+        {name: 'Pão Australiano', qty: 1, unit: 'unid.'}, 
+        {name: 'Queijo de Cabra', qty: 30, unit: 'g'}, 
+        {name: 'Figos Frescos', qty: 2, unit: 'unid.'}, 
+        {name: 'Mel Trufado', qty: 1, unit: 'fio'} 
+    ], 
+    steps: [ 
+        { title: 'Preparar os Ingredientes', description: 'Fatie os figos frescos em rodelas de espessura média. Deixe o queijo de cabra à temperatura ambiente para que fique mais cremoso e fácil de espalhar.' },
+        { title: 'Grelhar o Hambúrguer', description: 'Tempere o seu blend saboroso com um pouco menos de sal, pois o queijo de cabra já é salgado. Grelhe em lume médio-alto por 3-4 minutos de cada lado para um ponto médio.', timer: 210 }, 
+        { title: 'A Magia do Queijo de Cabra', description: 'Toste o pão australiano. Enquanto está quente, espalhe generosamente o queijo de cabra cremoso na base. O calor do pão vai amolecer o queijo na perfeição.' }, 
+        { title: 'Montagem Final', description: 'Coloque o hambúrguer quente diretamente sobre o queijo de cabra. Disponha as fatias de figo por cima da carne. Finalize com um delicado fio de mel trufado antes de fechar o pão. A combinação de sabores é extraordinária.' } 
+    ], 
+    baseWeight: 0.220, 
+    blendName: 'Blend Saboroso', 
+    blendDetails: '50% Fraldinha + 30% Acém + 20% Gordura de Peito. Um blend com sabor intenso para equilibrar a doçura dos outros ingredientes.', 
+    saltRatio: 15, 
+    pepperRatio: 5 
+},
                 { id: 'umami', name: 'Umami Bomb', image: 'imagens/pro_umami_bomb.jpg', description: 'A quinta essência do sabor. Uma explosão de umami com cogumelos shiitake, parmesão e maionese de missô.', components: [ {name: 'Pão Brioche', qty: 1, unit: 'unid.'}, {name: 'Lascas de Parmesão', qty: 1, unit: 'colher'}, {name: 'Cogumelos Shiitake', qty: 50, unit: 'g'}, {name: 'Maionese de Missô', qty: 1, unit: 'colher'} ], steps: [ { title: 'Preparar os Cogumelos', description: 'Salteie os cogumelos fatiados em azeite e shoyu até dourarem.'}, { title: 'Grelhar e Montar', description: 'Grelhe o hambúrguer. Toste o pão, passe a maionese de missô na base, coloque o hambúrguer, os cogumelos e as lascas de parmesão.'} ], baseWeight: 0.220, blendName: 'Blend Premium', blendDetails: '70% Peito + 30% Costela. A gordura da costela contribui para o sabor umami.', saltRatio: 18, pepperRatio: 4 },
                 { id: 'argentino', name: 'O Argentino', image: 'imagens/pro_o_argentino.jpg', description: 'Toda a paixão do churrasco argentino, com o sabor intenso da fraldinha e o toque picante do chimichurri.', components: [ {name: 'Pão de Campanha', qty: 1, unit: 'unid.'}, {name: 'Queijo Provolone', qty: 2, unit: 'fatias'}, {name: 'Molho Chimichurri', qty: 2, unit: 'colheres'}, {name: 'Linguiça Chorizo', qty: 1, unit: 'unid.'} ], steps: [ { title: 'Grelhar Tudo', description: 'Abra a linguiça ao meio e grelhe junto com o hambúrguer.'}, { title: 'Derreter e Montar', description: 'Derreta o queijo sobre a carne. Toste o pão. Coloque o hambúrguer, a linguiça e cubra com chimichurri fresco.'} ], baseWeight: 0.250, blendName: 'Blend de Fraldinha', blendDetails: '100% Fraldinha, com a sua própria gordura. O sabor intenso é ideal para o chimichurri.', saltRatio: 22, pepperRatio: 6 },
                 { id: 'cafe', name: 'Rub de Café e Cacau', image: 'imagens/pro_rub_cafe.jpg', description: 'Uma experiência sensorial única, onde um tempero seco de café e cacau cria uma crosta escura e complexa na carne.', components: [ {name: 'Pão Australiano', qty: 1, unit: 'unid.'}, {name: 'Queijo Gouda', qty: 2, unit: 'fatias'}, {name: 'Maionese de Bacon', qty: 1, unit: 'colher'}, {name: 'Tempero Rub', qty: 1, unit: 'colher'} ], steps: [ { title: 'Preparar o Rub', description: 'Crie o "rub" (tempero seco) com café moído fino, cacau em pó, páprica defumada, sal e pimenta.'}, { title: 'Grelhar', description: 'Passe o rub por toda a superfície do hambúrguer e grelhe. Derreta o queijo Gouda por cima.'}, { title: 'Finalizar', description: 'Toste o pão, passe a maionese de bacon e monte o hambúrguer.'} ], baseWeight: 0.220, blendName: 'Blend Saboroso', blendDetails: 'Um blend com uma boa percentagem de gordura, como 70% Peito e 30% Acém, para suportar a crosta seca do rub.', saltRatio: 18, pepperRatio: 6 },
