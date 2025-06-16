@@ -233,11 +233,121 @@
     saltRatio: 18, 
     pepperRatio: 4 
 },
-                { id: 'argentino', name: 'O Argentino', image: 'imagens/pro_o_argentino.jpg', description: 'Toda a paixão do churrasco argentino, com o sabor intenso da fraldinha e o toque picante do chimichurri.', components: [ {name: 'Pão de Campanha', qty: 1, unit: 'unid.'}, {name: 'Queijo Provolone', qty: 2, unit: 'fatias'}, {name: 'Molho Chimichurri', qty: 2, unit: 'colheres'}, {name: 'Linguiça Chorizo', qty: 1, unit: 'unid.'} ], steps: [ { title: 'Grelhar Tudo', description: 'Abra a linguiça ao meio e grelhe junto com o hambúrguer.'}, { title: 'Derreter e Montar', description: 'Derreta o queijo sobre a carne. Toste o pão. Coloque o hambúrguer, a linguiça e cubra com chimichurri fresco.'} ], baseWeight: 0.250, blendName: 'Blend de Fraldinha', blendDetails: '100% Fraldinha, com a sua própria gordura. O sabor intenso é ideal para o chimichurri.', saltRatio: 22, pepperRatio: 6 },
-                { id: 'cafe', name: 'Rub de Café e Cacau', image: 'imagens/pro_rub_cafe.jpg', description: 'Uma experiência sensorial única, onde um tempero seco de café e cacau cria uma crosta escura e complexa na carne.', components: [ {name: 'Pão Australiano', qty: 1, unit: 'unid.'}, {name: 'Queijo Gouda', qty: 2, unit: 'fatias'}, {name: 'Maionese de Bacon', qty: 1, unit: 'colher'}, {name: 'Tempero Rub', qty: 1, unit: 'colher'} ], steps: [ { title: 'Preparar o Rub', description: 'Crie o "rub" (tempero seco) com café moído fino, cacau em pó, páprica defumada, sal e pimenta.'}, { title: 'Grelhar', description: 'Passe o rub por toda a superfície do hambúrguer e grelhe. Derreta o queijo Gouda por cima.'}, { title: 'Finalizar', description: 'Toste o pão, passe a maionese de bacon e monte o hambúrguer.'} ], baseWeight: 0.220, blendName: 'Blend Saboroso', blendDetails: 'Um blend com uma boa percentagem de gordura, como 70% Peito e 30% Acém, para suportar a crosta seca do rub.', saltRatio: 18, pepperRatio: 6 },
-                { id: 'blue', name: 'Blue Bacon', image: 'imagens/pro_blue_bacon.jpg', description: 'A combinação clássica e infalível do queijo azul picante com o salgado do bacon crocante.', components: [ {name: 'Pão de Hambúrguer', qty: 1, unit: 'unid.'}, {name: 'Queijo Gorgonzola', qty: 30, unit: 'g'}, {name: 'Bacon em cubos', qty: 50, unit: 'g'}, {name: 'Cebola Roxa', qty: 2, unit: 'rodelas'} ], steps: [ { title: 'O Bacon', description: 'Frite o bacon em cubos até ficar bem crocante e reserve.'}, { title: 'A Carne', description: 'Grelhe o hambúrguer. No final, esfarele o gorgonzola sobre a carne quente para derreter.'}, { title: 'Montagem', description: 'Toste o pão. Coloque o hambúrguer, o bacon crocante e as rodelas de cebola roxa.'} ], baseWeight: 0.200, blendName: 'Blend Clássico', blendDetails: '80% Acém + 20% Peito. Um blend equilibrado que não compete com os sabores fortes do queijo e do bacon.', saltRatio: 20, pepperRatio: 5 },
-                { id: 'steakhouse', name: 'Steakhouse Clássico', image: 'imagens/pro_steakhouse.jpg', description: 'O sabor autêntico de uma steakhouse, com o molho intenso A1 e a suculência dos cogumelos salteados.', components: [ {name: 'Pão de Hambúrguer', qty: 1, unit: 'unid.'}, {name: 'Queijo Provolone', qty: 2, unit: 'fatias'}, {name: 'Molho A1 (ou similar)', qty: 1, unit: 'colher'}, {name: 'Cogumelos salteados', qty: 50, unit: 'g'} ], steps: [ { title: 'Os Cogumelos', description: 'Salteie cogumelos fatiados em manteiga, alho e um pouco de vinho branco.'}, { title: 'Grelhar', description: 'Grelhe o hambúrguer premium e derreta o queijo por cima.'}, { title: 'Montar', description: 'Toste o pão, passe o molho A1 na base, adicione o hambúrguer e cubra com os cogumelos.'} ], baseWeight: 0.240, blendName: 'Blend Premium', blendDetails: '70% Peito + 30% Fraldinha. Um blend rico que aguenta a intensidade do molho steak.', saltRatio: 20, pepperRatio: 5 },
-                { id: 'pistache', name: 'Pistache e Mortadela', image: 'imagens/pro_pistache_mortadela.jpg', description: 'Uma criação italiana que combina a textura crocante do pistache na mortadela com a cremosidade do queijo Caciocavallo.', components: [ {name: 'Pão Italiano', qty: 1, unit: 'unid.'}, {name: 'Queijo Caciocavallo', qty: 2, unit: 'fatias'}, {name: 'Mortadela com pistache', qty: 3, unit: 'fatias'}, {name: 'Maionese de Limão Siciliano', qty: 1, unit: 'colher'} ], steps: [ { title: 'Grelhar Tudo', description: 'Grelhe o hambúrguer e, numa chapa ao lado, grelhe rapidamente as fatias de mortadela até ficarem levemente crocantes.'}, { title: 'Finalizar', description: 'Derreta o queijo sobre a carne. Toste o pão, passe a maionese, coloque o hambúrguer e a mortadela grelhada por cima.'} ], baseWeight: 0.220, blendName: 'Blend Saboroso', blendDetails: '50% Acém, 30% Paleta, 20% Toucinho. Um blend de porco e boi funciona bem aqui.', saltRatio: 20, pepperRatio: 5 }
+{ 
+    id: 'argentino', 
+    name: 'O Argentino', 
+    image: 'imagens/pro_o_argentino.jpg', 
+    description: 'Toda a paixão do churrasco argentino, com o sabor intenso da fraldinha e o toque picante do chimichurri.', 
+    components: [ 
+        {name: 'Pão de Campanha', qty: 1, unit: 'unid.'}, 
+        {name: 'Queijo Provolone', qty: 2, unit: 'fatias'}, 
+        {name: 'Molho Chimichurri', qty: 2, unit: 'colheres'}, 
+        {name: 'Linguiça Chorizo', qty: 1, unit: 'unid.'} 
+    ], 
+    steps: [ 
+        { title: 'O Coração do Sabor: Chimichurri', description: 'O ideal é preparar o chimichurri fresco. Pique finamente salsa, alho, orégãos e um pouco de pimenta vermelha. Misture com azeite de boa qualidade e um toque de vinagre de vinho tinto. Deixe os sabores apurarem enquanto prepara o resto.' }, 
+        { title: 'Grelhar em Duas Frentes', description: 'Abra a linguiça chorizo ao meio, no sentido do comprimento, para que ela grelhe de forma uniforme. Coloque-a na chapa quente junto com o hambúrguer de fraldinha. Grelhe ambos por 4-5 minutos de cada lado.', timer: 270 }, 
+        { title: 'Queijo e Pão', description: 'No último minuto de cozedura, coloque as fatias de provolone sobre o hambúrguer para derreterem. Use um espaço na chapa para tostar o pão de campanha até ficar ligeiramente crocante.' }, 
+        { title: 'Montagem Porteña', description: 'Na base do pão, coloque o hambúrguer com o queijo derretido. Adicione a linguiça chorizo grelhada por cima e finalize com duas colheres generosas de molho chimichurri, deixando que ele escorra pelas laterais.' } 
+    ], 
+    baseWeight: 0.250, 
+    blendName: 'Blend de Fraldinha', 
+    blendDetails: '100% Fraldinha, com a sua própria gordura. O sabor intenso da fraldinha é a estrela e combina na perfeição com o chimichurri.', 
+    saltRatio: 22, 
+    pepperRatio: 6 
+},
+{ 
+    id: 'cafe', 
+    name: 'Rub de Café e Cacau', 
+    image: 'imagens/pro_rub_cafe.jpg', 
+    description: 'Uma experiência sensorial única, onde um tempero seco de café e cacau cria uma crosta escura e complexa na carne.', 
+    components: [ 
+        {name: 'Pão Australiano', qty: 1, unit: 'unid.'}, 
+        {name: 'Queijo Gouda', qty: 2, unit: 'fatias'}, 
+        {name: 'Maionese de Bacon', qty: 1, unit: 'colher'}, 
+        {name: 'Tempero Rub', qty: 1, unit: 'colher'} 
+    ], 
+    steps: [ 
+        { title: 'O Segredo: O "Rub"', description: 'Um "rub" é uma mistura de temperos secos que se esfrega na carne. Para o nosso, misture numa tigela pequena: café moído fino, cacau em pó sem açúcar, páprica defumada, uma pitada de pimenta caiena, sal e pimenta preta. Misture bem.'},
+        { title: 'Aplicar o Rub', description: 'Seque bem a superfície do seu hambúrguer com papel toalha. Espalhe generosamente a mistura de rub por todos os lados da carne, pressionando levemente para que adira bem. A carne deve ficar completamente coberta.'},
+        { title: 'Grelhar com Cuidado', description: 'Aqueça a chapa em lume médio. Devido ao açúcar e ao cacau, o rub pode queimar mais facilmente. Grelhe por 3-4 minutos de cada lado, com atenção para não deixar a crosta ficar amarga.', timer: 210 },
+        { title: 'Montagem Final', description: 'No último minuto, coloque o queijo Gouda sobre a carne para derreter. Toste o pão australiano. Passe a maionese de bacon na base, coloque o hambúrguer e feche. O contraste do defumado da maionese com o amargo do café é o ponto alto.' }
+    ], 
+    baseWeight: 0.220, 
+    blendName: 'Blend Saboroso', 
+    blendDetails: 'Um blend com uma boa percentagem de gordura, como 70% Peito e 30% Acém, para suportar a crosta seca do rub e manter a suculência.', 
+    saltRatio: 18, 
+    pepperRatio: 6 
+},
+{ 
+    id: 'blue', 
+    name: 'Blue Bacon', 
+    image: 'imagens/pro_blue_bacon.jpg', 
+    description: 'A combinação clássica e infalível do queijo azul picante com o salgado do bacon crocante.', 
+    components: [ 
+        {name: 'Pão de Hambúrguer', qty: 1, unit: 'unid.'}, 
+        {name: 'Queijo Gorgonzola', qty: 30, unit: 'g'}, 
+        {name: 'Bacon em cubos', qty: 50, unit: 'g'}, 
+        {name: 'Cebola Roxa', qty: 2, unit: 'rodelas finas'} 
+    ], 
+    steps: [ 
+        { title: 'O Bacon Crocante', description: 'O segredo para o bacon perfeito é começar com a frigideira fria. Coloque os cubos de bacon e leve a lume médio. Deixe a gordura derreter lentamente, mexendo ocasionalmente, até que os cubos fiquem dourados e bem crocantes. Retire com uma escumadeira e reserve.'}, 
+        { title: 'Grelhar a Carne', description: 'Use a gordura que o bacon libertou para grelhar o seu hambúrguer. Tempere a carne e sele por 3-4 minutos de cada lado para um ponto médio.', timer: 210 }, 
+        { title: 'O Queijo no Ponto Certo', description: 'O gorgonzola é um queijo forte que derrete rapidamente. No último minuto de cozedura, esfarele o queijo por cima do hambúrguer e abafe com uma tampa para que ele amoleça e liberte o seu aroma sem se desmanchar por completo.', timer: 60}, 
+        { title: 'Montagem de Contraste', description: 'Toste o pão. Coloque o hambúrguer com o queijo na base. Cubra com os cubos de bacon crocante e adicione as rodelas de cebola roxa. A cebola crua vai cortar a gordura e adicionar uma textura que equilibra o prato.' } 
+    ], 
+    baseWeight: 0.200, 
+    blendName: 'Blend Clássico', 
+    blendDetails: '80% Acém + 20% Peito. Um blend equilibrado que não compete com os sabores fortes do queijo e do bacon.', 
+    saltRatio: 20, 
+    pepperRatio: 5 
+},
+{ 
+    id: 'steakhouse', 
+    name: 'Steakhouse Clássico', 
+    image: 'imagens/pro_steakhouse.jpg', 
+    description: 'O sabor autêntico de uma steakhouse, com o molho intenso A1 e a suculência dos cogumelos salteados.', 
+    components: [ 
+        {name: 'Pão de Hambúrguer', qty: 1, unit: 'unid.'}, 
+        {name: 'Queijo Provolone', qty: 2, unit: 'fatias'}, 
+        {name: 'Molho A1 (ou similar)', qty: 1, unit: 'colher'}, 
+        {name: 'Cogumelos salteados', qty: 50, unit: 'g'} 
+    ], 
+    steps: [ 
+        { title: 'O Segredo: Cogumelos na Manteiga', description: 'Comece pelos cogumelos para que apurem o sabor. Fatie-os e, numa frigideira quente com um bom pedaço de manteiga e um dente de alho picado, salteie até ficarem bem dourados e macios. Tempere com sal e pimenta no final. Reserve.'}, 
+        { title: 'Grelhar o Blend Premium', description: 'Um hambúrguer de steakhouse precisa de uma crosta escura e saborosa. Aqueça bem a chapa, tempere a carne e sele por 4-5 minutos de cada lado, virando apenas uma vez.', timer: 270 }, 
+        { title: 'O Queijo Provolone', description: 'O sabor ligeiramente defumado do provolone é perfeito aqui. Coloque as fatias sobre o hambúrguer no último minuto de cozedura para que derreta lentamente e cubra toda a superfície da carne.', timer: 60}, 
+        { title: 'Montagem de Steakhouse', description: 'Toste o pão na gordura da frigideira. Na base, espalhe uma fina camada do molho A1, que é intenso. Coloque o hambúrguer com o queijo derretido e, por fim, cubra com uma montanha generosa dos cogumelos salteados. Feche e sirva imediatamente.' } 
+    ], 
+    baseWeight: 0.240, 
+    blendName: 'Blend Premium', 
+    blendDetails: '70% Peito + 30% Fraldinha. Um blend rico que aguenta a intensidade do molho steak e complementa os cogumelos.', 
+    saltRatio: 20, 
+    pepperRatio: 5 
+},
+{ 
+    id: 'pistache', 
+    name: 'Pistache e Mortadela', 
+    image: 'imagens/pro_pistache_mortadela.jpg', 
+    description: 'Uma criação italiana que combina a textura crocante do pistache na mortadela com a cremosidade do queijo Caciocavallo.', 
+    components: [ 
+        {name: 'Pão Italiano', qty: 1, unit: 'unid.'}, 
+        {name: 'Queijo Caciocavallo', qty: 2, unit: 'fatias'}, 
+        {name: 'Mortadela com pistache', qty: 3, unit: 'fatias finas'}, 
+        {name: 'Maionese de Limão Siciliano', qty: 1, unit: 'colher'} 
+    ], 
+    steps: [ 
+        { title: 'O Toque Cítrico: A Maionese', description: 'Para equilibrar os sabores, comece pela maionese. Misture uma maionese de base neutra com raspas da casca de meio limão siciliano. O aroma cítrico vai cortar a gordura e realçar os outros ingredientes. Reserve.'}, 
+        { title: 'Grelhar o Hambúrguer', description: 'Tempere o seu blend e grelhe em lume médio-alto. Para um hambúrguer de 220g, 4 minutos de cada lado são ideais para um ponto médio suculento.', timer: 240 }, 
+        { title: 'Tostar a Mortadela', description: 'Enquanto a carne grelha, use outra parte da chapa (ou uma frigideira separada) para tostar rapidamente as fatias de mortadela. O objetivo é aquecê-las e deixá-las com as bordas ligeiramente crocantes, o que leva cerca de 30 segundos de cada lado.', timer: 30}, 
+        { title: 'A Montagem Perfeita', description: 'No último minuto da carne, coloque o queijo Caciocavallo para derreter. Toste o pão. Na base, passe a maionese de limão siciliano. Coloque o hambúrguer com o queijo, e por cima, disponha as fatias de mortadela tostada. Feche e sirva imediatamente.' } 
+    ], 
+    baseWeight: 0.220, 
+    blendName: 'Blend Saboroso', 
+    blendDetails: '50% Acém, 30% Paleta, 20% Toucinho. Um blend de porco e boi também funciona maravilhosamente aqui.', 
+    saltRatio: 20, 
+    pepperRatio: 5 
+},
             ];
 
             const recipeListContainer = document.getElementById('recipe-list');
