@@ -163,7 +163,30 @@
     saltRatio: 18, 
     pepperRatio: 6 
 },
-                { id: 'triplo', name: 'Triplo Queijo', image: 'imagens/pro_triplo_queijo.jpg', description: 'Para os verdadeiros amantes de queijo, uma fusão de Cheddar, Provolone e Gorgonzola numa explosão de sabor.', components: [ {name: 'Pão de Batata', qty: 1, unit: 'unid.'}, {name: 'Cheddar', qty: 1, unit: 'fatia'}, {name: 'Provolone', qty: 1, unit: 'fatia'}, {name: 'Gorgonzola', qty: 15, unit: 'g'}, {name: 'Cebola Roxa', qty: 2, unit: 'rodelas'} ], steps: [ { title: 'Grelhar e Derreter', description: 'Grelhe o hambúrguer por 3 minutos. Vire, coloque os três queijos por cima e abafe por mais 3 minutos para derreterem juntos.', timer: 180 }, { title: 'Finalizar', description: 'Toste o pão. Coloque o hambúrguer com a crosta de queijos e adicione as rodelas de cebola roxa para um toque crocante.'} ], baseWeight: 0.200, blendName: 'Blend Clássico', blendDetails: '80% Acém + 20% Peito. Um blend neutro para deixar os queijos brilharem.', saltRatio: 20, pepperRatio: 5 },
+{ 
+    id: 'triplo', 
+    name: 'Triplo Queijo', 
+    image: 'imagens/pro_triplo_queijo.jpg', 
+    description: 'Para os verdadeiros amantes de queijo, uma fusão de Cheddar, Provolone e Gorgonzola numa explosão de sabor.', 
+    components: [ 
+        {name: 'Pão de Batata', qty: 1, unit: 'unid.'}, 
+        {name: 'Queijo Cheddar', qty: 1, unit: 'fatia'}, 
+        {name: 'Queijo Provolone', qty: 1, unit: 'fatia'}, 
+        {name: 'Queijo Gorgonzola', qty: 15, unit: 'g'}, 
+        {name: 'Cebola Roxa', qty: 2, unit: 'rodelas finas'} 
+    ], 
+    steps: [ 
+        { title: 'Preparar os Queijos', description: 'O segredo aqui é a ordem. Deixe tudo preparado: a fatia de cheddar, a de provolone, e esfarele o gorgonzola. A montagem na chapa será rápida.'}, 
+        { title: 'Grelhar a Carne (Lado 1)', description: 'Aqueça a frigideira em lume médio-alto. Tempere o seu hambúrguer e sele por 3 minutos para criar a primeira crosta.', timer: 180 }, 
+        { title: 'A Cascata de Queijos', description: 'Vire o hambúrguer e, imediatamente, coloque os queijos pela seguinte ordem: primeiro o provolone (demora mais a derreter), depois o cheddar por cima, e por último, esfarele o gorgonzola no topo. Abafe com uma tampa por 3 minutos para que o vapor derreta tudo numa camada perfeita.', timer: 180}, 
+        { title: 'Montagem Final', description: 'Toste o pão. Coloque o hambúrguer com a crosta de queijos na base. Não precisa de molho, os queijos são as estrelas. Adicione apenas as rodelas de cebola roxa por cima para um toque de acidez e crocância. Feche e sirva imediatamente.' } 
+    ], 
+    baseWeight: 0.200, 
+    blendName: 'Blend Clássico', 
+    blendDetails: '80% Acém + 20% Peito. Um blend neutro para deixar os queijos brilharem sem competição.', 
+    saltRatio: 20, 
+    pepperRatio: 5 
+},
                 { id: 'doce-salgado', name: 'Doce & Salgado', image: 'imagens/pro_doce_salgado.jpg', description: 'Uma combinação gourmet que une a cremosidade do queijo de cabra com a doçura dos figos e o luxo do mel trufado.', components: [ {name: 'Pão Australiano', qty: 1, unit: 'unid.'}, {name: 'Queijo de Cabra', qty: 30, unit: 'g'}, {name: 'Figos Frescos', qty: 2, unit: 'unid.'}, {name: 'Mel Trufado', qty: 1, unit: 'fio'} ], steps: [ { title: 'Grelhar a Carne', description: 'Grelhe o hambúrguer de blend saboroso até o ponto desejado.'}, { title: 'Montar', description: 'Toste o pão. Espalhe o queijo de cabra na base. Coloque o hambúrguer quente para amolecer o queijo, adicione os figos fatiados e finalize com um fio de mel trufado.'} ], baseWeight: 0.220, blendName: 'Blend Saboroso', blendDetails: '50% Fraldinha + 30% Acém + 20% Gordura de Peito. Um blend com sabor para equilibrar o doce.', saltRatio: 15, pepperRatio: 5 },
                 { id: 'umami', name: 'Umami Bomb', image: 'imagens/pro_umami_bomb.jpg', description: 'A quinta essência do sabor. Uma explosão de umami com cogumelos shiitake, parmesão e maionese de missô.', components: [ {name: 'Pão Brioche', qty: 1, unit: 'unid.'}, {name: 'Lascas de Parmesão', qty: 1, unit: 'colher'}, {name: 'Cogumelos Shiitake', qty: 50, unit: 'g'}, {name: 'Maionese de Missô', qty: 1, unit: 'colher'} ], steps: [ { title: 'Preparar os Cogumelos', description: 'Salteie os cogumelos fatiados em azeite e shoyu até dourarem.'}, { title: 'Grelhar e Montar', description: 'Grelhe o hambúrguer. Toste o pão, passe a maionese de missô na base, coloque o hambúrguer, os cogumelos e as lascas de parmesão.'} ], baseWeight: 0.220, blendName: 'Blend Premium', blendDetails: '70% Peito + 30% Costela. A gordura da costela contribui para o sabor umami.', saltRatio: 18, pepperRatio: 4 },
                 { id: 'argentino', name: 'O Argentino', image: 'imagens/pro_o_argentino.jpg', description: 'Toda a paixão do churrasco argentino, com o sabor intenso da fraldinha e o toque picante do chimichurri.', components: [ {name: 'Pão de Campanha', qty: 1, unit: 'unid.'}, {name: 'Queijo Provolone', qty: 2, unit: 'fatias'}, {name: 'Molho Chimichurri', qty: 2, unit: 'colheres'}, {name: 'Linguiça Chorizo', qty: 1, unit: 'unid.'} ], steps: [ { title: 'Grelhar Tudo', description: 'Abra a linguiça ao meio e grelhe junto com o hambúrguer.'}, { title: 'Derreter e Montar', description: 'Derreta o queijo sobre a carne. Toste o pão. Coloque o hambúrguer, a linguiça e cubra com chimichurri fresco.'} ], baseWeight: 0.250, blendName: 'Blend de Fraldinha', blendDetails: '100% Fraldinha, com a sua própria gordura. O sabor intenso é ideal para o chimichurri.', saltRatio: 22, pepperRatio: 6 },
