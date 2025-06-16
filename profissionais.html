@@ -126,7 +126,29 @@
     saltRatio: 18, 
     pepperRatio: 4 
 },
-                { id: 'bourbon', name: 'O Bourbon', image: 'imagens/pro_o_bourbon.jpg', description: 'Sabores complexos e defumados, com a doçura da cebola caramelizada no uísque Bourbon.', components: [ {name: 'Pão Brioche', qty: 1, unit: 'unid.'}, {name: 'Queijo Gouda Defumado', qty: 2, unit: 'fatias'}, {name: 'Cebola Caramelizada no Bourbon', qty: 2, unit: 'colheres'}, {name: 'Bacon', qty: 3, unit: 'fatias'} ], steps: [ { title: 'Preparar a Cebola', description: 'Fatie uma cebola e cozinhe em lume baixo com manteiga. Quando estiver macia, adicione uma dose de Bourbon e deixe evaporar.'}, { title: 'Grelhar', description: 'Frite o bacon e, na mesma gordura, grelhe o hambúrguer. Derreta o queijo por cima.'}, { title: 'Montar', description: 'Toste o pão, coloque o hambúrguer com queijo, a cebola caramelizada e o bacon.'} ], baseWeight: 0.220, blendName: 'Blend Premium', blendDetails: '70% Peito + 30% Fraldinha. O peito oferece a gordura e a fraldinha o sabor intenso que combina com o Bourbon.', saltRatio: 18, pepperRatio: 6 },
+{ 
+    id: 'bourbon', 
+    name: 'O Bourbon', 
+    image: 'imagens/pro_o_bourbon.jpg', 
+    description: 'Sabores complexos e defumados, com a doçura da cebola caramelizada no uísque Bourbon.', 
+    components: [ 
+        {name: 'Pão Brioche', qty: 1, unit: 'unid.'}, 
+        {name: 'Queijo Gouda Defumado', qty: 2, unit: 'fatias'}, 
+        {name: 'Cebola Caramelizada no Bourbon', qty: 2, unit: 'colheres'}, 
+        {name: 'Bacon', qty: 3, unit: 'fatias'} 
+    ], 
+    steps: [ 
+        { title: 'A Estrela: Cebola ao Bourbon', description: 'Este é o segredo do prato. Fatie uma cebola grande e cozinhe em lume muito baixo com manteiga, sal e uma pitada de açúcar. Tenha paciência, este processo pode levar até 30 minutos. Quando a cebola estiver dourada e com aspeto de compota, aumente o lume e adicione uma dose de Bourbon. Deixe o álcool evaporar e o molho reduzir. Reserve.', timer: 1800 }, 
+        { title: 'O Parceiro Crocante: Bacon', description: 'Enquanto a cebola cozinha, frite as fatias de bacon numa frigideira em lume médio até ficarem bem crocantes. Retire e deixe escorrer em papel de cozinha. Guarde a gordura na frigideira.' }, 
+        { title: 'Grelhar o Hambúrguer', description: 'Use a gordura do bacon para grelhar o seu hambúrguer. Tempere a carne e sele por 3-4 minutos de cada lado. O sabor do bacon irá infiltrar-se na carne, criando uma camada extra de sabor.', timer: 210 }, 
+        { title: 'Finalização e Montagem', description: 'No último minuto, coloque o queijo Gouda defumado sobre a carne para derreter. Toste o pão na mesma frigideira. Monte com o hambúrguer, a cebola caramelizada por cima e as fatias de bacon crocante. Não precisa de mais nenhum molho.' } 
+    ], 
+    baseWeight: 0.220, 
+    blendName: 'Blend Premium', 
+    blendDetails: '70% Peito + 30% Fraldinha. O peito oferece a gordura e a fraldinha o sabor intenso que combina perfeitamente com a doçura do Bourbon.', 
+    saltRatio: 18, 
+    pepperRatio: 6 
+},
                 { id: 'triplo', name: 'Triplo Queijo', image: 'imagens/pro_triplo_queijo.jpg', description: 'Para os verdadeiros amantes de queijo, uma fusão de Cheddar, Provolone e Gorgonzola numa explosão de sabor.', components: [ {name: 'Pão de Batata', qty: 1, unit: 'unid.'}, {name: 'Cheddar', qty: 1, unit: 'fatia'}, {name: 'Provolone', qty: 1, unit: 'fatia'}, {name: 'Gorgonzola', qty: 15, unit: 'g'}, {name: 'Cebola Roxa', qty: 2, unit: 'rodelas'} ], steps: [ { title: 'Grelhar e Derreter', description: 'Grelhe o hambúrguer por 3 minutos. Vire, coloque os três queijos por cima e abafe por mais 3 minutos para derreterem juntos.', timer: 180 }, { title: 'Finalizar', description: 'Toste o pão. Coloque o hambúrguer com a crosta de queijos e adicione as rodelas de cebola roxa para um toque crocante.'} ], baseWeight: 0.200, blendName: 'Blend Clássico', blendDetails: '80% Acém + 20% Peito. Um blend neutro para deixar os queijos brilharem.', saltRatio: 20, pepperRatio: 5 },
                 { id: 'doce-salgado', name: 'Doce & Salgado', image: 'imagens/pro_doce_salgado.jpg', description: 'Uma combinação gourmet que une a cremosidade do queijo de cabra com a doçura dos figos e o luxo do mel trufado.', components: [ {name: 'Pão Australiano', qty: 1, unit: 'unid.'}, {name: 'Queijo de Cabra', qty: 30, unit: 'g'}, {name: 'Figos Frescos', qty: 2, unit: 'unid.'}, {name: 'Mel Trufado', qty: 1, unit: 'fio'} ], steps: [ { title: 'Grelhar a Carne', description: 'Grelhe o hambúrguer de blend saboroso até o ponto desejado.'}, { title: 'Montar', description: 'Toste o pão. Espalhe o queijo de cabra na base. Coloque o hambúrguer quente para amolecer o queijo, adicione os figos fatiados e finalize com um fio de mel trufado.'} ], baseWeight: 0.220, blendName: 'Blend Saboroso', blendDetails: '50% Fraldinha + 30% Acém + 20% Gordura de Peito. Um blend com sabor para equilibrar o doce.', saltRatio: 15, pepperRatio: 5 },
                 { id: 'umami', name: 'Umami Bomb', image: 'imagens/pro_umami_bomb.jpg', description: 'A quinta essência do sabor. Uma explosão de umami com cogumelos shiitake, parmesão e maionese de missô.', components: [ {name: 'Pão Brioche', qty: 1, unit: 'unid.'}, {name: 'Lascas de Parmesão', qty: 1, unit: 'colher'}, {name: 'Cogumelos Shiitake', qty: 50, unit: 'g'}, {name: 'Maionese de Missô', qty: 1, unit: 'colher'} ], steps: [ { title: 'Preparar os Cogumelos', description: 'Salteie os cogumelos fatiados em azeite e shoyu até dourarem.'}, { title: 'Grelhar e Montar', description: 'Grelhe o hambúrguer. Toste o pão, passe a maionese de missô na base, coloque o hambúrguer, os cogumelos e as lascas de parmesão.'} ], baseWeight: 0.220, blendName: 'Blend Premium', blendDetails: '70% Peito + 30% Costela. A gordura da costela contribui para o sabor umami.', saltRatio: 18, pepperRatio: 4 },
