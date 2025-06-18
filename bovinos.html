@@ -185,7 +185,30 @@
     saltRatio: 20, 
     pepperRatio: 5 
 },
-                { id: 'o-suico', name: 'O Suíço', image: 'imagens/bov_o_suico.jpg', description: 'A combinação clássica de queijo suíço e cogumelos salteados na manteiga.'},
+{ 
+    id: 'o-suico', 
+    name: 'O Suíço', 
+    image: 'imagens/bov_o_suico.jpg', 
+    description: 'A combinação clássica e elegante de queijo suíço e cogumelos salteados na manteiga.', 
+    components: [ 
+        {name: 'Pão Escuro', qty: 1, unit: 'unid.'}, 
+        {name: 'Queijo Suíço', qty: 2, unit: 'fatias'}, 
+        {name: 'Cogumelos Paris', qty: 50, unit: 'g'}, 
+        {name: 'Cebola Roxa', qty: 2, unit: 'rodelas finas'},
+        {name: 'Manteiga', qty: 1, unit: 'colher'}
+    ], 
+    steps: [ 
+        { title: 'O Segredo: Cogumelos na Manteiga', description: 'Comece pelos cogumelos. Limpe-os com um pano húmido (não os lave em água) e fatie. Numa frigideira quente, derreta a manteiga e salteie os cogumelos até ficarem bem dourados e macios. Tempere com sal e pimenta no final. Reserve.' },
+        { title: 'Grelhar o Blend Clássico', description: 'Tempere o seu hambúrguer e grelhe em lume médio-alto, por cerca de 3-4 minutos de cada lado. Vire apenas uma vez para manter a suculência.', timer: 210 },
+        { title: 'Derreter o Queijo Suíço', description: 'No último minuto de cozedura, coloque as fatias de queijo suíço sobre a carne. O sabor amendoado deste queijo é a estrela. Se quiser acelerar o processo, abafe com uma tampa.', timer: 60 },
+        { title: 'A Montagem Sofisticada', description: 'Toste o pão. Na base, coloque as rodelas de cebola roxa crua (para um toque picante). Adicione o hambúrguer com o queijo derretido e finalize com uma montanha generosa de cogumelos salteados. Não precisa de molho, a manteiga dos cogumelos já dá a umidade necessária.' }
+    ], 
+    baseWeight: 0.200, 
+    blendName: 'Blend Clássico (200g)', 
+    blendDetails: '80% Acém + 20% Peito. Perfeito para não competir com o sabor delicado do queijo e dos cogumelos.', 
+    saltRatio: 20, 
+    pepperRatio: 5 
+},
                 { id: 'o-minimalista', name: 'O Minimalista', image: 'imagens/bov_o_minimalista.jpg', description: 'Apenas carne de alta qualidade, pão e sal. Para os puristas.'},
                 { id: 'o-matinal', name: 'O Matinal', image: 'imagens/bov_o_matinal.jpg', description: 'Um hambúrguer de pequeno-almoço, com bacon e ovo de gema mole.'},
                 { id: 'duplo-classico', name: 'Duplo Clássico', image: 'imagens/bov_duplo_classico.jpg', description: 'O dobro da carne, o dobro do sabor. Um clássico em tamanho grande.'},
