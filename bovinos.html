@@ -138,7 +138,29 @@
     saltRatio: 20, 
     pepperRatio: 5 
 },
-                { id: 'bbq-king', name: 'BBQ King', image: 'imagens/bov_bbq_king.jpg', description: 'O clássico de churrasco com molho barbecue fumado e anéis de cebola crocantes.'},
+{ 
+    id: 'bbq-king', 
+    name: 'BBQ King', 
+    image: 'imagens/bov_bbq_king.jpg', 
+    description: 'O clássico de churrasco com molho barbecue fumado e anéis de cebola crocantes.', 
+    components: [ 
+        {name: 'Pão Brioche', qty: 1, unit: 'unid.'}, 
+        {name: 'Queijo Cheddar', qty: 2, unit: 'fatias'}, 
+        {name: 'Anéis de Cebola', qty: 4, unit: 'unid.'}, 
+        {name: 'Molho Barbecue', qty: 2, unit: 'colheres'}
+    ], 
+    steps: [ 
+        { title: 'Prepare os Anéis de Cebola', description: 'Se estiver a usar anéis de cebola congelados, este é o momento de os fritar ou assar, seguindo as instruções da embalagem, para que fiquem bem quentes e crocantes na hora da montagem.' },
+        { title: 'Grelhar o Hambúrguer', description: 'Aqueça bem a sua chapa ou frigideira. Tempere um lado do seu hambúrguer e coloque-o para selar por 3-4 minutos. A crosta é fundamental para o sabor.', timer: 210 },
+        { title: 'Laquear com Barbecue', description: 'Vire o hambúrguer, tempere o outro lado e, imediatamente, pincele uma camada generosa de molho barbecue sobre a superfície já grelhada. Coloque as fatias de cheddar por cima do molho e abafe por 2 minutos para derreter tudo junto.', timer: 120 },
+        { title: 'A Montagem do Rei', description: 'Toste o pão. Na base, coloque mais um pouco de molho barbecue. Adicione o hambúrguer com o queijo derretido e o molho caramelizado. Coroe com os anéis de cebola crocantes. Pode adicionar um último fio de barbecue por cima antes de fechar.' }
+    ], 
+    baseWeight: 0.200, 
+    blendName: 'Blend Premium (200g)', 
+    blendDetails: '70% Peito + 30% Fraldinha. Um blend rico em gordura e sabor que aguenta a intensidade do molho barbecue fumado.', 
+    saltRatio: 20, 
+    pepperRatio: 5 
+},
                 { id: 'el-fuego', name: 'El Fuego', image: 'imagens/bov_el_fuego.jpg', description: 'Para quem gosta de picante, com queijo pepper jack e pimenta jalapeño.'},
                 { id: 'o-suico', name: 'O Suíço', image: 'imagens/bov_o_suico.jpg', description: 'A combinação clássica de queijo suíço e cogumelos salteados na manteiga.'},
                 { id: 'o-minimalista', name: 'O Minimalista', image: 'imagens/bov_o_minimalista.jpg', description: 'Apenas carne de alta qualidade, pão e sal. Para os puristas.'},
