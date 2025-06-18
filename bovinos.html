@@ -209,7 +209,29 @@
     saltRatio: 20, 
     pepperRatio: 5 
 },
-                { id: 'o-minimalista', name: 'O Minimalista', image: 'imagens/bov_o_minimalista.jpg', description: 'Apenas carne de alta qualidade, pão e sal. Para os puristas.'},
+{ 
+    id: 'o-minimalista', 
+    name: 'O Minimalista', 
+    image: 'imagens/bov_o_minimalista.jpg', 
+    description: 'Apenas carne de alta qualidade, pão e sal. Para os puristas.', 
+    components: [ 
+        {name: 'Pão de qualidade', qty: 1, unit: 'unid.'}, 
+        {name: 'Sal de alta qualidade (Maldon ou Parrilla)', qty: 1, unit: 'pitada'},
+        {name: 'Pimenta Preta moída na hora', qty: 1, unit: 'q.b.'}
+    ], 
+    steps: [ 
+        { title: 'A Estrela é a Carne', description: 'Nesta receita, não há distrações. O objetivo é provar a qualidade pura do seu Blend Premium. Retire o hambúrguer do frigorífico 20 minutos antes de cozinhar para que cozinhe de forma uniforme.' },
+        { title: 'Temperar na Hora Certa', description: 'Tempere generosamente com um sal de boa qualidade e pimenta preta moída na hora, **apenas no lado que vai tocar a chapa**. Nunca tempere a carne antes de moldar.' },
+        { title: 'A Selagem Perfeita', description: 'Aqueça uma frigideira de ferro em lume alto até fumegar. Coloque o hambúrguer com o lado temperado para baixo. Pressione firmemente uma única vez e deixe selar por 3 minutos, sem mexer.', timer: 180 },
+        { title: 'Virar e Descansar (Crucial!)', description: 'Tempere o topo, vire e cozinhe por mais 2-3 minutos para um ponto médio-mal passado. Retire o hambúrguer da frigideira e deixe-o **descansar** num prato por pelo menos 2 minutos. Este passo é o mais importante para que os sucos se redistribuam pela carne, garantindo a suculência.', timer: 120 },
+        { title: 'Montagem Pura', description: 'Enquanto a carne descansa, toste o pão na gordura que ficou na frigideira. Coloque o hambúrguer descansado no pão. Nada mais. Feche e aprecie o verdadeiro sabor da carne.' } 
+    ], 
+    baseWeight: 0.180, 
+    blendName: 'Blend Premium (180g)', 
+    blendDetails: '70% Peito + 30% Costela. Um blend com muita gordura e sabor que brilha por si só, sem precisar de queijos ou molhos.', 
+    saltRatio: 22, 
+    pepperRatio: 8 
+},
                 { id: 'o-matinal', name: 'O Matinal', image: 'imagens/bov_o_matinal.jpg', description: 'Um hambúrguer de pequeno-almoço, com bacon e ovo de gema mole.'},
                 { id: 'duplo-classico', name: 'Duplo Clássico', image: 'imagens/bov_duplo_classico.jpg', description: 'O dobro da carne, o dobro do sabor. Um clássico em tamanho grande.'},
                 { id: 'o-frances', name: 'O Francês', image: 'imagens/bov_o_frances.jpg', description: 'Sofisticação com queijo Brie cremoso, mostarda Dijon e cebola caramelizada.'},
