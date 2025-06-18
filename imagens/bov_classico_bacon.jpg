@@ -56,7 +56,8 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 	<style type="text/css">
 #system-message-container {
 			display: none;
-		}
+		}
+
 			.polipop_theme_default .polipop__notification_type_success,
 			.polipop_theme_compact .polipop__notification_type_success {
 				background-color: #ffffff;
@@ -93,7 +94,15 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 			.polipop_theme_compact .polipop__notification_type_error .polipop__notification-icon svg {
 				fill: #ffffff;
 			}
-			div.cc-window.cc-floating{max-width:24em}@media(max-width: 639px){div.cc-window.cc-floating:not(.cc-center){max-width: none}}div.cc-window, span.cc-cookie-settings-toggler{font-size:16px}div.cc-revoke{font-size:16px}div.cc-settings-label,span.cc-cookie-settings-toggle{font-size:14px}div.cc-window.cc-banner{padding:1em 1.8em}div.cc-window.cc-floating{padding:2em 1.8em}input.cc-cookie-checkbox+span:before, input.cc-cookie-checkbox+span:after{border-radius:1px}div.cc-window.cc-banner a.cc-btn.cc-dismiss {
+			
+div.cc-window.cc-floating{max-width:24em}@media(max-width: 639px){div.cc-window.cc-floating:not(.cc-center){max-width: none}}
+div.cc-window, span.cc-cookie-settings-toggler{font-size:16px}
+div.cc-revoke{font-size:16px}
+div.cc-settings-label,span.cc-cookie-settings-toggle{font-size:14px}
+div.cc-window.cc-banner{padding:1em 1.8em}
+div.cc-window.cc-floating{padding:2em 1.8em}
+input.cc-cookie-checkbox+span:before, input.cc-cookie-checkbox+span:after{border-radius:1px}
+div.cc-window.cc-banner a.cc-btn.cc-dismiss {
   display: none;
 }
 div.cc-window.cc-banner {
@@ -157,7 +166,8 @@ div.cc-window.cc-banner {
 			$(container).find(".advancedSelect").chosen({"disable_search_threshold":10,"search_contains":true,"allow_single_deselect":true,"placeholder_text_multiple":"Digite ou selecione algumas op\u00e7\u00f5es","placeholder_text_single":"Selecione uma op\u00e7\u00e3o","no_results_text":"Selecione alguma op\u00e7\u00e3o"});
 		}
 	});
-	jQuery(function($){ initTooltips(); $("body").on("subform-row-add", initTooltips); function initTooltips (event, container) { container = container || document;$(container).find(".hasTooltip").tooltip({"html": true,"container": "body"});} });
+	
+jQuery(function($){ initTooltips(); $("body").on("subform-row-add", initTooltips); function initTooltips (event, container) { container = container || document;$(container).find(".hasTooltip").tooltip({"html": true,"container": "body"});} });
 jQuery(document).ready(function() {
 	var value, searchword = jQuery('#mod-finder-searchword435');
 
@@ -213,7 +223,8 @@ jQuery(document).ready(function() {
 		width: 300,
 		zIndex: 9999,
 		deferRequestBy: 500
-	});});var gdprConfigurationOptions = { complianceType: 'opt-out',
+	});});
+var gdprConfigurationOptions = { complianceType: 'opt-out',
 																			  cookieConsentLifetime: 365,
 																			  cookieConsentSamesitePolicy: '',
 																			  cookieConsentSecure: 0,
@@ -328,7 +339,9 @@ jQuery(document).ready(function() {
 																			  allowallIndividualResources: 1,
 																			  externalAdvancedBlockingModeTags: 'iframe,script,img,source,link',
 																			  debugMode: 0
-																		};var gdpr_ajax_livesite='https://www.folhadealphaville.com.br/';var gdpr_enable_log_cookie_consent=1;
+																		};
+var gdpr_ajax_livesite='https://www.folhadealphaville.com.br/';
+var gdpr_enable_log_cookie_consent=1;
 	</script>
 	<!--googleoff: index-->
 <script type="text/javascript">
