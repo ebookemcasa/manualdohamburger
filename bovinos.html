@@ -90,7 +90,30 @@
                     pepperRatio: 5 
                 },
                 // Placeholders para as outras 22 receitas
-                { id: 'smash-burger', name: 'Smash Burger', image: 'imagens/bov_smash_burger.jpg', description: 'A técnica que cria a crosta mais crocante e saborosa. Simples, rápido e delicioso.'},
+{ 
+    id: 'smash-burger', 
+    name: 'Smash Burger', 
+    image: 'imagens/bov_smash_burger.jpg', 
+    description: 'A técnica que cria a crosta mais crocante e saborosa. Simples, rápido e delicioso.', 
+    components: [ 
+        {name: 'Pão de Batata', qty: 1, unit: 'unid.'}, 
+        {name: 'Queijo Americano', qty: 2, unit: 'fatias'}, 
+        {name: 'Picles Fatiado', qty: 4, unit: 'rodelas'}, 
+        {name: 'Ketchup e Mostarda', qty: 1, unit: 'q.b.'}
+    ], 
+    steps: [ 
+        { title: 'A Preparação do Smash', description: 'Divida a carne em bolas de 75g cada. Não as achate, deixe-as como bolas de carne moída. O segredo do smash é o contacto da carne solta com a chapa quente.'},
+        { title: 'A Chapa (MUITO Quente)', description: 'Este é o passo mais importante. Aqueça a sua frigideira ou chapa em lume alto até fumegar. Não tenha medo do calor. É o choque térmico que vai criar a crosta instantânea.'},
+        { title: 'O "Smash"', description: 'Coloque a bola de carne na chapa quente. Imediatamente, use uma espátula de metal forte para a esmagar ("smash") contra a chapa, o mais fino possível. Mantenha a pressão por 10 segundos para maximizar o contacto e a crosta.', timer: 10 },
+        { title: 'Virar e Finalizar', description: 'Tempere a parte de cima com sal e pimenta. Depois de cerca de 1 minuto, use a espátula para "raspar" o hambúrguer da chapa (a crosta vai ficar agarrada, é normal). Vire, coloque o queijo por cima e grelhe por mais 30-45 segundos. O tempo total é muito rápido!', timer: 45 },
+        { title: 'Montagem Rápida', description: 'Toste o pão. Na base, coloque os picles, o hambúrguer duplo com queijo e finalize com ketchup e mostarda. O smash burger é para ser comido imediatamente, bem quente.' } 
+    ], 
+    baseWeight: 0.150, 
+    blendName: 'Blend Clássico (2x 75g)', 
+    blendDetails: '80% Acém + 20% Peito. Para o smash, a carne deve estar bem fria para não se desmanchar com o calor da chapa.', 
+    saltRatio: 20, 
+    pepperRatio: 5 
+},
                 { id: 'italiano', name: 'Italiano', image: 'imagens/bov_italiano.jpg', description: 'Sabores da Itália, com a frescura do pesto, tomate seco e a cremosidade da mussarela de búfala.'},
                 { id: 'bbq-king', name: 'BBQ King', image: 'imagens/bov_bbq_king.jpg', description: 'O clássico de churrasco com molho barbecue fumado e anéis de cebola crocantes.'},
                 { id: 'el-fuego', name: 'El Fuego', image: 'imagens/bov_el_fuego.jpg', description: 'Para quem gosta de picante, com queijo pepper jack e pimenta jalapeño.'},
