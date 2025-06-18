@@ -114,7 +114,30 @@
     saltRatio: 20, 
     pepperRatio: 5 
 },
-                { id: 'italiano', name: 'Italiano', image: 'imagens/bov_italiano.jpg', description: 'Sabores da Itália, com a frescura do pesto, tomate seco e a cremosidade da mussarela de búfala.'},
+{ 
+    id: 'italiano', 
+    name: 'Italiano', 
+    image: 'imagens/bov_italiano.jpg', 
+    description: 'Sabores da Itália, com a frescura do pesto, tomate seco e a cremosidade da mussarela de búfala.', 
+    components: [ 
+        {name: 'Pão Ciabatta', qty: 1, unit: 'unid.'}, 
+        {name: 'Mussarela de Búfala', qty: 3, unit: 'fatias'}, 
+        {name: 'Molho Pesto', qty: 1, unit: 'colher'}, 
+        {name: 'Rúcula', qty: 1, unit: 'punhado'},
+        {name: 'Tomate Seco', qty: 4, unit: 'pedaços'}
+    ], 
+    steps: [ 
+        { title: 'Preparação dos Ingredientes', description: 'O segredo de um hambúrguer gourmet é ter tudo à mão. Fatie a mussarela de búfala, lave bem as folhas de rúcula e tenha o molho pesto e os tomates secos prontos para a montagem.' },
+        { title: 'Grelhar com Precisão', description: 'Aqueça bem a sua chapa. Tempere o seu Blend Saboroso e grelhe por 3 a 4 minutos de cada lado. O sabor marcante da fraldinha neste blend é essencial para equilibrar com o pesto.', timer: 210 },
+        { title: 'O Queijo e o Pão', description: 'A mussarela de búfala não derrete como o cheddar, ela apenas amolece. Coloque as fatias sobre a carne no último minuto. Toste levemente o pão ciabatta, apenas para o aquecer e dar uma leve crocância.', timer: 60 },
+        { title: 'Montagem à Italiana', description: 'Comece por espalhar generosamente o molho pesto na base do pão. Adicione um punhado de rúcula. Coloque o hambúrguer com o queijo amolecido e finalize com os pedaços de tomate seco por cima. O contraste de sabores será incrível.' }
+    ], 
+    baseWeight: 0.220, 
+    blendName: 'Blend Saboroso (220g)', 
+    blendDetails: '50% Fraldinha + 30% Acém + 20% Gordura de Peito. A Fraldinha intensa combina perfeitamente com os sabores mediterrânicos do pesto e do tomate seco.', 
+    saltRatio: 20, 
+    pepperRatio: 5 
+},
                 { id: 'bbq-king', name: 'BBQ King', image: 'imagens/bov_bbq_king.jpg', description: 'O clássico de churrasco com molho barbecue fumado e anéis de cebola crocantes.'},
                 { id: 'el-fuego', name: 'El Fuego', image: 'imagens/bov_el_fuego.jpg', description: 'Para quem gosta de picante, com queijo pepper jack e pimenta jalapeño.'},
                 { id: 'o-suico', name: 'O Suíço', image: 'imagens/bov_o_suico.jpg', description: 'A combinação clássica de queijo suíço e cogumelos salteados na manteiga.'},
