@@ -161,7 +161,30 @@
     saltRatio: 20, 
     pepperRatio: 5 
 },
-                { id: 'el-fuego', name: 'El Fuego', image: 'imagens/bov_el_fuego.jpg', description: 'Para quem gosta de picante, com queijo pepper jack e pimenta jalapeño.'},
+{ 
+    id: 'el-fuego', 
+    name: 'El Fuego', 
+    image: 'imagens/bov_el_fuego.jpg', 
+    description: 'Para quem gosta de picante, com queijo pepper jack e pimenta jalapeño.', 
+    components: [ 
+        {name: 'Pão de Hambúrguer', qty: 1, unit: 'unid.'}, 
+        {name: 'Queijo Pepper Jack', qty: 2, unit: 'fatias'}, 
+        {name: 'Maionese de Sriracha', qty: 1, unit: 'colher'}, 
+        {name: 'Pimenta Jalapeño', qty: 4, unit: 'rodelas'},
+        {name: 'Alface', qty: 1, unit: 'folha'}
+    ], 
+    steps: [ 
+        { title: 'O Molho Picante', description: 'Comece por preparar a maionese de sriracha. É simples: misture uma maionese de boa qualidade com algumas gotas de molho de pimenta Sriracha. Comece com pouco e vá provando até atingir o nível de picante que mais lhe agrada. Reserve.' },
+        { title: 'Grelhar a Carne', description: 'Aqueça a chapa em lume médio-alto. Tempere um lado do seu hambúrguer e sele por 3-4 minutos para criar uma boa crosta. O Blend Saboroso tem um gosto forte que aguenta bem o picante.', timer: 210 },
+        { title: 'O Queijo Ardente', description: 'Vire o hambúrguer, tempere o outro lado e coloque imediatamente as fatias de queijo Pepper Jack por cima. Este queijo já tem pedaços de pimenta e derrete muito bem, criando uma cobertura cremosa e picante.'},
+        { title: 'Montagem "Caliente"', description: 'Toste o pão. Na base, espalhe a maionese de sriracha. Coloque a folha de alface (ela ajuda a equilibrar o picante), o hambúrguer com queijo e, por cima, distribua as rodelas de jalapeño. Se quiser menos picante, retire as sementes da pimenta.' }
+    ], 
+    baseWeight: 0.220, 
+    blendName: 'Blend Saboroso (220g)', 
+    blendDetails: '50% Fraldinha + 30% Acém + 20% Gordura de Peito. A intensidade da fraldinha combina perfeitamente com os sabores picantes desta receita.', 
+    saltRatio: 20, 
+    pepperRatio: 5 
+},
                 { id: 'o-suico', name: 'O Suíço', image: 'imagens/bov_o_suico.jpg', description: 'A combinação clássica de queijo suíço e cogumelos salteados na manteiga.'},
                 { id: 'o-minimalista', name: 'O Minimalista', image: 'imagens/bov_o_minimalista.jpg', description: 'Apenas carne de alta qualidade, pão e sal. Para os puristas.'},
                 { id: 'o-matinal', name: 'O Matinal', image: 'imagens/bov_o_matinal.jpg', description: 'Um hambúrguer de pequeno-almoço, com bacon e ovo de gema mole.'},
