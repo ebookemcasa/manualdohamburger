@@ -92,21 +92,354 @@
                     baseQty: 1,
                     baseIngredient: 'Peito de Frango (150g)'
                 },
-                { id: 'frango-agridoce', name: 'Frango Agridoce', image: 'imagens/frango_agridoce.jpg', description: 'Uma combinação agridoce com abacaxi grelhado e molho teriyaki.'},
-                { id: 'frango-catupiry', name: 'Frango com Catupiry', image: 'imagens/frango_catupiry.jpg', description: 'A cremosidade inconfundível do Catupiry com a crocância da batata palha.'},
-                { id: 'frango-pesto', name: 'Frango Pesto', image: 'imagens/frango_pesto.jpg', description: 'Sabores frescos da Itália com molho pesto e queijo mussarela.'},
-                { id: 'frango-salada-leve', name: 'Frango Salada Leve', image: 'imagens/frango_salada_leve.jpg', description: 'Uma opção mais leve e saudável, mas sem perder o sabor.'},
-                { id: 'frango-cordon-bleu', name: 'Frango Cordon Bleu', image: 'imagens/frango_cordon_bleu.jpg', description: 'O clássico francês recheado com queijo e presunto, agora num hambúrguer.'},
-                { id: 'frango-abacate-coentro', name: 'Frango com Abacate e Coentro', image: 'imagens/frango_abacate_coentro.jpg', description: 'Um toque latino com guacamole cremoso e coentro fresco.'},
-                { id: 'frango-buffalo', name: 'Frango Buffalo', image: 'imagens/frango_buffalo.jpg', description: 'Para quem gosta de picante, com o clássico molho buffalo e blue cheese.'},
-                { id: 'frango-parmegiana', name: 'Frango à Parmegiana', image: 'imagens/frango_parmegiana.jpg', description: 'O seu prato favorito num pão de alho crocante.'},
-                { id: 'frango-coreano', name: 'Frango Coreano', image: 'imagens/frango_coreano.jpg', description: 'Sabores intensos e picantes com molho gochujang e kimchi.'},
-                { id: 'frango-caipira', name: 'Frango Caipira', image: 'imagens/frango_caipira.jpg', description: 'Um sabor bem brasileiro com queijo coalho, vinagrete e farofa.'},
-                { id: 'frango-teriyaki', name: 'Frango Teriyaki', image: 'imagens/frango_teriyaki.jpg', description: 'A doçura do molho teriyaki com a cremosidade da maionese japonesa.'},
-                { id: 'frango-mediterraneo', name: 'Frango Mediterrâneo', image: 'imagens/frango_mediterraneo.jpg', description: 'Sabores frescos da Grécia com queijo feta e molho tzatziki.'},
-                { id: 'frango-cajun', name: 'Frango Cajun', image: 'imagens/frango_cajun.jpg', description: 'O tempero marcante de Nova Orleans num hambúrguer suculento.'},
-                { id: 'frango-rancho', name: 'Frango Rancho', image: 'imagens/frango_rancho.jpg', description: 'O clássico americano com molho ranch cremoso e bacon crocante.'},
-                { id: 'frango-geleia-pimenta', name: 'Frango com Geleia de Pimenta', image: 'imagens/frango_geleia_pimenta.jpg', description: 'O contraste perfeito entre o doce da geleia e o salgado do queijo brie.'}
+{ 
+    id: 'frango-agridoce', 
+    name: 'Frango Agridoce', 
+    image: 'imagens/frango_agridoce.jpg', 
+    description: 'Uma combinação agridoce com abacaxi grelhado e molho teriyaki, que transporta para um sabor oriental e tropical.', 
+    components: [ 
+        {name: 'Pão de Hambúrguer', qty: 1, unit: 'unid.'}, 
+        {name: 'Queijo Prato', qty: 1, unit: 'fatia'},
+        {name: 'Abacaxi', qty: 1, unit: 'rodela grossa'},
+        {name: 'Molho Teriyaki', qty: 2, unit: 'colheres'}
+    ], 
+    steps: [ 
+        { title: 'O Grelhado Perfeito', description: 'O segredo é grelhar a fruta e a carne ao mesmo tempo. Aqueça a chapa em lume médio-alto. Pincele um pouco de óleo na rodela de abacaxi para não colar. Grelhe o hambúrguer de frango e o abacaxi lado a lado. O abacaxi precisa de cerca de 2 minutos de cada lado para caramelizar e ficar macio.', timer: 120 },
+        { title: 'Derreter o Queijo', description: 'Quando virar o hambúrguer de frango, coloque imediatamente a fatia de queijo prato por cima. O sabor suave do queijo equilibra a doçura do molho e do abacaxi e derrete facilmente.' },
+        { title: 'Laquear com Teriyaki', description: 'Nos últimos 30 segundos de cozedura, pincele o molho teriyaki sobre o hambúrguer com o queijo já derretido. O calor da chapa vai caramelizar ligeiramente o molho, criando uma cobertura brilhante e saborosa.', timer: 30 },
+        { title: 'Montagem Agridoce', description: 'Toste o pão. Na base, coloque o hambúrguer com o queijo, depois a rodela de abacaxi grelhada e, se quiser, um fio extra de molho teriyaki. Não precisa de mais nada para esta combinação funcionar na perfeição.' } 
+    ], 
+    baseQty: 1,
+    baseIngredient: 'Hambúrguer de Frango (150g)'
+},
+              { 
+    id: 'frango-catupiry', 
+    name: 'Frango com Catupiry', 
+    image: 'imagens/frango_catupiry.jpg', 
+    description: 'A cremosidade inconfundível do Catupiry encontra a crocância da batata palha num clássico brasileiro.', 
+    components: [ 
+        {name: 'Pão de Batata', qty: 1, unit: 'unid.'}, 
+        {name: 'Requeijão Catupiry', qty: 2, unit: 'colheres de sopa'}, 
+        {name: 'Batata Palha', qty: 2, unit: 'colheres de sopa'}
+    ], 
+    steps: [ 
+        { title: 'Preparar o Hambúrguer de Frango', description: 'Se estiver a usar carne de frango moída, este é o momento de a temperar. Misture a carne com sal, pimenta e um pouco de alho em pó para dar sabor. Molde o hambúrguer gentilmente, sem o compactar demasiado. O ideal é que fique com cerca de 2cm de altura.'},
+        { title: 'Grelhar o Frango', description: 'Aqueça uma frigideira com um fio de azeite em lume médio. O frango precisa de cozinhar por completo. Grelhe por cerca de 4-5 minutos de cada lado, até estar bem dourado por fora e cozido por dentro, sem partes rosadas.', timer: 270 },
+        { title: 'O Segredo do Catupiry', description: 'O Catupiry não vai para a chapa. Toste o pão de batata. Quando estiver quente, espalhe uma camada generosa de Catupiry na base do pão. O calor do pão vai amolecer o requeijão e deixá-lo na textura perfeita.'},
+        { title: 'Montagem Crocante e Cremosa', description: 'Coloque o hambúrguer de frango quente diretamente sobre a base com Catupiry. Adicione mais uma colher de Catupiry por cima da carne e finalize com uma montanha de batata palha para dar a crocância final. Feche o lanche e sirva imediatamente.' } 
+    ], 
+    baseQty: 1,
+    baseIngredient: 'Hambúrguer de Frango (150g)',
+    blendDetails: '100% Sobrecoxa de frango moída. A sobrecoxa é mais suculenta e saborosa que o peito, garantindo que o hambúrguer não fique seco.', 
+    saltRatio: 15, 
+    pepperRatio: 4
+},
+{ 
+    id: 'frango-pesto', 
+    name: 'Frango Pesto', 
+    image: 'imagens/frango_pesto.jpg', 
+    description: 'Sabores frescos da Itália com molho pesto caseiro e a cremosidade do queijo mussarela.', 
+    components: [ 
+        {name: 'Pão Ciabatta', qty: 1, unit: 'unid.'}, 
+        {name: 'Queijo Mussarela', qty: 2, unit: 'fatias'}, 
+        {name: 'Molho Pesto', qty: 2, unit: 'colheres'}, 
+        {name: 'Tomate em Rodelas', qty: 2, unit: 'unid.'},
+        {name: 'Rúcula', qty: 1, unit: 'punhado'}
+    ], 
+    steps: [ 
+        { title: 'O Coração da Receita: Pesto Fresco', description: 'Para um sabor autêntico, faça o seu pesto. Num processador, junte manjericão fresco, pinhões (ou nozes), alho, queijo parmesão ralado e azeite. Pulse até obter uma pasta. O pesto de compra também funciona, mas o caseiro eleva o prato.'},
+        { title: 'Grelhar o Frango', description: 'Tempere o seu hambúrguer de frango e grelhe em lume médio-alto, cerca de 4-5 minutos de cada lado. O sabor suave do frango é a tela perfeita para o pesto.', timer: 270 },
+        { title: 'Derreter a Mussarela', description: 'No último minuto, coloque as fatias de mussarela sobre o frango. Este queijo derrete rapidamente e fica deliciosamente elástico. Abafe com uma tampa para um resultado perfeito.', timer: 60 },
+        { title: 'Montagem Italiana', description: 'Toste levemente o pão ciabatta. Espalhe uma colher de pesto na base, adicione a rúcula, o hambúrguer com queijo, as rodelas de tomate e, por fim, mais uma colher de pesto na tampa do pão.' }
+    ], 
+    baseQty: 1,
+    baseIngredient: 'Hambúrguer de Frango (150g)',
+    blendDetails: '100% Sobrecoxa de frango moída. A suculência da sobrecoxa é ideal para não secar e combinar com a umidade do pesto.', 
+    saltRatio: 15, 
+    pepperRatio: 4 
+},
+{ 
+    id: 'frango-salada-leve', 
+    name: 'Frango Salada Leve', 
+    image: 'imagens/frango_salada_leve.jpg', 
+    description: 'Uma opção mais leve e saudável, mas sem perder o sabor, com queijo minas e a crocância da cenoura ralada.', 
+    components: [ 
+        {name: 'Pão Integral', qty: 1, unit: 'unid.'}, 
+        {name: 'Queijo Minas Padrão', qty: 2, unit: 'fatias'}, 
+        {name: 'Maionese Light', qty: 1, unit: 'colher'},
+        {name: 'Alface', qty: 1, unit: 'folha'},
+        {name: 'Tomate', qty: 2, unit: 'rodelas'},
+        {name: 'Cenoura Ralada', qty: 1, unit: 'colher de sopa'}
+    ], 
+    steps: [ 
+        { title: 'A Preparação Leve', description: 'O segredo aqui é a frescura. Lave bem as folhas de alface e as rodelas de tomate. Rale a cenoura na hora para garantir a máxima crocância. Deixe tudo pronto.' },
+        { title: 'Grelhar o Frango', description: 'Tempere o seu hambúrguer de frango. Aqueça uma frigideira antiaderente em lume médio. Grelhe o hambúrguer com um fio mínimo de azeite ou até mesmo sem gordura, por 4-5 minutos de cada lado, garantindo que fica bem cozido por dentro.', timer: 270 },
+        { title: 'O Queijo Suave', description: 'O Queijo Minas Padrão é mais firme. Coloque as fatias sobre o hambúrguer nos últimos 2 minutos e abafe com uma tampa para que ele amoleça e adira à carne, sem derreter completamente.', timer: 120 },
+        { title: 'Montagem Colorida e Crocante', description: 'Toste levemente o pão integral. Passe a maionese light na base. Adicione a alface e o tomate. Coloque o hambúrguer com o queijo e finalize com uma generosa porção de cenoura ralada por cima. A textura crocante da cenoura é o toque final.' }
+    ], 
+    baseQty: 1,
+    baseIngredient: 'Hambúrguer de Frango Grelhado (150g)',
+    blendDetails: '100% Sobrecoxa de frango moída, sem pele para uma versão mais magra. A suculência da sobrecoxa é mantida mesmo com menos gordura.', 
+    saltRatio: 15, 
+    pepperRatio: 4 
+},
+{ 
+    id: 'frango-cordon-bleu', 
+    name: 'Frango Cordon Bleu', 
+    image: 'imagens/frango_cordon_bleu.jpg', 
+    description: 'O clássico francês recheado com queijo suíço e presunto, agora numa versão de hambúrguer surpreendente.', 
+    components: [ 
+        {name: 'Pão de Hambúrguer', qty: 1, unit: 'unid.'}, 
+        {name: 'Queijo Suíço', qty: 1, unit: 'fatia grossa'}, 
+        {name: 'Presunto Fatiado', qty: 1, unit: 'fatia'},
+        {name: 'Molho de Mostarda e Mel', qty: 1, unit: 'colher'}
+    ], 
+    steps: [ 
+        { title: 'O Recheio Secreto', description: 'O truque é criar o recheio primeiro. Dobre a fatia de presunto e envolva a fatia de queijo suíço, criando um "pacote" pequeno e compacto. Leve ao congelador por 10 minutos para firmar.'},
+        { title: 'Como Rechear o Frango', description: 'Divida o seu hambúrguer de frango em duas metades. Achate uma das metades na sua mão. Coloque o "pacote" de queijo e presunto congelado no centro. Cubra com a outra metade da carne e feche muito bem as bordas, garantindo que o recheio está completamente selado. Molde novamente no formato de hambúrguer.'},
+        { title: 'Grelhar com Cuidado', description: 'Como o hambúrguer é mais grosso e recheado, ele precisa de cozinhar em lume médio. Grelhe por cerca de 5-6 minutos de cada lado para garantir que o frango cozinha por completo e o queijo derrete por dentro sem vazar.', timer: 330 },
+        { title: 'Montagem Clássica', description: 'Toste o pão. Passe o molho de mostarda e mel na base e na tampa. Coloque o hambúrguer recheado e sirva imediatamente. A surpresa está no primeiro corte!' } 
+    ], 
+    baseQty: 1,
+    baseIngredient: 'Hambúrguer de Frango (180g)',
+    blendDetails: '100% Sobrecoxa de frango moída. A gordura da sobrecoxa ajuda a manter a estrutura do hambúrguer recheado e garante a suculência.', 
+    saltRatio: 15, 
+    pepperRatio: 4 
+},
+{ 
+    id: 'frango-abacate-coentro', 
+    name: 'Frango com Abacate e Coentro', 
+    image: 'imagens/frango_abacate_coentro.jpg', 
+    description: 'Um toque latino com guacamole cremoso e coentro fresco, equilibrado pela picância do queijo Pepper Jack.', 
+    components: [ 
+        {name: 'Pão de Limão', qty: 1, unit: 'unid.'}, 
+        {name: 'Queijo Pepper Jack', qty: 1, unit: 'fatia'}, 
+        {name: 'Guacamole', qty: 2, unit: 'colheres'}, 
+        {name: 'Coentro Fresco', qty: 1, unit: 'ramo'}
+    ], 
+    steps: [ 
+        { title: 'O Guacamole Fresco', description: 'A alma desta receita é um bom guacamole. Amasse meio abacate maduro com um garfo. Junte um pouco de sumo de limão, sal, pimenta, cebola roxa picada e, claro, coentro fresco picado. Misture tudo e reserve. Faça-o na hora para não oxidar.'},
+        { title: 'Grelhar o Frango', description: 'Tempere o seu hambúrguer de frango e grelhe em lume médio-alto, por 4-5 minutos de cada lado, até estar bem cozido.', timer: 270 },
+        { title: 'O Queijo Picante', description: 'O Pepper Jack adiciona um toque picante que combina perfeitamente com o abacate. Coloque a fatia sobre o hambúrguer no último minuto de cozedura e abafe com uma tampa para derreter bem.', timer: 60 },
+        { title: 'Montagem Refrescante', description: 'Toste o pão. Na base, coloque o hambúrguer com o queijo derretido. Cubra com uma generosa porção de guacamole fresco e finalize com algumas folhas de coentro. O contraste do picante, do cremoso e do fresco é o que faz este hambúrguer brilhar.' } 
+    ], 
+    baseQty: 1,
+    baseIngredient: 'Hambúrguer de Frango (150g)',
+    blendDetails: '100% Sobrecoxa de frango moída. A suculência da sobrecoxa é ideal para equilibrar com a cremosidade do guacamole.', 
+    saltRatio: 15, 
+    pepperRatio: 4 
+},
+{ 
+    id: 'frango-buffalo', 
+    name: 'Frango Buffalo', 
+    image: 'imagens/frango_buffalo.jpg', 
+    description: 'Para quem gosta de picante, com o clássico molho buffalo e a cremosidade do blue cheese para equilibrar.', 
+    components: [ 
+        {name: 'Pão de Hambúrguer', qty: 1, unit: 'unid.'}, 
+        {name: 'Molho Buffalo', qty: 3, unit: 'colheres'}, 
+        {name: 'Molho Blue Cheese', qty: 2, unit: 'colheres'}, 
+        {name: 'Talo de Aipo', qty: 1, unit: 'unid.'}
+    ], 
+    steps: [ 
+        { title: 'O Frango Crocante', description: 'O segredo é um frango bem empanado (pode usar a nossa técnica da receita "Frango Crispy"). Frite o peito de frango em óleo quente até ficar bem dourado e cozido por dentro.' },
+        { title: 'O Banho Picante', description: 'Numa tigela, coloque o molho buffalo. Assim que o frango sair da fritura, ainda bem quente, mergulhe-o diretamente na tigela, virando para garantir que fica completamente coberto pelo molho. O calor ajuda o frango a absorver o sabor.'},
+        { title: 'Preparar o Contraponto', description: 'Enquanto o frango escorre um pouco, fatie o talo de aipo em tiras bem finas. A crocância e o frescor do aipo são essenciais para cortar a picância do molho.' },
+        { title: 'Montagem Final', description: 'Toste o pão. Na base, espalhe uma camada generosa de molho blue cheese (que vai equilibrar o picante). Coloque o frango empanado, as fatias de aipo por cima e, se gostar, mais um pouco de molho blue cheese na tampa do pão.' }
+    ], 
+    baseQty: 1,
+    baseIngredient: 'Peito de Frango Empanado (150g)',
+    blendDetails: 'Esta receita usa um peito de frango inteiro empanado, não um hambúrguer moído. O segredo é a crocância da crosta e a suculência do interior.', 
+    saltRatio: 0, 
+    pepperRatio: 0 
+},
+{ 
+    id: 'frango-parmegiana', 
+    name: 'Frango à Parmegiana', 
+    image: 'imagens/frango_parmegiana.jpg', 
+    description: 'O seu prato favorito num pão de alho crocante, com queijo derretido e molho de tomate.', 
+    components: [ 
+        {name: 'Pão de Alho', qty: 1, unit: 'unid.'}, 
+        {name: 'Peito de Frango Empanado', qty: 1, unit: '(150g)'}, 
+        {name: 'Molho de Tomate', qty: 3, unit: 'colheres'}, 
+        {name: 'Queijo Mussarela', qty: 2, unit: 'fatias'},
+        {name: 'Queijo Parmesão ralado', qty: 1, unit: 'colher'}
+    ], 
+    steps: [ 
+        { title: 'Empanar e Fritar o Frango', description: 'Use a nossa técnica da receita "Frango Crispy" para empanar o peito de frango. Frite em óleo quente até ficar bem dourado e totalmente cozido por dentro.' },
+        { title: 'O Momento de Gratinar', description: 'Coloque o frango frito num tabuleiro que possa ir ao forno. Cubra-o com o molho de tomate, depois com as fatias de mussarela e, por fim, salpique o queijo parmesão. Leve ao forno pré-aquecido na função "grill" (grelhador) por cerca de 5 minutos, ou até o queijo borbulhar e dourar.', timer: 300 },
+        { title: 'O Pão de Alho', description: 'Enquanto o frango está no forno, prepare o pão. Pode usar pão de alho de compra ou simplesmente passar manteiga de alho num pão francês e tostá-lo na frigideira até ficar crocante.'},
+        { title: 'Montagem Final', description: 'Retire o frango gratinado do forno. Coloque-o cuidadosamente sobre a base do pão de alho. Não precisa de mais nada, os sabores já estão todos aqui. Feche o lanche e sirva imediatamente.' } 
+    ], 
+    baseQty: 1,
+    baseIngredient: 'Peito de Frango Empanado (150g)',
+    blendDetails: 'Esta receita usa um peito de frango inteiro empanado. O segredo é garantir que ele fique crocante para contrastar com o molho e o queijo derretido.', 
+    saltRatio: 0, 
+    pepperRatio: 0 
+},
+{ 
+    id: 'frango-coreano', 
+    name: 'Frango Coreano', 
+    image: 'imagens/frango_coreano.jpg', 
+    description: 'Sabores intensos e picantes com molho gochujang e a acidez do kimchi.', 
+    components: [ 
+        {name: 'Pão Brioche', qty: 1, unit: 'unid.'}, 
+        {name: 'Coxa de Frango Desossada', qty: 1, unit: '(150g)'}, 
+        {name: 'Molho Gochujang', qty: 2, unit: 'colheres'}, 
+        {name: 'Kimchi', qty: 2, unit: 'colheres'},
+        {name: 'Maionese de Gergelim', qty: 1, unit: 'colher'}
+    ], 
+    steps: [ 
+        { title: 'O Frango Crocante', description: 'Para esta receita, o ideal é usar a coxa de frango desossada, que é mais suculenta. Empane-a na nossa técnica do "Frango Crispy" e frite até ficar bem dourada e cozida.' },
+        { title: 'O Molho Gochujang', description: 'Enquanto o frango frita, prepare o molho. Numa panela pequena, misture a pasta de pimenta gochujang com um pouco de mel (ou agave), vinagre de arroz e óleo de gergelim. Aqueça ligeiramente para incorporar os sabores.'},
+        { title: 'O Banho de Sabor', description: 'Assim que o frango sair da fritura, ainda bem quente, mergulhe-o no molho Gochujang aquecido. Use um pincel ou uma colher para garantir que todos os lados ficam bem cobertos por esta camada brilhante e picante.'},
+        { title: 'A Montagem Final', description: 'Toste o pão. Na base, espalhe a maionese de gergelim. Coloque o frango coberto de molho e, por cima, uma porção generosa de kimchi para dar acidez e frescura. Feche e sirva imediatamente.' } 
+    ], 
+    baseQty: 1,
+    baseIngredient: 'Coxa de Frango Frita (150g)',
+    blendDetails: 'Usamos uma coxa de frango inteira, desossada e empanada. A carne mais escura e gorda da coxa aguenta muito bem os sabores fortes e picantes do molho.', 
+    saltRatio: 0, 
+    pepperRatio: 0 
+},
+{ 
+    id: 'frango-caipira', 
+    name: 'Frango Caipira', 
+    image: 'imagens/frango_caipira.jpg', 
+    description: 'Um sabor bem brasileiro com queijo coalho, vinagrete e a crocância da farofa.', 
+    components: [ 
+        {name: 'Pão Francês', qty: 1, unit: 'unid.'},
+        {name: 'Queijo Coalho', qty: 1, unit: 'fatia grossa'},
+        {name: 'Vinagrete', qty: 2, unit: 'colheres'},
+        {name: 'Farofa Pronta', qty: 1, unit: 'colher'}
+    ], 
+    steps: [ 
+        { title: 'O Vinagrete Fresco', description: 'O segredo de um bom vinagrete é cortar tudo muito pequeno. Pique finamente tomate, cebola e pimentão. Tempere com sal, vinagre e azeite. Deixe a marinar para que os sabores se misturem.'},
+        { title: 'Grelhar o Queijo Coalho', description: 'Corte uma fatia grossa de queijo coalho (cerca de 1.5 cm). Aqueça bem a frigideira e grelhe o queijo por 1-2 minutos de cada lado, apenas até criar umas marcas douradas e ficar macio. Ele não derrete, por isso não cozinhe demasiado.', timer: 90 },
+        { title: 'O Hambúrguer de Frango', description: 'Tempere e grelhe o seu hambúrguer de frango em lume médio-alto, por 4-5 minutos de cada lado, garantindo que fica bem cozido.', timer: 270 },
+        { title: 'A Montagem Brasileira', description: 'Corte o pão francês ao meio e retire um pouco do miolo para criar mais espaço. Coloque o hambúrguer de frango, a fatia de queijo coalho grelhada por cima, e cubra generosamente com o vinagrete. Finalize salpicando a farofa por cima para dar aquela crocância irresistível.' } 
+    ], 
+    baseQty: 1,
+    baseIngredient: 'Hambúrguer de Frango (150g)',
+    blendDetails: '100% Sobrecoxa de frango moída. A suculência da sobrecoxa é fundamental para equilibrar a textura mais seca da farofa e o salgado do queijo.', 
+    saltRatio: 15, 
+    pepperRatio: 4 
+},
+{ 
+    id: 'frango-teriyaki', 
+    name: 'Frango Teriyaki', 
+    image: 'imagens/frango_teriyaki.jpg', 
+    description: 'A doçura do molho teriyaki com a cremosidade da maionese japonesa e a crocância da cebola roxa.', 
+    components: [ 
+        {name: 'Pão com Gergelim', qty: 1, unit: 'unid.'},
+        {name: 'Cebola Roxa', qty: 3, unit: 'rodelas finas'},
+        {name: 'Molho Teriyaki', qty: 2, unit: 'colheres'},
+        {name: 'Maionese Japonesa (Kewpie)', qty: 1, unit: 'colher'}
+    ], 
+    steps: [ 
+        { title: 'O Molho Teriyaki Caseiro', description: 'Para um sabor autêntico, faça o seu molho. Numa panela pequena, misture 4 colheres de sopa de shoyu, 2 de sakê ou mirin, 1 de açúcar e um pouco de gengibre ralado. Leve a lume brando e deixe reduzir até engrossar ligeiramente. Ficará muito melhor que os de compra.'},
+        { title: 'Grelhar o Frango', description: 'Tempere o seu hambúrguer de frango com um pouco menos de sal (o shoyu já é salgado). Grelhe em lume médio-alto por cerca de 4 minutos de cada lado.', timer: 240 },
+        { title: 'Laquear o Hambúrguer', description: 'Este é o truque para um acabamento profissional. Nos últimos 2 minutos de cozedura, use um pincel para passar o molho teriyaki sobre o hambúrguer, virando-o algumas vezes para criar uma camada brilhante e caramelizada.', timer: 120 },
+        { title: 'Montagem Oriental', description: 'Toste o pão. Passe a maionese japonesa (que é mais cremosa e ligeiramente adocicada) na base. Coloque o hambúrguer laqueado e finalize com as rodelas de cebola roxa crua, que darão o toque crocante e fresco necessário.' }
+    ], 
+    baseQty: 1,
+    baseIngredient: 'Hambúrguer de Frango (150g)',
+    blendDetails: '100% Sobrecoxa de frango moída. A gordura da sobrecoxa ajuda a equilibrar a doçura do molho teriyaki, evitando que o hambúrguer fique seco.', 
+    saltRatio: 10, 
+    pepperRatio: 4 
+},
+{ 
+    id: 'frango-mediterraneo', 
+    name: 'Frango Mediterrâneo', 
+    image: 'imagens/frango_mediterraneo.jpg', 
+    description: 'Sabores frescos da Grécia com queijo feta, molho tzatziki e o toque aromático do orégano.', 
+    components: [ 
+        {name: 'Pão Sírio', qty: 1, unit: 'unid.'},
+        {name: 'Queijo Feta', qty: 30, unit: 'g'},
+        {name: 'Molho Tzatziki', qty: 2, unit: 'colheres'},
+        {name: 'Pepino', qty: 4, unit: 'rodelas'},
+        {name: 'Azeitonas Pretas', qty: 5, unit: 'unid.'},
+        {name: 'Orégano seco', qty: 1, unit: 'colher de chá'}
+    ], 
+    steps: [ 
+        { title: 'O Molho Fresco: Tzatziki', description: 'O segredo é a frescura. Rale meio pepino e esprema bem com as mãos para retirar o excesso de água. Misture com iogurte grego natural, um dente de alho picado muito fino, sumo de limão, sal e um fio de azeite. Reserve no frigorífico.' },
+        { title: 'Preparar a Carne', description: 'Numa tigela, misture a carne de frango moída com o orégano seco, sal e pimenta. O orégano vai dar um aroma mediterrânico à carne. Molde o hambúrguer com cerca de 2cm de altura.' },
+        { title: 'Grelhar o Frango', description: 'Aqueça uma chapa ou frigideira em lume médio-alto. Grelhe o hambúrguer por 4-5 minutos de cada lado, garantindo que fica bem cozido por dentro, mas ainda suculento.', timer: 270 },
+        { title: 'Montagem Grega', description: 'Aqueça ligeiramente o pão sírio. Passe uma camada generosa de molho tzatziki. Coloque o hambúrguer, esfarele o queijo feta por cima e finalize com as rodelas de pepino fresco e as azeitonas pretas fatiadas.' }
+    ], 
+    baseQty: 1,
+    baseIngredient: 'Hambúrguer de Frango (150g)',
+    blendDetails: '100% Sobrecoxa de frango moída. A suculência da sobrecoxa é fundamental para equilibrar o salgado do queijo feta.', 
+    saltRatio: 15, 
+    pepperRatio: 4 
+},
+{ 
+    id: 'frango-cajun', 
+    name: 'Frango Cajun', 
+    image: 'imagens/frango_cajun.jpg', 
+    description: 'O tempero marcante de Nova Orleans num hambúrguer suculento, equilibrado com um molho remoulade cremoso.', 
+    components: [ 
+        {name: 'Pão Brioche', qty: 1, unit: 'unid.'},
+        {name: 'Queijo Provolone', qty: 2, unit: 'fatias'},
+        {name: 'Molho Remoulade', qty: 2, unit: 'colheres'},
+        {name: 'Picles', qty: 4, unit: 'rodelas'}
+    ], 
+    steps: [ 
+        { title: 'O Tempero Cajun', description: 'O coração desta receita é o tempero. Pode usar um de compra ou fazer o seu, misturando páprica, pimenta caiena, alho em pó, cebola em pó, pimenta preta e tomilho seco.' },
+        { title: 'Preparar o Frango', description: 'Numa tigela, tempere generosamente a sua carne de frango moída com a mistura cajun. Molde o hambúrguer, mas com cuidado para não o compactar demasiado, mantendo a suculência.' },
+        { title: 'Grelhar com Atenção', description: 'Aqueça a chapa com um fio de óleo. Grelhe o hambúrguer de frango em lume médio, por 4-5 minutos de cada lado. Como o tempero tem muitas especiarias, um lume demasiado alto pode queimá-lo.', timer: 270 },
+        { title: 'A Montagem Final', description: 'No último minuto de cozedura, coloque o queijo provolone sobre o frango para derreter. Toste o pão brioche. Na base, espalhe o molho remoulade (um molho cremoso, primo da maionese), coloque o hambúrguer com queijo e finalize com as fatias de picles para um toque de acidez.' } 
+    ], 
+    baseQty: 1,
+    baseIngredient: 'Hambúrguer de Frango (150g)',
+    blendDetails: '100% Sobrecoxa de frango moída. A gordura da sobrecoxa é crucial para equilibrar o picante e a secura das especiarias cajun.', 
+    saltRatio: 18, 
+    pepperRatio: 8 
+},
+{ 
+    id: 'frango-rancho', 
+    name: 'Frango Rancho', 
+    image: 'imagens/frango_rancho.jpg', 
+    description: 'O clássico americano com molho ranch cremoso e bacon crocante, uma combinação que nunca falha.', 
+    components: [ 
+        {name: 'Pão com Gergelim', qty: 1, unit: 'unid.'},
+        {name: 'Queijo Suíço', qty: 2, unit: 'fatias'},
+        {name: 'Bacon Frito', qty: 3, unit: 'fatias'},
+        {name: 'Molho Ranch', qty: 2, unit: 'colheres'}
+    ], 
+    steps: [ 
+        { title: 'O Molho Ranch Cremoso', description: 'Para um molho caseiro, misture maionese, um pouco de iogurte natural para diluir, cebolinho picado, salsa, alho em pó, sal e pimenta. Um bom molho de compra também funciona perfeitamente.' },
+        { title: 'O Duo Dinâmico: Frango e Bacon', description: 'Comece por fritar o bacon até ficar bem crocante. Retire e reserve. Na gordura que ficou, grelhe o seu hambúrguer de frango, temperado com sal e pimenta, por 4-5 minutos de cada lado.', timer: 270 },
+        { title: 'A Cobertura Perfeita', description: 'No último minuto de cozedura do frango, coloque as fatias de queijo suíço por cima para que derretam e fiquem bem cremosas.', timer: 60 },
+        { title: 'A Montagem Clássica', description: 'Toste o pão. Espalhe generosamente o molho ranch na base e na tampa. Coloque o hambúrguer de frango com o queijo derretido e coroe com as fatias de bacon crocante. Feche e sirva.' }
+    ], 
+    baseQty: 1,
+    baseIngredient: 'Hambúrguer de Frango (150g)',
+    blendDetails: '100% Sobrecoxa de frango moída. A suculência do frango é essencial para equilibrar o salgado do bacon e a cremosidade do molho.', 
+    saltRatio: 18, 
+    pepperRatio: 5 
+},
+{ 
+    id: 'frango-geleia-pimenta', 
+    name: 'Frango com Geleia de Pimenta', 
+    image: 'imagens/frango_geleia_pimenta.jpg', 
+    description: 'O contraste perfeito entre o doce da geleia, o picante suave e a cremosidade do queijo brie.', 
+    components: [ 
+        {name: 'Pão Brioche', qty: 1, unit: 'unid.'},
+        {name: 'Queijo Brie', qty: 3, unit: 'fatias'},
+        {name: 'Geleia de Pimenta', qty: 2, unit: 'colheres'},
+        {name: 'Rúcula', qty: 1, unit: 'punhado'}
+    ], 
+    steps: [ 
+        { title: 'Preparar os Componentes', description: 'Corte o queijo Brie em fatias generosas. Lave e seque bem as folhas de rúcula. Ter tudo pronto é o segredo para uma montagem rápida e quente.' },
+        { title: 'Grelhar o Frango', description: 'Tempere o seu hambúrguer de frango e grelhe em lume médio-alto por 4-5 minutos de cada lado. O sabor do frango será a base para a doçura e o picante.', timer: 270 },
+        { title: 'O Queijo Brie no Ponto', description: 'O Brie não precisa de derreter completamente. Coloque as fatias sobre o frango quente no último minuto, fora do lume direto, apenas para que ele amoleça e fique cremoso, mas sem perder a sua forma.', timer: 60 },
+        { title: 'A Montagem Agridoce', description: 'Toste o pão brioche. Espalhe uma boa camada de geleia de pimenta na base. Adicione a rúcula (o seu amargor corta o doce), coloque o hambúrguer com o queijo Brie e, se gostar, mais um pouco de geleia na tampa. Feche e sirva.' }
+    ], 
+    baseQty: 1,
+    baseIngredient: 'Hambúrguer de Frango (150g)',
+    blendDetails: '100% Sobrecoxa de frango moída. A gordura e o sabor mais intenso da sobrecoxa equilibram perfeitamente a geleia e o queijo.', 
+    saltRatio: 18, 
+    pepperRatio: 5 
+},
             ];
             
             const recipeListContainer = document.getElementById('recipe-list');
