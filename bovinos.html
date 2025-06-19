@@ -232,7 +232,29 @@
     saltRatio: 22, 
     pepperRatio: 8 
 },
-                { id: 'o-matinal', name: 'O Matinal', image: 'imagens/bov_o_matinal.jpg', description: 'Um hambúrguer de pequeno-almoço, com bacon e ovo de gema mole.'},
+{ 
+    id: 'o-matinal', 
+    name: 'O Matinal', 
+    image: 'imagens/bov_o_matinal.jpg', 
+    description: 'Um hambúrguer de pequeno-almoço, com bacon crocante e um ovo de gema mole que escorre sobre a carne.', 
+    components: [ 
+        {name: 'Pão de Hambúrguer', qty: 1, unit: 'unid.'}, 
+        {name: 'Queijo Prato', qty: 2, unit: 'fatias'}, 
+        {name: 'Bacon em Fatias', qty: 3, unit: 'unid.'}, 
+        {name: 'Ovo', qty: 1, unit: 'unid.'}
+    ], 
+    steps: [ 
+        { title: 'O Bacon Crocante', description: 'Comece pelo bacon. Coloque as fatias numa frigideira fria e leve a lume médio. Deixe cozinhar lentamente até ficar bem crocante. Retire o bacon e reserve, mas mantenha a gordura saborosa na frigideira.' },
+        { title: 'O Ovo no Ponto', description: 'Na gordura do bacon, frite o ovo. O objetivo é uma clara firme, mas uma gema mole e líquida. Tempere com uma pitada de sal. Retire e reserve.'},
+        { title: 'Grelhar e Derreter', description: 'Aqueça bem a frigideira. Tempere um lado do seu hambúrguer e sele por 3 minutos. Vire, tempere o outro lado, e coloque imediatamente as fatias de queijo prato por cima para derreterem.', timer: 180 },
+        { title: 'A Montagem Perfeita', description: 'Toste o pão. Na base, coloque o hambúrguer com queijo, as fatias de bacon e, cuidadosamente, o ovo frito no topo. Ao fechar com o pão, a gema deve romper-se, criando um molho natural e delicioso.' }
+    ], 
+    baseWeight: 0.180, 
+    blendName: 'Blend Clássico (180g)', 
+    blendDetails: '80% Acém + 20% Peito. Um blend versátil que serve como a base perfeita para os sabores fortes do bacon e do ovo.', 
+    saltRatio: 20, 
+    pepperRatio: 5 
+},
                 { id: 'duplo-classico', name: 'Duplo Clássico', image: 'imagens/bov_duplo_classico.jpg', description: 'O dobro da carne, o dobro do sabor. Um clássico em tamanho grande.'},
                 { id: 'o-frances', name: 'O Francês', image: 'imagens/bov_o_frances.jpg', description: 'Sofisticação com queijo Brie cremoso, mostarda Dijon e cebola caramelizada.'},
                 { id: 'tropical', name: 'Tropical', image: 'imagens/bov_tropical.jpg', description: 'Um toque adocicado e refrescante com manga e queijo provolone.'},
