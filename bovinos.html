@@ -417,4 +417,72 @@
         });
     </script>
 </body>
+    <script>
+    document.addEventListener('DOMContentLoaded', () => {
+        // Lógica do botão flutuante
+        const fabContainer = document.getElementById('fab-container');
+        const fabButton = document.getElementById('fab-button');
+        const fabMenu = document.getElementById('fab-menu');
+
+        if (fabButton && fabMenu && fabContainer) {
+            fabButton.addEventListener('click', (e) => {
+                e.stopPropagation(); // Impede que o clique se propague para o documento
+                fabMenu.classList.toggle('hidden');
+                fabMenu.classList.toggle('flex');
+                fabContainer.classList.toggle('open');
+            });
+
+            // Fecha o menu se clicar fora dele
+            document.addEventListener('click', (event) => {
+                if (fabContainer.classList.contains('open') && !fabContainer.contains(event.target)) {
+                    fabMenu.classList.add('hidden');
+                    fabMenu.classList.remove('flex');
+                    fabContainer.classList.remove('open');
+                }
+            });
+        }
+
+        // Lógica das Fichas Técnicas (Modais)
+        const openModalButtons = document.querySelectorAll('.open-modal-btn');
+        const closeModalButtons = document.querySelectorAll('.close-modal-btn');
+
+        const openModal = (modal) => {
+            document.body.style.overflow = 'hidden';
+            modal.classList.remove('hidden');
+            setTimeout(() => modal.classList.remove('opacity-0'), 10);
+        }
+
+        const closeModal = (modal) => {
+            document.body.style.overflow = '';
+            modal.classList.add('opacity-0');
+            setTimeout(() => modal.classList.add('hidden'), 300);
+        };
+
+        openModalButtons.forEach(button => {
+            button.addEventListener('click', () => {
+                const modal = document.getElementById(button.dataset.modalTarget);
+                if (modal) openModal(modal);
+            });
+        });
+
+        closeModalButtons.forEach(button => {
+            button.addEventListener('click', () => {
+                const modal = button.closest('.modal-overlay');
+                if (modal) closeModal(modal);
+            });
+        });
+
+        document.querySelectorAll('.modal-overlay').forEach(modal => {
+             modal.addEventListener('click', (e) => {
+                if (e.target === modal) {
+                    closeModal(modal);
+                }
+            });
+        });
+
+        // Aqui podemos adicionar a lógica das calculadoras e timers no futuro
+    });
+</script>
+    
+    
 </html>
