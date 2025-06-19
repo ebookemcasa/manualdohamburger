@@ -110,9 +110,180 @@
                 { id: 'veggie-lentilha', name: 'Lentilha e Cenoura', image: 'imagens/veggie_lentilha_cenoura.jpg', description: 'Um clássico vegetariano, cheio de sabor e com uma textura ótima.'},
                 { id: 'veggie-ervilha', name: 'Ervilha e Hortelã', image: 'imagens/veggie_ervilha_hortela.jpg', description: 'Uma combinação surpreendente e refrescante, inspirada na cozinha inglesa.'}
             ];
+            ];
             
-            // O resto do JavaScript para montar os cards e os modals...
+            const recipeListContainer = document.getElementById('recipe-list');
+            const modalsContainer = document.getElementById('modals-container');
+
+            recipes.forEach(recipe => {
+                // Criar o card da receita
+                const recipeCard = document.createElement('div');
+                recipeCard.className = 'bg-stone-800/50 p-6 md:p-8 rounded-lg shadow-lg backdrop-blur-sm';
+                recipeCard.innerHTML = `
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-8 items-center">
+                        <div class="md:col-span-1">
+                            <img src="${recipe.image}" alt="${recipe.name}" class="rounded-lg w-full h-full object-cover" onerror="this.onerror=null;this.src='https://placehold.co/400x400/333/FFF?text=Imagem+Indispon%C3%ADvel';">
+                        </div>
+                        <div class="md:col-span-2 text-center">
+                            <h3 class="text-3xl font-bold text-white mb-4">${recipe.name}</h3>
+                            <p class="text-stone-400 mb-6">${recipe.description}</p>
+                            <button data-modal-target="modal-${recipe.id}" class="open-modal-btn inline-block bg-orange-600 text-white font-bold px-6 py-3 rounded-lg hover:bg-orange-700 transition-colors">Ver Ficha Técnica</button>
+                        </div>
+                    </div>
+                `;
+                recipeListContainer.appendChild(recipeCard);
+
+                // Criar o modal correspondente, se houver steps
+                if (recipe.steps) {
+                    const modal = document.createElement('div');
+                    modal.id = `modal-${recipe.id}`;
+                    modal.className = 'modal-overlay fixed inset-0 bg-black bg-opacity-75 flex items-center justify-center p-4 hidden opacity-0 z-50';
+                    modal.innerHTML = `
+                        <div class="bg-stone-900/80 backdrop-blur-xl w-full max-w-4xl max-h-[90vh] overflow-y-auto p-8 rounded-2xl shadow-2xl border border-stone-700">
+                            <div class="flex justify-between items-center mb-6">
+                                <h2 class="text-3xl md:text-4xl font-black text-white">Ficha Técnica: <span class="text-orange-500">${recipe.name}</span></h2>
+                                <button class="close-modal-btn text-4xl text-stone-400 hover:text-white">&times;</button>
+                            </div>
+                            <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+                                <div>
+                                    <h3 class="text-2xl font-bold text-orange-400 mb-4">Planeamento</h3>
+                                    <div class="bg-stone-800 p-4 rounded-lg">
+                                        <label for="qty-input-${recipe.id}" class="block text-lg text-stone-300 mb-2">Quantidade de Hambúrgueres:</label>
+                                        <input type="number" id="qty-input-${recipe.id}" value="1" min="1" step="1" class="w-full p-2 border border-stone-600 bg-stone-700 text-white rounded-lg">
+                                    </div>
+                                    <div class="mt-6">
+                                        <h4 class="font-bold text-lg mb-2 text-orange-400">Lista de Compras:</h4>
+                                        <ul class="space-y-3 text-stone-300" id="ingredient-list-${recipe.id}"></ul>
+                                    </div>
+                                </div>
+                                <div>
+                                    <h3 class="text-2xl font-bold text-orange-400 mb-4">Tutorial de Preparo</h3>
+                                    <div class="space-y-6">
+                                        ${recipe.steps.map((step, index) => `
+                                            <div class="p-4 rounded-lg bg-stone-800">
+                                                <h4 class="font-bold text-lg text-white mb-2"><span class="bg-orange-600 text-white rounded-full w-8 h-8 inline-flex items-center justify-center mr-3">${index + 1}</span> ${step.title}</h4>
+                                                <p class="text-stone-300">${step.description}</p>
+                                                ${step.timer ? `<div class="mt-3 flex items-center gap-4"><button class="timer-btn bg-orange-500 text-white px-4 py-2 rounded-lg hover:bg-orange-600 transition" data-time="${step.timer}">Timer (${Math.floor(step.timer/60)}m ${step.timer%60}s)</button><span class="timer-display text-lg font-mono font-bold text-orange-400"></span></div>` : ''}
+                                            </div>
+                                        `).join('')}
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    `;
+                    modalsContainer.appendChild(modal);
+                }
+            });
+
+            // Lógica dos Modais e Calculadoras
+            const setupModal = (recipe) => {
+                const qtyInput = document.getElementById(`qty-input-${recipe.id}`);
+                const ingredientList = document.getElementById(`ingredient-list-${recipe.id}`);
+
+                if (!qtyInput || !ingredientList) return;
+
+                const updateQuantities = () => {
+                    const count = parseInt(qtyInput.value) || 1;
+                    let html = `<li class="flex justify-between items-center border-b border-stone-700 py-1 font-bold"><span>${recipe.baseIngredient}</span> <span>${count} unid.</span></li>`;
+                    recipe.components.forEach(comp => {
+                        let link = comp.link ? `<a href="${comp.link}" class="recipe-link" target="_blank">[Ver Guia]</a>` : '';
+                        let finalQty = (comp.qty * count);
+                        html += `<li class="flex justify-between items-center border-b border-stone-700 py-1"><span>${comp.name}</span> <span class="text-right">${finalQty} ${comp.unit} ${link}</span></li>`;
+                    });
+                    ingredientList.innerHTML = html;
+                };
+
+                qtyInput.addEventListener('input', updateQuantities);
+                updateQuantities();
+            };
+            
+            recipes.forEach(setupModal);
+            
+            // Lógica geral dos botões
+            const openModal = (modal) => {
+                document.body.style.overflow = 'hidden';
+                modal.classList.remove('hidden');
+                setTimeout(() => modal.classList.remove('opacity-0'), 10);
+            };
+
+            const closeModal = (modal) => {
+                document.body.style.overflow = '';
+                modal.classList.add('opacity-0');
+                setTimeout(() => modal.classList.add('hidden'), 300);
+            };
+
+            document.querySelectorAll('.open-modal-btn').forEach(button => {
+                button.addEventListener('click', () => {
+                    const modal = document.getElementById(button.dataset.modalTarget);
+                    if (modal) openModal(modal);
+                });
+            });
+
+            document.querySelectorAll('.close-modal-btn').forEach(button => {
+                button.addEventListener('click', () => {
+                    const modal = button.closest('.modal-overlay');
+                    if (modal) closeModal(modal);
+                });
+            });
+
+            document.querySelectorAll('.modal-overlay').forEach(modal => {
+                 modal.addEventListener('click', (e) => {
+                    if (e.target === modal) {
+                        closeModal(modal);
+                    }
+                });
+            });
+
+            // Lógica dos Timers
+            const timerButtons = document.querySelectorAll('.timer-btn');
+            let activeTimers = {};
+            timerButtons.forEach(button => {
+                button.addEventListener('click', (e) => {
+                    const timerId = `timer-${Math.random()}`;
+                    if (button.classList.contains('active')) return;
+                    let timeInSeconds = parseInt(e.target.dataset.time, 10);
+                    const display = e.target.nextElementSibling;
+                    button.classList.add('active');
+                    button.disabled = true;
+                    activeTimers[timerId] = setInterval(() => {
+                        const minutes = Math.floor(timeInSeconds / 60);
+                        const seconds = timeInSeconds % 60;
+                        display.textContent = `${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
+                        if (timeInSeconds <= 0) {
+                            clearInterval(activeTimers[timerId]);
+                            delete activeTimers[timerId];
+                            display.textContent = "Tempo esgotado!";
+                            button.classList.remove('active');
+                            button.disabled = false;
+                        } else {
+                            timeInSeconds--;
+                        }
+                    }, 1000);
+                });
+            });
+
+            // Lógica do botão flutuante
+            const fabContainer = document.getElementById('fab-container');
+            const fabButton = document.getElementById('fab-button');
+            const fabMenu = document.getElementById('fab-menu');
+
+            if (fabButton && fabMenu && fabContainer) {
+                fabButton.addEventListener('click', (e) => {
+                    e.stopPropagation();
+                    fabMenu.classList.toggle('hidden');
+                    fabMenu.classList.toggle('flex');
+                    fabContainer.classList.toggle('open');
+                });
+                document.addEventListener('click', (event) => {
+                    if (fabContainer.classList.contains('open') && !fabContainer.contains(event.target)) {
+                        fabMenu.classList.add('hidden');
+                        fabMenu.classList.remove('flex');
+                        fabContainer.classList.remove('open');
+                    }
+                });
+            }
         });
     </script>
 </body>
 </html>
+
