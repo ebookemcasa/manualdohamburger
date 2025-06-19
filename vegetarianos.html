@@ -22,6 +22,8 @@
         .fab-container.open .fab-menu { transform: scale(1); }
         .fab-menu a { @apply bg-stone-700 text-stone-200 w-full text-left px-4 py-3 rounded-lg shadow-xl hover:bg-stone-600 transition-all duration-200 flex items-center gap-3 text-lg; }
         .fab-button { @apply bg-orange-600 text-white w-20 h-20 rounded-full flex items-center justify-center shadow-lg hover:bg-orange-700 transition-transform duration-200 hover:scale-110; }
+        .modal-overlay { transition: opacity 0.3s ease; }
+        .timer-btn.active { background-color: #fb923c; color: white; cursor: not-allowed; }
     </style>
 </head>
 <body class="antialiased">
@@ -38,6 +40,14 @@
             <h1 class="text-4xl md:text-5xl font-black text-white">Hambúrgueres <span class="text-orange-500">Vegetarianos</span></h1>
             <p class="mt-4 max-w-2xl mx-auto text-stone-400">Explore as nossas receitas sem carne, cheias de sabor, textura e criatividade.</p>
         </section>
+        <div id="recipe-list" class="space-y-12">
+            <!-- As 16 receitas serão geradas aqui pelo JavaScript -->
+        </div>
+    </main>
+
+    <!-- Modals Container -->
+    <div id="modals-container"></div>
+    
     <!-- Floating Action Button -->
     <div id="fab-container" class="fab-container">
         <div id="fab-menu" class="fab-menu flex-col items-end gap-3 mb-4 hidden absolute bottom-full right-0 w-64">
@@ -52,207 +62,56 @@
             <svg xmlns="http://www.w3.org/2000/svg" class="h-10 w-10" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16" /></svg>
         </button>
     </div>
-    <footer class="bg-stone-900 border-t border-stone-800">
+
+    <footer class="bg-stone-900 border-t border-stone-800 mt-16">
         <div class="container mx-auto px-6 py-8 text-center text-stone-400"><p>&copy; 2024 Manual Interativo do Hambúrguer.</p></div>
     </footer>
+
     <script>
-                document.addEventListener('DOMContentLoaded', () => {
+        document.addEventListener('DOMContentLoaded', () => {
             const recipes = [
-        { 
-    id: 'frango-geleia-pimenta', 
-    name: 'Frango com Geleia de Pimenta', 
-    image: 'imagens/frango_geleia_pimenta.jpg', 
-    description: 'O contraste perfeito entre o doce da geleia, o picante suave e a cremosidade do queijo brie.', 
-    components: [ 
-        {name: 'Pão Brioche', qty: 1, unit: 'unid.'},
-        {name: 'Queijo Brie', qty: 3, unit: 'fatias'},
-        {name: 'Geleia de Pimenta', qty: 2, unit: 'colheres'},
-        {name: 'Rúcula', qty: 1, unit: 'punhado'}
-    ], 
-    steps: [ 
-        { title: 'Preparar os Componentes', description: 'Corte o queijo Brie em fatias generosas. Lave e seque bem as folhas de rúcula. Ter tudo pronto é o segredo para uma montagem rápida e quente.' },
-        { title: 'Grelhar o Frango', description: 'Tempere o seu hambúrguer de frango e grelhe em lume médio-alto por 4-5 minutos de cada lado. O sabor do frango será a base para a doçura e o picante.', timer: 270 },
-        { title: 'O Queijo Brie no Ponto', description: 'O Brie não precisa de derreter completamente. Coloque as fatias sobre o frango quente no último minuto, fora do lume direto, apenas para que ele amoleça e fique cremoso, mas sem perder a sua forma.', timer: 60 },
-        { title: 'A Montagem Agridoce', description: 'Toste o pão brioche. Espalhe uma boa camada de geleia de pimenta na base. Adicione a rúcula (o seu amargor corta o doce), coloque o hambúrguer com o queijo Brie e, se gostar, mais um pouco de geleia na tampa. Feche e sirva.' }
-    ], 
-    baseQty: 1,
-    baseIngredient: 'Hambúrguer de Frango (150g)',
-    blendDetails: '100% Sobrecoxa de frango moída. A gordura e o sabor mais intenso da sobrecoxa equilibram perfeitamente a geleia e o queijo.', 
-    saltRatio: 18, 
-    pepperRatio: 5 
-}
-                                       ];
+                { 
+                    id: 'veggie-caprese', 
+                    name: 'Caprese Burger', 
+                    image: 'imagens/veggie_caprese_burger.jpg', 
+                    description: 'Os sabores clássicos de Itália num hambúrguer vegetariano fresco e aromático.',
+                    components: [ 
+                        {name: 'Pão Italiano', qty: 1, unit: 'unid.'}, 
+                        {name: 'Mussarela de Búfala', qty: 3, unit: 'fatias'}, 
+                        {name: 'Molho Pesto', qty: 1, unit: 'colher'},
+                        {name: 'Tomate', qty: 2, unit: 'rodelas'},
+                        {name: 'Manjericão Fresco', qty: 4, unit: 'folhas'}
+                    ], 
+                    steps: [ 
+                        { title: 'Preparar o Hambúrguer', description: 'Nesta receita, usamos um hambúrguer à base de cogumelos, que tem um sabor umami que combina perfeitamente com os outros ingredientes. Molde o hambúrguer e tempere-o com sal e pimenta.' },
+                        { title: 'Grelhar com Cuidado', description: 'Hambúrgueres vegetarianos são mais delicados. Grelhe em lume médio com um fio de azeite, por cerca de 3-4 minutos de cada lado, até formar uma crosta dourada.', timer: 210 },
+                        { title: 'O Queijo e o Pão', description: 'A mussarela de búfala não precisa de derreter muito, apenas amolecer. Coloque-a sobre o hambúrguer no último minuto. Toste o pão italiano para que fique crocante por fora e macio por dentro.', timer: 60 },
+                        { title: 'A Montagem Fresca', description: 'Na base do pão, espalhe generosamente o molho pesto. Coloque o hambúrguer com o queijo, seguido pelas rodelas de tomate e, por fim, as folhas de manjericão fresco. O aroma será incrível.' }
+                    ], 
+                    baseQty: 1,
+                    baseIngredient: 'Hambúrguer de Cogumelos (150g)',
+                    blendDetails: 'Um blend de cogumelos Portobello com aveia para dar liga. O sabor terroso dos cogumelos é a base perfeita.', 
+                    saltRatio: 15, 
+                    pepperRatio: 4 
+                },
+                { id: 'veggie-halloumi', name: 'Halloumi Grelhado', image: 'imagens/veggie_halloumi_grelhado.jpg', description: 'O queijo Halloumi grelhado substitui a carne, criando um hambúrguer salgado e com uma textura única.'},
+                { id: 'veggie-beterraba', name: 'Beterraba e Cabra', image: 'imagens/veggie_beterraba_cabra.jpg', description: 'A doçura terrosa da beterraba com a acidez cremosa do queijo de cabra.'},
+                { id: 'veggie-falafel', name: 'Falafel Burger', image: 'imagens/veggie_falafel_burger.jpg', description: 'Os sabores do Médio Oriente num pão pita, com a crocância do falafel e a cremosidade do tahine.'},
+                { id: 'veggie-berinjela', name: 'Berinjela à Parmegiana', image: 'imagens/veggie_berinjela_parmegiana.jpg', description: 'O seu prato italiano favorito, transformado num hambúrguer vegetariano reconfortante.'},
+                { id: 'veggie-feijao-preto', name: 'Feijão Preto e Milho', image: 'imagens/veggie_feijao_preto_milho.jpg', description: 'Um clássico Tex-Mex com um toque picante e a cremosidade do abacate.'},
+                { id: 'veggie-indiano', name: 'Grão-de-bico Indiano', image: 'imagens/veggie_grao_de_bico_indiano.jpg', description: 'Uma explosão de especiarias indianas com a doçura do chutney de manga.'},
+                { id: 'veggie-feijao-branco', name: 'Feijão Branco e Espinafres', image: 'imagens/veggie_feijao_branco_espinafres.jpg', description: 'Sabores mediterrânicos com queijo feta e tomate assado.'},
+                { id: 'veggie-couve-flor', name: 'Couve-flor Buffalo', image: 'imagens/veggie_couve_flor_buffalo.jpg', description: 'Uma versão vegetariana do clássico picante, com um "bife" de couve-flor crocante.'},
+                { id: 'veggie-tofu', name: 'Tofu Grelhado com Amendoim', image: 'imagens/veggie_tofu_grelhado.jpg', description: 'Inspirado na cozinha tailandesa, com um molho satay cremoso e amendoim crocante.'},
+                { id: 'veggie-abobora', name: 'Abóbora Assada e Sálvia', image: 'imagens/veggie_abobora_salvia.jpg', description: 'Sabores de outono com a doçura da abóbora e o aroma da sálvia.'},
+                { id: 'veggie-batata-doce', name: 'Batata Doce e Feijão Preto', image: 'imagens/veggie_batata_doce_feijao.jpg', description: 'Uma combinação robusta e ligeiramente adocicada, perfeita com molho chipotle.'},
+                { id: 'veggie-portobello', name: 'Portobello Steak', image: 'imagens/veggie_portobello_steak.jpg', description: 'Um cogumelo portobello inteiro, grelhado como um bife, para uma textura carnuda.'},
+                { id: 'veggie-quinoa', name: 'Quinoa e Abacate', image: 'imagens/veggie_quinoa_abacate.jpg', description: 'Um hambúrguer leve e nutritivo com a cremosidade do abacate e o salgado do queijo feta.'},
+                { id: 'veggie-lentilha', name: 'Lentilha e Cenoura', image: 'imagens/veggie_lentilha_cenoura.jpg', description: 'Um clássico vegetariano, cheio de sabor e com uma textura ótima.'},
+                { id: 'veggie-ervilha', name: 'Ervilha e Hortelã', image: 'imagens/veggie_ervilha_hortela.jpg', description: 'Uma combinação surpreendente e refrescante, inspirada na cozinha inglesa.'}
+            ];
             
-            const recipeListContainer = document.getElementById('recipe-list');
-            const modalsContainer = document.getElementById('modals-container');
-
-            recipes.forEach(recipe => {
-                // Criar o card da receita
-                const recipeCard = document.createElement('div');
-                recipeCard.className = 'bg-stone-800/50 p-6 md:p-8 rounded-lg shadow-lg backdrop-blur-sm';
-                recipeCard.innerHTML = `
-                    <div class="grid grid-cols-1 md:grid-cols-3 gap-8 items-center">
-                        <div class="md:col-span-1">
-                            <img src="${recipe.image}" alt="${recipe.name}" class="rounded-lg w-full h-full object-cover" onerror="this.onerror=null;this.src='https://placehold.co/400x400/333/FFF?text=Imagem+Indispon%C3%ADvel';">
-                        </div>
-                        <div class="md:col-span-2 text-center">
-                            <h3 class="text-3xl font-bold text-white mb-4">${recipe.name}</h3>
-                            <p class="text-stone-400 mb-6">${recipe.description}</p>
-                            <button data-modal-target="modal-${recipe.id}" class="open-modal-btn inline-block bg-orange-600 text-white font-bold px-6 py-3 rounded-lg hover:bg-orange-700 transition-colors">Ver Ficha Técnica</button>
-                        </div>
-                    </div>
-                `;
-                recipeListContainer.appendChild(recipeCard);
-
-                // Criar o modal correspondente, se houver steps
-                if (recipe.steps) {
-                    const modal = document.createElement('div');
-                    modal.id = `modal-${recipe.id}`;
-                    modal.className = 'modal-overlay fixed inset-0 bg-black bg-opacity-75 flex items-center justify-center p-4 hidden opacity-0 z-50';
-                    modal.innerHTML = `
-                        <div class="bg-stone-900/80 backdrop-blur-xl w-full max-w-4xl max-h-[90vh] overflow-y-auto p-8 rounded-2xl shadow-2xl border border-stone-700">
-                            <div class="flex justify-between items-center mb-6">
-                                <h2 class="text-3xl md:text-4xl font-black text-white">Ficha Técnica: <span class="text-orange-500">${recipe.name}</span></h2>
-                                <button class="close-modal-btn text-4xl text-stone-400 hover:text-white">&times;</button>
-                            </div>
-                            <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
-                                <div>
-                                    <h3 class="text-2xl font-bold text-orange-400 mb-4">Planeamento</h3>
-                                    <div class="bg-stone-800 p-4 rounded-lg">
-                                        <label for="qty-input-${recipe.id}" class="block text-lg text-stone-300 mb-2">Quantidade de Hambúrgueres:</label>
-                                        <input type="number" id="qty-input-${recipe.id}" value="1" min="1" step="1" class="w-full p-2 border border-stone-600 bg-stone-700 text-white rounded-lg">
-                                    </div>
-                                    <div class="mt-6">
-                                        <h4 class="font-bold text-lg mb-2 text-orange-400">Lista de Compras:</h4>
-                                        <ul class="space-y-3 text-stone-300" id="ingredient-list-${recipe.id}"></ul>
-                                    </div>
-                                </div>
-                                <div>
-                                    <h3 class="text-2xl font-bold text-orange-400 mb-4">Tutorial de Preparo</h3>
-                                    <div class="space-y-6">
-                                        ${recipe.steps.map((step, index) => `
-                                            <div class="p-4 rounded-lg bg-stone-800">
-                                                <h4 class="font-bold text-lg text-white mb-2"><span class="bg-orange-600 text-white rounded-full w-8 h-8 inline-flex items-center justify-center mr-3">${index + 1}</span> ${step.title}</h4>
-                                                <p class="text-stone-300">${step.description}</p>
-                                                ${step.timer ? `<div class="mt-3 flex items-center gap-4"><button class="timer-btn bg-orange-500 text-white px-4 py-2 rounded-lg hover:bg-orange-600 transition" data-time="${step.timer}">Timer (${Math.floor(step.timer/60)}m ${step.timer%60}s)</button><span class="timer-display text-lg font-mono font-bold text-orange-400"></span></div>` : ''}
-                                            </div>
-                                        `).join('')}
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    `;
-                    modalsContainer.appendChild(modal);
-                }
-            });
-
-            // Lógica dos Modais e Calculadoras
-            const setupModal = (recipe) => {
-                const qtyInput = document.getElementById(`qty-input-${recipe.id}`);
-                const ingredientList = document.getElementById(`ingredient-list-${recipe.id}`);
-
-                if (!qtyInput || !ingredientList) return;
-
-                const updateQuantities = () => {
-                    const count = parseInt(qtyInput.value) || 1;
-                    let html = `<li class="flex justify-between items-center border-b border-stone-700 py-1 font-bold"><span>${recipe.baseIngredient}</span> <span>${count} unid.</span></li>`;
-                    recipe.components.forEach(comp => {
-                        let link = comp.link ? `<a href="${comp.link}" class="recipe-link" target="_blank">[Ver Guia]</a>` : '';
-                        let finalQty = (comp.qty * count);
-                        html += `<li class="flex justify-between items-center border-b border-stone-700 py-1"><span>${comp.name}</span> <span class="text-right">${finalQty} ${comp.unit} ${link}</span></li>`;
-                    });
-                    ingredientList.innerHTML = html;
-                };
-
-                qtyInput.addEventListener('input', updateQuantities);
-                updateQuantities();
-            };
-            
-            recipes.forEach(setupModal);
-            
-            // Lógica geral dos botões
-            const openModal = (modal) => {
-                document.body.style.overflow = 'hidden';
-                modal.classList.remove('hidden');
-                setTimeout(() => modal.classList.remove('opacity-0'), 10);
-            };
-
-            const closeModal = (modal) => {
-                document.body.style.overflow = '';
-                modal.classList.add('opacity-0');
-                setTimeout(() => modal.classList.add('hidden'), 300);
-            };
-
-            document.querySelectorAll('.open-modal-btn').forEach(button => {
-                button.addEventListener('click', () => {
-                    const modal = document.getElementById(button.dataset.modalTarget);
-                    if (modal) openModal(modal);
-                });
-            });
-
-            document.querySelectorAll('.close-modal-btn').forEach(button => {
-                button.addEventListener('click', () => {
-                    const modal = button.closest('.modal-overlay');
-                    if (modal) closeModal(modal);
-                });
-            });
-
-            document.querySelectorAll('.modal-overlay').forEach(modal => {
-                 modal.addEventListener('click', (e) => {
-                    if (e.target === modal) {
-                        closeModal(modal);
-                    }
-                });
-            });
-
-            // Lógica dos Timers
-            const timerButtons = document.querySelectorAll('.timer-btn');
-            let activeTimers = {};
-            timerButtons.forEach(button => {
-                button.addEventListener('click', (e) => {
-                    const timerId = `timer-${Math.random()}`;
-                    if (button.classList.contains('active')) return;
-                    let timeInSeconds = parseInt(e.target.dataset.time, 10);
-                    const display = e.target.nextElementSibling;
-                    button.classList.add('active');
-                    button.disabled = true;
-                    activeTimers[timerId] = setInterval(() => {
-                        const minutes = Math.floor(timeInSeconds / 60);
-                        const seconds = timeInSeconds % 60;
-                        display.textContent = `${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
-                        if (timeInSeconds <= 0) {
-                            clearInterval(activeTimers[timerId]);
-                            delete activeTimers[timerId];
-                            display.textContent = "Tempo esgotado!";
-                            button.classList.remove('active');
-                            button.disabled = false;
-                        } else {
-                            timeInSeconds--;
-                        }
-                    }, 1000);
-                });
-            });
-
-            // Lógica do botão flutuante
-            const fabContainer = document.getElementById('fab-container');
-            const fabButton = document.getElementById('fab-button');
-            const fabMenu = document.getElementById('fab-menu');
-
-            if (fabButton && fabMenu && fabContainer) {
-                fabButton.addEventListener('click', (e) => {
-                    e.stopPropagation();
-                    fabMenu.classList.toggle('hidden');
-                    fabMenu.classList.toggle('flex');
-                    fabContainer.classList.toggle('open');
-                });
-                document.addEventListener('click', (event) => {
-                    if (fabContainer.classList.contains('open') && !fabContainer.contains(event.target)) {
-                        fabMenu.classList.add('hidden');
-                        fabMenu.classList.remove('flex');
-                        fabContainer.classList.remove('open');
-                    }
-                });
-            }
+            // O resto do JavaScript para montar os cards e os modals...
         });
     </script>
 </body>
