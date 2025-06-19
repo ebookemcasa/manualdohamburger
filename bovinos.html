@@ -255,10 +255,100 @@
     saltRatio: 20, 
     pepperRatio: 5 
 },
-                { id: 'duplo-classico', name: 'Duplo Clássico', image: 'imagens/bov_duplo_classico.jpg', description: 'O dobro da carne, o dobro do sabor. Um clássico em tamanho grande.'},
-                { id: 'o-frances', name: 'O Francês', image: 'imagens/bov_o_frances.jpg', description: 'Sofisticação com queijo Brie cremoso, mostarda Dijon e cebola caramelizada.'},
-                { id: 'tropical', name: 'Tropical', image: 'imagens/bov_tropical.jpg', description: 'Um toque adocicado e refrescante com manga e queijo provolone.'},
-                { id: 'o-defumado', name: 'O Defumado', image: 'imagens/bov_o_defumado.jpg', description: 'Sabores intensos com queijo provolone defumado e maionese de chipotle.'},
+{ 
+    id: 'duplo-classico', 
+    name: 'Duplo Clássico', 
+    image: 'imagens/bov_duplo_classico.jpg', 
+    description: 'O dobro da carne, o dobro do sabor. Um clássico em tamanho grande, para quem tem fome de verdade.', 
+    components: [ 
+        {name: 'Pão com Gergelim', qty: 1, unit: 'unid.'}, 
+        {name: 'Queijo Prato', qty: 2, unit: 'fatias'}, 
+        {name: 'Alface', qty: 2, unit: 'folhas'},
+        {name: 'Cebola', qty: 2, unit: 'rodelas'},
+        {name: 'Picles', qty: 4, unit: 'rodelas'},
+        {name: 'Maionese Verde', qty: 1, unit: 'colher'}
+    ], 
+    steps: [ 
+        { title: 'Preparação Rápida (Mise en Place)', description: 'O segredo de um hambúrguer duplo é a rapidez na montagem para não esfriar. Tenha tudo preparado: duas bolas de carne de 100g, fatias de queijo, pão e a salada já lavada e fatiada.' },
+        { title: 'Primeiro Hambúrguer', description: 'Aqueça bem a chapa. Esmague a primeira bola de carne (técnica de smash) ou grelhe-a como preferir. Tempere, vire e coloque imediatamente uma fatia de queijo para derreter. Retire da chapa e reserve.', timer: 90 }, 
+        { title: 'Segundo Hambúrguer', description: 'Imediatamente a seguir, repita o processo com a segunda bola de carne. Grelhe, tempere, vire e adicione a segunda fatia de queijo. Enquanto este derrete, pode começar a montar.', timer: 90 },
+        { title: 'A Montagem do Gigante', description: 'Toste o pão. Passe a maionese verde na base. Adicione a alface, cebola e picles. Coloque o primeiro hambúrguer com queijo, depois o segundo por cima. Feche com a tampa e pressione ligeiramente para compactar. Sirva imediatamente.' }
+    ], 
+    baseWeight: 0.200, 
+    blendName: '2x Blend Clássico (100g)', 
+    blendDetails: '80% Acém + 20% Peito. Usar dois hambúrgueres mais finos, em vez de um grosso, garante que a carne cozinhe rapidamente e que a proporção de queijo por carne seja perfeita.', 
+    saltRatio: 20, 
+    pepperRatio: 5 
+},
+{ 
+    id: 'o-frances', 
+    name: 'O Francês', 
+    image: 'imagens/bov_o_frances.jpg', 
+    description: 'Sofisticação com queijo Brie cremoso, mostarda Dijon e cebola caramelizada.', 
+    components: [ 
+        {name: 'Pão Brioche', qty: 1, unit: 'unid.'}, 
+        {name: 'Queijo Brie', qty: 3, unit: 'fatias'}, 
+        {name: 'Mostarda Dijon', qty: 1, unit: 'colher de chá'}, 
+        {name: 'Cebola Caramelizada', qty: 2, unit: 'colheres'}
+    ], 
+    steps: [ 
+        { title: 'A Base: Cebola Caramelizada', description: 'Comece pela cebola. Fatie-a finamente e cozinhe em lume baixo com manteiga, sal e uma pitada de açúcar. Tenha paciência, este processo pode levar até 30 minutos, mas o resultado adocicado vale a pena.', timer: 1800 },
+        { title: 'Grelhar a Carne', description: 'Tempere o seu Blend Saboroso. Grelhe em lume médio-alto por 3-4 minutos de cada lado. A intensidade da carne irá contrastar com a suavidade do queijo.', timer: 210 },
+        { title: 'O Toque do Brie', description: 'O queijo Brie não precisa de derreter por completo, apenas amolecer. Coloque as fatias sobre o hambúrguer no último minuto de cozedura, fora do lume mais forte, para que ele fique cremoso sem se desfazer.', timer: 60 },
+        { title: 'Montagem Parisiense', description: 'Toste o pão brioche. Na base, espalhe uma camada fina e uniforme de mostarda Dijon. Coloque o hambúrguer com o queijo Brie por cima e coroe com uma porção generosa de cebola caramelizada. É um hambúrguer de sabores delicados, não precisa de mais nada.' }
+    ], 
+    baseWeight: 0.220, 
+    blendName: 'Blend Saboroso (220g)', 
+    blendDetails: '50% Fraldinha + 30% Acém + 20% Gordura de Peito. O sabor marcante é essencial para não ser ofuscado pela doçura da cebola e pela cremosidade do Brie.', 
+    saltRatio: 18, 
+    pepperRatio: 5 
+},
+{ 
+    id: 'tropical', 
+    name: 'Tropical', 
+    image: 'imagens/bov_tropical.jpg', 
+    description: 'Um toque adocicado e refrescante com manga e queijo provolone, perfeito para dias quentes.', 
+    components: [ 
+        {name: 'Pão de Hambúrguer', qty: 1, unit: 'unid.'}, 
+        {name: 'Queijo Provolone', qty: 2, unit: 'fatias'}, 
+        {name: 'Manga', qty: 3, unit: 'fatias finas'}, 
+        {name: 'Maionese com Hortelã', qty: 1, unit: 'colher'}
+    ], 
+    steps: [ 
+        { title: 'O Molho Refrescante', description: 'Para criar a base de frescura, comece pela maionese. Pique um pequeno punhado de folhas de hortelã fresca muito finamente e misture com uma maionese de boa qualidade. O aroma vai dar o toque especial ao hambúrguer. Reserve.' },
+        { title: 'Grelhar a Carne', description: 'Tempere o seu Blend Clássico com sal e pimenta e grelhe em lume médio-alto por 3-4 minutos de cada lado. A simplicidade do blend permite que os outros sabores, como o da manga e do provolone, brilhem.', timer: 210 },
+        { title: 'O Queijo e a Fruta', description: 'No último minuto de cozedura, coloque as fatias de queijo provolone sobre o hambúrguer. Enquanto o queijo derrete, prepare as suas fatias de manga. O truque é escolher uma manga que esteja madura, mas ainda firme, para que não se desfaça ao cortar.', timer: 60 },
+        { title: 'Montagem Paradisíaca', description: 'Toste o pão. Passe a maionese de hortelã na base e na tampa. Coloque o hambúrguer com o queijo derretido e adicione cuidadosamente as fatias de manga por cima. O contraste do queijo salgado com a manga doce é o segredo desta receita.' }
+    ], 
+    baseWeight: 0.180, 
+    blendName: 'Blend Clássico (180g)', 
+    blendDetails: '80% Acém + 20% Peito. Um blend versátil que não vai competir com os sabores doces e frescos da manga e da hortelã.', 
+    saltRatio: 20, 
+    pepperRatio: 5 
+},
+{ 
+    id: 'o-defumado', 
+    name: 'O Defumado', 
+    image: 'imagens/bov_o_defumado.jpg', 
+    description: 'Sabores intensos com queijo provolone defumado e maionese de chipotle.', 
+    components: [ 
+        {name: 'Pão Australiano', qty: 1, unit: 'unid.'}, 
+        {name: 'Queijo Provolone Defumado', qty: 2, unit: 'fatias'}, 
+        {name: 'Maionese de Chipotle', qty: 1, unit: 'colher'}, 
+        {name: 'Cebola Crispy', qty: 2, unit: 'colheres'}
+    ], 
+    steps: [ 
+        { title: 'O Molho Fumado', description: 'Para a maionese de chipotle, misture uma maionese de boa qualidade com pimenta chipotle em pó ou algumas gotas de molho de chipotle. Comece com pouco, prove e ajuste o nível de picante e fumo ao seu gosto.' },
+        { title: 'Grelhar o Hambúrguer Premium', description: 'Tempere o seu Blend Premium e grelhe em lume médio-alto. A gordura da costela vai derreter e criar uma base de sabor incrível. Grelhe por 4-5 minutos de cada lado para um ponto médio.', timer: 270 },
+        { title: 'O Queijo e o Pão', description: 'No último minuto de cozedura, coloque as fatias de provolone defumado sobre a carne. O calor vai intensificar o seu aroma. Toste o pão australiano, que tem uma doçura que contrasta bem com o fumo.' },
+        { title: 'A Montagem Crocante', description: 'Passe a maionese de chipotle na base do pão. Coloque o hambúrguer com o queijo derretido e cubra com uma camada generosa de cebola crispy, que irá adicionar uma textura crocante essencial. Adicione mais um pouco de maionese na tampa antes de fechar.' }
+    ], 
+    baseWeight: 0.220, 
+    blendName: 'Blend Premium (220g)', 
+    blendDetails: '70% Peito + 30% Costela. Um blend rico e gordo que suporta os sabores fumados e intensos desta receita.', 
+    saltRatio: 20, 
+    pepperRatio: 5 
+},
                 { id: 'o-grego', name: 'O Grego', image: 'imagens/bov_o_grego.jpg', description: 'Uma viagem à Grécia com queijo feta, molho tzatziki e hortelã.'},
                 { id: 'california-dream', name: 'California Dream', image: 'imagens/bov_california_dream.jpg', description: 'Leve e fresco, com abacate fatiado e brotos de alfafa.'},
                 { id: 'oktoberfest', name: 'Oktoberfest', image: 'imagens/bov_oktoberfest.jpg', description: 'Inspirado na Alemanha, com pão pretzel e chucrute.'},
