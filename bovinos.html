@@ -349,17 +349,266 @@
     saltRatio: 20, 
     pepperRatio: 5 
 },
-                { id: 'o-grego', name: 'O Grego', image: 'imagens/bov_o_grego.jpg', description: 'Uma viagem à Grécia com queijo feta, molho tzatziki e hortelã.'},
-                { id: 'california-dream', name: 'California Dream', image: 'imagens/bov_california_dream.jpg', description: 'Leve e fresco, com abacate fatiado e brotos de alfafa.'},
-                { id: 'oktoberfest', name: 'Oktoberfest', image: 'imagens/bov_oktoberfest.jpg', description: 'Inspirado na Alemanha, com pão pretzel e chucrute.'},
-                { id: 'jalapeno-popper', name: 'Jalapeño Popper', image: 'imagens/bov_jalapeno_popper.jpg', description: 'O seu aperitivo favorito transformado em hambúrguer, recheado com cream cheese e jalapeños.'},
-                { id: 'patty-melt', name: 'Patty Melt', image: 'imagens/bov_patty_melt.jpg', description: 'Um clássico americano, grelhado como uma tosta mista em pão de forma.'},
-                { id: 'chili-burger', name: 'Chili Burger', image: 'imagens/bov_chili_burger.jpg', description: 'Uma refeição completa, coberto com um chili de carne robusto.'},
-                { id: 'manteiga-ervas', name: 'Manteiga de Alho e Ervas', image: 'imagens/bov_manteiga_ervas.jpg', description: 'A simplicidade de uma manteiga composta que derrete sobre a carne quente.'},
-                { id: 'surf-n-turf', name: 'Surf n\' Turf', image: 'imagens/bov_surf_n_turf.jpg', description: 'A união perfeita da terra e do mar, com camarões salteados.'},
-                { id: 'geleia-bacon', name: 'Geleia de Bacon', image: 'imagens/bov_geleia_bacon.jpg', description: 'O contraste agridoce e fumado da geleia de bacon caseira.'},
-                { id: 'picles-frito', name: 'Picles Frito Crocante', image: 'imagens/bov_picles_frito.jpg', description: 'Textura e acidez em dobro com picles fritos crocantes.'},
-                { id: 'cheddar-supremo', name: 'O Cheddar Supremo', image: 'imagens/bov_cheddar_supremo.jpg', description: 'Um banho de molho de queijo cheddar cremoso sobre o hambúrguer.'},
+{ 
+    id: 'o-grego', 
+    name: 'O Grego', 
+    image: 'imagens/bov_o_grego.jpg', 
+    description: 'Uma viagem à Grécia com queijo feta, molho tzatziki e o frescor da hortelã.', 
+    components: [ 
+        {name: 'Pão de Hambúrguer', qty: 1, unit: 'unid.'}, 
+        {name: 'Queijo Feta', qty: 30, unit: 'g'}, 
+        {name: 'Molho Tzatziki', qty: 2, unit: 'colheres'}, 
+        {name: 'Pepino', qty: 3, unit: 'rodelas finas'},
+        {name: 'Cebola Roxa', qty: 2, unit: 'rodelas finas'},
+        {name: 'Hortelã Fresca', qty: 1, unit: 'ramo'}
+    ], 
+    steps: [ 
+        { title: 'O Molho Tzatziki', description: 'A frescura é a chave aqui. Rale meio pepino e esprema bem com as mãos para retirar o excesso de água. Misture com iogurte grego natural, um dente de alho picado muito fino, sumo de limão e uma pitada de sal. Deixe no frigorífico enquanto prepara o resto.' },
+        { title: 'A Carne com Hortelã', description: 'Pique finamente algumas folhas de hortelã fresca e misture gentilmente na sua carne moída antes de formar o hambúrguer. Não misture demasiado para não aquecer a carne. Molde o hambúrguer e tempere o exterior com sal e pimenta.' },
+        { title: 'Grelhar na Perfeição', description: 'Aqueça bem a chapa. Grelhe o hambúrguer por 3-4 minutos de cada lado. O aroma da hortelã a cozinhar com a carne vai perfumar a sua cozinha.', timer: 210 },
+        { title: 'Montagem Mediterrânea', description: 'Toste o pão. Na base, coloque uma camada generosa de molho tzatziki. Adicione o hambúrguer, esfarele o queijo feta por cima e finalize com as rodelas finas de pepino e cebola roxa. O resultado é um hambúrguer incrivelmente fresco e saboroso.' }
+    ], 
+    baseWeight: 0.180, 
+    blendName: 'Blend Clássico com Hortelã (180g)', 
+    blendDetails: '80% Acém + 20% Peito. A hortelã adiciona um toque de frescura inesperado que eleva o sabor da carne.', 
+    saltRatio: 20, 
+    pepperRatio: 5 
+},
+{ 
+    id: 'california-dream', 
+    name: 'California Dream', 
+    image: 'imagens/bov_california_dream.jpg', 
+    description: 'Leve e fresco, com abacate fatiado e brotos de alfafa, um sabor da Califórnia.', 
+    components: [ 
+        {name: 'Pão de Brioche', qty: 1, unit: 'unid.'}, 
+        {name: 'Queijo Monterey Jack', qty: 2, unit: 'fatias'}, 
+        {name: 'Abacate', qty: 0.5, unit: 'unid.'}, 
+        {name: 'Brotos de Alfafa', qty: 1, unit: 'punhado'}
+    ], 
+    steps: [ 
+        { title: 'Preparar os Ingredientes Frescos', description: 'O segredo deste hambúrguer é a frescura. Fatie o abacate na hora da montagem para não oxidar. Lave e seque bem os brotos de alfafa.'},
+        { title: 'Grelhar a Carne', description: 'Tempere o seu Blend Clássico e grelhe em lume médio-alto por 3-4 minutos de cada lado. Este blend mais suave permite que o sabor cremoso do abacate se destaque.', timer: 210 },
+        { title: 'O Queijo Suave', description: 'O Monterey Jack é um queijo suave que derrete muito bem. Coloque as fatias sobre o hambúrguer no último minuto de cozedura para que fique cremoso e cubra a carne.', timer: 60 },
+        { title: 'Montagem Leve e Fresca', description: 'Toste o pão. Na base, coloque o hambúrguer com o queijo derretido. Disponha as fatias de abacate por cima e finalize com um generoso punhado de brotos de alfafa, que darão uma textura crocante e um sabor herbal.' }
+    ], 
+    baseWeight: 0.180, 
+    blendName: 'Blend Clássico (180g)', 
+    blendDetails: '80% Acém + 20% Peito. A neutralidade deste blend é ideal para não sobrecarregar a delicadeza do abacate.', 
+    saltRatio: 20, 
+    pepperRatio: 5 
+},
+{ 
+    id: 'oktoberfest', 
+    name: 'Oktoberfest', 
+    image: 'imagens/bov_oktoberfest.jpg', 
+    description: 'Inspirado na Alemanha, com pão pretzel, chucrute e mostarda doce, uma festa de sabores.', 
+    components: [ 
+        {name: 'Pão Pretzel', qty: 1, unit: 'unid.'}, 
+        {name: 'Queijo Muenster', qty: 2, unit: 'fatias'}, 
+        {name: 'Mostarda Doce', qty: 1, unit: 'colher'}, 
+        {name: 'Chucrute', qty: 2, unit: 'colheres'}
+    ], 
+    steps: [ 
+        { title: 'O Coração Alemão: Chucrute', description: 'O chucrute (repolho fermentado) é a alma desta receita. Pode usar de compra ou fazer em casa. Se for de compra, escorra-o bem para retirar o excesso de líquido antes de o usar.' },
+        { title: 'A Carne Especial', description: 'Este hambúrguer usa um blend de porco e vitela, que é mais suave. É muito importante que esta carne seja bem cozinhada. Grelhe em lume médio por cerca de 5-6 minutos de cada lado, até não haver qualquer parte rosada no interior.', timer: 330 },
+        { title: 'O Queijo e o Pão', description: 'O queijo Muenster é suave e derrete maravilhosamente. Coloque as fatias sobre a carne no último minuto de cozedura. O pão pretzel tem uma casca única; toste-o levemente para realçar o seu sabor característico.', timer: 60 },
+        { title: 'Montagem Festiva', description: 'No pão pretzel tostado, passe uma camada generosa de mostarda doce. Coloque o hambúrguer com o queijo derretido e cubra com uma boa porção de chucrute. Feche e sirva com uma cerveja alemã!' }
+    ], 
+    baseWeight: 0.200, 
+    blendName: 'Blend Porco e Vitela (200g)', 
+    blendDetails: '50% Carne de Porco moída + 50% Carne de Vitela moída. Uma combinação clássica alemã, mais leve e suculenta. Peça ao seu talhante para moer lombo de porco e pá de vitela.', 
+    saltRatio: 18, 
+    pepperRatio: 4 
+},
+{ 
+    id: 'jalapeno-popper', 
+    name: 'Jalapeño Popper', 
+    image: 'imagens/bov_jalapeno_popper.jpg', 
+    description: 'O seu aperitivo favorito transformado em hambúrguer, com um coração cremoso e picante de cream cheese e jalapeños.', 
+    components: [ 
+        {name: 'Pão com Gergelim', qty: 1, unit: 'unid.'}, 
+        {name: 'Queijo Cheddar', qty: 1, unit: 'fatia'},
+        {name: 'Bacon', qty: 3, unit: 'fatias'},
+        {name: 'Cream Cheese', qty: 1, unit: 'colher de sopa'},
+        {name: 'Jalapeños Picados', qty: 1, unit: 'colher de chá'}
+    ], 
+    steps: [ 
+        { title: 'O Recheio Cremoso', description: 'O segredo está no coração do hambúrguer. Numa tigela pequena, misture bem o cream cheese com os jalapeños finamente picados. Para menos picante, retire as sementes dos jalapeños.' },
+        { title: 'Rechear o Hambúrguer', description: 'Divida a sua porção de carne em duas partes iguais e achate-as. Coloque a mistura de cream cheese no centro de uma das partes. Cubra com a outra parte da carne e feche bem as bordas, garantindo que o recheio está completamente selado lá dentro. Molde novamente no formato de hambúrguer.'},
+        { title: 'Grelhar com Cuidado', description: 'Como este hambúrguer é recheado, ele precisa de um lume médio para cozinhar por dentro sem queimar por fora. Grelhe por cerca de 5-6 minutos de cada lado. Evite pressionar a carne para não fazer o recheio vazar.', timer: 330 },
+        { title: 'Finalizar e Montar', description: 'Enquanto o hambúrguer grelha, frite o bacon. No último minuto, coloque a fatia de cheddar sobre a carne. Toste o pão, monte o hambúrguer com o queijo, o bacon crocante por cima e sirva imediatamente.' }
+    ], 
+    baseWeight: 0.200, 
+    blendName: 'Blend Clássico (200g)', 
+    blendDetails: '80% Acém + 20% Peito. Um blend versátil que cria uma boa estrutura para segurar o recheio cremoso.', 
+    saltRatio: 20, 
+    pepperRatio: 5 
+},
+{ 
+    id: 'patty-melt', 
+    name: 'Patty Melt', 
+    image: 'imagens/bov_patty_melt.jpg', 
+    description: 'Um clássico americano, grelhado como uma tosta mista em pão de forma, com queijo suíço e cebola caramelizada.', 
+    components: [ 
+        {name: 'Pão de Forma', qty: 2, unit: 'fatias'}, 
+        {name: 'Queijo Suíço', qty: 4, unit: 'fatias'},
+        {name: 'Cebola Caramelizada', qty: 2, unit: 'colheres'},
+        {name: 'Manteiga', qty: 1, unit: 'colher'}
+    ], 
+    steps: [ 
+        { title: 'A Base: Cebola Caramelizada', description: 'Comece pelas cebolas, pois elas demoram mais tempo. Fatie finamente uma cebola e cozinhe-a em lume baixo com um pouco de manteiga e sal, mexendo ocasionalmente, até ficar bem dourada e doce. Este processo pode levar de 20 a 30 minutos.', timer: 1500 },
+        { title: 'O Hambúrguer Fino', description: 'Molde a sua carne num formato mais retangular ou oval, para que se ajuste ao pão de forma. Como é mais fino, ele cozinhará rapidamente. Grelhe em lume médio-alto por cerca de 2 minutos de cada lado.', timer: 120 },
+        { title: 'A Montagem (Como uma Tosta)', description: 'Aqui está o segredo: monte o sanduíche antes de o finalizar. A ordem é: uma fatia de pão, uma fatia de queijo, o hambúrguer, uma camada de cebola caramelizada, outra fatia de queijo e, finalmente, a outra fatia de pão.'},
+        { title: 'Grelhar na Manteiga', description: 'Passe manteiga generosamente no lado de fora das duas fatias de pão. Leve o sanduíche inteiro de volta para a frigideira em lume médio-baixo. Grelhe por 3-4 minutos de cada lado, pressionando levemente com a espátula, até o pão ficar dourado e crocante e o queijo completamente derretido.', timer: 210 }
+    ], 
+    baseWeight: 0.150, 
+    blendName: 'Blend Clássico Fino (150g)', 
+    blendDetails: '80% Acém + 20% Peito. Um hambúrguer mais fino é tradicional para o Patty Melt, garantindo que tudo cozinhe de forma uniforme dentro do pão.', 
+    saltRatio: 20, 
+    pepperRatio: 5 
+},
+{ 
+    id: 'chili-burger', 
+    name: 'Chili Burger', 
+    image: 'imagens/bov_chili_burger.jpg', 
+    description: 'Uma refeição completa, servida aberta e coberta com um chili de carne robusto, queijo cheddar e cebola picada.', 
+    components: [ 
+        {name: 'Pão de Hambúrguer', qty: 1, unit: 'unid.'}, 
+        {name: 'Chili com Carne', qty: 1, unit: 'concha'},
+        {name: 'Queijo Cheddar ralado', qty: 2, unit: 'colheres'},
+        {name: 'Cebola Branca picada', qty: 1, unit: 'colher'}
+    ], 
+    steps: [ 
+        { title: 'O Chili: A Estrela', description: 'Este hambúrguer é sobre o chili. O ideal é que ele já esteja pronto e quente. Prepare a sua receita favorita de chili com carne, garantindo que ele fique espesso e não muito líquido. Deve ter pedaços de carne e feijão.' },
+        { title: 'Grelhar o Hambúrguer', description: 'Como o chili já é muito saboroso e temperado, um Blend Clássico funciona perfeitamente. Grelhe o hambúrguer na chapa quente, por 3-4 minutos de cada lado, até atingir o ponto desejado.', timer: 210 },
+        { title: 'A Base da Montagem', description: 'Toste as duas metades do pão. Coloque a base do pão num prato (este hambúrguer come-se com talheres) e o hambúrguer grelhado por cima. Não coloque a tampa.' },
+        { title: 'Finalizar com Tudo', description: 'Com o hambúrguer no prato, cubra-o com uma concha generosa de chili quente, garantindo que escorre pelas laterais. Salpique o queijo cheddar ralado por cima (ele vai derreter com o calor do chili) e finalize com a cebola branca picada para dar um toque crocante e picante.' }
+    ], 
+    baseWeight: 0.180, 
+    blendName: 'Blend Clássico (180g)', 
+    blendDetails: '80% Acém + 20% Peito. Um blend que complementa o chili sem competir com ele. Como o chili já tem sal, tenha cuidado ao temperar a carne.', 
+    saltRatio: 15, 
+    pepperRatio: 5 
+},
+{ 
+    id: 'manteiga-ervas', 
+    name: 'Manteiga de Alho e Ervas', 
+    image: 'imagens/bov_manteiga_ervas.jpg', 
+    description: 'A simplicidade de uma manteiga composta que derrete sobre a carne quente, libertando um aroma incrível e criando um molho instantâneo.', 
+    components: [ 
+        {name: 'Pão Brioche', qty: 1, unit: 'unid.'},
+        {name: 'Queijo Provolone', qty: 2, unit: 'fatias'},
+        {name: 'Manteiga sem sal', qty: 2, unit: 'colheres'},
+        {name: 'Alho picado', qty: 1, unit: 'dente'},
+        {name: 'Ervas frescas (salsa, tomilho)', qty: 1, unit: 'colher de chá'}
+    ], 
+    steps: [ 
+        { title: 'A Manteiga Composta', description: 'Este é o segredo da receita. Numa tigela, amasse a manteiga em temperatura ambiente com o alho muito bem picado e as ervas frescas. Forme um pequeno rolo em papel vegetal e leve ao congelador por 10 minutos para firmar. Isto vai permitir que corte uma rodela perfeita.', timer: 600 },
+        { title: 'Grelhar o Blend Premium', description: 'Tempere e grelhe o seu hambúrguer em lume médio-alto por 4-5 minutos de cada lado. A riqueza deste blend combina perfeitamente com a simplicidade da manteiga de ervas.', timer: 270 },
+        { title: 'O Toque Final na Carne', description: 'Retire o hambúrguer da chapa e, enquanto ele descansa, coloque uma rodela generosa da manteiga de alho e ervas por cima. Veja-a derreter e criar um molho incrível sobre a carne. Em seguida, coloque o queijo provolone por cima da manteiga derretida.'},
+        { title: 'Montagem Simples e Elegante', description: 'Toste o pão. Coloque o hambúrguer já com a manteiga e o queijo na base do pão. Não precisa de mais molhos, a manteiga já fez esse trabalho. Feche e sirva.' }
+    ], 
+    baseWeight: 0.200, 
+    blendName: 'Blend Premium (200g)', 
+    blendDetails: '70% Peito + 30% Costela. Um blend gordo e saboroso que é realçado pela simplicidade da manteiga de ervas.', 
+    saltRatio: 20, 
+    pepperRatio: 5 
+},
+{ 
+    id: 'surf-n-turf', 
+    name: 'Surf n\' Turf', 
+    image: 'imagens/bov_surf_n_turf.jpg', 
+    description: 'A união perfeita da terra e do mar, com a suculência da carne e o sabor delicado de camarões salteados em alho.', 
+    components: [ 
+        {name: 'Pão de Hambúrguer', qty: 1, unit: 'unid.'},
+        {name: 'Camarões Grandes', qty: 4, unit: 'unid.'},
+        {name: 'Molho Remoulade', qty: 1, unit: 'colher'},
+        {name: 'Alface', qty: 1, unit: 'folha'},
+        {name: 'Alho picado', qty: 1, unit: 'dente'}
+    ], 
+    steps: [ 
+        { title: 'O Molho Remoulade', description: 'Este molho é o elo de ligação. Misture maionese, um pouco de mostarda Dijon, picles picados, alcaparras e salsa fresca. O segredo é o equilíbrio entre o cremoso e o ácido.' },
+        { title: 'O "Surf": Camarões', description: 'Aqueça uma frigideira com um fio de azeite. Quando estiver bem quente, adicione o alho picado e, imediatamente a seguir, os camarões. Salteie por apenas 1 a 2 minutos, até ficarem rosados. Se cozinhar demais, eles ficam borrachudos. Retire e reserve.', timer: 90 },
+        { title: 'O "Turf": A Carne', description: 'Na mesma frigideira, aproveitando o sabor do alho e camarão, grelhe o seu hambúrguer. Tempere e sele por 3-4 minutos de cada lado para um ponto médio.', timer: 210 },
+        { title: 'A Montagem Final', description: 'Toste o pão. Passe o molho remoulade na base. Coloque a folha de alface, o hambúrguer grelhado e, por fim, coroe o seu lanche com os camarões salteados no topo. Feche e sirva esta combinação de luxo.' }
+    ], 
+    baseWeight: 0.180, 
+    blendName: 'Blend Clássico (180g)', 
+    blendDetails: '80% Acém + 20% Peito. Um blend que não é excessivamente forte, permitindo que o sabor delicado do camarão também se destaque.', 
+    saltRatio: 20, 
+    pepperRatio: 5 
+},
+{ 
+    id: 'geleia-bacon', 
+    name: 'Geleia de Bacon', 
+    image: 'imagens/bov_geleia_bacon.jpg', 
+    description: 'O contraste agridoce e fumado da geleia de bacon caseira, que eleva o hambúrguer a outro nível.', 
+    components: [ 
+        {name: 'Pão Brioche', qty: 1, unit: 'unid.'}, 
+        {name: 'Queijo Gruyère', qty: 2, unit: 'fatias'},
+        {name: 'Geleia de Bacon', qty: 2, unit: 'colheres'},
+        {name: 'Cebola Roxa', qty: 2, unit: 'rodelas finas'}
+    ], 
+    steps: [ 
+        { title: 'A Geleia (O Ouro Líquido)', description: 'A geleia de bacon pode ser feita com antecedência. Pique finamente o bacon e cozinhe até ficar crocante. Retire o bacon e, na mesma gordura, refogue cebola picada e alho. Adicione açúcar mascavado, vinagre de maçã e um pouco de café forte. Cozinhe em lume baixo até ter a consistência de uma compota. Junte o bacon crocante no final.'},
+        { title: 'Grelhar a Carne', description: 'Um blend saboroso é ideal para complementar a geleia. Tempere a carne e grelhe em lume médio-alto, 3-4 minutos por lado para um ponto médio.', timer: 210 },
+        { title: 'O Queijo Perfeito', description: 'O queijo Gruyère tem um sabor de nozes que equilibra a doçura da geleia. Coloque as fatias sobre o hambúrguer no último minuto para que derreta e fique cremoso.', timer: 60},
+        { title: 'A Montagem Final', description: 'Toste o pão. Coloque o hambúrguer com o queijo na base, adicione uma colher generosa de geleia de bacon por cima e finalize com as rodelas de cebola roxa para um toque de acidez e crocância. É uma explosão de sabores.' }
+    ], 
+    baseWeight: 0.200, 
+    blendName: 'Blend Saboroso (200g)', 
+    blendDetails: '50% Fraldinha + 30% Acém + 20% Gordura de Peito. O sabor intenso da carne é necessário para não desaparecer por trás da potente geleia de bacon.', 
+    saltRatio: 18, 
+    pepperRatio: 5 
+},
+{ 
+    id: 'picles-frito', 
+    name: 'Picles Frito Crocante', 
+    image: 'imagens/bov_picles_frito.jpg', 
+    description: 'Textura e acidez em dobro com picles empanados e fritos sobre um hambúrguer suculento com molho ranch.', 
+    components: [ 
+        {name: 'Pão de Batata', qty: 1, unit: 'unid.'}, 
+        {name: 'Queijo Americano', qty: 2, unit: 'fatias'}, 
+        {name: 'Picles em Fatias (para fritar)', qty: 6, unit: 'unid.'}, 
+        {name: 'Molho Ranch', qty: 2, unit: 'colheres'},
+        {name: 'Farinha de Trigo', qty: 2, unit: 'colheres'},
+        {name: 'Páprica', qty: 1, unit: 'pitada'}
+    ], 
+    steps: [ 
+        { title: 'O Segredo: Picles Crocantes', description: 'Seque muito bem as fatias de picles com papel toalha. Numa tigela, misture a farinha com uma pitada de páprica, sal e pimenta. Passe cada fatia de picles nesta mistura, garantindo que ficam bem cobertas. Frite em óleo quente (180°C) por 2-3 minutos, ou até ficarem douradas e estaladiças. Retire e deixe escorrer.', timer: 180 },
+        { title: 'Grelhar a Carne', description: 'Enquanto os picles escorrem, grelhe o seu hambúrguer clássico em lume médio-alto, por 3-4 minutos de cada lado. A simplicidade do blend realça o sabor do picles.', timer: 210 },
+        { title: 'O Queijo Americano', description: 'O queijo americano é perfeito pela sua cremosidade. Coloque as fatias sobre a carne no último minuto de cozedura e abafe com uma tampa para que derreta completamente e fique com um aspeto brilhante.', timer: 60 },
+        { title: 'Montagem de Texturas', description: 'Toste o pão. Na base, espalhe uma camada generosa de molho ranch. Coloque o hambúrguer com queijo e, por cima, empilhe os picles fritos. O contraste do crocante, do cremoso e do ácido é o que torna este hambúrguer especial.' }
+    ], 
+    baseWeight: 0.180, 
+    blendName: 'Blend Clássico (180g)', 
+    blendDetails: '80% Acém + 20% Peito. Um blend que funciona como uma base sólida para a acidez do picles e a cremosidade do molho ranch.', 
+    saltRatio: 20, 
+    pepperRatio: 5 
+},
+{ 
+    id: 'cheddar-supremo', 
+    name: 'O Cheddar Supremo', 
+    image: 'imagens/bov_cheddar_supremo.jpg', 
+    description: 'Um verdadeiro banho de queijo cheddar cremoso, cobrindo um hambúrguer suculento. Para os mais gulosos.', 
+    components: [ 
+        {name: 'Pão Australiano', qty: 1, unit: 'unid.'}, 
+        {name: 'Molho de Cheddar Cremoso', qty: 4, unit: 'colheres'},
+        {name: 'Cebola Crispy', qty: 2, unit: 'colheres'},
+        {name: 'Bacon em cubos', qty: 25, unit: 'g'}
+    ], 
+    steps: [ 
+        { title: 'O Molho de Cheddar', description: 'Este é o coração da receita. Numa panela pequena, derreta uma colher de manteiga e adicione uma colher de farinha (isto chama-se "roux"). Cozinhe por um minuto. Adicione leite aos poucos, mexendo sempre para não empelotar. Quando engrossar, adicione queijo cheddar de boa qualidade, ralado, e mexa em lume baixo até obter um creme liso. Reserve.' },
+        { title: 'O Bacon e a Cebola', description: 'Frite os cubos de bacon até ficarem crocantes. Retire e reserve. A cebola crispy pode ser de compra para facilitar.' },
+        { title: 'Grelhar o Hambúrguer', description: 'Grelhe o seu hambúrguer de Blend Clássico por 3-4 minutos de cada lado. Não precisa de queijo na chapa, pois o molho fará esse papel.', timer: 210 },
+        { title: 'A Montagem Final', description: 'Toste o pão australiano. Coloque o hambúrguer na base. Cubra generosamente com o molho de cheddar quente, deixando que escorra por todos os lados. Salpique os cubos de bacon e a cebola crispy por cima do molho. Feche e prepare-se para se sujar!' }
+    ], 
+    baseWeight: 0.180, 
+    blendName: 'Blend Clássico (180g)', 
+    blendDetails: '80% Acém + 20% Peito. Um blend versátil que serve como a tela perfeita para a pintura de queijo cheddar que virá por cima.', 
+    saltRatio: 20, 
+    pepperRatio: 5 
+},
             ];
 
             const recipeListContainer = document.getElementById('recipe-list');
