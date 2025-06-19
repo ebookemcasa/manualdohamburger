@@ -81,7 +81,7 @@
     saltRatio: 18, 
     pepperRatio: 5 
 }
-                            ];
+                                       ];
             
             const recipeListContainer = document.getElementById('recipe-list');
             const modalsContainer = document.getElementById('modals-container');
@@ -232,12 +232,27 @@
                     }, 1000);
                 });
             });
-        document.addEventListener('DOMContentLoaded', () => {
+
+            // Lógica do botão flutuante
             const fabContainer = document.getElementById('fab-container');
             const fabButton = document.getElementById('fab-button');
             const fabMenu = document.getElementById('fab-menu');
-            fabButton.addEventListener('click', (e) => { e.stopPropagation(); fabMenu.classList.toggle('hidden'); fabMenu.classList.toggle('flex'); fabContainer.classList.toggle('open'); });
-            document.addEventListener('click', (event) => { if (!fabContainer.contains(event.target)) { fabMenu.classList.add('hidden'); fabMenu.classList.remove('flex'); fabContainer.classList.remove('open'); }});
+
+            if (fabButton && fabMenu && fabContainer) {
+                fabButton.addEventListener('click', (e) => {
+                    e.stopPropagation();
+                    fabMenu.classList.toggle('hidden');
+                    fabMenu.classList.toggle('flex');
+                    fabContainer.classList.toggle('open');
+                });
+                document.addEventListener('click', (event) => {
+                    if (fabContainer.classList.contains('open') && !fabContainer.contains(event.target)) {
+                        fabMenu.classList.add('hidden');
+                        fabMenu.classList.remove('flex');
+                        fabContainer.classList.remove('open');
+                    }
+                });
+            }
         });
     </script>
 </body>
