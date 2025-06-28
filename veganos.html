@@ -93,20 +93,329 @@
                     saltRatio: 12, 
                     pepperRatio: 4 
                 },
-                { id: 'vegano-quinoa', name: 'Quinoa & Batata Doce', image: 'imagens/vegano_quinoa_batata_doce.jpg', description: 'Nutritivo e saboroso, com a doçura da batata doce e a cremosidade do abacate.'},
-                { id: 'vegano-tofu-satay', name: 'Tofu Satay', image: 'imagens/vegano_tofu_satay.jpg', description: 'Inspirado na Tailândia, com um molho de amendoim rico e cremoso.'},
-                { id: 'vegano-shroom', name: 'Shroom Burger', image: 'imagens/vegano_shroom_burger.jpg', description: 'Um cogumelo portobello inteiro marinado e grelhado como um bife.'},
-                { id: 'vegano-jaca', name: 'Jaca Louca BBQ', image: 'imagens/vegano_jaca_louca_bbq.jpg', description: 'A textura da jaca desfiada com molho barbecue faz lembrar o pulled pork.'},
-                { id: 'vegano-grao-bico', name: 'Grão-de-bico com Ervas', image: 'imagens/vegano_grao_de_bico_ervas.jpg', description: 'Leve, fresco e aromático, com um toque cítrico da maionese de limão.'},
-                { id: 'vegano-abacate', name: 'Abacate Crocante', image: 'imagens/vegano_abacate_crocante.jpg', description: 'Uma fatia de abacate empanada e frita, crocante por fora e cremosa por dentro.'},
-                { id: 'vegano-cenoura', name: 'Cenoura e Gengibre', image: 'imagens/vegano_cenoura_gengibre.jpg', description: 'Um sabor adocicado e ligeiramente picante, com a frescura do gengibre e da hortelã.'},
-                { id: 'vegano-milho', name: 'Milho Assado e Páprica', image: 'imagens/vegano_milho_assado.jpg', description: 'O doce do milho assado com o fumado da páprica, numa combinação surpreendente.'},
-                { id: 'vegano-seitan', name: 'Seitan "Steak"', image: 'imagens/vegano_seitan_steak.jpg', description: 'Para quem procura uma textura mais próxima da carne, o seitan é a escolha perfeita.'},
-                { id: 'vegano-cebola-francesa', name: 'Cebola Francesa Vegana', image: 'imagens/vegano_cebola_francesa.jpg', description: 'Todo o sabor de uma sopa de cebola gratinada, numa versão de hambúrguer.'},
-                { id: 'vegano-mediterraneo', name: 'Mediterrâneo Vegano', image: 'imagens/vegano_mediterraneo.jpg', description: 'Sabores frescos da Grécia com hummus cremoso e uma salada de pepino.'},
-                { id: 'vegano-feijao-branco', name: 'Feijão Branco e Pesto', image: 'imagens/vegano_feijao_branco_pesto.jpg', description: 'A cremosidade do feijão branco com o sabor intenso do pesto de manjericão.'},
-                { id: 'vegano-cajun', name: 'Cajun Vegano', image: 'imagens/vegano_cajun.jpg', description: 'Um hambúrguer de feijão vermelho com o tempero picante e aromático de Nova Orleans.'},
-                { id: 'vegano-soja-teriyaki', name: 'Soja Teriyaki', image: 'imagens/vegano_soja_teriyaki.jpg', description: 'O clássico agridoce japonês com abacaxi grelhado e proteína de soja.'}
+{ 
+    id: 'vegano-quinoa', 
+    name: 'Quinoa & Batata Doce', 
+    image: 'imagens/vegano_quinoa_batata_doce.jpg', 
+    description: 'Nutritivo e saboroso, com a doçura da batata doce e a cremosidade do abacate.', 
+    components: [ 
+        {name: 'Pão de Hambúrguer Vegano', qty: 1, unit: 'unid.'}, 
+        {name: 'Aioli Vegano de Abacate', qty: 2, unit: 'colheres'}, 
+        {name: 'Rúcula', qty: 1, unit: 'punhado'}, 
+        {name: 'Cebola Roxa', qty: 2, unit: 'rodelas'}
+    ], 
+    steps: [ 
+        { title: 'O Hambúrguer Nutritivo', description: 'Cozinhe a batata doce até ficar muito macia e amasse-a. Cozinhe a quinoa separadamente. Numa tigela, misture a batata doce, a quinoa, um pouco de farinha de aveia para dar liga, sal, pimenta e cominho em pó. Molde os hambúrgueres e leve ao frigorífico por 20 minutos para firmarem.'},
+        { title: 'O Molho Cremoso de Abacate', description: 'Para o aioli vegano, use um liquidificador ou processador. Junte meio abacate, uma colher de sopa de maionese vegana, sumo de meio limão, um dente de alho pequeno e uma pitada de sal. Triture até obter um creme liso e homogéneo.'},
+        { title: 'Grelhar com Cuidado', description: 'Este hambúrguer é mais delicado. Grelhe em lume médio, numa frigideira antiaderente bem quente com um fio de azeite. Cozinhe por cerca de 4 minutos de cada lado, virando com muito cuidado para não se desfazer.', timer: 240 },
+        { title: 'Montagem Fresca e Saborosa', description: 'Toste o pão. Passe uma camada generosa do aioli de abacate na base e na tampa. Adicione a rúcula para um toque picante, o hambúrguer, e as rodelas de cebola roxa para dar crocância.' }
+    ], 
+    baseQty: 1,
+    baseIngredient: 'Hamb. de Quinoa e Batata Doce (150g)',
+    blendDetails: 'A batata doce cozida e amassada cria uma base doce e húmida que liga a quinoa. É uma combinação rica em nutrientes e com uma textura surpreendente.', 
+    saltRatio: 12, 
+    pepperRatio: 3 
+},
+{ 
+    id: 'vegano-tofu-satay', 
+    name: 'Tofu Satay', 
+    image: 'imagens/vegano_tofu_satay.jpg', 
+    description: 'Inspirado na Tailândia, com um molho de amendoim rico e cremoso e a frescura de uma salada crocante.', 
+    components: [ 
+        {name: 'Pão Ciabatta', qty: 1, unit: 'unid.'},
+        {name: 'Molho Satay (Amendoim)', qty: 2, unit: 'colheres'},
+        {name: 'Salada de Pepino e Cenoura', qty: 2, unit: 'colheres'},
+        {name: 'Coentros Frescos', qty: 1, unit: 'ramo'}
+    ], 
+    steps: [ 
+        { title: 'O Segredo do Tofu', description: 'O tofu por si só não tem muito sabor, por isso o segredo é prepará-lo bem. Use tofu extra firme. Envolva o bloco de tofu em várias folhas de papel de cozinha e coloque um peso por cima (como uma panela) por 20 minutos para retirar o excesso de água. Isto vai ajudá-lo a ficar mais firme e a absorver melhor os sabores.', timer: 1200},
+        { title: 'A Marinada de Sabor', description: 'Enquanto o tofu prensa, prepare uma marinada simples com molho de soja (shoyu), um pouco de óleo de gergelim e alho em pó. Corte o tofu prensado num "bife" com a espessura de 2cm e deixe-o a marinar por pelo menos 15 minutos.', timer: 900},
+        { title: 'Grelhar até Dourar', description: 'Aqueça uma frigideira antiaderente em lume médio-alto com um fio de óleo. Grelhe o bife de tofu por 4-5 minutos de cada lado, até ficar com uma bela cor dourada e ligeiramente crocante por fora.', timer: 270 },
+        { title: 'Montagem Tailandesa', description: 'Toste o pão. Na base, espalhe uma camada generosa do seu molho satay (pode usar um de compra ou fazer em casa com pasta de amendoim, shoyu, limão e um pouco de água). Coloque o bife de tofu, a salada de pepino e cenoura ralados, e finalize com folhas de coentros frescos.' }
+    ], 
+    baseQty: 1,
+    baseIngredient: 'Bife de Tofu Extra Firme (180g)',
+    blendDetails: 'O tofu é como uma esponja de sabores. Prensá-lo para retirar a água é o passo mais importante para garantir uma boa textura e para que ele absorva a marinada, tornando-se o protagonista do lanche.', 
+    saltRatio: 0, 
+    pepperRatio: 0 
+},
+{ 
+    id: 'vegano-shroom', 
+    name: 'Shroom Burger', 
+    image: 'imagens/vegano_shroom_burger.jpg', 
+    description: 'Um cogumelo portobello inteiro marinado e grelhado como um bife, para uma textura carnuda e um sabor profundo.', 
+    components: [ 
+        {name: 'Pão de Hambúrguer', qty: 1, unit: 'unid.'},
+        {name: 'Queijo Vegano Suíço', qty: 2, unit: 'fatias'},
+        {name: 'Cebola Caramelizada', qty: 2, unit: 'colheres'},
+        {name: 'Maionese Vegana de Trufas', qty: 1, unit: 'colher'}
+    ], 
+    steps: [ 
+        { title: 'O "Bife" de Cogumelo', description: 'O segredo é tratar o cogumelo como um bife. Limpe-o com um pano húmido (não lave). Retire o talo. Com uma colher, raspe delicadamente as lamelas escuras da parte de baixo para um sabor mais suave. Pincele ambos os lados com azeite e tempere com sal, pimenta e alho em pó.' },
+        { title: 'Grelhar o Portobello', description: 'Aqueça uma frigideira ou grelha em lume médio-alto. Coloque o cogumelo com a parte de cima virada para baixo. Grelhe por 4-5 minutos até ficar com boas marcas e começar a amolecer. Não o pressione.', timer: 270 },
+        { title: 'Virar e Adicionar o Queijo', description: 'Vire o cogumelo com cuidado. A parte de baixo terá libertado alguma água, o que é normal. Coloque as fatias de queijo vegano por cima e cozinhe por mais 4-5 minutos, até o cogumelo estar totalmente macio e o queijo derretido.', timer: 270 },
+        { title: 'A Montagem Final', description: 'Toste o pão. Passe a maionese trufada na base. Coloque o seu "bife" de portobello com o queijo derretido e cubra generosamente com a cebola caramelizada, que adiciona a doçura necessária para equilibrar os sabores terrosos.' }
+    ], 
+    baseQty: 1,
+    baseIngredient: 'Cogumelo Portobello grande (1 un.)',
+    blendDetails: 'A textura do Portobello, quando grelhado inteiro, é a mais próxima de um bife de carne que se pode encontrar no mundo vegetal. É suculento e absorve muito bem os sabores da grelha e dos temperos.', 
+    saltRatio: 0, 
+    pepperRatio: 0 
+},
+{ 
+    id: 'vegano-jaca', 
+    name: 'Jaca Louca BBQ', 
+    image: 'imagens/vegano_jaca_louca_bbq.jpg', 
+    description: 'A textura da jaca desfiada com molho barbecue faz lembrar o pulled pork, numa versão vegana surpreendente.', 
+    components: [ 
+        {name: 'Pão de Hambúrguer', qty: 1, unit: 'unid.'},
+        {name: 'Jaca Verde em conserva', qty: 100, unit: 'g'},
+        {name: 'Molho Barbecue', qty: 3, unit: 'colheres'},
+        {name: 'Salada de Repolho (Coleslaw) Vegana', qty: 2, unit: 'colheres'},
+        {name: 'Picles de Pepino', qty: 3, unit: 'rodelas'}
+    ], 
+    steps: [ 
+        { title: 'Preparar a Jaca', description: 'O segredo é a jaca verde em conserva. Escorra bem a água e lave os pedaços. Com as mãos ou dois garfos, desfie a jaca. A textura vai ficar muito parecida com a de carne desfiada.'},
+        { title: 'Cozinhar a "Carne"', description: 'Numa frigideira, refogue cebola e alho picados em azeite. Adicione a jaca desfiada e tempere com páprica defumada, cominho, sal e pimenta. Deixe cozinhar por 5 minutos. Adicione o molho barbecue e cozinhe por mais 5 minutos em lume baixo, para que o sabor penetre bem.', timer: 300 },
+        { title: 'A Salada Crocante', description: 'Para o coleslaw vegano, rale repolho e cenoura. Para o molho, misture maionese vegana com um pouco de vinagre de maçã, açúcar e sal. Misture tudo e reserve no frigorífico para ficar bem fresco.'},
+        { title: 'Montagem Final', description: 'Toste o pão. Coloque uma porção generosa da jaca desfiada quente na base. Adicione a salada de repolho por cima para um contraste de temperatura e textura, e finalize com as rodelas de picles para um toque de acidez.' }
+    ], 
+    baseQty: 1,
+    baseIngredient: 'Jaca Verde Desfiada (100g)',
+    blendDetails: 'A jaca verde tem uma textura fibrosa e um sabor neutro, o que a torna a base perfeita para absorver molhos e temperos, especialmente o barbecue, imitando a carne de porco desfiada.', 
+    saltRatio: 0, 
+    pepperRatio: 0 
+},
+{ 
+    id: 'vegano-grao-bico', 
+    name: 'Grão-de-bico com Ervas', 
+    image: 'imagens/vegano_grao_de_bico_ervas.jpg', 
+    description: 'Leve, fresco e aromático, com um toque cítrico da maionese de limão.', 
+    components: [ 
+        {name: 'Pão Integral', qty: 1, unit: 'unid.'},
+        {name: 'Maionese Vegana de Limão', qty: 1, unit: 'colher'},
+        {name: 'Alface', qty: 1, unit: 'folha'},
+        {name: 'Tomate', qty: 2, unit: 'rodelas'}
+    ], 
+    steps: [ 
+        { title: 'O Coração Aromático', description: 'Para o hambúrguer, processe o grão-de-bico cozido com um punhado generoso de ervas frescas (salsa e coentros funcionam bem), alho e cebola. Não processe demasiado, queremos sentir a textura. Adicione farinha de aveia aos poucos até dar liga para moldar.' },
+        { title: 'O Toque Cítrico', description: 'Prepare uma maionese de limão simples, misturando maionese vegana com raspas e sumo de meio limão e uma pitada de sal. Este molho vai realçar o frescor das ervas no hambúrguer.' },
+        { title: 'Grelhar com Cuidado', description: 'Hambúrgueres à base de grão-de-bico são mais firmes que os de lentilha, mas ainda assim delicados. Grelhe em lume médio numa frigideira antiaderente com um fio de azeite, por cerca de 4 minutos de cada lado, até a superfície ficar bem dourada.', timer: 240 },
+        { title: 'Montagem Simples e Fresca', description: 'Toste o pão integral. Passe a maionese de limão na base. Adicione a folha de alface, as rodelas de tomate e, por fim, o hambúrguer. É uma combinação simples onde o sabor das ervas é a estrela principal.' }
+    ], 
+    baseQty: 1,
+    baseIngredient: 'Hamb. de Grão-de-bico e Ervas (150g)',
+    blendDetails: 'A combinação do grão-de-bico, que oferece uma base neutra e uma ótima textura, com a explosão de sabor das ervas frescas, cria um hambúrguer leve e muito perfumado.', 
+    saltRatio: 12, 
+    pepperRatio: 4 
+},
+{ 
+    id: 'vegano-abacate', 
+    name: 'Abacate Crocante', 
+    image: 'imagens/vegano_abacate_crocante.jpg', 
+    description: 'Uma fatia de abacate empanada e frita, que fica incrivelmente crocante por fora e cremosa por dentro.', 
+    components: [ 
+        {name: 'Pão Brioche Vegano', qty: 1, unit: 'unid.'},
+        {name: 'Maionese de Sriracha Vegana', qty: 1, unit: 'colher'},
+        {name: 'Rúcula', qty: 1, unit: 'punhado'},
+        {name: 'Farinha de Trigo', qty: 50, unit: 'g'},
+        {name: 'Leite vegetal (para empanar)', qty: 50, unit: 'ml'},
+        {name: 'Farinha Panko', qty: 50, unit: 'g'}
+    ], 
+    steps: [ 
+        { title: 'O "Bife" de Abacate', description: 'O segredo é usar um abacate que esteja maduro, mas ainda bem firme. Corte-o ao meio, retire o caroço e descasque. Corte uma "fatia" grossa, com cerca de 2cm, do centro do abacate.' },
+        { title: 'Empanar para a Crocância', description: 'Prepare três pratos: um com farinha de trigo, um com o leite vegetal (de soja ou amêndoa), e um com a farinha panko. Passe a fatia de abacate primeiro na farinha, depois mergulhe-a no leite e, por fim, cubra completamente com a panko, pressionando para aderir bem.'},
+        { title: 'Fritura Rápida', description: 'Aqueça óleo vegetal a 180°C. Frite o abacate empanado por apenas 1-2 minutos, virando a meio, só até a crosta ficar bem dourada e estaladiça. O interior deve permanecer cremoso e não cozinhar demasiado. Retire e deixe escorrer.', timer: 90 },
+        { title: 'Montagem Final', description: 'Toste o pão. Passe a maionese de sriracha na base, adicione a rúcula para um toque picante, coloque o "bife" de abacate crocante e feche. A combinação de texturas é o ponto alto desta receita.' }
+    ], 
+    baseQty: 1,
+    baseIngredient: 'Abacate (1/2 unid.)',
+    blendDetails: 'Esta receita não usa um blend tradicional. O "hambúrguer" é o próprio abacate, que oferece uma cremosidade única em contraste com a crosta crocante da fritura.', 
+    saltRatio: 0, 
+    pepperRatio: 0 
+},
+
+{ 
+    id: 'vegano-cenoura', 
+    name: 'Cenoura e Gengibre', 
+    image: 'imagens/vegano_cenoura_gengibre.jpg', 
+    description: 'Um sabor adocicado e ligeiramente picante, com a frescura do gengibre e da hortelã.', 
+    components: [ 
+        {name: 'Pão de Hambúrguer', qty: 1, unit: 'unid.'},
+        {name: 'Molho de Iogurte Vegano com Hortelã', qty: 2, unit: 'colheres'},
+        {name: 'Brotos (Alfafa ou Rabanete)', qty: 1, unit: 'punhado'},
+        {name: 'Sementes de Sésamo', qty: 1, unit: 'pitada'}
+    ], 
+    steps: [ 
+        { title: 'A Base Doce e Picante', description: 'Cozinhe ou asse a cenoura até ficar macia. Amasse-a e misture com gengibre fresco ralado, um pouco de farinha de grão-de-bico para dar liga, sal e pimenta. O gengibre dá um toque picante que corta a doçura da cenoura. Molde os hambúrgueres e leve ao frigorífico por 20 minutos.'},
+        { title: 'O Molho Fresco', description: 'Para o molho, misture iogurte vegano natural com folhas de hortelã fresca bem picadas, sumo de limão e uma pitada de sal. Este molho vai realçar o frescor do gengibre.'},
+        { title: 'Grelhar com Atenção', description: 'Este hambúrguer, por ser à base de vegetais cozidos, é mais delicado. Grelhe em lume médio numa frigideira antiaderente com um fio de óleo, por cerca de 4 minutos de cada lado, até criar uma crosta dourada e firme.', timer: 240 },
+        { title: 'Montagem Final', description: 'Toste o pão. Passe o molho de iogurte na base. Coloque o hambúrguer, um generoso punhado de brotos frescos para dar uma textura leve e crocante, e salpique com sementes de sésamo na tampa do pão antes de fechar.' }
+    ], 
+    baseQty: 1,
+    baseIngredient: 'Hamb. de Cenoura e Gengibre (150g)',
+    blendDetails: 'A cenoura cozida oferece uma base naturalmente doce e colorida. O gengibre fresco é o contraponto perfeito, trazendo um sabor picante e aromático que desperta o paladar.', 
+    saltRatio: 10, 
+    pepperRatio: 3 
+},
+{ 
+    id: 'vegano-milho', 
+    name: 'Milho Assado e Páprica', 
+    image: 'imagens/vegano_milho_assado.jpg', 
+    description: 'O doce do milho assado com o fumado da páprica, numa combinação surpreendente e deliciosa.', 
+    components: [ 
+        {name: 'Pão de Milho', qty: 1, unit: 'unid.'},
+        {name: 'Maionese Vegana de Limão', qty: 1, unit: 'colher'},
+        {name: 'Cebola Roxa Fatiada', qty: 3, unit: 'rodelas'}
+    ], 
+    steps: [ 
+        { title: 'O Coração do Hambúrguer', description: 'Comece por assar o milho (pode ser na espiga) até ficar dourado. Depois, debulhe os grãos. Processe metade dos grãos com farinha de grão-de-bico, páprica defumada, sal e pimenta. Junte o resto dos grãos inteiros para dar textura. Molde os hambúrgueres e leve ao frigorífico por 20 minutos.'},
+        { title: 'Grelhar com Cuidado', description: 'Estes hambúrgueres têm uma textura mais granulada. Grelhe em lume médio numa frigideira antiaderente com um fio de óleo, por cerca de 4 minutos de cada lado, até ficarem firmes e com uma crosta dourada.', timer: 240 },
+        { title: 'O Molho Cítrico', description: 'Para equilibrar a doçura do milho, prepare uma maionese de limão misturando maionese vegana com sumo e raspas de limão. Este toque cítrico vai cortar a gordura e realçar os sabores.'},
+        { title: 'Montagem Simples', description: 'Toste o pão de milho. Passe a maionese de limão na base, coloque o hambúrguer e finalize com as rodelas de cebola roxa crua, que dão uma crocância e um sabor picante bem-vindo.' }
+    ], 
+    baseQty: 1,
+    baseIngredient: 'Hamb. de Milho Assado (150g)',
+    blendDetails: 'Assar o milho antes de o misturar intensifica a sua doçura natural. A páprica defumada adiciona uma camada de sabor fumado que complementa perfeitamente o milho.', 
+    saltRatio: 12, 
+    pepperRatio: 4 
+},
+{ 
+    id: 'vegano-seitan', 
+    name: 'Seitan "Steak"', 
+    image: 'imagens/vegano_seitan_steak.jpg', 
+    description: 'Para quem procura uma textura mais próxima da carne, o seitan grelhado com cebola na chapa é a escolha perfeita.', 
+    components: [ 
+        {name: 'Pão Rústico', qty: 1, unit: 'unid.'},
+        {name: 'Cebola na Chapa', qty: 0.5, unit: 'unid.'},
+        {name: 'Molho de Pimenta Vegano', qty: 1, unit: 'colher'}
+    ], 
+    steps: [ 
+        { title: 'O "Bife" de Seitan', description: 'O seitan já vem pré-cozido. Fatie um "bife" com cerca de 1.5cm de espessura. O segredo para o sabor é mariná-lo. Deixe-o por pelo menos 15 minutos numa mistura de shoyu, alho em pó e um pouco de fumo líquido, se tiver.', timer: 900},
+        { title: 'A Cebola na Chapa', description: 'Corte a cebola em rodelas grossas. Numa frigideira quente com um fio de azeite, grelhe as rodelas de cebola até ficarem macias e com marcas escuras de grelhado. Tempere com uma pitada de sal. Reserve.'},
+        { title: 'Grelhar o Seitan', description: 'Na mesma frigideira, grelhe o bife de seitan marinado por 3-4 minutos de cada lado, em lume médio-alto. Pincele com um pouco mais da marinada enquanto grelha para criar uma crosta saborosa e caramelizada.', timer: 210 },
+        { title: 'Montagem Robusta', description: 'Toste o pão rústico. Passe o molho de pimenta na base. Coloque o bife de seitan quente e cubra com as rodelas de cebola grelhadas. É um hambúrguer de sabor intenso que não precisa de muitos acompanhamentos.' }
+    ], 
+    baseQty: 1,
+    baseIngredient: 'Bife de Seitan (180g)',
+    blendDetails: 'O Seitan é feito de glúten de trigo e tem uma textura muito fibrosa e "carnuda". É uma excelente opção para quem sente falta da textura da carne num hambúrguer vegano.', 
+    saltRatio: 0, 
+    pepperRatio: 0 
+},
+{ 
+    id: 'vegano-cebola-francesa', 
+    name: 'Cebola Francesa Vegana', 
+    image: 'imagens/vegano_cebola_francesa.jpg', 
+    description: 'Todo o sabor de uma sopa de cebola gratinada, numa versão de hambúrguer sofisticada e reconfortante.', 
+    components: [ 
+        {name: 'Baguete', qty: 2, unit: 'fatias grossas'},
+        {name: 'Queijo Gruyère Vegano', qty: 2, unit: 'fatias'},
+        {name: 'Sopa de Cebola reduzida', qty: 3, unit: 'colheres'}
+    ], 
+    steps: [ 
+        { title: 'A Sopa de Cebola', description: 'O segredo está no caldo. Caramelize lentamente 2 cebolas grandes em azeite até ficarem bem escuras e doces. Adicione um pouco de vinho branco (opcional) e deixe evaporar. Cubra com caldo de legumes e deixe cozinhar em lume baixo até reduzir e ficar um molho espesso. Tempere com sal e tomilho.', timer: 1800},
+        { title: 'O Hambúrguer', description: 'Para esta receita, um hambúrguer de lentilha e cogumelos funciona perfeitamente, pois tem um sabor terroso que combina com a cebola. Grelhe o seu hambúrguer até ficar com uma boa crosta de ambos os lados.', timer: 240 },
+        { title: 'Gratinar o Queijo', description: 'Coloque o hambúrguer grelhado sobre uma fatia de baguete. Cubra com o queijo Gruyère vegano e leve ao forno na função "grill" (grelhador) até o queijo borbulhar e ficar bem dourado. Tenha atenção para não queimar.', timer: 180 },
+        { title: 'Montagem "Au Jus"', description: 'Aqueça a sua sopa de cebola reduzida. Mergulhe a tampa da baguete no molho quente. Coloque o hambúrguer gratinado na base do pão e feche com a tampa humedecida. Sirva imediatamente.' }
+    ], 
+    baseQty: 1,
+    baseIngredient: 'Hamb. de Lentilha e Cogumelos (150g)',
+    blendDetails: 'Um blend à base de lentilhas e cogumelos oferece a textura e o sabor terroso necessários para complementar a riqueza e doçura da sopa de cebola.', 
+    saltRatio: 10, 
+    pepperRatio: 4 
+},
+{ 
+    id: 'vegano-mediterraneo', 
+    name: 'Mediterrâneo Vegano', 
+    image: 'imagens/vegano_mediterraneo.jpg', 
+    description: 'Sabores frescos da Grécia com hummus cremoso e uma salada de pepino e tomate.', 
+    components: [ 
+        {name: 'Pão Pita', qty: 1, unit: 'unid.'},
+        {name: 'Hummus', qty: 2, unit: 'colheres'},
+        {name: 'Pepino', qty: 0.25, unit: 'unid.'},
+        {name: 'Tomate', qty: 0.5, unit: 'unid.'},
+        {name: 'Azeitonas Pretas', qty: 5, unit: 'unid.'}
+    ], 
+    steps: [ 
+        { title: 'O Hambúrguer Grego', description: 'Para o hambúrguer, amasse o grão-de-bico cozido com azeitonas pretas picadas, orégãos secos, alho em pó e um pouco de farinha de trigo para dar liga. O sabor das azeitonas é fundamental aqui. Molde e reserve.'},
+        { title: 'A Salada Fresca', description: 'Pique o pepino e o tomate em cubos muito pequenos. Tempere com sal, um fio de azeite e sumo de limão. Esta salada vai adicionar a crocância e a acidez necessárias.'},
+        { title: 'Grelhar o Hambúrguer', description: 'Grelhe o hambúrguer em lume médio-alto com um fio de azeite, por cerca de 4 minutos de cada lado, até ficar bem dourado e firme.', timer: 240 },
+        { title: 'Montagem no Pita', description: 'Aqueça o pão pita. Corte uma das pontas para criar uma "bolsa". Passe uma camada generosa de hummus por dentro. Coloque o hambúrguer quente, adicione a salada de pepino e tomate por cima e sirva.' }
+    ], 
+    baseQty: 1,
+    baseIngredient: 'Hamb. de Grão-de-bico e Azeitonas (150g)',
+    blendDetails: 'A combinação do grão-de-bico com azeitonas Kalamata picadas e orégãos cria um sabor que transporta diretamente para a Grécia.', 
+    saltRatio: 10, 
+    pepperRatio: 4 
+},
+{ 
+    id: 'vegano-feijao-branco', 
+    name: 'Feijão Branco e Pesto', 
+    image: 'imagens/vegano_feijao_branco_pesto.jpg', 
+    description: 'A cremosidade do feijão branco com o sabor intenso e aromático do pesto de manjericão.', 
+    components: [ 
+        {name: 'Pão Ciabatta', qty: 1, unit: 'unid.'},
+        {name: 'Pesto Vegano', qty: 2, unit: 'colheres'},
+        {name: 'Tomate Seco', qty: 4, unit: 'pedaços'}
+    ], 
+    steps: [ 
+        { title: 'O Hambúrguer Cremoso', description: 'Amasse bem o feijão branco cozido com um garfo até obter uma pasta. Misture com manjericão fresco picado, alho em pó, sal, pimenta e um pouco de farinha de aveia para dar a liga necessária para moldar.'},
+        { title: 'O Pesto Vegano', description: 'Para um pesto autêntico sem queijo, processe manjericão fresco, pinhões (ou castanhas), alho, levedura nutricional (para um sabor "de queijo"), sal e azeite de boa qualidade.'},
+        { title: 'Grelhar com Delicadeza', description: 'Hambúrgueres de feijão branco são macios. Grelhe em lume médio, numa frigideira antiaderente com um fio de azeite, por cerca de 4 minutos de cada lado, virando com cuidado para não se desfazer.', timer: 240 },
+        { title: 'A Montagem Italiana', description: 'Toste o pão ciabatta. Passe uma colher de pesto na base e outra na tampa. Coloque o hambúrguer e adicione os pedaços de tomate seco por cima. O sabor intenso e adocicado do tomate seco complementa perfeitamente o pesto.' }
+    ], 
+    baseQty: 1,
+    baseIngredient: 'Hamb. de Feijão Branco e Manjericão (150g)',
+    blendDetails: 'O feijão branco tem um sabor suave e uma textura muito cremosa, o que o torna a tela perfeita para o sabor vibrante e aromático do molho pesto.', 
+    saltRatio: 10, 
+    pepperRatio: 4 
+},
+{ 
+    id: 'vegano-cajun', 
+    name: 'Cajun Vegano', 
+    image: 'imagens/vegano_cajun.jpg', 
+    description: 'Um hambúrguer de feijão vermelho com o tempero picante e aromático de Nova Orleans.', 
+    components: [ 
+        {name: 'Pão de Milho', qty: 1, unit: 'unid.'},
+        {name: 'Maionese Vegana Picante', qty: 1, unit: 'colher'},
+        {name: 'Pimentão Verde', qty: 3, unit: 'tiras'},
+        {name: 'Cebola Roxa', qty: 2, unit: 'rodelas'}
+    ], 
+    steps: [ 
+        { title: 'O Tempero Cajun', description: 'O segredo é a mistura de especiarias. Numa tigela, misture páprica doce, pimenta caiena, alho em pó, cebola em pó, pimenta preta, orégãos e tomilho seco. Esta mistura será usada tanto na carne como no molho.'},
+        { title: 'O Hambúrguer de Feijão Vermelho', description: 'Amasse bem o feijão vermelho cozido. Misture com um pouco da sua mistura de tempero cajun, farinha de aveia para dar liga e coentros picados. Molde o hambúrguer e deixe-o no frigorífico por 20 minutos para firmar.' },
+        { title: 'Grelhar com Atenção', description: 'Grelhe o hambúrguer numa frigideira quente com azeite, por 4-5 minutos de cada lado. A crosta deve ficar bem escura e aromática devido aos temperos.', timer: 270 },
+        { title: 'Montagem com "Sotaque" do Sul', description: 'Toste o pão de milho. Para o molho, misture maionese vegana com uma pitada do seu tempero cajun. Passe o molho na base, coloque o hambúrguer e finalize com as tiras de pimentão verde e a cebola roxa para uma crocância refrescante.' }
+    ], 
+    baseQty: 1,
+    baseIngredient: 'Hamb. de Feijão Vermelho (150g)',
+    blendDetails: 'O feijão vermelho é tradicional na culinária Cajun. A sua textura robusta e sabor levemente adocicado são a base perfeita para as especiarias intensas.', 
+    saltRatio: 12, 
+    pepperRatio: 5 
+},
+{ 
+    id: 'vegano-soja-teriyaki', 
+    name: 'Soja Teriyaki', 
+    image: 'imagens/vegano_soja_teriyaki.jpg', 
+    description: 'O clássico agridoce japonês com abacaxi grelhado e a textura surpreendente da proteína de soja.', 
+    components: [ 
+        {name: 'Pão de Hambúrguer Vegano', qty: 1, unit: 'unid.'},
+        {name: 'Abacaxi Grelhado', qty: 1, unit: 'rodela'},
+        {name: 'Molho Teriyaki', qty: 2, unit: 'colheres'},
+        {name: 'Cebolinho picado', qty: 1, unit: 'colher de chá'}
+    ], 
+    steps: [ 
+        { title: 'A Base de Soja', description: 'A proteína de soja texturizada (PTS) precisa de ser hidratada. Coloque a PTS numa tigela e cubra com água a ferver por 15 minutos. Escorra muito bem, espremendo com as mãos para retirar todo o excesso de água. Tempere com shoyu, alho em pó e gengibre e processe ligeiramente até dar liga para moldar o hambúrguer.', timer: 900 },
+        { title: 'Grelhar o Abacaxi', description: 'Enquanto a soja hidrata, grelhe uma rodela de abacaxi numa chapa quente até ficar com marcas douradas e caramelizadas. Isto realça a sua doçura natural e combina na perfeição com o salgado do molho.'},
+        { title: 'Cozinhar o Hambúrguer', description: 'Grelhe o hambúrguer de soja numa frigideira antiaderente com um fio de óleo em lume médio. Cozinhe por cerca de 4 minutos de cada lado, até ficar firme e dourado.', timer: 240 },
+        { title: 'Laquear com Teriyaki', description: 'No último minuto, pincele generosamente o molho teriyaki sobre o hambúrguer, virando-o para cobrir ambos os lados. O calor vai caramelizar o molho, criando uma cobertura brilhante e cheia de sabor.', timer: 60 }
+    ], 
+    baseQty: 1,
+    baseIngredient: 'Hambúrguer de Proteína de Soja (150g)',
+    blendDetails: 'A Proteína de Soja Texturizada (PTS) tem uma textura que, depois de hidratada e bem temperada, se assemelha muito à da carne moída. É uma base versátil para muitos hambúrgueres veganos.', 
+    saltRatio: 10, 
+    pepperRatio: 3 
+},
             ];
 
             
