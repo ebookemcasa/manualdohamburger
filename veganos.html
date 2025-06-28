@@ -22,6 +22,8 @@
         .fab-container.open .fab-menu { transform: scale(1); }
         .fab-menu a { @apply bg-stone-700 text-stone-200 w-full text-left px-4 py-3 rounded-lg shadow-xl hover:bg-stone-600 transition-all duration-200 flex items-center gap-3 text-lg; }
         .fab-button { @apply bg-orange-600 text-white w-20 h-20 rounded-full flex items-center justify-center shadow-lg hover:bg-orange-700 transition-transform duration-200 hover:scale-110; }
+        .modal-overlay { transition: opacity 0.3s ease; }
+        .timer-btn.active { background-color: #fb923c; color: white; cursor: not-allowed; }
     </style>
 </head>
 <body class="antialiased">
@@ -38,25 +40,14 @@
             <h1 class="text-4xl md:text-5xl font-black text-white">Hambúrgueres <span class="text-orange-500">Veganos</span></h1>
             <p class="mt-4 max-w-2xl mx-auto text-stone-400">Prove que um hambúrguer sem nada de origem animal pode ser incrivelmente delicioso. Explore as nossas criações.</p>
         </section>
-        <div class="space-y-12">
-            <!-- Receitas Veganas -->
-            <div class="bg-stone-800/50 p-6 md:p-8 rounded-lg shadow-lg backdrop-blur-sm"><div class="grid grid-cols-1 md:grid-cols-3 gap-8 items-start"><div class="md:col-span-1"><img src="https://placehold.co/400x400/a855f7/FFFFFF?text=Lentilha+Defumada" alt="Hambúrguer de Lentilha Defumada" class="rounded-lg w-full"></div><div class="md:col-span-2"><h3 class="text-3xl font-bold text-white mb-6">Lentilha Defumada</h3><div class="grid grid-cols-1 lg:grid-cols-2 gap-x-8 gap-y-6"><div><h4 class="font-bold text-lg mb-2 text-orange-400">Componentes</h4><ul class="space-y-2 text-stone-300"><li class="border-b border-stone-700 py-1"><span>Pão Vegano</span></li><li class="border-b border-stone-700 py-1"><span>Hamb. de Lentilha</span></li><li class="border-b border-stone-700 py-1"><span>Queijo Vegano</span></li><li class="border-b border-stone-700 py-1"><span>Anéis de Cebola Frita</span></li><li class="border-b border-stone-700 py-1"><span>Molho Barbecue</span></li></ul></div><div><h4 class="font-bold text-lg mb-2 text-orange-400">Como Montar</h4><ol class="list-decimal list-inside space-y-2 text-stone-300"><li>Grelhe o hambúrguer de lentilha.</li><li>Se usar queijo, coloque sobre o hambúrguer no final para derreter.</li><li>Toste o pão.</li><li>Passe molho barbecue na base.</li><li>Coloque o hambúrguer.</li><li>Cubra com anéis de cebola crocantes.</li></ol></div></div></div></div></div>
-            <div class="bg-stone-800/50 p-6 md:p-8 rounded-lg shadow-lg backdrop-blur-sm"><div class="grid grid-cols-1 md:grid-cols-3 gap-8 items-start"><div class="md:col-span-1"><img src="https://placehold.co/400x400/16a34a/FFFFFF?text=Quinoa+%26+Batata+Doce" alt="Hambúrguer de Quinoa" class="rounded-lg w-full"></div><div class="md:col-span-2"><h3 class="text-3xl font-bold text-white mb-6">Quinoa & Batata Doce</h3><div class="grid grid-cols-1 lg:grid-cols-2 gap-x-8 gap-y-6"><div><h4 class="font-bold text-lg mb-2 text-orange-400">Componentes</h4><ul class="space-y-2 text-stone-300"><li class="border-b border-stone-700 py-1"><span>Pão de Hambúrguer Vegano</span></li><li class="border-b border-stone-700 py-1"><span>Hamb. de Quinoa e Batata Doce</span></li><li class="border-b border-stone-700 py-1"><span>Aioli Vegano de Abacate</span></li><li class="border-b border-stone-700 py-1"><span>Rúcula</span></li><li class="border-b border-stone-700 py-1"><span>Cebola Roxa</span></li></ul></div><div><h4 class="font-bold text-lg mb-2 text-orange-400">Como Montar</h4><ol class="list-decimal list-inside space-y-2 text-stone-300"><li>Grelhe o hambúrguer.</li><li>Toste o pão.</li><li>Passe o aioli de abacate na base e na tampa.</li><li>Adicione a rúcula e a cebola roxa.</li><li>Coloque o hambúrguer e sirva.</li></ol></div></div></div></div></div>
-            <div class="bg-stone-800/50 p-6 md:p-8 rounded-lg shadow-lg backdrop-blur-sm"><div class="grid grid-cols-1 md:grid-cols-3 gap-8 items-start"><div class="md:col-span-1"><img src="https://placehold.co/400x400/f59e0b/333333?text=Tofu+Satay" alt="Hambúrguer de Tofu Grelhado" class="rounded-lg w-full"></div><div class="md:col-span-2"><h3 class="text-3xl font-bold text-white mb-6">Tofu Satay</h3><div class="grid grid-cols-1 lg:grid-cols-2 gap-x-8 gap-y-6"><div><h4 class="font-bold text-lg mb-2 text-orange-400">Componentes</h4><ul class="space-y-2 text-stone-300"><li class="border-b border-stone-700 py-1"><span>Pão Ciabatta</span></li><li class="border-b border-stone-700 py-1"><span>Bife de Tofu Extra Firme</span></li><li class="border-b border-stone-700 py-1"><span>Molho Satay (Amendoim)</span></li><li class="border-b border-stone-700 py-1"><span>Cenoura e Pepino em conserva</span></li><li class="border-b border-stone-700 py-1"><span>Coentros Frescos</span></li></ul></div><div><h4 class="font-bold text-lg mb-2 text-orange-400">Como Montar</h4><ol class="list-decimal list-inside space-y-2 text-stone-300"><li>Marine e grelhe o bife de tofu até dourar.</li><li>Toste o pão.</li><li>Passe o molho satay na base.</li><li>Coloque o tofu grelhado.</li><li>Adicione a cenoura e o pepino em conserva.</li><li>Finalize com coentros frescos.</li></ol></div></div></div></div></div>
-            <div class="bg-stone-800/50 p-6 md:p-8 rounded-lg shadow-lg backdrop-blur-sm"><div class="grid grid-cols-1 md:grid-cols-3 gap-8 items-start"><div class="md:col-span-1"><img src="https://placehold.co/400x400/78716c/FFFFFF?text=Shroom+Burger" alt="Hambúrguer de Cogumelo Portobello" class="rounded-lg w-full"></div><div class="md:col-span-2"><h3 class="text-3xl font-bold text-white mb-6">Shroom Burger</h3><div class="grid grid-cols-1 lg:grid-cols-2 gap-x-8 gap-y-6"><div><h4 class="font-bold text-lg mb-2 text-orange-400">Componentes</h4><ul class="space-y-2 text-stone-300"><li class="border-b border-stone-700 py-1"><span>Pão de Hambúrguer</span></li><li class="border-b border-stone-700 py-1"><span>Cogumelo Portobello grande</span></li><li class="border-b border-stone-700 py-1"><span>Queijo Vegano Suíço</span></li><li class="border-b border-stone-700 py-1"><span>Cebola Caramelizada</span></li><li class="border-b border-stone-700 py-1"><span>Maionese Vegana de Trufas</span></li></ul></div><div><h4 class="font-bold text-lg mb-2 text-orange-400">Como Montar</h4><ol class="list-decimal list-inside space-y-2 text-stone-300"><li>Grelhe o cogumelo portobello inteiro.</li><li>No final, coloque o queijo para derreter sobre o cogumelo.</li><li>Toste o pão.</li><li>Passe a maionese trufada na base.</li><li>Coloque o cogumelo com queijo.</li><li>Cubra com cebola caramelizada.</li></ol></div></div></div></div></div>
-            <div class="bg-stone-800/50 p-6 md:p-8 rounded-lg shadow-lg backdrop-blur-sm"><div class="grid grid-cols-1 md:grid-cols-3 gap-8 items-start"><div class="md:col-span-1"><img src="https://placehold.co/400x400/c2410c/FFFFFF?text=Jaca+Louca" alt="Hambúrguer de Jaca" class="rounded-lg w-full"></div><div class="md:col-span-2"><h3 class="text-3xl font-bold text-white mb-6">Jaca Louca BBQ</h3><div class="grid grid-cols-1 lg:grid-cols-2 gap-x-8 gap-y-6"><div><h4 class="font-bold text-lg mb-2 text-orange-400">Componentes</h4><ul class="space-y-2 text-stone-300"><li><span>Pão de Hambúrguer</span></li><li class="border-b border-stone-700 py-1"><span>Jaca desfiada com molho barbecue</span></li><li class="border-b border-stone-700 py-1"><span>Salada de Repolho (Coleslaw) Vegana</span></li><li class="border-b border-stone-700 py-1"><span>Picles de Pepino</span></li></ul></div><div><h4 class="font-bold text-lg mb-2 text-orange-400">Como Montar</h4><ol class="list-decimal list-inside space-y-2 text-stone-300"><li>Aqueça a jaca desfiada no molho barbecue.</li><li>Toste o pão.</li><li>Coloque uma porção generosa da jaca na base.</li><li>Adicione a salada de repolho por cima.</li><li>Finalize com algumas fatias de picles.</li></ol></div></div></div></div></div>
-            <div class="bg-stone-800/50 p-6 md:p-8 rounded-lg shadow-lg backdrop-blur-sm"><div class="grid grid-cols-1 md:grid-cols-3 gap-8 items-start"><div class="md:col-span-1"><img src="https://placehold.co/400x400/34d399/FFFFFF?text=Gr%C3%A3o-de-bico+com+Ervas" alt="Hambúrguer de Grão-de-bico e Ervas" class="rounded-lg w-full"></div><div class="md:col-span-2"><h3 class="text-3xl font-bold text-white mb-6">Grão-de-bico com Ervas</h3><div class="grid grid-cols-1 lg:grid-cols-2 gap-x-8 gap-y-6"><div><h4 class="font-bold text-lg mb-2 text-orange-400">Componentes</h4><ul class="space-y-2 text-stone-300"><li><span>Pão Integral</span></li><li><span>Hamb. de Grão-de-bico e Ervas Frescas</span></li><li><span>Maionese Vegana de Limão</span></li><li><span>Alface e Tomate</span></li></ul></div><div><h4 class="font-bold text-lg mb-2 text-orange-400">Como Montar</h4><ol class="list-decimal list-inside space-y-2 text-stone-300"><li>Grelhe o hambúrguer até dourar.</li><li>Toste o pão integral.</li><li>Passe a maionese de limão na base.</li><li>Coloque a alface e o tomate.</li><li>Adicione o hambúrguer e feche.</li></ol></div></div></div></div></div>
-            <div class="bg-stone-800/50 p-6 md:p-8 rounded-lg shadow-lg backdrop-blur-sm"><div class="grid grid-cols-1 md:grid-cols-3 gap-8 items-start"><div class="md:col-span-1"><img src="https://placehold.co/400x400/8b5cf6/FFFFFF?text=Abacate+Crocante" alt="Hambúrguer de Abacate" class="rounded-lg w-full"></div><div class="md:col-span-2"><h3 class="text-3xl font-bold text-white mb-6">Abacate Crocante</h3><div class="grid grid-cols-1 lg:grid-cols-2 gap-x-8 gap-y-6"><div><h4 class="font-bold text-lg mb-2 text-orange-400">Componentes</h4><ul class="space-y-2 text-stone-300"><li><span>Pão Brioche Vegano</span></li><li><span>"Hambúrguer" de Abacate Empanado</span></li><li><span>Maionese de Sriracha Vegana</span></li><li><span>Rúcula</span></li></ul></div><div><h4 class="font-bold text-lg mb-2 text-orange-400">Como Montar</h4><ol class="list-decimal list-inside space-y-2 text-stone-300"><li>Empane e frite uma fatia grossa de abacate.</li><li>Toste o pão.</li><li>Passe a maionese de sriracha na base.</li><li>Coloque a rúcula.</li><li>Adicione o abacate frito.</li></ol></div></div></div></div></div>
-            <div class="bg-stone-800/50 p-6 md:p-8 rounded-lg shadow-lg backdrop-blur-sm"><div class="grid grid-cols-1 md:grid-cols-3 gap-8 items-start"><div class="md:col-span-1"><img src="https://placehold.co/400x400/ec4899/FFFFFF?text=Cenoura+e+Gengibre" alt="Hambúrguer de Cenoura e Gengibre" class="rounded-lg w-full"></div><div class="md:col-span-2"><h3 class="text-3xl font-bold text-white mb-6">Cenoura e Gengibre</h3><div class="grid grid-cols-1 lg:grid-cols-2 gap-x-8 gap-y-6"><div><h4 class="font-bold text-lg mb-2 text-orange-400">Componentes</h4><ul class="space-y-2 text-stone-300"><li><span>Pão de Hambúrguer</span></li><li><span>Hamb. de Cenoura, Gengibre e Sementes</span></li><li><span>Molho de Iogurte Vegano com Hortelã</span></li><li><span>Brotos</span></li></ul></div><div><h4 class="font-bold text-lg mb-2 text-orange-400">Como Montar</h4><ol class="list-decimal list-inside space-y-2 text-stone-300"><li>Grelhe o hambúrguer de cenoura.</li><li>Toste o pão.</li><li>Passe o molho de iogurte na base.</li><li>Coloque o hambúrguer.</li><li>Finalize com um punhado de brotos frescos.</li></ol></div></div></div></div></div>
-            <div class="bg-stone-800/50 p-6 md:p-8 rounded-lg shadow-lg backdrop-blur-sm"><div class="grid grid-cols-1 md:grid-cols-3 gap-8 items-start"><div class="md:col-span-1"><img src="https://placehold.co/400x400/fde047/FFFFFF?text=Milho+Assado" alt="Hambúrguer de Milho Assado" class="rounded-lg w-full"></div><div class="md:col-span-2"><h3 class="text-3xl font-bold text-white mb-6">Milho Assado e Páprica</h3><div class="grid grid-cols-1 lg:grid-cols-2 gap-x-8 gap-y-6"><div><h4 class="font-bold text-lg mb-2 text-orange-400">Componentes</h4><ul class="space-y-2 text-stone-300"><li><span>Pão de Milho</span></li><li><span>Hamb. de Milho Assado e Páprica Defumada</span></li><li><span>Maionese Vegana de Limão</span></li><li><span>Cebola Roxa Fatiada</span></li></ul></div><div><h4 class="font-bold text-lg mb-2 text-orange-400">Como Montar</h4><ol class="list-decimal list-inside space-y-2 text-stone-300"><li>Grelhe o hambúrguer de milho.</li><li>Toste o pão.</li><li>Passe a maionese de limão na base.</li><li>Coloque o hambúrguer.</li><li>Adicione as fatias de cebola roxa.</li></ol></div></div></div></div></div>
-            <div class="bg-stone-800/50 p-6 md:p-8 rounded-lg shadow-lg backdrop-blur-sm"><div class="grid grid-cols-1 md:grid-cols-3 gap-8 items-start"><div class="md:col-span-1"><img src="https://placehold.co/400x400/0891b2/FFFFFF?text=Seitan+Steak" alt="Hambúrguer de Seitan" class="rounded-lg w-full"></div><div class="md:col-span-2"><h3 class="text-3xl font-bold text-white mb-6">Seitan "Steak"</h3><div class="grid grid-cols-1 lg:grid-cols-2 gap-x-8 gap-y-6"><div><h4 class="font-bold text-lg mb-2 text-orange-400">Componentes</h4><ul class="space-y-2 text-stone-300"><li><span>Pão Rústico</span></li><li><span>Bife de Seitan Grelhado</span></li><li><span>Cebola na Chapa</span></li><li><span>Molho de Pimenta Vegano</span></li></ul></div><div><h4 class="font-bold text-lg mb-2 text-orange-400">Como Montar</h4><ol class="list-decimal list-inside space-y-2 text-stone-300"><li>Grelhe o bife de seitan e a cebola.</li><li>Toste o pão.</li><li>Passe o molho de pimenta na base.</li><li>Coloque o bife de seitan.</li><li>Cubra com a cebola grelhada.</li></ol></div></div></div></div></div>
-            <div class="bg-stone-800/50 p-6 md:p-8 rounded-lg shadow-lg backdrop-blur-sm"><div class="grid grid-cols-1 md:grid-cols-3 gap-8 items-start"><div class="md:col-span-1"><img src="https://placehold.co/400x400/9a3412/FFFFFF?text=Cebola+e+Tomilho" alt="Hambúrguer de Cebola e Tomilho" class="rounded-lg w-full"></div><div class="md:col-span-2"><h3 class="text-3xl font-bold text-white mb-6">Cebola Francesa Vegana</h3><div class="grid grid-cols-1 lg:grid-cols-2 gap-x-8 gap-y-6"><div><h4 class="font-bold text-lg mb-2 text-orange-400">Componentes</h4><ul class="space-y-2 text-stone-300"><li><span>Baguete Tostada</span></li><li><span>Hamb. de Lentilha e Cogumelos</span></li><li><span>Queijo Gruyère Vegano</span></li><li><span>Sopa de Cebola Reduzida</span></li></ul></div><div><h4 class="font-bold text-lg mb-2 text-orange-400">Como Montar</h4><ol class="list-decimal list-inside space-y-2 text-stone-300"><li>Grelhe o hambúrguer.</li><li>Derreta o queijo por cima, gratinando se possível.</li><li>Toste a baguete.</li><li>Mergulhe o topo do pão na sopa de cebola reduzida (au jus).</li><li>Monte e sirva imediatamente.</li></ol></div></div></div></div></div>
-            <div class="bg-stone-800/50 p-6 md:p-8 rounded-lg shadow-lg backdrop-blur-sm"><div class="grid grid-cols-1 md:grid-cols-3 gap-8 items-start"><div class="md:col-span-1"><img src="https://placehold.co/400x400/4d7c0f/FFFFFF?text=Mediterr%C3%A2neo+Vegano" alt="Hambúrguer Mediterrâneo Vegano" class="rounded-lg w-full"></div><div class="md:col-span-2"><h3 class="text-3xl font-bold text-white mb-6">Mediterrâneo Vegano</h3><div class="grid grid-cols-1 lg:grid-cols-2 gap-x-8 gap-y-6"><div><h4 class="font-bold text-lg mb-2 text-orange-400">Componentes</h4><ul class="space-y-2 text-stone-300"><li><span>Pão Pita</span></li><li><span>Hamb. de Grão-de-bico com Azeitonas</span></li><li><span>Hummus</span></li><li><span>Pepino e Tomate picados</span></li></ul></div><div><h4 class="font-bold text-lg mb-2 text-orange-400">Como Montar</h4><ol class="list-decimal list-inside space-y-2 text-stone-300"><li>Grelhe o hambúrguer.</li><li>Aqueça o pão pita.</li><li>Passe uma camada de hummus dentro do pão.</li><li>Coloque o hambúrguer.</li><li>Adicione a salada de pepino e tomate.</li></ol></div></div></div></div></div>
-            <div class="bg-stone-800/50 p-6 md:p-8 rounded-lg shadow-lg backdrop-blur-sm"><div class="grid grid-cols-1 md:grid-cols-3 gap-8 items-start"><div class="md:col-span-1"><img src="https://placehold.co/400x400/fca5a5/333333?text=Feij%C3%A3o+Branco+e+Pesto" alt="Hambúrguer de Feijão Branco" class="rounded-lg w-full"></div><div class="md:col-span-2"><h3 class="text-3xl font-bold text-white mb-6">Feijão Branco e Pesto</h3><div class="grid grid-cols-1 lg:grid-cols-2 gap-x-8 gap-y-6"><div><h4 class="font-bold text-lg mb-2 text-orange-400">Componentes</h4><ul class="space-y-2 text-stone-300"><li><span>Pão Ciabatta</span></li><li><span>Hamb. de Feijão Branco e Manjericão</span></li><li><span>Pesto Vegano</span></li><li><span>Tomate Seco</span></li></ul></div><div><h4 class="font-bold text-lg mb-2 text-orange-400">Como Montar</h4><ol class="list-decimal list-inside space-y-2 text-stone-300"><li>Grelhe o hambúrguer.</li><li>Toste o pão.</li><li>Passe pesto na base e na tampa.</li><li>Coloque o hambúrguer.</li><li>Adicione fatias de tomate seco por cima.</li></ol></div></div></div></div></div>
-            <div class="bg-stone-800/50 p-6 md:p-8 rounded-lg shadow-lg backdrop-blur-sm"><div class="grid grid-cols-1 md:grid-cols-3 gap-8 items-start"><div class="md:col-span-1"><img src="https://placehold.co/400x400/a78bfa/FFFFFF?text=Cajun+Vegano" alt="Hambúrguer Cajun Vegano" class="rounded-lg w-full"></div><div class="md:col-span-2"><h3 class="text-3xl font-bold text-white mb-6">Cajun Vegano</h3><div class="grid grid-cols-1 lg:grid-cols-2 gap-x-8 gap-y-6"><div><h4 class="font-bold text-lg mb-2 text-orange-400">Componentes</h4><ul class="space-y-2 text-stone-300"><li><span>Pão de Milho</span></li><li><span>Hamb. de Feijão Vermelho com tempero Cajun</span></li><li><span>Maionese Vegana Picante</span></li><li><span>Pimentão Verde em tiras</span></li></ul></div><div><h4 class="font-bold text-lg mb-2 text-orange-400">Como Montar</h4><ol class="list-decimal list-inside space-y-2 text-stone-300"><li>Grelhe o hambúrguer.</li><li>Toste o pão.</li><li>Passe a maionese picante.</li><li>Coloque o hambúrguer.</li><li>Adicione as tiras de pimentão fresco.</li></ol></div></div></div></div></div>
-            <div class="bg-stone-800/50 p-6 md:p-8 rounded-lg shadow-lg backdrop-blur-sm"><div class="grid grid-cols-1 md:grid-cols-3 gap-8 items-start"><div class="md:col-span-1"><img src="https://placehold.co/400x400/86efac/333333?text=Soja+Teriyaki" alt="Hambúrguer de Soja Teriyaki" class="rounded-lg w-full"></div><div class="md:col-span-2"><h3 class="text-3xl font-bold text-white mb-6">Soja Teriyaki</h3><div class="grid grid-cols-1 lg:grid-cols-2 gap-x-8 gap-y-6"><div><h4 class="font-bold text-lg mb-2 text-orange-400">Componentes</h4><ul class="space-y-2 text-stone-300"><li><span>Pão de Hambúrguer</span></li><li><span>Hambúrguer de Proteína de Soja</span></li><li><span>Molho Teriyaki</span></li><li><span>Abacaxi Grelhado</span></li><li><span>Cebolinho picado</span></li></ul></div><div><h4 class="font-bold text-lg mb-2 text-orange-400">Como Montar</h4><ol class="list-decimal list-inside space-y-2 text-stone-300"><li>Grelhe o hambúrguer e a fatia de abacaxi.</li><li>Pincele o hambúrguer com molho teriyaki.</li><li>Toste o pão.</li><li>Coloque o hambúrguer.</li><li>Adicione o abacaxi e salpique com cebolinho.</li></ol></div></div></div></div></div>
+        <div id="recipe-list" class="space-y-12">
+            <!-- As 15 receitas veganas serão geradas aqui pelo JavaScript -->
         </div>
     </main>
+
+    <!-- Modals Container -->
+    <div id="modals-container"></div>
+    
     <!-- Floating Action Button -->
     <div id="fab-container" class="fab-container">
         <div id="fab-menu" class="fab-menu flex-col items-end gap-3 mb-4 hidden absolute bottom-full right-0 w-64">
@@ -71,16 +62,118 @@
             <svg xmlns="http://www.w3.org/2000/svg" class="h-10 w-10" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16" /></svg>
         </button>
     </div>
-    <footer class="bg-stone-900 border-t border-stone-800">
+
+    <footer class="bg-stone-900 border-t border-stone-800 mt-16">
         <div class="container mx-auto px-6 py-8 text-center text-stone-400"><p>&copy; 2024 Manual Interativo do Hambúrguer.</p></div>
     </footer>
+
     <script>
         document.addEventListener('DOMContentLoaded', () => {
-            const fabContainer = document.getElementById('fab-container');
-            const fabButton = document.getElementById('fab-button');
-            const fabMenu = document.getElementById('fab-menu');
-            fabButton.addEventListener('click', (e) => { e.stopPropagation(); fabMenu.classList.toggle('hidden'); fabMenu.classList.toggle('flex'); fabContainer.classList.toggle('open'); });
-            document.addEventListener('click', (event) => { if (!fabContainer.contains(event.target)) { fabMenu.classList.add('hidden'); fabMenu.classList.remove('flex'); fabContainer.classList.remove('open'); }});
+            const recipes = [
+                { 
+                    id: 'vegano-lentilha', 
+                    name: 'Lentilha Defumada', 
+                    image: 'imagens/vegano_lentilha_defumada.jpg', 
+                    description: 'Um hambúrguer vegano robusto e cheio de sabor fumado, perfeito com a crocância da cebola frita.',
+                    components: [ 
+                        {name: 'Pão Vegano', qty: 1, unit: 'unid.'}, 
+                        {name: 'Queijo Vegano (tipo cheddar)', qty: 1, unit: 'fatia'}, 
+                        {name: 'Anéis de Cebola Frita', qty: 3, unit: 'unid.'}, 
+                        {name: 'Molho Barbecue', qty: 1, unit: 'colher'} 
+                    ], 
+                    steps: [ 
+                        { title: 'A Base do Sabor', description: 'Cozinhe as lentilhas com uma folha de louro e um dente de alho. Escorra bem e amasse, deixando alguns pedaços inteiros para dar textura. Misture com cebola picada, farinha de aveia, e o segredo: páprica defumada, que dará o sabor de churrasco.' },
+                        { title: 'Grelhar com Atenção', description: 'Hambúrgueres de lentilha são mais delicados. Molde-os e, se possível, leve ao frigorífico por 30 minutos para firmarem. Grelhe em lume médio com um fio de azeite por 4-5 minutos de cada lado, virando com cuidado.', timer: 270 },
+                        { title: 'Queijo e Pão', description: 'Use um queijo vegano que derreta bem. Coloque a fatia sobre o hambúrguer no último minuto e abafe para que derreta. Toste o pão para adicionar uma camada de crocância.'},
+                        { title: 'Montagem Final', description: 'Na base do pão, espalhe o molho barbecue. Coloque o hambúrguer com o queijo, adicione os anéis de cebola frita por cima e feche o lanche. A combinação do fumado, do crocante e do cremoso é perfeita.' }
+                    ], 
+                    baseQty: 1,
+                    baseIngredient: 'Hambúrguer de Lentilha (150g)',
+                    blendDetails: 'A lentilha é uma excelente base para hambúrgueres veganos devido à sua textura e capacidade de absorver sabores. A páprica defumada é crucial para dar o sabor de "grelhado".', 
+                    saltRatio: 12, 
+                    pepperRatio: 4 
+                },
+                { id: 'vegano-quinoa', name: 'Quinoa & Batata Doce', image: 'imagens/vegano_quinoa_batata_doce.jpg', description: 'Nutritivo e saboroso, com a doçura da batata doce e a cremosidade do abacate.'},
+                { id: 'vegano-tofu-satay', name: 'Tofu Satay', image: 'imagens/vegano_tofu_satay.jpg', description: 'Inspirado na Tailândia, com um molho de amendoim rico e cremoso.'},
+                { id: 'vegano-shroom', name: 'Shroom Burger', image: 'imagens/vegano_shroom_burger.jpg', description: 'Um cogumelo portobello inteiro marinado e grelhado como um bife.'},
+                { id: 'vegano-jaca', name: 'Jaca Louca BBQ', image: 'imagens/vegano_jaca_louca_bbq.jpg', description: 'A textura da jaca desfiada com molho barbecue faz lembrar o pulled pork.'},
+                { id: 'vegano-grao-bico', name: 'Grão-de-bico com Ervas', image: 'imagens/vegano_grao_de_bico_ervas.jpg', description: 'Leve, fresco e aromático, com um toque cítrico da maionese de limão.'},
+                { id: 'vegano-abacate', name: 'Abacate Crocante', image: 'imagens/vegano_abacate_crocante.jpg', description: 'Uma fatia de abacate empanada e frita, crocante por fora e cremosa por dentro.'},
+                { id: 'vegano-cenoura', name: 'Cenoura e Gengibre', image: 'imagens/vegano_cenoura_gengibre.jpg', description: 'Um sabor adocicado e ligeiramente picante, com a frescura do gengibre e da hortelã.'},
+                { id: 'vegano-milho', name: 'Milho Assado e Páprica', image: 'imagens/vegano_milho_assado.jpg', description: 'O doce do milho assado com o fumado da páprica, numa combinação surpreendente.'},
+                { id: 'vegano-seitan', name: 'Seitan "Steak"', image: 'imagens/vegano_seitan_steak.jpg', description: 'Para quem procura uma textura mais próxima da carne, o seitan é a escolha perfeita.'},
+                { id: 'vegano-cebola-francesa', name: 'Cebola Francesa Vegana', image: 'imagens/vegano_cebola_francesa.jpg', description: 'Todo o sabor de uma sopa de cebola gratinada, numa versão de hambúrguer.'},
+                { id: 'vegano-mediterraneo', name: 'Mediterrâneo Vegano', image: 'imagens/vegano_mediterraneo.jpg', description: 'Sabores frescos da Grécia com hummus cremoso e uma salada de pepino.'},
+                { id: 'vegano-feijao-branco', name: 'Feijão Branco e Pesto', image: 'imagens/vegano_feijao_branco_pesto.jpg', description: 'A cremosidade do feijão branco com o sabor intenso do pesto de manjericão.'},
+                { id: 'vegano-cajun', name: 'Cajun Vegano', image: 'imagens/vegano_cajun.jpg', description: 'Um hambúrguer de feijão vermelho com o tempero picante e aromático de Nova Orleans.'},
+                { id: 'vegano-soja-teriyaki', name: 'Soja Teriyaki', image: 'imagens/vegano_soja_teriyaki.jpg', description: 'O clássico agridoce japonês com abacaxi grelhado e proteína de soja.'}
+            ];
+
+            const recipeListContainer = document.getElementById('recipe-list');
+            const modalsContainer = document.getElementById('modals-container');
+
+            recipes.forEach(recipe => {
+                const recipeCard = document.createElement('div');
+                recipeCard.className = 'bg-stone-800/50 p-6 md:p-8 rounded-lg shadow-lg backdrop-blur-sm';
+                recipeCard.innerHTML = `
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-8 items-center">
+                        <div class="md:col-span-1">
+                            <img src="${recipe.image}" alt="${recipe.name}" class="rounded-lg w-full h-full object-cover" onerror="this.onerror=null;this.src='https://placehold.co/400x400/333/FFF?text=Imagem+Indispon%C3%ADvel';">
+                        </div>
+                        <div class="md:col-span-2 text-center">
+                            <h3 class="text-3xl font-bold text-white mb-4">${recipe.name}</h3>
+                            <p class="text-stone-400 mb-6">${recipe.description}</p>
+                            <button data-modal-target="modal-${recipe.id}" class="open-modal-btn inline-block bg-orange-600 text-white font-bold px-6 py-3 rounded-lg hover:bg-orange-700 transition-colors">Ver Ficha Técnica</button>
+                        </div>
+                    </div>
+                `;
+                if(recipeListContainer) recipeListContainer.appendChild(recipeCard);
+
+                if (recipe.steps) {
+                    const modal = document.createElement('div');
+                    modal.id = `modal-${recipe.id}`;
+                    modal.className = 'modal-overlay fixed inset-0 bg-black bg-opacity-75 flex items-center justify-center p-4 hidden opacity-0 z-50';
+                    modal.innerHTML = `
+                        <div class="bg-stone-900/80 backdrop-blur-xl w-full max-w-4xl max-h-[90vh] overflow-y-auto p-8 rounded-2xl shadow-2xl border border-stone-700">
+                            <div class="flex justify-between items-center mb-6">
+                                <h2 class="text-3xl md:text-4xl font-black text-white">Ficha Técnica: <span class="text-orange-500">${recipe.name}</span></h2>
+                                <button class="close-modal-btn text-4xl text-stone-400 hover:text-white">&times;</button>
+                            </div>
+                            <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+                                <div>
+                                    <h3 class="text-2xl font-bold text-orange-400 mb-4">Planeamento</h3>
+                                    <div class="bg-stone-800 p-4 rounded-lg">
+                                        <label for="qty-input-${recipe.id}" class="block text-lg text-stone-300 mb-2">Quantidade de Hambúrgueres:</label>
+                                        <input type="number" id="qty-input-${recipe.id}" value="1" min="1" step="1" class="w-full p-2 border border-stone-600 bg-stone-700 text-white rounded-lg">
+                                    </div>
+                                    <div class="mt-6">
+                                        <h4 class="font-bold text-lg mb-2 text-orange-400">Lista de Compras:</h4>
+                                        <ul class="space-y-3 text-stone-300" id="ingredient-list-${recipe.id}"></ul>
+                                    </div>
+                                     <div class="mt-6">
+                                         <h4 class="font-bold text-lg mb-2 text-orange-400">Base do Hambúrguer</h4>
+                                         <p class="text-stone-400 text-sm bg-stone-800 p-3 rounded-lg">${recipe.blendDetails}</p>
+                                    </div>
+                                </div>
+                                <div>
+                                    <h3 class="text-2xl font-bold text-orange-400 mb-4">Tutorial de Preparo</h3>
+                                    <div class="space-y-6">
+                                        ${recipe.steps.map((step, index) => `
+                                            <div class="p-4 rounded-lg bg-stone-800">
+                                                <h4 class="font-bold text-lg text-white mb-2"><span class="bg-orange-600 text-white rounded-full w-8 h-8 inline-flex items-center justify-center mr-3">${index + 1}</span> ${step.title}</h4>
+                                                <p class="text-stone-300">${step.description}</p>
+                                                ${step.timer ? `<div class="mt-3 flex items-center gap-4"><button class="timer-btn bg-orange-500 text-white px-4 py-2 rounded-lg hover:bg-orange-600 transition" data-time="${step.timer}">Timer (${Math.floor(step.timer/60)}m ${step.timer%60}s)</button><span class="timer-display text-lg font-mono font-bold text-orange-400"></span></div>` : ''}
+                                            </div>
+                                        `).join('')}
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    `;
+                    modalsContainer.appendChild(modal);
+                }
+            });
+            // ... (resto do script)
         });
     </script>
 </body>
