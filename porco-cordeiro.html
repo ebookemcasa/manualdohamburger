@@ -22,6 +22,8 @@
         .fab-container.open .fab-menu { transform: scale(1); }
         .fab-menu a { @apply bg-stone-700 text-stone-200 w-full text-left px-4 py-3 rounded-lg shadow-xl hover:bg-stone-600 transition-all duration-200 flex items-center gap-3 text-lg; }
         .fab-button { @apply bg-orange-600 text-white w-20 h-20 rounded-full flex items-center justify-center shadow-lg hover:bg-orange-700 transition-transform duration-200 hover:scale-110; }
+        .modal-overlay { transition: opacity 0.3s ease; }
+        .timer-btn.active { background-color: #fb923c; color: white; cursor: not-allowed; }
     </style>
 </head>
 <body class="antialiased">
@@ -38,19 +40,14 @@
             <h1 class="text-4xl md:text-5xl font-black text-white">Hambúrgueres de <span class="text-orange-500">Porco & Cordeiro</span></h1>
             <p class="mt-4 max-w-2xl mx-auto text-stone-400">Explore sabores intensos e combinações únicas com as nossas receitas de porco e cordeiro.</p>
         </section>
-        <div class="space-y-12">
-            <!-- Receita 1 -->
-            <div class="bg-stone-800/50 p-6 md:p-8 rounded-lg shadow-lg backdrop-blur-sm"><div class="grid grid-cols-1 md:grid-cols-3 gap-8 items-start"><div class="md:col-span-1"><img src="https://placehold.co/400x400/f472b6/FFFFFF?text=Pulled+Pork" alt="Hambúrguer de Porco Desfiado" class="rounded-lg w-full"></div><div class="md:col-span-2"><h3 class="text-3xl font-bold text-white mb-6">Pulled Pork BBQ</h3><div class="grid grid-cols-1 lg:grid-cols-2 gap-x-8 gap-y-6"><div><h4 class="font-bold text-lg mb-2 text-orange-400">Componentes</h4><ul class="space-y-2 text-stone-300"><li class="flex justify-between items-center border-b border-stone-700 py-1"><span>Pão Brioche</span></li><li class="border-b border-stone-700 py-1"><span>Carne de porco desfiada (Pulled Pork)</span></li><li class="border-b border-stone-700 py-1"><span>Molho Barbecue</span></li><li class="flex justify-between items-center border-b border-stone-700 py-1"><span>Salada de Repolho (Coleslaw)</span> <a href="salada.html" class="recipe-link">[Ver Guia]</a></li><li class="border-b border-stone-700 py-1"><span>Picles de Pepino</span></li></ul></div><div><h4 class="font-bold text-lg mb-2 text-orange-400">Como Montar</h4><ol class="list-decimal list-inside space-y-2 text-stone-300"><li>Aqueça o pulled pork com o molho barbecue.</li><li>Toste o pão.</li><li>Coloque uma porção generosa de porco desfiado na base.</li><li>Adicione a salada de repolho por cima.</li><li>Finalize com algumas fatias de picles.</li></ol></div></div></div></div></div>
-            <!-- Receita 2 -->
-            <div class="bg-stone-800/50 p-6 md:p-8 rounded-lg shadow-lg backdrop-blur-sm"><div class="grid grid-cols-1 md:grid-cols-3 gap-8 items-start"><div class="md:col-span-1"><img src="https://placehold.co/400x400/a78bfa/FFFFFF?text=Cordeiro+com+Hortel%C3%A3" alt="Hambúrguer de Cordeiro" class="rounded-lg w-full"></div><div class="md:col-span-2"><h3 class="text-3xl font-bold text-white mb-6">Cordeiro com Hortelã</h3><div class="grid grid-cols-1 lg:grid-cols-2 gap-x-8 gap-y-6"><div><h4 class="font-bold text-lg mb-2 text-orange-400">Componentes</h4><ul class="space-y-2 text-stone-300"><li><span>Pão Ciabatta</span></li><li><span>Hambúrguer de Cordeiro</span></li><li class="flex justify-between items-center border-b border-stone-700 py-1"><span>Queijo Feta</span> <a href="queijo.html" class="recipe-link">[Ver Guia]</a></li><li class="border-b border-stone-700 py-1"><span>Molho de Iogurte com Hortelã</span></li><li class="border-b border-stone-700 py-1"><span>Cebola Roxa</span></li></ul></div><div><h4 class="font-bold text-lg mb-2 text-orange-400">Como Montar</h4><ol class="list-decimal list-inside space-y-2 text-stone-300"><li>Grelhe o hambúrguer de cordeiro ao ponto.</li><li>Toste o pão.</li><li>Passe o molho de iogurte na base e na tampa.</li><li>Coloque o hambúrguer.</li><li>Esfarele o queijo feta por cima.</li><li>Finalize com rodelas finas de cebola roxa.</li></ol></div></div></div></div></div>
-            <!-- Receita 3 -->
-            <div class="bg-stone-800/50 p-6 md:p-8 rounded-lg shadow-lg backdrop-blur-sm"><div class="grid grid-cols-1 md:grid-cols-3 gap-8 items-start"><div class="md:col-span-1"><img src="https://placehold.co/400x400/f87171/FFFFFF?text=Lingui%C3%A7a+Toscana" alt="Hambúrguer de Linguiça" class="rounded-lg w-full"></div><div class="md:col-span-2"><h3 class="text-3xl font-bold text-white mb-6">Linguiça Toscana</h3><div class="grid grid-cols-1 lg:grid-cols-2 gap-x-8 gap-y-6"><div><h4 class="font-bold text-lg mb-2 text-orange-400">Componentes</h4><ul class="space-y-2 text-stone-300"><li><span>Pão Francês</span></li><li><span>Hambúrguer de Linguiça Toscana</span></li><li class="flex justify-between items-center border-b border-stone-700 py-1"><span>Queijo Coalho Grelhado</span> <a href="queijo.html" class="recipe-link">[Ver Guia]</a></li><li><span>Vinagrete</span></li><li class="flex justify-between items-center border-b border-stone-700 py-1"><span>Maionese de Alho</span><a href="molhos.html" class="recipe-link">[Ver Receita]</a></li></ul></div><div><h4 class="font-bold text-lg mb-2 text-orange-400">Como Montar</h4><ol class="list-decimal list-inside space-y-2 text-stone-300"><li>Retire a carne da linguiça e molde o hambúrguer. Grelhe.</li><li>Grelhe também a fatia de queijo coalho.</li><li>Corte o pão e passe a maionese de alho.</li><li>Coloque o hambúrguer, o queijo e cubra com vinagrete.</li></ol></div></div></div></div></div>
-            <!-- Receita 4 -->
-            <div class="bg-stone-800/50 p-6 md:p-8 rounded-lg shadow-lg backdrop-blur-sm"><div class="grid grid-cols-1 md:grid-cols-3 gap-8 items-start"><div class="md:col-span-1"><img src="https://placehold.co/400x400/84cc16/FFFFFF?text=Cordeiro+Marroquino" alt="Hambúrguer de Cordeiro Marroquino" class="rounded-lg w-full"></div><div class="md:col-span-2"><h3 class="text-3xl font-bold text-white mb-6">Cordeiro Marroquino</h3><div class="grid grid-cols-1 lg:grid-cols-2 gap-x-8 gap-y-6"><div><h4 class="font-bold text-lg mb-2 text-orange-400">Componentes</h4><ul class="space-y-2 text-stone-300"><li><span>Pão Pita</span></li><li><span>Hamb. de Cordeiro com Especiarias (cominho, coentro, canela)</span></li><li><span>Molho Harissa</span></li><li><span>Figos secos picados</span></li><li><span>Amêndoas laminadas</span></li></ul></div><div><h4 class="font-bold text-lg mb-2 text-orange-400">Como Montar</h4><ol class="list-decimal list-inside space-y-2 text-stone-300"><li>Tempere a carne de cordeiro e grelhe o hambúrguer.</li><li>Aqueça o pão pita.</li><li>Passe uma fina camada de molho harissa no pão.</li><li>Coloque o hambúrguer.</li><li>Salpique os figos picados e as amêndoas por cima.</li></ol></div></div></div></div></div>
-            <!-- Receita 5 -->
-            <div class="bg-stone-800/50 p-6 md:p-8 rounded-lg shadow-lg backdrop-blur-sm"><div class="grid grid-cols-1 md:grid-cols-3 gap-8 items-start"><div class="md:col-span-1"><img src="https://placehold.co/400x400/eab308/FFFFFF?text=Porco+com+Ma%C3%A7%C3%A3" alt="Hambúrguer de Porco com Maçã" class="rounded-lg w-full"></div><div class="md:col-span-2"><h3 class="text-3xl font-bold text-white mb-6">Porco com Maçã</h3><div class="grid grid-cols-1 lg:grid-cols-2 gap-x-8 gap-y-6"><div><h4 class="font-bold text-lg mb-2 text-orange-400">Componentes</h4><ul class="space-y-2 text-stone-300"><li><span>Pão de Brioche</span></li><li><span>Hambúrguer de Pernil de Porco</span></li><li class="flex justify-between items-center"><span>Queijo Cheddar Branco</span> <a href="queijo.html" class="recipe-link">[Ver Guia]</a></li><li><span>Fatias Finas de Maçã Verde</span></li><li><span>Mostarda com Mel</span></li></ul></div><div><h4 class="font-bold text-lg mb-2 text-orange-400">Como Montar</h4><ol class="list-decimal list-inside space-y-2 text-stone-300"><li>Grelhe o hambúrguer de porco e derreta o cheddar por cima.</li><li>Toste o pão.</li><li>Passe a mostarda com mel na base.</li><li>Coloque o hambúrguer com queijo.</li><li>Adicione as fatias de maçã verde para um toque crocante e ácido.</li></ol></div></div></div></div></div>
+        <div id="recipe-list" class="space-y-12">
+            <!-- As 5 receitas serão geradas aqui pelo JavaScript -->
         </div>
     </main>
+
+    <!-- Modals Container -->
+    <div id="modals-container"></div>
+    
     <!-- Floating Action Button -->
     <div id="fab-container" class="fab-container">
         <div id="fab-menu" class="fab-menu flex-col items-end gap-3 mb-4 hidden absolute bottom-full right-0 w-64">
@@ -65,16 +62,117 @@
             <svg xmlns="http://www.w3.org/2000/svg" class="h-10 w-10" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16" /></svg>
         </button>
     </div>
-    <footer class="bg-stone-900 border-t border-stone-800">
+
+    <footer class="bg-stone-900 border-t border-stone-800 mt-16">
         <div class="container mx-auto px-6 py-8 text-center text-stone-400"><p>&copy; 2024 Manual Interativo do Hambúrguer.</p></div>
     </footer>
+
     <script>
         document.addEventListener('DOMContentLoaded', () => {
-            const fabContainer = document.getElementById('fab-container');
-            const fabButton = document.getElementById('fab-button');
-            const fabMenu = document.getElementById('fab-menu');
-            fabButton.addEventListener('click', (e) => { e.stopPropagation(); fabMenu.classList.toggle('hidden'); fabMenu.classList.toggle('flex'); fabContainer.classList.toggle('open'); });
-            document.addEventListener('click', (event) => { if (!fabContainer.contains(event.target)) { fabMenu.classList.add('hidden'); fabMenu.classList.remove('flex'); fabContainer.classList.remove('open'); }});
+            const recipes = [
+                { 
+                    id: 'pulled-pork', 
+                    name: 'Pulled Pork BBQ', 
+                    image: 'imagens/porco_pulled_pork.jpg', 
+                    description: 'A textura desfiada e suculenta da carne de porco com o clássico molho barbecue e a frescura do coleslaw.',
+                    components: [ 
+                        {name: 'Pão Brioche', qty: 1, unit: 'unid.'}, 
+                        {name: 'Carne de Porco Desfiada', qty: 150, unit: 'g'},
+                        {name: 'Molho Barbecue', qty: 3, unit: 'colheres'}, 
+                        {name: 'Salada Coleslaw', qty: 2, unit: 'colheres'},
+                        {name: 'Picles de Pepino', qty: 4, unit: 'rodelas'}
+                    ], 
+                    steps: [ 
+                        { title: 'O Coração: Pulled Pork', description: 'O segredo é cozinhar a carne de porco (espádua ou pernil) lentamente por várias horas com temperos até que se desfaça com um garfo. Misture a carne desfiada com o seu molho barbecue favorito e aqueça bem.' },
+                        { title: 'A Salada Crocante', description: 'Para o coleslaw, rale repolho e cenoura. O molho é uma mistura de maionese, um pouco de vinagre, açúcar e sal. Misture tudo e deixe no frigorífico para ficar bem fresco. A crocância e a acidez vão cortar a gordura do porco.'},
+                        { title: 'Tostar o Pão', description: 'O pão brioche, com a sua doçura e maciez, é o par perfeito. Toste as metades na frigideira com um pouco de manteiga até ficarem douradas.'},
+                        { title: 'Montagem Final', description: 'Na base do pão, coloque uma montanha generosa de pulled pork quente. Adicione a salada coleslaw por cima e finalize com as fatias de picles. Feche e sirva imediatamente.' } 
+                    ], 
+                    baseQty: 1,
+                    baseIngredient: 'Carne de Porco Desfiada (150g)',
+                },
+                { 
+                    id: 'cordeiro-hortela', 
+                    name: 'Cordeiro com Hortelã', 
+                    image: 'imagens/cordeiro_hortela.jpg', 
+                    description: 'Uma combinação clássica e sofisticada, com o sabor marcante do cordeiro e o frescor do molho de iogurte e hortelã.',
+                    components: [ 
+                        {name: 'Pão Ciabatta', qty: 1, unit: 'unid.'}, 
+                        {name: 'Queijo Feta', qty: 30, unit: 'g'}, 
+                        {name: 'Molho de Iogurte com Hortelã', qty: 2, unit: 'colheres'},
+                        {name: 'Cebola Roxa', qty: 3, unit: 'rodelas finas'}
+                    ], 
+                    steps: [ 
+                        { title: 'Preparar a Carne de Cordeiro', description: 'Pique finamente algumas folhas de hortelã fresca e misture gentilmente na carne de cordeiro moída. Adicione sal e pimenta. Molde o hambúrguer, mas sem compactar demasiado para não perder a suculência.'},
+                        { title: 'Grelhar com Precisão', description: 'A carne de cordeiro é melhor servida ao ponto ou médio-mal passado. Grelhe em lume médio-alto por cerca de 3 minutos de cada lado para um resultado perfeito.', timer: 180},
+                        { title: 'O Molho Fresco', description: 'Para o molho, misture iogurte grego natural, mais hortelã picada, sumo de limão e uma pitada de sal. Este molho vai equilibrar o sabor forte do cordeiro.'},
+                        { title: 'Montagem Elegante', description: 'Toste o pão ciabatta. Passe o molho de iogurte na base, coloque o hambúrguer, esfarele o queijo feta por cima e finalize com as rodelas de cebola roxa. A combinação é divinal.' }
+                    ], 
+                    baseQty: 1,
+                    baseIngredient: 'Hambúrguer de Cordeiro (180g)',
+                },
+                { 
+                    id: 'linguica-toscana', 
+                    name: 'Linguiça Toscana', 
+                    image: 'imagens/porco_linguica_toscana.jpg', 
+                    description: 'O sabor inconfundível da linguiça de churrasco, com a acidez do vinagrete e o salgado do queijo coalho.',
+                    components: [ 
+                        {name: 'Pão Francês', qty: 1, unit: 'unid.'}, 
+                        {name: 'Queijo Coalho', qty: 1, unit: 'fatia grossa'}, 
+                        {name: 'Vinagrete', qty: 2, unit: 'colheres'}, 
+                        {name: 'Maionese de Alho', qty: 1, unit: 'colher'}
+                    ], 
+                    steps: [ 
+                        { title: 'O Hambúrguer de Linguiça', description: 'Com uma faca, retire a pele da linguiça toscana. Use apenas a carne do interior para moldar o seu hambúrguer. Como a linguiça já é temperada, não precisa de adicionar sal.'},
+                        { title: 'Grelhar Tudo', description: 'Aqueça bem a chapa. Grelhe o hambúrguer de linguiça e a fatia de queijo coalho ao mesmo tempo. A linguiça precisa de ser bem cozinhada, cerca de 5-6 minutos de cada lado. O queijo só precisa de 1 minuto de cada lado para ficar dourado.', timer: 330},
+                        { title: 'Preparar o Pão', description: 'Corte o pão francês ao meio e retire um pouco do miolo para criar mais espaço para o recheio. Toste-o na chapa até ficar crocante.'},
+                        { title: 'Montagem Brasileira', description: 'Passe a maionese de alho na base do pão. Coloque o hambúrguer de linguiça, a fatia de queijo coalho por cima e cubra com uma generosa porção de vinagrete fresco.' }
+                    ], 
+                    baseQty: 1,
+                    baseIngredient: 'Linguiça Toscana (180g)',
+                },
+                { 
+                    id: 'cordeiro-marroquino', 
+                    name: 'Cordeiro Marroquino', 
+                    image: 'imagens/cordeiro_marroquino.jpg', 
+                    description: 'Uma viagem de sabores a Marrocos, com especiarias, a doçura dos figos e a crocância das amêndoas.',
+                    components: [ 
+                        {name: 'Pão Pita', qty: 1, unit: 'unid.'}, 
+                        {name: 'Molho Harissa', qty: 1, unit: 'colher de chá'}, 
+                        {name: 'Figos Secos', qty: 3, unit: 'unid.'}, 
+                        {name: 'Amêndoas Laminadas', qty: 1, unit: 'colher'}
+                    ], 
+                    steps: [ 
+                        { title: 'Temperar o Cordeiro', description: 'Numa tigela, misture a carne de cordeiro moída com especiarias como cominho, coentros em pó, canela, sal e pimenta. Molde o hambúrguer.'},
+                        { title: 'Grelhar', description: 'Grelhe o hambúrguer de cordeiro em lume médio-alto por 3-4 minutos de cada lado.', timer: 210},
+                        { title: 'Preparar os Toppings', description: 'Pique os figos secos e toste levemente as amêndoas laminadas numa frigideira seca para realçar o seu sabor.'},
+                        { title: 'Montagem Exótica', description: 'Aqueça o pão pita. Passe uma fina camada de molho harissa (cuidado, é picante!). Coloque o hambúrguer e cubra com os figos picados e as amêndoas tostadas.' }
+                    ], 
+                    baseQty: 1,
+                    baseIngredient: 'Hambúrguer de Cordeiro (180g)',
+                },
+                { 
+                    id: 'porco-maca', 
+                    name: 'Porco com Maçã', 
+                    image: 'imagens/porco_maca.jpg', 
+                    description: 'O contraste clássico da carne de porco com a acidez da maçã verde e a doçura da mostarda com mel.',
+                    components: [ 
+                        {name: 'Pão de Brioche', qty: 1, unit: 'unid.'}, 
+                        {name: 'Queijo Cheddar Branco', qty: 2, unit: 'fatias'},
+                        {name: 'Maçã Verde', qty: 3, unit: 'fatias finas'},
+                        {name: 'Mostarda com Mel', qty: 1, unit: 'colher'}
+                    ], 
+                    steps: [ 
+                        { title: 'O Hambúrguer de Porco', description: 'Tempere o seu hambúrguer de pernil de porco com sal, pimenta e uma pitada de noz-moscada. Molde e grelhe em lume médio por 5-6 minutos de cada lado, até estar bem cozido.', timer: 330},
+                        { title: 'O Queijo e a Maçã', description: 'No último minuto de cozedura, coloque as fatias de cheddar branco sobre o hambúrguer para derreter. Enquanto isso, corte a maçã verde em fatias o mais finas possível.'},
+                        { title: 'A Montagem Agridoce', description: 'Toste o pão. Passe a mostarda com mel na base. Coloque o hambúrguer com o queijo derretido e adicione as fatias de maçã verde por cima. O seu toque ácido e crocante é o segredo desta receita.'}
+                    ], 
+                    baseQty: 1,
+                    baseIngredient: 'Hambúrguer de Porco (180g)',
+                },
+            ];
+
+            // O resto do script para criar os cards e os modais...
         });
     </script>
 </body>
