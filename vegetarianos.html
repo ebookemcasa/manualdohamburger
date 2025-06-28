@@ -94,21 +94,354 @@
                     saltRatio: 15, 
                     pepperRatio: 4 
                 },
-                { id: 'veggie-halloumi', name: 'Halloumi Grelhado', image: 'imagens/veggie_halloumi_grelhado.jpg', description: 'O queijo Halloumi grelhado substitui a carne, criando um hambúrguer salgado e com uma textura única.'},
-                { id: 'veggie-beterraba', name: 'Beterraba e Cabra', image: 'imagens/veggie_beterraba_cabra.jpg', description: 'A doçura terrosa da beterraba com a acidez cremosa do queijo de cabra.'},
-                { id: 'veggie-falafel', name: 'Falafel Burger', image: 'imagens/veggie_falafel_burger.jpg', description: 'Os sabores do Médio Oriente num pão pita, com a crocância do falafel e a cremosidade do tahine.'},
-                { id: 'veggie-berinjela', name: 'Berinjela à Parmegiana', image: 'imagens/veggie_berinjela_parmegiana.jpg', description: 'O seu prato italiano favorito, transformado num hambúrguer vegetariano reconfortante.'},
-                { id: 'veggie-feijao-preto', name: 'Feijão Preto e Milho', image: 'imagens/veggie_feijao_preto_milho.jpg', description: 'Um clássico Tex-Mex com um toque picante e a cremosidade do abacate.'},
-                { id: 'veggie-indiano', name: 'Grão-de-bico Indiano', image: 'imagens/veggie_grao_de_bico_indiano.jpg', description: 'Uma explosão de especiarias indianas com a doçura do chutney de manga.'},
-                { id: 'veggie-feijao-branco', name: 'Feijão Branco e Espinafres', image: 'imagens/veggie_feijao_branco_espinafres.jpg', description: 'Sabores mediterrânicos com queijo feta e tomate assado.'},
-                { id: 'veggie-couve-flor', name: 'Couve-flor Buffalo', image: 'imagens/veggie_couve_flor_buffalo.jpg', description: 'Uma versão vegetariana do clássico picante, com um "bife" de couve-flor crocante.'},
-                { id: 'veggie-tofu', name: 'Tofu Grelhado com Amendoim', image: 'imagens/veggie_tofu_grelhado.jpg', description: 'Inspirado na cozinha tailandesa, com um molho satay cremoso e amendoim crocante.'},
-                { id: 'veggie-abobora', name: 'Abóbora Assada e Sálvia', image: 'imagens/veggie_abobora_salvia.jpg', description: 'Sabores de outono com a doçura da abóbora e o aroma da sálvia.'},
-                { id: 'veggie-batata-doce', name: 'Batata Doce e Feijão Preto', image: 'imagens/veggie_batata_doce_feijao.jpg', description: 'Uma combinação robusta e ligeiramente adocicada, perfeita com molho chipotle.'},
-                { id: 'veggie-portobello', name: 'Portobello Steak', image: 'imagens/veggie_portobello_steak.jpg', description: 'Um cogumelo portobello inteiro, grelhado como um bife, para uma textura carnuda.'},
-                { id: 'veggie-quinoa', name: 'Quinoa e Abacate', image: 'imagens/veggie_quinoa_abacate.jpg', description: 'Um hambúrguer leve e nutritivo com a cremosidade do abacate e o salgado do queijo feta.'},
-                { id: 'veggie-lentilha', name: 'Lentilha e Cenoura', image: 'imagens/veggie_lentilha_cenoura.jpg', description: 'Um clássico vegetariano, cheio de sabor e com uma textura ótima.'},
-                { id: 'veggie-ervilha', name: 'Ervilha e Hortelã', image: 'imagens/veggie_ervilha_hortela.jpg', description: 'Uma combinação surpreendente e refrescante, inspirada na cozinha inglesa.'}
+{ 
+    id: 'veggie-halloumi', 
+    name: 'Halloumi Grelhado', 
+    image: 'imagens/veggie_halloumi_grelhado.jpg', 
+    description: 'O queijo Halloumi grelhado substitui a carne, criando um hambúrguer salgado e com uma textura única que range nos dentes.', 
+    components: [ 
+        {name: 'Pão Ciabatta', qty: 1, unit: 'unid.'}, 
+        {name: 'Pimentão Vermelho', qty: 0.5, unit: 'unid.'}, 
+        {name: 'Maionese de Alho', qty: 1, unit: 'colher'}, 
+        {name: 'Folhas de Hortelã', qty: 5, unit: 'unid.'}
+    ], 
+    steps: [ 
+        { title: 'Preparar os Vegetais', description: 'Corte o pimentão vermelho em tiras largas. Lave e seque bem as folhas de hortelã. A preparação prévia é o segredo para uma montagem rápida e sem stress.'},
+        { title: 'O Segredo do Halloumi', description: 'Corte o queijo halloumi numa fatia grossa, com cerca de 1.5cm a 2cm de espessura. Seque muito bem a superfície com papel toalha para garantir que ele grelhe em vez de cozinhar no vapor.' },
+        { title: 'Grelhar o Queijo e o Pimentão', description: 'Aqueça uma frigideira ou grelha em lume médio-alto com um fio de azeite. Coloque a fatia de halloumi e as tiras de pimentão. Grelhe por 2-3 minutos de cada lado, até o queijo ficar com marcas douradas e o pimentão macio. O halloumi não derrete, ele fica firme e macio.', timer: 150 },
+        { title: 'A Montagem Mediterrânea', description: 'Toste levemente o pão ciabatta. Passe a maionese de alho na base. Coloque a fatia de halloumi grelhada, as tiras de pimentão por cima e, para finalizar, adicione as folhas de hortelã fresca. O contraste do salgado do queijo com o doce do pimentão e o fresco da hortelã é espetacular.' }
+    ], 
+    baseQty: 1,
+    baseIngredient: 'Fatia de Queijo Halloumi (100g)',
+    blendDetails: 'O Halloumi é um queijo de Chipre, tradicionalmente feito de leite de cabra e ovelha. A sua principal característica é o alto ponto de fusão, o que permite que seja grelhado ou frito sem derreter, tornando-se uma excelente base para um hambúrguer vegetariano.', 
+    saltRatio: 0, 
+    pepperRatio: 0 
+},
+{ 
+    id: 'veggie-beterraba', 
+    name: 'Beterraba e Cabra', 
+    image: 'imagens/veggie_beterraba_cabra.jpg', 
+    description: 'A doçura terrosa da beterraba com a acidez cremosa do queijo de cabra e a crocância das nozes.', 
+    components: [ 
+        {name: 'Pão Escuro', qty: 1, unit: 'unid.'}, 
+        {name: 'Queijo de Cabra cremoso', qty: 30, unit: 'g'}, 
+        {name: 'Nozes picadas', qty: 1, unit: 'colher'}, 
+        {name: 'Redução de Balsâmico', qty: 1, unit: 'fio'}
+    ], 
+    steps: [ 
+        { title: 'O Molho Sofisticado', description: 'Comece pela redução de balsâmico, que é um molho elegante e fácil. Numa panela pequena, coloque 4 colheres de sopa de vinagre balsâmico e 1 colher de chá de açúcar. Leve a lume baixo e deixe reduzir por cerca de 5-7 minutos, até engrossar e ficar com a consistência de um xarope. Cuidado para não queimar. Reserve.', timer: 360 },
+        { title: 'Grelhar o Hambúrguer de Beterraba', description: 'Hambúrgueres de beterraba são mais húmidos. Grelhe numa frigideira antiaderente com um fio de azeite, em lume médio, por cerca de 4 minutos de cada lado, até que forme uma leve crosta por fora e esteja aquecido por dentro.', timer: 240 },
+        { title: 'Preparar os Acompanhamentos', description: 'Enquanto o hambúrguer grelha, toste o pão escuro. O sabor de um pão de centeio ou de mistura complementa perfeitamente o terroso da beterraba. Pique grosseiramente as nozes para a finalização.' },
+        { title: 'A Montagem Doce e Ácida', description: 'Espalhe o queijo de cabra cremoso na base do pão tostado. Coloque o hambúrguer de beterraba quente diretamente sobre o queijo para o amolecer ligeiramente. Salpique as nozes picadas para dar crocância e, por fim, regue com a redução de balsâmico.' }
+    ], 
+    baseQty: 1,
+    baseIngredient: 'Hamb. de Beterraba e Grãos (150g)',
+    blendDetails: 'Hambúrgueres de beterraba podem ser comprados ou feitos em casa, geralmente misturando beterraba cozida e ralada com grãos como quinoa ou arroz integral, e um ligante como farinha de grão-de-bico.', 
+    saltRatio: 10, 
+    pepperRatio: 4 
+},
+{ 
+    id: 'veggie-falafel', 
+    name: 'Falafel Burger', 
+    image: 'imagens/veggie_falafel_burger.jpg', 
+    description: 'Os sabores do Médio Oriente num pão pita, com a crocância do falafel e a cremosidade do tahine.', 
+    components: [ 
+        {name: 'Pão Pita', qty: 1, unit: 'unid.'},
+        {name: 'Molho Tahine', qty: 2, unit: 'colheres'},
+        {name: 'Salada Israelita', qty: 2, unit: 'colheres'},
+        {name: 'Picles de Nabo (opcional)', qty: 1, unit: 'colher'}
+    ], 
+    steps: [ 
+        { title: 'O Molho de Tahine', description: 'Este molho é essencial. Misture pasta de gergelim (tahine) com sumo de limão, um pouco de água fria para diluir, um dente de alho picado e sal. Mexa bem até obter um creme liso e claro.'},
+        { title: 'A Salada Fresca', description: 'Para a salada israelita, pique em cubos muito pequenos e uniformes: tomate (sem sementes), pepino e cebola roxa. Tempere com sal, azeite e sumo de limão.'},
+        { title: 'Cozinhar o Falafel', description: 'O hambúrguer de falafel deve ser frito em óleo quente (180°C) por 2-3 minutos de cada lado, até ficar bem dourado e crocante por fora, e macio por dentro. Se preferir, pode assá-lo no forno ou na air fryer.', timer: 180 },
+        { title: 'Montagem no Pão Pita', description: 'Aqueça o pão pita para que ele fique macio e abra facilmente. Corte uma das pontas para criar uma "bolsa". Coloque o hambúrguer de falafel dentro, adicione a salada fresca, os picles de nabo e regue generosamente com o molho de tahine.' }
+    ], 
+    baseQty: 1,
+    baseIngredient: 'Hamb. de Grão-de-bico (Falafel) (150g)',
+    blendDetails: 'O blend de falafel é feito com grão-de-bico, salsa, coentros, alho e cominho. Pode comprar a mistura pronta ou fazê-la em casa para um sabor mais autêntico.', 
+    saltRatio: 0, 
+    pepperRatio: 0 
+},
+{ 
+    id: 'veggie-berinjela', 
+    name: 'Berinjela à Parmegiana', 
+    image: 'imagens/veggie_berinjela_parmegiana.jpg', 
+    description: 'O seu prato italiano favorito, transformado num hambúrguer vegetariano reconfortante.', 
+    components: [ 
+        {name: 'Pão de Hambúrguer', qty: 1, unit: 'unid.'},
+        {name: 'Berinjela', qty: 1, unit: 'fatia grossa (2cm)'},
+        {name: 'Molho de Tomate Rústico', qty: 2, unit: 'colheres'},
+        {name: 'Queijo Mussarela', qty: 2, unit: 'fatias'},
+        {name: 'Queijo Parmesão ralado', qty: 1, unit: 'colher'},
+        {name: 'Folhas de Manjericão', qty: 3, unit: 'unid.'}
+    ], 
+    steps: [ 
+        { title: 'Preparar a "Carne"', description: 'A estrela aqui é a beringela. Corte uma fatia bem grossa (cerca de 2cm) do centro da beringela. Tempere com sal e deixe a "suar" por 10 minutos para tirar o amargor. Seque bem com papel toalha.'},
+        { title: 'Empanar para Crocância', description: 'Passe a fatia de beringela por farinha de trigo, depois por ovo batido, e por fim por farinha de rosca (ou panko). Pressione bem para que a crosta fique uniforme.'},
+        { title: 'Fritar até Dourar', description: 'Frite a beringela em óleo quente (180°C) por cerca de 2-3 minutos de cada lado, até ficar bem dourada e crocante. Retire e coloque sobre papel toalha para escorrer o excesso de óleo.', timer: 150 },
+        { title: 'O Momento de Gratinar', description: 'Coloque a beringela frita num tabuleiro. Cubra com o molho de tomate, depois com a mussarela e salpique o parmesão. Leve ao forno no modo "grill" por 3-5 minutos, apenas para o queijo derreter e borbulhar.', timer: 240 },
+        { title: 'A Montagem Final', description: 'Toste o pão. Coloque a beringela à parmegiana diretamente na base do pão. Finalize com algumas folhas de manjericão fresco por cima do queijo derretido. O aroma será incrível. Feche e sirva imediatamente.' }
+    ], 
+    baseQty: 1,
+    baseIngredient: 'Fatia de Berinjela (1 un.)',
+    blendDetails: 'Não usamos um blend moído aqui. A textura "carnuda" da beringela, quando bem preparada, serve como o nosso "bife" vegetariano.', 
+    saltRatio: 0, 
+    pepperRatio: 0 
+},
+{ 
+    id: 'veggie-feijao-preto', 
+    name: 'Feijão Preto e Milho', 
+    image: 'imagens/veggie_feijao_preto_milho.jpg', 
+    description: 'Um clássico Tex-Mex com um toque picante e a cremosidade do abacate.', 
+    components: [ 
+        {name: 'Pão com Gergelim', qty: 1, unit: 'unid.'},
+        {name: 'Queijo Monterey Jack', qty: 2, unit: 'fatias'},
+        {name: 'Molho Chipotle', qty: 1, unit: 'colher'},
+        {name: 'Abacate', qty: 0.5, unit: 'unid.'}
+    ], 
+    steps: [ 
+        { title: 'O Coração Tex-Mex', description: 'O hambúrguer de feijão preto é a base. Se for fazer em casa, amasse bem o feijão cozido com farinha de rosca, milho, coentros picados e cominho em pó até dar liga. Molde e reserve.'},
+        { title: 'O Molho Chipotle', description: 'Para o molho, misture maionese com algumas gotas de molho de pimenta chipotle (ou páprica defumada para uma versão sem picante). O sabor fumado é essencial.'},
+        { title: 'Grelhar o Hambúrguer', description: 'Hambúrgueres de feijão podem ser frágeis. Grelhe em lume médio numa frigideira antiaderente com um fio de azeite, por cerca de 4 minutos de cada lado, até criar uma crosta firme e escura.', timer: 240 },
+        { title: 'O Queijo e o Abacate', description: 'No último minuto, coloque o queijo Monterey Jack sobre o hambúrguer para derreter. Enquanto isso, fatie o abacate. O segredo é cortá-lo apenas na hora de montar para não escurecer.'},
+        { title: 'Montagem Final', description: 'Toste o pão. Passe o molho chipotle na base, coloque o hambúrguer com queijo, e disponha as fatias de abacate por cima. Sirva com uma rodela de limão ao lado, o que realça todos os sabores.' }
+    ], 
+    baseQty: 1,
+    baseIngredient: 'Hamb. de Feijão Preto (150g)',
+    blendDetails: 'Hambúrgueres de feijão preto são robustos e cheios de sabor. A adição de milho e coentros dá um toque de frescura e textura.', 
+    saltRatio: 12, 
+    pepperRatio: 4 
+},
+{ 
+    id: 'veggie-indiano', 
+    name: 'Grão-de-bico Indiano', 
+    image: 'imagens/veggie_grao_de_bico_indiano.jpg', 
+    description: 'Uma explosão de especiarias indianas, equilibrada pela doçura do chutney de manga e o frescor do molho de iogurte.', 
+    components: [ 
+        {name: 'Pão Naan', qty: 1, unit: 'unid.'},
+        {name: 'Molho de Iogurte com Coentros', qty: 2, unit: 'colheres'},
+        {name: 'Chutney de Manga', qty: 1, unit: 'colher'}
+    ], 
+    steps: [ 
+        { title: 'O Blend Indiano', description: 'Para o hambúrguer, amasse o grão-de-bico cozido e misture com temperos como garam masala, cominho, açafrão e coentros picados. Adicione um pouco de farinha de grão-de-bico para dar liga. Molde e reserve.'},
+        { title: 'O Molho Raita', description: 'Para o nosso molho de iogurte (Raita), misture iogurte natural com coentros frescos picados, uma pitada de cominho em pó, sal e umas gotas de sumo de limão. É um molho refrescante que vai equilibrar as especiarias.'},
+        { title: 'Grelhar o Hambúrguer', description: 'Grelhe o hambúrguer de grão-de-bico em lume médio com um pouco de óleo de coco ou ghee para um sabor mais autêntico. Cerca de 3-4 minutos de cada lado são suficientes.', timer: 210 },
+        { title: 'Montagem Final', description: 'Aqueça levemente o pão naan. Passe o molho de iogurte na base, coloque o hambúrguer e finalize com uma colher generosa de chutney de manga por cima. Os sabores doce, salgado, ácido e picante juntos criam uma experiência única.' }
+    ], 
+    baseQty: 1,
+    baseIngredient: 'Hamb. de Grão-de-bico (150g)',
+    blendDetails: 'O segredo deste blend é a mistura de especiarias indianas (garam masala). A base de grão-de-bico é neutra e absorve muito bem estes sabores exóticos.', 
+    saltRatio: 10, 
+    pepperRatio: 3 
+},
+{ 
+    id: 'veggie-feijao-branco', 
+    name: 'Feijão Branco e Espinafres', 
+    image: 'imagens/veggie_feijao_branco_espinafres.jpg', 
+    description: 'Sabores mediterrânicos com a cremosidade do feijão branco, o toque do espinafre e o salgado do queijo feta.', 
+    components: [ 
+        {name: 'Pão Integral', qty: 1, unit: 'unid.'},
+        {name: 'Queijo Feta', qty: 30, unit: 'g'},
+        {name: 'Tomate Assado', qty: 2, unit: 'fatias'},
+        {name: 'Azeite', qty: 1, unit: 'fio'}
+    ], 
+    steps: [ 
+        { title: 'O Hambúrguer Cremoso', description: 'Para criar o hambúrguer, amasse bem o feijão branco cozido com espinafres frescos bem picados, um pouco de farinha para dar liga, sal e pimenta. A cremosidade do feijão branco é a base desta receita.'},
+        { title: 'Assar os Tomates', description: 'Enquanto prepara o hambúrguer, coloque algumas rodelas de tomate num tabuleiro, regue com azeite, salpique com orégãos e leve ao forno a 200°C por 10-15 minutos, até ficarem macios e ligeiramente caramelizados. Isto intensifica o seu sabor doce.', timer: 750 },
+        { title: 'Grelhar com Delicadeza', description: 'Hambúrgueres à base de feijão podem ser mais moles. Grelhe em lume médio numa frigideira antiaderente com um fio de azeite, por cerca de 4 minutos de cada lado, virando com cuidado para não se desfazer.', timer: 240 },
+        { title: 'Montagem Final', description: 'Toste o pão integral. Coloque o hambúrguer na base. Esfarele o queijo feta por cima (ele vai amolecer com o calor) e adicione as fatias de tomate assado. O sumo do tomate assado servirá como um molho natural.' }
+    ], 
+    baseQty: 1,
+    baseIngredient: 'Hamb. de Feijão Branco e Espinafres (150g)',
+    blendDetails: 'A combinação do feijão branco, que é neutro e cremoso, com o espinafre, que adiciona um sabor ligeiramente terroso e nutrientes.', 
+    saltRatio: 12, 
+    pepperRatio: 4 
+},
+{ 
+    id: 'veggie-couve-flor', 
+    name: 'Couve-flor Buffalo', 
+    image: 'imagens/veggie_couve_flor_buffalo.jpg', 
+    description: 'Uma versão vegetariana do clássico picante, com um "bife" de couve-flor crocante e molho blue cheese.', 
+    components: [ 
+        {name: 'Pão Brioche', qty: 1, unit: 'unid.'},
+        {name: 'Couve-flor', qty: 1, unit: 'fatia de 2cm'},
+        {name: 'Molho Buffalo', qty: 3, unit: 'colheres'},
+        {name: 'Molho Blue Cheese', qty: 2, unit: 'colheres'},
+        {name: 'Talo de Aipo', qty: 1, unit: 'unid.'}
+    ], 
+    steps: [ 
+        { title: 'O "Bife" de Couve-flor', description: 'Corte uma fatia grossa (cerca de 2cm) do centro da couve-flor. Use a técnica de empanar do "Frango Crispy": passe na farinha, depois no ovo batido e por fim na farinha panko. Frite em óleo quente até ficar bem dourado e crocante.'},
+        { title: 'O Banho Picante', description: 'Assim que a couve-flor sair da fritura, ainda quente, mergulhe-a numa tigela com o molho buffalo. Use um pincel ou colher para garantir que todos os lados ficam bem cobertos. O calor ajuda a absorver o molho.'},
+        { title: 'Preparar o Frescor', description: 'Para equilibrar o picante, fatie o talo de aipo em tiras muito finas. A sua crocância e frescura são o contraponto perfeito para o molho buffalo.'},
+        { title: 'A Montagem Final', description: 'Toste o pão brioche. Na base, espalhe uma camada generosa de molho blue cheese. Coloque o "bife" de couve-flor com molho buffalo e, por cima, as tiras de aipo. Se gostar, adicione mais um pouco de molho blue cheese na tampa do pão.' }
+    ], 
+    baseQty: 1,
+    baseIngredient: '"Bife" de Couve-flor (1 un.)',
+    blendDetails: 'A couve-flor, quando cortada em fatias grossas e empanada, cria uma textura surpreendentemente "carnuda", que serve como uma excelente base para molhos intensos.', 
+    saltRatio: 0, 
+    pepperRatio: 0 
+},
+{ 
+    id: 'veggie-tofu', 
+    name: 'Tofu Grelhado com Amendoim', 
+    image: 'imagens/veggie_tofu_grelhado.jpg', 
+    description: 'Inspirado na cozinha tailandesa, com um molho satay cremoso e a frescura da salada de pepino e cenoura.', 
+    components: [ 
+        {name: 'Pão de Sementes', qty: 1, unit: 'unid.'},
+        {name: 'Molho de Amendoim (Satay)', qty: 2, unit: 'colheres'},
+        {name: 'Salada de Pepino e Cenoura', qty: 2, unit: 'colheres'},
+        {name: 'Coentros Frescos', qty: 1, unit: 'ramo'}
+    ], 
+    steps: [ 
+        { title: 'O Segredo do Tofu', description: 'O tofu por si só não tem muito sabor, por isso o segredo é prepará-lo bem. Use tofu extra firme. Envolva o bloco de tofu em várias folhas de papel de cozinha e coloque um peso por cima (como uma panela) por 20 minutos para retirar o excesso de água. Isto vai ajudá-lo a ficar mais firme e a absorver melhor os sabores.', timer: 1200},
+        { title: 'A Marinada de Sabor', description: 'Enquanto o tofu prensa, prepare uma marinada simples com molho de soja (shoyu), um pouco de óleo de gergelim e alho em pó. Corte o tofu prensado num "bife" com a espessura de 2cm e deixe-o a marinar por pelo menos 15 minutos.', timer: 900},
+        { title: 'Grelhar até Dourar', description: 'Aqueça uma frigideira antiaderente em lume médio-alto com um fio de óleo. Grelhe o bife de tofu por 4-5 minutos de cada lado, até ficar com uma bela cor dourada e ligeiramente crocante por fora.', timer: 270 },
+        { title: 'Montagem Tailandesa', description: 'Toste o pão. Na base, espalhe uma camada generosa do seu molho satay (pode usar um de compra ou fazer em casa com pasta de amendoim, shoyu, limão e um pouco de água). Coloque o bife de tofu, a salada de pepino e cenoura ralados, e finalize com folhas de coentros frescos.' }
+    ], 
+    baseQty: 1,
+    baseIngredient: 'Bife de Tofu Extra Firme (180g)',
+    blendDetails: 'O tofu é como uma esponja de sabores. Prensá-lo para retirar a água é o passo mais importante para garantir uma boa textura e para que ele absorva a marinada, tornando-se o protagonista do lanche.', 
+    saltRatio: 0, 
+    pepperRatio: 0 
+},
+{ 
+    id: 'veggie-abobora', 
+    name: 'Abóbora Assada e Sálvia', 
+    image: 'imagens/veggie_abobora_salvia.jpg', 
+    description: 'Sabores de outono com a doçura da abóbora, o aroma da sálvia e o toque fumado do queijo provolone.', 
+    components: [ 
+        {name: 'Pão de Abóbora', qty: 1, unit: 'unid.'},
+        {name: 'Queijo Provolone Defumado', qty: 2, unit: 'fatias'},
+        {name: 'Maionese de Alho', qty: 1, unit: 'colher'}
+    ], 
+    steps: [ 
+        { title: 'O Coração da Receita', description: 'Para criar o hambúrguer, asse pedaços de abóbora até ficarem bem macios. Amasse-os e misture com sálvia fresca picada, um pouco de noz-moscada, sal, pimenta e farinha de aveia para dar liga. Molde e reserve.'},
+        { title: 'Grelhar o Hambúrguer de Abóbora', description: 'Este hambúrguer é delicado. Grelhe-o em lume médio numa frigideira antiaderente com um fio de azeite, por cerca de 4 minutos de cada lado, até que a superfície esteja dourada e o interior aquecido.', timer: 240 },
+        { title: 'O Queijo Defumado', description: 'O sabor fumado do provolone é o que eleva esta receita. Coloque as fatias sobre o hambúrguer no último minuto de cozedura e abafe com uma tampa para que o queijo derreta e liberte todo o seu aroma.', timer: 60 },
+        { title: 'A Montagem Aconchegante', description: 'Toste o pão de abóbora para realçar a sua doçura. Na base, passe a maionese de alho. Coloque o hambúrguer com o queijo derretido e feche. É um hambúrguer que conforta a alma.' }
+    ], 
+    baseQty: 1,
+    baseIngredient: 'Hamb. de Abóbora e Sálvia (150g)',
+    blendDetails: 'A abóbora assada traz uma doçura natural e uma textura cremosa, enquanto a sálvia adiciona um perfume e um sabor clássico que lembram pratos de outono.', 
+    saltRatio: 12, 
+    pepperRatio: 4 
+},
+{ 
+    id: 'veggie-batata-doce', 
+    name: 'Batata Doce e Feijão Preto', 
+    image: 'imagens/veggie_batata_doce_feijao.jpg', 
+    description: 'Uma combinação robusta e ligeiramente adocicada, perfeita com queijo cheddar e um molho aioli cremoso.', 
+    components: [ 
+        {name: 'Pão de Brioche', qty: 1, unit: 'unid.'},
+        {name: 'Queijo Cheddar', qty: 2, unit: 'fatias'},
+        {name: 'Molho Aioli', qty: 1, unit: 'colher'},
+        {name: 'Rúcula', qty: 1, unit: 'punhado'}
+    ], 
+    steps: [ 
+        { title: 'A Base do Hambúrguer', description: 'Cozinhe ou asse a batata doce até ficar muito macia. Amasse-a bem e misture com feijão preto cozido (também amassado), farinha de aveia para dar liga, cominho, sal e pimenta. A batata doce vai dar a estrutura e a doçura.'},
+        { title: 'Grelhar com Paciência', description: 'Este hambúrguer é mais húmido por dentro. Grelhe em lume médio, numa frigideira antiaderente com um fio de azeite, por cerca de 4-5 minutos de cada lado. O objetivo é criar uma crosta bem dourada por fora.', timer: 270 },
+        { title: 'O Queijo Cremoso', description: 'O cheddar derrete bem e o seu sabor salgado contrasta com a batata doce. Coloque as fatias sobre o hambúrguer no último minuto de cozedura e abafe com uma tampa para um resultado perfeito.', timer: 60 },
+        { title: 'A Montagem Final', description: 'Toste o pão brioche para um toque amanteigado. Passe o molho aioli (uma maionese de alho) na base e na tampa. Adicione um punhado de rúcula para um toque amargo e picante, coloque o hambúrguer com o queijo e feche.' }
+    ], 
+    baseQty: 1,
+    baseIngredient: 'Hamb. de Batata Doce e Feijão Preto (180g)',
+    blendDetails: 'A doçura da batata doce equilibra o sabor terroso do feijão preto. Especiarias como cominho e pimenta em pó dão um toque Tex-Mex a esta combinação.', 
+    saltRatio: 12, 
+    pepperRatio: 4 
+},
+{ 
+    id: 'veggie-portobello', 
+    name: 'Portobello Steak', 
+    image: 'imagens/veggie_portobello_steak.jpg', 
+    description: 'Um cogumelo portobello inteiro, grelhado como um bife, para uma textura carnuda e um sabor profundo e terroso.', 
+    components: [ 
+        {name: 'Pão Rústico', qty: 1, unit: 'unid.'},
+        {name: 'Queijo Suíço', qty: 2, unit: 'fatias'},
+        {name: 'Cebola Caramelizada', qty: 2, unit: 'colheres'},
+        {name: 'Maionese', qty: 1, unit: 'colher'}
+    ], 
+    steps: [ 
+        { title: 'Preparar o "Bife" de Cogumelo', description: 'O segredo é tratar o cogumelo como um bife. Limpe-o com um pano húmido (não lave). Retire o talo. Com uma colher, raspe delicadamente as lamelas escuras da parte de baixo para um sabor mais suave. Pincele ambos os lados com azeite e tempere com sal, pimenta e alho em pó.' },
+        { title: 'Grelhar o Portobello', description: 'Aqueça uma frigideira ou grelha em lume médio-alto. Coloque o cogumelo com a parte de cima virada para baixo. Grelhe por 4-5 minutos até ficar com boas marcas e começar a amolecer. Não o pressione.', timer: 270 },
+        { title: 'Virar e Adicionar o Queijo', description: 'Vire o cogumelo com cuidado. A parte de baixo terá libertado alguma água, o que é normal. Coloque as fatias de queijo suíço por cima e cozinhe por mais 4-5 minutos, até o cogumelo estar totalmente macio e o queijo derretido.', timer: 270 },
+        { title: 'A Montagem Final', description: 'Toste o pão rústico. Passe maionese na base. Coloque o seu "bife" de portobello com o queijo derretido e cubra generosamente com a cebola caramelizada, que adiciona a doçura necessária para equilibrar os sabores terrosos.' }
+    ], 
+    baseQty: 1,
+    baseIngredient: 'Cogumelo Portobello (1 un. grande)',
+    blendDetails: 'A textura do Portobello, quando grelhado inteiro, é a mais próxima de um bife de carne que se pode encontrar no mundo vegetal. É suculento e absorve muito bem os sabores da grelha e dos temperos.', 
+    saltRatio: 0, 
+    pepperRatio: 0 
+},
+{ 
+    id: 'veggie-quinoa', 
+    name: 'Quinoa e Abacate', 
+    image: 'imagens/veggie_quinoa_abacate.jpg', 
+    description: 'Um hambúrguer leve e nutritivo com a cremosidade do abacate e o salgado do queijo feta.', 
+    components: [ 
+        {name: 'Pão Integral', qty: 1, unit: 'unid.'},
+        {name: 'Queijo Feta', qty: 30, unit: 'g'},
+        {name: 'Abacate', qty: 0.5, unit: 'unid.'},
+        {name: 'Molho de Iogurte', qty: 2, unit: 'colheres'}
+    ], 
+    steps: [ 
+        { title: 'O Hambúrguer de Quinoa', description: 'Cozinhe a quinoa conforme as instruções da embalagem e deixe arrefecer. Misture-a com farinha de rosca, um ovo (para dar liga), sal, pimenta e os seus temperos favoritos. Molde os hambúrgueres e leve ao frigorífico por 20 minutos para firmarem.'},
+        { title: 'O Molho de Iogurte Rápido', description: 'Para um contraponto fresco, misture iogurte natural com umas gotas de sumo de limão, sal e ervas frescas picadas, como coentros ou hortelã. É simples e delicioso.'},
+        { title: 'Grelhar a Quinoa', description: 'Hambúrgueres de quinoa são mais delicados. Grelhe numa frigideira antiaderente em lume médio, com um fio de azeite. Cozinhe por cerca de 4 minutos de cada lado, virando com cuidado para não se desfazer.', timer: 240 },
+        { title: 'Montagem Fresca e Final', description: 'Toste o pão integral. Passe o molho de iogurte na base. Coloque o hambúrguer de quinoa, esfarele o queijo feta por cima e finalize com as fatias de abacate. Sirva imediatamente para o abacate não oxidar.' }
+    ], 
+    baseQty: 1,
+    baseIngredient: 'Hamb. de Quinoa (150g)',
+    blendDetails: 'A quinoa é uma proteína completa e tem uma textura granulada interessante. Quando combinada com o abacate cremoso e o queijo salgado, cria um equilíbrio perfeito de sabores e texturas.', 
+    saltRatio: 10, 
+    pepperRatio: 4 
+},
+{ 
+    id: 'veggie-lentilha-cenoura', 
+    name: 'Lentilha e Cenoura', 
+    image: 'imagens/veggie_lentilha_cenoura.jpg', 
+    description: 'Um clássico reconfortante, onde a doçura da cenoura equilibra o sabor terroso da lentilha.', 
+    components: [ 
+        {name: 'Pão de Sementes', qty: 1, unit: 'unid.'},
+        {name: 'Queijo de Cabra', qty: 30, unit: 'g'},
+        {name: 'Maionese de Ervas', qty: 1, unit: 'colher'}
+    ], 
+    steps: [ 
+        { title: 'A Base do Hambúrguer', description: 'Cozinhe as lentilhas e a cenoura (em pedaços) até ficarem bem macias. Escorra bem e amasse tudo junto com um garfo. Adicione salsa picada, um pouco de farinha de aveia para dar liga, sal e pimenta. Misture bem e molde os hambúrgueres.' },
+        { title: 'Grelhar com Firmeza', description: 'Hambúrgueres de lentilha podem ser um pouco moles. O truque é grelhá-los numa frigideira antiaderente bem quente com um fio de azeite, por 4-5 minutos de cada lado, virando com cuidado para não se desfazer, até formar uma boa crosta exterior.', timer: 270 },
+        { title: 'O Queijo de Cabra', description: 'Este queijo tem um sabor forte e cremoso que complementa a doçura da cenoura. Não precisa de o derreter na chapa. Ele vai amolecer em contacto com o hambúrguer quente.' },
+        { title: 'A Montagem Final', description: 'Toste o pão de sementes. Espalhe a maionese de ervas na base. Coloque o hambúrguer quente e esfarele o queijo de cabra por cima. É uma combinação de sabores simples e deliciosa.' }
+    ], 
+    baseQty: 1,
+    baseIngredient: 'Hamb. de Lentilha e Cenoura (150g)',
+    blendDetails: 'A lentilha dá uma base proteica e terrosa, enquanto a cenoura cozida adiciona humidade, uma cor vibrante e um toque adocicado natural.', 
+    saltRatio: 12, 
+    pepperRatio: 4 
+},
+{ 
+    id: 'veggie-ervilha', 
+    name: 'Ervilha e Hortelã', 
+    image: 'imagens/veggie_ervilha_hortela.jpg', 
+    description: 'Uma combinação surpreendente e refrescante, inspirada na cozinha inglesa, que equilibra a doçura da ervilha com o frescor da hortelã e o salgado do queijo feta.', 
+    components: [ 
+        {name: 'Pão Ciabatta', qty: 1, unit: 'unid.'},
+        {name: 'Queijo Feta', qty: 30, unit: 'g'},
+        {name: 'Molho de Iogurte', qty: 2, unit: 'colheres'},
+        {name: 'Ervilhas (congeladas)', qty: 100, unit: 'g'},
+        {name: 'Hortelã Fresca', qty: 10, unit: 'folhas'}
+    ], 
+    steps: [ 
+        { title: 'O Hambúrguer Verde', description: 'Cozinhe as ervilhas em água a ferver por apenas 3 minutos para que fiquem macias, mas ainda com uma cor verde vibrante. Escorra e passe por água fria para parar a cozedura. Amasse grosseiramente com um garfo, misture com folhas de hortelã picadas, farinha de rosca para dar liga, sal e pimenta. Molde o hambúrguer com cuidado.'},
+        { title: 'Grelhar com Delicadeza', description: 'Este é um hambúrguer muito delicado. Grelhe numa frigideira antiaderente bem quente com um fio de azeite, por cerca de 3 minutos de cada lado. O objetivo é criar uma crosta dourada e aquecer o interior sem o desmanchar.', timer: 180 },
+        { title: 'O Equilíbrio do Molho', description: 'Enquanto o hambúrguer grelha, prepare um molho simples de iogurte natural com umas gotas de limão e uma pitada de sal. Este molho será a base cremosa e ácida que equilibra a doçura da ervilha.'},
+        { title: 'A Montagem Fresca', description: 'Toste levemente o pão ciabatta. Passe o molho de iogurte na base. Coloque o hambúrguer quente e, por cima, esfarele o queijo feta. O salgado do queijo feta é o contraponto perfeito para a ervilha. Sirva imediatamente.' }
+    ], 
+    baseQty: 1,
+    baseIngredient: 'Hamb. de Ervilha e Hortelã (150g)',
+    blendDetails: 'A combinação da ervilha, naturalmente doce, com o aroma intenso e refrescante da hortelã, cria uma base leve e muito perfumada, ideal para o verão.', 
+    saltRatio: 10, 
+    pepperRatio: 3 
+},
             ];
             
             const recipeListContainer = document.getElementById('recipe-list');
