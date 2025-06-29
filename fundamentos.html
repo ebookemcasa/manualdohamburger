@@ -45,6 +45,10 @@
                 <h2 class="text-3xl font-bold text-amber-700">Aula 02: Molho de Tomate Caseiro</h2>
                 <p class="text-stone-600 mt-2">Descubra como fazer um molho de tomate rico e saboroso, sem conservantes. A base para massas, pizzas e muito mais.</p>
             </div>
+            <div class="aula-card bg-white p-6 rounded-lg shadow-lg" data-target="receita-caldo">
+                <h2 class="text-3xl font-bold text-amber-700">Aula 03: Caldo de Legumes Caseiro</h2>
+                <p class="text-stone-600 mt-2">O segredo dos chefs para sopas, risotos e molhos com um sabor incrível. Nunca mais use cubos industrializados.</p>
+            </div>
         </div>
 
         <!-- Container das Fichas Técnicas (Escondido por Padrão) -->
@@ -58,74 +62,54 @@
             
             <!-- Ficha Técnica: Arroz Perfeito (Escondida) -->
             <div id="receita-arroz" class="receita-content bg-white p-8 rounded-lg shadow-xl max-w-5xl mx-auto hidden">
+                <!-- Conteúdo da Ficha do Arroz -->
                 <h2 class="text-3xl md:text-4xl font-bold text-amber-700 mb-8 text-center">Aula 01: O Arroz Perfeito (Soltinho)</h2>
+                <!-- ... resto do conteúdo do arroz ... -->
+            </div>
+
+            <!-- Ficha Técnica: Molho de Tomate Caseiro (Escondida) -->
+            <div id="receita-molho" class="receita-content bg-white p-8 rounded-lg shadow-xl max-w-5xl mx-auto hidden">
+                <!-- Conteúdo da Ficha do Molho de Tomate -->
+                 <h2 class="text-3xl md:text-4xl font-bold text-amber-700 mb-8 text-center">Aula 02: Molho de Tomate Caseiro</h2>
+                <!-- ... resto do conteúdo do molho ... -->
+            </div>
+            
+            <!-- Ficha Técnica: Caldo de Legumes (Escondida) -->
+            <div id="receita-caldo" class="receita-content bg-white p-8 rounded-lg shadow-xl max-w-5xl mx-auto hidden">
+                <h2 class="text-3xl md:text-4xl font-bold text-amber-700 mb-8 text-center">Aula 03: Caldo de Legumes Caseiro</h2>
                 <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
                     <!-- Coluna Esquerda: Planeamento -->
                     <div class="lg:col-span-1">
                         <h3 class="text-2xl font-bold text-stone-800 mb-4">Planeamento</h3>
                         <div class="bg-stone-100 p-4 rounded-lg">
-                            <label for="arroz-input" class="block text-lg text-stone-700 mb-2">Chávenas de Arroz Cru:</label>
-                            <input type="number" id="arroz-input" value="1" min="1" step="1" class="w-full p-2 border border-stone-300 rounded-lg focus:ring-2 focus:ring-amber-500">
+                            <label for="caldo-input" class="block text-lg text-stone-700 mb-2">Litros de Água:</label>
+                            <input type="number" id="caldo-input" value="2" min="1" step="0.5" class="w-full p-2 border border-stone-300 rounded-lg focus:ring-2 focus:ring-amber-500">
                         </div>
                         <div class="mt-6">
                             <h4 class="font-bold text-lg mb-2 text-stone-700">Ingredientes Necessários:</h4>
-                            <ul class="space-y-3 text-stone-600" id="ingredient-list-arroz">
+                            <ul class="space-y-3 text-stone-600" id="ingredient-list-caldo">
                                 <!-- Gerado pelo JavaScript -->
                             </ul>
                         </div>
                          <div class="mt-6">
                              <h4 class="font-bold text-lg mb-2 text-stone-700">Dica de Mestre</h4>
-                             <p class="text-stone-500 text-sm bg-stone-100 p-3 rounded-lg">A proporção de 2 para 1 (água para arroz) é um clássico, mas o segredo está em ferver a água **antes** de a adicionar. Isto garante que o arroz cozinha por igual e não fica empapado.</p>
+                             <p class="text-stone-500 text-sm bg-stone-100 p-3 rounded-lg">Não coloque sal no seu caldo caseiro! Tempere apenas o prato final que for fazer com ele. Isto dá-lhe mais versatilidade e controlo sobre o sal na sua cozinha.</p>
                         </div>
                     </div>
                     <!-- Coluna Direita: Passo a Passo -->
                     <div class="lg:col-span-2">
                         <h3 class="text-2xl font-bold text-stone-800 mb-4">Tutorial Detalhado</h3>
                         <div class="space-y-6">
-                            <div class="p-4 rounded-lg bg-stone-100"><h4 class="font-bold text-lg text-stone-800 mb-2"><span class="bg-amber-600 text-white rounded-full w-8 h-8 inline-flex items-center justify-center mr-3">1</span> Lavar ou Não Lavar?</h4><p class="text-stone-600">Para um arroz mais soltinho, o ideal é **não lavar**. Lavar retira o amido exterior, o que é bom para risotos, mas para um arroz solto, queremos que os grãos se mantenham separados. Apenas escolha um arroz de boa qualidade.</p></div>
-                            <div class="p-4 rounded-lg bg-stone-100"><h4 class="font-bold text-lg text-stone-800 mb-2"><span class="bg-amber-600 text-white rounded-full w-8 h-8 inline-flex items-center justify-center mr-3">2</span> O Refogado (A Base do Sabor)</h4><p class="text-stone-600 mb-3">Numa panela, aqueça o azeite em lume médio. Adicione o alho picado e refogue por 30 segundos, apenas até libertar o aroma. Adicione a cebola e refogue até ficar translúcida. Este é o momento de adicionar o arroz cru e "fritá-lo" por cerca de 1 minuto, mexendo sempre. Este passo sela os grãos e é crucial para que fiquem soltos.</p><div class="flex items-center gap-4"><button class="timer-btn bg-amber-500 text-white px-4 py-2 rounded-lg hover:bg-amber-600 transition" data-time="60">Timer (1 min)</button><span class="timer-display text-lg font-mono font-bold text-amber-700"></span></div></div>
-                            <div class="p-4 rounded-lg bg-stone-100"><h4 class="font-bold text-lg text-stone-800 mb-2"><span class="bg-amber-600 text-white rounded-full w-8 h-8 inline-flex items-center justify-center mr-3">3</span> A Água Fervente</h4><p class="text-stone-600 mb-3">Adicione a água **já a ferver** à panela. Tempere com sal. Mexa uma única vez para distribuir os grãos e depois não mexa mais. Deixe a panela semi-destapada e reduza para lume baixo.</p></div>
-                            <div class="p-4 rounded-lg bg-stone-100"><h4 class="font-bold text-lg text-stone-800 mb-2"><span class="bg-amber-600 text-white rounded-full w-8 h-8 inline-flex items-center justify-center mr-3">4</span> O Cozimento</h4><p class="text-stone-600 mb-3">Deixe cozinhar até a água secar quase por completo. Deverá ver pequenos "buracos" a formarem-se na superfície do arroz. Isto leva cerca de 10 a 15 minutos.</p><div class="flex items-center gap-4"><button class="timer-btn bg-amber-500 text-white px-4 py-2 rounded-lg hover:bg-amber-600 transition" data-time="720">Timer (12 min)</button><span class="timer-display text-lg font-mono font-bold text-amber-700"></span></div></div>
-                            <div class="p-4 rounded-lg bg-stone-100"><h4 class="font-bold text-lg text-stone-800 mb-2"><span class="bg-amber-600 text-white rounded-full w-8 h-8 inline-flex items-center justify-center mr-3">5</span> O Descanso (O Passo Final e Essencial)</h4><p class="text-stone-600">Quando a água tiver secado, desligue o lume, tape completamente a panela e deixe o arroz descansar por pelo menos 5 minutos. O vapor residual irá terminar o cozimento e garantir que os grãos fiquem macios e soltinhos. Depois, solte com um garfo e sirva.</p><div class="flex items-center gap-4"><button class="timer-btn bg-amber-500 text-white px-4 py-2 rounded-lg hover:bg-amber-600 transition" data-time="300">Timer (5 min)</button><span class="timer-display text-lg font-mono font-bold text-amber-700"></span></div></div>
+                            <div class="p-4 rounded-lg bg-stone-100"><h4 class="font-bold text-lg text-stone-800 mb-2"><span class="bg-amber-600 text-white rounded-full w-8 h-8 inline-flex items-center justify-center mr-3">1</span> O "Mirepoix" (A Santíssima Trindade)</h4><p class="text-stone-600">A base de qualquer bom caldo é o "mirepoix": uma mistura de cebola, cenoura e aipo. Corte-os em pedaços grandes e grosseiros. A proporção clássica é duas partes de cebola para uma de cenoura e uma de aipo.</p></div>
+                            <div class="p-4 rounded-lg bg-stone-100"><h4 class="font-bold text-lg text-stone-800 mb-2"><span class="bg-amber-600 text-white rounded-full w-8 h-8 inline-flex items-center justify-center mr-3">2</span> "Suar" os Legumes</h4><p class="text-stone-600 mb-3">Numa panela grande, aqueça um fio de azeite e adicione os legumes cortados. Deixe-os "suar" em lume médio por cerca de 10 minutos, sem ganhar cor. Este processo liberta os açúcares e sabores dos vegetais, criando uma base mais rica.</p><div class="flex items-center gap-4"><button class="timer-btn bg-amber-500 text-white px-4 py-2 rounded-lg hover:bg-amber-600 transition" data-time="600">Timer (10 min)</button><span class="timer-display text-lg font-mono font-bold text-amber-700"></span></div></div>
+                            <div class="p-4 rounded-lg bg-stone-100"><h4 class="font-bold text-lg text-stone-800 mb-2"><span class="bg-amber-600 text-white rounded-full w-8 h-8 inline-flex items-center justify-center mr-3">3</span> Adicionar Água e Aromáticos</h4><p class="text-stone-600 mb-3">Cubra os legumes com a água fria. Adicione os outros aromáticos: grãos de pimenta preta, folhas de louro e os talos de salsa. A água fria ajuda a extrair mais sabor dos ingredientes à medida que aquece.</p></div>
+                            <div class="p-4 rounded-lg bg-stone-100"><h4 class="font-bold text-lg text-stone-800 mb-2"><span class="bg-amber-600 text-white rounded-full w-8 h-8 inline-flex items-center justify-center mr-3">4</span> Cozimento Lento (A Paciência)</h4><p class="text-stone-600 mb-3">Deixe levantar fervura e, imediatamente, reduza para o lume mais baixo possível. O caldo deve cozinhar muito lentamente, apenas com pequenas bolhas a subir à superfície. Cozinhe por, no mínimo, 1 hora.</p><div class="flex items-center gap-4"><button class="timer-btn bg-amber-500 text-white px-4 py-2 rounded-lg hover:bg-amber-600 transition" data-time="3600">Timer (1 hora)</button><span class="timer-display text-lg font-mono font-bold text-amber-700"></span></div></div>
+                            <div class="p-4 rounded-lg bg-stone-100"><h4 class="font-bold text-lg text-stone-800 mb-2"><span class="bg-amber-600 text-white rounded-full w-8 h-8 inline-flex items-center justify-center mr-3">5</span> Coar e Guardar</h4><p class="text-stone-600">Depois de cozinhar, coe o caldo com um passador fino para remover todos os sólidos. O líquido dourado que resta é o seu caldo de legumes caseiro. Pode guardá-lo no frigorífico por até 5 dias ou congelar por até 3 meses.</p></div>
                         </div>
                     </div>
                 </div>
             </div>
 
-            <!-- Ficha Técnica: Molho de Tomate Caseiro (Escondida) -->
-            <div id="receita-molho" class="receita-content bg-white p-8 rounded-lg shadow-xl max-w-5xl mx-auto hidden">
-                <h2 class="text-3xl md:text-4xl font-bold text-amber-700 mb-8 text-center">Aula 02: Molho de Tomate Caseiro</h2>
-                <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
-                    <!-- Coluna Esquerda: Planeamento -->
-                    <div class="lg:col-span-1">
-                        <h3 class="text-2xl font-bold text-stone-800 mb-4">Planeamento</h3>
-                        <div class="bg-stone-100 p-4 rounded-lg">
-                            <label for="tomate-input" class="block text-lg text-stone-700 mb-2">Quilos de Tomate Fresco:</label>
-                            <input type="number" id="tomate-input" value="1" min="0.5" step="0.5" class="w-full p-2 border border-stone-300 rounded-lg focus:ring-2 focus:ring-amber-500">
-                        </div>
-                        <div class="mt-6">
-                            <h4 class="font-bold text-lg mb-2 text-stone-700">Ingredientes Necessários:</h4>
-                            <ul class="space-y-3 text-stone-600" id="ingredient-list-tomate">
-                                <!-- Gerado pelo JavaScript -->
-                            </ul>
-                        </div>
-                         <div class="mt-6">
-                             <h4 class="font-bold text-lg mb-2 text-stone-700">Dica de Mestre</h4>
-                             <p class="text-stone-500 text-sm bg-stone-100 p-3 rounded-lg">O segredo para um molho menos ácido é usar tomates bem maduros e adicionar uma pitada de açúcar ou uma cenoura pequena ao refogado. A cenoura liberta doçura naturalmente e equilibra a acidez do tomate.</p>
-                        </div>
-                    </div>
-                    <!-- Coluna Direita: Passo a Passo -->
-                    <div class="lg:col-span-2">
-                        <h3 class="text-2xl font-bold text-stone-800 mb-4">Tutorial Detalhado</h3>
-                        <div class="space-y-6">
-                            <div class="p-4 rounded-lg bg-stone-100"><h4 class="font-bold text-lg text-stone-800 mb-2"><span class="bg-amber-600 text-white rounded-full w-8 h-8 inline-flex items-center justify-center mr-3">1</span> Preparar os Tomates</h4><p class="text-stone-600">Lave bem os tomates. Para um molho mais refinado, pode retirar a pele e as sementes. Um truque fácil é fazer um "X" com uma faca na base de cada tomate e mergulhá-los em água a ferver por 30 segundos. A pele sairá facilmente.</p></div>
-                            <div class="p-4 rounded-lg bg-stone-100"><h4 class="font-bold text-lg text-stone-800 mb-2"><span class="bg-amber-600 text-white rounded-full w-8 h-8 inline-flex items-center justify-center mr-3">2</span> O Sofrito (A Base Aromática)</h4><p class="text-stone-600 mb-3">Numa panela grande, aqueça o azeite em lume médio. Adicione a cebola picada e refogue até ficar macia e translúcida. Junte o alho picado e cozinhe por mais um minuto, com cuidado para não queimar. É este refogado que constrói a base de sabor do seu molho.</p></div>
-                            <div class="p-4 rounded-lg bg-stone-100"><h4 class="font-bold text-lg text-stone-800 mb-2"><span class="bg-amber-600 text-white rounded-full w-8 h-8 inline-flex items-center justify-center mr-3">3</span> Cozinhar o Molho</h4><p class="text-stone-600 mb-3">Adicione os tomates picados (ou triturados) à panela. Tempere com sal, pimenta e uma pitada de açúcar. Adicione as folhas de manjericão. Deixe levantar fervura e depois reduza para lume baixo.</p></div>
-                            <div class="p-4 rounded-lg bg-stone-100"><h4 class="font-bold text-lg text-stone-800 mb-2"><span class="bg-amber-600 text-white rounded-full w-8 h-8 inline-flex items-center justify-center mr-3">4</span> Apurar o Sabor</h4><p class="text-stone-600 mb-3">Cozinhe o molho em lume brando, com a panela semi-destapada, por pelo menos 30 a 45 minutos. Quanto mais tempo cozinhar, mais o sabor ficará concentrado e delicioso. Mexa ocasionalmente. No final, prove e ajuste os temperos se necessário.</p><div class="flex items-center gap-4"><button class="timer-btn bg-amber-500 text-white px-4 py-2 rounded-lg hover:bg-amber-600 transition" data-time="2100">Timer (35 min)</button><span class="timer-display text-lg font-mono font-bold text-amber-700"></span></div></div>
-                        </div>
-                    </div>
-                </div>
-            </div>
         </div>
     </main>
     <footer class="bg-white border-t mt-16">
@@ -159,7 +143,7 @@
                 });
             });
 
-            // Arroz
+            // Calculadoras
             const arrozInput = document.getElementById('arroz-input');
             const ingredientListArroz = document.getElementById('ingredient-list-arroz');
             const updateArrozIngredients = () => {
@@ -176,7 +160,6 @@
             if(arrozInput) arrozInput.addEventListener('input', updateArrozIngredients);
             updateArrozIngredients();
             
-            // Tomate
             const tomateInput = document.getElementById('tomate-input');
             const ingredientListTomate = document.getElementById('ingredient-list-tomate');
             const updateTomateIngredients = () => {
@@ -193,6 +176,24 @@
             if(tomateInput) tomateInput.addEventListener('input', updateTomateIngredients);
             updateTomateIngredients();
 
+            const caldoInput = document.getElementById('caldo-input');
+            const ingredientListCaldo = document.getElementById('ingredient-list-caldo');
+            const updateCaldoIngredients = () => {
+                 if(!caldoInput || !ingredientListCaldo) return;
+                 const litros = parseFloat(caldoInput.value) || 1;
+                 ingredientListCaldo.innerHTML = `
+                    <li class="flex justify-between items-center"><span>Cebola</span> <span>${(litros * 1).toFixed(0)} unid.</span></li>
+                    <li class="flex justify-between items-center"><span>Cenoura</span> <span>${(litros * 0.5).toFixed(0)} unid.</span></li>
+                    <li class="flex justify-between items-center"><span>Talo de Aipo</span> <span>${(litros * 0.5).toFixed(0)} unid.</span></li>
+                    <li class="flex justify-between items-center"><span>Alho</span> <span>${(litros * 2).toFixed(0)} dentes</span></li>
+                    <li class="flex justify-between items-center"><span>Folha de Louro</span> <span>${(litros).toFixed(0)} unid.</span></li>
+                    <li class="flex justify-between items-center"><span>Pimenta em Grão</span> <span>${(litros * 5).toFixed(0)} unid.</span></li>
+                 `;
+            };
+            if(caldoInput) caldoInput.addEventListener('input', updateCaldoIngredients);
+            updateCaldoIngredients();
+
+            // Lógica dos Timers
             const timerButtons = document.querySelectorAll('.timer-btn');
             let activeTimers = {};
             timerButtons.forEach(button => {
