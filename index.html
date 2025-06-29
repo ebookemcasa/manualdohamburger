@@ -3,110 +3,114 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Hambúrguer Perfeito - O seu Manual Definitivo</title>
+    <title>Mestre Culinário - A sua Escola de Culinária Online</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@700;900&family=Roboto:wght@400;500&display=swap');
-        body { font-family: 'Roboto', sans-serif; background-color: #1c1917; color: #e7e5e4; }
-        h1, h2, h3, .nav-link { font-family: 'Roboto Slab', serif; font-weight: 700; }
+        @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Lato:wght@400;700&display=swap');
+        body { font-family: 'Lato', sans-serif; background-color: #f8f7f4; color: #3d3d3d; }
+        h1, h2, h3, .nav-link { font-family: 'Playfair Display', serif; }
         .hero-bg {
-            background-image: linear-gradient(rgba(28, 25, 23, 0.8), rgba(28, 25, 23, 1)), url('https://images.unsplash.com/photo-1571091718767-18b5b1457add?q=80&w=2072&auto=format&fit=crop');
+            background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('https://images.unsplash.com/photo-1495195129352-aeb325a55b65?q=80&w=2076&auto=format&fit=crop');
             background-size: cover;
             background-position: center;
         }
-        .section-bg {
-            background-color: #292524;
+        .category-card {
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .category-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1);
         }
     </style>
 </head>
 <body class="antialiased">
 
     <!-- Header -->
-    <header class="bg-stone-900/80 backdrop-blur-lg sticky top-0 z-50">
+    <header class="bg-white/90 backdrop-blur-lg sticky top-0 z-50 shadow-md">
         <nav class="container mx-auto px-6 py-4">
             <div class="flex justify-between items-center">
-                <a href="index.html" class="text-2xl font-black text-white tracking-wider">Hambúrguer<span class="text-orange-500">Perfeito</span></a>
+                <a href="index.html" class="text-3xl font-bold text-stone-800">Mestre<span class="text-amber-600">Culinário</span></a>
                 <div class="hidden md:flex items-center space-x-8">
-                    <a href="bovinos.html" class="nav-link text-stone-300 hover:text-orange-500 transition-colors">Receitas</a>
-                    <a href="galeria.html" class="nav-link text-stone-300 hover:text-orange-500 transition-colors">Galeria</a>
+                    <a href="#categorias" class="nav-link text-stone-600 hover:text-amber-600 transition-colors">Categorias</a>
+                    <a href="#sobre" class="nav-link text-stone-600 hover:text-amber-600 transition-colors">O Nosso Método</a>
+                    <a href="galeria.html" class="nav-link text-stone-600 hover:text-amber-600 transition-colors">Galeria</a>
                 </div>
-                <button id="menu-btn" class="md:hidden text-stone-300 hover:text-orange-500">
+                 <button id="menu-btn" class="md:hidden text-stone-600 hover:text-amber-600">
                     <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path></svg>
                 </button>
             </div>
-             <div id="mobile-menu" class="hidden md:hidden mt-4 flex flex-col space-y-2">
-                 <a href="bovinos.html" class="nav-link text-stone-300 hover:text-orange-500 py-2">Receitas</a>
-                 <a href="galeria.html" class="nav-link text-stone-300 hover:text-orange-500 py-2">Galeria</a>
+            <div id="mobile-menu" class="hidden md:hidden mt-4 flex flex-col space-y-2">
+                 <a href="#categorias" class="nav-link text-stone-600 hover:text-amber-600 py-2">Categorias</a>
+                 <a href="#sobre" class="nav-link text-stone-600 hover:text-amber-600 py-2">O Nosso Método</a>
+                 <a href="galeria.html" class="nav-link text-stone-600 hover:text-amber-600 py-2">Galeria</a>
             </div>
         </nav>
     </header>
 
     <!-- Hero Section -->
-    <section class="hero-bg">
-        <div class="container mx-auto px-6 text-center flex flex-col justify-center items-center min-h-screen">
-            <h1 class="text-5xl md:text-7xl lg:text-8xl font-black text-white leading-tight drop-shadow-lg">
-                Domine a Arte do <span class="text-orange-500">Hambúrguer Artesanal</span>
+    <section class="hero-bg text-white">
+        <div class="container mx-auto px-6 text-center flex flex-col justify-center items-center min-h-[80vh]">
+            <h1 class="text-5xl md:text-7xl lg:text-8xl font-bold leading-tight drop-shadow-lg">
+                Transforme a sua Cozinha. Domine qualquer Receita.
             </h1>
-            <p class="mt-6 max-w-2xl text-lg text-stone-300">
-                O seu guia definitivo, do zero ao mestre hamburgueiro. Receitas, técnicas e ferramentas para criar hambúrgueres inesquecíveis na sua cozinha.
+            <p class="mt-6 max-w-2xl text-lg text-stone-200">
+                A sua jornada para se tornar um mestre na cozinha começa aqui. Desde o arroz perfeito a pratos de assinatura, ensinamos as técnicas, não apenas os passos.
             </p>
             <div class="mt-10">
-                <a href="bovinos.html" class="bg-orange-600 text-white font-bold text-lg px-10 py-4 rounded-lg hover:bg-orange-700 transition-transform hover:scale-105 duration-300">
-                    Explorar Receitas
+                <a href="#categorias" class="bg-amber-600 text-white font-bold text-lg px-10 py-4 rounded-lg hover:bg-amber-700 transition-transform hover:scale-105 duration-300">
+                    Começar a Aprender
                 </a>
             </div>
         </div>
     </section>
 
-    <!-- Porque o Nosso Guia? -->
-    <section class="py-20 section-bg">
+    <!-- Sobre o Método -->
+    <section id="sobre" class="py-20 bg-stone-100">
         <div class="container mx-auto px-6">
             <div class="text-center mb-12">
-                <h2 class="text-4xl font-black text-white">Porque o Nosso Guia é <span class="text-orange-500">Diferente</span>?</h2>
-                <p class="mt-4 max-w-2xl mx-auto text-stone-400">Não somos apenas um livro de receitas. Somos a sua bancada de cozinha digital.</p>
+                <h2 class="text-4xl font-bold text-stone-800">O Nosso Método de Ensino</h2>
+                <p class="mt-4 max-w-3xl mx-auto text-stone-600">Acreditamos que qualquer pessoa pode cozinhar pratos incríveis. O segredo não é seguir cegamente, mas sim entender o "porquê" de cada passo.</p>
             </div>
             <div class="grid grid-cols-1 md:grid-cols-3 gap-12 text-center">
                 <div class="p-8">
-                    <div class="text-5xl text-orange-500 mb-4">📖</div>
-                    <h3 class="text-2xl font-bold text-white mb-2">Receitas Detalhadas</h3>
-                    <p class="text-stone-400">Cada receita é um curso completo, com "fichas de montagem" que explicam cada componente, do pão ao molho.</p>
+                    <div class="text-5xl text-amber-600 mb-4">🍚</div>
+                    <h3 class="text-2xl font-bold text-stone-800 mb-2">Dos Fundamentos...</h3>
+                    <p class="text-stone-600">Comece pelo básico. Guias detalhados que ensinam as técnicas essenciais que formam a base de toda a grande cozinha.</p>
                 </div>
                 <div class="p-8">
-                    <div class="text-5xl text-orange-500 mb-4">🛠️</div>
-                    <h3 class="text-2xl font-bold text-white mb-2">Ferramentas Interativas</h3>
-                    <p class="text-stone-400">Use as nossas ferramentas para planear as suas compras e cozinhar com precisão. (Em breve)</p>
+                    <div class="text-5xl text-amber-600 mb-4">🏆</div>
+                    <h3 class="text-2xl font-bold text-stone-800 mb-2">...Ao Nível Profissional</h3>
+                    <p class="text-stone-600">Avance para receitas complexas e de nível profissional, com fichas técnicas interativas que o guiam em cada etapa.</p>
                 </div>
                 <div class="p-8">
-                    <div class="text-5xl text-orange-500 mb-4">🏆</div>
-                    <h3 class="text-2xl font-bold text-white mb-2">Técnicas Profissionais</h3>
-                    <p class="text-stone-400">Aprenda os segredos dos melhores chefs, desde a escolha do blend de carne até à selagem perfeita na frigideira.</p>
+                    <div class="text-5xl text-amber-600 mb-4">💡</div>
+                    <h3 class="text-2xl font-bold text-stone-800 mb-2">Ferramentas Inteligentes</h3>
+                    <p class="text-stone-600">Use as nossas calculadoras e temporizadores para planear e executar as suas receitas com a precisão de um verdadeiro chef.</p>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- 5 Pilares -->
-    <section id="fundamentos" class="py-20 bg-stone-900">
+    <!-- Categorias de Receitas -->
+    <section id="categorias" class="py-20">
         <div class="container mx-auto px-6">
-             <div class="text-center mb-12">
-                <h2 class="text-4xl font-black text-white">Os 5 Pilares do Hambúrguer Perfeito</h2>
-                <p class="mt-4 max-w-2xl mx-auto text-stone-400">Domine estes fundamentos e estará no caminho certo. Clique em cada pilar para aceder aos nossos guias detalhados.</p>
+            <div class="text-center mb-12">
+                <h2 class="text-4xl font-bold text-stone-800">Explore as Nossas Receitas</h2>
+                <p class="mt-4 max-w-2xl mx-auto text-stone-600">Navegue pelas nossas categorias e encontre a sua próxima aventura culinária.</p>
             </div>
-            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-8 text-center">
-                <a href="blends.html" class="group block bg-stone-800 p-6 rounded-lg hover:bg-orange-600 transition-colors duration-300"><div class="text-5xl mb-4 group-hover:scale-110 transition-transform">🥩</div><h4 class="text-xl font-bold text-white mb-2">A Carne</h4><p class="text-stone-400 text-sm">O guia completo de blends.</p></a>
-                <a href="pao.html" class="group block bg-stone-800 p-6 rounded-lg hover:bg-orange-600 transition-colors duration-300"><div class="text-5xl mb-4 group-hover:scale-110 transition-transform">🍞</div><h4 class="text-xl font-bold text-white mb-2">O Pão</h4><p class="text-stone-400 text-sm">Aprenda a fazer o seu.</p></a>
-                <a href="queijo.html" class="group block bg-stone-800 p-6 rounded-lg hover:bg-orange-600 transition-colors duration-300"><div class="text-5xl mb-4 group-hover:scale-110 transition-transform">🧀</div><h4 class="text-xl font-bold text-white mb-2">O Queijo</h4><p class="text-stone-400 text-sm">As melhores opções para derreter.</p></a>
-                <a href="molhos.html" class="group block bg-stone-800 p-6 rounded-lg hover:bg-orange-600 transition-colors duration-300"><div class="text-5xl mb-4 group-hover:scale-110 transition-transform">🥫</div><h4 class="text-xl font-bold text-white mb-2">O Molho</h4><p class="text-stone-400 text-sm">Receitas para dar personalidade.</p></a>
-                <a href="salada.html" class="group block bg-stone-800 p-6 rounded-lg hover:bg-orange-600 transition-colors duration-300"><div class="text-5xl mb-4 group-hover:scale-110 transition-transform">🥬</div><h4 class="text-xl font-bold text-white mb-2">A Salada</h4><p class="text-stone-400 text-sm">O frescor que equilibra.</p></a>
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+                <a href="#" class="category-card block bg-white rounded-lg shadow-lg overflow-hidden"><img src="https://images.unsplash.com/photo-1599043513900-ed6fe01d3833?q=80&w=2070&auto=format&fit=crop" class="w-full h-48 object-cover"><div class="p-6"><h3 class="text-2xl font-bold text-stone-800">Fundamentos</h3><p class="text-stone-600 mt-2">O início de tudo.</p></div></a>
+                <a href="bovinos.html" class="category-card block bg-white rounded-lg shadow-lg overflow-hidden"><img src="https://images.unsplash.com/photo-1604321942683-05b89705a1e2?q=80&w=1974&auto=format&fit=crop" class="w-full h-48 object-cover"><div class="p-6"><h3 class="text-2xl font-bold text-stone-800">Carnes</h3><p class="text-stone-600 mt-2">Do grelhado ao assado.</p></div></a>
+                <a href="frango.html" class="category-card block bg-white rounded-lg shadow-lg overflow-hidden"><img src="https://images.unsplash.com/photo-1629505364448-6a58a5b21588?q=80&w=1974&auto=format&fit=crop" class="w-full h-48 object-cover"><div class="p-6"><h3 class="text-2xl font-bold text-stone-800">Aves</h3><p class="text-stone-600 mt-2">Receitas com frango e mais.</p></div></a>
+                <a href="#" class="category-card block bg-white rounded-lg shadow-lg overflow-hidden"><img src="https://images.unsplash.com/photo-1519708227418-c8fd9a32b7a2?q=80&w=2070&auto=format&fit=crop" class="w-full h-48 object-cover"><div class="p-6"><h3 class="text-2xl font-bold text-stone-800">Peixes</h3><p class="text-stone-600 mt-2">Leveza e sabor do mar.</p></div></a>
             </div>
         </div>
     </section>
 
     <!-- Footer -->
-    <footer class="bg-stone-900 border-t border-stone-800">
-        <div class="container mx-auto px-6 py-8 text-center text-stone-400">
-            <p>&copy; 2024 Manual Interativo do Hambúrguer. Todos os direitos reservados.</p>
-            <p class="text-sm mt-2">Um projeto de um sócio para outro.</p>
+    <footer class="bg-white border-t">
+        <div class="container mx-auto px-6 py-8 text-center text-stone-600">
+            <p>&copy; 2024 Mestre Culinário. Todos os direitos reservados.</p>
         </div>
     </footer>
 
