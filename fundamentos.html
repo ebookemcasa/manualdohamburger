@@ -167,12 +167,6 @@
             if(maioneseInput) maioneseInput.addEventListener('input', updateMaioneseIngredients);
             updateMaioneseIngredients();
 
-                      const maioneseInput = document.getElementById('maionese-input');
-            const ingredientListMaionese = document.getElementById('ingredient-list-maionese');
-            const updateMaioneseIngredients = () => { if(!maioneseInput || !ingredientListMaionese) return; const ovos = parseInt(maioneseInput.value) || 1; ingredientListMaionese.innerHTML = `<li class="flex justify-between items-center"><span>Gema de Ovo</span> <span>${ovos} unid.</span></li><li class="flex justify-between items-center"><span>Mostarda Dijon</span> <span>${ovos} colher(es) de chá</span></li><li class="flex justify-between items-center"><span>Sumo de Limão</span> <span>${ovos * 0.5} unid.</span></li><li class="flex justify-between items-center"><span>Óleo Vegetal</span> <span>${ovos * 200} ml</span></li><li class="flex justify-between items-center"><span>Sal e Pimenta Branca</span> <span>A gosto</span></li>`; };
-            if(maioneseInput) maioneseInput.addEventListener('input', updateMaioneseIngredients);
-            updateMaioneseIngredients();
-
             // Lógica dos Timers
             const timerButtons = document.querySelectorAll('.timer-btn');
             let activeTimers = {};
