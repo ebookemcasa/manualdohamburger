@@ -49,6 +49,11 @@
                 <h2 class="text-3xl font-bold text-amber-700">Aula 03: Caldo de Legumes Caseiro</h2>
                 <p class="text-stone-600 mt-2">O segredo dos chefs para sopas, risotos e molhos com um sabor incrível. Nunca mais use cubos industrializados.</p>
             </div>
+            <div class="aula-card bg-white p-6 rounded-lg shadow-lg" data-target="receita-ovo">
+    <h2 class="text-3xl font-bold text-amber-700">Aula 04: O Ovo Estrelado Perfeito</h2>
+    <p class="text-stone-600 mt-2">Aprenda a fazer um ovo estrelado com a clara cozida e a gema perfeitamente líquida, sempre.</p>
+</div>
+
         </div>
 
         <!-- Container das Fichas Técnicas (Escondido por Padrão) -->
@@ -106,9 +111,40 @@
                             <div class="p-4 rounded-lg bg-stone-100"><h4 class="font-bold text-lg text-stone-800 mb-2"><span class="bg-amber-600 text-white rounded-full w-8 h-8 inline-flex items-center justify-center mr-3">4</span> Cozimento Lento (A Paciência)</h4><p class="text-stone-600 mb-3">Deixe levantar fervura e, imediatamente, reduza para o lume mais baixo possível. O caldo deve cozinhar muito lentamente, apenas com pequenas bolhas a subir à superfície. Cozinhe por, no mínimo, 1 hora.</p><div class="flex items-center gap-4"><button class="timer-btn bg-amber-500 text-white px-4 py-2 rounded-lg hover:bg-amber-600 transition" data-time="3600">Timer (1 hora)</button><span class="timer-display text-lg font-mono font-bold text-amber-700"></span></div></div>
                             <div class="p-4 rounded-lg bg-stone-100"><h4 class="font-bold text-lg text-stone-800 mb-2"><span class="bg-amber-600 text-white rounded-full w-8 h-8 inline-flex items-center justify-center mr-3">5</span> Coar e Guardar</h4><p class="text-stone-600">Depois de cozinhar, coe o caldo com um passador fino para remover todos os sólidos. O líquido dourado que resta é o seu caldo de legumes caseiro. Pode guardá-lo no frigorífico por até 5 dias ou congelar por até 3 meses.</p></div>
                         </div>
-                    </div>
-                </div>
+          <!-- Ficha Técnica: Ovo Estrelado Perfeito (Escondida) -->
+<div id="receita-ovo" class="receita-content bg-white p-8 rounded-lg shadow-xl max-w-5xl mx-auto hidden">
+    <h2 class="text-3xl md:text-4xl font-bold text-amber-700 mb-8 text-center">Aula 04: O Ovo Estrelado Perfeito</h2>
+    <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+        <!-- Coluna Esquerda: Planeamento -->
+        <div class="lg:col-span-1">
+            <h3 class="text-2xl font-bold text-stone-800 mb-4">Planeamento</h3>
+            <div class="bg-stone-100 p-4 rounded-lg">
+                <label for="ovo-input" class="block text-lg text-stone-700 mb-2">Quantidade de Ovos:</label>
+                <input type="number" id="ovo-input" value="1" min="1" step="1" class="w-full p-2 border border-stone-300 rounded-lg focus:ring-2 focus:ring-amber-500">
             </div>
+            <div class="mt-6">
+                <h4 class="font-bold text-lg mb-2 text-stone-700">Ingredientes Necessários:</h4>
+                <ul class="space-y-3 text-stone-600" id="ingredient-list-ovo">
+                    <!-- Gerado pelo JavaScript -->
+                </ul>
+            </div>
+             <div class="mt-6">
+                 <h4 class="font-bold text-lg mb-2 text-stone-700">Dica de Mestre</h4>
+                 <p class="text-stone-500 text-sm bg-stone-100 p-3 rounded-lg">Use ovos o mais frescos possível e à temperatura ambiente. Isto ajuda a clara a cozinhar de forma mais uniforme e a gema a manter-se líquida.</p>
+            </div>
+        </div>
+        <!-- Coluna Direita: Passo a Passo -->
+        <div class="lg:col-span-2">
+            <h3 class="text-2xl font-bold text-stone-800 mb-4">Tutorial Detalhado</h3>
+            <div class="space-y-6">
+                <div class="p-4 rounded-lg bg-stone-100"><h4 class="font-bold text-lg text-stone-800 mb-2"><span class="bg-amber-600 text-white rounded-full w-8 h-8 inline-flex items-center justify-center mr-3">1</span> A Temperatura é Crucial</h4><p class="text-stone-600">Aqueça uma frigideira antiaderente em lume **médio-baixo**. Um erro comum é usar lume demasiado alto, o que queima a clara antes de a gema cozinhar. Adicione a manteiga ou o azeite e deixe aquecer lentamente.</p></div>
+                <div class="p-4 rounded-lg bg-stone-100"><h4 class="font-bold text-lg text-stone-800 mb-2"><span class="bg-amber-600 text-white rounded-full w-8 h-8 inline-flex items-center justify-center mr-3">2</span> Quebrar o Ovo</h4><p class="text-stone-600">Quebre o ovo primeiro numa tigela pequena, não diretamente na frigideira. Isto permite-lhe remover qualquer pedaço de casca e garante que a gema não se parte. Deslize o ovo cuidadosamente da tigela para a frigideira quente.</p></div>
+                <div class="p-4 rounded-lg bg-stone-100"><h4 class="font-bold text-lg text-stone-800 mb-2"><span class="bg-amber-600 text-white rounded-full w-8 h-8 inline-flex items-center justify-center mr-3">3</span> Cozinhar a Clara (O Truque da Tampa)</h4><p class="text-stone-600 mb-3">Deixe o ovo fritar por cerca de 2 minutos. Quando as bordas da clara estiverem firmes, adicione uma colher de sopa de água na frigideira (longe do ovo) e tape imediatamente. O vapor irá cozinhar a parte de cima da clara na perfeição, sem cozinhar a gema.</p><div class="flex items-center gap-4"><button class="timer-btn bg-amber-500 text-white px-4 py-2 rounded-lg hover:bg-amber-600 transition" data-time="120">Timer (2 min)</button><span class="timer-display text-lg font-mono font-bold text-amber-700"></span></div></div>
+                <div class="p-4 rounded-lg bg-stone-100"><h4 class="font-bold text-lg text-stone-800 mb-2"><span class="bg-amber-600 text-white rounded-full w-8 h-8 inline-flex items-center justify-center mr-3">4</span> Finalização</h4><p class="text-stone-600">Assim que a clara estiver completamente branca e firme, retire o ovo da frigideira. Tempere com sal e pimenta apenas agora, no prato, para evitar que a gema fique manchada. Sirva imediatamente.</p></div>
+            </div>
+        </div>
+    </div>
+</div>
 
         </div>
     </main>
@@ -192,6 +228,21 @@
             };
             if(caldoInput) caldoInput.addEventListener('input', updateCaldoIngredients);
             updateCaldoIngredients();
+
+            // Ovo Estrelado
+const ovoInput = document.getElementById('ovo-input');
+const ingredientListOvo = document.getElementById('ingredient-list-ovo');
+const updateOvoIngredients = () => {
+     if(!ovoInput || !ingredientListOvo) return;
+     const qty = parseInt(ovoInput.value) || 1;
+     ingredientListOvo.innerHTML = `
+        <li class="flex justify-between items-center"><span>Ovos Frescos</span> <span>${qty} unid.</span></li>
+        <li class="flex justify-between items-center"><span>Manteiga ou Azeite</span> <span>${qty} colher(es) de chá</span></li>
+        <li class="flex justify-between items-center"><span>Sal e Pimenta</span> <span>A gosto</span></li>
+     `;
+};
+if(ovoInput) ovoInput.addEventListener('input', updateOvoIngredients);
+updateOvoIngredients();
 
             // Lógica dos Timers
             const timerButtons = document.querySelectorAll('.timer-btn');
