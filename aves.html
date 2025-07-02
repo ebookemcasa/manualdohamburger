@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="pt-BR" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Receitas com Aves - Mestre Culinário</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Lato:wght@400;700&display=swap');
+        body { font-family: 'Lato', sans-serif; background-color: #f8f7f4; color: #3d3d3d; }
+        h1, h2, h3, h4, .nav-link { font-family: 'Playfair Display', serif; }
+        .timer-btn.active { background-color: #ca8a04; color: white; cursor: not-allowed; }
+        .aula-card {
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            cursor: pointer;
+        }
+        .aula-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.05), 0 4px 6px -4px rgb(0 0 0 / 0.05);
+        }
+    </style>
+</head>
+<body class="antialiased">
+    <header class="bg-white/90 backdrop-blur-lg sticky top-0 z-50 shadow-md">
+        <nav class="container mx-auto px-6 py-4">
+            <div class="flex justify-between items-center">
+                <a href="index.html" class="text-3xl font-bold text-stone-800">Mestre<span class="text-amber-600">Culinário</span></a>
+                <a href="index.html" class="nav-link text-stone-600 hover:text-amber-600 transition-colors">Voltar à Página Principal</a>
+            </div>
+        </nav>
+    </header>
+    <main class="container mx-auto px-6 py-8 md:py-12">
+        <section class="text-center mb-16">
+            <h1 class="text-4xl md:text-6xl font-bold text-stone-800">Receitas com <span class="text-amber-600">Aves</span></h1>
+            <p class="mt-4 max-w-2xl mx-auto text-stone-600">Do frango do dia a dia ao peru de festa, aprenda as técnicas para garantir pratos suculentos e cheios de sabor.</p>
+        </section>
+
+        <!-- Lista de Aulas -->
+        <div id="aulas-list" class="space-y-8 max-w-5xl mx-auto">
+            <div class="aula-card bg-white p-6 rounded-lg shadow-lg" data-target="receita-frango-grelhado"><h2 class="text-2xl md:text-3xl font-bold text-amber-700">Aula 01: Peito de Frango Grelhado (Suculento)</h2><p class="text-stone-600 mt-2">A técnica definitiva para um peito de frango que nunca mais ficará seco.</p></div>
+            <div class="aula-card bg-white p-6 rounded-lg shadow-lg" data-target="receita-frango-assado"><h2 class="text-2xl md:text-3xl font-bold text-amber-700">Aula 02: Frango Assado Inteiro</h2><p class="text-stone-600 mt-2">Aprenda a assar um frango inteiro com pele crocante e carne húmida.</p></div>
+            <div class="aula-card bg-white p-6 rounded-lg shadow-lg" data-target="receita-strogonoff"><h2 class="text-2xl md:text-3xl font-bold text-amber-700">Aula 03: Strogonoff de Frango Clássico</h2><p class="text-stone-600 mt-2">Um prato cremoso e reconfortante, feito da forma correta.</p></div>
+            <div class="aula-card bg-white p-6 rounded-lg shadow-lg" data-target="receita-coxas-assadas"><h2 class="text-2xl md:text-3xl font-bold text-amber-700">Aula 04: Coxas de Frango Assadas com Batatas</h2><p class="text-stone-600 mt-2">Uma refeição completa de tabuleiro, prática e cheia de sabor.</p></div>
+            <div class="aula-card bg-white p-6 rounded-lg shadow-lg" data-target="receita-frango-xadrez"><h2 class="text-2xl md:text-3xl font-bold text-amber-700">Aula 05: Frango Xadrez</h2><p class="text-stone-600 mt-2">Aprenda a fazer este clássico da cozinha sino-americana em casa.</p></div>
+            <div class="aula-card bg-white p-6 rounded-lg shadow-lg" data-target="receita-tirinhas-fritas"><h2 class="text-2xl md:text-3xl font-bold text-amber-700">Aula 06: Tirinhas de Frango Crocantes</h2><p class="text-stone-600 mt-2">Perfeitas para petiscar, com um polme que garante a máxima crocância.</p></div>
+        </div>
+
+        <!-- Container das Fichas Técnicas -->
+        <div id="receitas-container" class="hidden">
+            <button id="back-to-list-btn" class="mb-8 inline-flex items-center text-amber-700 hover:text-amber-800 font-bold"><svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-2" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M12.707 5.293a1 1 0 010 1.414L9.414 10l3.293 3.293a1 1 0 01-1.414 1.414l-4-4a1 1 0 010-1.414l4-4a1 1 0 011.414 0z" clip-rule="evenodd" /></svg>Voltar ao Índice de Aulas</button>
+            <div id="receita-frango-grelhado" class="receita-content bg-white p-8 rounded-lg shadow-xl max-w-5xl mx-auto hidden"></div>
+            <div id="receita-frango-assado" class="receita-content bg-white p-8 rounded-lg shadow-xl max-w-5xl mx-auto hidden"></div>
+            <div id="receita-strogonoff" class="receita-content bg-white p-8 rounded-lg shadow-xl max-w-5xl mx-auto hidden"></div>
+            <div id="receita-coxas-assadas" class="receita-content bg-white p-8 rounded-lg shadow-xl max-w-5xl mx-auto hidden"></div>
+            <div id="receita-frango-xadrez" class="receita-content bg-white p-8 rounded-lg shadow-xl max-w-5xl mx-auto hidden"></div>
+            <div id="receita-tirinhas-fritas" class="receita-content bg-white p-8 rounded-lg shadow-xl max-w-5xl mx-auto hidden"></div>
+        </div>
+    </main>
+    <footer class="bg-white border-t mt-16"><div class="container mx-auto px-6 py-8 text-center text-stone-600"><p>&copy; 2024 Mestre Culinário. Todos os direitos reservados.</p></div></footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const aulas = {
+                'frango-grelhado': { title: "Aula 01: Peito de Frango Grelhado (Suculento)", calculatorLabel: "Peitos de Frango (unid.):", calculatorUnit: "frango-grelhado-input", dica: "A salmoura rápida é o segredo dos chefs. Deixar o frango numa mistura de água e sal por 15-30 minutos antes de cozinhar garante que ele se mantenha húmido e bem temperado por dentro.", getIngredients: (val) => { const qty = parseInt(val) || 1; return `<li class="flex justify-between items-center"><span>Peito de Frango</span> <span>${qty} unid.</span></li><li class="flex justify-between items-center"><span>Sal (para salmoura)</span> <span>${(qty * 1.5).toFixed(1)} colher(es) de chá</span></li><li class="flex justify-between items-center"><span>Pimenta Preta</span> <span>A gosto</span></li><li class="flex justify-between items-center"><span>Azeite</span> <span>${qty} colher(es) de sopa</span></li>`; }, steps: [ { title: 'A Salmoura Rápida (Opcional)', description: 'Para um frango extra suculento, dissolva sal em água e mergulhe os peitos de frango por 15 a 30 minutos. Depois, retire e seque-os muito bem com papel toalha.' }, { title: 'Temperar e Aquecer', description: 'Seque novamente a superfície do frango. Tempere com sal (menos, se fez a salmoura) e pimenta. Aqueça uma frigideira em lume médio-alto com um fio de azeite.' }, { title: 'Grelhar sem Erro', description: 'Coloque o frango na frigideira quente. Cozinhe por 5-7 minutos de cada lado, dependendo da espessura, virando apenas uma vez. Não cozinhe demais para não secar.', timer: 360 }, { title: 'O Descanso Essencial', description: 'Retire o frango da frigideira e deixe-o descansar numa tábua por pelo menos 5 minutos antes de o fatiar. Isto permite que os sucos se redistribuam pela carne, mantendo-a húmida.', timer: 300 } ] },
+                'frango-assado': { title: "Aula 02: Frango Assado Inteiro", calculatorLabel: "Peso do Frango (kg):", calculatorUnit: "frango-assado-input", dica: "Para uma pele extra crocante, seque muito bem o frango com papel toalha e deixe-o no frigorífico, descoberto, por algumas horas antes de assar.", getIngredients: (val) => { const kg = parseFloat(val) || 1.5; return `<li class="flex justify-between items-center"><span>Frango Inteiro</span> <span>${kg.toFixed(1)} kg</span></li><li class="flex justify-between items-center"><span>Manteiga derretida</span> <span>${(kg / 1.5 * 50).toFixed(0)} g</span></li><li class="flex justify-between items-center"><span>Limão Siciliano</span> <span>${Math.ceil(kg / 1.5)} unid.</span></li><li class="flex justify-between items-center"><span>Ervas Frescas (tomilho, alecrim)</span> <span>A gosto</span></li>`; }, steps: [ { title: 'Preparar a Ave', description: 'Seque bem o frango por dentro e por fora. Tempere generosamente com sal e pimenta. Coloque o limão e as ervas dentro da cavidade do frango.' }, { title: 'A Manteiga Aromatizada', description: 'Pincele toda a pele do frango com a manteiga derretida. Isto vai ajudar a pele a ficar dourada e crocante.' }, { title: 'Assar com Paciência', description: 'Asse em forno pré-aquecido a 200°C por cerca de 20 minutos por cada 500g, mais 20 minutos extra. Regue o frango com os próprios sucos a cada 20 minutos.', timer: 5400 }, { title: 'Descanso Obrigatório', description: 'Deixe o frango descansar por 15 minutos antes de o cortar para que os sucos se redistribuam.' } ] },
+                strogonoff: { title: "Aula 03: Strogonoff de Frango Clássico", calculatorLabel: "Gramas de Frango:", calculatorUnit: "strogonoff-input", dica: "O segredo de um strogonoff cremoso é adicionar as natas (ou creme de leite) apenas no final e fora do lume, para não talhar.", getIngredients: (val) => { const gramas = parseInt(val) || 500; return `<li class="flex justify-between items-center"><span>Peito de Frango em cubos</span> <span>${gramas} g</span></li><li class="flex justify-between items-center"><span>Cogumelos Frescos</span> <span>${(gramas * 0.4).toFixed(0)} g</span></li><li class="flex justify-between items-center"><span>Cebola</span> <span>${Math.ceil(gramas / 500)} unid.</span></li><li class="flex justify-between items-center"><span>Ketchup e Mostarda</span> <span>A gosto</span></li><li class="flex justify-between items-center"><span>Natas / Creme de Leite</span> <span>${(gramas * 0.4).toFixed(0)} ml</span></li>`; }, steps: [ { title: 'Dourar o Frango', description: 'Numa frigideira quente com azeite, doure os cubos de frango temperados com sal e pimenta. Faça em lotes para não cozer. Retire e reserve.' }, { title: 'O Molho Base', description: 'Na mesma frigideira, refogue a cebola e os cogumelos fatiados. Adicione o ketchup e a mostarda e misture bem. Volte a colocar o frango na frigideira.' }, { title: 'Finalizar com Cremosidade', description: 'Desligue o lume. Adicione as natas e mexa bem para incorporar. Sirva imediatamente com arroz branco e batata palha.' } ] },
+                'coxas-assadas': { title: "Aula 04: Coxas de Frango Assadas com Batatas", calculatorLabel: "Número de Coxas:", calculatorUnit: "coxas-assadas-input", dica: "Para batatas extra crocantes, coza-as em água a ferver por 10 minutos antes de as levar ao forno com o frango.", getIngredients: (val) => { const qty = parseInt(val) || 4; return `<li class="flex justify-between items-center"><span>Coxas de Frango</span> <span>${qty} unid.</span></li><li class="flex justify-between items-center"><span>Batatas</span> <span>${qty * 2} unid.</span></li><li class="flex justify-between items-center"><span>Azeite, Sal, Pimenta, Páprica</span> <span>A gosto</span></li><li class="flex justify-between items-center"><span>Ramos de Alecrim</span> <span>${Math.ceil(qty / 2)} unid.</span></li>`; }, steps: [ { title: 'Preparar o Tabuleiro', description: 'Pré-aqueça o forno a 200°C. Descasque e corte as batatas em cubos. Tempere as coxas de frango e as batatas numa tigela grande com azeite, sal, pimenta e páprica.' }, { title: 'Assar', description: 'Disponha o frango e as batatas num tabuleiro numa única camada. Adicione os ramos de alecrim. Asse por 40-50 minutos, virando as batatas a meio do tempo, até o frango estar cozido e a pele crocante.', timer: 2700 } ] },
+                'frango-xadrez': { title: "Aula 05: Frango Xadrez", calculatorLabel: "Gramas de Frango:", calculatorUnit: "frango-xadrez-input", dica: "O segredo do molho agridoce é o equilíbrio entre o shoyu (salgado), o vinagre (ácido) e o açúcar (doce). Prove e ajuste sempre ao seu gosto.", getIngredients: (val) => { const gramas = parseInt(val) || 500; return `<li class="flex justify-between items-center"><span>Peito de Frango em cubos</span> <span>${gramas} g</span></li><li class="flex justify-between items-center"><span>Pimentão (várias cores)</span> <span>${Math.ceil(gramas / 250)} unid.</span></li><li class="flex justify-between items-center"><span>Cebola</span> <span>${Math.ceil(gramas / 500)} unid.</span></li><li class="flex justify-between items-center"><span>Molho de Soja (Shoyu)</span> <span>${(gramas / 500 * 4).toFixed(0)} colheres</span></li><li class="flex justify-between items-center"><span>Amendoim torrado</span> <span>A gosto</span></li>`; }, steps: [ { title: 'Saltear o Frango', description: 'Numa frigideira ou wok bem quente com óleo, salteie os cubos de frango até dourarem. Retire e reserve.' }, { title: 'Os Vegetais', description: 'Na mesma frigideira, salteie a cebola e os pimentões cortados em quadrados grandes, até ficarem macios mas ainda crocantes.' }, { title: 'Juntar Tudo', description: 'Volte a colocar o frango na frigideira. Adicione o molho de soja e outros temperos a gosto (gengibre, óleo de gergelim). Cozinhe por mais 2 minutos. Sirva com amendoins por cima.' } ] },
+                'tirinhas-fritas': { title: "Aula 06: Tirinhas de Frango Crocantes", calculatorLabel: "Gramas de Frango:", calculatorUnit: "tirinhas-fritas-input", dica: "Para um polme extra leve e crocante, use água com gás bem gelada na mistura da farinha.", getIngredients: (val) => { const gramas = parseInt(val) || 500; return `<li class="flex justify-between items-center"><span>Peito de Frango em tiras</span> <span>${gramas} g</span></li><li class="flex justify-between items-center"><span>Farinha de Trigo</span> <span>${(gramas / 500).toFixed(1)} chávena(s)</span></li><li class="flex justify-between items-center"><span>Amido de Milho</span> <span>${(gramas / 1000).toFixed(1)} chávena(s)</span></li><li class="flex justify-between items-center"><span>Água com Gás Gelada</span> <span>${(gramas / 500).toFixed(1)} chávena(s)</span></li>`; }, steps: [ { title: 'O Polme Secreto', description: 'Numa tigela, misture a farinha, o amido de milho, sal e pimenta. Adicione a água com gás gelada e mexa apenas até incorporar. Não mexa demasiado, alguns grumos são normais.' }, { title: 'Fritar', description: 'Passe as tiras de frango no polme e frite em óleo quente (180°C) por 3-4 minutos, até ficarem douradas e crocantes. Frite em pequenos lotes para não baixar a temperatura do óleo.', timer: 210 } ] }
+            };
+
+            const aulasList = document.getElementById('aulas-list');
+            const receitasContainer = document.getElementById('receitas-container');
+            const backToListBtn = document.getElementById('back-to-list-btn');
+            
+            document.querySelectorAll('.aula-card').forEach(card => { 
+                const targetId = card.dataset.target.replace('receita-', '');
+                const recipeData = aulas[targetId];
+                if(recipeData){
+                    const targetElement = document.getElementById(card.dataset.target);
+                    targetElement.innerHTML = `
+                        <h2 class="text-3xl md:text-4xl font-bold text-amber-700 mb-8 text-center">${recipeData.title}</h2>
+                        <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+                            <div class="lg:col-span-1">
+                                <h3 class="text-2xl font-bold text-stone-800 mb-4">Planeamento</h3>
+                                <div class="bg-stone-100 p-4 rounded-lg">
+                                    <label for="${recipeData.calculatorUnit}" class="block text-lg text-stone-700 mb-2">${recipeData.calculatorLabel}</label>
+                                    <input type="number" id="${recipeData.calculatorUnit}" value="1" min="1" step="1" class="w-full p-2 border border-stone-300 rounded-lg focus:ring-2 focus:ring-amber-500">
+                                </div>
+                                <div class="mt-6">
+                                    <h4 class="font-bold text-lg mb-2 text-stone-700">Ingredientes Necessários:</h4>
+                                    <ul class="space-y-3 text-stone-600" id="ingredient-list-${targetId}"></ul>
+                                </div>
+                                 <div class="mt-6">
+                                     <h4 class="font-bold text-lg mb-2 text-stone-700">Dica de Mestre</h4>
+                                     <p class="text-stone-500 text-sm bg-stone-100 p-3 rounded-lg">${recipeData.dica}</p>
+                                </div>
+                            </div>
+                            <div class="lg:col-span-2">
+                                <h3 class="text-2xl font-bold text-stone-800 mb-4">Tutorial Detalhado</h3>
+                                <div class="space-y-6">
+                                    ${recipeData.steps.map((step, index) => `
+                                        <div class="p-4 rounded-lg bg-stone-100">
+                                            <h4 class="font-bold text-lg text-stone-800 mb-2"><span class="bg-amber-600 text-white rounded-full w-8 h-8 inline-flex items-center justify-center mr-3">${index + 1}</span> ${step.title}</h4>
+                                            <p class="text-stone-600">${step.description}</p>
+                                            ${step.timer ? `<div class="mt-3 flex items-center gap-4"><button class="timer-btn bg-amber-500 text-white px-4 py-2 rounded-lg hover:bg-amber-600 transition" data-time="${step.timer}">Timer (${Math.floor(step.timer/60)}m ${step.timer%60}s)</button><span class="timer-display text-lg font-mono font-bold text-amber-700"></span></div>` : ''}
+                                        </div>
+                                    `).join('')}
+                                </div>
+                            </div>
+                        </div>
+                    `;
+
+                    const input = document.getElementById(recipeData.calculatorUnit);
+                    const list = document.getElementById(`ingredient-list-${targetId}`);
+                    const updateFn = () => { if(!input || !list) return; list.innerHTML = recipeData.getIngredients(input.value); };
+                    input.addEventListener('input', updateFn);
+                    updateFn();
+                }
+
+                card.addEventListener('click', () => { 
+                    const targetId = card.dataset.target; 
+                    const targetRecipe = document.getElementById(targetId); 
+                    aulasList.classList.add('hidden'); 
+                    receitasContainer.classList.remove('hidden'); 
+                    targetRecipe.classList.remove('hidden'); 
+                }); 
+            });
+
+            backToListBtn.addEventListener('click', () => { 
+                aulasList.classList.remove('hidden'); 
+                receitasContainer.classList.add('hidden'); 
+                document.querySelectorAll('.receita-content').forEach(recipe => { 
+                    recipe.classList.add('hidden'); 
+                }); 
+            });
+            
+            const timerButtons = document.querySelectorAll('.timer-btn');
+            let activeTimers = {};
+            timerButtons.forEach(button => {
+                button.addEventListener('click', (e) => { const timerId = `timer-${Math.random()}`; if (button.classList.contains('active')) return; let timeInSeconds = parseInt(e.target.dataset.time, 10); const display = e.target.nextElementSibling; button.classList.add('active'); button.disabled = true; activeTimers[timerId] = setInterval(() => { const minutes = Math.floor(timeInSeconds / 60); const seconds = timeInSeconds % 60; display.textContent = `${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`; if (timeInSeconds <= 0) { clearInterval(activeTimers[timerId]); delete activeTimers[timerId]; display.textContent = "Tempo esgotado!"; button.classList.remove('active'); button.disabled = false; } else { timeInSeconds--; } }, 1000); });
+            });
+        });
+    </script>
+</body>
+</html>
