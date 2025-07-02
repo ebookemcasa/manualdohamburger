@@ -35,77 +35,106 @@
             <p class="mt-4 max-w-2xl mx-auto text-stone-600">Aprenda as técnicas para dominar os grelhados, assados e estufados, garantindo sempre o ponto e o sabor perfeitos.</p>
         </section>
 
-        <!-- Lista de Aulas (Visível por Padrão) -->
+        <!-- Lista de Aulas -->
         <div id="aulas-list" class="space-y-8 max-w-5xl mx-auto">
-            <div class="aula-card bg-white p-6 rounded-lg shadow-lg" data-target="receita-bife">
-                <h2 class="text-3xl font-bold text-amber-700">Aula 01: O Bife Grelhado Perfeito (Ponto e Crosta)</h2>
-                <p class="text-stone-600 mt-2">A técnica fundamental para conseguir um bife suculento por dentro e com uma crosta de restaurante por fora, sempre.</p>
-            </div>
-            <!-- Novas aulas de carnes serão adicionadas aqui -->
+            <div class="aula-card bg-white p-6 rounded-lg shadow-lg" data-target="receita-bife"><h2 class="text-2xl md:text-3xl font-bold text-amber-700">Aula 01: O Bife Grelhado Perfeito (Ponto e Crosta)</h2><p class="text-stone-600 mt-2">A técnica fundamental para conseguir um bife suculento por dentro e com uma crosta de restaurante por fora.</p></div>
+            <div class="aula-card bg-white p-6 rounded-lg shadow-lg" data-target="receita-panela"><h2 class="text-2xl md:text-3xl font-bold text-amber-700">Aula 02: Carne de Panela (Estufado Perfeito)</h2><p class="text-stone-600 mt-2">Aprenda a fazer uma carne de panela que se desfaz na boca, com um molho rico e encorpado.</p></div>
+            <div class="aula-card bg-white p-6 rounded-lg shadow-lg" data-target="receita-costeleta"><h2 class="text-2xl md:text-3xl font-bold text-amber-700">Aula 03: Costeletas de Porco na Frigideira</h2><p class="text-stone-600 mt-2">O segredo para costeletas de porco suculentas e douradas, nunca mais carne seca!</p></div>
+            <div class="aula-card bg-white p-6 rounded-lg shadow-lg" data-target="receita-almondegas"><h2 class="text-2xl md:text-3xl font-bold text-amber-700">Aula 04: Almôndegas ao Sugo</h2><p class="text-stone-600 mt-2">Aprenda a fazer almôndegas macias e saborosas, que cozinham no próprio molho.</p></div>
+            <div class="aula-card bg-white p-6 rounded-lg shadow-lg" data-target="receita-rosbife"><h2 class="text-2xl md:text-3xl font-bold text-amber-700">Aula 05: Rosbife Caseiro Perfeito</h2><p class="text-stone-600 mt-2">A técnica para um rosbife rosado por dentro e com uma crosta de temperos por fora.</p></div>
+            <div class="aula-card bg-white p-6 rounded-lg shadow-lg" data-target="receita-lombo"><h2 class="text-2xl md:text-3xl font-bold text-amber-700">Aula 06: Lombo de Porco Assado com Ervas</h2><p class="text-stone-600 mt-2">Um assado suculento e aromático, perfeito para uma refeição especial.</p></div>
         </div>
 
-        <!-- Container das Fichas Técnicas (Escondido por Padrão) -->
+        <!-- Container das Fichas Técnicas -->
         <div id="receitas-container" class="hidden">
-            <button id="back-to-list-btn" class="mb-8 inline-flex items-center text-amber-700 hover:text-amber-800 font-bold">
-                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-2" viewBox="0 0 20 20" fill="currentColor">
-                    <path fill-rule="evenodd" d="M12.707 5.293a1 1 0 010 1.414L9.414 10l3.293 3.293a1 1 0 01-1.414 1.414l-4-4a1 1 0 010-1.414l4-4a1 1 0 011.414 0z" clip-rule="evenodd" />
-                </svg>
-                Voltar ao Índice de Aulas
-            </button>
-            
-            <!-- Ficha Técnica: Bife Perfeito (Escondida) -->
-            <div id="receita-bife" class="receita-content bg-white p-8 rounded-lg shadow-xl max-w-5xl mx-auto hidden">
-                <h2 class="text-3xl md:text-4xl font-bold text-amber-700 mb-8 text-center">Aula 01: O Bife Grelhado Perfeito</h2>
-                <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
-                    <div class="lg:col-span-1">
-                        <h3 class="text-2xl font-bold text-stone-800 mb-4">Planeamento</h3>
-                        <div class="bg-stone-100 p-4 rounded-lg">
-                            <label for="bife-input" class="block text-lg text-stone-700 mb-2">Gramas de Bife:</label>
-                            <input type="number" id="bife-input" value="250" min="100" step="50" class="w-full p-2 border border-stone-300 rounded-lg focus:ring-2 focus:ring-amber-500">
-                        </div>
-                        <div class="mt-6">
-                            <h4 class="font-bold text-lg mb-2 text-stone-700">Ingredientes Necessários:</h4>
-                            <ul class="space-y-3 text-stone-600" id="ingredient-list-bife"></ul>
-                        </div>
-                         <div class="mt-6">
-                             <h4 class="font-bold text-lg mb-2 text-stone-700">Dica de Mestre</h4>
-                             <p class="text-stone-500 text-sm bg-stone-100 p-3 rounded-lg">O descanso da carne depois de grelhar é **o passo mais importante**. É neste momento que os sucos se redistribuem, garantindo um bife macio e suculento. Nunca corte a carne imediatamente a seguir a tirá-la do lume.</p>
-                        </div>
-                    </div>
-                    <div class="lg:col-span-2">
-                        <h3 class="text-2xl font-bold text-stone-800 mb-4">Tutorial Detalhado</h3>
-                        <div class="space-y-6">
-                            <div class="p-4 rounded-lg bg-stone-100"><h4 class="font-bold text-lg text-stone-800 mb-2"><span class="bg-amber-600 text-white rounded-full w-8 h-8 inline-flex items-center justify-center mr-3">1</span> Preparar a Carne</h4><p class="text-stone-600">Retire o bife do frigorífico 30 minutos antes de cozinhar para atingir a temperatura ambiente. Seque muito bem a superfície com papel toalha. Uma superfície seca é essencial para criar uma crosta perfeita (a Reação de Maillard).</p></div>
-                            <div class="p-4 rounded-lg bg-stone-100"><h4 class="font-bold text-lg text-stone-800 mb-2"><span class="bg-amber-600 text-white rounded-full w-8 h-8 inline-flex items-center justify-center mr-3">2</span> A Chapa e o Temperar</h4><p class="text-stone-600 mb-3">Aqueça uma frigideira de ferro fundido ou de fundo grosso em lume alto até ficar a fumegar. Tempere generosamente o bife com sal e pimenta **apenas no momento** de o colocar na frigideira, e só do lado que vai para baixo.</p></div>
-                            <div class="p-4 rounded-lg bg-stone-100"><h4 class="font-bold text-lg text-stone-800 mb-2"><span class="bg-amber-600 text-white rounded-full w-8 h-8 inline-flex items-center justify-center mr-3">3</span> A Selagem Perfeita</h4><p class="text-stone-600 mb-3">Coloque o bife na frigideira quente. Não mexa! Deixe selar por 2 a 4 minutos, dependendo da espessura. Tempere o lado de cima antes de virar.</p><div class="flex items-center gap-4"><button class="timer-btn bg-amber-500 text-white px-4 py-2 rounded-lg hover:bg-amber-600 transition" data-time="150">Timer para Ponto Médio (2m 30s)</button><span class="timer-display text-lg font-mono font-bold text-amber-700"></span></div></div>
-                            <div class="p-4 rounded-lg bg-stone-100"><h4 class="font-bold text-lg text-stone-800 mb-2"><span class="bg-amber-600 text-white rounded-full w-8 h-8 inline-flex items-center justify-center mr-3">4</span> O Ponto Ideal</h4><p class="text-stone-600 mb-3">Vire o bife. No final, pode adicionar uma colher de manteiga e ervas como tomilho e alho para regar a carne. Cozinhe por mais 2-4 minutos, dependendo do ponto desejado.</p><div class="flex items-center gap-4"><button class="timer-btn bg-amber-500 text-white px-4 py-2 rounded-lg hover:bg-amber-600 transition" data-time="150">Timer para Ponto Médio (2m 30s)</button><span class="timer-display text-lg font-mono font-bold text-amber-700"></span></div></div>
-                            <div class="p-4 rounded-lg bg-stone-100"><h4 class="font-bold text-lg text-stone-800 mb-2"><span class="bg-amber-600 text-white rounded-full w-8 h-8 inline-flex items-center justify-center mr-3">5</span> O Descanso Obrigatório</h4><p class="text-stone-600">Retire o bife para uma tábua e deixe-o descansar por pelo menos 5 minutos antes de o cortar. Isto permite que os sucos se redistribuam pela carne, garantindo máxima suculência.</p><div class="flex items-center gap-4"><button class="timer-btn bg-amber-500 text-white px-4 py-2 rounded-lg hover:bg-amber-600 transition" data-time="300">Timer (5 min)</button><span class="timer-display text-lg font-mono font-bold text-amber-700"></span></div></div>
-                        </div>
-                    </div>
-                </div>
-            </div>
+            <button id="back-to-list-btn" class="mb-8 inline-flex items-center text-amber-700 hover:text-amber-800 font-bold"><svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-2" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M12.707 5.293a1 1 0 010 1.414L9.414 10l3.293 3.293a1 1 0 01-1.414 1.414l-4-4a1 1 0 010-1.414l4-4a1 1 0 011.414 0z" clip-rule="evenodd" /></svg>Voltar ao Índice de Aulas</button>
+            <div id="receita-bife" class="receita-content bg-white p-8 rounded-lg shadow-xl max-w-5xl mx-auto hidden"></div>
+            <div id="receita-panela" class="receita-content bg-white p-8 rounded-lg shadow-xl max-w-5xl mx-auto hidden"></div>
+            <div id="receita-costeleta" class="receita-content bg-white p-8 rounded-lg shadow-xl max-w-5xl mx-auto hidden"></div>
+            <div id="receita-almondegas" class="receita-content bg-white p-8 rounded-lg shadow-xl max-w-5xl mx-auto hidden"></div>
+            <div id="receita-rosbife" class="receita-content bg-white p-8 rounded-lg shadow-xl max-w-5xl mx-auto hidden"></div>
+            <div id="receita-lombo" class="receita-content bg-white p-8 rounded-lg shadow-xl max-w-5xl mx-auto hidden"></div>
         </div>
     </main>
-    <footer class="bg-white border-t mt-16">
-        <div class="container mx-auto px-6 py-8 text-center text-stone-600">
-            <p>&copy; 2024 Mestre Culinário. Todos os direitos reservados.</p>
-        </div>
-    </footer>
+    <footer class="bg-white border-t mt-16"><div class="container mx-auto px-6 py-8 text-center text-stone-600"><p>&copy; 2024 Mestre Culinário. Todos os direitos reservados.</p></div></footer>
 
     <script>
         document.addEventListener('DOMContentLoaded', () => {
+            const aulas = {
+                bife: { title: "Aula 01: O Bife Grelhado Perfeito", calculatorLabel: "Gramas de Bife:", calculatorUnit: "bife-input", dica: "O descanso da carne depois de grelhar é **o passo mais importante**. É neste momento que os sucos se redistribuem, garantindo um bife macio e suculento. Nunca corte a carne imediatamente a seguir a tirá-la do lume.", getIngredients: (val) => { const gramas = parseInt(val) || 250; const sal = (gramas * 0.02).toFixed(1); const pimenta = (gramas * 0.01).toFixed(1); return `<li class="flex justify-between items-center"><span>Sal de Parrilla</span> <span>${sal} g</span></li><li class="flex justify-between items-center"><span>Pimenta Preta moída na hora</span> <span>${pimenta} g</span></li><li class="flex justify-between items-center"><span>Azeite ou Manteiga</span> <span>1 colher</span></li>`; }, steps: [ { title: 'Preparar a Carne', description: 'Retire o bife do frigorífico 30 minutos antes de cozinhar para atingir a temperatura ambiente. Seque muito bem a superfície com papel toalha. Uma superfície seca é essencial para criar uma crosta perfeita (a Reação de Maillard).' }, { title: 'A Chapa e o Temperar', description: 'Aqueça uma frigideira de ferro fundido ou de fundo grosso em lume alto até ficar a fumegar. Tempere generosamente o bife com sal e pimenta **apenas no momento** de o colocar na frigideira, e só do lado que vai para baixo.' }, { title: 'A Selagem Perfeita', description: 'Coloque o bife na frigideira quente. Não mexa! Deixe selar por 2 a 4 minutos, dependendo da espessura. Tempere o lado de cima antes de virar.', timer: 150 }, { title: 'O Ponto Ideal', description: 'Vire o bife. No final, pode adicionar uma colher de manteiga e ervas como tomilho e alho para regar a carne. Cozinhe por mais 2-4 minutos, dependendo do ponto desejado.', timer: 150 }, { title: 'O Descanso Obrigatório', description: 'Retire o bife para uma tábua e deixe-o descansar por pelo menos 5 minutos antes de o cortar. Isto permite que os sucos se redistribuam pela carne, garantindo máxima suculência.', timer: 300 } ] },
+                panela: { title: "Aula 02: Carne de Panela (Estufado Perfeito)", calculatorLabel: "Quilos de Carne:", calculatorUnit: "panela-input", dica: "Não tenha pressa. A carne de panela fica melhor quanto mais tempo cozinhar em lume brando. O colagénio da carne derrete lentamente, tornando-a incrivelmente macia.", getIngredients: (val) => { const kg = parseFloat(val) || 1; return `<li class="flex justify-between items-center"><span>Carne para estufar (Acém, Chambão)</span> <span>${kg} kg</span></li><li class="flex justify-between items-center"><span>Cebola</span> <span>${Math.ceil(kg * 2)} unid.</span></li><li class="flex justify-between items-center"><span>Cenoura</span> <span>${Math.ceil(kg)} unid.</span></li><li class="flex justify-between items-center"><span>Alho</span> <span>${Math.ceil(kg * 4)} dentes</span></li><li class="flex justify-between items-center"><span>Caldo de Carne ou Legumes</span> <span>${(kg * 500).toFixed(0)} ml</span></li>`; }, steps: [ { title: 'Slear a Carne', description: 'Corte a carne em cubos grandes e tempere com sal e pimenta. Numa panela quente com azeite, doure os cubos de carne de todos os lados. Faça isto em lotes para não encher a panela. Retire a carne e reserve.' }, { title: 'Construir o Sabor', description: 'Na mesma panela, refogue a cebola, a cenoura e o alho (o nosso mirepoix) até ficarem macios. Adicione um pouco de vinho tinto (opcional) para deglacear, raspando o fundo da panela. Adicione extrato de tomate e cozinhe por um minuto.' }, { title: 'O Cozimento Lento', description: 'Volte a colocar a carne na panela. Adicione o caldo até quase cobrir a carne. Deixe levantar fervura, reduza para o lume mais baixo possível, tape e deixe cozinhar por pelo menos 2 a 3 horas, ou até a carne se desfazer com um garfo.', timer: 9000 } ] },
+                costeleta: { title: "Aula 03: Costeletas de Porco na Frigideira", calculatorLabel: "Número de Costeletas:", calculatorUnit: "costeleta-input", dica: "O maior erro é cozinhar demais a carne de porco. Use um termómetro de cozinha para garantir a perfeição. O interior deve atingir 63°C (145°F) e depois descansar.", getIngredients: (val) => { const qty = parseInt(val) || 1; return `<li class="flex justify-between items-center"><span>Costeletas de Porco (2cm espessura)</span> <span>${qty} unid.</span></li><li class="flex justify-between items-center"><span>Alho</span> <span>${qty} dente(s)</span></li><li class="flex justify-between items-center"><span>Tomilho ou Alecrim</span> <span>${qty} ramo(s)</span></li><li class="flex justify-between items-center"><span>Manteiga</span> <span>${qty} colher(es) de sopa</span></li>`; }, steps: [ { title: 'Temperar e Selar', description: 'Seque bem as costeletas e tempere generosamente com sal e pimenta. Numa frigideira quente, sele por 2-3 minutos de cada lado até ficarem bem douradas.', timer: 150 }, { title: 'Aromatizar com Manteiga', description: 'Reduza o lume. Adicione a manteiga, os dentes de alho esmagados e as ervas. Incline a frigideira e, com uma colher, regue constantemente as costeletas com a manteiga derretida por 1-2 minutos.' }, { title: 'Descanso é Fundamental', description: 'Retire as costeletas da frigideira e deixe-as descansar numa tábua por 5 a 10 minutos antes de servir. Isto é crucial para manter a suculência.', timer: 450 } ] },
+                almondegas: { title: "Aula 04: Almôndegas ao Sugo", calculatorLabel: "Gramas de Carne Moída:", calculatorUnit: "almondegas-input", dica: "Para almôndegas extra macias, adicione pão de forma demolhado em leite à mistura da carne. A humidade vai torná-las incrivelmente tenras.", getIngredients: (val) => { const gramas = parseInt(val) || 500; return `<li class="flex justify-between items-center"><span>Carne Moída (metade boi, metade porco)</span> <span>${gramas} g</span></li><li class="flex justify-between items-center"><span>Pão de Forma sem côdea</span> <span>${Math.ceil(gramas / 250)} fatia(s)</span></li><li class="flex justify-between items-center"><span>Leite</span> <span>${Math.ceil(gramas / 250) * 2} colheres</span></li><li class="flex justify-between items-center"><span>Queijo Parmesão ralado</span> <span>${(gramas * 0.1).toFixed(0)} g</span></li><li class="flex justify-between items-center"><span>Molho de Tomate Caseiro</span> <span>Ver Aula 02</span></li>`; }, steps: [ { title: 'A Mistura Perfeita', description: 'Numa tigela, misture a carne moída, o pão demolhado no leite, o parmesão, sal, pimenta e salsa picada. Misture apenas até incorporar, sem trabalhar demasiado a carne.' }, { title: 'Moldar e Selar', description: 'Molde pequenas bolas com as mãos. Numa frigideira quente com azeite, sele as almôndegas de todos os lados até ficarem douradas. Não precisam de cozinhar por completo.' }, { title: 'Cozinhar no Molho', description: 'Aqueça o seu molho de tomate caseiro numa panela. Adicione as almôndegas seladas ao molho e deixe cozinhar em lume brando por pelo menos 20 minutos, para que fiquem cozidas por dentro e absorvam o sabor do molho.', timer: 1200 } ] },
+                rosbife: { title: "Aula 05: Rosbife Caseiro Perfeito", calculatorLabel: "Peso da Peça de Carne (kg):", calculatorUnit: "rosbife-input", dica: "Um termómetro de cozinha é o seu melhor amigo para o rosbife. Para mal passado, a temperatura interna deve ser 52°C; para ao ponto, 57°C.", getIngredients: (val) => { const kg = parseFloat(val) || 1; return `<li class="flex justify-between items-center"><span>Peça de carne (Lombo, Filé Mignon)</span> <span>${kg} kg</span></li><li class="flex justify-between items-center"><span>Sal e Pimenta</span> <span>A gosto</span></li><li class="flex justify-between items-center"><span>Mostarda Dijon</span> <span>2 colheres</span></li><li class="flex justify-between items-center"><span>Ervas Frescas (alecrim, tomilho)</span> <span>A gosto</span></li>`; }, steps: [ { title: 'Preparar a Carne', description: 'Tempere a peça de carne generosamente com sal e pimenta. Pincele toda a superfície com mostarda Dijon.' }, { title: 'Selagem Inicial', description: 'Numa frigideira muito quente, sele todos os lados da carne até criar uma crosta dourada. Isto vai garantir a suculência no interior.' }, { title: 'Assar no Forno', description: 'Transfira a carne para um tabuleiro e leve ao forno pré-aquecido a 200°C. Asse por 15-20 minutos por cada 500g para um ponto médio-mal passado.', timer: 1800 }, { title: 'O Descanso Longo', description: 'Este é o passo mais importante. Retire o rosbife do forno e deixe-o descansar por pelo menos 15-20 minutos antes de o fatiar. Se o cortar quente, todos os sucos vão sair. Depois de descansar, fatie finamente.' } ] },
+                lombo: { title: "Aula 06: Lombo de Porco Assado com Ervas", calculatorLabel: "Peso do Lombo (kg):", calculatorUnit: "lombo-input", dica: "A salmoura rápida (deixar a carne de molho em água e sal por 30 minutos) antes de assar é um truque profissional para garantir que o lombo de porco não seque.", getIngredients: (val) => { const kg = parseFloat(val) || 1; return `<li class="flex justify-between items-center"><span>Lombo de Porco</span> <span>${kg} kg</span></li><li class="flex justify-between items-center"><span>Alho</span> <span>${Math.ceil(kg * 3)} dentes</span></li><li class="flex justify-between items-center"><span>Alecrim e Sálvia Frescos</span> <span>A gosto</span></li><li class="flex justify-between items-center"><span>Vinho Branco</span> <span>${(kg * 100).toFixed(0)} ml</span></li>`; }, steps: [ { title: 'Preparar e Temperar', description: 'Faça pequenos furos no lombo e insira pedaços de alho. Esfregue toda a peça com sal, pimenta e as ervas frescas picadas.' }, { title: 'Selar na Panela', description: 'Numa panela que possa ir ao forno, sele todos os lados do lombo em azeite quente até ficar bem dourado.' }, { title: 'Assar Lentamente', description: 'Adicione o vinho branco à panela e leve ao forno pré-aquecido a 180°C. Asse por cerca de 25 minutos por cada 500g, ou até a temperatura interna atingir 63°C.', timer: 3000 }, { title: 'Descansar e Fatiar', description: 'Tal como o rosbife, deixe o lombo descansar por 10 minutos antes de o fatiar para garantir que fica suculento.' } ] }
+            };
+
             const aulasList = document.getElementById('aulas-list');
             const receitasContainer = document.getElementById('receitas-container');
             const backToListBtn = document.getElementById('back-to-list-btn');
-            document.querySelectorAll('.aula-card').forEach(card => { card.addEventListener('click', () => { const targetId = card.dataset.target; const targetRecipe = document.getElementById(targetId); aulasList.classList.add('hidden'); receitasContainer.classList.remove('hidden'); targetRecipe.classList.remove('hidden'); }); });
-            backToListBtn.addEventListener('click', () => { aulasList.classList.remove('hidden'); receitasContainer.classList.add('hidden'); document.querySelectorAll('.receita-content').forEach(recipe => { recipe.classList.add('hidden'); }); });
             
-            const bifeInput = document.getElementById('bife-input');
-            const ingredientListBife = document.getElementById('ingredient-list-bife');
-            const updateBifeIngredients = () => { if(!bifeInput || !ingredientListBife) return; const gramas = parseInt(bifeInput.value) || 250; const sal = (gramas * 0.02).toFixed(1); const pimenta = (gramas * 0.01).toFixed(1); ingredientListBife.innerHTML = `<li class="flex justify-between items-center"><span>Sal de Parrilla</span> <span>${sal} g</span></li><li class="flex justify-between items-center"><span>Pimenta Preta moída na hora</span> <span>${pimenta} g</span></li><li class="flex justify-between items-center"><span>Azeite ou Manteiga</span> <span>1 colher</span></li>`; };
-            if(bifeInput) bifeInput.addEventListener('input', updateBifeIngredients);
-            updateBifeIngredients();
+            document.querySelectorAll('.aula-card').forEach(card => { 
+                const targetId = card.dataset.target.replace('receita-', '');
+                const recipeData = aulas[targetId];
+                if(recipeData){
+                    const targetElement = document.getElementById(card.dataset.target);
+                    targetElement.innerHTML = `
+                        <h2 class="text-3xl md:text-4xl font-bold text-amber-700 mb-8 text-center">${recipeData.title}</h2>
+                        <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+                            <div class="lg:col-span-1">
+                                <h3 class="text-2xl font-bold text-stone-800 mb-4">Planeamento</h3>
+                                <div class="bg-stone-100 p-4 rounded-lg">
+                                    <label for="${recipeData.calculatorUnit}" class="block text-lg text-stone-700 mb-2">${recipeData.calculatorLabel}</label>
+                                    <input type="number" id="${recipeData.calculatorUnit}" value="1" min="1" step="1" class="w-full p-2 border border-stone-300 rounded-lg focus:ring-2 focus:ring-amber-500">
+                                </div>
+                                <div class="mt-6">
+                                    <h4 class="font-bold text-lg mb-2 text-stone-700">Ingredientes Necessários:</h4>
+                                    <ul class="space-y-3 text-stone-600" id="ingredient-list-${targetId}"></ul>
+                                </div>
+                                 <div class="mt-6">
+                                     <h4 class="font-bold text-lg mb-2 text-stone-700">Dica de Mestre</h4>
+                                     <p class="text-stone-500 text-sm bg-stone-100 p-3 rounded-lg">${recipeData.dica}</p>
+                                </div>
+                            </div>
+                            <div class="lg:col-span-2">
+                                <h3 class="text-2xl font-bold text-stone-800 mb-4">Tutorial Detalhado</h3>
+                                <div class="space-y-6">
+                                    ${recipeData.steps.map((step, index) => `
+                                        <div class="p-4 rounded-lg bg-stone-100">
+                                            <h4 class="font-bold text-lg text-stone-800 mb-2"><span class="bg-amber-600 text-white rounded-full w-8 h-8 inline-flex items-center justify-center mr-3">${index + 1}</span> ${step.title}</h4>
+                                            <p class="text-stone-600">${step.description}</p>
+                                            ${step.timer ? `<div class="mt-3 flex items-center gap-4"><button class="timer-btn bg-amber-500 text-white px-4 py-2 rounded-lg hover:bg-amber-600 transition" data-time="${step.timer}">Timer (${Math.floor(step.timer/60)}m ${step.timer%60}s)</button><span class="timer-display text-lg font-mono font-bold text-amber-700"></span></div>` : ''}
+                                        </div>
+                                    `).join('')}
+                                </div>
+                            </div>
+                        </div>
+                    `;
 
+                    const input = document.getElementById(recipeData.calculatorUnit);
+                    const list = document.getElementById(`ingredient-list-${targetId}`);
+                    const updateFn = () => { if(!input || !list) return; list.innerHTML = recipeData.getIngredients(input.value); };
+                    input.addEventListener('input', updateFn);
+                    updateFn();
+                }
+
+                card.addEventListener('click', () => { 
+                    const targetId = card.dataset.target; 
+                    const targetRecipe = document.getElementById(targetId); 
+                    aulasList.classList.add('hidden'); 
+                    receitasContainer.classList.remove('hidden'); 
+                    targetRecipe.classList.remove('hidden'); 
+                }); 
+            });
+
+            backToListBtn.addEventListener('click', () => { 
+                aulasList.classList.remove('hidden'); 
+                receitasContainer.classList.add('hidden'); 
+                document.querySelectorAll('.receita-content').forEach(recipe => { 
+                    recipe.classList.add('hidden'); 
+                }); 
+            });
+            
             const timerButtons = document.querySelectorAll('.timer-btn');
             let activeTimers = {};
             timerButtons.forEach(button => {
