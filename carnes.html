@@ -9,7 +9,8 @@
         @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Lato:wght@400;700&display=swap');
         body { font-family: 'Lato', sans-serif; background-color: #f8f7f4; color: #3d3d3d; }
         h1, h2, h3, h4, .nav-link { font-family: 'Playfair Display', serif; }
-        .timer-btn.active { background-color: #ca8a04; color: white; cursor: not-allowed; }
+        
+        /* Estilos para interatividade */
         .aula-card {
             transition: transform 0.3s ease, box-shadow 0.3s ease;
             cursor: pointer;
@@ -17,6 +18,80 @@
         .aula-card:hover {
             transform: translateY(-5px);
             box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.05), 0 4px 6px -4px rgb(0 0 0 / 0.05);
+        }
+        
+        /* Checklist de Ingredientes */
+        .ingredient-item input[type="checkbox"] {
+            display: none;
+        }
+        .ingredient-item span {
+            transition: all 0.2s ease;
+            cursor: pointer;
+        }
+        .ingredient-item input[type="checkbox"]:checked + span {
+            text-decoration: line-through;
+            opacity: 0.6;
+        }
+
+        /* Acordion/Sanfona para os Passos */
+        details > summary {
+            cursor: pointer;
+            list-style: none;
+            display: inline-flex;
+            align-items: center;
+            transition: color 0.2s ease;
+        }
+        details > summary::-webkit-details-marker {
+            display: none;
+        }
+        details > summary::before {
+            content: '▶';
+            margin-right: 8px;
+            font-size: 0.7em;
+            transition: transform 0.2s ease-in-out;
+        }
+        details[open] > summary::before {
+            transform: rotate(90deg);
+        }
+
+        /* Tooltips para termos técnicos */
+        .tooltip {
+            position: relative;
+            cursor: help;
+            border-bottom: 2px dotted #ca8a04;
+            font-weight: bold;
+        }
+        .tooltip .tooltip-text {
+            visibility: hidden;
+            width: 220px;
+            background-color: #3d3d3d;
+            color: #fff;
+            text-align: center;
+            border-radius: 6px;
+            padding: 8px;
+            position: absolute;
+            z-index: 10;
+            bottom: 125%;
+            left: 50%;
+            margin-left: -110px;
+            opacity: 0;
+            transition: opacity 0.3s;
+            font-family: 'Lato', sans-serif;
+            font-weight: normal;
+        }
+        .tooltip .tooltip-text::after {
+            content: "";
+            position: absolute;
+            top: 100%;
+            left: 50%;
+            margin-left: -5px;
+            border-width: 5px;
+            border-style: solid;
+            border-color: #3d3d3d transparent transparent transparent;
+        }
+        .tooltip:hover .tooltip-text {
+            visibility: visible;
+            opacity: 1;
         }
     </style>
 </head>
@@ -30,12 +105,11 @@
         </nav>
     </header>
     <main class="container mx-auto px-6 py-8 md:py-12">
-        <section class="text-center mb-16">
+        <section id="page-title" class="text-center mb-16">
             <h1 class="text-4xl md:text-6xl font-bold text-stone-800">Receitas com <span class="text-amber-600">Carnes</span></h1>
             <p class="mt-4 max-w-2xl mx-auto text-stone-600">Aprenda as técnicas para dominar os grelhados, assados e estufados, garantindo sempre o ponto e o sabor perfeitos.</p>
         </section>
 
-        <!-- Lista de Aulas -->
         <div id="aulas-list" class="space-y-8 max-w-5xl mx-auto">
             <div class="aula-card bg-white p-6 rounded-lg shadow-lg" data-target="receita-bife"><h2 class="text-2xl md:text-3xl font-bold text-amber-700">Aula 01: O Bife Grelhado Perfeito (Ponto e Crosta)</h2><p class="text-stone-600 mt-2">A técnica fundamental para conseguir um bife suculento por dentro e com uma crosta de restaurante por fora.</p></div>
             <div class="aula-card bg-white p-6 rounded-lg shadow-lg" data-target="receita-panela"><h2 class="text-2xl md:text-3xl font-bold text-amber-700">Aula 02: Carne de Panela (Estufado Perfeito)</h2><p class="text-stone-600 mt-2">Aprenda a fazer uma carne de panela que se desfaz na boca, com um molho rico e encorpado.</p></div>
@@ -50,112 +124,442 @@
             <div class="aula-card bg-white p-6 rounded-lg shadow-lg" data-target="receita-vinagrete"><h2 class="text-2xl md:text-3xl font-bold text-amber-700">Aula 11: Vinagrete Básico</h2><p class="text-stone-600 mt-2">A base para temperar qualquer salada, com a proporção correta de ácido e gordura.</p></div>
         </div>
 
-        <!-- Container das Fichas Técnicas -->
         <div id="receitas-container" class="hidden">
             <button id="back-to-list-btn" class="mb-8 inline-flex items-center text-amber-700 hover:text-amber-800 font-bold"><svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-2" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M12.707 5.293a1 1 0 010 1.414L9.414 10l3.293 3.293a1 1 0 01-1.414 1.414l-4-4a1 1 0 010-1.414l4-4a1 1 0 011.414 0z" clip-rule="evenodd" /></svg>Voltar ao Índice de Aulas</button>
-            <div id="receita-bife" class="receita-content bg-white p-8 rounded-lg shadow-xl max-w-5xl mx-auto hidden"></div>
-            <div id="receita-panela" class="receita-content bg-white p-8 rounded-lg shadow-xl max-w-5xl mx-auto hidden"></div>
-            <div id="receita-costeleta" class="receita-content bg-white p-8 rounded-lg shadow-xl max-w-5xl mx-auto hidden"></div>
-            <div id="receita-almondegas" class="receita-content bg-white p-8 rounded-lg shadow-xl max-w-5xl mx-auto hidden"></div>
-            <div id="receita-rosbife" class="receita-content bg-white p-8 rounded-lg shadow-xl max-w-5xl mx-auto hidden"></div>
-            <div id="receita-lombo" class="receita-content bg-white p-8 rounded-lg shadow-xl max-w-5xl mx-auto hidden"></div>
-            <div id="receita-frango-assado" class="receita-content bg-white p-8 rounded-lg shadow-xl max-w-5xl mx-auto hidden"></div>
-            <div id="receita-salmao" class="receita-content bg-white p-8 rounded-lg shadow-xl max-w-5xl mx-auto hidden"></div>
-            <div id="receita-bolonhesa" class="receita-content bg-white p-8 rounded-lg shadow-xl max-w-5xl mx-auto hidden"></div>
-            <div id="receita-pure" class="receita-content bg-white p-8 rounded-lg shadow-xl max-w-5xl mx-auto hidden"></div>
-            <div id="receita-vinagrete" class="receita-content bg-white p-8 rounded-lg shadow-xl max-w-5xl mx-auto hidden"></div>
+            <div id="receita-bife" class="receita-content bg-white p-8 rounded-lg shadow-xl max-w-7xl mx-auto hidden"></div>
+            <div id="receita-panela" class="receita-content bg-white p-8 rounded-lg shadow-xl max-w-7xl mx-auto hidden"></div>
+            <div id="receita-costeleta" class="receita-content bg-white p-8 rounded-lg shadow-xl max-w-7xl mx-auto hidden"></div>
+            <div id="receita-almondegas" class="receita-content bg-white p-8 rounded-lg shadow-xl max-w-7xl mx-auto hidden"></div>
+            <div id="receita-rosbife" class="receita-content bg-white p-8 rounded-lg shadow-xl max-w-7xl mx-auto hidden"></div>
+            <div id="receita-lombo" class="receita-content bg-white p-8 rounded-lg shadow-xl max-w-7xl mx-auto hidden"></div>
+            <div id="receita-frango-assado" class="receita-content bg-white p-8 rounded-lg shadow-xl max-w-7xl mx-auto hidden"></div>
+            <div id="receita-salmao" class="receita-content bg-white p-8 rounded-lg shadow-xl max-w-7xl mx-auto hidden"></div>
+            <div id="receita-bolonhesa" class="receita-content bg-white p-8 rounded-lg shadow-xl max-w-7xl mx-auto hidden"></div>
+            <div id="receita-pure" class="receita-content bg-white p-8 rounded-lg shadow-xl max-w-7xl mx-auto hidden"></div>
+            <div id="receita-vinagrete" class="receita-content bg-white p-8 rounded-lg shadow-xl max-w-7xl mx-auto hidden"></div>
         </div>
     </main>
     <footer class="bg-white border-t mt-16"><div class="container mx-auto px-6 py-8 text-center text-stone-600"><p>&copy; 2024 Mestre Culinário. Todos os direitos reservados.</p></div></footer>
 
     <script>
-        document.addEventListener('DOMContentLoaded', () => {
-            const aulas = {
-                bife: { title: "Aula 01: O Bife Grelhado Perfeito", calculatorLabel: "Gramas de Bife:", calculatorUnit: "bife-input", dica: "O descanso da carne depois de grelhar é **o passo mais importante**. É neste momento que os sucos se redistribuem, garantindo um bife macio e suculento. Nunca corte a carne imediatamente a seguir a tirá-la do lume.", getIngredients: (val) => { const gramas = parseInt(val) || 250; const sal = (gramas * 0.02).toFixed(1); const pimenta = (gramas * 0.01).toFixed(1); return `<li class="flex justify-between items-center"><span>Sal de Parrilla</span> <span>${sal} g</span></li><li class="flex justify-between items-center"><span>Pimenta Preta moída na hora</span> <span>${pimenta} g</span></li><li class="flex justify-between items-center"><span>Azeite ou Manteiga</span> <span>1 colher</span></li>`; }, steps: [ { title: 'Preparar a Carne', description: 'Retire o bife do frigorífico 30 minutos antes de cozinhar para atingir a temperatura ambiente. Seque muito bem a superfície com papel toalha. Uma superfície seca é essencial para criar uma crosta perfeita (a Reação de Maillard).' }, { title: 'A Chapa e o Temperar', description: 'Aqueça uma frigideira de ferro fundido ou de fundo grosso em lume alto até ficar a fumegar. Tempere generosamente o bife com sal e pimenta **apenas no momento** de o colocar na frigideira, e só do lado que vai para baixo.' }, { title: 'A Selagem Perfeita', description: 'Coloque o bife na frigideira quente. Não mexa! Deixe selar por 2 a 4 minutos, dependendo da espessura. Tempere o lado de cima antes de virar.', timer: 150 }, { title: 'O Ponto Ideal', description: 'Vire o bife. No final, pode adicionar uma colher de manteiga e ervas como tomilho e alho para regar a carne. Cozinhe por mais 2-4 minutos, dependendo do ponto desejado.', timer: 150 }, { title: 'O Descanso Obrigatório', description: 'Retire o bife para uma tábua e deixe-o descansar por pelo menos 5 minutos antes de o cortar. Isto permite que os sucos se redistribuam pela carne, garantindo máxima suculência.', timer: 300 } ] },
-                panela: { title: "Aula 02: Carne de Panela (Estufado Perfeito)", calculatorLabel: "Quilos de Carne:", calculatorUnit: "panela-input", dica: "Não tenha pressa. A carne de panela fica melhor quanto mais tempo cozinhar em lume brando. O colagénio da carne derrete lentamente, tornando-a incrivelmente macia.", getIngredients: (val) => { const kg = parseFloat(val) || 1; return `<li class="flex justify-between items-center"><span>Carne para estufar (Acém, Chambão)</span> <span>${kg} kg</span></li><li class="flex justify-between items-center"><span>Cebola</span> <span>${Math.ceil(kg * 2)} unid.</span></li><li class="flex justify-between items-center"><span>Cenoura</span> <span>${Math.ceil(kg)} unid.</span></li><li class="flex justify-between items-center"><span>Alho</span> <span>${Math.ceil(kg * 4)} dentes</span></li><li class="flex justify-between items-center"><span>Caldo de Carne ou Legumes</span> <span>${(kg * 500).toFixed(0)} ml</span></li>`; }, steps: [ { title: 'Slear a Carne', description: 'Corte a carne em cubos grandes e tempere com sal e pimenta. Numa panela quente com azeite, doure os cubos de carne de todos os lados. Faça isto em lotes para não encher a panela. Retire a carne e reserve.' }, { title: 'Construir o Sabor', description: 'Na mesma panela, refogue a cebola, a cenoura e o alho (o nosso mirepoix) até ficarem macios. Adicione um pouco de vinho tinto (opcional) para deglacear, raspando o fundo da panela. Adicione extrato de tomate e cozinhe por um minuto.' }, { title: 'O Cozimento Lento', description: 'Volte a colocar a carne na panela. Adicione o caldo até quase cobrir a carne. Deixe levantar fervura, reduza para o lume mais baixo possível, tape e deixe cozinhar por pelo menos 2 a 3 horas, ou até a carne se desfazer com um garfo.', timer: 9000 } ] },
-                costeleta: { title: "Aula 03: Costeletas de Porco na Frigideira", calculatorLabel: "Número de Costeletas:", calculatorUnit: "costeleta-input", dica: "O maior erro é cozinhar demais a carne de porco. Use um termómetro de cozinha para garantir a perfeição. O interior deve atingir 63°C (145°F) e depois descansar.", getIngredients: (val) => { const qty = parseInt(val) || 1; return `<li class="flex justify-between items-center"><span>Costeletas de Porco (2cm espessura)</span> <span>${qty} unid.</span></li><li class="flex justify-between items-center"><span>Alho</span> <span>${qty} dente(s)</span></li><li class="flex justify-between items-center"><span>Tomilho ou Alecrim</span> <span>${qty} ramo(s)</span></li><li class="flex justify-between items-center"><span>Manteiga</span> <span>${qty} colher(es) de sopa</span></li>`; }, steps: [ { title: 'Temperar e Selar', description: 'Seque bem as costeletas e tempere generosamente com sal e pimenta. Numa frigideira quente, sele por 2-3 minutos de cada lado até ficarem bem douradas.', timer: 150 }, { title: 'Aromatizar com Manteiga', description: 'Reduza o lume. Adicione a manteiga, os dentes de alho esmagados e as ervas. Incline a frigideira e, com uma colher, regue constantemente as costeletas com a manteiga derretida por 1-2 minutos.' }, { title: 'Descanso é Fundamental', description: 'Retire as costeletas da frigideira e deixe-as descansar numa tábua por 5 a 10 minutos antes de servir. Isto é crucial para manter a suculência.', timer: 450 } ] },
-                almondegas: { title: "Aula 04: Almôndegas ao Sugo", calculatorLabel: "Gramas de Carne Moída:", calculatorUnit: "almondegas-input", dica: "Para almôndegas extra macias, adicione pão de forma demolhado em leite à mistura da carne. A humidade vai torná-las incrivelmente tenras.", getIngredients: (val) => { const gramas = parseInt(val) || 500; return `<li class="flex justify-between items-center"><span>Carne Moída (metade boi, metade porco)</span> <span>${gramas} g</span></li><li class="flex justify-between items-center"><span>Pão de Forma sem côdea</span> <span>${Math.ceil(gramas / 250)} fatia(s)</span></li><li class="flex justify-between items-center"><span>Leite</span> <span>${Math.ceil(gramas / 250) * 2} colheres</span></li><li class="flex justify-between items-center"><span>Queijo Parmesão ralado</span> <span>${(gramas * 0.1).toFixed(0)} g</span></li><li class="flex justify-between items-center"><span>Molho de Tomate Caseiro</span> <span>Ver Aula 02</span></li>`; }, steps: [ { title: 'A Mistura Perfeita', description: 'Numa tigela, misture a carne moída, o pão demolhado no leite, o parmesão, sal, pimenta e salsa picada. Misture apenas até incorporar, sem trabalhar demasiado a carne.' }, { title: 'Moldar e Selar', description: 'Molde pequenas bolas com as mãos. Numa frigideira quente com azeite, sele as almôndegas de todos os lados até ficarem douradas. Não precisam de cozinhar por completo.' }, { title: 'Cozinhar no Molho', description: 'Aqueça o seu molho de tomate caseiro numa panela. Adicione as almôndegas seladas ao molho e deixe cozinhar em lume brando por pelo menos 20 minutos, para que fiquem cozidas por dentro e absorvam o sabor do molho.', timer: 1200 } ] },
-                rosbife: { title: "Aula 05: Rosbife Caseiro Perfeito", calculatorLabel: "Peso da Peça de Carne (kg):", calculatorUnit: "rosbife-input", dica: "Um termómetro de cozinha é o seu melhor amigo para o rosbife. Para mal passado, a temperatura interna deve ser 52°C; para ao ponto, 57°C.", getIngredients: (val) => { const kg = parseFloat(val) || 1; return `<li class="flex justify-between items-center"><span>Peça de carne (Lombo, Filé Mignon)</span> <span>${kg} kg</span></li><li class="flex justify-between items-center"><span>Sal e Pimenta</span> <span>A gosto</span></li><li class="flex justify-between items-center"><span>Mostarda Dijon</span> <span>2 colheres</span></li><li class="flex justify-between items-center"><span>Ervas Frescas (alecrim, tomilho)</span> <span>A gosto</span></li>`; }, steps: [ { title: 'Preparar a Carne', description: 'Tempere a peça de carne generosamente com sal e pimenta. Pincele toda a superfície com mostarda Dijon.' }, { title: 'Selagem Inicial', description: 'Numa frigideira muito quente, sele todos os lados da carne até criar uma crosta dourada. Isto vai garantir a suculência no interior.' }, { title: 'Assar no Forno', description: 'Transfira a carne para um tabuleiro e leve ao forno pré-aquecido a 200°C. Asse por 15-20 minutos por cada 500g para um ponto médio-mal passado.', timer: 1800 }, { title: 'O Descanso Longo', description: 'Este é o passo mais importante. Retire o rosbife do forno e deixe-o descansar por pelo menos 15-20 minutos antes de o fatiar. Se o cortar quente, todos os sucos vão sair. Depois de descansar, fatie finamente.' } ] },
-                lombo: { title: "Aula 06: Lombo de Porco Assado com Ervas", calculatorLabel: "Peso do Lombo (kg):", calculatorUnit: "lombo-input", dica: "A salmoura rápida (deixar a carne de molho em água e sal por 30 minutos) antes de assar é um truque profissional para garantir que o lombo de porco não seque.", getIngredients: (val) => { const kg = parseFloat(val) || 1; return `<li class="flex justify-between items-center"><span>Lombo de Porco</span> <span>${kg} kg</span></li><li class="flex justify-between items-center"><span>Alho</span> <span>${Math.ceil(kg * 3)} dentes</span></li><li class="flex justify-between items-center"><span>Alecrim e Sálvia Frescos</span> <span>A gosto</span></li><li class="flex justify-between items-center"><span>Vinho Branco</span> <span>${(kg * 100).toFixed(0)} ml</span></li>`; }, steps: [ { title: 'Preparar e Temperar', description: 'Faça pequenos furos no lombo e insira pedaços de alho. Esfregue toda a peça com sal, pimenta e as ervas frescas picadas.' }, { title: 'Selar na Panela', description: 'Numa panela que possa ir ao forno, sele todos os lados do lombo em azeite quente até ficar bem dourado.' }, { title: 'Assar Lentamente', description: 'Adicione o vinho branco à panela e leve ao forno pré-aquecido a 180°C. Asse por cerca de 25 minutos por cada 500g, ou até a temperatura interna atingir 63°C.', timer: 3000 }, { title: 'Descansar e Fatiar', description: 'Tal como o rosbife, deixe o lombo descansar por 10 minutos antes de o fatiar para garantir que fica suculento.' } ] },
-                'frango-assado': { title: "Aula 07: Frango Assado Inteiro", calculatorLabel: "Peso do Frango (kg):", calculatorUnit: "frango-assado-input", dica: "Para uma pele extra crocante, seque muito bem o frango com papel toalha e deixe-o no frigorífico, descoberto, por algumas horas antes de assar.", getIngredients: (val) => { const kg = parseFloat(val) || 1.5; return `<li class="flex justify-between items-center"><span>Frango Inteiro</span> <span>${kg} kg</span></li><li class="flex justify-between items-center"><span>Manteiga derretida</span> <span>50 g</span></li><li class="flex justify-between items-center"><span>Limão Siciliano</span> <span>1 unid.</span></li><li class="flex justify-between items-center"><span>Ervas Frescas (tomilho, alecrim)</span> <span>A gosto</span></li>`; }, steps: [ { title: 'Preparar a Ave', description: 'Seque bem o frango por dentro e por fora. Tempere generosamente com sal e pimenta. Coloque o limão e as ervas dentro da cavidade do frango.' }, { title: 'A Manteiga Aromatizada', description: 'Pincele toda a pele do frango com a manteiga derretida. Isto vai ajudar a pele a ficar dourada e crocante.' }, { title: 'Assar com Paciência', description: 'Asse em forno pré-aquecido a 200°C por cerca de 20 minutos por cada 500g, mais 20 minutos extra. Regue o frango com os próprios sucos a cada 20 minutos.', timer: 5400 }, { title: 'Descanso Obrigatório', description: 'Deixe o frango descansar por 15 minutos antes de o cortar para que os sucos se redistribuam.' } ] },
-                salmao: { title: "Aula 08: Salmão Grelhado com Pele Crocante", calculatorLabel: "Postas de Salmão:", calculatorUnit: "salmao-input", dica: "Comece sempre a grelhar o salmão com o lado da pele para baixo, numa frigideira bem quente. Pressione levemente com uma espátula nos primeiros segundos para garantir que a pele fica em contacto total com a frigideira.", getIngredients: (val) => { const qty = parseInt(val) || 1; return `<li class="flex justify-between items-center"><span>Posta de Salmão com pele</span> <span>${qty} unid.</span></li><li class="flex justify-between items-center"><span>Azeite</span> <span>${qty} colher(es)</span></li><li class="flex justify-between items-center"><span>Sal e Pimenta</span> <span>A gosto</span></li>`; }, steps: [ { title: 'Preparar o Peixe', description: 'Seque muito bem a pele do salmão com papel toalha. Uma pele seca é o segredo para ficar crocante. Tempere ambos os lados com sal e pimenta.' }, { title: 'Grelhar a Pele', description: 'Aqueça uma frigideira antiaderente em lume médio-alto com um fio de azeite. Coloque o salmão com a pele para baixo e pressione por 10 segundos. Deixe cozinhar por 4-6 minutos, até a pele estar bem crocante.', timer: 300 }, { title: 'Finalizar', description: 'Vire o salmão e cozinhe por mais 1-2 minutos do outro lado, apenas para terminar o cozimento. Sirva imediatamente com a pele virada para cima.' } ] },
-                bolonhesa: { title: "Aula 09: Molho Bolonhesa Clássico", calculatorLabel: "Quilos de Carne Moída:", calculatorUnit: "bolonhesa-input", dica: "Um toque de leite ou natas no final do cozimento adiciona uma cremosidade incrível e equilibra a acidez do tomate.", getIngredients: (val) => { const kg = parseFloat(val) || 1; return `<li class="flex justify-between items-center"><span>Carne Moída</span> <span>${kg} kg</span></li><li class="flex justify-between items-center"><span>Mirepoix (Aula 07)</span> <span>${(kg * 200).toFixed(0)} g</span></li><li class="flex justify-between items-center"><span>Vinho Tinto Seco</span> <span>${(kg * 200).toFixed(0)} ml</span></li><li class="flex justify-between items-center"><span>Tomate Pelado</span> <span>${(kg * 800).toFixed(0)} g</span></li>`; }, steps: [ { title: 'Refogar a Base', description: 'Numa panela grande, refogue o seu mirepoix em azeite até ficar macio. Adicione a carne moída e cozinhe até dourar, desfazendo os pedaços com uma colher.' }, { title: 'Deglacear e Cozinhar', description: 'Adicione o vinho tinto e raspe o fundo da panela. Deixe o álcool evaporar. Junte o tomate pelado (amassado com as mãos), tempere com sal e pimenta, e deixe levantar fervura.' }, { title: 'Cozimento Lento e Longo', description: 'Reduza para o lume mais baixo possível, tape e deixe cozinhar por, no mínimo, 2 horas. Um verdadeiro bolonhesa precisa de tempo para que os sabores se fundam.', timer: 7200 } ] },
-                pure: { title: "Aula 10: Puré de Batata Cremoso", calculatorLabel: "Quilos de Batata:", calculatorUnit: "pure-input", dica: "Para um puré extra-liso, passe as batatas cozidas por um passe-vite em vez de as amassar. Nunca use um processador, pois o amido transforma-se numa cola.", getIngredients: (val) => { const kg = parseFloat(val) || 1; return `<li class="flex justify-between items-center"><span>Batatas para cozer</span> <span>${kg} kg</span></li><li class="flex justify-between items-center"><span>Manteiga sem sal</span> <span>${(kg * 100).toFixed(0)} g</span></li><li class="flex justify-between items-center"><span>Leite ou Natas (quente)</span> <span>${(kg * 150).toFixed(0)} ml</span></li><li class="flex justify-between items-center"><span>Noz-moscada</span> <span>A gosto</span></li>`; }, steps: [ { title: 'Cozinhar as Batatas', description: 'Descasque as batatas e coza-as em água com sal até estarem muito macias (um garfo deve entrar sem resistência).' }, { title: 'Amassar e Secar', description: 'Escorra bem a água e volte a colocar as batatas na panela quente por um minuto para que sequem completamente. Amasse-as até não haver grumos.' }, { title: 'A Cremosidade', description: 'Adicione a manteiga fria em cubos e mexa até derreter. Aos poucos, junte o leite ou as natas quentes, mexendo sempre, até atingir a consistência desejada. Tempere com sal e noz-moscada ralada na hora.' } ] },
-                vinagrete: { title: "Aula 11: Vinagrete Básico", calculatorLabel: "Quantidade de Azeite (ml):", calculatorUnit: "vinagrete-input", dica: "A proporção clássica é 3 partes de azeite para 1 parte de vinagre. Pode ajustar ao seu gosto, mas esta é uma excelente base para começar.", getIngredients: (val) => { const ml = parseInt(val) || 100; return `<li class="flex justify-between items-center"><span>Azeite Extra Virgem</span> <span>${ml} ml</span></li><li class="flex justify-between items-center"><span>Vinagre de Vinho Tinto</span> <span>${(ml / 3).toFixed(0)} ml</span></li><li class="flex justify-between items-center"><span>Mostarda Dijon</span> <span>1 colher de chá</span></li><li class="flex justify-between items-center"><span>Sal e Pimenta</span> <span>A gosto</span></li>`; }, steps: [ { title: 'A Emulsão', description: 'Numa tigela, junte o vinagre, a mostarda e uma pitada de sal e pimenta. A mostarda vai ajudar a emulsionar (misturar) o azeite e o vinagre.' }, { title: 'Adicionar o Azeite', description: 'Enquanto bate com um batedor de arames, adicione o azeite em fio, lentamente, até o molho engrossar e ficar homogéneo. Prove e ajuste o sal ou a acidez, se necessário.' } ] }
-            };
+    document.addEventListener('DOMContentLoaded', () => {
 
-            const aulasList = document.getElementById('aulas-list');
-            const receitasContainer = document.getElementById('receitas-container');
-            const backToListBtn = document.getElementById('back-to-list-btn');
-            
-            document.querySelectorAll('.aula-card').forEach(card => { 
-                const targetId = card.dataset.target.replace('receita-', '');
-                const recipeData = aulas[targetId];
-                if(recipeData){
-                    const targetElement = document.getElementById(card.dataset.target);
-                    targetElement.innerHTML = `
-                        <h2 class="text-3xl md:text-4xl font-bold text-amber-700 mb-8 text-center">${recipeData.title}</h2>
-                        <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
-                            <div class="lg:col-span-1">
-                                <h3 class="text-2xl font-bold text-stone-800 mb-4">Planeamento</h3>
-                                <div class="bg-stone-100 p-4 rounded-lg">
-                                    <label for="${recipeData.calculatorUnit}" class="block text-lg text-stone-700 mb-2">${recipeData.calculatorLabel}</label>
-                                    <input type="number" id="${recipeData.calculatorUnit}" value="1" min="1" step="1" class="w-full p-2 border border-stone-300 rounded-lg focus:ring-2 focus:ring-amber-500">
-                                </div>
-                                <div class="mt-6">
-                                    <h4 class="font-bold text-lg mb-2 text-stone-700">Ingredientes Necessários:</h4>
-                                    <ul class="space-y-3 text-stone-600" id="ingredient-list-${targetId}"></ul>
-                                </div>
-                                 <div class="mt-6">
-                                     <h4 class="font-bold text-lg mb-2 text-stone-700">Dica de Mestre</h4>
-                                     <p class="text-stone-500 text-sm bg-stone-100 p-3 rounded-lg">${recipeData.dica}</p>
-                                </div>
-                            </div>
-                            <div class="lg:col-span-2">
-                                <h3 class="text-2xl font-bold text-stone-800 mb-4">Tutorial Detalhado</h3>
-                                <div class="space-y-6">
-                                    ${recipeData.steps.map((step, index) => `
-                                        <div class="p-4 rounded-lg bg-stone-100">
-                                            <h4 class="font-bold text-lg text-stone-800 mb-2"><span class="bg-amber-600 text-white rounded-full w-8 h-8 inline-flex items-center justify-center mr-3">${index + 1}</span> ${step.title}</h4>
-                                            <p class="text-stone-600">${step.description}</p>
-                                            ${step.timer ? `<div class="mt-3 flex items-center gap-4"><button class="timer-btn bg-amber-500 text-white px-4 py-2 rounded-lg hover:bg-amber-600 transition" data-time="${step.timer}">Timer (${Math.floor(step.timer/60)}m ${step.timer%60}s)</button><span class="timer-display text-lg font-mono font-bold text-amber-700"></span></div>` : ''}
+        const aulas = {
+            bife: {
+                title: "Aula 01: O Bife Grelhado Perfeito",
+                description: "Aprenda a ciência e a arte de grelhar um bife, alcançando a combinação perfeita entre uma crosta caramelizada por fora e um interior suculento e no ponto desejado.",
+                calculatorLabel: "Peso do Bife (em gramas):",
+                calculatorUnit: "bife-input",
+                details: { tempoPreparo: "35 min (inclui temp. ambiente)", tempoCozimento: "4-8 min", tempoDescanso: "5-10 min", rendimento: "1 bife por pessoa", dificuldade: "Intermediário", utensilios: ["Frigideira de ferro fundido ou fundo grosso", "Pinça de cozinha", "Termómetro de carne (recomendado)"] },
+                dicaDeMestre: "Para uma crosta ainda mais saborosa (efeito 'steakhouse'), ao adicionar a manteiga no final, junte também um dente de alho esmagado e um ramo de tomilho. Incline a frigideira e regue o bife com esta manteiga aromática ('arrosage').",
+                getIngredients: function(val) { const g = parseInt(val) || 250; return `
+                        <li class="ingredient-item"><label class="flex items-center"><input type="checkbox" class="mr-2"><span class="flex-1 flex justify-between"><span>Bife de qualidade (Chorizo, Ancho, 2-3cm de espessura)</span> <span class="font-semibold">${g} g</span></span></label></li>
+                        <li class="ingredient-item"><label class="flex items-center"><input type="checkbox" class="mr-2"><span class="flex-1 flex justify-between"><span>Sal grosso ou de parrilla</span> <span class="font-semibold">A gosto</span></span></label></li>
+                        <li class="ingredient-item"><label class="flex items-center"><input type="checkbox" class="mr-2"><span class="flex-1 flex justify-between"><span>Pimenta preta moída na hora</span> <span class="font-semibold">A gosto</span></span></label></li>
+                        <li class="ingredient-item"><label class="flex items-center"><input type="checkbox" class="mr-2"><span class="flex-1 flex justify-between"><span>Manteiga sem sal</span> <span class="font-semibold">1 c. de sopa</span></span></label></li>`; },
+                steps: [
+                    { title: "A Preparação da Carne", description: "Retire o bife do frigorífico 30-40 minutos antes de cozinhar. Seque **muito bem** a superfície com papel toalha. Este é, talvez, o passo mais negligenciado e mais importante.", porque: "A carne à temperatura ambiente cozinha de forma mais uniforme. A superfície seca é crucial para a <span class='tooltip' data-tooltip='Reação química entre aminoácidos e açúcares que ocorre com o calor, criando a crosta dourada e o sabor característico de 'assado'.'>Reação de Maillard</span>. Se a carne estiver húmida, ela irá cozinhar a vapor em vez de selar, e não criará a crosta desejada.", pontoCritico: "Não tempere o bife com antecedência. O sal puxa a humidade para a superfície, o que prejudica a selagem. Tempere generosamente apenas no momento de ir para a frigideira." },
+                    { title: "A Frigideira Vulcânica", description: "Aqueça uma frigideira de ferro fundido ou de fundo grosso em lume alto até ficar extremamente quente. Deverá ver um leve fumo a sair dela. Adicione um fio de óleo com ponto de fumo alto (como girassol ou canola).", porque: "A alta temperatura é essencial para criar uma crosta rapidamente, selando os sucos no interior da carne. Uma frigideira de material espesso retém melhor o calor e não arrefece quando a carne fria é adicionada.", pontoCritico: "Não use azeite extra virgem para este passo, pois tem um ponto de fumo baixo e irá queimar. A frigideira deve estar a fumegar antes de o bife entrar." },
+                    { title: "A Selagem Perfeita", description: "Tempere um lado do bife com sal e pimenta e coloque-o na frigideira com esse lado para baixo. Pressione levemente. Não mexa no bife por 2-4 minutos. Tempere o lado de cima antes de virar.", porque: "A ausência de movimento permite que a crosta se forme de maneira uniforme. Virar o bife constantemente 'cozinha-o' em vez de o 'grelhar'.", pontoCritico: "Use uma pinça para virar o bife, nunca um garfo. Perfurar a carne faz com que os seus preciosos sucos se percam.", timer: 180 },
+                    { title: "O Descanso Obrigatório", description: "Retire o bife da frigideira para uma tábua ou grelha e deixe-o descansar por 5 a 10 minutos. O tempo de descanso deve ser, idealmente, metade do tempo de cozimento.", porque: "Durante o cozimento, as fibras da carne contraem-se e empurram os sucos para o centro. O descanso permite que as fibras relaxem e os sucos se redistribuam por todo o bife, resultando numa carne muito mais suculenta.", pontoCritico: "Se cortar a carne imediatamente, verá uma 'poça' de sucos a escorrer para a tábua. Isso é todo o sabor e suculência que está a perder. Seja paciente!", timer: 450 }
+                ],
+                variacoes: ["<strong>Pontos da Carne (temp. interna):</strong> Mal passado: 52°C. Médio-mal passado: 57°C. Médio: 63°C. Médio-bem passado: 66°C.", "<strong>Molho de Manteiga e Ervas:</strong> Use a manteiga aromática do final para regar o bife já no prato.", "<strong>Com Pimenta Verde:</strong> Esmague grãos de pimenta verde e pressione sobre o bife antes de grelhar para uma crosta picante."]
+            },
+            panela: {
+                title: "Aula 02: Carne de Panela (Estufado Perfeito)",
+                description: "Aprenda a transformar cortes de carne mais económicos em um prato rico, macio e que se desfaz à colher. O segredo está no cozimento lento e na construção de camadas de sabor.",
+                calculatorLabel: "Quilos de Carne:",
+                calculatorUnit: "panela-input",
+                details: { tempoPreparo: "20 min", tempoCozimento: "2-3 horas", tempoDescanso: "N/A", rendimento: "Serve ~4 pessoas por kg", dificuldade: "Fácil", utensilios: ["Panela de fundo grosso (de ferro ou caçarola)", "Tábua de corte", "Colher de pau"] },
+                dicaDeMestre: "Depois de refogar a base aromática, adicione uma colher de sopa de extrato de tomate e cozinhe por um minuto antes de adicionar o líquido. Este passo 'tosta' o extrato, aprofundando o sabor <span class='tooltip' data-tooltip='O 'quinto gosto', profundo e saboroso, encontrado em queijos curados, cogumelos e carnes.'>umami</span> e a cor do molho final.",
+                getIngredients: function(val) { const kg = parseFloat(val) || 1; return `
+                        <li class="ingredient-item"><label class="flex items-center"><input type="checkbox" class="mr-2"><span class="flex-1 flex justify-between"><span>Carne para estufar em cubos (Acém, Chambão, Cachaço)</span> <span class="font-semibold">${kg} kg</span></span></label></li>
+                        <li class="ingredient-item"><label class="flex items-center"><input type="checkbox" class="mr-2"><span class="flex-1 flex justify-between"><span>Cebola picada</span> <span class="font-semibold">${Math.ceil(kg * 2)} unid.</span></span></label></li>
+                        <li class="ingredient-item"><label class="flex items-center"><input type="checkbox" class="mr-2"><span class="flex-1 flex justify-between"><span>Cenoura em rodelas</span> <span class="font-semibold">${Math.ceil(kg)} unid.</span></span></label></li>
+                        <li class="ingredient-item"><label class="flex items-center"><input type="checkbox" class="mr-2"><span class="flex-1 flex justify-between"><span>Alho picado</span> <span class="font-semibold">${Math.ceil(kg * 4)} dentes</span></span></label></li>
+                        <li class="ingredient-item"><label class="flex items-center"><input type="checkbox" class="mr-2"><span class="flex-1 flex justify-between"><span>Vinho Tinto Seco</span> <span class="font-semibold">${(kg*150).toFixed(0)} ml</span></span></label></li>
+                        <li class="ingredient-item"><label class="flex items-center"><input type="checkbox" class="mr-2"><span class="flex-1 flex justify-between"><span>Caldo de Carne ou Legumes</span> <span class="font-semibold">${(kg * 500).toFixed(0)} ml</span></span></label></li>
+                        <li class="ingredient-item"><label class="flex items-center"><input type="checkbox" class="mr-2"><span class="flex-1 flex justify-between"><span>Folha de Louro</span> <span class="font-semibold">2 unid.</span></span></label></li>`; },
+                steps: [
+                    { title: "Selar a Carne (O Passo do Sabor)", description: "Seque os cubos de carne com papel toalha e tempere com sal e pimenta. Numa panela bem quente com azeite, doure a carne de todos os lados. Trabalhe em lotes, sem encher a panela. Retire a carne e reserve.", porque: "Este passo não 'sela os sucos' (isso é um mito), mas cria sabor através da <span class='tooltip' data-tooltip='Reação química entre aminoácidos e açúcares que ocorre com o calor, criando a crosta dourada e o sabor característico de 'assado'.'>Reação de Maillard</span>. Os pedacinhos que ficam colados no fundo da panela (o 'fond') são a alma do nosso molho.", pontoCritico: "Não sobrecarregue a panela. Se o fizer, a carne irá cozer no próprio vapor em vez de dourar, resultando numa carne cinzenta e sem sabor." },
+                    { title: "Construir a Base de Sabor", description: "Na mesma panela, reduza o lume e adicione a cebola e a cenoura, refogando até amaciarem. Adicione o alho e cozinhe por mais um minuto. Despeje o vinho tinto para <span class='tooltip' data-tooltip='Adicionar um líquido (vinho, conhaque, caldo) a uma panela quente para soltar os pedaços de comida caramelizados (fond) do fundo, incorporando-os ao molho.'>deglacear</span>, raspando bem o fundo da panela com uma colher de pau.", porque: "Estamos a construir camadas de sabor. Os vegetais cozinham na gordura saborosa da carne, e o vinho dissolve o 'fond', trazendo todo aquele sabor concentrado para o molho.", pontoCritico: "Raspe bem todo o fundo da panela. Esses pedacinhos queimados são ouro culinário." },
+                    { title: "O Cozimento Lento e Mágico", description: "Volte a colocar a carne na panela. Adicione o caldo quente até quase cobrir a carne, e a folha de louro. Deixe levantar fervura, reduza para o lume mais baixo possível, tape e deixe cozinhar por 2 a 3 horas.", porque: "O cozimento lento e húmido quebra o colagénio (tecido conjuntivo) dos cortes de carne mais duros, transformando-o em gelatina macia que enriquece o molho e deixa a carne incrivelmente tenra.", pontoCritico: "O líquido deve manter um <span class='tooltip' data-tooltip='Cozinhar um líquido logo abaixo do ponto de fervura, com apenas algumas bolhas suaves a subir à superfície.'>simmer</span> muito gentil, nunca uma fervura forte. Verifique a cada 45 minutos se precisa de mais líquido.", timer: 9000 }
+                ],
+                variacoes: ["<strong>Com Batatas:</strong> Adicione batatas em cubos na última hora de cozimento.", "<strong>Com Cogumelos:</strong> Adicione cogumelos fatiados junto com a cebola e a cenoura.", "<strong>Na Panela de Pressão:</strong> O processo é o mesmo, mas o tempo de cozimento sob pressão reduz para cerca de 45-60 minutos."]
+            },
+            costeleta: {
+                title: "Aula 03: Costeletas de Porco na Frigideira",
+                description: "Aprenda a técnica para nunca mais comer uma costeleta de porco seca. O segredo está na selagem correta, no controle da temperatura e em finalizar com uma manteiga aromática.",
+                calculatorLabel: "Número de Costeletas:",
+                calculatorUnit: "costeleta-input",
+                details: { tempoPreparo: "10 min", tempoCozimento: "8-10 min", tempoDescanso: "5 min", rendimento: "1 por pessoa", dificuldade: "Fácil", utensilios: ["Frigideira de ferro fundido", "Pinça", "Termómetro de carne"] },
+                dicaDeMestre: "Uma <span class='tooltip' data-tooltip='Solução de água e sal que hidrata e tempera a carne por dentro, garantindo suculência.'>salmoura</span> rápida de 30 minutos (1 litro de água para 2 colheres de sopa de sal) antes de cozinhar faz uma diferença incrível na suculência final da costeleta.",
+                getIngredients: function(val) { const qty = parseInt(val) || 2; return `
+                        <li class="ingredient-item"><label class="flex items-center"><input type="checkbox" class="mr-2"><span class="flex-1 flex justify-between"><span>Costeletas de Porco (com ~2cm de espessura)</span> <span class="font-semibold">${qty} unid.</span></span></label></li>
+                        <li class="ingredient-item"><label class="flex items-center"><input type="checkbox" class="mr-2"><span class="flex-1 flex justify-between"><span>Alho esmagado</span> <span class="font-semibold">${qty} dente(s)</span></span></label></li>
+                        <li class="ingredient-item"><label class="flex items-center"><input type="checkbox" class="mr-2"><span class="flex-1 flex justify-between"><span>Tomilho ou Alecrim</span> <span class="font-semibold">${qty} ramo(s)</span></span></label></li>
+                        <li class="ingredient-item"><label class="flex items-center"><input type="checkbox" class="mr-2"><span class="flex-1 flex justify-between"><span>Manteiga</span> <span class="font-semibold">${qty} c. de sopa</span></span></label></li>
+                        <li class="ingredient-item"><label class="flex items-center"><input type="checkbox" class="mr-2"><span class="flex-1 flex justify-between"><span>Sal e Pimenta</span> <span class="font-semibold">A gosto</span></span></label></li>`; },
+                steps: [
+                    { title: "Preparar e Selar", description: "Seque bem as costeletas com papel toalha e tempere generosamente com sal e pimenta. Numa frigideira quente em lume médio-alto, adicione um fio de óleo e sele as costeletas por 2-3 minutos de cada lado, até ficarem bem douradas.", porque: "A superfície seca e o calor alto garantem uma excelente Reação de Maillard, criando uma crosta saborosa. Dourar a carne primeiro ajuda a manter a sua forma e sabor.", pontoCritico: "Não sobrecarregue a frigideira. Se necessário, sele uma costeleta de cada vez para garantir que a temperatura da panela se mantém alta.", timer: 180 },
+                    { title: `Aromatizar com Manteiga (<span class='tooltip' data-tooltip='Técnica de regar continuamente a carne com a gordura quente da própria frigideira, geralmente aromatizada com ervas e alho.'>Arrosage</span>)`, description: "Reduza o lume para médio-baixo. Adicione a manteiga, os dentes de alho esmagados e as ervas. Incline a frigideira e, com uma colher, regue constantemente as costeletas com a manteiga derretida e espumante por mais 1-2 minutos.", porque: "Esta técnica não só adiciona um sabor incrível de manteiga tostada, alho e ervas, mas também ajuda a cozinhar a carne de forma mais gentil e uniforme.", pontoCritico: "Cuidado para não queimar a manteiga. Ela deve espumar e ficar acastanhada (beurre noisette), mas não preta." },
+                    { title: "Verificar a Temperatura e Descansar", description: "O maior erro é cozinhar demais a carne de porco. Retire as costeletas da frigideira quando a temperatura interna atingir 60-61°C. Deixe-as descansar numa tábua por 5 minutos. A temperatura subirá para os 63°C ideais durante o descanso.", porque: "A carne de porco moderna é segura para ser consumida ligeiramente rosada. Cozinhá-la até ficar branca resulta em carne seca. O descanso, como sempre, é crucial para a redistribuição dos sucos.", pontoCritico: "Um termómetro de carne é a única forma de garantir a perfeição. É um investimento pequeno com um retorno enorme no sabor e textura.", timer: 300 }
+                ],
+                 variacoes: ["<strong>Molho Rápido de Frigideira:</strong> Depois de retirar as costeletas, deglaceie a frigideira com um pouco de vinho branco ou caldo, raspe o fundo e deixe reduzir um pouco.", "<strong>Agridoce:</strong> Sirva com um chutney de maçã ou um molho agridoce.", "<strong>Com Crosta de Ervas:</strong> Misture pão ralado com ervas picadas e pressione sobre um lado da costeleta antes de grelhar."]
+            },
+            almondegas: {
+                title: "Aula 04: Almôndegas ao Sugo",
+                description: "Aprenda a fazer almôndegas clássicas, incrivelmente macias e saborosas, que cozinham lentamente num rico molho de tomate caseiro. Um prato de conforto que agrada a todas as idades.",
+                calculatorLabel: "Gramas de Carne Moída:",
+                calculatorUnit: "almondegas-input",
+                details: { tempoPreparo: "20 min", tempoCozimento: "30-40 min", tempoDescanso: "N/A", rendimento: "Serve ~4 pessoas com 500g", dificuldade: "Fácil", utensilios: ["Tigela grande", "Frigideira", "Panela para o molho"] },
+                dicaDeMestre: "O segredo para almôndegas extra macias e húmidas é um 'panade': uma mistura de pão (ou pão ralado) demolhado em líquido (leite ou água). O amido e o líquido criam uma rede que retém a humidade e impede que as proteínas da carne se contraiam demasiado, resultando em maciez.",
+                getIngredients: function(val) { const g = parseInt(val) || 500; return `
+                        <h5 class="font-bold text-stone-700 mt-3 mb-1">Para as Almôndegas:</h5>
+                        <li class="ingredient-item"><label class="flex items-center"><input type="checkbox" class="mr-2"><span class="flex-1 flex justify-between"><span>Carne Moída (metade boi, metade porco é ideal)</span> <span class="font-semibold">${g} g</span></span></label></li>
+                        <li class="ingredient-item"><label class="flex items-center"><input type="checkbox" class="mr-2"><span class="flex-1 flex justify-between"><span>Pão de Forma sem côdea</span> <span class="font-semibold">${Math.ceil(g / 250)} fatia(s)</span></span></label></li>
+                        <li class="ingredient-item"><label class="flex items-center"><input type="checkbox" class="mr-2"><span class="flex-1 flex justify-between"><span>Leite</span> <span class="font-semibold">${Math.ceil(g / 250) * 3} c. de sopa</span></span></label></li>
+                        <li class="ingredient-item"><label class="flex items-center"><input type="checkbox" class="mr-2"><span class="flex-1 flex justify-between"><span>Queijo Parmesão ralado</span> <span class="font-semibold">${(g * 0.1).toFixed(0)} g</span></span></label></li>
+                        <li class="ingredient-item"><label class="flex items-center"><input type="checkbox" class="mr-2"><span class="flex-1 flex justify-between"><span>Ovo Ligeiramente Batido</span> <span class="font-semibold">1 unid.</span></span></label></li>
+                        <li class="ingredient-item"><label class="flex items-center"><input type="checkbox" class="mr-2"><span class="flex-1 flex justify-between"><span>Salsa Fresca Picada, Sal, Pimenta</span> <span class="font-semibold">A gosto</span></span></label></li>
+                        <h5 class="font-bold text-stone-700 mt-3 mb-1">Para o Molho:</h5>
+                        <li class="ingredient-item"><label class="flex items-center"><input type="checkbox" class="mr-2"><span class="flex-1 flex justify-between"><span>Tomate Pelado em lata, amassado</span> <span class="font-semibold">800 g</span></span></label></li>
+                        <li class="ingredient-item"><label class="flex items-center"><input type="checkbox" class="mr-2"><span class="flex-1 flex justify-between"><span>Cebola e Alho picados</span> <span class="font-semibold">1 e 2</span></span></label></li>`; },
+                steps: [
+                    { title: "A Mistura Perfeita (Sem Exageros)", description: "Numa tigela grande, faça o 'panade': desfaça o pão no leite e deixe absorver por uns minutos. Adicione a carne moída, o parmesão, o ovo, a salsa, sal e pimenta. Misture tudo com as mãos ou um garfo, mas apenas até os ingredientes estarem combinados.", porque: "Trabalhar demasiado a carne desenvolve as suas proteínas (miosina), o que resulta em almôndegas duras e borrachudas. Uma mistura gentil mantém a textura leve e macia.", pontoCritico: "Assim que os ingredientes estiverem ligados, pare de misturar. É o segredo número um para almôndegas tenras." },
+                    { title: "Moldar e Selar", description: "Com as mãos ligeiramente húmidas, molde bolas do tamanho de uma noz. Numa frigideira quente com um fio de azeite, doure as almôndegas de todos os lados. Não precisam de cozinhar por completo, o objetivo é apenas criar uma crosta saborosa.", porque: "A selagem cria a Reação de Maillard, adicionando uma camada de sabor profundo que as almôndegas não teriam se fossem cozinhadas diretamente no molho. Também ajuda a manter a sua forma.", pontoCritico: "Trabalhe em lotes para não arrefecer a frigideira. As almôndegas devem 'fritar', não 'cozer'." },
+                    { title: "Cozinhar no Molho (Sugo)", description: "Enquanto sela as almôndegas, prepare um molho de tomate simples numa panela grande, refogando a cebola e o alho e juntando o tomate. Adicione as almôndegas seladas ao molho a ferver brandamente. Deixe cozinhar em lume baixo, semi-tapado, por pelo menos 30 minutos.", porque: "Cozinhar as almôndegas no molho permite uma troca de sabores fantástica: as almôndegas absorvem o sabor do tomate, e a carne e a gordura das almôndegas enriquecem o molho, tornando-o mais complexo.", pontoCritico: "O molho deve manter um <span class='tooltip' data-tooltip='Cozinhar um líquido logo abaixo do ponto de fervura, com apenas algumas bolhas suaves a subir à superfície.'>simmer</span> gentil. Uma fervura forte pode desmanchar as almôndegas mais macias.", timer: 1800 }
+                ],
+                variacoes: ["<strong>Recheadas com Queijo:</strong> Coloque um pequeno cubo de mozzarella no centro de cada almôndega antes de a enrolar.", "<strong>Versão Light:</strong> Use carne de peru ou frango moída e asse as almôndegas em vez de as fritar antes de as colocar no molho.", "<strong>Em Sanduíche (Meatball Sub):</strong> Sirva as almôndegas com o molho num pão baguete, com queijo derretido por cima."]
+            },
+            rosbife: {
+                title: "Aula 05: Rosbife Caseiro Perfeito",
+                description: "Aprenda a técnica para um rosbife digno de charcutaria: uma crosta de temperos intensa por fora e um interior rosado, macio e fatiado finamente. Ideal para sanduíches ou como prato principal frio.",
+                calculatorLabel: "Peso da Peça de Carne (kg):",
+                calculatorUnit: "rosbife-input",
+                details: { tempoPreparo: "15 min", tempoCozimento: "30-40 min por kg", tempoDescanso: "20-30 min", rendimento: "Fatias para várias sanduíches", dificuldade: "Intermediário", utensilios: ["Frigideira que possa ir ao forno", "Termómetro de carne", "Barbante de cozinha (opcional)"] },
+                dicaDeMestre: "Para um cozimento mais uniforme e uma forma redonda perfeita, amarre a peça de carne com barbante de cozinha a cada 2-3 cm antes de a temperar. Isto compacta a carne e garante que as pontas não cozinhem mais rápido que o centro.",
+                getIngredients: function(val) { const kg = parseFloat(val) || 1; return `
+                        <li class="ingredient-item"><label class="flex items-center"><input type="checkbox" class="mr-2"><span class="flex-1 flex justify-between"><span>Peça de carne (Lombo, Lagarto, Filé Mignon)</span> <span class="font-semibold">${kg} kg</span></span></label></li>
+                        <li class="ingredient-item"><label class="flex items-center"><input type="checkbox" class="mr-2"><span class="flex-1 flex justify-between"><span>Sal grosso e Pimenta preta moída</span> <span class="font-semibold">Abundantemente</span></span></label></li>
+                        <li class="ingredient-item"><label class="flex items-center"><input type="checkbox" class="mr-2"><span class="flex-1 flex justify-between"><span>Mostarda Dijon</span> <span class="font-semibold">2 c. de sopa</span></span></label></li>
+                        <li class="ingredient-item"><label class="flex items-center"><input type="checkbox" class="mr-2"><span class="flex-1 flex justify-between"><span>Alho em pó</span> <span class="font-semibold">1 c. de sopa</span></span></label></li>
+                        <li class="ingredient-item"><label class="flex items-center"><input type="checkbox" class="mr-2"><span class="flex-1 flex justify-between"><span>Ervas secas (alecrim, tomilho)</span> <span class="font-semibold">1 c. de sopa</span></span></label></li>`; },
+                steps: [
+                    { title: "A Crosta de Temperos", description: "Seque bem a peça de carne. Numa tigela, misture o sal, pimenta, alho em pó e ervas. Pincele toda a superfície da carne com a mostarda Dijon e depois pressione a mistura de temperos secos por todos os lados, criando uma crosta.", porque: "A mostarda atua como uma 'cola' para os temperos, garantindo que eles formem uma crosta saborosa e aderente durante o cozimento, além de adicionar a sua própria camada de sabor e acidez.", pontoCritico: "Seja generoso com os temperos. A crosta é uma parte fundamental do sabor do rosbife." },
+                    { title: "A Selagem Inicial", description: "Numa frigideira muito quente que possa ir ao forno, adicione um fio de óleo e sele todos os lados da carne, incluindo as pontas, até criar uma crosta bem dourada e escura.", porque: "A selagem em alta temperatura cria a Reação de Maillard, que é responsável pela maior parte do sabor complexo do exterior do rosbife. Este passo é puramente para sabor, não para 'selar sucos'.", pontoCritico: "Gire a peça de carne com uma pinça para garantir que todos os lados, sem exceção, fiquem bem dourados." },
+                    { title: "Assar com Precisão", description: "Transfira a frigideira para um forno pré-aquecido a 180°C. Asse até a temperatura interna atingir o ponto desejado (52°C para mal passado/rosado é o ideal para rosbife). Use um termómetro!", porque: "O forno proporciona um calor envolvente e mais gentil que a frigideira, cozinhando o interior da carne de forma uniforme sem queimar a crosta exterior. O termómetro é a única forma de garantir o ponto perfeito.", pontoCritico: "Confie no termómetro, não no tempo. O tempo é apenas uma estimativa. Retirar a carne na temperatura exata é o que define um rosbife perfeito.", timer: 2400 },
+                    { title: "O Descanso Longo e o Arrefecimento", description: "Retire o rosbife do forno e coloque-o sobre uma grelha para descansar por pelo menos 20-30 minutos. Depois do descanso, envolva-o em película aderente e leve ao frigorífico por pelo menos 2 horas antes de fatiar.", porque: "O descanso redistribui os sucos. O arrefecimento posterior firma a carne, o que é absolutamente essencial para conseguir fatias finíssimas sem que a carne se desfaça.", pontoCritico: "Não tente fatiar o rosbife quente ou mesmo morno. A sua estrutura estará demasiado macia. A refrigeração é um passo obrigatório para o rosbife clássico de fatiar.", timer: 1500 }
+                ],
+                variacoes: ["<strong>Para Sanduíches:</strong> Sirva as fatias finas em pão ciabatta com mostarda, rúcula e picles.", "<strong>Como Prato Principal:</strong> Sirva com um molho de raiz-forte (horseradish) e puré de batata.", "<strong>Diferentes Crostas:</strong> Experimente adicionar páprica fumada, cominhos ou sementes de coentros moídas à mistura de temperos."]
+            },
+            lombo: {
+                title: "Aula 06: Lombo de Porco Assado com Ervas",
+                description: "Um assado impressionante e surpreendentemente fácil. Aprenda a técnica de selar e assar para um lombo de porco que fica húmido por dentro, dourado por fora e infundido com o aroma de alho e ervas.",
+                calculatorLabel: "Peso do Lombo (kg):",
+                calculatorUnit: "lombo-input",
+                details: { tempoPreparo: "20 min", tempoCozimento: "40-60 min", tempoDescanso: "10 min", rendimento: "Serve ~4 pessoas por kg", dificuldade: "Fácil", utensilios: ["Frigideira que possa ir ao forno", "Termómetro de carne"] },
+                dicaDeMestre: "O erro mais comum é cozinhar demais o lombo de porco. A regra dos '25 minutos por 500g' é apenas uma guia. Confie no termómetro: retire o lombo do forno quando atingir 61-62°C. Ele chegará aos 63°C perfeitos durante o descanso.",
+                getIngredients: function(val) { const kg = parseFloat(val) || 1; return `
+                        <li class="ingredient-item"><label class="flex items-center"><input type="checkbox" class="mr-2"><span class="flex-1 flex justify-between"><span>Lombo de Porco (peça inteira)</span> <span class="font-semibold">${kg} kg</span></span></label></li>
+                        <li class="ingredient-item"><label class="flex items-center"><input type="checkbox" class="mr-2"><span class="flex-1 flex justify-between"><span>Alho</span> <span class="font-semibold">${Math.ceil(kg * 4)} dentes</span></span></label></li>
+                        <li class="ingredient-item"><label class="flex items-center"><input type="checkbox" class="mr-2"><span class="flex-1 flex justify-between"><span>Alecrim e Sálvia Frescos</span> <span class="font-semibold">Vários ramos</span></span></label></li>
+                        <li class="ingredient-item"><label class="flex items-center"><input type="checkbox" class="mr-2"><span class="flex-1 flex justify-between"><span>Vinho Branco Seco</span> <span class="font-semibold">${(kg * 150).toFixed(0)} ml</span></span></label></li>
+                        <li class="ingredient-item"><label class="flex items-center"><input type="checkbox" class="mr-2"><span class="flex-1 flex justify-between"><span>Sal, Pimenta, Azeite</span> <span class="font-semibold">A gosto</span></span></label></li>`; },
+                steps: [
+                    { title: "Preparar e Temperar", description: "Seque bem a peça de lombo. Com uma faca pequena, faça pequenos furos na carne e insira lascas de alho. Esfregue toda a superfície generosamente com sal, pimenta, as folhas de ervas frescas picadas e um fio de azeite.", porque: "Inserir o alho na carne infunde sabor de dentro para fora. A camada de temperos exterior criará uma crosta aromática durante a selagem e o cozimento.", pontoCritico: "Não tenha medo de temperar bem. A carne de porco beneficia de um tempero robusto." },
+                    { title: "Selar para Sabor", description: "Numa frigideira grande e quente que possa ir ao forno, adicione um fio de azeite e sele todos os lados do lombo até ficarem bem dourados. Isto deve levar cerca de 5-8 minutos no total.", porque: "A selagem cria a Reação de Maillard, que é responsável pela cor dourada e por uma camada de sabor complexo na superfície da carne.", pontoCritico: "Garanta que a frigideira está bem quente antes de adicionar a carne para conseguir uma selagem rápida e eficaz." },
+                    { title: "Assar com Controlo", description: "Com o lombo ainda na frigideira, adicione o vinho branco para <span class='tooltip' data-tooltip='Adicionar um líquido (vinho, conhaque, caldo) a uma panela quente para soltar os pedaços de comida caramelizados (fond) do fundo.'>deglacear</span>. Leve a frigideira para o forno pré-aquecido a 180°C. Asse até a temperatura interna atingir 61-62°C.", porque: "Terminar no forno permite um cozimento mais uniforme do interior da peça, sem queimar o exterior. O vinho cria um vapor aromático e a base para um molho.", pontoCritico: "Mais uma vez, o termómetro é o seu melhor amigo. É a única forma de garantir um lombo suculento e não seco.", timer: 3000 },
+                    { title: "Descansar para Suculência", description: "Retire o lombo do forno, coloque-o numa tábua de corte e deixe-o descansar por 10 minutos antes de o fatiar. Pode usar os sucos que ficaram na frigideira para fazer um molho rápido.", porque: "O descanso é essencial para que os sucos se redistribuam pela carne, garantindo que cada fatia seja húmida e saborosa.", pontoCritico: "Não cubra o lombo firmemente com alumínio durante o descanso, pois o vapor irá amolecer a crosta que você criou. Se precisar, coloque uma folha de alumínio frouxamente por cima.", timer: 600 }
+                ],
+                 variacoes: ["<strong>Com Frutas:</strong> Asse o lombo com fatias de maçã ou pedaços de ameixa seca na frigideira.", "<strong>Glacê de Mel e Mostarda:</strong> Pincele o lombo com uma mistura de mel e mostarda nos últimos 10 minutos de forno.", "<strong>Recheado:</strong> Abra o lombo ao meio (sem separar as partes), recheie com uma mistura de espinafres, queijo e nozes, enrole e amarre antes de selar."]
+            },
+            'frango-assado': {
+                title: "Aula 07: Frango Assado Inteiro",
+                description: "O frango assado é o prato de conforto por excelência. Nesta aula, vamos desmistificar o processo para você conseguir um frango com pele estaladiça, carne suculenta e um sabor incrível que irá impressionar toda a família.",
+                calculatorLabel: "Peso do Frango (kg):",
+                calculatorUnit: "frango-assado-input",
+                details: { tempoPreparo: "20 min (+ tempo de salga a seco)", tempoCozimento: "~1h 20min por 1.5kg", tempoDescanso: "15 min", rendimento: "4-6 porções", dificuldade: "Intermediário", utensilios: ["Assadeira", "Barbante de cozinha", "Papel toalha", "Pincel de cozinha"] },
+                dicaDeMestre: "Para um sabor ainda mais profundo, prepare uma manteiga composta: amasse manteiga amolecida com alho picado, raspas de limão, salsa, tomilho e alecrim. Com cuidado, solte a pele do peito do frango e espalhe esta manteiga por baixo da pele antes de assar.",
+                getIngredients: function(val) { const kg = parseFloat(val) || 1.5; return `
+                        <li class="ingredient-item"><label class="flex items-center"><input type="checkbox" class="mr-2"><span class="flex-1 flex justify-between"><span>Frango Inteiro</span> <span class="font-semibold">${kg.toFixed(1)} kg</span></span></label></li>
+                        <li class="ingredient-item"><label class="flex items-center"><input type="checkbox" class="mr-2"><span class="flex-1 flex justify-between"><span>Sal Grosso</span> <span class="font-semibold">${(kg * 1.5).toFixed(1)} colher(es) de sopa</span></span></label></li>
+                        <li class="ingredient-item"><label class="flex items-center"><input type="checkbox" class="mr-2"><span class="flex-1 flex justify-between"><span>Pimenta Preta moída</span> <span class="font-semibold">A gosto</span></span></label></li>
+                        <li class="ingredient-item"><label class="flex items-center"><input type="checkbox" class="mr-2"><span class="flex-1 flex justify-between"><span>Azeite ou Manteiga derretida</span> <span class="font-semibold">${(kg * 2).toFixed(0)} colher(es) de sopa</span></span></label></li>
+                        <li class="ingredient-item"><label class="flex items-center"><input type="checkbox" class="mr-2"><span class="flex-1 flex justify-between"><span>Limão Siciliano</span> <span class="font-semibold">${Math.ceil(kg / 1.5)} unid.</span></span></label></li>
+                        <li class="ingredient-item"><label class="flex items-center"><input type="checkbox" class="mr-2"><span class="flex-1 flex justify-between"><span>Cabeça de Alho</span> <span class="font-semibold">${Math.ceil(kg / 2)} unid.</span></span></label></li>
+                        <li class="ingredient-item"><label class="flex items-center"><input type="checkbox" class="mr-2"><span class="flex-1 flex justify-between"><span>Ervas Frescas (tomilho, alecrim)</span> <span class="font-semibold">Alguns ramos</span></span></label></li>`; },
+                steps: [
+                    { title: "A Preparação (Salga a Seco)", description: "Seque a ave por completo com papel toalha. Tempere generosamente toda a superfície e a cavidade com sal e pimenta. Se tiver tempo, deixe o frango descoberto no frigorífico por pelo menos 1 hora (ou até 24 horas).", porque: "A salga a seco desidrata a pele, o que é o segredo número um para uma pele ultra crocante após assar.", pontoCritico: "Não lave o frango! Isso espalha bactérias pela cozinha e adiciona humidade, que é inimiga da pele crocante." },
+                    { title: "Amarrar e Aromatizar", description: "Pré-aqueça o forno a 200°C. Coloque o limão e o alho cortados ao meio dentro da cavidade do frango com as ervas. Amarre as pernas com barbante de cozinha para garantir um cozimento uniforme.", porque: "Amarrar o frango (trussing) garante que ele cozinhe de forma mais uniforme. Os aromáticos na cavidade libertam vapor saboroso que perfuma a carne de dentro para fora.", pontoCritico: "Não encha demasiado a cavidade, pois o ar quente precisa de circular." },
+                    { title: "Assar com Perfeição", description: "Coloque o frango numa assadeira. Pincele toda a pele com azeite ou manteiga derretida. Asse por cerca de 20 minutos por cada 500g, mais 20 minutos extra (ex: 1.5kg = 80min).", porque: "A gordura na pele ajuda na condução do calor e a dourar. A temperatura interna é o guia mais fiável.", pontoCritico: "Use um termómetro na parte mais grossa da coxa (sem tocar no osso). O frango está pronto quando atinge 74°C.", timer: 4800 },
+                    { title: "O Descanso Dourado", description: "Retire o frango do forno e deixe-o descansar por 15 minutos antes de cortar.", porque: "O descanso permite a redistribuição dos sucos, mantendo a carne (especialmente o peito) húmida.", pontoCritico: "Durante o descanso, o frango libertará mais sucos. Não os desperdice! Despeje-os sobre o frango fatiado ou use-os para fazer um molho." }
+                ],
+                variacoes: ["<strong>Cama de Legumes:</strong> Asse o frango sobre uma cama de batatas, cenouras e cebolas.", "<strong>Frango à Cerveja:</strong> Asse o frango 'sentado' numa lata de cerveja meio cheia para uma carne incrivelmente húmida.", "<strong>Especiarias do Mundo:</strong> Esfregue o frango com páprica fumada e cominhos para um toque espanhol."]
+            },
+            salmao: {
+                title: "Aula 08: Salmão Grelhado com Pele Crocante",
+                description: "Aprenda a técnica de restaurante para um salmão no ponto perfeito – húmido e lascando facilmente – com uma pele tão crocante que é a melhor parte do prato.",
+                calculatorLabel: "Postas de Salmão (180g cada):",
+                calculatorUnit: "salmao-input",
+                details: { tempoPreparo: "5 min", tempoCozimento: "6-8 min", tempoDescanso: "N/A", rendimento: "1 por pessoa", dificuldade: "Fácil", utensilios: ["Frigideira antiaderente de boa qualidade", "Espátula de peixe (flexível)"] },
+                dicaDeMestre: "Depois de colocar o salmão na frigideira (pele para baixo), use a espátula para pressionar levemente o topo do filé por 10 a 15 segundos. Isso evita que a pele se contraia e enrole, garantindo um contacto total com a panela e uma crocância uniforme.",
+                getIngredients: function(val) { const qty = parseInt(val) || 2; return `
+                        <li class="ingredient-item"><label class="flex items-center"><input type="checkbox" class="mr-2"><span class="flex-1 flex justify-between"><span>Posta de Salmão com pele</span> <span class="font-semibold">${qty} unid.</span></span></label></li>
+                        <li class="ingredient-item"><label class="flex items-center"><input type="checkbox" class="mr-2"><span class="flex-1 flex justify-between"><span>Azeite ou óleo de girassol</span> <span class="font-semibold">1 c. de sopa</span></span></label></li>
+                        <li class="ingredient-item"><label class="flex items-center"><input type="checkbox" class="mr-2"><span class="flex-1 flex justify-between"><span>Sal e Pimenta</span> <span class="font-semibold">A gosto</span></span></label></li>`; },
+                steps: [
+                    { title: "A Preparação do Peixe", description: "Retire o salmão do frigorífico 15 minutos antes. Use a parte de trás de uma faca para 'raspar' a pele e remover qualquer excesso de humidade ou escamas. Seque a pele **muito bem** com papel toalha. Tempere ambos os lados generosamente com sal e pimenta.", porque: "A pele seca é o segredo absoluto para a crocância. Qualquer humidade irá criar vapor e impedir que a pele frite e fique estaladiça.", pontoCritico: "Não pule este passo de secagem. É a diferença entre uma pele borrachenta e uma pele perfeitamente crocante." },
+                    { title: "Grelhar com a Pele para Baixo", description: "Aqueça uma frigideira antiaderente em lume médio-alto com um fio de óleo. Quando o óleo estiver quente e a brilhar, coloque o salmão com a pele para baixo. Pressione-o com uma espátula por 15 segundos. Reduza o lume para médio e deixe cozinhar por 4-6 minutos.", porque: "Cozinhar a maior parte do tempo com a pele para baixo protege a carne delicada do salmão do calor direto. A gordura da pele derrete e ajuda a 'fritar' a própria pele, deixando-a estaladiça.", pontoCritico: "Você verá a linha de cozimento a subir pela lateral do filé. Quando estiver cozido em cerca de 75% do caminho, está na hora de virar.", timer: 300 },
+                    { title: "O 'Beijo' Final", description: "Vire o salmão e cozinhe por apenas mais 30 a 60 segundos do outro lado. O objetivo é apenas terminar o cozimento do topo, não criar uma crosta do lado da carne. Retire da frigideira e sirva imediatamente.", porque: "Este 'beijo' de calor é tudo o que a carne precisa para ficar no ponto sem secar. Cozinhar demais este lado resultaria num peixe seco.", pontoCritico: "Sirva sempre com a pele crocante virada para cima para que não amoleça em contacto com o molho ou acompanhamento no prato." }
+                ],
+                variacoes: ["<strong>Molho de Limão e Manteiga:</strong> Na mesma frigideira, depois de retirar o salmão, adicione sumo de limão e manteiga para um molho rápido.", "<strong>Com Endro (Dill):</strong> Sirva com um molho de iogurte e endro fresco.", "<strong>Asiático:</strong> Pincele com uma mistura de molho de soja, mel e gengibre antes de servir."]
+            },
+            bolonhesa: {
+                title: "Aula 09: Molho Bolonhesa Clássico",
+                description: "Aprenda a fazer um verdadeiro Ragù alla Bolognese, um molho de carne rico, complexo e cozinhado lentamente, muito diferente das versões rápidas. É a alma de uma grande lasanha ou de um tagliatelle fresco.",
+                calculatorLabel: "Gramas de Carne Moída:",
+                calculatorUnit: "bolonhesa-input",
+                details: { tempoPreparo: "20 min", tempoCozimento: "2-4 horas", tempoDescanso: "N/A", rendimento: "Serve 6-8 pessoas por kg", dificuldade: "Intermediário", utensilios: ["Panela de fundo grosso (caçarola)", "Colher de pau"] },
+                dicaDeMestre: "O segredo de um bolonhesa autêntico é o cozimento longo e o uso de leite. Adicionar leite à carne e deixá-lo evaporar antes do vinho torna a carne mais tenra e o molho final mais cremoso e equilibrado.",
+                getIngredients: function(val) { const g = parseFloat(val) || 1000; return `
+                        <li class="ingredient-item"><label class="flex items-center"><input type="checkbox" class="mr-2"><span class="flex-1 flex justify-between"><span>Carne Moída (idealmente uma mistura)</span> <span class="font-semibold">${g} g</span></span></label></li>
+                        <li class="ingredient-item"><label class="flex items-center"><input type="checkbox" class="mr-2"><span class="flex-1 flex justify-between"><span>Pancetta ou bacon em cubos</span> <span class="font-semibold">150 g</span></span></label></li>
+                        <li class="ingredient-item"><label class="flex items-center"><input type="checkbox" class="mr-2"><span class="flex-1 flex justify-between"><span><span class='tooltip' data-tooltip='Base clássica de 2 partes de cebola, 1 de cenoura e 1 de aipo.'>Mirepoix</span> picado finamente (cebola, cenoura, aipo)</span> <span class="font-semibold">2 chávenas</span></span></label></li>
+                        <li class="ingredient-item"><label class="flex items-center"><input type="checkbox" class="mr-2"><span class="flex-1 flex justify-between"><span>Leite Gordo</span> <span class="font-semibold">1 chávena</span></span></label></li>
+                        <li class="ingredient-item"><label class="flex items-center"><input type="checkbox" class="mr-2"><span class="flex-1 flex justify-between"><span>Vinho (branco ou tinto)</span> <span class="font-semibold">1 chávena</span></span></label></li>
+                        <li class="ingredient-item"><label class="flex items-center"><input type="checkbox" class="mr-2"><span class="flex-1 flex justify-between"><span>Tomate Pelado em lata, amassado</span> <span class="font-semibold">800 g</span></span></label></li>
+                        <li class="ingredient-item"><label class="flex items-center"><input type="checkbox" class="mr-2"><span class="flex-1 flex justify-between"><span>Caldo de Carne</span> <span class="font-semibold">1 chávena</span></span></label></li>`; },
+                steps: [
+                    { title: "A Base de Sabor (Sofrito)", description: "Numa panela grande de fundo grosso, cozinhe a pancetta em lume médio até libertar a sua gordura. Adicione o <span class='tooltip' data-tooltip='Base clássica de 2 partes de cebola, 1 de cenoura e 1 de aipo.'>mirepoix</span> picado e refogue lentamente na gordura da pancetta por cerca de 10 minutos, até os vegetais estarem muito macios e adocicados.", porque: "A gordura da pancetta cria uma base de sabor rica e salgada. Cozinhar o mirepoix lentamente ('suar') liberta os seus açúcares e constrói a fundação do molho.", pontoCritico: "Não apresse o sofrito. A paciência aqui é recompensada com um sabor final muito mais profundo." },
+                    { title: "Cozinhar a Carne e os Líquidos", description: "Adicione a carne moída, aumente o lume e cozinhe, desfazendo-a com uma colher, até toda a humidade evaporar e a carne começar a fritar e a dourar. Adicione o leite e cozinhe, mexendo, até evaporar por completo. Repita o processo com o vinho.", porque: "Dourar bem a carne cria a Reação de Maillard. O leite amacia as fibras da carne. O vinho adiciona acidez. Deixar cada líquido evaporar completamente antes de adicionar o próximo permite que cada sabor penetre na carne de forma distinta.", pontoCritico: "É crucial que cada líquido evapore completamente. Você deve ouvir a carne a 'fritar' novamente antes de adicionar o próximo ingrediente." },
+                    { title: "O Cozimento Lento e Longo", description: "Adicione o tomate amassado, o caldo, sal e pimenta. Deixe levantar fervura, reduza para o lume mais baixo possível, de modo que o molho borbulhe muito gentilmente. Cozinhe, semi-tapado, por pelo menos 2 a 3 horas.", porque: "Este é o segredo de um verdadeiro ragù. O tempo funde todos os sabores, quebra as fibras da carne e cria um molho espesso, rico e aveludado. A complexidade do sabor aumenta exponencialmente com o tempo.", pontoCritico: "Mexa a cada 30 minutos para garantir que não cola no fundo. Se o molho secar demais, adicione um pouco mais de caldo ou água.", timer: 9000 }
+                ],
+                variacoes: ["<strong>Com Louro:</strong> Adicione uma folha de louro junto com o tomate.", "<strong>Finalização:</strong> Tradicionalmente, não leva muitas ervas. É servido simplesmente com massa fresca (tagliatelle) e queijo parmesão ralado na hora.", "<strong>Congelamento:</strong> Bolonhesa congela extremamente bem, e o sabor fica ainda melhor no dia seguinte."]
+            },
+            pure: {
+                title: "Aula 10: Puré de Batata Cremoso",
+                description: "O acompanhamento perfeito para quase tudo. Aprenda a técnica para um puré de batata aveludado, rico, cremoso e completamente livre de grumos ou textura 'cola'.",
+                calculatorLabel: "Quilos de Batata:",
+                calculatorUnit: "pure-input",
+                details: { tempoPreparo: "10 min", tempoCozimento: "20-25 min", tempoDescanso: "N/A", rendimento: "Serve 4-6 pessoas por kg", dificuldade: "Fácil", utensilios: ["Espremedor de batata ou passe-vite", "Panela grande", "Batedor de arame (fouet)"] },
+                dicaDeMestre: "O maior inimigo de um puré cremoso é a água. Depois de escorrer as batatas, volte a colocá-las na panela quente em lume baixo por um minuto. Isso fará com que qualquer excesso de humidade evapore, resultando num puré que absorve melhor a manteiga e o leite.",
+                getIngredients: function(val) { const kg = parseFloat(val) || 1; return `
+                        <li class="ingredient-item"><label class="flex items-center"><input type="checkbox" class="mr-2"><span class="flex-1 flex justify-between"><span>Batatas ricas em amido (ex: Asterix, Desiree)</span> <span class="font-semibold">${kg} kg</span></span></label></li>
+                        <li class="ingredient-item"><label class="flex items-center"><input type="checkbox" class="mr-2"><span class="flex-1 flex justify-between"><span>Manteiga sem sal, fria em cubos</span> <span class="font-semibold">${(kg * 150).toFixed(0)} g</span></span></label></li>
+                        <li class="ingredient-item"><label class="flex items-center"><input type="checkbox" class="mr-2"><span class="flex-1 flex justify-between"><span>Leite Gordo ou Natas (quente)</span> <span class="font-semibold">${(kg * 200).toFixed(0)} ml</span></span></label></li>
+                        <li class="ingredient-item"><label class="flex items-center"><input type="checkbox" class="mr-2"><span class="flex-1 flex justify-between"><span>Noz-moscada, Sal, Pimenta Branca</span> <span class="font-semibold">A gosto</span></span></label></li>`; },
+                steps: [
+                    { title: "Cozinhar as Batatas", description: "Descasque as batatas e corte-as em pedaços uniformes. Coloque-as numa panela, cubra com água fria e adicione uma boa quantidade de sal. Leve a ferver e cozinhe até as batatas estarem muito macias (um garfo deve entrar e sair sem qualquer resistência).", porque: "Começar com água fria cozinha as batatas de forma mais uniforme. Salgar a água tempera as batatas de dentro para fora. Cozinhá-las até estarem a desfazer-se facilita o processo de as espremer.", pontoCritico: "Não cozinhe as batatas de menos. Se estiverem duras, o puré ficará com grumos." },
+                    { title: "Espremer, Nunca Bater", description: "Escorra bem a água. Passe as batatas quentes por um espremedor de batata ou um <span class='tooltip' data-tooltip='Utensílio de cozinha que mói e coa alimentos moles, ideal para purés lisos.'>passe-vite</span> para uma tigela. Nunca use um processador de alimentos ou liquidificador.", porque: "Um espremedor ou passe-vite cria uma textura leve e fofa. Um processador ou liquidificador trabalha demais o amido da batata, quebrando as suas células e libertando amido em excesso, o que transforma o puré numa pasta elástica e 'cola'.", pontoCritico: "Esprema as batatas enquanto ainda estão quentes. É muito mais fácil e resulta numa textura melhor." },
+                    { title: "A Cremosidade Final", description: "Com as batatas espremidas na tigela, adicione a manteiga fria em cubos e incorpore com um batedor de arames ou espátula. Aos poucos, adicione o leite ou as natas quentes, mexendo suavemente até atingir a consistência desejada. Tempere com sal, pimenta branca e noz-moscada ralada na hora.", porque: "Adicionar a manteiga primeiro reveste as moléculas de amido com gordura, resultando num puré mais rico. O líquido quente é absorvido mais facilmente, mantendo o puré quente e cremoso.", pontoCritico: "Adicione o líquido aos poucos. É fácil adicionar mais, mas impossível de remover se o puré ficar demasiado líquido." }
+                ],
+                variacoes: ["<strong>Puré de Alho Assado:</strong> Asse uma cabeça de alho no forno, esprema os dentes e misture no puré.", "<strong>Com Queijo:</strong> Misture queijo parmesão, gruyère ou cheddar ralado no final.", "<strong>Com Ervas:</strong> Adicione cebolinho, salsa ou tomilho picados para um toque de frescura."]
+            },
+            vinagrete: {
+                title: "Aula 11: Vinagrete Básico",
+                description: "Aprenda a fazer um molho de salada clássico e versátil. Dominar a proporção e a técnica da emulsão do vinagrete é um superpoder na cozinha, permitindo-lhe temperar qualquer salada na perfeição.",
+                calculatorLabel: "Quantidade de Azeite (ml):",
+                calculatorUnit: "vinagrete-input",
+                details: { tempoPreparo: "5 min", tempoCozimento: "N/A", tempoDescanso: "N/A", rendimento: "Molho para várias saladas", dificuldade: "Fácil", utensilios: ["Tigela", "Batedor de arame (fouet) ou frasco com tampa"] },
+                dicaDeMestre: "O método mais fácil e rápido: coloque todos os ingredientes num frasco com tampa, feche bem e agite vigorosamente por 15 segundos. A emulsão forma-se perfeitamente e pode guardar o que sobrar no mesmo frasco, no frigorífico.",
+                getIngredients: function(val) { const ml = parseInt(val) || 90; return `
+                        <li class="ingredient-item"><label class="flex items-center"><input type="checkbox" class="mr-2"><span class="flex-1 flex justify-between"><span>Azeite Extra Virgem</span> <span class="font-semibold">${ml} ml</span></span></label></li>
+                        <li class="ingredient-item"><label class="flex items-center"><input type="checkbox" class="mr-2"><span class="flex-1 flex justify-between"><span>Vinagre (vinho tinto, branco, maçã)</span> <span class="font-semibold">${(ml / 3).toFixed(0)} ml</span></span></label></li>
+                        <li class="ingredient-item"><label class="flex items-center"><input type="checkbox" class="mr-2"><span class="flex-1 flex justify-between"><span>Mostarda Dijon</span> <span class="font-semibold">1 c. de chá</span></span></label></li>
+                        <li class="ingredient-item"><label class="flex items-center"><input type="checkbox" class="mr-2"><span class="flex-1 flex justify-between"><span>Sal e Pimenta</span> <span class="font-semibold">A gosto</span></span></label></li>`; },
+                steps: [
+                    { title: "A Proporção Clássica 3:1", description: "A regra de ouro para um vinagrete equilibrado é **3 partes de gordura (azeite) para 1 parte de ácido (vinagre)**. Numa tigela, junte o vinagre, a mostarda Dijon, o sal e a pimenta. Bata com um batedor de arames para dissolver o sal.", porque: "Esta proporção cria um equilíbrio perfeito entre a riqueza do azeite e a acidez do vinagre. A mostarda não só adiciona sabor, mas atua como um <span class='tooltip' data-tooltip='Agente que ajuda a misturar e estabilizar dois líquidos que normalmente não se misturam, como óleo e água.'>emulsionante</span>, ajudando a unir o molho.", pontoCritico: "Dissolver o sal no vinagre antes de adicionar o azeite é importante, pois o sal não se dissolve facilmente em gordura." },
+                    { title: `A <span class="tooltip" data-tooltip="Mistura estável de dois líquidos que normalmente não se misturam. Neste caso, o azeite e o vinagre são unidos pela mostarda.">Emulsão</span>`, description: "Enquanto bate continuamente com o batedor de arames, comece a adicionar o azeite num fio fino e constante. Continue a bater até todo o azeite ser incorporado e o molho engrossar ligeiramente, formando uma mistura estável.", porque: "Adicionar o azeite lentamente enquanto se bate quebra-o em gotículas minúsculas que são suspensas no vinagre, com a ajuda da mostarda. É isto que cria um molho homogéneo em vez de duas camadas separadas.", pontoCritico: "Não precisa de ser tão lento como na maionese, mas adicionar o azeite em fio em vez de tudo de uma vez resulta numa emulsão mais estável e duradoura." }
+                ],
+                variacoes: ["<strong>Com Mel:</strong> Adicione uma colher de chá de mel para um toque agridoce, ideal para saladas com queijo de cabra ou nozes.", "<strong>Com Alho:</strong> Adicione um dente de alho muito finamente picado ou esmagado.", "<strong>Com Ervas Frescas:</strong> No final, junte salsa, cebolinho ou orégãos frescos picados."]
+            }
+        };
+
+        const aulasList = document.getElementById('aulas-list');
+        const pageTitle = document.getElementById('page-title');
+        const receitasContainer = document.getElementById('receitas-container');
+        const backToListBtn = document.getElementById('back-to-list-btn');
+
+        const generateRecipeHTML = (recipeData, targetId) => {
+            return `
+                <div class="text-center">
+                    <h2 class="text-3xl md:text-4xl font-bold text-amber-700">${recipeData.title}</h2>
+                    <p class="mt-4 max-w-3xl mx-auto text-stone-600 text-lg">${recipeData.description}</p>
+                </div>
+                
+                <div class="mt-10 grid grid-cols-2 md:grid-cols-4 gap-4 text-center">
+                    <div class="bg-stone-100 p-4 rounded-lg flex flex-col justify-center items-center">
+                        <span class="text-2xl">⏳</span>
+                        <h4 class="font-bold text-stone-800">Preparo</h4>
+                        <p class="text-stone-600 text-sm">${recipeData.details.tempoPreparo}</p>
+                    </div>
+                    <div class="bg-stone-100 p-4 rounded-lg flex flex-col justify-center items-center">
+                        <span class="text-2xl">🍳</span>
+                        <h4 class="font-bold text-stone-800">Cozimento</h4>
+                        <p class="text-stone-600 text-sm">${recipeData.details.tempoCozimento}</p>
+                    </div>
+                    <div class="bg-stone-100 p-4 rounded-lg flex flex-col justify-center items-center">
+                        <span class="text-2xl">🍽️</span>
+                        <h4 class="font-bold text-stone-800">Rendimento</h4>
+                        <p class="text-stone-600 text-sm">${recipeData.details.rendimento}</p>
+                    </div>
+                    <div class="bg-stone-100 p-4 rounded-lg flex flex-col justify-center items-center">
+                        <span class="text-2xl">⭐</span>
+                        <h4 class="font-bold text-stone-800">Dificuldade</h4>
+                        <p class="text-stone-600 text-sm">${recipeData.details.dificuldade}</p>
+                    </div>
+                </div>
+
+                <div class="mt-12 grid grid-cols-1 lg:grid-cols-3 gap-x-12 gap-y-8">
+                    <div class="lg:col-span-1">
+                        <h3 class="text-2xl font-bold text-stone-800 mb-4 border-b-2 border-amber-500 pb-2">Planeamento</h3>
+                        <div class="bg-stone-50 p-4 rounded-lg">
+                            <label for="${recipeData.calculatorUnit}" class="block text-lg text-stone-700 mb-2 font-bold">${recipeData.calculatorLabel}</label>
+                            <input type="number" id="${recipeData.calculatorUnit}" value="1" min="0.5" step="1" class="w-full p-2 border border-stone-300 rounded-lg focus:ring-2 focus:ring-amber-500">
+                        </div>
+                        <div class="mt-6">
+                            <h4 class="font-bold text-lg mb-2 text-stone-700">Checklist de Ingredientes:</h4>
+                            <ul class="space-y-2 text-stone-600 text-sm" id="ingredient-list-${targetId}"></ul>
+                        </div>
+                         <div class="mt-6">
+                            <h4 class="font-bold text-lg mb-2 text-stone-700">Utensílios Chave:</h4>
+                            <ul class="space-y-2 text-stone-600 list-disc list-inside text-sm">
+                                ${recipeData.details.utensilios.map(utensil => `<li>${utensil}</li>`).join('')}
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="lg:col-span-2">
+                        <h3 class="text-2xl font-bold text-stone-800 mb-4 border-b-2 border-amber-500 pb-2">Tutorial Detalhado</h3>
+                        <div class="space-y-6">
+                            ${recipeData.steps.map((step, index) => {
+                                if (step.isSubRecipe) {
+                                    return `
+                                    <div class="p-4 rounded-lg bg-amber-50 border-l-4 border-amber-400">
+                                        <h4 class="font-bold text-xl text-amber-800 mb-4">${step.title}</h4>
+                                        <div class="space-y-4">
+                                        ${step.subSteps.map(subStep => `
+                                            <div class="ml-4">
+                                                <h5 class="font-semibold text-lg text-stone-800 mb-1">${subStep.title}</h5>
+                                                <div class="prose prose-stone max-w-none text-sm">
+                                                    <p>${subStep.description}</p>
+                                                     <details class="mt-3 text-xs">
+                                                        <summary class="font-bold text-blue-800">Ver o porquê</summary>
+                                                        <div class="mt-2 bg-blue-50 text-blue-800 rounded-md p-3">${subStep.porque}</div>
+                                                     </details>
+                                                     <details class="mt-2 text-xs">
+                                                        <summary class="font-bold text-red-800">Ver ponto crítico</summary>
+                                                        <div class="mt-2 bg-red-50 text-red-800 rounded-md p-3">${subStep.pontoCritico}</div>
+                                                     </details>
+                                                </div>
+                                            </div>
+                                        `).join('')}
                                         </div>
-                                    `).join('')}
-                                </div>
+                                    </div>`;
+                                }
+                                return `
+                                <div class="p-4 rounded-lg bg-stone-50 border-l-4 border-stone-200">
+                                    <h4 class="font-bold text-xl text-stone-800 mb-2"><span class="bg-amber-600 text-white rounded-full w-8 h-8 inline-flex items-center justify-center mr-3 text-base">${index + 1}</span> ${step.title}</h4>
+                                    <div class="prose prose-stone max-w-none pl-11 text-sm">
+                                        <p>${step.description}</p>
+                                        <details class="mt-3 text-xs">
+                                            <summary class="font-bold text-blue-800">Ver o porquê</summary>
+                                            <div class="mt-2 bg-blue-50 text-blue-800 rounded-md p-3">${step.porque}</div>
+                                        </details>
+                                        <details class="mt-2 text-xs">
+                                            <summary class="font-bold text-red-800">Ver ponto crítico</summary>
+                                            <div class="mt-2 bg-red-50 text-red-800 rounded-md p-3">${step.pontoCritico}</div>
+                                        </details>
+                                    </div>
+                                    ${step.timer ? `<div class="mt-4 pl-11 flex items-center gap-4"><button class="timer-btn bg-amber-500 text-white px-4 py-2 rounded-lg hover:bg-amber-600 transition text-sm" data-time="${step.timer}">Iniciar Timer (${Math.floor(step.timer/60)}m ${step.timer%60}s)</button><span class="timer-display text-lg font-mono font-bold text-amber-700"></span></div>` : ''}
+                                </div>`;
+                            }).join('')}
+                        </div>
+                        
+                        <div class="mt-8">
+                            <h3 class="text-2xl font-bold text-stone-800 mb-4 border-b-2 border-amber-500 pb-2">Dicas e Variações</h3>
+                            <div class="prose prose-stone max-w-none bg-amber-50 p-4 rounded-lg border-l-4 border-amber-400 text-sm">
+                                <p><strong class="font-bold">Dica de Mestre:</strong> ${recipeData.dicaDeMestre}</p>
+                                ${recipeData.variacoes ? `
+                                    <h4 class="font-bold mt-4">Variações criativas:</h4>
+                                    <ul>${recipeData.variacoes.map(item => `<li>${item}</li>`).join('')}</ul>
+                                ` : ''}
                             </div>
                         </div>
-                    `;
+                    </div>
+                </div>
+            `;
+        };
+        
+        document.querySelectorAll('.aula-card').forEach(card => {
+            const targetId = card.dataset.target.replace('receita-', '');
+            const recipeData = aulas[targetId];
 
-                    const input = document.getElementById(recipeData.calculatorUnit);
-                    const list = document.getElementById(`ingredient-list-${targetId}`);
-                    const updateFn = () => { if(!input || !list) return; list.innerHTML = recipeData.getIngredients(input.value); };
-                    input.addEventListener('input', updateFn);
-                    updateFn();
-                }
+            if (recipeData) {
+                const targetElement = document.getElementById(card.dataset.target);
+                targetElement.innerHTML = generateRecipeHTML(recipeData, targetId);
+                
+                const input = document.getElementById(recipeData.calculatorUnit);
+                const list = document.getElementById(`ingredient-list-${targetId}`);
+                
+                const updateFn = () => {
+                    if (!input || !list || !recipeData.getIngredients) return;
+                    list.innerHTML = recipeData.getIngredients(input.value);
+                };
+                
+                if(input) { input.addEventListener('input', updateFn); }
+                updateFn(); 
+            }
 
-                card.addEventListener('click', () => { 
-                    const targetId = card.dataset.target; 
-                    const targetRecipe = document.getElementById(targetId); 
-                    aulasList.classList.add('hidden'); 
-                    receitasContainer.classList.remove('hidden'); 
-                    targetRecipe.classList.remove('hidden'); 
-                }); 
-            });
-
-            backToListBtn.addEventListener('click', () => { 
-                aulasList.classList.remove('hidden'); 
-                receitasContainer.classList.add('hidden'); 
-                document.querySelectorAll('.receita-content').forEach(recipe => { 
-                    recipe.classList.add('hidden'); 
-                }); 
-            });
-            
-            const timerButtons = document.querySelectorAll('.timer-btn');
-            let activeTimers = {};
-            timerButtons.forEach(button => {
-                button.addEventListener('click', (e) => { const timerId = `timer-${Math.random()}`; if (button.classList.contains('active')) return; let timeInSeconds = parseInt(e.target.dataset.time, 10); const display = e.target.nextElementSibling; button.classList.add('active'); button.disabled = true; activeTimers[timerId] = setInterval(() => { const minutes = Math.floor(timeInSeconds / 60); const seconds = timeInSeconds % 60; display.textContent = `${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`; if (timeInSeconds <= 0) { clearInterval(activeTimers[timerId]); delete activeTimers[timerId]; display.textContent = "Tempo esgotado!"; button.classList.remove('active'); button.disabled = false; } else { timeInSeconds--; } }, 1000); });
+            card.addEventListener('click', () => {
+                const targetId = card.dataset.target;
+                const targetRecipe = document.getElementById(targetId);
+                
+                aulasList.classList.add('hidden');
+                pageTitle.classList.add('hidden');
+                receitasContainer.classList.remove('hidden');
+                targetRecipe.classList.remove('hidden');
+                window.scrollTo(0, 0);
             });
         });
+
+        backToListBtn.addEventListener('click', () => {
+            aulasList.classList.remove('hidden');
+            pageTitle.classList.remove('hidden');
+            receitasContainer.classList.add('hidden');
+            document.querySelectorAll('.receita-content').forEach(recipe => {
+                recipe.classList.add('hidden');
+            });
+            window.scrollTo(0, 0);
+        });
+        
+        receitasContainer.addEventListener('click', (event) => {
+            if (event.target.classList.contains('timer-btn')) {
+                const button = event.target;
+                if (button.classList.contains('active')) return;
+
+                let timeInSeconds = parseInt(button.dataset.time, 10);
+                const display = button.nextElementSibling;
+                
+                button.classList.add('active');
+                button.disabled = true;
+                
+                const interval = setInterval(() => {
+                    const minutes = Math.floor(timeInSeconds / 60);
+                    const seconds = timeInSeconds % 60;
+                    if(display) { display.textContent = `${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`; }
+                    
+                    if (timeInSeconds <= 0) {
+                        clearInterval(interval);
+                        if(display) display.textContent = "Tempo esgotado!";
+                        button.classList.remove('active');
+                        button.disabled = false;
+                    } else { timeInSeconds--; }
+                }, 1000);
+            }
+        });
+    });
     </script>
 </body>
 </html>
