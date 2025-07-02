@@ -9,7 +9,8 @@
         @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Lato:wght@400;700&display=swap');
         body { font-family: 'Lato', sans-serif; background-color: #f8f7f4; color: #3d3d3d; }
         h1, h2, h3, h4, .nav-link { font-family: 'Playfair Display', serif; }
-        .timer-btn.active { background-color: #ca8a04; color: white; cursor: not-allowed; }
+        
+        /* Estilos para interatividade */
         .aula-card {
             transition: transform 0.3s ease, box-shadow 0.3s ease;
             cursor: pointer;
@@ -17,6 +18,80 @@
         .aula-card:hover {
             transform: translateY(-5px);
             box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.05), 0 4px 6px -4px rgb(0 0 0 / 0.05);
+        }
+        
+        /* Checklist de Ingredientes */
+        .ingredient-item input[type="checkbox"] {
+            display: none; /* Esconde o checkbox padrão */
+        }
+        .ingredient-item span {
+            transition: all 0.2s ease;
+            cursor: pointer;
+        }
+        .ingredient-item input[type="checkbox"]:checked + span {
+            text-decoration: line-through;
+            opacity: 0.6;
+        }
+
+        /* Acordion/Sanfona para os Passos */
+        details > summary {
+            cursor: pointer;
+            list-style: none; /* Remove o marcador padrão */
+            display: inline-flex;
+            align-items: center;
+            transition: color 0.2s ease;
+        }
+        details > summary::-webkit-details-marker {
+            display: none; /* Remove o marcador no Chrome/Safari */
+        }
+        details > summary::before {
+            content: '▶';
+            margin-right: 8px;
+            font-size: 0.7em;
+            transition: transform 0.2s ease-in-out;
+        }
+        details[open] > summary::before {
+            transform: rotate(90deg);
+        }
+
+        /* Tooltips para termos técnicos */
+        .tooltip {
+            position: relative;
+            cursor: help;
+            border-bottom: 2px dotted #ca8a04;
+            font-weight: bold;
+        }
+        .tooltip .tooltip-text {
+            visibility: hidden;
+            width: 220px;
+            background-color: #3d3d3d;
+            color: #fff;
+            text-align: center;
+            border-radius: 6px;
+            padding: 8px;
+            position: absolute;
+            z-index: 10;
+            bottom: 125%;
+            left: 50%;
+            margin-left: -110px;
+            opacity: 0;
+            transition: opacity 0.3s;
+            font-family: 'Lato', sans-serif; /* Reseta a fonte */
+            font-weight: normal;
+        }
+        .tooltip .tooltip-text::after {
+            content: "";
+            position: absolute;
+            top: 100%;
+            left: 50%;
+            margin-left: -5px;
+            border-width: 5px;
+            border-style: solid;
+            border-color: #3d3d3d transparent transparent transparent;
+        }
+        .tooltip:hover .tooltip-text {
+            visibility: visible;
+            opacity: 1;
         }
     </style>
 </head>
@@ -46,7 +121,7 @@
             <div class="aula-card bg-white p-6 rounded-lg shadow-lg" data-target="receita-asas"><h2 class="text-2xl md:text-3xl font-bold text-amber-700">Aula 08: Asas de Frango Crocantes (Forno/Air Fryer)</h2><p class="text-stone-600 mt-2">A técnica para asas com pele super crocante sem precisar fritar.</p></div>
             <div class="aula-card bg-white p-6 rounded-lg shadow-lg" data-target="receita-sopa"><h2 class="text-2xl md:text-3xl font-bold text-amber-700">Aula 09: Sopa de Frango Clássica (Canja)</h2><p class="text-stone-600 mt-2">A receita de conforto por excelência, rica e saborosa a partir do zero.</p></div>
             <div class="aula-card bg-white p-6 rounded-lg shadow-lg" data-target="receita-peru"><h2 class="text-2xl md:text-3xl font-bold text-amber-700">Aula 10: Peito de Peru Assado (Suculento)</h2><p class="text-stone-600 mt-2">A técnica para um peito de peru que fica sempre húmido e saboroso.</p></div>
-            <div class="aula-card bg-white p-6 rounded-lg shadow-lg" data-target="receita-caesar"><h2 class="text-2xl md:text-3xl font-bold text-amber-700">Aula 11: Salada Caesar com Frango Grelhado</h2><p class="text-stone-600 mt-2">Aprenda a fazer o molho clássico para uma salada perfeita.</p></div>
+            <div class="aula-card bg-white p-6 rounded-lg shadow-lg" data-target="receita-caesar"><h2 class="text-2xl md:text-3xl font-bold text-amber-700">Aula 11: Salada Caesar com Frango Grelhado</h2><p class="text-stone-600 mt-2">Uma aula completa: aprenda a fazer o molho clássico e o frango perfeito.</p></div>
         </div>
 
         <div id="receitas-container" class="hidden">
@@ -70,7 +145,6 @@
     document.addEventListener('DOMContentLoaded', () => {
 
         const aulas = {
-            // AULA 01
             'frango-grelhado': {
                 title: "Aula 01: Peito de Frango Grelhado (Suculento)",
                 description: "Aprenda a dominar a arte do peito de frango grelhado. Com esta técnica, você obterá um resultado incrivelmente suculento e saboroso, perfeito para saladas, sanduíches ou como prato principal. Nunca mais sirva um frango seco!",
@@ -80,21 +154,20 @@
                 dicaDeMestre: "Para saber o ponto perfeito sem termómetro, pressione o frango com o dedo. Se estiver macio e elástico como a parte gordinha da sua mão na base do polegar, está pronto. Se estiver firme, passou do ponto.",
                 getIngredients: function(val) { const qty = parseInt(val) || 1; return `
                         <h5 class="font-bold text-stone-700 mt-3 mb-1">Para a Salmoura (Opcional):</h5>
-                        <li class="flex justify-between items-start"><span>Água fria</span> <span class="text-right font-semibold">2 chávenas</span></li>
-                        <li class="flex justify-between items-start"><span>Sal</span> <span class="text-right font-semibold">1.5 colher de sopa</span></li>
+                        <li class="ingredient-item"><label class="flex items-center"><input type="checkbox" class="mr-2"><span class="flex-1 flex justify-between"><span>Água fria</span> <span class="font-semibold">2 chávenas</span></span></label></li>
+                        <li class="ingredient-item"><label class="flex items-center"><input type="checkbox" class="mr-2"><span class="flex-1 flex justify-between"><span>Sal</span> <span class="font-semibold">1.5 colher de sopa</span></span></label></li>
                         <h5 class="font-bold text-stone-700 mt-3 mb-1">Para o Frango:</h5>
-                        <li class="flex justify-between items-start"><span>Peito de Frango (180-200g cada)</span> <span class="text-right font-semibold">${qty} unid.</span></li>
-                        <li class="flex justify-between items-start"><span>Azeite</span> <span class="text-right font-semibold">${qty} colher(es) de sopa</span></li>
-                        <li class="flex justify-between items-start"><span>Pimenta Preta moída na hora</span> <span class="text-right font-semibold">A gosto</span></li>`; },
+                        <li class="ingredient-item"><label class="flex items-center"><input type="checkbox" class="mr-2"><span class="flex-1 flex justify-between"><span>Peito de Frango (180-200g cada)</span> <span class="font-semibold">${qty} unid.</span></span></label></li>
+                        <li class="ingredient-item"><label class="flex items-center"><input type="checkbox" class="mr-2"><span class="flex-1 flex justify-between"><span>Azeite</span> <span class="font-semibold">${qty} colher(es) de sopa</span></span></label></li>
+                        <li class="ingredient-item"><label class="flex items-center"><input type="checkbox" class="mr-2"><span class="flex-1 flex justify-between"><span>Pimenta Preta moída na hora</span> <span class="font-semibold">A gosto</span></span></label></li>`; },
                 steps: [
-                    { title: 'A Salmoura Rápida (Opcional, mas Revolucionário)', description: 'Numa taça, dissolva completamente o sal na água fria. Mergulhe os peitos de frango, garantindo que estão totalmente submersos. Deixe repousar por 15 a 30 minutos na bancada.', porque: 'A salmoura (brine) é uma solução de sal que, por osmose, ajuda as fibras da carne a absorver e reter mais humidade. Isto resulta num frango que se mantém húmido e bem temperado por dentro mesmo após o cozimento em alta temperatura.', pontoCritico: 'Não ultrapasse os 30 minutos, ou o frango pode ficar salgado demais. É crucial secar muito bem a superfície do frango após a salmoura para garantir que ele doure (reação de Maillard) em vez de cozinhar a vapor.', timer: 900 },
+                    { title: `A <span class="tooltip" data-tooltip="Solução de água e sal que hidrata e tempera a carne por dentro.">Salmoura</span> Rápida (Opcional, mas Revolucionário)`, description: 'Numa taça, dissolva completamente o sal na água fria. Mergulhe os peitos de frango, garantindo que estão totalmente submersos. Deixe repousar por 15 a 30 minutos na bancada.', porque: 'A salmoura (brine) é uma solução de sal que, por osmose, ajuda as fibras da carne a absorver e reter mais humidade. Isto resulta num frango que se mantém húmido e bem temperado por dentro mesmo após o cozimento em alta temperatura.', pontoCritico: 'Não ultrapasse os 30 minutos, ou o frango pode ficar salgado demais. É crucial secar muito bem a superfície do frango após a salmoura para garantir que ele doure (reação de Maillard) em vez de cozinhar a vapor.', timer: 900 },
                     { title: 'Preparação e Temperos', description: 'Retire o frango da salmoura e seque-o meticulosamente com papel toalha em todos os lados. Regue com azeite e tempere generosamente com pimenta preta. Se não fez a salmoura, tempere agora também com sal.', porque: 'Uma superfície seca é essencial para a Reação de Maillard, que cria a crosta dourada e saborosa. O azeite ajuda a conduzir o calor uniformemente e evita que o frango cole na frigideira.', pontoCritico: 'Seque, seque e seque mais um pouco! Qualquer humidade na superfície irá gerar vapor e impedir a formação da crosta desejada.' },
                     { title: 'Grelhar com Precisão', description: 'Aqueça uma frigideira de fundo grosso em lume médio-alto até ficar bem quente. Coloque o peito de frango e não o mova por 5-7 minutos. Vire e cozinhe por mais 5-7 minutos do outro lado, ou até um termómetro interno marcar 72°C.', porque: 'O lume alto cria a crosta rapidamente, selando os sucos no interior. Não mover o frango permite que a crosta se forme de maneira uniforme. Cozinhar até a temperatura correta evita que o frango fique cru ou seco.', pontoCritico: 'Resista à tentação de virar o frango a toda a hora. A temperatura interna continuará a subir alguns graus durante o descanso, por isso retirá-lo aos 72°C é o ideal para que atinja os 74°C (ponto seguro) sem passar do ponto.', timer: 360 },
                     { title: 'O Descanso Essencial', description: 'Retire o frango da frigideira para uma tábua de corte e deixe-o descansar por pelo menos 5 minutos antes de fatiar.', porque: 'Durante o cozimento, os sucos da carne concentram-se no centro. O descanso permite que esses sucos se redistribuam por todo o peito, garantindo que cada fatia seja húmida e saborosa.', pontoCritico: 'Se cortar o frango imediatamente, todos os sucos valiosos escorrerão para a tábua, resultando numa carne seca e sem graça. Não salte este passo!', timer: 300 }
                 ],
                 variacoes: [ "<strong>Ervas e Especiarias:</strong> Adicione alho em pó, páprica fumada, orégãos secos ou pimenta caiena aos temperos para variar o sabor.", "<strong>Marinada Cítrica:</strong> Em vez da salmoura, marine o frango por 30 minutos numa mistura de azeite, sumo de limão, alho picado e salsa.", "<strong>Finalização com Manteiga:</strong> No último minuto na frigideira, adicione uma colher de manteiga, um dente de alho esmagado e um ramo de tomilho. Incline a frigideira e regue o frango com a manteiga espumante." ]
             },
-            // AULA 02
             'frango-assado': {
                 title: "Aula 02: Frango Assado Inteiro",
                 description: "O frango assado é o prato de conforto por excelência. Nesta aula, vamos desmistificar o processo para você conseguir um frango com pele estaladiça, carne suculenta e um sabor incrível que irá impressionar toda a família.",
@@ -103,13 +176,13 @@
                 details: { tempoPreparo: "20 min (+ tempo de salga a seco)", tempoCozimento: "~1h 20min por 1.5kg", tempoDescanso: "15 min", rendimento: "4-6 porções", dificuldade: "Intermediário", utensilios: ["Assadeira", "Barbante de cozinha", "Papel toalha", "Pincel de cozinha"] },
                 dicaDeMestre: "Para um sabor ainda mais profundo, prepare uma manteiga composta: amasse manteiga amolecida com alho picado, raspas de limão, salsa, tomilho e alecrim. Com cuidado, solte a pele do peito do frango e espalhe esta manteiga por baixo da pele antes de assar.",
                 getIngredients: function(val) { const kg = parseFloat(val) || 1.5; return `
-                        <li class="flex justify-between items-center"><span>Frango Inteiro</span> <span class="font-semibold">${kg.toFixed(1)} kg</span></li>
-                        <li class="flex justify-between items-center"><span>Sal Grosso</span> <span class="font-semibold">${(kg * 1.5).toFixed(1)} colher(es) de sopa</span></li>
-                        <li class="flex justify-between items-center"><span>Pimenta Preta moída</span> <span class="font-semibold">A gosto</span></li>
-                        <li class="flex justify-between items-center"><span>Azeite ou Manteiga derretida</span> <span class="font-semibold">${(kg * 2).toFixed(0)} colher(es) de sopa</span></li>
-                        <li class="flex justify-between items-center"><span>Limão Siciliano</span> <span class="font-semibold">${Math.ceil(kg / 1.5)} unid.</span></li>
-                        <li class="flex justify-between items-center"><span>Cabeça de Alho</span> <span class="font-semibold">${Math.ceil(kg / 2)} unid.</span></li>
-                        <li class="flex justify-between items-center"><span>Ervas Frescas (tomilho, alecrim)</span> <span class="font-semibold">Alguns ramos</span></li>`; },
+                        <li class="ingredient-item"><label class="flex items-center"><input type="checkbox" class="mr-2"><span class="flex-1 flex justify-between"><span>Frango Inteiro</span> <span class="font-semibold">${kg.toFixed(1)} kg</span></span></label></li>
+                        <li class="ingredient-item"><label class="flex items-center"><input type="checkbox" class="mr-2"><span class="flex-1 flex justify-between"><span>Sal Grosso</span> <span class="font-semibold">${(kg * 1.5).toFixed(1)} colher(es) de sopa</span></span></label></li>
+                        <li class="ingredient-item"><label class="flex items-center"><input type="checkbox" class="mr-2"><span class="flex-1 flex justify-between"><span>Pimenta Preta moída</span> <span class="font-semibold">A gosto</span></span></label></li>
+                        <li class="ingredient-item"><label class="flex items-center"><input type="checkbox" class="mr-2"><span class="flex-1 flex justify-between"><span>Azeite ou Manteiga derretida</span> <span class="font-semibold">${(kg * 2).toFixed(0)} colher(es) de sopa</span></span></label></li>
+                        <li class="ingredient-item"><label class="flex items-center"><input type="checkbox" class="mr-2"><span class="flex-1 flex justify-between"><span>Limão Siciliano</span> <span class="font-semibold">${Math.ceil(kg / 1.5)} unid.</span></span></label></li>
+                        <li class="ingredient-item"><label class="flex items-center"><input type="checkbox" class="mr-2"><span class="flex-1 flex justify-between"><span>Cabeça de Alho</span> <span class="font-semibold">${Math.ceil(kg / 2)} unid.</span></span></label></li>
+                        <li class="ingredient-item"><label class="flex items-center"><input type="checkbox" class="mr-2"><span class="flex-1 flex justify-between"><span>Ervas Frescas (tomilho, alecrim)</span> <span class="font-semibold">Alguns ramos</span></span></label></li>`; },
                 steps: [
                     { title: 'A Preparação (Salga a Seco)', description: 'Retire os miúdos de dentro do frango. Seque a ave por completo, por dentro e por fora, com papel toalha. Tempere generosamente toda a superfície e a cavidade com sal e pimenta. Se tiver tempo, deixe o frango descoberto no frigorífico por pelo menos 1 hora (ou até 24 horas).', porque: 'A salga a seco (dry brine) atua como a salmoura, temperando a carne profundamente. Deixar o frango descoberto no frio desidrata a pele, o que é o segredo número um para uma pele ultra crocante após assar.', pontoCritico: 'Não lave o frango! Isso espalha bactérias pela cozinha e adiciona humidade, que é inimiga da pele crocante. A secagem com papel toalha é fundamental.' },
                     { title: 'Amarrar e Aromatizar', description: 'Pré-aqueça o forno a 200°C. Corte o limão e a cabeça de alho ao meio e coloque-os dentro da cavidade do frango, juntamente com os ramos de ervas. Cruzes as pernas do frango e amarre-as com barbante de cozinha. Dobre as pontas das asas para baixo do corpo.', porque: 'Amarrar o frango (trussing) garante que ele cozinhe de forma mais uniforme, evitando que as pernas e asas cozinhem rápido demais. Os aromáticos na cavidade libertam vapor saboroso que perfuma a carne de dentro para fora.', pontoCritico: 'Não encha demasiado a cavidade, pois o ar quente precisa de circular. Amarrar firmemente é importante para a forma final do frango.' },
@@ -118,31 +191,29 @@
                 ],
                 variacoes: [ "<strong>Cama de Legumes:</strong> Asse o frango sobre uma cama de batatas, cenouras, cebolas e alho. Os legumes cozinharão nos sucos do frango, criando um acompanhamento delicioso.", "<strong>Frango à Cerveja:</strong> Em vez dos aromáticos na cavidade, coloque uma lata de cerveja (meio cheia) no interior do frango e asse-o 'sentado' na lata. A cerveja evapora e deixa a carne incrivelmente húmida.", "<strong>Especiarias do Mundo:</strong> Experimente esfregar o frango com páprica fumada e cominhos para um toque espanhol, ou com açafrão, gengibre e canela para um sabor marroquino." ]
             },
-            // AULA 03
             strogonoff: {
                 title: "Aula 03: Strogonoff de Frango Clássico",
                 description: "Esqueça os strogonoffs sem graça. Nesta aula, você aprenderá a fazer a versão clássica, cremosa e cheia de sabor, com frango dourado e cogumelos frescos, finalizado de uma forma que garante a máxima cremosidade.",
                 calculatorLabel: "Gramas de Frango:",
                 calculatorUnit: "strogonoff-input",
                 details: { tempoPreparo: "15 min", tempoCozimento: "20 min", tempoDescanso: "N/A", rendimento: "Serve 4 pessoas (com 500g)", dificuldade: "Fácil", utensilios: ["Frigideira larga", "Tábua de corte", "Faca afiada"] },
-                dicaDeMestre: "Para um toque de requinte, deglaceie a frigideira com um cálice de conhaque ou brandy depois de refogar os cogumelos e antes de voltar com o frango. Deixe o álcool evaporar completamente. Isso adiciona uma camada incrível de sabor ao molho.",
+                dicaDeMestre: `Para um toque de requinte, <span class="tooltip" data-tooltip="Adicionar um líquido (vinho, conhaque, caldo) a uma panela quente para soltar os pedaços de comida caramelizados do fundo, incorporando-os ao molho.">deglaceie</span> a frigideira com um cálice de conhaque ou brandy depois de refogar os cogumelos e antes de voltar com o frango. Deixe o álcool evaporar completamente. Isso adiciona uma camada incrível de sabor ao molho.`,
                 getIngredients: function(val) { const g = parseInt(val) || 500; return `
-                        <li class="flex justify-between items-center"><span>Peito de Frango em cubos</span> <span class="font-semibold">${g} g</span></li>
-                        <li class="flex justify-between items-center"><span>Cogumelos Paris frescos</span> <span class="font-semibold">${(g * 0.4).toFixed(0)} g</span></li>
-                        <li class="flex justify-between items-center"><span>Cebola picada</span> <span class="font-semibold">${Math.ceil(g / 500)} unid.</span></li>
-                        <li class="flex justify-between items-center"><span>Alho picado</span> <span class="font-semibold">${Math.ceil(g / 250)} dente(s)</span></li>
-                        <li class="flex justify-between items-center"><span>Ketchup de boa qualidade</span> <span class="font-semibold">${(g / 500 * 3).toFixed(0)} c. de sopa</span></li>
-                        <li class="flex justify-between items-center"><span>Mostarda Dijon</span> <span class="font-semibold">${(g / 500 * 1).toFixed(0)} c. de sopa</span></li>
-                        <li class="flex justify-between items-center"><span>Natas (Creme de Leite) frescas</span> <span class="font-semibold">${(g * 0.4).toFixed(0)} ml</span></li>
-                        <li class="flex justify-between items-center"><span>Azeite, Sal, Pimenta</span> <span class="font-semibold">A gosto</span></li>`; },
+                        <li class="ingredient-item"><label class="flex items-center"><input type="checkbox" class="mr-2"><span class="flex-1 flex justify-between"><span>Peito de Frango em cubos</span> <span class="font-semibold">${g} g</span></span></label></li>
+                        <li class="ingredient-item"><label class="flex items-center"><input type="checkbox" class="mr-2"><span class="flex-1 flex justify-between"><span>Cogumelos Paris frescos</span> <span class="font-semibold">${(g * 0.4).toFixed(0)} g</span></span></label></li>
+                        <li class="ingredient-item"><label class="flex items-center"><input type="checkbox" class="mr-2"><span class="flex-1 flex justify-between"><span>Cebola picada</span> <span class="font-semibold">${Math.ceil(g / 500)} unid.</span></span></label></li>
+                        <li class="ingredient-item"><label class="flex items-center"><input type="checkbox" class="mr-2"><span class="flex-1 flex justify-between"><span>Alho picado</span> <span class="font-semibold">${Math.ceil(g / 250)} dente(s)</span></span></label></li>
+                        <li class="ingredient-item"><label class="flex items-center"><input type="checkbox" class="mr-2"><span class="flex-1 flex justify-between"><span>Ketchup de boa qualidade</span> <span class="font-semibold">${(g / 500 * 3).toFixed(0)} c. de sopa</span></span></label></li>
+                        <li class="ingredient-item"><label class="flex items-center"><input type="checkbox" class="mr-2"><span class="flex-1 flex justify-between"><span>Mostarda Dijon</span> <span class="font-semibold">${(g / 500 * 1).toFixed(0)} c. de sopa</span></span></label></li>
+                        <li class="ingredient-item"><label class="flex items-center"><input type="checkbox" class="mr-2"><span class="flex-1 flex justify-between"><span>Natas (Creme de Leite) frescas</span> <span class="font-semibold">${(g * 0.4).toFixed(0)} ml</span></span></label></li>
+                        <li class="ingredient-item"><label class="flex items-center"><input type="checkbox" class="mr-2"><span class="flex-1 flex justify-between"><span>Azeite, Sal, Pimenta</span> <span class="font-semibold">A gosto</span></span></label></li>`; },
                 steps: [
-                    { title: 'Dourar o Frango', description: 'Tempere os cubos de frango com sal e pimenta. Aqueça um fio de azeite numa frigideira larga em lume médio-alto. Doure o frango em lotes, sem amontoar, até que todos os lados estejam bem dourados. Retire e reserve.', porque: 'Dourar o frango em lotes (Reação de Maillard) cria uma crosta saborosa e deixa 'fond' (pequenos pedaços caramelizados) na frigideira, que é a base de sabor do nosso molho. Amontoar o frango faria com que ele cozinhasse no próprio vapor, ficando pálido e borrachudo.', pontoCritico: 'Não sobrecarregue a frigideira! É o erro mais comum. A paciência de dourar em 2 ou 3 lotes é recompensada com um sabor muito superior.' },
-                    { title: 'Construir o Molho', description: 'Na mesma frigideira, adicione mais um pouco de azeite se necessário. Refogue a cebola até ficar translúcida. Adicione o alho e os cogumelos fatiados e cozinhe até os cogumelos libertarem a sua água e começarem a dourar. Adicione o ketchup e a mostarda e cozinhe por 1 minuto, mexendo.', porque: 'Cozinhar os aromáticos e os cogumelos na gordura e no 'fond' do frango constrói camadas de sabor. Cozinhar o ketchup e a mostarda por um minuto concentra o seu sabor e remove a acidez crua.', pontoCritico: 'Não adicione os cogumelos com a cebola. Deixe a cebola amaciar primeiro, depois adicione os cogumelos. Se os cogumelos ficarem apertados, cozinhe-os em lotes também.' },
+                    { title: 'Dourar o Frango', description: 'Tempere os cubos de frango com sal e pimenta. Aqueça um fio de azeite numa frigideira larga em lume médio-alto. Doure o frango em lotes, sem amontoar, até que todos os lados estejam bem dourados. Retire e reserve.', porque: 'Dourar o frango em lotes (Reação de Maillard) cria uma crosta saborosa e deixa \'fond\' (pequenos pedaços caramelizados) na frigideira, que é a base de sabor do nosso molho. Amontoar o frango faria com que ele cozinhasse no próprio vapor, ficando pálido e borrachudo.', pontoCritico: 'Não sobrecarregue a frigideira! É o erro mais comum. A paciência de dourar em 2 ou 3 lotes é recompensada com um sabor muito superior.' },
+                    { title: 'Construir o Molho', description: 'Na mesma frigideira, adicione mais um pouco de azeite se necessário. Refogue a cebola até ficar translúcida. Adicione o alho e os cogumelos fatiados e cozinhe até os cogumelos libertarem a sua água e começarem a dourar. Adicione o ketchup e a mostarda e cozinhe por 1 minuto, mexendo.', porque: 'Cozinhar os aromáticos e os cogumelos na gordura e no \'fond\' do frango constrói camadas de sabor. Cozinhar o ketchup e a mostarda por um minuto concentra o seu sabor e remove a acidez crua.', pontoCritico: 'Não adicione os cogumelos com a cebola. Deixe a cebola amaciar primeiro, depois adicione os cogumelos. Se os cogumelos ficarem apertados, cozinhe-os em lotes também.' },
                     { title: 'A Finalização Cremosa', description: 'Volte com o frango (e quaisquer sucos acumulados) para a frigideira. Envolva tudo no molho. Desligue o lume. Espere 30 segundos e só então adicione as natas (creme de leite). Misture suavemente para incorporar. Prove e ajuste o sal e a pimenta.', porque: 'Adicionar as natas com o lume desligado é o segredo para evitar que o molho talhe (separe). O calor residual da panela é suficiente para aquecer as natas sem fervê-las.', pontoCritico: 'JAMAIS deixe o strogonoff ferver depois de adicionar as natas. Isso irá estragar a textura aveludada do molho. Sirva imediatamente.' }
                 ],
                 variacoes: [ "<strong>Strogonoff de Carne:</strong> Substitua o frango por tiras de filé mignon ou alcatra.", "<strong>Cogumelos Variados:</strong> Use um mix de cogumelos como shitake e portobello para um sabor mais complexo.", "<strong>Acompanhamento Clássico:</strong> Sirva com arroz branco e batata palha fininha e crocante." ]
             },
-             // AULA 04
             'coxas-assadas': {
                 title: "Aula 04: Coxas de Frango Assadas com Batatas",
                 description: "A refeição de tabuleiro definitiva. Prática, deliciosa e com o mínimo de louça para lavar. Aprenda a técnica para obter coxas de frango com pele crocante e batatas douradas e macias, tudo na mesma assadeira.",
@@ -151,13 +222,13 @@
                 details: { tempoPreparo: "15 min", tempoCozimento: "45-55 min", tempoDescanso: "5 min", rendimento: "1 coxa por pessoa", dificuldade: "Fácil", utensilios: ["Tabuleiro grande", "Tigela grande", "Papel toalha"] },
                 dicaDeMestre: "Para batatas ainda mais crocantes, faça uma pré-cozedura. Ferva as batatas cortadas em água com sal por 7-10 minutos. Escorra bem e agite-as no escorredor para 'arrepiar' as bordas. Essas bordas ficarão incrivelmente crocantes no forno.",
                 getIngredients: function(val) { const qty = parseInt(val) || 4; return `
-                        <li class="flex justify-between items-center"><span>Coxas de Frango (com pele e osso)</span> <span class="font-semibold">${qty} unid.</span></li>
-                        <li class="flex justify-between items-center"><span>Batatas para assar</span> <span class="font-semibold">${qty * 2} unid.</span></li>
-                        <li class="flex justify-between items-center"><span>Azeite</span> <span class="font-semibold">${(qty * 0.75).toFixed(0)} c. de sopa</span></li>
-                        <li class="flex justify-between items-center"><span>Páprica Doce (ou Defumada)</span> <span class="font-semibold">${(qty * 0.5).toFixed(1)} c. de chá</span></li>
-                        <li class="flex justify-between items-center"><span>Alho em pó</span> <span class="font-semibold">${(qty * 0.5).toFixed(1)} c. de chá</span></li>
-                        <li class="flex justify-between items-center"><span>Sal e Pimenta Preta</span> <span class="font-semibold">A gosto</span></li>
-                        <li class="flex justify-between items-center"><span>Ramos de Alecrim ou Tomilho</span> <span class="font-semibold">${Math.ceil(qty / 2)} unid.</span></li>`; },
+                        <li class="ingredient-item"><label class="flex items-center"><input type="checkbox" class="mr-2"><span class="flex-1 flex justify-between"><span>Coxas de Frango (com pele e osso)</span> <span class="font-semibold">${qty} unid.</span></span></label></li>
+                        <li class="ingredient-item"><label class="flex items-center"><input type="checkbox" class="mr-2"><span class="flex-1 flex justify-between"><span>Batatas para assar</span> <span class="font-semibold">${qty * 2} unid.</span></span></label></li>
+                        <li class="ingredient-item"><label class="flex items-center"><input type="checkbox" class="mr-2"><span class="flex-1 flex justify-between"><span>Azeite</span> <span class="font-semibold">${(qty * 0.75).toFixed(0)} c. de sopa</span></span></label></li>
+                        <li class="ingredient-item"><label class="flex items-center"><input type="checkbox" class="mr-2"><span class="flex-1 flex justify-between"><span>Páprica Doce (ou Defumada)</span> <span class="font-semibold">${(qty * 0.5).toFixed(1)} c. de chá</span></span></label></li>
+                        <li class="ingredient-item"><label class="flex items-center"><input type="checkbox" class="mr-2"><span class="flex-1 flex justify-between"><span>Alho em pó</span> <span class="font-semibold">${(qty * 0.5).toFixed(1)} c. de chá</span></span></label></li>
+                        <li class="ingredient-item"><label class="flex items-center"><input type="checkbox" class="mr-2"><span class="flex-1 flex justify-between"><span>Sal e Pimenta Preta</span> <span class="font-semibold">A gosto</span></span></label></li>
+                        <li class="ingredient-item"><label class="flex items-center"><input type="checkbox" class="mr-2"><span class="flex-1 flex justify-between"><span>Ramos de Alecrim ou Tomilho</span> <span class="font-semibold">${Math.ceil(qty / 2)} unid.</span></span></label></li>`; },
                 steps: [
                     { title: 'Preparar o Tabuleiro', description: 'Pré-aqueça o forno a 200°C. Seque muito bem as coxas de frango com papel toalha. Descasque as batatas e corte-as em pedaços de tamanho uniforme (cerca de 3-4 cm).', porque: 'Pele de frango seca é sinónimo de pele crocante. Batatas de tamanho uniforme garantem que todas cozinhem ao mesmo tempo.', pontoCritico: 'Não pule a secagem do frango, é o passo mais importante para a textura da pele. Se as batatas forem muito grandes, demorarão mais a cozinhar que o frango.' },
                     { title: 'Temperar Generosamente', description: 'Numa tigela grande, junte as coxas de frango e as batatas. Regue com azeite e polvilhe com sal, pimenta, páprica e alho em pó. Use as mãos para misturar tudo muito bem, garantindo que cada peça esteja uniformemente coberta.', porque: 'Temperar tudo junto na tigela garante uma cobertura de temperos e gordura muito mais eficaz do que tentar temperar já no tabuleiro.', pontoCritico: 'Seja generoso com o tempero, especialmente o sal. Batatas absorvem muito sal.' },
@@ -165,36 +236,34 @@
                 ],
                 variacoes: ["<strong>Outros Vegetais:</strong> Adicione pedaços de cenoura, cebola roxa ou pimentão ao tabuleiro nos últimos 20 minutos.", "<strong>Toque Cítrico:</strong> Esprema o sumo de meio limão sobre tudo antes de levar ao forno.", "<strong>Versão Picante:</strong> Adicione uma colher de chá de pimenta caiena ou flocos de pimenta seca à mistura de temperos."]
             },
-            // AULA 05
             'frango-xadrez': {
                 title: "Aula 05: Frango Xadrez",
                 description: "Aprenda a fazer em casa este ícone da cozinha sino-americana, com pedaços de frango macios, vegetais crocantes e um molho agridoce e salgado na medida certa. O segredo está na preparação (mise en place) e na alta temperatura.",
                 calculatorLabel: "Gramas de Frango:",
                 calculatorUnit: "frango-xadrez-input",
                 details: { tempoPreparo: "25 min", tempoCozimento: "10-15 min", tempoDescanso: "N/A", rendimento: "Serve 3-4 pessoas (com 500g)", dificuldade: "Intermediário", utensilios: ["Wok ou frigideira grande", "Tigelas para mise en place", "Faca afiada"] },
-                dicaDeMestre: "O segredo do sucesso de qualquer stir-fry é o 'mise en place'. Tenha TODOS os ingredientes cortados, os molhos medidos e tudo ao lado do fogão ANTES de ligar o lume. O processo de cozimento é tão rápido que não há tempo para cortar nada a meio.",
+                dicaDeMestre: `O segredo do sucesso de qualquer stir-fry é o '<span class="tooltip" data-tooltip="Termo francês que significa 'tudo no seu lugar'. É o processo de preparar e organizar todos os ingredientes antes de começar a cozinhar.">mise en place</span>'. Tenha TODOS os ingredientes cortados, os molhos medidos e tudo ao lado do fogão ANTES de ligar o lume. O processo de cozimento é tão rápido que não há tempo para cortar nada a meio.`,
                 getIngredients: function(val) { const g = parseInt(val) || 500; return `
                         <h5 class="font-bold text-stone-700 mt-3 mb-1">Para o Frango:</h5>
-                        <li class="flex justify-between items-center"><span>Peito de Frango em cubos (2cm)</span> <span class="font-semibold">${g} g</span></li>
-                        <li class="flex justify-between items-center"><span>Molho de Soja (Shoyu)</span> <span class="font-semibold">${(g/500*1).toFixed(0)} c. de sopa</span></li>
-                        <li class="flex justify-between items-center"><span>Amido de Milho</span> <span class="font-semibold">${(g/500*1).toFixed(0)} c. de sopa</span></li>
+                        <li class="ingredient-item"><label class="flex items-center"><input type="checkbox" class="mr-2"><span class="flex-1 flex justify-between"><span>Peito de Frango em cubos (2cm)</span> <span class="font-semibold">${g} g</span></span></label></li>
+                        <li class="ingredient-item"><label class="flex items-center"><input type="checkbox" class="mr-2"><span class="flex-1 flex justify-between"><span>Molho de Soja (Shoyu)</span> <span class="font-semibold">${(g/500*1).toFixed(0)} c. de sopa</span></span></label></li>
+                        <li class="ingredient-item"><label class="flex items-center"><input type="checkbox" class="mr-2"><span class="flex-1 flex justify-between"><span>Amido de Milho</span> <span class="font-semibold">${(g/500*1).toFixed(0)} c. de sopa</span></span></label></li>
                         <h5 class="font-bold text-stone-700 mt-3 mb-1">Para o Molho:</h5>
-                        <li class="flex justify-between items-center"><span>Molho de Soja (Shoyu)</span> <span class="font-semibold">${(g/500*4).toFixed(0)} c. de sopa</span></li>
-                        <li class="flex justify-between items-center"><span>Óleo de Gergelim Torrado</span> <span class="font-semibold">${(g/500*1).toFixed(0)} c. de chá</span></li>
-                        <li class="flex justify-between items-center"><span>Vinagre de Arroz</span> <span class="font-semibold">${(g/500*1).toFixed(0)} c. de sopa</span></li>
-                        <li class="flex justify-between items-center"><span>Açúcar</span> <span class="font-semibold">${(g/500*1).toFixed(0)} c. de chá</span></li>
+                        <li class="ingredient-item"><label class="flex items-center"><input type="checkbox" class="mr-2"><span class="flex-1 flex justify-between"><span>Molho de Soja (Shoyu)</span> <span class="font-semibold">${(g/500*4).toFixed(0)} c. de sopa</span></span></label></li>
+                        <li class="ingredient-item"><label class="flex items-center"><input type="checkbox" class="mr-2"><span class="flex-1 flex justify-between"><span>Óleo de Gergelim Torrado</span> <span class="font-semibold">${(g/500*1).toFixed(0)} c. de chá</span></span></label></li>
+                        <li class="ingredient-item"><label class="flex items-center"><input type="checkbox" class="mr-2"><span class="flex-1 flex justify-between"><span>Vinagre de Arroz</span> <span class="font-semibold">${(g/500*1).toFixed(0)} c. de sopa</span></span></label></li>
+                        <li class="ingredient-item"><label class="flex items-center"><input type="checkbox" class="mr-2"><span class="flex-1 flex justify-between"><span>Açúcar</span> <span class="font-semibold">${(g/500*1).toFixed(0)} c. de chá</span></span></label></li>
                         <h5 class="font-bold text-stone-700 mt-3 mb-1">Para o Stir-Fry:</h5>
-                        <li class="flex justify-between items-center"><span>Pimentões (cores variadas)</span> <span class="font-semibold">${Math.ceil(g/250)} unid.</span></li>
-                        <li class="flex justify-between items-center"><span>Cebola</span> <span class="font-semibold">${Math.ceil(g/500)} unid.</span></li>
-                        <li class="flex justify-between items-center"><span>Amendoim torrado sem sal</span> <span class="font-semibold">A gosto</span></li>`; },
+                        <li class="ingredient-item"><label class="flex items-center"><input type="checkbox" class="mr-2"><span class="flex-1 flex justify-between"><span>Pimentões (cores variadas)</span> <span class="font-semibold">${Math.ceil(g/250)} unid.</span></span></label></li>
+                        <li class="ingredient-item"><label class="flex items-center"><input type="checkbox" class="mr-2"><span class="flex-1 flex justify-between"><span>Cebola</span> <span class="font-semibold">${Math.ceil(g/500)} unid.</span></span></label></li>
+                        <li class="ingredient-item"><label class="flex items-center"><input type="checkbox" class="mr-2"><span class="flex-1 flex justify-between"><span>Amendoim torrado sem sal</span> <span class="font-semibold">A gosto</span></span></label></li>`; },
                 steps: [
-                    { title: 'Marinar o Frango (Velveting)', description: 'Numa tigela, misture os cubos de frango com 1 colher de sopa de shoyu e 1 colher de sopa de amido de milho. Envolva bem e reserve enquanto prepara os outros ingredientes.', porque: 'Esta técnica chinesa chamada 'velveting' (aveludar) cria uma fina camada protetora no frango. O amido de milho protege a carne do calor intenso, mantendo-a incrivelmente macia e suculenta por dentro.', pontoCritico: 'Certifique-se de que cada pedaço de frango está levemente coberto pela mistura; não deve haver excesso de líquido.' },
+                    { title: `Marinar o Frango (<span class="tooltip" data-tooltip="Técnica chinesa de marinar a carne (geralmente com amido de milho e clara de ovo) para criar uma camada protetora que a mantém macia e suculenta durante o cozimento em alta temperatura.">Velveting</span>)`, description: 'Numa tigela, misture os cubos de frango com 1 colher de sopa de shoyu e 1 colher de sopa de amido de milho. Envolva bem e reserve enquanto prepara os outros ingredientes.', porque: 'Esta técnica chinesa chamada \'velveting\' (aveludar) cria uma fina camada protetora no frango. O amido de milho protege a carne do calor intenso, mantendo-a incrivelmente macia e suculenta por dentro.', pontoCritico: 'Certifique-se de que cada pedaço de frango está levemente coberto pela mistura; não deve haver excesso de líquido.' },
                     { title: 'Saltear em Alta Temperatura', description: 'Aqueça um wok ou frigideira grande em lume alto com um fio de óleo vegetal. Adicione o frango e espalhe-o numa camada única. Deixe dourar por 1-2 minutos sem mexer, depois salteie até estar cozido. Retire da frigideira e reserve. Na mesma frigideira, salteie a cebola e os pimentões cortados em quadrados por 2-3 minutos.', porque: 'O calor alto é essencial para um stir-fry. Ele cozinha os ingredientes rapidamente, mantendo os vegetais crocantes e o frango com uma textura selada por fora.', pontoCritico: 'Não tenha medo do lume alto! A frigideira deve estar a fumegar levemente quando adiciona o óleo. Cozinhe o frango e os vegetais separadamente para manter a temperatura elevada.' },
                     { title: 'Juntar Tudo no Molho', description: 'Volte com o frango para a frigideira junto com os vegetais. Despeje a mistura do molho sobre tudo e cozinhe por 1-2 minutos, mexendo sempre, até o molho engrossar e cobrir todos os ingredientes. Desligue o lume, misture o amendoim e sirva imediatamente.', porque: 'O molho é adicionado no final para não queimar os seus componentes (como o açúcar e o óleo de gergelim) e para apenas engrossar o suficiente para cobrir os ingredientes, sem ficar pesado.', pontoCritico: 'O molho vai engrossar rapidamente devido ao amido de milho da marinada do frango. Esteja pronto para servir assim que atingir a consistência desejada.' }
                 ],
                 variacoes: ["<strong>Adicionar Gengibre e Alho:</strong> Refogue 1 colher de chá de gengibre e alho picados antes de adicionar os pimentões.", "<strong>Outros Vegetais:</strong> Brócolos, cogumelos ou broto de bambu são excelentes adições.", "<strong>Nível de Picante:</strong> Adicione pimenta dedo-de-moça picada ou flocos de pimenta seca junto com os vegetais para um toque picante."]
             },
-            // AULA 06
             'tirinhas-fritas': {
                 title: "Aula 06: Tirinhas de Frango Crocantes",
                 description: "Aprenda a fazer tirinhas de frango (tenders) com uma crosta dourada, super crocante e um interior suculento. O segredo está numa massa (polme) leve e na temperatura correta da fritura.",
@@ -203,14 +272,14 @@
                 details: { tempoPreparo: "15 min", tempoCozimento: "10-15 min", tempoDescanso: "N/A", rendimento: "Serve 2-3 pessoas (com 500g)", dificuldade: "Intermediário", utensilios: ["Panela funda ou fritadeira", "Escumadeira", "Grelha de metal para escorrer"] },
                 dicaDeMestre: "Para uma crocância extra e duradoura, experimente a técnica da dupla fritura. Frite as tirinhas uma primeira vez por 2-3 minutos até ficarem cozidas mas pálidas. Retire, deixe descansar por 5 minutos, aumente o lume e frite novamente por 1-2 minutos até ficarem bem douradas.",
                 getIngredients: function(val) { const g = parseInt(val) || 500; return `
-                        <li class="flex justify-between items-center"><span>Peito de Frango em tiras</span> <span class="font-semibold">${g} g</span></li>
+                        <li class="ingredient-item"><label class="flex items-center"><input type="checkbox" class="mr-2"><span class="flex-1 flex justify-between"><span>Peito de Frango em tiras</span> <span class="font-semibold">${g} g</span></span></label></li>
                         <h5 class="font-bold text-stone-700 mt-3 mb-1">Para a Massa (Polme):</h5>
-                        <li class="flex justify-between items-center"><span>Farinha de Trigo</span> <span class="font-semibold">${(g/500*1).toFixed(1)} chávena</span></li>
-                        <li class="flex justify-between items-center"><span>Amido de Milho</span> <span class="font-semibold">${(g/500*0.25).toFixed(2)} chávena</span></li>
-                        <li class="flex justify-between items-center"><span>Fermento em pó</span> <span class="font-semibold">1 c. de chá</span></li>
-                        <li class="flex justify-between items-center"><span>Sal e Páprica</span> <span class="font-semibold">1 c. de chá de cada</span></li>
-                        <li class="flex justify-between items-center"><span>Água com Gás BEM GELADA</span> <span class="font-semibold">~1.5 chávenas</span></li>
-                        <li class="flex justify-between items-center"><span>Óleo para fritar</span> <span class="font-semibold">~1 litro</span></li>`; },
+                        <li class="ingredient-item"><label class="flex items-center"><input type="checkbox" class="mr-2"><span class="flex-1 flex justify-between"><span>Farinha de Trigo</span> <span class="font-semibold">${(g/500*1).toFixed(1)} chávena</span></span></label></li>
+                        <li class="ingredient-item"><label class="flex items-center"><input type="checkbox" class="mr-2"><span class="flex-1 flex justify-between"><span>Amido de Milho</span> <span class="font-semibold">${(g/500*0.25).toFixed(2)} chávena</span></span></label></li>
+                        <li class="ingredient-item"><label class="flex items-center"><input type="checkbox" class="mr-2"><span class="flex-1 flex justify-between"><span>Fermento em pó</span> <span class="font-semibold">1 c. de chá</span></span></label></li>
+                        <li class="ingredient-item"><label class="flex items-center"><input type="checkbox" class="mr-2"><span class="flex-1 flex justify-between"><span>Sal e Páprica</span> <span class="font-semibold">1 c. de chá de cada</span></span></label></li>
+                        <li class="ingredient-item"><label class="flex items-center"><input type="checkbox" class="mr-2"><span class="flex-1 flex justify-between"><span>Água com Gás BEM GELADA</span> <span class="font-semibold">~1.5 chávenas</span></span></label></li>
+                        <li class="ingredient-item"><label class="flex items-center"><input type="checkbox" class="mr-2"><span class="flex-1 flex justify-between"><span>Óleo para fritar</span> <span class="font-semibold">~1 litro</span></span></label></li>`; },
                 steps: [
                     { title: 'A Massa Leve e Aerada', description: 'Numa tigela, misture os ingredientes secos da massa: farinha, amido de milho, fermento, sal e páprica. Pouco antes de fritar, despeje a água com gás gelada e misture com um garfo ou batedor de arame apenas até incorporar. Não misture demais!', porque: 'A água com gás gelada e o fermento criam bolhas de ar na massa, resultando numa crosta incrivelmente leve e crocante, similar à de tempura. Misturar pouco evita o desenvolvimento do glúten, o que manteria a massa leve em vez de pesada e massuda.', pontoCritico: 'A massa deve ter a consistência de massa de panqueca. Se estiver muito grossa, adicione mais um pouco de água com gás. Alguns grumos são bons, indicam que não foi misturada em excesso.' },
                     { title: 'Preparar para a Fritura', description: 'Seque bem as tiras de frango com papel toalha. Aqueça o óleo numa panela funda até atingir 180°C. Se não tiver termómetro, o óleo está pronto quando um palito de madeira imerso borbulhar vigorosamente.', porque: 'Aderência! A massa adere melhor ao frango seco. A temperatura correta do óleo é crucial: se estiver muito frio, a comida ficará encharcada; se estiver muito quente, queimará por fora antes de cozinhar por dentro.', pontoCritico: 'Segurança em primeiro lugar! Nunca encha a panela mais do que a metade com óleo para evitar transbordamentos.' },
@@ -218,7 +287,6 @@
                 ],
                 variacoes: ["<strong>Empanado Diferente:</strong> Para uma crosta mais rústica, passe o frango na farinha, depois num ovo batido, e por fim em farinha de pão (panko).", "<strong>Molhos para Mergulhar:</strong> Sirva com molho agridoce, barbecue, maionese de alho ou mostarda e mel.", "<strong>Sanduíche de Frango Frito:</strong> Coloque as tirinhas num pão brioche com picles e maionese picante."]
             },
-            // AULA 07
             kiev: {
                 title: "Aula 07: Frango à Kiev",
                 description: "Um clássico da culinária europeia que é pura indulgência. Aprenda a técnica para criar um peito de frango empanado e crocante que, ao ser cortado, revela um coração de manteiga de alho e ervas derretida. É um prato que impressiona!",
@@ -228,35 +296,34 @@
                 dicaDeMestre: "O segredo absoluto para evitar que a manteiga vaze é o duplo congelamento. Congele a manteiga de ervas primeiro e, depois de rechear e empanar o frango, leve-o novamente ao congelador por pelo menos 30 minutos. Isso solidifica tudo e dá à crosta tempo de cozinhar antes que a manteiga derreta completamente.",
                 getIngredients: function(val) { const qty = parseInt(val) || 2; return `
                         <h5 class="font-bold text-stone-700 mt-3 mb-1">Para a Manteiga de Ervas:</h5>
-                        <li class="flex justify-between items-center"><span>Manteiga sem sal, amolecida</span> <span class="font-semibold">${qty * 30} g</span></li>
-                        <li class="flex justify-between items-center"><span>Alho picado finamente</span> <span class="font-semibold">${qty} dente(s)</span></li>
-                        <li class="flex justify-between items-center"><span>Salsa fresca picada</span> <span class="font-semibold">${qty} c. de sopa</span></li>
+                        <li class="ingredient-item"><label class="flex items-center"><input type="checkbox" class="mr-2"><span class="flex-1 flex justify-between"><span>Manteiga sem sal, amolecida</span> <span class="font-semibold">${qty * 30} g</span></span></label></li>
+                        <li class="ingredient-item"><label class="flex items-center"><input type="checkbox" class="mr-2"><span class="flex-1 flex justify-between"><span>Alho picado finamente</span> <span class="font-semibold">${qty} dente(s)</span></span></label></li>
+                        <li class="ingredient-item"><label class="flex items-center"><input type="checkbox" class="mr-2"><span class="flex-1 flex justify-between"><span>Salsa fresca picada</span> <span class="font-semibold">${qty} c. de sopa</span></span></label></li>
                         <h5 class="font-bold text-stone-700 mt-3 mb-1">Para o Frango:</h5>
-                        <li class="flex justify-between items-center"><span>Peito de Frango grande</span> <span class="font-semibold">${qty} unid.</span></li>
-                        <li class="flex justify-between items-center"><span>Farinha, 1 Ovo, Pão Ralado (Panko)</span> <span class="font-semibold">Para empanar</span></li>
-                        <li class="flex justify-between items-center"><span>Óleo para fritar</span> <span class="font-semibold">~1 litro</span></li>`; },
+                        <li class="ingredient-item"><label class="flex items-center"><input type="checkbox" class="mr-2"><span class="flex-1 flex justify-between"><span>Peito de Frango grande</span> <span class="font-semibold">${qty} unid.</span></span></label></li>
+                        <li class="ingredient-item"><label class="flex items-center"><input type="checkbox" class="mr-2"><span class="flex-1 flex justify-between"><span>Farinha, 1 Ovo, Pão Ralado (Panko)</span> <span class="font-semibold">Para empanar</span></span></label></li>
+                        <li class="ingredient-item"><label class="flex items-center"><input type="checkbox" class="mr-2"><span class="flex-1 flex justify-between"><span>Óleo para fritar</span> <span class="font-semibold">~1 litro</span></span></label></li>`; },
                 steps: [
-                    { title: 'Preparar e Congelar a Manteiga', description: 'Numa tigela, misture a manteiga amolecida, o alho e a salsa. Tempere com uma pitada de sal. Divida a mistura em porções, forme pequenos cilindros ou 'logs', enrole em película aderente e leve ao congelador por pelo menos 30 minutos para ficar bem firme.', porque: 'A manteiga precisa estar congelada para ser inserida no frango sem se desfazer e, mais importante, para que ela demore mais tempo a derreter durante a fritura, evitando que vaze prematuramente.', pontoCritico: 'Certifique-se de que a manteiga está dura como uma pedra antes de a usar. Isso aumenta drasticamente a sua taxa de sucesso.' },
-                    { title: 'Rechear e Selar o Frango', description: 'Coloque um peito de frango entre duas folhas de película aderente e bata com um martelo de carne até ter uma espessura uniforme de cerca de 0.5 cm. Tempere com sal e pimenta. Coloque um cilindro de manteiga congelada no centro e enrole o frango firmemente à volta, dobrando as pontas para dentro para selar completamente.', porque: 'Bater o frango não só o amacia, mas cria uma 'tela' grande e uniforme para enrolar a manteiga. A selagem é o passo mais crítico para o sucesso do prato.', pontoCritico: 'Verifique se não há buracos ou aberturas. O frango deve envolver a manteiga por completo. Use palitos para prender, se necessário, mas lembre-se de os remover depois.' },
+                    { title: 'Preparar e Congelar a Manteiga', description: 'Numa tigela, misture a manteiga amolecida, o alho e a salsa. Tempere com uma pitada de sal. Divida a mistura em porções, forme pequenos cilindros ou \'logs\', enrole em película aderente e leve ao congelador por pelo menos 30 minutos para ficar bem firme.', porque: 'A manteiga precisa estar congelada para ser inserida no frango sem se desfazer e, mais importante, para que ela demore mais tempo a derreter durante a fritura, evitando que vaze prematuramente.', pontoCritico: 'Certifique-se de que a manteiga está dura como uma pedra antes de a usar. Isso aumenta drasticamente a sua taxa de sucesso.' },
+                    { title: 'Rechear e Selar o Frango', description: 'Coloque um peito de frango entre duas folhas de película aderente e bata com um martelo de carne até ter uma espessura uniforme de cerca de 0.5 cm. Tempere com sal e pimenta. Coloque um cilindro de manteiga congelada no centro e enrole o frango firmemente à volta, dobrando as pontas para dentro para selar completamente.', porque: 'Bater o frango não só o amacia, mas cria uma \'tela\' grande e uniforme para enrolar a manteiga. A selagem é o passo mais crítico para o sucesso do prato.', pontoCritico: 'Verifique se não há buracos ou aberturas. O frango deve envolver a manteiga por completo. Use palitos para prender, se necessário, mas lembre-se de os remover depois.' },
                     { title: 'Empanar e Congelar (Novamente)', description: 'Prepare três pratos: um com farinha, um com o ovo batido e um com pão ralado (panko). Passe cada rolo de frango selado primeiro na farinha, depois no ovo e por fim no pão ralado, cobrindo bem. Coloque os frangos empanados num prato e leve ao congelador por mais 30 minutos.', porque: 'A camada de pão ralado (panko é melhor por ser mais crocante) cria uma barreira protetora. O segundo congelamento solidifica o rolo inteiro, tornando-o mais estável para a fritura e dando mais tempo para a crosta dourar antes que a manteiga derreta.', pontoCritico: 'Não salte o segundo congelamento! É a sua apólice de seguro contra vazamentos.' },
                     { title: 'Fritar com Cuidado', description: 'Aqueça o óleo a 170°C. Frite os frangos à kiev, um ou dois de cada vez, por cerca de 5-7 minutos, virando ocasionalmente, até ficarem bem dourados. Se forem muito grandes, pode finalizar no forno pré-aquecido a 180°C por mais 5-10 minutos para garantir que o interior cozinha.', porque: 'Uma temperatura ligeiramente mais baixa que o normal (170°C em vez de 180°C) permite que o calor penetre e cozinhe o frango sem queimar o exterior muito rapidamente.', pontoCritico: 'Se vir a manteiga a começar a vazar no óleo, retire o frango imediatamente. Deixe descansar por 5 minutos antes de servir para os sucos se assentarem.' }
                 ],
                 variacoes: ["<strong>Ervas Diferentes:</strong> Use estragão ou cebolinho na manteiga para um sabor mais clássico.", "<strong>Queijo Extra:</strong> Adicione um pouco de queijo ralado (gruyère ou mozzarella) à mistura de manteiga.", "<strong>Versão Assada:</strong> Para uma opção mais saudável, asse em forno a 200°C por 20-25 minutos, mas a fritura é o método tradicional e mais saboroso."]
             },
-            // AULA 08
             asas: {
                 title: "Aula 08: Asas de Frango Crocantes (Forno/Air Fryer)",
                 description: "Descubra o segredo científico para obter as asas de frango mais crocantes da sua vida, sem usar uma fritadeira. A técnica é simples, usa um ingrediente surpresa e resulta numa pele estaladiça e viciante.",
                 calculatorLabel: "Quilos de Asas de Frango:",
                 calculatorUnit: "asas-input",
                 details: { tempoPreparo: "10 min (+ 1h de refrigeração)", tempoCozimento: "40-50 min", tempoDescanso: "5 min", rendimento: "Serve 3-4 pessoas (por kg)", dificuldade: "Fácil", utensilios: ["Grelha de metal", "Tabuleiro", "Tigela grande"] },
-                dicaDeMestre: "O ingrediente mágico é o fermento em pó (NÃO bicarbonato de sódio). O fermento é alcalino, o que aumenta o pH da pele do frango. Isso ajuda a quebrar as proteínas de forma mais eficiente e permite um dourado mais rápido e uma desidratação superior da pele, resultando numa crocância incomparável.",
+                dicaDeMestre: `O ingrediente mágico é o fermento em pó (NÃO bicarbonato de sódio). O fermento é alcalino, o que aumenta o pH da pele do frango. Isso ajuda a quebrar as proteínas de forma mais eficiente e permite um dourado mais rápido e uma desidratação superior da pele, resultando numa crocância incomparável.`,
                 getIngredients: function(val) { const kg = parseFloat(val) || 1; return `
-                        <li class="flex justify-between items-center"><span>Asas de Frango (secção da asa e coxinha)</span> <span class="font-semibold">${kg} kg</span></li>
-                        <li class="flex justify-between items-center"><span>Fermento em Pó</span> <span class="font-semibold">${kg.toFixed(1)} c. de sopa</span></li>
-                        <li class="flex justify-between items-center"><span>Sal</span> <span class="font-semibold">${(kg * 1.5).toFixed(1)} c. de chá</span></li>
-                        <li class="flex justify-between items-center"><span>Alho em pó e Páprica</span> <span class="font-semibold">${(kg * 1).toFixed(1)} c. de chá de cada</span></li>
-                        <li class="flex justify-between items-center"><span>Pimenta Preta</span> <span class="font-semibold">A gosto</span></li>`; },
+                        <li class="ingredient-item"><label class="flex items-center"><input type="checkbox" class="mr-2"><span class="flex-1 flex justify-between"><span>Asas de Frango (secção da asa e coxinha)</span> <span class="font-semibold">${kg} kg</span></span></label></li>
+                        <li class="ingredient-item"><label class="flex items-center"><input type="checkbox" class="mr-2"><span class="flex-1 flex justify-between"><span>Fermento em Pó</span> <span class="font-semibold">${kg.toFixed(1)} c. de sopa</span></span></label></li>
+                        <li class="ingredient-item"><label class="flex items-center"><input type="checkbox" class="mr-2"><span class="flex-1 flex justify-between"><span>Sal</span> <span class="font-semibold">${(kg * 1.5).toFixed(1)} c. de chá</span></span></label></li>
+                        <li class="ingredient-item"><label class="flex items-center"><input type="checkbox" class="mr-2"><span class="flex-1 flex justify-between"><span>Alho em pó e Páprica</span> <span class="font-semibold">${(kg * 1).toFixed(1)} c. de chá de cada</span></span></label></li>
+                        <li class="ingredient-item"><label class="flex items-center"><input type="checkbox" class="mr-2"><span class="flex-1 flex justify-between"><span>Pimenta Preta</span> <span class="font-semibold">A gosto</span></span></label></li>`; },
                 steps: [
                     { title: 'A Secagem é Fundamental', description: 'Seque cada asa de frango meticulosamente com papel toalha. Quanto mais seca a pele, mais crocante o resultado final. Coloque as asas secas numa tigela grande.', porque: 'A humidade é a inimiga número um da crocância. A energia do forno primeiro teria que evaporar a água antes de começar a dourar a pele. Começar com a pele seca acelera drasticamente o processo.', pontoCritico: 'Não seja tímido com o papel toalha. Gaste o tempo necessário para secar cada uma delas. Este passo simples faz uma diferença enorme.' },
                     { title: 'O Tempero Científico', description: 'Numa pequena tigela, misture o fermento em pó, o sal, o alho em pó, a páprica e a pimenta. Polvilhe esta mistura sobre as asas secas e use as mãos para garantir que cada asa está levemente e uniformemente coberta.', porque: 'O fermento, como explicado na dica, altera o pH da pele. Os outros temperos aderem à pele seca e criarão uma crosta saborosa durante o cozimento.', pontoCritico: 'Use fermento em pó (baking powder), que contém um ácido e uma base. NÃO use bicarbonato de sódio (baking soda), que é apenas uma base e pode deixar um sabor metálico desagradável.' },
@@ -265,7 +332,6 @@
                 ],
                 variacoes: ["<strong>Molho Buffalo Clássico:</strong> Depois de assadas, jogue as asas quentes numa tigela com manteiga derretida e molho de pimenta (Frank's RedHot é o clássico).", "<strong>Asiático Agridoce:</strong> Misture molho de soja, mel, gengibre e alho. Pincele sobre as asas nos últimos 5 minutos de cozimento.", "<strong>Na Air Fryer:</strong> Siga os passos de tempero e refrigeração. Cozinhe na air fryer a 200°C por cerca de 20-25 minutos, virando na metade, até ficarem crocantes."]
             },
-            // AULA 09
             sopa: {
                 title: "Aula 09: Sopa de Frango Clássica (Canja)",
                 description: "Aprenda a fazer uma verdadeira canja de galinha a partir do zero. Uma sopa rica, reconfortante e cheia de sabor, feita com um caldo caseiro que é o verdadeiro segredo para um resultado que abraça a alma.",
@@ -275,23 +341,22 @@
                 dicaDeMestre: "Para um caldo ainda mais rico e dourado, doure os pedaços de frango e os vegetais na panela com um pouco de azeite antes de adicionar a água. Essa caramelização inicial (Reação de Maillard) adiciona uma profundidade de sabor imensa ao caldo final.",
                 getIngredients: function(val) { const l = parseFloat(val) || 2; return `
                         <h5 class="font-bold text-stone-700 mt-3 mb-1">Para o Caldo:</h5>
-                        <li class="flex justify-between items-center"><span>Frango com Osso (coxas, sobrecoxas)</span> <span class="font-semibold">${(l / 2 * 750).toFixed(0)} g</span></li>
-                        <li class="flex justify-between items-center"><span>Cebola grande, em quartos</span> <span class="font-semibold">${Math.ceil(l / 2)} unid.</span></li>
-                        <li class="flex justify-between items-center"><span>Cenouras, em pedaços grandes</span> <span class="font-semibold">${Math.ceil(l / 2) * 2} unid.</span></li>
-                        <li class="flex justify-between items-center"><span>Talo de Aipo (Salsão), em pedaços</span> <span class="font-semibold">${Math.ceil(l / 2)} unid.</span></li>
-                        <li class="flex justify-between items-center"><span>Folha de Louro</span> <span class="font-semibold">2 unid.</span></li>
+                        <li class="ingredient-item"><label class="flex items-center"><input type="checkbox" class="mr-2"><span class="flex-1 flex justify-between"><span>Frango com Osso (coxas, sobrecoxas)</span> <span class="font-semibold">${(l / 2 * 750).toFixed(0)} g</span></span></label></li>
+                        <li class="ingredient-item"><label class="flex items-center"><input type="checkbox" class="mr-2"><span class="flex-1 flex justify-between"><span>Cebola grande, em quartos</span> <span class="font-semibold">${Math.ceil(l / 2)} unid.</span></span></label></li>
+                        <li class="ingredient-item"><label class="flex items-center"><input type="checkbox" class="mr-2"><span class="flex-1 flex justify-between"><span>Cenouras, em pedaços grandes</span> <span class="font-semibold">${Math.ceil(l / 2) * 2} unid.</span></span></label></li>
+                        <li class="ingredient-item"><label class="flex items-center"><input type="checkbox" class="mr-2"><span class="flex-1 flex justify-between"><span>Talo de Aipo (Salsão), em pedaços</span> <span class="font-semibold">${Math.ceil(l / 2)} unid.</span></span></label></li>
+                        <li class="ingredient-item"><label class="flex items-center"><input type="checkbox" class="mr-2"><span class="flex-1 flex justify-between"><span>Folha de Louro</span> <span class="font-semibold">2 unid.</span></span></label></li>
                         <h5 class="font-bold text-stone-700 mt-3 mb-1">Para a Sopa:</h5>
-                        <li class="flex justify-between items-center"><span>Arroz ou Massa pequena (estrelinha)</span> <span class="font-semibold">${(l / 2 * 100).toFixed(0)} g</span></li>
-                        <li class="flex justify-between items-center"><span>Salsa fresca picada e Hortelã</span> <span class="font-semibold">A gosto</span></li>`; },
+                        <li class="ingredient-item"><label class="flex items-center"><input type="checkbox" class="mr-2"><span class="flex-1 flex justify-between"><span>Arroz ou Massa pequena (estrelinha)</span> <span class="font-semibold">${(l / 2 * 100).toFixed(0)} g</span></span></label></li>
+                        <li class="ingredient-item"><label class="flex items-center"><input type="checkbox" class="mr-2"><span class="flex-1 flex justify-between"><span>Salsa fresca picada e Hortelã</span> <span class="font-semibold">A gosto</span></span></label></li>`; },
                 steps: [
                     { title: 'Construir o Caldo Saboroso', description: 'Numa panela grande, junte o frango, a cebola, as cenouras, o aipo e a folha de louro. Cubra com a água fria e tempere com uma boa pitada de sal. Leve ao lume alto até começar a ferver.', porque: 'Começar com água fria permite uma extração mais lenta e completa dos sabores dos ingredientes para o caldo. O osso do frango é essencial, pois liberta colagénio, o que dá corpo e riqueza à sopa.', pontoCritico: 'Use pedaços de frango com osso e pele. Peito de frango sozinho resulta num caldo sem graça e sem corpo.' },
-                    { title: 'Simmer, Don\'t Boil (Cozinhar Lenta e Gentilmente)', description: 'Assim que a água ferver, reduza o lume para o mínimo possível, de modo que a sopa mantenha apenas um borbulhar muito suave (simmer). Com uma escumadeira, retire qualquer espuma ou impureza que suba à superfície. Cozinhe, semi-tampado, por pelo menos 1 hora.', porque: 'Ferver o caldo vigorosamente torna-o turvo e emulsifica a gordura. Um 'simmer' gentil mantém o caldo claro e limpo. A remoção da espuma (impurezas e proteínas coaguladas) também contribui para um caldo mais límpido.', pontoCritico: 'A paciência é a chave. Não tenha pressa e não aumente o lume. Deixe o tempo fazer a sua magia.' },
+                    { title: `Cozinhar Lenta e Gentilmente (<span class="tooltip" data-tooltip="Cozinhar um líquido logo abaixo do ponto de fervura, com apenas algumas bolhas suaves a subir à superfície.">Simmer</span>)`, description: 'Assim que a água ferver, reduza o lume para o mínimo possível, de modo que a sopa mantenha apenas um borbulhar muito suave (simmer). Com uma escumadeira, retire qualquer espuma ou impureza que suba à superfície. Cozinhe, semi-tampado, por pelo menos 1 hora.', porque: 'Ferver o caldo vigorosamente torna-o turvo e emulsifica a gordura. Um \'simmer\' gentil mantém o caldo claro e limpo. A remoção da espuma (impurezas e proteínas coaguladas) também contribui para um caldo mais límpido.', pontoCritico: 'A paciência é a chave. Não tenha pressa e não aumente o lume. Deixe o tempo fazer a sua magia.' },
                     { title: 'Coar e Desfiar', description: 'Com cuidado, retire os pedaços de frango e os vegetais da panela. Coe todo o caldo através de um coador de malha fina para outra panela limpa. Quando o frango estiver frio o suficiente para manusear, desfie toda a carne, descartando ossos e pele.', porque: 'Coar o caldo garante uma sopa final limpa e sem pedaços indesejados. O frango cozido lentamente no caldo fica incrivelmente macio e fácil de desfiar.', pontoCritico: 'Os vegetais usados para fazer o caldo já libertaram todo o seu sabor e podem ser descartados. Se quiser vegetais na sopa, adicione cenouras frescas picadas ao caldo coado.' },
                     { title: 'Finalizar a Canja', description: 'Leve o caldo coado novamente ao lume. Assim que ferver, adicione o arroz ou a massa e cozinhe de acordo com o tempo da embalagem. Quando estiver quase cozido, adicione o frango desfiado para reaquecer. Sirva quente, finalizado com salsa fresca e folhas de hortelã.', porque: 'Cozinhar o arroz ou a massa diretamente no caldo faz com que absorvam todo o sabor, ficando muito mais deliciosos do que se fossem cozidos em água.', pontoCritico: 'Adicione o frango desfiado apenas no final. Se ele cozinhar por muito tempo, pode ficar duro e fibroso.' }
                 ],
                 variacoes: ["<strong>Canja à Portuguesa:</strong> Adicione um chouriço de boa qualidade para cozinhar junto com o caldo para um sabor fumado.", "<strong>Sopa de Noodles de Frango:</strong> Em vez de arroz, use massa de ovo larga (egg noodles).", "<strong>Toque de Limão:</strong> Esprema um pouco de sumo de limão fresco em cada prato antes de servir para avivar os sabores."]
             },
-            // AULA 10
             peru: {
                 title: "Aula 10: Peito de Peru Assado (Suculento)",
                 description: "Diga adeus ao peru seco! Com a técnica infalível da salmoura e o controlo de temperatura, você vai aprender a assar um peito de peru que fica incrivelmente húmido, saboroso e perfeito para uma celebração ou um jantar especial.",
@@ -301,44 +366,54 @@
                 dicaDeMestre: "O termómetro de carne não é opcional, é essencial. O peito de peru é uma carne muito magra e a janela entre o 'perfeitamente cozido' e o 'seco e fibroso' é muito pequena. Confiar na temperatura interna é a única forma de garantir a perfeição.",
                 getIngredients: function(val) { const kg = parseFloat(val) || 1.5; return `
                         <h5 class="font-bold text-stone-700 mt-3 mb-1">Para a Salmoura:</h5>
-                        <li class="flex justify-between items-center"><span>Água</span> <span class="font-semibold">3 litros</span></li>
-                        <li class="flex justify-between items-center"><span>Sal</span> <span class="font-semibold">1/2 chávena</span></li>
-                        <li class="flex justify-between items-center"><span>Açúcar Mascavado</span> <span class="font-semibold">1/4 chávena</span></li>
+                        <li class="ingredient-item"><label class="flex items-center"><input type="checkbox" class="mr-2"><span class="flex-1 flex justify-between"><span>Água</span> <span class="font-semibold">3 litros</span></span></label></li>
+                        <li class="ingredient-item"><label class="flex items-center"><input type="checkbox" class="mr-2"><span class="flex-1 flex justify-between"><span>Sal</span> <span class="font-semibold">1/2 chávena</span></span></label></li>
+                        <li class="ingredient-item"><label class="flex items-center"><input type="checkbox" class="mr-2"><span class="flex-1 flex justify-between"><span>Açúcar Mascavado</span> <span class="font-semibold">1/4 chávena</span></span></label></li>
                         <h5 class="font-bold text-stone-700 mt-3 mb-1">Para o Peru:</h5>
-                        <li class="flex justify-between items-center"><span>Peito de Peru com osso e pele</span> <span class="font-semibold">${kg} kg</span></li>
-                        <li class="flex justify-between items-center"><span>Manteiga derretida</span> <span class="font-semibold">4 c. de sopa</span></li>
-                        <li class="flex justify-between items-center"><span>Ervas Frescas picadas (sálvia, tomilho)</span> <span class="font-semibold">2 c. de sopa</span></li>`; },
+                        <li class="ingredient-item"><label class="flex items-center"><input type="checkbox" class="mr-2"><span class="flex-1 flex justify-between"><span>Peito de Peru com osso e pele</span> <span class="font-semibold">${kg} kg</span></span></label></li>
+                        <li class="ingredient-item"><label class="flex items-center"><input type="checkbox" class="mr-2"><span class="flex-1 flex justify-between"><span>Manteiga derretida</span> <span class="font-semibold">4 c. de sopa</span></span></label></li>
+                        <li class="ingredient-item"><label class="flex items-center"><input type="checkbox" class="mr-2"><span class="flex-1 flex justify-between"><span>Ervas Frescas picadas (sálvia, tomilho)</span> <span class="font-semibold">2 c. de sopa</span></span></label></li>`; },
                 steps: [
-                    { title: 'A Salmoura: O Seguro de Vida da Suculência', description: 'Num recipiente grande o suficiente para submergir o peru, dissolva o sal e o açúcar na água. Pode aquecer uma parte da água para ajudar a dissolver, mas garanta que a salmoura está completamente fria antes de adicionar o peru. Mergulhe o peito de peru na salmoura, cubra e leve ao frigorífico por 2 a 4 horas.', porque: 'O peito de peru é extremamente magro e propenso a secar. A salmoura hidrata a carne profundamente e também a tempera por dentro. O açúcar ajuda no dourado da pele.', pontoCritico: 'Não deixe na salmoura por mais de 6 horas, ou a textura da carne pode começar a ficar um pouco 'esponjosa'. Garanta que o peru está totalmente submerso.' },
+                    { title: `A <span class="tooltip" data-tooltip="Solução de água e sal que hidrata e tempera a carne por dentro.">Salmoura</span>: O Seguro de Vida da Suculência`, description: 'Num recipiente grande o suficiente para submergir o peru, dissolva o sal e o açúcar na água. Pode aquecer uma parte da água para ajudar a dissolver, mas garanta que a salmoura está completamente fria antes de adicionar o peru. Mergulhe o peito de peru na salmoura, cubra e leve ao frigorífico por 2 a 4 horas.', porque: 'O peito de peru é extremamente magro e propenso a secar. A salmoura hidrata a carne profundamente e também a tempera por dentro. O açúcar ajuda no dourado da pele.', pontoCritico: 'Não deixe na salmoura por mais de 6 horas, ou a textura da carne pode começar a ficar um pouco \'esponjosa\'. Garanta que o peru está totalmente submerso.' },
                     { title: 'Secar e Temperar', description: 'Retire o peru da salmoura e descarte o líquido. Lave o peru rapidamente em água fria para remover o excesso de sal da superfície e seque-o COMPLETAMENTE com papel toalha, por dentro e por fora. Pré-aqueça o forno a 190°C. Misture as ervas picadas na manteiga derretida e pincele toda a superfície do peru.', porque: 'Lavar remove o sal superficial, evitando que fique salgado demais. Secar a pele é crucial para que ela fique crocante e dourada no forno. A manteiga adiciona sabor e ajuda a dourar.', pontoCritico: 'A pele deve estar o mais seca possível. Qualquer humidade irá criar vapor e impedir a pele de ficar estaladiça.' },
                     { title: 'Assar com Controlo de Temperatura', description: 'Coloque o peru numa assadeira com grelha. Insira um termómetro de carne na parte mais espessa do peito, sem tocar no osso. Asse a 190°C até que a temperatura interna atinja 72°C. O tempo pode variar, mas estime cerca de 30 minutos por kg.', porque: 'A grelha permite que o calor circule por todo o lado. O termómetro é a única forma de saber o ponto exato. Retiramos a 72°C porque a temperatura continuará a subir durante o descanso.', pontoCritico: 'Confie no termómetro, não no relógio. Cada forno e cada peça de carne é diferente. Retirar o peru na temperatura certa é o passo que define o sucesso ou o fracasso.' },
                     { title: 'O Descanso Longo e Obrigatório', description: 'Retire o peru do forno e coloque-o numa tábua de corte. Deixe-o descansar, sem cobrir, por pelo menos 20 minutos antes de fatiar.', porque: 'Um descanso longo é vital para uma peça de carne grande. Permite que os sucos, que foram empurrados para o centro pelo calor, se redistribuam por toda a carne, garantindo que cada fatia seja húmida.', pontoCritico: 'Não cubra com papel alumínio, pois isso irá criar vapor e amolecer a pele crocante que você acabou de criar. A carne manter-se-á quente.' }
                 ],
                 variacoes: ["<strong>Glacê de Laranja e Mostarda:</strong> Nos últimos 20 minutos de cozedura, pincele o peru com uma mistura de sumo de laranja, mostarda Dijon e mel.", "<strong>Aromáticos:</strong> Coloque quartos de cebola e maçã debaixo da grelha na assadeira para criar um vapor aromático durante o cozimento.", "<strong>Servir com Molho Gravy:</strong> Use os sucos que escorreram para a assadeira para fazer um molho gravy clássico."]
             },
-            // AULA 11
             caesar: {
                 title: "Aula 11: Salada Caesar com Frango Grelhado",
                 description: "Eleve a salada a prato principal. Aprenda a fazer o autêntico molho Caesar, cremoso e cheio de umami, e a combiná-lo com alface romana crocante, croutons caseiros e frango grelhado suculento.",
-                calculatorLabel: "Nº de Peitos de Frango:",
+                calculatorLabel: "Nº de Porções:",
                 calculatorUnit: "caesar-input",
                 details: { tempoPreparo: "25 min", tempoCozimento: "15 min (frango)", tempoDescanso: "5 min (frango)", rendimento: "Serve 2 como prato principal", dificuldade: "Intermediário", utensilios: ["Tigela grande", "Batedor de arame (fouet)", "Ralador fino (para parmesão)"] },
-                dicaDeMestre: "O segredo do sabor 'inconfundível' do molho Caesar são as anchovas. Não tenha medo! Elas dissolvem-se completamente e não deixam um gosto de peixe, mas sim uma profundidade salgada e de umami que é impossível de replicar. Use pasta de anchova se for mais fácil.",
+                dicaDeMestre: `O segredo do sabor 'inconfundível' do molho Caesar são as anchovas. Não tenha medo! Elas dissolvem-se completamente e não deixam um gosto de peixe, mas sim uma profundidade salgada e de <span class="tooltip" data-tooltip="Considerado o 'quinto gosto básico', para além de doce, salgado, azedo e amargo. É um sabor profundo, salgado e 'carnudo', encontrado em queijos curados, cogumelos e anchovas.">umami</span> que é impossível de replicar.`,
                 getIngredients: function(val) { const qty = parseInt(val) || 2; return `
-                        <li class="flex justify-between items-center"><span>Peito de Frango Grelhado (ver Aula 01)</span> <span class="font-semibold">${qty} unid.</span></li>
-                        <li class="flex justify-between items-center"><span>Alface Romana</span> <span class="font-semibold">${Math.ceil(qty / 2)} pé(s)</span></li>
-                        <li class="flex justify-between items-center"><span>Croutons</span> <span class="font-semibold">1 chávena</span></li>
+                        <li class="ingredient-item"><label class="flex items-center"><input type="checkbox" class="mr-2"><span class="flex-1 flex justify-between"><span>Alface Romana</span> <span class="font-semibold">${Math.ceil(qty / 2)} pé(s)</span></span></label></li>
+                        <li class="ingredient-item"><label class="flex items-center"><input type="checkbox" class="mr-2"><span class="flex-1 flex justify-between"><span>Croutons</span> <span class="font-semibold">1 chávena</span></span></label></li>
                         <h5 class="font-bold text-stone-700 mt-3 mb-1">Para o Molho Caesar Autêntico:</h5>
-                        <li class="flex justify-between items-center"><span>Gema de Ovo</span> <span class="font-semibold">1 unid.</span></li>
-                        <li class="flex justify-between items-center"><span>Alho esmagado em pasta</span> <span class="font-semibold">1 dente</span></li>
-                        <li class="flex justify-between items-center"><span>Filés de Anchova em óleo, picados</span> <span class="font-semibold">2-3 unid.</span></li>
-                        <li class="flex justify-between items-center"><span>Sumo de Limão fresco</span> <span class="font-semibold">2 c. de sopa</span></li>
-                        <li class="flex justify-between items-center"><span>Molho Inglês</span> <span class="font-semibold">1 c. de chá</span></li>
-                        <li class="flex justify-between items-center"><span>Azeite Extra Virgem</span> <span class="font-semibold">1/4 chávena</span></li>
-                        <li class="flex justify-between items-center"><span>Queijo Parmesão ralado na hora</span> <span class="font-semibold">1/4 chávena</span></li>`; },
+                        <li class="ingredient-item"><label class="flex items-center"><input type="checkbox" class="mr-2"><span class="flex-1 flex justify-between"><span>Gema de Ovo</span> <span class="font-semibold">1 unid.</span></span></label></li>
+                        <li class="ingredient-item"><label class="flex items-center"><input type="checkbox" class="mr-2"><span class="flex-1 flex justify-between"><span>Alho esmagado em pasta</span> <span class="font-semibold">1 dente</span></span></label></li>
+                        <li class="ingredient-item"><label class="flex items-center"><input type="checkbox" class="mr-2"><span class="flex-1 flex justify-between"><span>Filés de Anchova em óleo, picados</span> <span class="font-semibold">2-3 unid.</span></span></label></li>
+                        <li class="ingredient-item"><label class="flex items-center"><input type="checkbox" class="mr-2"><span class="flex-1 flex justify-between"><span>Sumo de Limão fresco</span> <span class="font-semibold">2 c. de sopa</span></span></label></li>
+                        <li class="ingredient-item"><label class="flex items-center"><input type="checkbox" class="mr-2"><span class="flex-1 flex justify-between"><span>Molho Inglês</span> <span class="font-semibold">1 c. de chá</span></span></label></li>
+                        <li class="ingredient-item"><label class="flex items-center"><input type="checkbox" class="mr-2"><span class="flex-1 flex justify-between"><span>Azeite Extra Virgem</span> <span class="font-semibold">1/4 chávena</span></span></label></li>
+                        <li class="ingredient-item"><label class="flex items-center"><input type="checkbox" class="mr-2"><span class="flex-1 flex justify-between"><span>Queijo Parmesão ralado na hora</span> <span class="font-semibold">1/4 chávena</span></span></label></li>
+                        <h5 class="font-bold text-stone-700 mt-3 mb-1">Para o Frango Grelhado:</h5>
+                        <li class="ingredient-item"><label class="flex items-center"><input type="checkbox" class="mr-2"><span class="flex-1 flex justify-between"><span>Peito de Frango</span> <span class="font-semibold">${Math.ceil(qty/2)} unid.</span></span></label></li>
+                        <li class="ingredient-item"><label class="flex items-center"><input type="checkbox" class="mr-2"><span class="flex-1 flex justify-between"><span>Azeite, Sal e Pimenta</span> <span class="font-semibold">A gosto</span></span></label></li>`; },
                 steps: [
-                    { title: 'Preparar os Componentes', description: 'Lave e seque bem as folhas de alface romana. Grelhe o peito de frango seguindo as instruções da Aula 01 e deixe-o descansar. Se for fazer os croutons, corte pão em cubos, regue com azeite e sal, e asse a 180°C até dourar.', porque: 'A preparação antecipada é chave. A alface precisa estar completamente seca para o molho aderir e não a deixar aguada. O frango precisa descansar para se manter suculento.', pontoCritico: 'Secar a alface é crucial. Use uma centrifugadora de saladas ou seque folha por folha com papel toalha.' },
-                    { title: 'A Emulsão do Molho Caesar', description: 'Numa tigela, junte a gema de ovo, o alho em pasta, as anchovas picadas, o sumo de limão e o molho inglês. Com um batedor de arame (fouet), bata vigorosamente até obter uma mistura homogénea. A seguir, enquanto bate sem parar, comece a adicionar o azeite em fio, muito lentamente, até que o molho engrosse e emulsione.', porque: 'Este é o processo de criar uma emulsão. A lecitina na gema de ovo atua como um agente que une o óleo (gordura) e o sumo de limão (ácido), que normalmente não se misturariam, criando um molho cremoso e estável.', pontoCritico: 'A adição do azeite deve ser LENTA, gota a gota no início. Se adicionar o óleo muito rápido, a emulsão irá 'quebrar' e o molho ficará separado e oleoso.' },
+                    { 
+                        isSubRecipe: true,
+                        title: 'Módulo: O Frango Grelhado Perfeito',
+                        subSteps: [
+                            { title: 'Temperar o Frango', description: 'Seque bem os peitos de frango com papel toalha. Tempere generosamente com sal e pimenta e regue com um fio de azeite.', porque: 'A superfície seca garante uma melhor reação de Maillard (a crosta dourada e saborosa) na frigideira quente.', pontoCritico: 'Não pule a secagem. Frango húmido irá cozinhar a vapor em vez de grelhar, resultando numa textura borrachuda.' },
+                            { title: 'Grelhar com Precisão', description: 'Aqueça uma frigideira em lume médio-alto. Coloque o frango e cozinhe por 5-7 minutos de cada lado, sem mexer, até estar dourado e cozido (72°C no interior).', porque: 'Virar apenas uma vez garante uma crosta uniforme e bonita. A temperatura interna é a melhor forma de garantir um frango suculento e não seco.', pontoCritico: 'Não sobrecarregue a frigideira. Grelhe um peito de cada vez se necessário para manter a temperatura alta.' },
+                            { title: 'Descansar e Fatiar', description: 'Retire o frango para uma tábua e deixe descansar por 5 minutos antes de o fatiar. Este passo é crucial.', porque: 'O descanso permite que os sucos se redistribuam pela carne, garantindo um frango húmido em cada fatia.', pontoCritico: 'Cortar o frango imediatamente fará com que todos os sucos escorram, deixando a carne seca.' }
+                        ]
+                    },
+                    { title: 'Preparar os Componentes da Salada', description: 'Enquanto o frango descansa, lave e seque bem as folhas de alface romana. Se for fazer os croutons, corte pão em cubos, regue com azeite e sal, e asse a 180°C até dourar.', porque: 'A preparação antecipada é chave. A alface precisa estar completamente seca para o molho aderir e não a deixar aguada.', pontoCritico: 'Secar a alface é crucial. Use uma centrifugadora de saladas ou seque folha por folha com papel toalha.' },
+                    { title: `A <span class="tooltip" data-tooltip="Mistura estável de dois líquidos que normalmente não se misturam, como óleo e água (ou sumo de limão). A gema de ovo atua como agente emulsionante.">Emulsão</span> do Molho Caesar`, description: 'Numa tigela, junte a gema de ovo, o alho em pasta, as anchovas picadas, o sumo de limão e o molho inglês. Com um batedor de arame (fouet), bata vigorosamente até obter uma mistura homogénea. A seguir, enquanto bate sem parar, comece a adicionar o azeite em fio, muito lentamente, até que o molho engrosse e emulsione.', porque: 'Este é o processo de criar uma emulsão. A lecitina na gema de ovo atua como um agente que une o óleo (gordura) e o sumo de limão (ácido), que normalmente não se misturariam, criando um molho cremoso e estável.', pontoCritico: 'A adição do azeite deve ser LENTA, gota a gota no início. Se adicionar o óleo muito rápido, a emulsão irá \'quebrar\' e o molho ficará separado e oleoso.' },
                     { title: 'Finalizar o Molho e Montar a Salada', description: 'Depois de emulsionar todo o azeite, junte o queijo parmesão ralado na hora e pimenta preta moída. Prove e ajuste o sal, se necessário (as anchovas e o parmesão já são salgados). Numa tigela grande, junte as folhas de alface e regue com o molho aos poucos, misturando para cobrir. Adicione os croutons e o frango grelhado fatiado por cima.', porque: 'O parmesão é adicionado no final para manter a sua textura. Adicionar o molho aos poucos permite controlar a quantidade e garantir que a alface fica coberta, mas não encharcada.', pontoCritico: 'Rale o parmesão na hora. O queijo pré-ralado contém antiaglomerantes que alteram o sabor e a forma como se derrete no molho. Monte a salada apenas na hora de servir para manter a crocância.' }
                 ],
                 variacoes: ["<strong>Sem Ovo Cru:</strong> Se não se sentir confortável com gema crua, use 1 colher de sopa de maionese de boa qualidade como base para a emulsão no lugar da gema.", "<strong>Croutons Caseiros de Alho:</strong> Esfregue um dente de alho cortado nos cubos de pão antes de os levar a assar.", "<strong>Extra Umami:</strong> Adicione algumas alcaparras picadas ao molho para um toque extra de acidez e salinidade."]
@@ -350,7 +425,6 @@
         const receitasContainer = document.getElementById('receitas-container');
         const backToListBtn = document.getElementById('back-to-list-btn');
 
-        // Função para gerar o HTML de cada receita
         const generateRecipeHTML = (recipeData, targetId) => {
             return `
                 <div class="text-center">
@@ -389,8 +463,8 @@
                             <input type="number" id="${recipeData.calculatorUnit}" value="${targetId.includes('kg') || targetId.includes('gramas') || targetId.includes('litros') ? '1.5' : '2'}" min="0.5" step="${targetId.includes('kg') ? '0.1' : '1'}" class="w-full p-2 border border-stone-300 rounded-lg focus:ring-2 focus:ring-amber-500">
                         </div>
                         <div class="mt-6">
-                            <h4 class="font-bold text-lg mb-2 text-stone-700">Ingredientes:</h4>
-                            <ul class="space-y-1 text-stone-600 text-sm" id="ingredient-list-${targetId}"></ul>
+                            <h4 class="font-bold text-lg mb-2 text-stone-700">Checklist de Ingredientes:</h4>
+                            <ul class="space-y-2 text-stone-600 text-sm" id="ingredient-list-${targetId}"></ul>
                         </div>
                          <div class="mt-6">
                             <h4 class="font-bold text-lg mb-2 text-stone-700">Utensílios Chave:</h4>
@@ -403,27 +477,57 @@
                     <div class="lg:col-span-2">
                         <h3 class="text-2xl font-bold text-stone-800 mb-4 border-b-2 border-amber-500 pb-2">Tutorial Detalhado</h3>
                         <div class="space-y-6">
-                            ${recipeData.steps.map((step, index) => `
+                            ${recipeData.steps.map((step, index) => {
+                                if (step.isSubRecipe) {
+                                    return `
+                                    <div class="p-4 rounded-lg bg-amber-50 border-l-4 border-amber-400">
+                                        <h4 class="font-bold text-xl text-amber-800 mb-4">${step.title}</h4>
+                                        <div class="space-y-4">
+                                        ${step.subSteps.map(subStep => `
+                                            <div class="ml-4">
+                                                <h5 class="font-semibold text-lg text-stone-800 mb-1">${subStep.title}</h5>
+                                                <div class="prose prose-stone max-w-none text-sm">
+                                                    <p>${subStep.description}</p>
+                                                     <div class="mt-3 bg-blue-50 text-blue-800 rounded-md p-3 text-xs">
+                                                        <strong class="font-bold">O Porquê:</strong> ${subStep.porque}
+                                                    </div>
+                                                    <div class="mt-3 bg-red-50 text-red-800 rounded-md p-3 text-xs">
+                                                        <strong class="font-bold">Ponto Crítico:</strong> ${subStep.pontoCritico}
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        `).join('')}
+                                        </div>
+                                    </div>
+                                    `;
+                                }
+                                return `
                                 <div class="p-4 rounded-lg bg-stone-50 border-l-4 border-stone-200">
                                     <h4 class="font-bold text-xl text-stone-800 mb-2"><span class="bg-amber-600 text-white rounded-full w-8 h-8 inline-flex items-center justify-center mr-3 text-base">${index + 1}</span> ${step.title}</h4>
                                     <div class="prose prose-stone max-w-none pl-11 text-sm">
                                         <p>${step.description}</p>
-                                        <div class="mt-3 bg-blue-50 text-blue-800 rounded-md p-3 text-xs">
-                                            <strong class="font-bold">O Porquê:</strong> ${step.porque}
-                                        </div>
-                                        <div class="mt-3 bg-red-50 text-red-800 rounded-md p-3 text-xs">
-                                            <strong class="font-bold">Ponto Crítico:</strong> ${step.pontoCritico}
-                                        </div>
+                                        <details class="mt-3 text-xs">
+                                            <summary class="font-bold text-blue-800">Ver o porquê</summary>
+                                            <div class="mt-2 bg-blue-50 text-blue-800 rounded-md p-3">
+                                                ${step.porque}
+                                            </div>
+                                        </details>
+                                        <details class="mt-2 text-xs">
+                                            <summary class="font-bold text-red-800">Ver ponto crítico</summary>
+                                            <div class="mt-2 bg-red-50 text-red-800 rounded-md p-3">
+                                                ${step.pontoCritico}
+                                            </div>
+                                        </details>
                                     </div>
                                     ${step.timer ? `<div class="mt-4 pl-11 flex items-center gap-4"><button class="timer-btn bg-amber-500 text-white px-4 py-2 rounded-lg hover:bg-amber-600 transition text-sm" data-time="${step.timer}">Iniciar Timer (${Math.floor(step.timer/60)}m ${step.timer%60}s)</button><span class="timer-display text-lg font-mono font-bold text-amber-700"></span></div>` : ''}
                                 </div>
-                            `).join('')}
+                            `}).join('')}
                         </div>
                         
                         <div class="mt-8">
                             <h3 class="text-2xl font-bold text-stone-800 mb-4 border-b-2 border-amber-500 pb-2">Dicas e Variações</h3>
                             <div class="prose prose-stone max-w-none bg-amber-50 p-4 rounded-lg border-l-4 border-amber-400 text-sm">
-                                <strong class="font-bold">Dica de Mestre:</strong> ${recipeData.dicaDeMestre}
+                                <p><strong class="font-bold">Dica de Mestre:</strong> ${recipeData.dicaDeMestre}</p>
                                 ${recipeData.variacoes ? `
                                     <h4 class="font-bold mt-4">Variações criativas:</h4>
                                     <ul>${recipeData.variacoes.map(item => `<li>${item}</li>`).join('')}</ul>
@@ -451,9 +555,7 @@
                     list.innerHTML = recipeData.getIngredients(input.value);
                 };
                 
-                if(input) {
-                    input.addEventListener('input', updateFn);
-                }
+                if(input) { input.addEventListener('input', updateFn); }
                 updateFn(); 
             }
 
@@ -482,7 +584,6 @@
         receitasContainer.addEventListener('click', (event) => {
             if (event.target.classList.contains('timer-btn')) {
                 const button = event.target;
-                const timerId = `timer-${Math.random()}`;
                 if (button.classList.contains('active')) return;
 
                 let timeInSeconds = parseInt(button.dataset.time, 10);
@@ -494,18 +595,14 @@
                 const interval = setInterval(() => {
                     const minutes = Math.floor(timeInSeconds / 60);
                     const seconds = timeInSeconds % 60;
-                    if(display) {
-                        display.textContent = `${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
-                    }
+                    if(display) { display.textContent = `${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`; }
                     
                     if (timeInSeconds <= 0) {
                         clearInterval(interval);
                         if(display) display.textContent = "Tempo esgotado!";
                         button.classList.remove('active');
                         button.disabled = false;
-                    } else {
-                        timeInSeconds--;
-                    }
+                    } else { timeInSeconds--; }
                 }, 1000);
             }
         });
