@@ -146,14 +146,19 @@
             escolha: {
                 title: "Aula 01: A Arte de Escolher e Limpar Peixe",
                 description: "Todo grande prato começa com um grande ingrediente. Esta aula é a mais fundamental de todas: como identificar o frescor de um peixe no mercado e como fazer a limpeza básica em casa com segurança.",
-                calculatorLabel: "Peixes para avaliar:",
-                calculatorUnit: "escolha-input",
+                calculator: {
+                    label: "Peixes para avaliar:",
+                    unit: "escolha-input",
+                    base_value: 1,
+                    default_value: 1
+                },
                 details: { tempoPreparo: "15-20 min", tempoCozimento: "N/A", tempoDescanso: "N/A", rendimento: "Conhecimento para a vida", dificuldade: "Fácil", utensilios: ["Faca de filetar (flexível)", "Escamador de peixe (ou o lado não afiado de uma faca)", "Tábua de corte exclusiva para peixe"] },
                 dicaDeMestre: "Tenha uma tábua de corte dedicada exclusivamente para peixes e frutos do mar para evitar contaminação cruzada. A madeira é porosa, mas as de plástico podem ser lavadas na máquina de lavar louça para uma higienização superior.",
-                getIngredients: function(val) { return `
-                        <li class="ingredient-item"><label class="flex items-center"><input type="checkbox" class="mr-2"><span class="flex-1 flex justify-between"><span>Peixe Inteiro Fresco</span> <span class="font-semibold">1 unid.</span></span></label></li>
-                        <li class="ingredient-item"><label class="flex items-center"><input type="checkbox" class="mr-2"><span class="flex-1 flex justify-between"><span>Luvas de proteção (opcional)</span> <span class="font-semibold">1 par</span></span></label></li>
-                        <li class="ingredient-item"><label class="flex items-center"><input type="checkbox" class="mr-2"><span class="flex-1 flex justify-between"><span>Saco de lixo para as vísceras</span> <span class="font-semibold">1 unid.</span></span></label></li>`; },
+                ingredients: [
+                    { name: 'Peixe Inteiro Fresco', base_qty: 1, unit: 'unid.', scalable: true },
+                    { name: 'Luvas de proteção (opcional)', base_qty: 1, unit: 'par', scalable: true },
+                    { name: 'Saco de lixo para as vísceras', base_qty: 1, unit: 'unid.', scalable: false }
+                ],
                 steps: [
                     { title: "Como Escolher um Peixe Fresco (No Mercado)", description: "Observe os 4 sinais de frescor: <strong>1. Olhos:</strong> devem estar brilhantes, claros e salientes, nunca opacos ou afundados. <strong>2. Guelras:</strong> levante o opérculo; as guelras devem ter uma cor vermelho vivo, nunca acastanhadas. <strong>3. Pele:</strong> deve ser brilhante, húmida e com as escamas bem presas. <strong>4. Toque:</strong> a carne deve ser firme e elástica ao toque, voltando ao lugar depois de pressionada.", porque: "Estes são indicadores diretos da saúde e do tempo desde a captura do peixe. Um peixe que não passa neste teste já começou o seu processo de decomposição e nunca resultará num prato de alta qualidade.", pontoCritico: "Confie no seu nariz. O peixe fresco cheira a mar e a maresia, nunca a 'peixe' ou amoníaco. Se tiver um cheiro forte e desagradável, não compre." },
                     { title: "Escamar o Peixe", description: "Coloque o peixe dentro do lava-loiças ou sobre um jornal para conter a sujidade. Segurando o peixe firmemente pela cauda, use um escamador ou as costas de uma faca para raspar as escamas, trabalhando da cauda em direção à cabeça, contra o sentido das escamas.", porque: "Remover as escamas é essencial para quase todos os métodos de cozimento (exceto quando a receita pede especificamente para mantê-las), pois são desagradáveis de comer.", pontoCritico: "Faça este processo com cuidado para não se cortar nas barbatanas dorsais. Manter a área molhada ajuda a evitar que as escamas voem por toda a cozinha." },
@@ -165,15 +170,20 @@
             file: {
                 title: "Aula 02: Filé de Peixe na Frigideira (Pele Crocante)",
                 description: "Esta é a técnica mais versátil para o dia a dia. Aprenda a grelhar um filé de peixe (como robalo, dourada ou salmão) para obter um interior suculento e uma pele estaladiça que rivaliza com a de um restaurante.",
-                calculatorLabel: "Filés de peixe (180g cada):",
-                calculatorUnit: "file-input",
+                calculator: {
+                    label: "Filés de peixe (180g cada):",
+                    unit: "file-input",
+                    base_value: 2,
+                    default_value: 2
+                },
                 details: { tempoPreparo: "10 min", tempoCozimento: "6-10 min", tempoDescanso: "N/A", rendimento: "1 filé por pessoa", dificuldade: "Fácil", utensilios: ["Frigideira antiaderente ou de aço inox", "Espátula de peixe (flexível)"] },
                 dicaDeMestre: "Depois de colocar o filé na frigideira (pele para baixo), use a espátula para pressionar levemente o topo por 15 segundos. Isso evita que a pele se contraia com o calor e enrole, garantindo um contacto total com a panela e uma crocância uniforme e perfeita.",
-                getIngredients: function(val) { const qty = parseInt(val) || 2; return `
-                        <li class="ingredient-item"><label class="flex items-center"><input type="checkbox" class="mr-2"><span class="flex-1 flex justify-between"><span>Filé de Peixe com pele (Robalo, Dourada, Salmão)</span> <span class="font-semibold">${qty} unid.</span></span></label></li>
-                        <li class="ingredient-item"><label class="flex items-center"><input type="checkbox" class="mr-2"><span class="flex-1 flex justify-between"><span>Azeite ou óleo de girassol</span> <span class="font-semibold">1-2 c. de sopa</span></span></label></li>
-                        <li class="ingredient-item"><label class="flex items-center"><input type="checkbox" class="mr-2"><span class="flex-1 flex justify-between"><span>Sal fino e Pimenta Preta moída</span> <span class="font-semibold">A gosto</span></span></label></li>
-                        <li class="ingredient-item"><label class="flex items-center"><input type="checkbox" class="mr-2"><span class="flex-1 flex justify-between"><span>Limão para servir</span> <span class="font-semibold">Opcional</span></span></label></li>`; },
+                ingredients: [
+                    { name: 'Filé de Peixe com pele (Robalo, Dourada, Salmão)', base_qty: 2, unit: 'unid.', scalable: true },
+                    { name: 'Azeite ou óleo de girassol', base_qty: 2, unit: 'c. de sopa', scalable: true },
+                    { name: 'Sal fino e Pimenta Preta moída', base_qty: 0, unit: 'A gosto', scalable: false },
+                    { name: 'Limão para servir', base_qty: 1, unit: 'unid.', scalable: true }
+                ],
                 steps: [
                     { title: "A Preparação do Filé", description: "Use a parte de trás de uma faca para 'raspar' a pele e remover qualquer excesso de humidade ou escamas. Seque a pele **meticulosamente** com papel toalha. Tempere ambos os lados generosamente com sal e pimenta apenas no momento de cozinhar.", porque: "A pele completamente seca é o segredo número um para a crocância. Qualquer humidade irá criar vapor e impedir que a pele frite e fique estaladiça. Temperar no último momento evita que o sal 'puxe' a humidade para a superfície.", pontoCritico: "Não subestime a secagem da pele. É o passo que separa uma pele crocante de uma pele borrachenta." },
                     { title: "Grelhar com a Pele para Baixo", description: "Aqueça uma frigideira em lume médio-alto com um fio de óleo. Quando o óleo estiver quente, coloque o filé com a PELE PARA BAIXO. Pressione-o levemente com uma espátula por 15 segundos. Reduza o lume para médio e deixe cozinhar por 4 a 7 minutos, dependendo da espessura.", porque: "Cozinhar 80-90% do tempo sobre a pele protege a carne delicada do peixe do calor direto, cozinhando-a de forma suave, enquanto a pele fica exposta ao calor necessário para ficar crocante. A gordura da pele derrete e ajuda neste processo.", pontoCritico: "Resista à tentação de mexer ou virar o peixe. Você verá a linha de cozimento a subir pela lateral do filé. Quando estiver quase totalmente opaco, está na hora de virar.", timer: 300 },
@@ -184,19 +194,24 @@
             assado: {
                 title: "Aula 03: Peixe Inteiro Assado no Forno",
                 description: "Assar um peixe inteiro é uma forma rústica, saudável e impressionante de cozinhar. O osso e a pele protegem a carne, mantendo-a incrivelmente húmida e saborosa. Esta receita é uma refeição completa de tabuleiro.",
-                calculatorLabel: "Peso do Peixe Inteiro (limpo):",
-                calculatorUnit: "assado-input",
+                 calculator: {
+                    label: "Peso do Peixe Inteiro (kg):",
+                    unit: "assado-input",
+                    base_value: 1,
+                    default_value: 1
+                },
                 details: { tempoPreparo: "20 min", tempoCozimento: "20-30 min", tempoDescanso: "5 min", rendimento: "Serve 2-3 pessoas por kg", dificuldade: "Fácil", utensilios: ["Assadeira grande", "Faca", "Papel vegetal"] },
                 dicaDeMestre: "Faça 2 a 3 cortes diagonais em cada lado do peixe, atravessando a pele e a carne até à espinha. Isto ajuda o calor a penetrar de forma mais uniforme, garante um cozimento mais rápido e permite que os temperos penetrem mais fundo na carne.",
-                getIngredients: function(val) { const kg = parseFloat(val) || 1; return `
-                        <li class="ingredient-item"><label class="flex items-center"><input type="checkbox" class="mr-2"><span class="flex-1 flex justify-between"><span>Peixe Inteiro (Robalo, Dourada, etc.), limpo</span> <span class="font-semibold">${kg} kg</span></span></label></li>
-                        <li class="ingredient-item"><label class="flex items-center"><input type="checkbox" class="mr-2"><span class="flex-1 flex justify-between"><span>Batatas pequenas, cortadas ao meio</span> <span class="font-semibold">500 g</span></span></label></li>
-                        <li class="ingredient-item"><label class="flex items-center"><input type="checkbox" class="mr-2"><span class="flex-1 flex justify-between"><span>Tomates Cherry</span> <span class="font-semibold">250 g</span></span></label></li>
-                        <li class="ingredient-item"><label class="flex items-center"><input type="checkbox" class="mr-2"><span class="flex-1 flex justify-between"><span>Limão Siciliano, em rodelas</span> <span class="font-semibold">1 unid.</span></span></label></li>
-                        <li class="ingredient-item"><label class="flex items-center"><input type="checkbox" class="mr-2"><span class="flex-1 flex justify-between"><span>Alho, dentes esmagados</span> <span class="font-semibold">4 unid.</span></span></label></li>
-                        <li class="ingredient-item"><label class="flex items-center"><input type="checkbox" class="mr-2"><span class="flex-1 flex justify-between"><span>Azeite Extra Virgem</span> <span class="font-semibold">Abundante</span></span></label></li>
-                        <li class="ingredient-item"><label class="flex items-center"><input type="checkbox" class="mr-2"><span class="flex-1 flex justify-between"><span>Vinho Branco Seco</span> <span class="font-semibold">100 ml</span></span></label></li>
-                        <li class="ingredient-item"><label class="flex items-center"><input type="checkbox" class="mr-2"><span class="flex-1 flex justify-between"><span>Sal, Pimenta, Ervas (tomilho, alecrim)</span> <span class="font-semibold">A gosto</span></span></label></li>`; },
+                ingredients: [
+                    { name: 'Peixe Inteiro (Robalo, Dourada, etc.), limpo', base_qty: 1, unit: 'kg', scalable: true },
+                    { name: 'Batatas pequenas, cortadas ao meio', base_qty: 500, unit: 'g', scalable: true },
+                    { name: 'Tomates Cherry', base_qty: 250, unit: 'g', scalable: true },
+                    { name: 'Limão Siciliano, em rodelas', base_qty: 1, unit: 'unid.', scalable: true },
+                    { name: 'Alho, dentes esmagados', base_qty: 4, unit: 'unid.', scalable: true },
+                    { name: 'Azeite Extra Virgem', base_qty: 50, unit: 'ml', scalable: true },
+                    { name: 'Vinho Branco Seco', base_qty: 100, unit: 'ml', scalable: true },
+                    { name: 'Sal, Pimenta, Ervas (tomilho, alecrim)', base_qty: 0, unit: 'A gosto', scalable: false }
+                ],
                 steps: [
                     { title: "Pré-assar os Acompanhamentos", description: "Pré-aqueça o forno a 200°C. Numa assadeira forrada com papel vegetal, tempere as batatas com azeite, sal e pimenta. Leve ao forno por 15 minutos.", porque: "As batatas demoram mais tempo a cozinhar do que o peixe. Este passo inicial garante que tudo ficará cozido ao mesmo tempo no final.", pontoCritico: "Não salte este passo, senão terá um peixe perfeitamente cozido e batatas cruas." },
                     { title: "Preparar e Temperar o Peixe", description: "Enquanto as batatas assam, seque bem o peixe por dentro e por fora. Tempere generosamente a cavidade abdominal com sal, pimenta e ervas. Recheie a cavidade com rodelas de limão e dentes de alho esmagados. Faça os cortes diagonais na pele.", porque: "Temperar a cavidade infunde sabor de dentro para fora. Os aromáticos (limão, alho) irão cozinhar a vapor dentro do peixe, perfumando a carne.", pontoCritico: "Seque bem o peixe para que a pele tenha a oportunidade de dourar em vez de apenas cozinhar a vapor." },
@@ -208,18 +223,24 @@
              papillote: {
                 title: "Aula 04: Peixe no Papillote",
                 description: "Aprenda a cozinhar 'en papillote' (em envelope), uma técnica francesa clássica que cozinha o peixe e os vegetais no seu próprio vapor. É um método saudável, rápido e que resulta num prato elegante e cheio de sabor concentrado.",
-                calculatorLabel: "Número de Envelopes (porções):",
-                calculatorUnit: "papillote-input",
+                calculator: {
+                    label: "Número de Envelopes (porções):",
+                    unit: "papillote-input",
+                    base_value: 2,
+                    default_value: 2
+                },
                 details: { tempoPreparo: "15 min", tempoCozimento: "12-15 min", tempoDescanso: "N/A", rendimento: "1 por pessoa", dificuldade: "Fácil", utensilios: ["Papel vegetal (ou papel alumínio)", "Tesoura", "Tabuleiro"] },
                 dicaDeMestre: "O segredo de um bom papillote está no <span class='tooltip' data-tooltip='Corte clássico francês em tiras muito finas e compridas, como palitos de fósforo.'>julienne</span> fino dos vegetais e na selagem perfeita do envelope. Vegetais finos cozinham no mesmo tempo que o peixe, e um envelope bem selado aprisiona todo o vapor e aroma.",
-                getIngredients: function(val) { const qty = parseInt(val) || 2; return `
-                        <li class="ingredient-item"><label class="flex items-center"><input type="checkbox" class="mr-2"><span class="flex-1 flex justify-between"><span>Filé de Peixe Branco (Pescada, Tilápia)</span> <span class="font-semibold">${qty} unid.</span></span></label></li>
-                        <li class="ingredient-item"><label class="flex items-center"><input type="checkbox" class="mr-2"><span class="flex-1 flex justify-between"><span>Cenoura, em julienne fino</span> <span class="font-semibold">${Math.ceil(qty/2)} unid.</span></span></label></li>
-                        <li class="ingredient-item"><label class="flex items-center"><input type="checkbox" class="mr-2"><span class="flex-1 flex justify-between"><span>Curgete (Abobrinha), em julienne fino</span> <span class="font-semibold">${Math.ceil(qty/2)} unid.</span></span></label></li>
-                        <li class="ingredient-item"><label class="flex items-center"><input type="checkbox" class="mr-2"><span class="flex-1 flex justify-between"><span>Alho-francês (parte branca), em julienne fino</span> <span class="font-semibold">${Math.ceil(qty/2)} unid.</span></span></label></li>
-                        <li class="ingredient-item"><label class="flex items-center"><input type="checkbox" class="mr-2"><span class="flex-1 flex justify-between"><span>Vinho Branco Seco</span> <span class="font-semibold">${qty*2} c. de sopa</span></span></label></li>
-                        <li class="ingredient-item"><label class="flex items-center"><input type="checkbox" class="mr-2"><span class="flex-1 flex justify-between"><span>Azeite e Manteiga</span> <span class="font-semibold">A gosto</span></span></label></li>
-                        <li class="ingredient-item"><label class="flex items-center"><input type="checkbox" class="mr-2"><span class="flex-1 flex justify-between"><span>Ramos de Tomilho ou Endro (Dill)</span> <span class="font-semibold">${qty} unid.</span></span></label></li>`; },
+                ingredients: [
+                    { name: 'Filé de Peixe Branco (Pescada, Tilápia)', base_qty: 2, unit: 'unid.', scalable: true },
+                    { name: 'Cenoura, em julienne fino', base_qty: 1, unit: 'unid.', scalable: true },
+                    { name: 'Curgete (Abobrinha), em julienne fino', base_qty: 1, unit: 'unid.', scalable: true },
+                    { name: 'Alho-francês (parte branca), em julienne fino', base_qty: 1, unit: 'unid.', scalable: true },
+                    { name: 'Vinho Branco Seco', base_qty: 4, unit: 'c. de sopa', scalable: true },
+                    { name: 'Manteiga', base_qty: 2, unit: 'c. de chá', scalable: true },
+                    { name: 'Azeite', base_qty: 2, unit: 'fios', scalable: true },
+                    { name: 'Ramos de Tomilho ou Endro (Dill)', base_qty: 2, unit: 'unid.', scalable: true }
+                ],
                 steps: [
                     { title: "Preparar o Envelope e a Cama de Vegetais", description: "Pré-aqueça o forno a 200°C. Corte um grande pedaço de papel vegetal (cerca de 40x30cm). Dobre-o ao meio e corte-o em forma de um grande coração. Abra o coração. Num dos lados, disponha uma 'cama' com os vegetais cortados em julienne.", porque: "O formato de coração facilita a selagem posterior. A cama de vegetais não só adiciona sabor, mas também eleva ligeiramente o peixe, permitindo que o vapor circule por baixo dele.", pontoCritico: "Os vegetais devem ser cortados muito finamente para que cozinhem no mesmo tempo que o peixe. Se forem demasiado grossos, ficarão crus." },
                     { title: "Montar o Papillote", description: "Coloque o filé de peixe sobre a cama de vegetais. Tempere com sal e pimenta. Por cima do peixe, coloque um pequeno pedaço de manteiga, um ramo de ervas e regue com uma colher de sopa de vinho branco e um fio de azeite.", porque: "Estamos a criar um ecossistema de sabor. A manteiga adiciona riqueza, as ervas e o vinho criam o vapor aromático que irá infundir o peixe e os vegetais.", pontoCritico: "Não encha demasiado o envelope. Cada papillote é uma porção individual." },
@@ -231,20 +252,25 @@
              moqueca: {
                 title: "Aula 05: Moqueca Baiana",
                 description: "Aprenda a fazer um dos pratos mais emblemáticos do Brasil. A moqueca é um estufado de peixe cremoso e vibrante, com os sabores característicos do azeite de dendê, leite de coco e pimentões.",
-                calculatorLabel: "Postas de Peixe Branco Firme:",
-                calculatorUnit: "moqueca-input",
+                calculator: {
+                    label: "Porções:",
+                    unit: "moqueca-input",
+                    base_value: 4,
+                    default_value: 4
+                },
                 details: { tempoPreparo: "30 min", tempoCozimento: "30-40 min", tempoDescanso: "N/A", rendimento: "Serve 4-6 pessoas", dificuldade: "Intermediário", utensilios: ["Panela de barro ou caçarola larga", "Tábua de corte"] },
                 dicaDeMestre: "O segredo para um peixe que não se desfaz é adicioná-lo ao molho apenas nos últimos 10-12 minutos de cozimento e evitar mexer demasiado depois disso. Deixe o calor do molho cozinhar o peixe gentilmente.",
-                getIngredients: function(val) { const qty = parseInt(val) || 4; return `
-                        <li class="ingredient-item"><label class="flex items-center"><input type="checkbox" class="mr-2"><span class="flex-1 flex justify-between"><span>Postas de Peixe Branco Firme (Badejo, Robalo)</span> <span class="font-semibold">${qty} postas (aprox. 800g)</span></span></label></li>
-                        <li class="ingredient-item"><label class="flex items-center"><input type="checkbox" class="mr-2"><span class="flex-1 flex justify-between"><span>Camarões grandes, limpos</span> <span class="font-semibold">300 g</span></span></label></li>
-                        <li class="ingredient-item"><label class="flex items-center"><input type="checkbox" class="mr-2"><span class="flex-1 flex justify-between"><span>Suco de Limão</span> <span class="font-semibold">2 c. de sopa</span></span></label></li>
-                        <li class="ingredient-item"><label class="flex items-center"><input type="checkbox" class="mr-2"><span class="flex-1 flex justify-between"><span>Cebola grande em rodelas</span> <span class="font-semibold">2 unid.</span></span></label></li>
-                        <li class="ingredient-item"><label class="flex items-center"><input type="checkbox" class="mr-2"><span class="flex-1 flex justify-between"><span>Pimentões (vermelho e amarelo) em rodelas</span> <span class="font-semibold">2 unid.</span></span></label></li>
-                        <li class="ingredient-item"><label class="flex items-center"><input type="checkbox" class="mr-2"><span class="flex-1 flex justify-between"><span>Tomates maduros em rodelas</span> <span class="font-semibold">4 unid.</span></span></label></li>
-                        <li class="ingredient-item"><label class="flex items-center"><input type="checkbox" class="mr-2"><span class="flex-1 flex justify-between"><span>Leite de Coco</span> <span class="font-semibold">400 ml</span></span></label></li>
-                        <li class="ingredient-item"><label class="flex items-center"><input type="checkbox" class="mr-2"><span class="flex-1 flex justify-between"><span>Azeite de Dendê</span> <span class="font-semibold">3 c. de sopa</span></span></label></li>
-                        <li class="ingredient-item"><label class="flex items-center"><input type="checkbox" class="mr-2"><span class="flex-1 flex justify-between"><span>Coentros e Cebolinho picados</span> <span class="font-semibold">1 chávena</span></span></label></li>`; },
+                ingredients: [
+                    { name: 'Postas de Peixe Branco Firme (Badejo, Robalo)', base_qty: 800, unit: 'g', scalable: true },
+                    { name: 'Camarões grandes, limpos', base_qty: 300, unit: 'g', scalable: true },
+                    { name: 'Suco de Limão', base_qty: 2, unit: 'c. de sopa', scalable: true },
+                    { name: 'Cebola grande em rodelas', base_qty: 2, unit: 'unid.', scalable: true },
+                    { name: 'Pimentões (vermelho e amarelo) em rodelas', base_qty: 2, unit: 'unid.', scalable: true },
+                    { name: 'Tomates maduros em rodelas', base_qty: 4, unit: 'unid.', scalable: true },
+                    { name: 'Leite de Coco', base_qty: 400, unit: 'ml', scalable: true },
+                    { name: 'Azeite de Dendê', base_qty: 3, unit: 'c. de sopa', scalable: true },
+                    { name: 'Coentros e Cebolinho picados', base_qty: 1, unit: 'chávena', scalable: true }
+                ],
                 steps: [
                     { title: "Marinar o Peixe e o Camarão", description: "Tempere as postas de peixe e os camarões com sal, pimenta, alho amassado e o suco de limão. Deixe marinar por pelo menos 20 minutos no frigorífico.", porque: "A marinada não só tempera o peixe e o camarão por dentro, mas a acidez do limão também começa a firmar as suas proteínas, ajudando-os a manter a forma durante o cozimento.", pontoCritico: "Não marine por mais de 1 hora, pois a acidez pode começar a 'cozinhar' demais a superfície do marisco." },
                     { title: "Montar as Camadas de Sabor", description: "Numa panela de barro ou caçarola, regue o fundo com azeite de oliva. Faça uma 'cama' com metade da cebola, pimentões e tomates. Disponha as postas de peixe sobre esta cama. Cubra com o resto dos vegetais.", porque: "Cozinhar em camadas protege o peixe do calor direto e permite que ele cozinhe no vapor aromático dos vegetais e do próprio molho, absorvendo todo o sabor.", pontoCritico: "A panela de barro retém o calor maravilhosamente, mas se não tiver uma, uma caçarola larga e de fundo grosso funciona bem." },
@@ -256,18 +282,23 @@
             ceviche: {
                 title: "Aula 06: Ceviche Clássico",
                 description: "Domine a arte do ceviche, o prato peruano que conquistou o mundo. Aprenda a 'cozinhar' o peixe na acidez do limão e a equilibrar os sabores para um resultado fresco, vibrante e sofisticado.",
-                calculatorLabel: "Gramas de Peixe Branco:",
-                calculatorUnit: "ceviche-input",
+                calculator: {
+                    label: "Gramas de Peixe Branco:",
+                    unit: "ceviche-input",
+                    base_value: 400,
+                    default_value: 400
+                },
                 details: { tempoPreparo: "20 min + 15 min de marinada", tempoCozimento: "N/A", tempoDescanso: "N/A", rendimento: "Serve 2-3 pessoas", dificuldade: "Intermediário", utensilios: ["Faca muito afiada", "Tigela de vidro", "Espremedor de citrinos"] },
                 dicaDeMestre: "O segredo do ceviche de restaurante é o <span class='tooltip' data-tooltip='O 'leite' que resulta da marinada do peixe com o sumo de lima, pimenta, coentros e outros temperos. É a alma e o molho do ceviche.'>leche de tigre</span>. Prepare-o primeiro, misturando o sumo de lima, um pouco de peixe, talos de coentros, pimenta e alho num liquidificador. Coe e use este líquido super saboroso para marinar o peixe.",
-                getIngredients: function(val) { const g = parseInt(val) || 400; return `
-                        <li class="ingredient-item"><label class="flex items-center"><input type="checkbox" class="mr-2"><span class="flex-1 flex justify-between"><span>Peixe Branco Fresco e Firme (Robalo, Dourada)</span> <span class="font-semibold">${g} g</span></span></label></li>
-                        <li class="ingredient-item"><label class="flex items-center"><input type="checkbox" class="mr-2"><span class="flex-1 flex justify-between"><span>Sumo de Lima fresco (não limão)</span> <span class="font-semibold">~1 chávena</span></span></label></li>
-                        <li class="ingredient-item"><label class="flex items-center"><input type="checkbox" class="mr-2"><span class="flex-1 flex justify-between"><span>Cebola Roxa em fatias finíssimas</span> <span class="font-semibold">1/2 unid.</span></span></label></li>
-                        <li class="ingredient-item"><label class="flex items-center"><input type="checkbox" class="mr-2"><span class="flex-1 flex justify-between"><span>Pimenta Dedo-de-Moça, sem sementes, picada</span> <span class="font-semibold">1 unid.</span></span></label></li>
-                        <li class="ingredient-item"><label class="flex items-center"><input type="checkbox" class="mr-2"><span class="flex-1 flex justify-between"><span>Coentros frescos picados</span> <span class="font-semibold">A gosto</span></span></label></li>
-                        <li class="ingredient-item"><label class="flex items-center"><input type="checkbox" class="mr-2"><span class="flex-1 flex justify-between"><span>Sal</span> <span class="font-semibold">A gosto</span></span></label></li>
-                        <li class="ingredient-item"><label class="flex items-center"><input type="checkbox" class="mr-2"><span class="flex-1 flex justify-between"><span>Acompanhamentos: Milho, Batata Doce cozida</span> <span class="font-semibold">Opcional</span></span></label></li>`; },
+                ingredients: [
+                    { name: 'Peixe Branco Fresco e Firme (Robalo, Dourada)', base_qty: 400, unit: 'g', scalable: true },
+                    { name: 'Sumo de Lima fresco (não limão)', base_qty: 240, unit: 'ml (aprox. 1 chávena)', scalable: true },
+                    { name: 'Cebola Roxa em fatias finíssimas', base_qty: 0.5, unit: 'unid.', scalable: true },
+                    { name: 'Pimenta Dedo-de-Moça, sem sementes, picada', base_qty: 1, unit: 'unid.', scalable: false },
+                    { name: 'Coentros frescos picados', base_qty: 0, unit: 'A gosto', scalable: false },
+                    { name: 'Sal', base_qty: 0, unit: 'A gosto', scalable: false },
+                    { name: 'Acompanhamentos: Milho, Batata Doce cozida', base_qty: 0, unit: 'Opcional', scalable: false }
+                ],
                 steps: [
                     { title: "O Corte Perfeito", description: "O peixe deve ser de altíssima qualidade e muito fresco. Corte o filé em cubos uniformes de cerca de 1.5 a 2 cm. Lave as fatias de cebola roxa em água gelada por 10 minutos.", porque: "O corte uniforme garante que todos os pedaços de peixe 'cozinhem' por igual na marinada. Lavar a cebola roxa suaviza o seu sabor forte e a torna mais crocante.", pontoCritico: "Use uma faca extremamente afiada para não 'esmagar' a carne delicada do peixe. A qualidade do peixe é 90% do sucesso do prato. Não use peixe congelado." },
                     { title: "A 'Cocção' Cítrica", description: "Numa tigela de vidro, junte os cubos de peixe e tempere com sal. Adicione o sumo de lima fresco até quase cobrir o peixe. Junte a pimenta picada. Misture gentilmente e leve ao frigorífico.", porque: "O ácido cítrico do sumo de lima <span class='tooltip' data-tooltip='Processo que modifica a estrutura de uma proteína, alterando a sua forma e propriedades. No ceviche, o ácido do limão faz o mesmo que o calor faria.'>denatura</span> as proteínas do peixe, alterando a sua aparência de translúcida para opaca, como se estivesse cozido pelo calor. O sal ajuda neste processo.", pontoCritico: "Use sempre uma tigela de vidro ou cerâmica, nunca de metal, pois o ácido pode reagir com o metal e deixar um gosto desagradável." },
@@ -279,23 +310,28 @@
             isca: {
                 title: "Aula 07: Isca de Peixe Crocante e Molho Tártaro",
                 description: "Aprenda a fazer o petisco de praia perfeito: iscas de peixe com uma crosta dourada e estaladiça, e um interior macio. A aula inclui um módulo para fazer o clássico molho tártaro caseiro, que é o par ideal.",
-                calculatorLabel: "Gramas de Filé de Peixe:",
-                calculatorUnit: "isca-input",
+                calculator: {
+                    label: "Gramas de Filé de Peixe:",
+                    unit: "isca-input",
+                    base_value: 500,
+                    default_value: 500
+                },
                 details: { tempoPreparo: "25 min", tempoCozimento: "10-15 min", tempoDescanso: "N/A", rendimento: "Serve 3-4 pessoas", dificuldade: "Intermediário", utensilios: ["Panela funda para fritar", "Escumadeira", "Grelha de metal para escorrer"] },
                 dicaDeMestre: "O segredo para uma crosta que não se solta é o processo de empanar em três fases (farinha -> ovo -> farinha de rosca). A primeira camada de farinha seca a superfície do peixe e dá ao ovo algo a que se agarrar.",
-                getIngredients: function(val) { const g = parseInt(val) || 500; return `
-                        <li class="ingredient-item"><label class="flex items-center"><input type="checkbox" class="mr-2"><span class="flex-1 flex justify-between"><span>Filé de Peixe Branco Firme (Pescada, Cação)</span> <span class="font-semibold">${g} g</span></span></label></li>
-                        <li class="ingredient-item"><label class="flex items-center"><input type="checkbox" class="mr-2"><span class="flex-1 flex justify-between"><span>Farinha de Trigo</span> <span class="font-semibold">1 chávena</span></span></label></li>
-                        <li class="ingredient-item"><label class="flex items-center"><input type="checkbox" class="mr-2"><span class="flex-1 flex justify-between"><span>Ovos</span> <span class="font-semibold">2 unid.</span></span></label></li>
-                        <li class="ingredient-item"><label class="flex items-center"><input type="checkbox" class="mr-2"><span class="flex-1 flex justify-between"><span>Farinha de Rosca (ou Panko)</span> <span class="font-semibold">2 chávenas</span></span></label></li>
-                        <li class="ingredient-item"><label class="flex items-center"><input type="checkbox" class="mr-2"><span class="flex-1 flex justify-between"><span>Óleo para fritar</span> <span class="font-semibold">~1 litro</span></span></label></li>
-                        <li class="ingredient-item"><label class="flex items-center"><input type="checkbox" class="mr-2"><span class="flex-1 flex justify-between"><span>Sal, Pimenta, Páprica</span> <span class="font-semibold">A gosto</span></span></label></li>`; },
+                ingredients: [
+                    { name: 'Filé de Peixe Branco Firme (Pescada, Cação)', base_qty: 500, unit: 'g', scalable: true },
+                    { name: 'Farinha de Trigo', base_qty: 1, unit: 'chávena', scalable: true },
+                    { name: 'Ovos', base_qty: 2, unit: 'unid.', scalable: true },
+                    { name: 'Farinha de Rosca (ou Panko)', base_qty: 2, unit: 'chávenas', scalable: true },
+                    { name: 'Óleo para fritar', base_qty: 1, unit: 'litro', scalable: false },
+                    { name: 'Sal, Pimenta, Páprica', base_qty: 0, unit: 'A gosto', scalable: false }
+                ],
                 steps: [
                     { 
                         isSubRecipe: true,
                         title: 'Módulo: Molho Tártaro Caseiro',
                         subSteps: [
-                            { title: "A Base", description: "Numa tigela, misture 1 chávena de maionese de boa qualidade (ou caseira, ver Aula de Fundamentos), 2 colheres de sopa de picles de pepino picados, 1 colher de sopa de alcaparras picadas, e 2 colheres de sopa de salsa ou cebolinho picados.", porque: "A combinação da base cremosa da maionese com os elementos ácidos e salgados (picles, alcaparras) e o frescor das ervas é o que define o molho tártaro clássico.", pontoCritico: "Pique os ingredientes muito finamente para uma textura agradável e para que os sabores se distribuam de forma homogénea." },
+                            { title: "A Base", description: "Numa tigela, misture 1 chávena de maionese, 2 colheres de sopa de picles de pepino picados, 1 colher de sopa de alcaparras picadas, e 2 colheres de sopa de salsa ou cebolinho picados.", porque: "A combinação da base cremosa da maionese com os elementos ácidos e salgados (picles, alcaparras) e o frescor das ervas é o que define o molho tártaro clássico.", pontoCritico: "Pique os ingredientes muito finamente para uma textura agradável e para que os sabores se distribuam de forma homogénea." },
                             { title: "Equilíbrio de Sabores", description: "Adicione 1 colher de chá de sumo de limão e pimenta moída a gosto. Misture bem e prove. Leve ao frigorífico por pelo menos 30 minutos para os sabores se fundirem.", porque: "O sumo de limão adiciona uma acidez fresca que realça os outros sabores. O descanso no frio permite que os sabores se 'casem', resultando num molho muito mais saboroso.", pontoCritico: "Faça o molho antes de fritar o peixe para dar tempo para os sabores se desenvolverem." }
                         ]
                     },
@@ -308,17 +344,21 @@
             'salmao-molho': {
                 title: "Aula 08: Salmão ao Molho de Maracujá",
                 description: "Um prato com cara de restaurante, mas surpreendentemente simples. Aprenda a grelhar um salmão perfeito e a fazer um molho agridoce de maracujá através da técnica de <span class='tooltip' data-tooltip='Processo de ferver um líquido (como vinho, caldo ou sumo) para evaporar a água e concentrar intensamente os sabores.'>redução</span>.",
-                calculatorLabel: "Postas de Salmão (180g cada):",
-                calculatorUnit: "salmao-molho-input",
+                calculator: {
+                    label: "Postas de Salmão (180g cada):",
+                    unit: "salmao-molho-input",
+                    base_value: 2,
+                    default_value: 2
+                },
                 details: { tempoPreparo: "10 min", tempoCozimento: "15-20 min", tempoDescanso: "N/A", rendimento: "1 por pessoa", dificuldade: "Intermediário", utensilios: ["Frigideira antiaderente", "Panela pequena para o molho", "Coador"] },
                 dicaDeMestre: "Para um molho mais refinado, coe a polpa de maracujá para remover a maioria das sementes, mas guarde uma colher de sopa de sementes para adicionar de volta no final. Isso dá a aparência clássica ao molho sem o excesso de textura das sementes.",
-                getIngredients: function(val) { const qty = parseInt(val) || 2; return `
-                        <li class="ingredient-item"><label class="flex items-center"><input type="checkbox" class="mr-2"><span class="flex-1 flex justify-between"><span>Posta de Salmão com pele</span> <span class="font-semibold">${qty} unid.</span></span></label></li>
-                        <h5 class="font-bold text-stone-700 mt-3 mb-1">Para o Molho:</h5>
-                        <li class="ingredient-item"><label class="flex items-center"><input type="checkbox" class="mr-2"><span class="flex-1 flex justify-between"><span>Polpa de Maracujá fresco</span> <span class="font-semibold">${qty} unid.</span></span></label></li>
-                        <li class="ingredient-item"><label class="flex items-center"><input type="checkbox" class="mr-2"><span class="flex-1 flex justify-between"><span>Mel ou Açúcar</span> <span class="font-semibold">2 c. de sopa</span></span></label></li>
-                        <li class="ingredient-item"><label class="flex items-center"><input type="checkbox" class="mr-2"><span class="flex-1 flex justify-between"><span>Vinho Branco Seco</span> <span class="font-semibold">50 ml</span></span></label></li>
-                        <li class="ingredient-item"><label class="flex items-center"><input type="checkbox" class="mr-2"><span class="flex-1 flex justify-between"><span>Manteiga fria em cubos</span> <span class="font-semibold">1 c. de sopa</span></span></label></li>`; },
+                ingredients: [
+                    { name: 'Posta de Salmão com pele', base_qty: 2, unit: 'unid.', scalable: true },
+                    { name: 'Polpa de Maracujá fresco', base_qty: 2, unit: 'unid.', scalable: true, heading: 'Para o Molho' },
+                    { name: 'Mel ou Açúcar', base_qty: 2, unit: 'c. de sopa', scalable: true },
+                    { name: 'Vinho Branco Seco', base_qty: 50, unit: 'ml', scalable: true },
+                    { name: 'Manteiga fria em cubos', base_qty: 1, unit: 'c. de sopa', scalable: true }
+                ],
                 steps: [
                     { title: "Grelhar o Salmão na Perfeição", description: "Siga exatamente os passos da 'Aula 02: Filé de Peixe na Frigideira'. Seque bem a pele, tempere, e grelhe com a pele para baixo na maior parte do tempo até ficar bem crocante. Retire e reserve.", porque: "A base de um grande prato é ter cada componente executado na perfeição. Um salmão bem grelhado é o alicerce para o sucesso desta receita.", pontoCritico: "Não cozinhe demais o salmão, pois ele pode continuar a cozinhar um pouco com o calor do molho. Deixe-o ligeiramente menos passado do que o seu ponto ideal." },
                     { title: "A Construção do Molho", description: "Na mesma frigideira onde grelhou o salmão (ou numa panela limpa), adicione o vinho branco para <span class='tooltip' data-tooltip='Adicionar um líquido (vinho, conhaque, caldo) a uma panela quente para soltar os pedaços de comida caramelizados (fond) do fundo.'>deglacear</span>, raspando quaisquer pedacinhos saborosos do fundo. Deixe o álcool evaporar. Adicione a polpa de maracujá (coada, se preferir) e o mel/açúcar.", porque: "Usar a mesma frigideira incorpora os sabores do salmão no molho. A acidez do vinho e do maracujá é equilibrada pela doçura do mel.", pontoCritico: "Certifique-se de que o álcool do vinho evapora completamente, senão o molho ficará com um gosto desagradável." },
@@ -330,18 +370,23 @@
             mexilhoes: {
                 title: "Aula 09: Mexilhões à Belga (Moules Frites)",
                 description: "Aprenda a fazer este prato clássico europeu que é sofisticado, incrivelmente saboroso e surpreendentemente rápido. O segredo está em limpar bem os mexilhões e criar um caldo aromático para os cozinhar a vapor.",
-                calculatorLabel: "Quilos de Mexilhões Frescos:",
-                calculatorUnit: "mexilhoes-input",
+                calculator: {
+                    label: "Quilos de Mexilhões Frescos:",
+                    unit: "mexilhoes-input",
+                    base_value: 1,
+                    default_value: 1
+                },
                 details: { tempoPreparo: "20 min", tempoCozimento: "10-12 min", tempoDescanso: "N/A", rendimento: "Serve 2 pessoas por kg", dificuldade: "Intermediário", utensilios: ["Panela grande com tampa", "Escova dura", "Tigela"] },
                 dicaDeMestre: "O erro mais comum é cozinhar demais os mexilhões. Eles estão prontos assim que as conchas se abrem. Cozinhar por mais tempo apenas os tornará duros e borrachudos. Retire-os do lume assim que a maioria estiver aberta.",
-                getIngredients: function(val) { const kg = parseFloat(val) || 1; return `
-                        <li class="ingredient-item"><label class="flex items-center"><input type="checkbox" class="mr-2"><span class="flex-1 flex justify-between"><span>Mexilhões frescos e vivos</span> <span class="font-semibold">${kg} kg</span></span></label></li>
-                        <li class="ingredient-item"><label class="flex items-center"><input type="checkbox" class="mr-2"><span class="flex-1 flex justify-between"><span>Cebola ou chalotas, picadas</span> <span class="font-semibold">1 unid.</span></span></label></li>
-                        <li class="ingredient-item"><label class="flex items-center"><input type="checkbox" class="mr-2"><span class="flex-1 flex justify-between"><span>Alho, fatiado</span> <span class="font-semibold">2 dentes</span></span></label></li>
-                        <li class="ingredient-item"><label class="flex items-center"><input type="checkbox" class="mr-2"><span class="flex-1 flex justify-between"><span>Vinho Branco Seco</span> <span class="font-semibold">200 ml</span></span></label></li>
-                        <li class="ingredient-item"><label class="flex items-center"><input type="checkbox" class="mr-2"><span class="flex-1 flex justify-between"><span>Manteiga</span> <span class="font-semibold">2 c. de sopa</span></span></label></li>
-                        <li class="ingredient-item"><label class="flex items-center"><input type="checkbox" class="mr-2"><span class="flex-1 flex justify-between"><span>Salsa fresca picada</span> <span class="font-semibold">A gosto</span></span></label></li>
-                        <li class="ingredient-item"><label class="flex items-center"><input type="checkbox" class="mr-2"><span class="flex-1 flex justify-between"><span>Batatas Fritas para acompanhar</span> <span class="font-semibold">Opcional</span></span></label></li>`; },
+                ingredients: [
+                    { name: 'Mexilhões frescos e vivos', base_qty: 1, unit: 'kg', scalable: true },
+                    { name: 'Cebola ou chalotas, picadas', base_qty: 1, unit: 'unid.', scalable: true },
+                    { name: 'Alho, fatiado', base_qty: 2, unit: 'dentes', scalable: true },
+                    { name: 'Vinho Branco Seco', base_qty: 200, unit: 'ml', scalable: true },
+                    { name: 'Manteiga', base_qty: 2, unit: 'c. de sopa', scalable: true },
+                    { name: 'Salsa fresca picada', base_qty: 0, unit: 'A gosto', scalable: false },
+                    { name: 'Batatas Fritas para acompanhar', base_qty: 0, unit: 'Opcional', scalable: false }
+                ],
                 steps: [
                     { title: "Limpar os Mexilhões", description: "Este é o passo mais importante. Coloque os mexilhões numa tigela com água fria. Descarte quaisquer mexilhões que estejam partidos ou que estejam abertos e não se fechem ao lhes dar uma leve pancada. Com uma escova dura, esfregue as conchas para remover qualquer sujidade. Puxe e descarte a 'barba' (um tufo de fibras que sai da concha).", porque: "Mexilhões são filtros vivos e precisam de ser limpos. Os que estão partidos ou abertos estão mortos e não são seguros para consumo, devendo ser descartados.", pontoCritico: "Se um mexilhão estiver ligeiramente aberto, dê-lhe uma pancada firme na bancada. Se estiver vivo, ele irá fechar-se lentamente. Se permanecer aberto, descarte-o." },
                     { title: "O Caldo Aromático", description: "Numa panela grande e funda com tampa, derreta a manteiga em lume médio. Adicione a cebola (ou chalotas) e o alho e refogue até ficarem macios e translúcidos, sem ganhar cor.", porque: "Esta base aromática irá criar o vapor saboroso que cozinhará os mexilhões, e o caldo resultante será um molho delicioso para mergulhar pão ou as batatas fritas.", pontoCritico: "Use uma panela grande o suficiente para que os mexilhões tenham espaço para se abrirem. Eles quase dobram de volume." },
@@ -353,26 +398,31 @@
             risoto: {
                 title: "Aula 10: Risoto de Frutos do Mar",
                 description: "A aula de graduação. Combine a técnica do risoto cremoso com o cozimento preciso de diferentes frutos do mar para criar um prato principal elegante e impressionante que é a essência da cozinha italiana costeira.",
-                calculatorLabel: "Gramas de Arroz de Risoto:",
-                calculatorUnit: "risoto-input",
+                calculator: {
+                    label: "Porções:",
+                    unit: "risoto-input",
+                    base_value: 4,
+                    default_value: 4
+                },
                 details: { tempoPreparo: "25 min", tempoCozimento: "30-40 min", tempoDescanso: "2 min", rendimento: "Serve 3-4 pessoas", dificuldade: "Avançado", utensilios: ["Panela larga para risoto", "Frigideira separada", "Concha", "Panela para o caldo"] },
                 dicaDeMestre: "O segredo para frutos do mar no ponto é cozinhá-los separadamente e adicioná-los ao risoto apenas no final. Se os cozinhar junto com o arroz desde o início, ficarão duros e borrachudos. Use a frigideira onde os salteou para <span class='tooltip' data-tooltip='Adicionar um líquido (vinho, conhaque, caldo) a uma panela quente para soltar os pedaços de comida caramelizados (fond) do fundo.'>deglacear</span> com vinho branco, e adicione esse líquido saboroso ao risoto.",
-                getIngredients: function(val) { const g = parseInt(val) || 300; return `
-                        <li class="ingredient-item"><label class="flex items-center"><input type="checkbox" class="mr-2"><span class="flex-1 flex justify-between"><span>Arroz para Risoto (Carnaroli é ideal)</span> <span class="font-semibold">${g} g</span></span></label></li>
-                        <li class="ingredient-item"><label class="flex items-center"><input type="checkbox" class="mr-2"><span class="flex-1 flex justify-between"><span>Caldo de Peixe ou Legumes, quente</span> <span class="font-semibold">1.5 L</span></span></label></li>
-                        <li class="ingredient-item"><label class="flex items-center"><input type="checkbox" class="mr-2"><span class="flex-1 flex justify-between"><span>Camarões limpos</span> <span class="font-semibold">200 g</span></span></label></li>
-                        <li class="ingredient-item"><label class="flex items-center"><input type="checkbox" class="mr-2"><span class="flex-1 flex justify-between"><span>Lulas em anéis</span> <span class="font-semibold">150 g</span></span></label></li>
-                        <li class="ingredient-item"><label class="flex items-center"><input type="checkbox" class="mr-2"><span class="flex-1 flex justify-between"><span>Mexilhões ou amêijoas, limpos</span> <span class="font-semibold">200 g</span></span></label></li>
-                        <li class="ingredient-item"><label class="flex items-center"><input type="checkbox" class="mr-2"><span class="flex-1 flex justify-between"><span>Vinho Branco Seco</span> <span class="font-semibold">150 ml</span></span></label></li>
-                        <li class="ingredient-item"><label class="flex items-center"><input type="checkbox" class="mr-2"><span class="flex-1 flex justify-between"><span>Chalota ou cebola, picada</span> <span class="font-semibold">1 unid.</span></span></label></li>
-                        <li class="ingredient-item"><label class="flex items-center"><input type="checkbox" class="mr-2"><span class="flex-1 flex justify-between"><span>Tomate cherry, ao meio</span> <span class="font-semibold">1 chávena</span></span></label></li>
-                        <li class="ingredient-item"><label class="flex items-center"><input type="checkbox" class="mr-2"><span class="flex-1 flex justify-between"><span>Salsa Fresca, Sal, Pimenta</span> <span class="font-semibold">A gosto</span></span></label></li>`; },
+                ingredients: [
+                    { name: 'Arroz para Risoto (Carnaroli é ideal)', base_qty: 320, unit: 'g', scalable: true },
+                    { name: 'Caldo de Peixe ou Legumes, quente', base_qty: 1.5, unit: 'L', scalable: true },
+                    { name: 'Camarões limpos', base_qty: 200, unit: 'g', scalable: true },
+                    { name: 'Lulas em anéis', base_qty: 150, unit: 'g', scalable: true },
+                    { name: 'Mexilhões ou amêijoas, limpos', base_qty: 200, unit: 'g', scalable: true },
+                    { name: 'Vinho Branco Seco', base_qty: 150, unit: 'ml', scalable: true },
+                    { name: 'Chalota ou cebola, picada', base_qty: 1, unit: 'unid.', scalable: true },
+                    { name: 'Tomate cherry, ao meio', base_qty: 150, unit: 'g', scalable: true },
+                    { name: 'Salsa Fresca, Sal, Pimenta', base_qty: 0, unit: 'A gosto', scalable: false }
+                ],
                 steps: [
                     { 
                         isSubRecipe: true,
                         title: 'Módulo: A Base do Risoto Perfeito',
                         subSteps: [
-                            { title: "Caldo Quente e Sofrito", description: "Mantenha o caldo de peixe a ferver suavemente numa panela ao lado. Numa panela larga, refogue a chalota picada em azeite até ficar translúcida. Adicione o arroz e faça a '<span class='tooltip' data-tooltip='Termo italiano para tostar o arroz na gordura antes de adicionar líquido.'>tostatura</span>' por 2 minutos, mexendo sempre. Deglaceie com metade do vinho branco e deixe evaporar.", porque: "Estes passos fundamentais (caldo quente, tostar o arroz) são a base para a textura cremosa do risoto, como aprendido na Aula de Fundamentos.", pontoCritico: "Use um bom caldo de peixe caseiro, se possível. Faz toda a diferença." },
+                            { title: "Caldo Quente e Sofrito", description: "Mantenha o caldo de peixe a ferver suavemente numa panela ao lado. Numa panela larga, refogue a chalota picada em azeite até ficar translúcida. Adicione o arroz e faça a '<span class='tooltip' data-tooltip='Termo italiano para tostar o arroz na gordura antes de adicionar líquido.'>tostatura</span>' por 2 minutos, mexendo sempre. Deglaceie com metade do vinho branco e deixe evaporar.", porque: "Estes passos fundamentais (caldo quente, tostar o arroz) são a base para a textura cremosa do risoto.", pontoCritico: "Use um bom caldo de peixe caseiro, se possível. Faz toda a diferença." },
                             { title: "Cozimento do Arroz", description: "Comece a adicionar o caldo quente, concha a concha, mexendo frequentemente, esperando que uma seja absorvida antes de adicionar a próxima. Este processo levará cerca de 18 minutos.", porque: "A agitação constante liberta o amido do arroz, criando a cremosidade natural do prato.", pontoCritico: "Comece a provar o arroz a partir dos 15 minutos para não o cozinhar demais. Deve estar 'al dente'." }
                         ]
                     },
@@ -384,13 +434,59 @@
             }
         };
 
+        // ===================================================================================
+        // FUNÇÕES GLOBAIS (NÃO MEXER)
+        // ===================================================================================
+
         const aulasList = document.getElementById('aulas-list');
         const pageTitle = document.getElementById('page-title');
         const receitasContainer = document.getElementById('receitas-container');
         const backToListBtn = document.getElementById('back-to-list-btn');
 
-        const generateRecipeHTML = (recipeData, targetId) => {
-            return `
+        const formatNumber = (num) => {
+            if (num < 1 && num > 0) return num.toFixed(2);
+            if (num % 1 !== 0) return num.toFixed(1);
+            return num;
+        };
+        
+        const updateIngredients = (recipeData, inputValue) => {
+            const list = document.getElementById(`ingredient-list-${recipeData.calculator.unit}`);
+            if (!list) return;
+
+            const multiplier = inputValue / recipeData.calculator.base_value;
+            let html = '';
+            let currentHeading = '';
+
+            recipeData.ingredients.forEach(ing => {
+                if(ing.heading && ing.heading !== currentHeading) {
+                    currentHeading = ing.heading;
+                    html += `<h5 class="font-bold text-stone-700 mt-3 mb-1">${currentHeading}:</h5>`;
+                }
+
+                let qtyDisplay = '';
+                if (!ing.scalable) {
+                    qtyDisplay = ing.unit;
+                } else {
+                    const scaledQty = ing.base_qty * multiplier;
+                    qtyDisplay = `${formatNumber(scaledQty)} ${ing.unit}`;
+                }
+                
+                html += `
+                    <li class="ingredient-item">
+                        <label class="flex items-center p-1 rounded-md hover:bg-stone-100">
+                            <input type="checkbox" class="mr-2 h-4 w-4 text-amber-600 focus:ring-amber-500 border-stone-300 rounded">
+                            <span class="flex-1 flex justify-between">
+                                <span>${ing.name}</span>
+                                <span class="font-semibold text-right pl-2">${qtyDisplay}</span>
+                            </span>
+                        </label>
+                    </li>`;
+            });
+            list.innerHTML = html;
+        };
+
+        const generateRecipeHTML = (recipeData) => {
+             return `
                 <div class="text-center">
                     <h2 class="text-3xl md:text-4xl font-bold text-amber-700">${recipeData.title}</h2>
                     <p class="mt-4 max-w-3xl mx-auto text-stone-600 text-lg">${recipeData.description}</p>
@@ -423,12 +519,12 @@
                     <div class="lg:col-span-1">
                         <h3 class="text-2xl font-bold text-stone-800 mb-4 border-b-2 border-amber-500 pb-2">Planeamento</h3>
                         <div class="bg-stone-50 p-4 rounded-lg">
-                            <label for="${recipeData.calculatorUnit}" class="block text-lg text-stone-700 mb-2 font-bold">${recipeData.calculatorLabel}</label>
-                            <input type="number" id="${recipeData.calculatorUnit}" value="1" min="0.5" step="1" class="w-full p-2 border border-stone-300 rounded-lg focus:ring-2 focus:ring-amber-500">
+                            <label for="${recipeData.calculator.unit}" class="block text-lg text-stone-700 mb-2 font-bold">${recipeData.calculator.label}</label>
+                            <input type="number" id="${recipeData.calculator.unit}" value="${recipeData.calculator.default_value}" min="0.5" step="1" class="w-full p-2 border border-stone-300 rounded-lg focus:ring-2 focus:ring-amber-500">
                         </div>
                         <div class="mt-6">
                             <h4 class="font-bold text-lg mb-2 text-stone-700">Checklist de Ingredientes:</h4>
-                            <ul class="space-y-2 text-stone-600 text-sm" id="ingredient-list-${targetId}"></ul>
+                            <ul class="space-y-1 text-stone-600 text-sm" id="ingredient-list-${recipeData.calculator.unit}"></ul>
                         </div>
                          <div class="mt-6">
                             <h4 class="font-bold text-lg mb-2 text-stone-700">Utensílios Chave:</h4>
@@ -501,23 +597,21 @@
         };
         
         document.querySelectorAll('.aula-card').forEach(card => {
-            const targetId = card.dataset.target.replace('receita-', '');
-            const recipeData = aulas[targetId];
+            const recipeId = card.dataset.target.replace('receita-', '');
+            const recipeData = aulas[recipeId];
 
             if (recipeData) {
                 const targetElement = document.getElementById(card.dataset.target);
-                targetElement.innerHTML = generateRecipeHTML(recipeData, targetId);
+                targetElement.innerHTML = generateRecipeHTML(recipeData);
                 
-                const input = document.getElementById(recipeData.calculatorUnit);
-                const list = document.getElementById(`ingredient-list-${targetId}`);
-                
-                const updateFn = () => {
-                    if (!input || !list || !recipeData.getIngredients) return;
-                    list.innerHTML = recipeData.getIngredients(input.value);
-                };
-                
-                if(input) { input.addEventListener('input', updateFn); }
-                updateFn(); 
+                const input = document.getElementById(recipeData.calculator.unit);
+                if (input) {
+                    input.addEventListener('input', (e) => {
+                        updateIngredients(recipeData, e.target.value);
+                    });
+                    // Initial population
+                    updateIngredients(recipeData, input.value);
+                }
             }
 
             card.addEventListener('click', () => {
