@@ -1,0 +1,632 @@
+<!DOCTYPE html>
+<html lang="pt-BR" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Acompanhamentos - Mestre Culinário</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Lato:wght@400;700&display=swap');
+        body { font-family: 'Lato', sans-serif; background-color: #f8f7f4; color: #3d3d3d; }
+        h1, h2, h3, h4, .nav-link { font-family: 'Playfair Display', serif; }
+        
+        /* Estilos para interatividade */
+        .aula-card {
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            cursor: pointer;
+        }
+        .aula-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.05), 0 4px 6px -4px rgb(0 0 0 / 0.05);
+        }
+        
+        /* Checklist de Ingredientes */
+        .ingredient-item input[type="checkbox"] {
+            display: none;
+        }
+        .ingredient-item span {
+            transition: all 0.2s ease;
+            cursor: pointer;
+        }
+        .ingredient-item input[type="checkbox"]:checked + span {
+            text-decoration: line-through;
+            opacity: 0.6;
+        }
+
+        /* Acordion/Sanfona para os Passos */
+        details > summary {
+            cursor: pointer;
+            list-style: none;
+            display: inline-flex;
+            align-items: center;
+            transition: color 0.2s ease;
+        }
+        details > summary::-webkit-details-marker {
+            display: none;
+        }
+        details > summary::before {
+            content: '▶';
+            margin-right: 8px;
+            font-size: 0.7em;
+            transition: transform 0.2s ease-in-out;
+        }
+        details[open] > summary::before {
+            transform: rotate(90deg);
+        }
+
+        /* Tooltips para termos técnicos */
+        .tooltip {
+            position: relative;
+            cursor: help;
+            border-bottom: 2px dotted #ca8a04;
+            font-weight: bold;
+        }
+        .tooltip .tooltip-text {
+            visibility: hidden;
+            width: 220px;
+            background-color: #3d3d3d;
+            color: #fff;
+            text-align: center;
+            border-radius: 6px;
+            padding: 8px;
+            position: absolute;
+            z-index: 10;
+            bottom: 125%;
+            left: 50%;
+            margin-left: -110px;
+            opacity: 0;
+            transition: opacity 0.3s;
+            font-family: 'Lato', sans-serif;
+            font-weight: normal;
+        }
+        .tooltip .tooltip-text::after {
+            content: "";
+            position: absolute;
+            top: 100%;
+            left: 50%;
+            margin-left: -5px;
+            border-width: 5px;
+            border-style: solid;
+            border-color: #3d3d3d transparent transparent transparent;
+        }
+        .tooltip:hover .tooltip-text {
+            visibility: visible;
+            opacity: 1;
+        }
+    </style>
+</head>
+<body class="antialiased">
+    <header class="bg-white/90 backdrop-blur-lg sticky top-0 z-50 shadow-md">
+        <nav class="container mx-auto px-6 py-4">
+            <div class="flex justify-between items-center">
+                <a href="index.html" class="text-3xl font-bold text-stone-800">Mestre<span class="text-amber-600">Culinário</span></a>
+                <a href="index.html" class="nav-link text-stone-600 hover:text-amber-600 transition-colors">Voltar à Página Principal</a>
+            </div>
+        </nav>
+    </header>
+    <main class="container mx-auto px-6 py-8 md:py-12">
+        <section id="page-title" class="text-center mb-16">
+            <h1 class="text-4xl md:text-6xl font-bold text-stone-800">Acompanhamentos <span class="text-amber-600">Perfeitos</span></h1>
+            <p class="mt-4 max-w-2xl mx-auto text-stone-600">Aprenda a criar guarnições que elevam qualquer prato principal, dominando as técnicas e as combinações de sabores.</p>
+        </section>
+
+        <div id="aulas-list" class="space-y-8 max-w-5xl mx-auto">
+            <div class="aula-card bg-white p-6 rounded-lg shadow-lg" data-target="receita-arroz"><h2 class="text-2xl md:text-3xl font-bold text-amber-700">Aula 01: Arroz Branco Soltinho</h2><p class="text-stone-600 mt-2">A base universal. Aprenda a técnica infalível que funciona sempre.</p></div>
+            <div class="aula-card bg-white p-6 rounded-lg shadow-lg" data-target="receita-pure"><h2 class="text-2xl md:text-3xl font-bold text-amber-700">Aula 02: Puré de Batata Cremoso</h2><p class="text-stone-600 mt-2">O clássico de conforto, aveludado e sem grumos.</p></div>
+            <div class="aula-card bg-white p-6 rounded-lg shadow-lg" data-target="receita-batata-assada"><h2 class="text-2xl md:text-3xl font-bold text-amber-700">Aula 03: Batatas Assadas Crocantes</h2><p class="text-stone-600 mt-2">Douradas por fora, macias por dentro. O segredo do alecrim e alho.</p></div>
+            <div class="aula-card bg-white p-6 rounded-lg shadow-lg" data-target="receita-legumes-assados"><h2 class="text-2xl md:text-3xl font-bold text-amber-700">Aula 04: Legumes Assados (Cama de Legumes)</h2><p class="text-stone-600 mt-2">Uma base colorida e saudável que serve de acompanhamento ou de cama para assados.</p></div>
+            <div class="aula-card bg-white p-6 rounded-lg shadow-lg" data-target="receita-farofa"><h2 class="text-2xl md:text-3xl font-bold text-amber-700">Aula 05: Farofa de Manteiga e Cebola</h2><p class="text-stone-600 mt-2">A crocância e o sabor inconfundível do clássico brasileiro.</p></div>
+            <div class="aula-card bg-white p-6 rounded-lg shadow-lg" data-target="receita-salada-caesar"><h2 class="text-2xl md:text-3xl font-bold text-amber-700">Aula 06: Salada Caesar Clássica (com Molho Caseiro)</h2><p class="text-stone-600 mt-2">Uma salada que é uma refeição, com um molho cremoso feito do zero.</p></div>
+            <div class="aula-card bg-white p-6 rounded-lg shadow-lg" data-target="receita-cuscuz"><h2 class="text-2xl md:text-3xl font-bold text-amber-700">Aula 07: Cuscuz Marroquino com Frutas Secas</h2><p class="text-stone-600 mt-2">Um acompanhamento rápido, sofisticado e cheio de texturas.</p></div>
+            <div class="aula-card bg-white p-6 rounded-lg shadow-lg" data-target="receita-ratatouille"><h2 class="text-2xl md:text-3xl font-bold text-amber-700">Aula 08: Ratatouille (Estufado Provençal)</h2><p class="text-stone-600 mt-2">O clássico francês que celebra os legumes de verão.</p></div>
+            <div class="aula-card bg-white p-6 rounded-lg shadow-lg" data-target="receita-cebola-caramelizada"><h2 class="text-2xl md:text-3xl font-bold text-amber-700">Aula 09: Cebolas Caramelizadas</h2><p class="text-stone-600 mt-2">Um condimento que transforma qualquer prato com a sua doçura profunda.</p></div>
+            <div class="aula-card bg-white p-6 rounded-lg shadow-lg" data-target="receita-gratinado"><h2 class="text-2xl md:text-3xl font-bold text-amber-700">Aula 10: Gratinado de Batata (Dauphinois)</h2><p class="text-stone-600 mt-2">O acompanhamento supremo: rico, cremoso e absolutamente irresistível.</p></div>
+        </div>
+
+        <div id="receitas-container" class="hidden">
+            <button id="back-to-list-btn" class="mb-8 inline-flex items-center text-amber-700 hover:text-amber-800 font-bold"><svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-2" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M12.707 5.293a1 1 0 010 1.414L9.414 10l3.293 3.293a1 1 0 01-1.414 1.414l-4-4a1 1 0 010-1.414l4-4a1 1 0 011.414 0z" clip-rule="evenodd" /></svg>Voltar ao Índice de Aulas</button>
+            <div id="receita-arroz" class="receita-content bg-white p-8 rounded-lg shadow-xl max-w-7xl mx-auto hidden"></div>
+            <div id="receita-pure" class="receita-content bg-white p-8 rounded-lg shadow-xl max-w-7xl mx-auto hidden"></div>
+            <div id="receita-batata-assada" class="receita-content bg-white p-8 rounded-lg shadow-xl max-w-7xl mx-auto hidden"></div>
+            <div id="receita-legumes-assados" class="receita-content bg-white p-8 rounded-lg shadow-xl max-w-7xl mx-auto hidden"></div>
+            <div id="receita-farofa" class="receita-content bg-white p-8 rounded-lg shadow-xl max-w-7xl mx-auto hidden"></div>
+            <div id="receita-salada-caesar" class="receita-content bg-white p-8 rounded-lg shadow-xl max-w-7xl mx-auto hidden"></div>
+            <div id="receita-cuscuz" class="receita-content bg-white p-8 rounded-lg shadow-xl max-w-7xl mx-auto hidden"></div>
+            <div id="receita-ratatouille" class="receita-content bg-white p-8 rounded-lg shadow-xl max-w-7xl mx-auto hidden"></div>
+            <div id="receita-cebola-caramelizada" class="receita-content bg-white p-8 rounded-lg shadow-xl max-w-7xl mx-auto hidden"></div>
+            <div id="receita-gratinado" class="receita-content bg-white p-8 rounded-lg shadow-xl max-w-7xl mx-auto hidden"></div>
+        </div>
+    </main>
+    <footer class="bg-white border-t mt-16"><div class="container mx-auto px-6 py-8 text-center text-stone-600"><p>&copy; 2024 Mestre Culinário. Todos os direitos reservados.</p></div></footer>
+
+    <script>
+    document.addEventListener('DOMContentLoaded', () => {
+
+        const aulas = {
+            arroz: {
+                title: "Aula 01: Arroz Branco Soltinho",
+                description: "O acompanhamento mais fundamental e versátil de todos. Dominar o arroz branco soltinho é o primeiro passo para construir qualquer refeição com confiança. Com esta técnica, você aprenderá o porquê de cada passo para um resultado que nunca falha.",
+                calculator: { label: "Chávenas de Arroz Cru:", unit: "arroz-input", base_value: 1, default_value: 2 },
+                details: { tempoPreparo: "5 min", tempoCozimento: "15 min", tempoDescanso: "5 min", rendimento: "2 porções por chávena", dificuldade: "Fácil", utensilios: ["Panela com tampa", "Garfo", "Copo medidor"] },
+                dicaDeMestre: "Depois de soltar o arroz com o garfo, coloque um pano de prato limpo entre a panela e a tampa durante o descanso. O pano absorve o excesso de vapor, garantindo um arroz ainda mais seco e soltinho.",
+                ingredients: [
+                    { name: 'Arroz Agulha', base_qty: 1, unit: 'chávena', scalable: true },
+                    { name: 'Água (a ferver)', base_qty: 2, unit: 'chávenas', scalable: true },
+                    { name: 'Azeite', base_qty: 1, unit: 'c. de sopa', scalable: true },
+                    { name: 'Dente de Alho Picado', base_qty: 1, unit: 'unid.', scalable: true },
+                    { name: 'Sal', base_qty: 0.5, unit: 'c. de chá', scalable: true }
+                ],
+                steps: [
+                    { title: "O Refogado (Base de Sabor)", description: "Numa panela, aqueça o azeite em lume médio. Adicione o alho e refogue até perfumar (cerca de 30s). Adicione o arroz e 'frite-o' por cerca de 1 minuto, mexendo sempre. Este passo é crucial.", porque: "Este processo, chamado 'selar' o arroz, reveste cada grão com gordura. Isto ajuda a manter os grãos separados durante o cozimento, evitando que o amido se liberte em excesso e crie um resultado empapado.", pontoCritico: "Não deixe o alho queimar, senão amargará todo o prato. O objetivo é apenas libertar o seu aroma. Ao 'fritar' o arroz, mexa constantemente para que todos os grãos sejam revestidos." },
+                    { title: "A Cozedura Perfeita", description: "Adicione a água **já a ferver** à panela. Tempere com sal e mexa uma única vez para distribuir os grãos. Reduza para o lume mais baixo possível, semi-tape a panela e cozinhe por 10 a 15 minutos, ou até a água ser absorvida.", porque: "Adicionar água fervente mantém a temperatura constante e inicia o cozimento imediatamente e de forma uniforme. Não mexer mais evita que o amido se solte dos grãos, o que é o principal culpado do arroz 'papa'.", pontoCritico: "Resista à tentação de mexer! Apenas confie no processo. O lume deve ser o mais baixo que o seu fogão permite para que a água evapore lentamente.", timer: 720 },
+                    { title: "O Descanso (O Passo Secreto)", description: "Quando a água tiver sido absorvida, desligue o lume, tape completamente a panela e deixe o arroz descansar por pelo menos 5 minutos. Depois deste tempo, solte os grãos gentilmente com um garfo.", porque: "O vapor residual dentro da panela termina o cozimento dos grãos de forma suave e uniforme. Este passo é o que garante a textura perfeita e evita que os grãos do fundo cozinhem mais do que os de cima.", pontoCritico: "Não salte o descanso. Se servir imediatamente, o arroz pode parecer um pouco húmido. Os 5 minutos de descanso fazem toda a diferença.", timer: 300 }
+                ],
+                variacoes: [
+                    "<strong>Combinações Perfeitas:</strong> Literalmente tudo! É a base ideal para Carne de Panela, Moqueca, Frango Assado, Peixe Grelhado e pratos do dia a dia como feijão e bifes.",
+                    "<strong>Arroz com Cenoura:</strong> Adicione cenoura ralada junto com o arroz para 'fritar'.",
+                    "<strong>Arroz com Brócolos:</strong> Adicione pequenos floretes de brócolos nos últimos 5 minutos de cozimento, por cima do arroz."
+                ]
+            },
+            pure: {
+                title: "Aula 02: Puré de Batata Cremoso",
+                description: "O acompanhamento de conforto por excelência. Aprenda a técnica para um puré de batata aveludado, rico, cremoso e completamente livre de grumos ou da temida textura 'cola'.",
+                calculator: { label: "Quilos de Batata:", unit: "pure-input", base_value: 1, default_value: 1 },
+                details: { tempoPreparo: "10 min", tempoCozimento: "20-25 min", tempoDescanso: "N/A", rendimento: "Serve 4-6 pessoas por kg", dificuldade: "Fácil", utensilios: ["Espremedor de batata ou passe-vite", "Panela grande", "Batedor de arame (fouet)"] },
+                dicaDeMestre: "O maior inimigo de um puré cremoso é a água. Depois de escorrer as batatas, volte a colocá-las na panela quente em lume baixo por um minuto. Isso fará com que qualquer excesso de humidade evapore, resultando num puré que absorve melhor a manteiga e o leite.",
+                ingredients: [
+                    { name: 'Batatas ricas em amido (ex: Asterix, Desiree)', base_qty: 1, unit: 'kg', scalable: true },
+                    { name: 'Manteiga sem sal, fria em cubos', base_qty: 150, unit: 'g', scalable: true },
+                    { name: 'Leite Gordo ou Natas (quente)', base_qty: 200, unit: 'ml', scalable: true },
+                    { name: 'Noz-moscada, Sal, Pimenta Branca', base_qty: 0, unit: 'A gosto', scalable: false }
+                ],
+                steps: [
+                    { title: "Cozinhar as Batatas", description: "Descasque as batatas e corte-as em pedaços uniformes. Coloque-as numa panela, cubra com água fria e adicione uma boa quantidade de sal. Leve a ferver e cozinhe até as batatas estarem muito macias (um garfo deve entrar e sair sem qualquer resistência).", porque: "Começar com água fria cozinha as batatas de forma mais uniforme. Salgar a água tempera as batatas de dentro para fora. Cozinhá-las até estarem a desfazer-se facilita o processo de as espremer.", pontoCritico: "Não cozinhe as batatas de menos. Se estiverem duras, o puré ficará com grumos." },
+                    { title: "Espremer, Nunca Bater", description: "Escorra bem a água. Passe as batatas quentes por um espremedor de batata ou um <span class='tooltip' data-tooltip='Utensílio de cozinha que mói e coa alimentos moles, ideal para purés lisos.'>passe-vite</span> para uma tigela. Nunca use um processador de alimentos ou liquidificador.", porque: "Um espremedor ou passe-vite cria uma textura leve e fofa. Um processador ou liquidificador trabalha demais o amido da batata, quebrando as suas células e libertando amido em excesso, o que transforma o puré numa pasta elástica e 'cola'.", pontoCritico: "Esprema as batatas enquanto ainda estão quentes. É muito mais fácil e resulta numa textura melhor." },
+                    { title: "A Cremosidade Final", description: "Com as batatas espremidas na tigela, adicione a manteiga fria em cubos e incorpore com um batedor de arames ou espátula. Aos poucos, adicione o leite ou as natas quentes, mexendo suavemente até atingir a consistência desejada. Tempere com sal, pimenta branca e noz-moscada ralada na hora.", porque: "Adicionar a manteiga primeiro reveste as moléculas de amido com gordura, resultando num puré mais rico. O líquido quente é absorvido mais facilmente, mantendo o puré quente e cremoso.", pontoCritico: "Adicione o líquido aos poucos. É fácil adicionar mais, mas impossível de remover se o puré ficar demasiado líquido." }
+                ],
+                variacoes: [
+                    "<strong>Combinações Perfeitas:</strong> Ideal para pratos com molho, como Carne de Panela, Rosbife, Lombo Assado ou Bife Grelhado. Também é excelente com peixes mais ricos como o Salmão.",
+                    "<strong>Puré de Alho Assado:</strong> Asse uma cabeça de alho no forno, esprema os dentes e misture no puré.",
+                    "<strong>Com Queijo:</strong> Misture queijo parmesão, gruyère ou cheddar ralado no final."
+                ]
+            },
+            'batata-assada': {
+                title: "Aula 03: Batatas Assadas Crocantes",
+                description: "Aprenda os segredos para batatas assadas que são incrivelmente crocantes e douradas por fora, mas macias e fofas por dentro. O acompanhamento perfeito para qualquer assado.",
+                calculator: { label: "Quilos de Batata:", unit: "batata-assada-input", base_value: 1, default_value: 1 },
+                details: { tempoPreparo: "15 min", tempoCozimento: "50-60 min", tempoDescanso: "N/A", rendimento: "Serve 3-4 pessoas por kg", dificuldade: "Fácil", utensilios: ["Assadeira de metal", "Panela grande", "Escorredor"] },
+                dicaDeMestre: "O segredo para a máxima crocância é 'agitar' as batatas pré-cozidas no escorredor. Isto cria uma superfície felpuda e irregular, que aumenta a área de superfície e resulta em inúmeros cantinhos estaladiços depois de assar.",
+                ingredients: [
+                    { name: 'Batatas para assar (ex: King Edward, Maris Piper)', base_qty: 1, unit: 'kg', scalable: true },
+                    { name: 'Azeite ou Gordura de Pato', base_qty: 4, unit: 'c. de sopa', scalable: true },
+                    { name: 'Dentes de Alho, esmagados', base_qty: 4, unit: 'unid.', scalable: true },
+                    { name: 'Ramos de Alecrim Fresco', base_qty: 2, unit: 'unid.', scalable: true },
+                    { name: 'Sal Grosso e Pimenta', base_qty: 0, unit: 'A gosto', scalable: false }
+                ],
+                steps: [
+                    { title: "Pré-cozinhar as Batatas", description: "Pré-aqueça o forno a 200°C. Descasque as batatas e corte-as em pedaços grandes e uniformes. Cozinhe-as em água a ferver com sal por cerca de 10-12 minutos. Elas devem estar macias por fora, mas ainda firmes no centro.", porque: "A pré-cozedura garante um interior macio e fofo. Se fossem diretamente para o forno, o exterior queimaria antes de o interior cozinhar.", pontoCritico: "Não as cozinhe demais, ou elas desmanchar-se-ão. Um garfo deve entrar com alguma resistência.", timer: 600 },
+                    { title: "O Segredo da Textura", description: "Escorra bem as batatas e deixe-as no escorredor por 2 minutos para secarem com o vapor. Depois, tape o escorredor e agite-o vigorosamente por 5 segundos. As bordas das batatas devem ficar 'felpudas' e esbranquiçadas.", porque: "Esta é a técnica chave! A superfície irregular irá agarrar a gordura e criar uma crosta incrivelmente crocante e texturizada no forno.", pontoCritico: "Agite com intenção, mas não com força excessiva para não as transformar em puré." },
+                    { title: "Assar até Dourar", description: "Coloque o azeite ou gordura numa assadeira de metal e leve ao forno quente por 5 minutos para aquecer. Com cuidado, adicione as batatas à gordura quente. Vire-as para cobrir todos os lados e asse por 20 minutos. Vire as batatas, adicione o alho e o alecrim, e asse por mais 20-30 minutos, ou até estarem bem douradas e crocantes.", porque: "Colocar as batatas na gordura já quente dá um 'choque' inicial que ajuda a criar a crosta. A assadeira de metal conduz melhor o calor do que a de vidro, promovendo uma melhor caramelização.", pontoCritico: "Não sobrecarregue a assadeira. As batatas devem estar numa única camada para assarem, não cozinharem a vapor.", timer: 1200 }
+                ],
+                variacoes: [
+                    "<strong>Combinações Perfeitas:</strong> O par ideal para qualquer tipo de assado, como Frango Inteiro, Lombo de Porco ou Rosbife. Também fantásticas com um Bife Grelhado.",
+                    "<strong>Com Páprica:</strong> Adicione páprica fumada à gordura para uma cor e sabor extra.",
+                    "<strong>Com Parmesão:</strong> Polvilhe com queijo parmesão ralado nos últimos 10 minutos de cozimento."
+                ]
+            },
+            'legumes-assados': {
+                title: "Aula 04: Legumes Assados (Cama de Legumes)",
+                description: "Aprenda a assar legumes para realçar a sua doçura natural. Esta técnica cria um acompanhamento colorido e saudável, ou a 'cama' perfeita sobre a qual pode assar uma peça de carne ou peixe.",
+                calculator: { label: "Quilos de Legumes Variados:", unit: "legumes-assados-input", base_value: 1, default_value: 1 },
+                details: { tempoPreparo: "15 min", tempoCozimento: "30-40 min", tempoDescanso: "N/A", rendimento: "Serve 4 pessoas por kg", dificuldade: "Fácil", utensilios: ["Assadeira grande", "Faca"] },
+                dicaDeMestre: "Não sobrecarregue a assadeira. Os legumes devem estar dispostos numa única camada com algum espaço entre eles. Se estiverem amontoados, eles irão cozinhar a vapor em vez de assar, resultando numa textura mole e sem a deliciosa caramelização.",
+                ingredients: [
+                    { name: 'Legumes variados (cenoura, batata doce, abóbora, pimentão, cebola roxa)', base_qty: 1, unit: 'kg', scalable: true },
+                    { name: 'Azeite Extra Virgem', base_qty: 3, unit: 'c. de sopa', scalable: true },
+                    { name: 'Ervas secas (tomilho, orégãos) ou frescas (alecrim)', base_qty: 1, unit: 'c. de sopa', scalable: true },
+                    { name: 'Sal e Pimenta Preta', base_qty: 0, unit: 'A gosto', scalable: false }
+                ],
+                steps: [
+                    { title: "Preparar os Legumes", description: "Pré-aqueça o forno a 200°C. Lave e corte os legumes em pedaços uniformes, com cerca de 2-3 cm. Legumes mais duros como batatas e cenouras podem ser cortados um pouco mais pequenos que os mais macios como pimentões.", porque: "O corte uniforme garante que todos os legumes cozinhem ao mesmo tempo. Ajustar o tamanho com base na densidade ajuda a sincronizar o ponto de cozimento.", pontoCritico: "Deixe a casca em legumes como batatas e abóbora para mais textura e nutrientes." },
+                    { title: "Temperar Generosamente", description: "Numa tigela grande (ou diretamente na assadeira), misture os legumes com o azeite, sal, pimenta e ervas. Use as mãos para garantir que todos os pedaços estão bem revestidos com a gordura e os temperos.", porque: "O azeite é crucial para a condução do calor e para evitar que os legumes sequem. Ele é o veículo que ajuda a criar a caramelização e a dourar a superfície.", pontoCritico: "Não tenha medo de usar uma boa quantidade de azeite. Legumes secos no forno ficam murchos e sem graça." },
+                    { title: "Assar até Caramelizar", description: "Espalhe os legumes numa única camada numa assadeira grande. Leve ao forno por 30 a 40 minutos, virando-os a meio do tempo, até estarem macios por dentro e com as pontas douradas e caramelizadas.", porque: "O calor seco do forno concentra os açúcares naturais dos legumes, intensificando o seu sabor de uma forma que o cozimento em água não consegue. Virar a meio garante um dourado uniforme.", pontoCritico: "Cada forno é diferente. Fique de olho nos legumes nos últimos 10 minutos para garantir que não queimam.", timer: 1800 }
+                ],
+                variacoes: [
+                    "<strong>Combinações Perfeitas:</strong> Use como 'cama' para assar um Frango Inteiro ou um Lombo de Porco por cima. Os sucos da carne irão dar um sabor incrível aos legumes. Também é um excelente acompanhamento para Peixe Assado ou Grelhado.",
+                    "<strong>Com Mel ou Balsâmico:</strong> Nos últimos 10 minutos, regue com um fio de mel ou vinagre balsâmico para um glacê agridoce.",
+                    "<strong>Com Queijo Feta:</strong> Depois de retirar do forno, esfarele queijo feta por cima para um contraste salgado e cremoso."
+                ]
+            },
+            farofa: {
+                title: "Aula 05: Farofa de Manteiga e Cebola",
+                description: "Um ícone da culinária brasileira. Aprenda a fazer uma farofa simples, húmida na medida certa, crocante e cheia de sabor, usando apenas alguns ingredientes. É o acompanhamento que adiciona textura a qualquer prato.",
+                calculator: { label: "Chávenas de Farinha de Mandioca:", unit: "farofa-input", base_value: 2, default_value: 2 },
+                details: { tempoPreparo: "5 min", tempoCozimento: "10-15 min", tempoDescanso: "N/A", rendimento: "Serve 4-6 pessoas", dificuldade: "Fácil", utensilios: ["Frigideira larga", "Colher de pau"] },
+                dicaDeMestre: "O segredo para uma farofa que não fica seca é a proporção de gordura e a temperatura. Toste a farinha em lume baixo, mexendo sempre, para que ela absorva a manteiga lentamente sem queimar, resultando numa textura perfeita.",
+                ingredients: [
+                    { name: 'Farinha de Mandioca (flocada ou fina)', base_qty: 2, unit: 'chávenas', scalable: true },
+                    { name: 'Manteiga', base_qty: 4, unit: 'c. de sopa', scalable: true },
+                    { name: 'Cebola grande, picada finamente', base_qty: 1, unit: 'unid.', scalable: true },
+                    { name: 'Sal e Pimenta do Reino', base_qty: 0, unit: 'A gosto', scalable: false }
+                ],
+                steps: [
+                    { title: "A Base de Sabor", description: "Numa frigideira larga em lume médio, derreta a manteiga. Adicione a cebola picada e uma pitada de sal. Refogue lentamente por 5 a 8 minutos, até a cebola ficar bem macia, translúcida e começar a dourar.", porque: "Cozinhar a cebola lentamente na manteiga liberta a sua doçura natural, criando uma base de sabor rica e complexa que irá perfumar toda a farofa. O sal ajuda a extrair a humidade da cebola.", pontoCritico: "Não apresse este passo. Uma cebola bem refogada é o segredo de uma farofa saborosa. Se queimar, o sabor amargo irá estragar o resultado." },
+                    { title: "Tostar a Farinha", description: "Reduza o lume para o mínimo. Adicione a farinha de mandioca à frigideira, toda de uma vez. Comece a mexer imediatamente com uma colher de pau, incorporando a farinha na manteiga e na cebola.", porque: "Adicionar a farinha com o lume baixo impede que ela queime imediatamente, dando-lhe tempo para absorver a gordura e cozinhar lentamente.", pontoCritico: "A partir deste momento, não pare de mexer. A farinha de mandioca queima muito facilmente." },
+                    { title: "O Ponto Perfeito", description: "Continue a mexer e a tostar a farinha em lume baixo por 3 a 5 minutos. A farofa estará pronta quando estiver dourada, com um aroma de nozes tostadas e completamente soltinha. Tempere com sal e pimenta a gosto.", porque: "Este processo de tostar cozinha o sabor 'cru' da farinha e desenvolve a sua complexidade. O tempo exato depende do tipo de farinha e do seu gosto pessoal (mais clara ou mais escura).", pontoCritico: "Prove a farofa para verificar o ponto. Ela deve estar crocante, mas não com gosto de queimado. Desligue o lume um pouco antes de atingir a cor desejada, pois ela continua a tostar com o calor residual da frigideira.", timer: 240 }
+                ],
+                variacoes: [
+                    "<strong>Combinações Perfeitas:</strong> Indispensável com Feijoada e Churrasco. Maravilhosa com Carne de Panela, Moqueca e para rechear Aves Assadas.",
+                    "<strong>Com Bacon e Linguiça:</strong> Frite cubos de bacon e linguiça antes de adicionar a cebola para uma versão mais rica.",
+                    "<strong>Com Ovos e Banana:</strong> Adicione ovos mexidos e rodelas de banana-da-terra frita no final para uma farofa completa."
+                ]
+            },
+            'salada-caesar': {
+                title: "Aula 06: Salada Caesar Clássica (com Molho Caseiro)",
+                description: "Esqueça os molhos de compra. Aprenda a fazer uma verdadeira Salada Caesar, com um molho cremoso e complexo feito do zero e croutons caseiros. É uma salada que se impõe como prato principal.",
+                calculator: { label: "Porções:", unit: "salada-caesar-input", base_value: 4, default_value: 4 },
+                details: { tempoPreparo: "25 min", tempoCozimento: "10 min", tempoDescanso: "N/A", rendimento: "Serve 4 pessoas", dificuldade: "Intermediário", utensilios: ["Tigela grande", "Faca de chef", "Batedor de arame (fouet)"] },
+                dicaDeMestre: "O segredo de um molho Caesar autêntico e seguro é usar uma gema de ovo pasteurizada ou fazer uma emulsão inicial com a gema, um pouco de água a ferver e o sumo de limão, batendo vigorosamente para 'cozinhar' a gema com o calor e o ácido.",
+                ingredients: [
+                    { name: 'Alface Romana', base_qty: 2, unit: 'pés', scalable: true },
+                    { name: 'Pão tipo italiano, em cubos', base_qty: 200, unit: 'g', scalable: true, heading: "Para os Croutons" },
+                    { name: 'Azeite', base_qty: 3, unit: 'c. de sopa', scalable: true },
+                    { name: 'Dente de Alho', base_qty: 1, unit: 'unid.', scalable: true, heading: "Para o Molho" },
+                    { name: 'Filés de Anchova em óleo, picados', base_qty: 4, unit: 'unid.', scalable: true },
+                    { name: 'Gema de Ovo', base_qty: 1, unit: 'unid.', scalable: true },
+                    { name: 'Mostarda Dijon', base_qty: 1, unit: 'c. de chá', scalable: true },
+                    { name: 'Sumo de Limão Siciliano', base_qty: 2, unit: 'c. de sopa', scalable: true },
+                    { name: 'Óleo Vegetal Neutro', base_qty: 120, unit: 'ml', scalable: true },
+                    { name: 'Queijo Parmesão ralado na hora', base_qty: 50, unit: 'g', scalable: true }
+                ],
+                steps: [
+                    { 
+                        isSubRecipe: true,
+                        title: 'Módulo: Croutons Caseiros',
+                        subSteps: [
+                            { title: "Preparar e Temperar", description: "Pré-aqueça o forno a 180°C. Corte o pão em cubos de 2cm. Numa tigela, misture os cubos de pão com o azeite, sal e pimenta até estarem bem cobertos.", porque: "Croutons caseiros são infinitamente superiores aos de compra. O azeite garante que fiquem dourados e crocantes.", pontoCritico: "Use um pão ligeiramente velho ('dormido'), pois ele tem menos humidade e ficará mais crocante." },
+                            { title: "Assar até Dourar", description: "Espalhe os cubos de pão numa única camada num tabuleiro e leve ao forno por 10 a 15 minutos, virando a meio, até estarem dourados e estaladiços. Deixe arrefecer completamente.", porque: "Assar em vez de fritar resulta em croutons mais leves e uniformes. Deixar arrefecer é crucial para que atinjam a máxima crocância.", pontoCritico: "Fique de olho, pois eles podem queimar rapidamente no final.", timer: 600 }
+                        ]
+                    },
+                    { title: "A Base do Molho Caesar", description: "Numa tigela, use um garfo para amassar o dente de alho e os filés de anchova até formar uma pasta. Junte a gema de ovo, a mostarda Dijon e o sumo de limão. Bata bem com um batedor de arames.", porque: "As anchovas fornecem o sabor <span class='tooltip' data-tooltip='O 'quinto gosto', profundo e saboroso, encontrado em queijos curados, anchovas e carnes.'>umami</span> salgado característico do molho. A gema e a mostarda são os emulsionantes que irão unir o óleo e o ácido.", pontoCritico: "Pique e amasse muito bem as anchovas para que se dissolvam no molho sem deixar pedaços grandes." },
+                    { title: "A Emulsão", description: "Enquanto bate vigorosamente, adicione o óleo vegetal num fio fino e contínuo, como se estivesse a fazer maionese. Continue a bater até o molho engrossar e ficar cremoso. Incorpore metade do queijo parmesão ralado e tempere com pimenta preta.", porque: "A adição lenta do óleo é o que permite a formação de uma <span class='tooltip' data-tooltip='Mistura estável de dois líquidos que normalmente não se misturam, como óleo e água.'>emulsão</span> estável. O parmesão adiciona mais sabor salgado e ajuda a engrossar.", pontoCritico: "Se o molho ficar demasiado espesso, pode afiná-lo com uma colher de chá de água." },
+                    { title: "Montagem Final", description: "Lave e seque muito bem as folhas de alface. Rasgue-as em pedaços grandes com as mãos. Numa tigela grande, envolva delicadamente a alface com a quantidade desejada de molho. Adicione os croutons e o resto do parmesão ralado. Sirva imediatamente.", porque: "Envolver a salada no último momento garante que a alface e os croutons se mantenham crocantes. Rasgar a alface em vez de a cortar evita que as bordas oxidem e fiquem escuras.", pontoCritico: "Não 'afogue' a salada em molho. O objetivo é revestir levemente cada folha." }
+                ],
+                variacoes: [
+                    "<strong>Combinações Perfeitas:</strong> Sirva como acompanhamento para um Bife Grelhado ou adicione tiras de frango grelhado para a transformar num prato principal clássico.",
+                    "<strong>Sem Anchovas:</strong> Se não gostar, pode omitir ou substituir por algumas gotas de molho inglês (Worcestershire).",
+                    "<strong>Com Kale:</strong> Substitua a alface por couve kale, massajando as folhas com um pouco de molho antes de montar a salada para as amaciar."
+                ]
+            },
+            cuscuz: {
+                title: "Aula 07: Cuscuz Marroquino com Frutas Secas",
+                description: "Aprenda a fazer cuscuz marroquino, o acompanhamento mais rápido e um dos mais versáteis. Esta versão com frutas secas e nozes adiciona um toque agridoce e uma textura incrível a qualquer prato.",
+                calculator: { label: "Gramas de Cuscuz Seco:", unit: "cuscuz-input", base_value: 200, default_value: 200 },
+                details: { tempoPreparo: "5 min", tempoCozimento: "5 min", tempoDescanso: "5 min", rendimento: "Serve 4 pessoas", dificuldade: "Fácil", utensilios: ["Tigela grande com tampa ou prato", "Garfo"] },
+                dicaDeMestre: "O segredo para um cuscuz soltinho é a proporção de líquido e o método de 'soltar' os grãos. Use um garfo para fofar o cuscuz depois de hidratado, quebrando quaisquer grumos e incorporando ar.",
+                ingredients: [
+                    { name: 'Cuscuz Marroquino', base_qty: 200, unit: 'g', scalable: true },
+                    { name: 'Caldo de Legumes ou Água, a ferver', base_qty: 250, unit: 'ml', scalable: true },
+                    { name: 'Damascos secos, picados', base_qty: 50, unit: 'g', scalable: true },
+                    { name: 'Amêndoas laminadas, tostadas', base_qty: 30, unit: 'g', scalable: true },
+                    { name: 'Hortelã fresca, picada', base_qty: 2, unit: 'c. de sopa', scalable: true },
+                    { name: 'Azeite Extra Virgem', base_qty: 2, unit: 'c. de sopa', scalable: true },
+                    { name: 'Sumo de Limão', base_qty: 1, unit: 'c. de sopa', scalable: true },
+                    { name: 'Sal e Pimenta', base_qty: 0, unit: 'A gosto', scalable: false }
+                ],
+                steps: [
+                    { title: "Hidratar o Cuscuz", description: "Coloque o cuscuz seco numa tigela grande. Regue com uma colher de sopa de azeite e uma pitada de sal, e misture com os dedos para revestir os grãos. Despeje o caldo ou a água a ferver sobre o cuscuz.", porque: "Revestir os grãos com azeite antes de hidratar ajuda a mantê-los separados, prevenindo a formação de grumos. O líquido quente cozinha o cuscuz por absorção.", pontoCritico: "A proporção de líquido é crucial. Geralmente é 1 parte de cuscuz para 1.25 partes de líquido em volume. Verifique a embalagem, mas esta proporção é um bom ponto de partida." },
+                    { title: "O Descanso Mágico", description: "Assim que adicionar o líquido quente, tape imediatamente a tigela com uma tampa, um prato ou película aderente. Deixe descansar por 5 a 7 minutos, sem espiar.", porque: "O vapor preso na tigela é o que cozinha o cuscuz na perfeição, deixando-o macio e leve. Abrir a tampa liberta o vapor e interrompe o processo.", pontoCritico: "Não mexa durante o descanso. Confie no poder do vapor.", timer: 360 },
+                    { title: "Fofar e Temperar", description: "Após o descanso, destape a tigela. O cuscuz terá absorvido todo o líquido. Use um garfo para soltar e 'fofar' os grãos, quebrando gentilmente quaisquer aglomerados. Adicione os damascos, as amêndoas, a hortelã picada, o resto do azeite e o sumo de limão. Misture tudo e tempere com sal e pimenta a gosto.", porque: "Fofar com um garfo separa os grãos e deixa o cuscuz leve e aerado. Adicionar os outros ingredientes depois de o cuscuz estar cozido mantém as suas texturas e sabores frescos.", pontoCritico: "Toste as amêndoas numa frigideira seca antes de as usar para realçar o seu sabor e crocância." }
+                ],
+                variacoes: [
+                    "<strong>Combinações Perfeitas:</strong> Fantástico com pratos de inspiração do Médio Oriente ou Norte de África, como um Tagine de Borrego, Frango com Especiarias ou Espetadas de Cordeiro. Também funciona bem com Salmão Grelhado.",
+                    "<strong>Salada de Cuscuz:</strong> Adicione pepino, tomate e grão de bico para uma salada completa.",
+                    "<strong>Com Outros Frutos Secos:</strong> Use tâmaras, passas ou figos secos. Substitua as amêndoas por pistácios ou pinhões."
+                ]
+            },
+            ratatouille: {
+                title: "Aula 08: Ratatouille (Estufado Provençal)",
+                description: "Um prato rústico e vibrante da região da Provença, em França. O Ratatouille é um estufado de legumes de verão cozinhados lentamente em azeite, celebrando o sabor de cada componente.",
+                calculator: { label: "Porções:", unit: "ratatouille-input", base_value: 6, default_value: 6 },
+                details: { tempoPreparo: "25 min", tempoCozimento: "45-60 min", tempoDescanso: "N/A", rendimento: "Serve 6-8 pessoas", dificuldade: "Intermediário", utensilios: ["Caçarola grande ou panela de fundo grosso", "Faca de chef"] },
+                dicaDeMestre: "O segredo de um grande Ratatouille, segundo os chefs, é cozinhar cada legume separadamente antes de os juntar. Isto permite que cada um desenvolva o seu sabor e textura próprios sem se transformar numa papa indistinta.",
+                ingredients: [
+                    { name: 'Beringela, em cubos de 2cm', base_qty: 1, unit: 'unid. grande', scalable: true },
+                    { name: 'Curgete (Abobrinha), em cubos de 2cm', base_qty: 2, unit: 'unid.', scalable: true },
+                    { name: 'Pimentão (vermelho ou amarelo), em cubos', base_qty: 2, unit: 'unid.', scalable: true },
+                    { name: 'Cebola, picada', base_qty: 1, unit: 'unid. grande', scalable: true },
+                    { name: 'Alho, fatiado', base_qty: 4, unit: 'dentes', scalable: true },
+                    { name: 'Tomate maduro, sem pele, picado', base_qty: 800, unit: 'g', scalable: true },
+                    { name: 'Azeite Extra Virgem', base_qty: 6, unit: 'c. de sopa', scalable: true },
+                    { name: 'Ervas frescas (tomilho, louro, salsa)', base_qty: 0, unit: 'A gosto', scalable: false }
+                ],
+                steps: [
+                    { title: "Preparar a Beringela", description: "Coloque os cubos de beringela num escorredor, polvilhe generosamente com sal e deixe 'suar' por 30 minutos. Depois, passe por água para remover o excesso de sal e seque muito bem com papel toalha.", porque: "A beringela contém muita água e um ligeiro amargor. O sal extrai ambos, resultando numa textura mais firme e num sabor mais doce. Secar é crucial para que ela doure em vez de cozer.", pontoCritico: "Não salte este passo. Faz uma diferença enorme na textura final da beringela." },
+                    { title: "Cozinhar os Legumes Separadamente", description: "Numa caçarola grande, aqueça um pouco de azeite e doure os cubos de beringela até ficarem macios. Retire e reserve. Faça o mesmo com a curgete, dourando-a e reservando. Por fim, faça o mesmo com os pimentões.", porque: "Esta é a técnica profissional. Cada legume tem um teor de água e tempo de cozimento diferente. Cozinhá-los separadamente permite controlar o ponto de cada um e desenvolver o seu sabor individualmente.", pontoCritico: "Não tenha pressa. Dê a cada legume o tempo necessário para dourar e caramelizar ligeiramente." },
+                    { title: "Construir a Base e Juntar Tudo", description: "Na mesma caçarola, adicione mais azeite e refogue a cebola até ficar macia. Junte o alho e cozinhe por mais um minuto. Adicione o tomate picado e as ervas (tomilho, louro). Cozinhe por 10 minutos para criar um molho base. Volte a colocar todos os legumes dourados na panela.", porque: "Agora que cada legume está perfeitamente cozido, vamos juntá-los num molho de tomate para que os sabores se fundam e se casem.", pontoCritico: "A partir de agora, mexa com cuidado para não desmanchar os legumes." },
+                    { title: "O Cozimento Final", description: "Tempere com sal e pimenta. Deixe o estufado cozinhar em lume muito baixo, semi-tapado, por pelo menos 20 minutos (ou até 1 hora, para um sabor mais profundo), para que os sabores se misturem bem. Finalize com salsa fresca picada.", porque: "Este cozimento final lento é onde a mágica acontece e os sabores individuais se transformam num todo harmonioso.", pontoCritico: "Ratatouille é ainda melhor no dia seguinte, quando os sabores tiveram tempo para se desenvolver completamente.", timer: 1200 }
+                ],
+                variacoes: [
+                    "<strong>Combinações Perfeitas:</strong> É um acompanhamento clássico para Cordeiro Assado, Peixe Branco Grelhado ou simplesmente servido com um ovo estrelado por cima e pão crocante.",
+                    "<strong>Versão do Filme (Confit Byaldi):</strong> Fatie os legumes muito finamente e disponha-os em espiral sobre uma base de molho de tomate para um visual impressionante.",
+                    "<strong>Com Azeitonas:</strong> Adicione azeitonas pretas no final para um toque salgado."
+                ]
+            },
+            'cebola-caramelizada': {
+                title: "Aula 09: Cebolas Caramelizadas",
+                description: "Aprenda a transformar uma simples cebola num condimento adocicado, profundo e complexo. A caramelização é uma técnica de paciência que recompensa com um sabor incrível para hambúrgueres, sopas, quiches e muito mais.",
+                calculator: { label: "Quilos de Cebola:", unit: "cebola-caramelizada-input", base_value: 1, default_value: 1 },
+                details: { tempoPreparo: "10 min", tempoCozimento: "45-60 min", tempoDescanso: "N/A", rendimento: "Reduz drasticamente de volume", dificuldade: "Fácil", utensilios: ["Frigideira larga e de fundo grosso", "Colher de pau"] },
+                dicaDeMestre: "Para acelerar ligeiramente o processo e adicionar uma camada de sabor, adicione uma colher de sopa de vinagre balsâmico nos últimos 5 minutos de cozimento. Ajuda a intensificar a cor e adiciona uma acidez adocicada.",
+                ingredients: [
+                    { name: 'Cebolas (amarelas ou brancas)', base_qty: 1, unit: 'kg', scalable: true },
+                    { name: 'Manteiga', base_qty: 3, unit: 'c. de sopa', scalable: true },
+                    { name: 'Azeite', base_qty: 1, unit: 'c. de sopa', scalable: true },
+                    { name: 'Sal', base_qty: 0.5, unit: 'c. de chá', scalable: true },
+                    { name: 'Açúcar (opcional)', base_qty: 1, unit: 'pitada', scalable: false }
+                ],
+                steps: [
+                    { title: "O Corte e a Preparação", description: "Descasque as cebolas, corte-as ao meio e depois em fatias finas e uniformes. A uniformidade do corte é importante para que cozinhem por igual. Numa frigideira larga de fundo grosso, derreta a manteiga com o azeite em lume médio-baixo.", porque: "Uma frigideira larga permite que as cebolas fiquem mais espalhadas, promovendo a evaporação da água e a caramelização, em vez de cozinharem a vapor. A mistura de manteiga (sabor) e azeite (ponto de fumo mais alto) é ideal.", pontoCritico: "Não use lume alto. A tentação é grande, mas resultará em cebolas queimadas por fora e cruas por dentro." },
+                    { title: "A Paciência da Transformação", description: "Adicione as cebolas à frigideira e tempere com sal. Cozinhe em lume baixo a médio-baixo, mexendo ocasionalmente (a cada 5-10 minutos), por 45 a 60 minutos. As cebolas irão passar por várias fases: primeiro amolecem, depois ficam translúcidas, douradas e, finalmente, atingem um castanho profundo e uma textura de compota.", porque: "Este processo lento quebra as moléculas de açúcar complexas da cebola em açúcares simples, que depois caramelizam (<span class='tooltip' data-tooltip='Processo químico que oxida o açúcar, criando uma cor acastanhada e um sabor complexo e adocicado.'>caramelização</span>), criando centenas de novos compostos de sabor. O sal ajuda a extrair a humidade da cebola.", pontoCritico: "A chave é 'ocasionalmente'. Se mexer demasiado, as cebolas não ganham cor. Se mexer de menos, podem queimar. Encontre o equilíbrio.", timer: 2700 },
+                    { title: `O <span class="tooltip" data-tooltip="Adicionar um líquido (água, vinho, caldo) a uma panela quente para soltar os pedaços de comida caramelizados (fond) do fundo.">Deglacear</span> (O Toque Final)`, description: "Quando as cebolas estiverem bem escuras e caramelizadas, um fundo acastanhado ('fond') terá se formado na frigideira. Adicione uma ou duas colheres de sopa de água (ou vinho branco/vinagre) para 'deglacear', raspando o fundo com a colher para soltar todo esse sabor. Deixe o líquido evaporar completamente.", porque: "O 'fond' no fundo da panela é sabor puro e concentrado. Deglacear dissolve esse sabor e incorpora-o de volta nas cebolas, resultando num sabor final muito mais rico e complexo.", pontoCritico: "Faça este passo rapidamente e com a frigideira quente para que o líquido evapore e não deixe as cebolas ensopadas." }
+                ],
+                variacoes: [
+                    "<strong>Combinações Perfeitas:</strong> O melhor amigo de um bom Hambúrguer Caseiro ou de um Bife Grelhado. Fantásticas em quiches, sanduíches de queijo quente, e como base para a clássica Sopa de Cebola Francesa.",
+                    "<strong>Armazenamento:</strong> Guardam-se bem no frigorífico por até uma semana e o sabor até melhora.",
+                    "<strong>Com Tomilho:</strong> Adicione alguns ramos de tomilho fresco junto com as cebolas para um aroma extra."
+                ]
+            },
+            gratinado: {
+                title: "Aula 10: Gratinado de Batata (Dauphinois)",
+                description: "O auge dos acompanhamentos de batata. Fatias finas de batata cozidas lentamente em natas e alho até ficarem incrivelmente macias, com uma crosta dourada e borbulhante. Uma receita indulgente para ocasiões especiais.",
+                calculator: { label: "Quilos de Batata:", unit: "gratinado-input", base_value: 1, default_value: 1 },
+                details: { tempoPreparo: "20 min", tempoCozimento: "60-75 min", tempoDescanso: "10 min", rendimento: "Serve 6-8 pessoas por kg", dificuldade: "Intermediário", utensilios: ["Travessa de ir ao forno (gratin)", "Mandoline (altamente recomendado) ou faca afiada"] },
+                dicaDeMestre: "Não lave as fatias de batata depois de as cortar! O amido na superfície das batatas é crucial, pois ele irá libertar-se durante o cozimento e ajudar a engrossar as natas, criando um molho cremoso e coeso, em vez de uma sopa.",
+                ingredients: [
+                    { name: 'Batatas para cozer (ricas em amido)', base_qty: 1, unit: 'kg', scalable: true },
+                    { name: 'Natas (Creme de Leite) (35% de gordura)', base_qty: 500, unit: 'ml', scalable: true },
+                    { name: 'Leite Gordo', base_qty: 200, unit: 'ml', scalable: true },
+                    { name: 'Dente de Alho', base_qty: 1, unit: 'unid.', scalable: true },
+                    { name: 'Noz-moscada, Sal, Pimenta Branca', base_qty: 0, unit: 'A gosto', scalable: false }
+                ],
+                steps: [
+                    { title: "Preparar a Base e as Batatas", description: "Pré-aqueça o forno a 160°C. Descasque um dente de alho e esfregue-o por todo o interior da travessa que vai usar. Descasque as batatas e, usando uma <span class='tooltip' data-tooltip='Utensílio de cozinha com uma lâmina ajustável para cortar fatias extremamente finas e uniformes.'>mandoline</span> ou uma faca muito afiada, corte-as em fatias muito finas e uniformes (cerca de 2-3mm).", porque: "Esfregar o alho infunde um sabor subtil em todo o prato. As fatias finas e uniformes são essenciais para que as batatas cozinhem por igual e absorvam o creme, criando a textura característica do gratinado.", pontoCritico: "A mandoline é a melhor ferramenta para este trabalho, garantindo uniformidade. Se usar uma faca, trabalhe com paciência para manter a espessura consistente." },
+                    { title: "Montar as Camadas", description: "Disponha as fatias de batata na travessa, sobrepondo-as em camadas. Pode fazê-lo de forma organizada, como escamas de peixe, ou simplesmente espalhá-las. A cada duas ou três camadas, tempere generosamente com sal, pimenta branca e noz-moscada ralada na hora.", porque: "Temperar entre as camadas garante que todo o gratinado fica saboroso, não apenas a camada de cima.", pontoCritico: "Não pressione as camadas. Deixe-as relativamente soltas para que o líquido possa penetrar por todo o lado." },
+                    { title: "Adicionar o Líquido e Assar", description: "Numa tigela, misture as natas e o leite. Despeje a mistura sobre as batatas na travessa até que o líquido chegue quase à última camada, mas sem a cobrir completamente. Leve ao forno e asse por 60 a 75 minutos.", porque: "A camada superior de batata, não coberta pelo líquido, irá dourar e ficar ligeiramente crocante, criando um contraste de texturas. O cozimento lento e a baixa temperatura permitem que as batatas cozinhem suavemente e absorvam o creme sem que este se separe.", pontoCritico: "O gratinado está pronto quando as batatas estiverem completamente macias (um garfo ou faca deve entrar sem resistência) e o topo estiver dourado e borbulhante.", timer: 3600 },
+                    { title: "O Descanso Essencial", description: "Retire o gratinado do forno e, crucialmente, deixe-o descansar por pelo menos 10 a 15 minutos antes de servir.", porque: "Este descanso permite que o amido das batatas e as natas assentem e terminem de engrossar, tornando o gratinado mais coeso e fácil de servir. Se o cortar imediatamente, ele estará demasiado líquido.", pontoCritico: "Resista à tentação de o servir a ferver. O descanso melhora imenso a textura final." }
+                ],
+                variacoes: [
+                    "<strong>Combinações Perfeitas:</strong> É o acompanhamento de luxo para uma ocasião especial. Sirva com Rosbife, Lombo de Porco Assado ou um Bife Grelhado de alta qualidade.",
+                    "<strong>Com Queijo (Gratin Savoyard):</strong> Adicione queijo Gruyère ou Emmental ralado entre as camadas e por cima para uma versão ainda mais rica.",
+                    "<strong>Com Tomilho:</strong> Adicione alguns ramos de tomilho ao creme para um aroma extra."
+                ]
+            }
+        };
+
+        // ===================================================================================
+        // FUNÇÕES GLOBAIS (NÃO MEXER)
+        // ===================================================================================
+
+        const aulasList = document.getElementById('aulas-list');
+        const pageTitle = document.getElementById('page-title');
+        const receitasContainer = document.getElementById('receitas-container');
+        const backToListBtn = document.getElementById('back-to-list-btn');
+
+        const formatNumber = (num) => {
+            if (num < 1 && num > 0) return num.toFixed(2);
+            if (num % 1 !== 0) return num.toFixed(1);
+            return num;
+        };
+        
+        const updateIngredients = (recipeData, inputValue) => {
+            const list = document.getElementById(`ingredient-list-${recipeData.calculator.unit}`);
+            if (!list) return;
+
+            const multiplier = inputValue / recipeData.calculator.base_value;
+            let html = '';
+            let currentHeading = '';
+
+            recipeData.ingredients.forEach(ing => {
+                if(ing.heading && ing.heading !== currentHeading) {
+                    currentHeading = ing.heading;
+                    html += `<h5 class="font-bold text-stone-700 mt-3 mb-1">${currentHeading}:</h5>`;
+                }
+
+                let qtyDisplay = '';
+                if (!ing.scalable) {
+                    qtyDisplay = ing.unit;
+                } else {
+                    const scaledQty = ing.base_qty * multiplier;
+                    qtyDisplay = `${formatNumber(scaledQty)} ${ing.unit}`;
+                }
+                
+                html += `
+                    <li class="ingredient-item">
+                        <label class="flex items-center p-1 rounded-md hover:bg-stone-100">
+                            <input type="checkbox" class="mr-2 h-4 w-4 text-amber-600 focus:ring-amber-500 border-stone-300 rounded">
+                            <span class="flex-1 flex justify-between">
+                                <span>${ing.name}</span>
+                                <span class="font-semibold text-right pl-2">${qtyDisplay}</span>
+                            </span>
+                        </label>
+                    </li>`;
+            });
+            list.innerHTML = html;
+        };
+
+        const generateRecipeHTML = (recipeData) => {
+             return `
+                <div class="text-center">
+                    <h2 class="text-3xl md:text-4xl font-bold text-amber-700">${recipeData.title}</h2>
+                    <p class="mt-4 max-w-3xl mx-auto text-stone-600 text-lg">${recipeData.description}</p>
+                </div>
+                
+                <div class="mt-10 grid grid-cols-2 md:grid-cols-4 gap-4 text-center">
+                    <div class="bg-stone-100 p-4 rounded-lg flex flex-col justify-center items-center">
+                        <span class="text-2xl">⏳</span>
+                        <h4 class="font-bold text-stone-800">Preparo</h4>
+                        <p class="text-stone-600 text-sm">${recipeData.details.tempoPreparo}</p>
+                    </div>
+                    <div class="bg-stone-100 p-4 rounded-lg flex flex-col justify-center items-center">
+                        <span class="text-2xl">🍳</span>
+                        <h4 class="font-bold text-stone-800">Cozimento</h4>
+                        <p class="text-stone-600 text-sm">${recipeData.details.tempoCozimento}</p>
+                    </div>
+                    <div class="bg-stone-100 p-4 rounded-lg flex flex-col justify-center items-center">
+                        <span class="text-2xl">🍽️</span>
+                        <h4 class="font-bold text-stone-800">Rendimento</h4>
+                        <p class="text-stone-600 text-sm">${recipeData.details.rendimento}</p>
+                    </div>
+                    <div class="bg-stone-100 p-4 rounded-lg flex flex-col justify-center items-center">
+                        <span class="text-2xl">⭐</span>
+                        <h4 class="font-bold text-stone-800">Dificuldade</h4>
+                        <p class="text-stone-600 text-sm">${recipeData.details.dificuldade}</p>
+                    </div>
+                </div>
+
+                <div class="mt-12 grid grid-cols-1 lg:grid-cols-3 gap-x-12 gap-y-8">
+                    <div class="lg:col-span-1">
+                        <h3 class="text-2xl font-bold text-stone-800 mb-4 border-b-2 border-amber-500 pb-2">Planeamento</h3>
+                        <div class="bg-stone-50 p-4 rounded-lg">
+                            <label for="${recipeData.calculator.unit}" class="block text-lg text-stone-700 mb-2 font-bold">${recipeData.calculator.label}</label>
+                            <input type="number" id="${recipeData.calculator.unit}" value="${recipeData.calculator.default_value}" min="0.5" step="1" class="w-full p-2 border border-stone-300 rounded-lg focus:ring-2 focus:ring-amber-500">
+                        </div>
+                        <div class="mt-6">
+                            <h4 class="font-bold text-lg mb-2 text-stone-700">Checklist de Ingredientes:</h4>
+                            <ul class="space-y-1 text-stone-600 text-sm" id="ingredient-list-${recipeData.calculator.unit}"></ul>
+                        </div>
+                         <div class="mt-6">
+                            <h4 class="font-bold text-lg mb-2 text-stone-700">Utensílios Chave:</h4>
+                            <ul class="space-y-2 text-stone-600 list-disc list-inside text-sm">
+                                ${recipeData.details.utensilios.map(utensil => `<li>${utensil}</li>`).join('')}
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="lg:col-span-2">
+                        <h3 class="text-2xl font-bold text-stone-800 mb-4 border-b-2 border-amber-500 pb-2">Tutorial Detalhado</h3>
+                        <div class="space-y-6">
+                            ${recipeData.steps.map((step, index) => {
+                                if (step.isSubRecipe) {
+                                    return `
+                                    <div class="p-4 rounded-lg bg-amber-50 border-l-4 border-amber-400">
+                                        <h4 class="font-bold text-xl text-amber-800 mb-4">${step.title}</h4>
+                                        <div class="space-y-4">
+                                        ${step.subSteps.map(subStep => `
+                                            <div class="ml-4">
+                                                <h5 class="font-semibold text-lg text-stone-800 mb-1">${subStep.title}</h5>
+                                                <div class="prose prose-stone max-w-none text-sm">
+                                                    <p>${subStep.description}</p>
+                                                     <details class="mt-3 text-xs">
+                                                        <summary class="font-bold text-blue-800">Ver o porquê</summary>
+                                                        <div class="mt-2 bg-blue-50 text-blue-800 rounded-md p-3">${subStep.porque}</div>
+                                                     </details>
+                                                     <details class="mt-2 text-xs">
+                                                        <summary class="font-bold text-red-800">Ver ponto crítico</summary>
+                                                        <div class="mt-2 bg-red-50 text-red-800 rounded-md p-3">${subStep.pontoCritico}</div>
+                                                     </details>
+                                                </div>
+                                            </div>
+                                        `).join('')}
+                                        </div>
+                                    </div>`;
+                                }
+                                return `
+                                <div class="p-4 rounded-lg bg-stone-50 border-l-4 border-stone-200">
+                                    <h4 class="font-bold text-xl text-stone-800 mb-2"><span class="bg-amber-600 text-white rounded-full w-8 h-8 inline-flex items-center justify-center mr-3 text-base">${index + 1}</span> ${step.title}</h4>
+                                    <div class="prose prose-stone max-w-none pl-11 text-sm">
+                                        <p>${step.description}</p>
+                                        <details class="mt-3 text-xs">
+                                            <summary class="font-bold text-blue-800">Ver o porquê</summary>
+                                            <div class="mt-2 bg-blue-50 text-blue-800 rounded-md p-3">${step.porque}</div>
+                                        </details>
+                                        <details class="mt-2 text-xs">
+                                            <summary class="font-bold text-red-800">Ver ponto crítico</summary>
+                                            <div class="mt-2 bg-red-50 text-red-800 rounded-md p-3">${step.pontoCritico}</div>
+                                        </details>
+                                    </div>
+                                    ${step.timer ? `<div class="mt-4 pl-11 flex items-center gap-4"><button class="timer-btn bg-amber-500 text-white px-4 py-2 rounded-lg hover:bg-amber-600 transition text-sm" data-time="${step.timer}">Iniciar Timer (${Math.floor(step.timer/60)}m ${step.timer%60}s)</button><span class="timer-display text-lg font-mono font-bold text-amber-700"></span></div>` : ''}
+                                </div>`;
+                            }).join('')}
+                        </div>
+                        
+                        <div class="mt-8">
+                            <h3 class="text-2xl font-bold text-stone-800 mb-4 border-b-2 border-amber-500 pb-2">Harmonização e Variações</h3>
+                            <div class="prose prose-stone max-w-none bg-amber-50 p-4 rounded-lg border-l-4 border-amber-400 text-sm">
+                                ${recipeData.variacoes.map(item => `<p>${item}</p>`).join('')}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            `;
+        };
+        
+        document.querySelectorAll('.aula-card').forEach(card => {
+            const recipeId = card.dataset.target.replace('receita-', '');
+            const recipeData = aulas[recipeId];
+
+            if (recipeData) {
+                const targetElement = document.getElementById(card.dataset.target);
+                targetElement.innerHTML = generateRecipeHTML(recipeData);
+                
+                const input = document.getElementById(recipeData.calculator.unit);
+                if (input) {
+                    input.addEventListener('input', (e) => {
+                        updateIngredients(recipeData, e.target.value);
+                    });
+                    // Initial population
+                    updateIngredients(recipeData, input.value);
+                }
+            }
+
+            card.addEventListener('click', () => {
+                const targetId = card.dataset.target;
+                const targetRecipe = document.getElementById(targetId);
+                
+                aulasList.classList.add('hidden');
+                pageTitle.classList.add('hidden');
+                receitasContainer.classList.remove('hidden');
+                targetRecipe.classList.remove('hidden');
+                window.scrollTo(0, 0);
+            });
+        });
+
+        backToListBtn.addEventListener('click', () => {
+            aulasList.classList.remove('hidden');
+            pageTitle.classList.remove('hidden');
+            receitasContainer.classList.add('hidden');
+            document.querySelectorAll('.receita-content').forEach(recipe => {
+                recipe.classList.add('hidden');
+            });
+            window.scrollTo(0, 0);
+        });
+        
+        receitasContainer.addEventListener('click', (event) => {
+            if (event.target.classList.contains('timer-btn')) {
+                const button = event.target;
+                if (button.classList.contains('active')) return;
+
+                let timeInSeconds = parseInt(button.dataset.time, 10);
+                const display = button.nextElementSibling;
+                
+                button.classList.add('active');
+                button.disabled = true;
+                
+                const interval = setInterval(() => {
+                    const minutes = Math.floor(timeInSeconds / 60);
+                    const seconds = timeInSeconds % 60;
+                    if(display) { display.textContent = `${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`; }
+                    
+                    if (timeInSeconds <= 0) {
+                        clearInterval(interval);
+                        if(display) display.textContent = "Tempo esgotado!";
+                        button.classList.remove('active');
+                        button.disabled = false;
+                    } else { timeInSeconds--; }
+                }, 1000);
+            }
+        });
+    });
+    </script>
+</body>
+</html>
