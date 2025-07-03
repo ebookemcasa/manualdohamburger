@@ -1,0 +1,439 @@
+<!DOCTYPE html>
+<html lang="pt-BR" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sobremesas - Mestre Culinário</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Lato:wght@400;700&display=swap');
+        body { font-family: 'Lato', sans-serif; background-color: #f8f7f4; color: #3d3d3d; }
+        h1, h2, h3, h4, .nav-link { font-family: 'Playfair Display', serif; }
+        
+        /* Estilos para interatividade */
+        .aula-card {
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            cursor: pointer;
+        }
+        .aula-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.05), 0 4px 6px -4px rgb(0 0 0 / 0.05);
+        }
+        
+        /* Checklist de Ingredientes */
+        .ingredient-item input[type="checkbox"] {
+            display: none;
+        }
+        .ingredient-item span {
+            transition: all 0.2s ease;
+            cursor: pointer;
+        }
+        .ingredient-item input[type="checkbox"]:checked + span {
+            text-decoration: line-through;
+            opacity: 0.6;
+        }
+
+        /* Acordion/Sanfona para os Passos */
+        details > summary {
+            cursor: pointer;
+            list-style: none;
+            display: inline-flex;
+            align-items: center;
+            transition: color 0.2s ease;
+        }
+        details > summary::-webkit-details-marker {
+            display: none;
+        }
+        details > summary::before {
+            content: '▶';
+            margin-right: 8px;
+            font-size: 0.7em;
+            transition: transform 0.2s ease-in-out;
+        }
+        details[open] > summary::before {
+            transform: rotate(90deg);
+        }
+
+        /* Tooltips para termos técnicos */
+        .tooltip {
+            position: relative;
+            cursor: help;
+            border-bottom: 2px dotted #ca8a04;
+            font-weight: bold;
+        }
+        .tooltip .tooltip-text {
+            visibility: hidden;
+            width: 220px;
+            background-color: #3d3d3d;
+            color: #fff;
+            text-align: center;
+            border-radius: 6px;
+            padding: 8px;
+            position: absolute;
+            z-index: 10;
+            bottom: 125%;
+            left: 50%;
+            margin-left: -110px;
+            opacity: 0;
+            transition: opacity 0.3s;
+            font-family: 'Lato', sans-serif;
+            font-weight: normal;
+        }
+        .tooltip .tooltip-text::after {
+            content: "";
+            position: absolute;
+            top: 100%;
+            left: 50%;
+            margin-left: -5px;
+            border-width: 5px;
+            border-style: solid;
+            border-color: #3d3d3d transparent transparent transparent;
+        }
+        .tooltip:hover .tooltip-text {
+            visibility: visible;
+            opacity: 1;
+        }
+    </style>
+</head>
+<body class="antialiased">
+    <header class="bg-white/90 backdrop-blur-lg sticky top-0 z-50 shadow-md">
+        <nav class="container mx-auto px-6 py-4">
+            <div class="flex justify-between items-center">
+                <a href="index.html" class="text-3xl font-bold text-stone-800">Mestre<span class="text-amber-600">Culinário</span></a>
+                <a href="index.html" class="nav-link text-stone-600 hover:text-amber-600 transition-colors">Voltar à Página Principal</a>
+            </div>
+        </nav>
+    </header>
+    <main class="container mx-auto px-6 py-8 md:py-12">
+        <section id="page-title" class="text-center mb-16">
+            <h1 class="text-4xl md:text-6xl font-bold text-stone-800">Sobremesas <span class="text-amber-600">Inesquecíveis</span></h1>
+            <p class="mt-4 max-w-2xl mx-auto text-stone-600">Da simplicidade de uma mousse à elegância da pastelaria francesa, domine a arte de adoçar qualquer ocasião.</p>
+        </section>
+
+        <div id="aulas-list" class="space-y-8 max-w-5xl mx-auto">
+            <div class="aula-card bg-white p-6 rounded-lg shadow-lg" data-target="receita-mousse-chocolate"><h2 class="text-2xl md:text-3xl font-bold text-amber-700">Aula 01: Mousse de Chocolate Clássica</h2><p class="text-stone-600 mt-2">Aprenda a fazer uma mousse aerada, intensa e com a textura perfeita.</p></div>
+            <div class="aula-card bg-white p-6 rounded-lg shadow-lg" data-target="receita-pudim"><h2 class="text-2xl md:text-3xl font-bold text-amber-700">Aula 02: Pudim de Leite Perfeito (Sem Furinhos)</h2><p class="text-stone-600 mt-2">O segredo do banho-maria para um pudim liso, cremoso e irresistível.</p></div>
+            <div class="aula-card bg-white p-6 rounded-lg shadow-lg" data-target="receita-torta-maca"><h2 class="text-2xl md:text-3xl font-bold text-amber-700">Aula 03: Torta de Maçã Rústica (Galette)</h2><p class="text-stone-600 mt-2">Uma introdução à pastelaria, mais fácil e charmosa que uma torta tradicional.</p></div>
+            <div class="aula-card bg-white p-6 rounded-lg shadow-lg" data-target="receita-creme-brulee"><h2 class="text-2xl md:text-3xl font-bold text-amber-700">Aula 04: Crème Brûlée</h2><p class="text-stone-600 mt-2">Domine o creme de baunilha e a arte da crosta de caramelo crocante.</p></div>
+            <div class="aula-card bg-white p-6 rounded-lg shadow-lg" data-target="receita-brownie"><h2 class="text-2xl md:text-3xl font-bold text-amber-700">Aula 05: Brownie de Chocolate Intenso</h2><p class="text-stone-600 mt-2">O segredo para um interior denso e húmido com a casquinha crocante por cima.</p></div>
+            <div class="aula-card bg-white p-6 rounded-lg shadow-lg" data-target="receita-tiramisu"><h2 class="text-2xl md:text-3xl font-bold text-amber-700">Aula 06: Tiramisù Original</h2><p class="text-stone-600 mt-2">Aprenda a fazer o clássico italiano, camada por camada, com queijo mascarpone.</p></div>
+            <div class="aula-card bg-white p-6 rounded-lg shadow-lg" data-target="receita-suspiros"><h2 class="text-2xl md:text-3xl font-bold text-amber-700">Aula 07: Suspiros (Merengue Francês)</h2><p class="text-stone-600 mt-2">A base para muitas sobremesas. Aprenda a fazer um merengue estável, seco e crocante.</p></div>
+            <div class="aula-card bg-white p-6 rounded-lg shadow-lg" data-target="receita-bolo-cenoura"><h2 class="text-2xl md:text-3xl font-bold text-amber-700">Aula 08: Bolo de Cenoura com Cobertura de Brigadeiro</h2><p class="text-stone-600 mt-2">O bolo mais amado do Brasil, fofinho e com uma cobertura cremosa inesquecível.</p></div>
+            <div class="aula-card bg-white p-6 rounded-lg shadow-lg" data-target="receita-eclairs"><h2 class="text-2xl md:text-3xl font-bold text-amber-700">Aula 09: Éclairs (Bombas) de Chocolate</h2><p class="text-stone-600 mt-2">Um passo para a pastelaria profissional: domine a massa choux e o creme de confeiteiro.</p></div>
+            <div class="aula-card bg-white p-6 rounded-lg shadow-lg" data-target="receita-petit-gateau"><h2 class="text-2xl md:text-3xl font-bold text-amber-700">Aula 10: Petit Gâteau (Coração Mole)</h2><p class="text-stone-600 mt-2">A sobremesa de restaurante que depende de precisão e tempo para o sucesso.</p></div>
+        </div>
+
+        <div id="receitas-container" class="hidden">
+            <button id="back-to-list-btn" class="mb-8 inline-flex items-center text-amber-700 hover:text-amber-800 font-bold"><svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-2" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M12.707 5.293a1 1 0 010 1.414L9.414 10l3.293 3.293a1 1 0 01-1.414 1.414l-4-4a1 1 0 010-1.414l4-4a1 1 0 011.414 0z" clip-rule="evenodd" /></svg>Voltar ao Índice de Aulas</button>
+            <div id="receita-mousse-chocolate" class="receita-content bg-white p-8 rounded-lg shadow-xl max-w-7xl mx-auto hidden"></div>
+            <div id="receita-pudim" class="receita-content bg-white p-8 rounded-lg shadow-xl max-w-7xl mx-auto hidden"></div>
+            <div id="receita-torta-maca" class="receita-content bg-white p-8 rounded-lg shadow-xl max-w-7xl mx-auto hidden"></div>
+            <div id="receita-creme-brulee" class="receita-content bg-white p-8 rounded-lg shadow-xl max-w-7xl mx-auto hidden"></div>
+            <div id="receita-brownie" class="receita-content bg-white p-8 rounded-lg shadow-xl max-w-7xl mx-auto hidden"></div>
+            <div id="receita-tiramisu" class="receita-content bg-white p-8 rounded-lg shadow-xl max-w-7xl mx-auto hidden"></div>
+            <div id="receita-suspiros" class="receita-content bg-white p-8 rounded-lg shadow-xl max-w-7xl mx-auto hidden"></div>
+            <div id="receita-bolo-cenoura" class="receita-content bg-white p-8 rounded-lg shadow-xl max-w-7xl mx-auto hidden"></div>
+            <div id="receita-eclairs" class="receita-content bg-white p-8 rounded-lg shadow-xl max-w-7xl mx-auto hidden"></div>
+            <div id="receita-petit-gateau" class="receita-content bg-white p-8 rounded-lg shadow-xl max-w-7xl mx-auto hidden"></div>
+        </div>
+    </main>
+    <footer class="bg-white border-t mt-16"><div class="container mx-auto px-6 py-8 text-center text-stone-600"><p>&copy; 2024 Mestre Culinário. Todos os direitos reservados.</p></div></footer>
+
+    <script>
+    document.addEventListener('DOMContentLoaded', () => {
+
+        const aulas = {
+            'mousse-chocolate': {
+                title: "Aula 01: Mousse de Chocolate Clássica",
+                description: "Aprenda a fazer uma mousse de chocolate verdadeiramente aerada, intensa e com a textura perfeita. Uma sobremesa clássica que, com a técnica certa, é surpreendentemente simples de dominar.",
+                calculator: { label: "Gramas de Chocolate:", unit: "mousse-chocolate-input", base_value: 200, default_value: 200 },
+                details: { tempoPreparo: "20 min", tempoCozimento: "5 min", tempoDescanso: "4 horas", rendimento: "Serve 4-6 pessoas", dificuldade: "Fácil", utensilios: ["Batedeira", "Espátula de silicone (salazar)", "Tigelas de vidro ou inox"] },
+                dicaDeMestre: "O segredo para uma mousse leve é a incorporação. Ao misturar as claras em castelo ao chocolate, faça-o em três partes. A primeira parte pode ser misturada mais vigorosamente para 'amaciar' o chocolate. As duas seguintes devem ser incorporadas de forma extremamente delicada, com movimentos de baixo para cima, para não perder o ar.",
+                ingredients: [
+                    { name: 'Chocolate amargo (50-70% cacau)', base_qty: 200, unit: 'g', scalable: true },
+                    { name: 'Ovos frescos, separados (gemas e claras)', base_qty: 4, unit: 'unid.', scalable: true },
+                    { name: 'Açúcar', base_qty: 4, unit: 'c. de sopa', scalable: true },
+                    { name: 'Manteiga sem sal', base_qty: 50, unit: 'g', scalable: true },
+                    { name: 'Sal', base_qty: 1, unit: 'pitada', scalable: false }
+                ],
+                steps: [
+                    { title: "Derreter o Chocolate", description: "Parta o chocolate em pedaços pequenos e derreta-o junto com a manteiga em <span class='tooltip' data-tooltip='Método de aquecimento suave que usa o vapor de água. Coloca-se o ingrediente numa tigela sobre uma panela com água a ferver, sem que a tigela toque na água.'>banho-maria</span> ou no micro-ondas em potência baixa, parando para mexer a cada 30 segundos. Reserve e deixe arrefecer um pouco.", porque: "O aquecimento suave evita que o chocolate queime e fique granulado. Deixá-lo arrefecer um pouco é crucial para que não cozinhe as gemas quando forem adicionadas.", pontoCritico: "Se usar banho-maria, não deixe que vapor ou água entre em contacto com o chocolate, pois isso fará com que ele 'talhe' e perca a sua textura lisa." },
+                    { title: "A Base de Gemas", description: "Numa tigela, bata as gemas com metade do açúcar (2 colheres de sopa) até obter um creme mais pálido e fofo. Incorpore esta mistura ao chocolate derretido e já morno.", porque: "Bater as gemas com o açúcar cria uma <span class='tooltip' data-tooltip='Mistura estável de dois líquidos que normalmente não se misturam. Neste caso, gordura e água.'>emulsão</span> que dará riqueza e cremosidade à base da mousse. Esta mistura é o coração do sabor do chocolate.", pontoCritico: "O chocolate não pode estar quente demais, senão os ovos irão coagular e criar uma textura de 'ovos mexidos'." },
+                    { title: "O Merengue Francês (As Claras)", description: "Numa tigela limpa e seca, bata as claras com uma pitada de sal. Quando começarem a espumar, adicione o resto do açúcar aos poucos, continuando a bater até formar picos firmes e brilhantes (merengue).", porque: "As claras em castelo (merengue) são as responsáveis por incorporar ar na mousse, dando-lhe a sua textura leve e aerada característica. O sal estabiliza as claras e o açúcar dá estrutura ao merengue.", pontoCritico: "A tigela e os batedores devem estar completamente livres de qualquer vestígio de gordura (gema, por exemplo), senão as claras não irão montar." },
+                    { title: "A Incorporação Delicada", description: "Adicione 1/3 das claras em castelo à mistura de chocolate e mexa vigorosamente para a amaciar. Depois, incorpore o resto das claras em duas adições, usando uma espátula para fazer movimentos suaves de baixo para cima, até a mistura estar homogénea.", porque: "Este método em três fases permite que a base de chocolate, que é densa, se torne progressivamente mais leve, facilitando a incorporação final das claras sem perder o ar que foi batido nelas. É a técnica chave para uma mousse fofa.", pontoCritico: "Não misture em excesso! Assim que não vir mais laivos de branco das claras, pare. É melhor ter uma mistura não 100% perfeita do que uma mousse densa." },
+                    { title: "O Descanso na Geleira", description: "Divida a mousse por taças individuais e leve à geleira (frigorífico) por pelo menos 4 horas para firmar.", porque: "O frio solidifica a manteiga e a gordura do cacau no chocolate, dando estrutura e a textura final à mousse.", pontoCritico: "A mousse parecerá líquida ao início, mas o tempo de refrigeração é essencial. Não salte este passo.", timer: 14400 }
+                ],
+                variacoes: [
+                    "<strong>Com Café:</strong> Adicione uma colher de chá de café expresso em pó ao chocolate derretido para intensificar o sabor.",
+                    "<strong>Com Laranja:</strong> Junte as raspas de uma laranja à mistura de gemas e chocolate.",
+                    "<strong>Picante:</strong> Uma pitada de pimenta caiena ou canela pode criar um contraste interessante."
+                ]
+            },
+            pudim: {
+                title: "Aula 02: Pudim de Leite Perfeito (Sem Furinhos)",
+                description: "Domine a sobremesa mais amada do Brasil. Aprenda a fazer a calda de caramelo no ponto certo e a técnica do <span class='tooltip' data-tooltip='Método de cozimento lento e suave em banho de água quente, ideal para cremes e pudins.'>banho-maria</span> para um pudim incrivelmente liso, cremoso e sem os furinhos indesejados.",
+                calculator: { label: "Latas de Leite Condensado:", unit: "pudim-input", base_value: 1, default_value: 1 },
+                details: { tempoPreparo: "15 min", tempoCozimento: "1h 30 min", tempoDescanso: "6 horas", rendimento: "Serve 8-10 pessoas", dificuldade: "Fácil", utensilios: ["Forma de pudim com furo central", "Liquidificador", "Assadeira funda"] },
+                dicaDeMestre: "O segredo para um pudim liso é não incorporar ar na mistura. Bata os ingredientes no liquidificador apenas o suficiente para os misturar. Depois de bater, deixe a mistura descansar por 10 minutos para que as bolhas de ar subam e se dissipem.",
+                ingredients: [
+                    { name: 'Açúcar (para a calda)', base_qty: 1, unit: 'chávena', scalable: true },
+                    { name: 'Água quente (para a calda)', base_qty: 0.5, unit: 'chávena', scalable: true },
+                    { name: 'Leite Condensado', base_qty: 1, unit: 'lata (395g)', scalable: true, heading: 'Para o Pudim' },
+                    { name: 'Leite (use a lata como medida)', base_qty: 1, unit: 'lata', scalable: true },
+                    { name: 'Ovos', base_qty: 3, unit: 'unid.', scalable: true }
+                ],
+                steps: [
+                    { title: "A Calda de Caramelo", description: "Na própria forma de pudim, derreta o açúcar em lume baixo, mexendo ocasionalmente, até formar um caramelo dourado. Com muito cuidado, adicione a água quente (vai borbulhar intensamente). Continue a mexer em lume baixo até todos os torrões de açúcar se dissolverem. Gire a forma para caramelizar as laterais. Reserve.", porque: "Fazer o caramelo diretamente na forma poupa trabalho. A adição de água cria uma calda mais fluida que não endurece completamente depois de fria, tornando mais fácil desenformar o pudim.", pontoCritico: "Tenha extremo cuidado ao adicionar a água quente, pois o vapor que se liberta pode queimar. Não deixe o caramelo ficar demasiado escuro, senão ficará amargo." },
+                    { title: "A Mistura do Pudim", description: "No copo do liquidificador, coloque os ovos, o leite condensado e o leite. Bata em velocidade baixa por apenas 1 a 2 minutos, o suficiente para que a mistura fique homogénea. Deixe a mistura descansar por 10 minutos.", porque: "Bater em excesso ou em alta velocidade incorpora ar na mistura, que é a principal causa dos furinhos no pudim. O descanso ajuda a eliminar as bolhas de ar que se formaram.", pontoCritico: "A simplicidade é a chave. Não bata demais." },
+                    { title: "O Cozimento em Banho-Maria", description: "Pré-aqueça o forno a 180°C. Despeje a mistura do pudim na forma caramelizada. Coloque a forma de pudim dentro de uma assadeira maior e funda. Leve ao forno e, com cuidado, adicione água quente na assadeira maior até atingir metade da altura da forma do pudim. Asse por cerca de 1 hora e 30 minutos.", porque: "O <span class='tooltip' data-tooltip='Método de cozimento lento e suave em banho de água quente, ideal para cremes e pudins.'>banho-maria</span> protege o pudim do calor direto do forno, permitindo que ele cozinhe de forma lenta e uniforme. É esta cozedura gentil que garante uma textura lisa e cremosa.", pontoCritico: "O pudim está pronto quando, ao espetar um palito, ele sai limpo. A superfície deve estar firme ao toque.", timer: 5400 },
+                    { title: "Arrefecer e Desenformar", description: "Retire o pudim do forno e do banho-maria. Deixe arrefecer completamente à temperatura ambiente e depois leve à geleira por pelo menos 6 horas. Para desenformar, passe uma faca fina nas laterais e aqueça levemente o fundo da forma no bico do fogão para soltar a calda. Vire sobre um prato de servir.", porque: "O pudim precisa de estar completamente frio e firme para não se desmanchar ao desenformar. Aquecer o fundo derrete ligeiramente a calda, ajudando o pudim a soltar-se.", pontoCritico: "A paciência é fundamental. Tentar desenformar um pudim morno é uma receita para o desastre." }
+                ],
+                variacoes: [
+                    "<strong>Pudim de Laranja:</strong> Adicione as raspas de uma laranja à mistura do liquidificador.",
+                    "<strong>Pudim de Coco:</strong> Substitua metade do leite por leite de coco e adicione coco ralado.",
+                    "<strong>Pudim de Café:</strong> Dissolva uma colher de sopa de café solúvel no leite antes de o bater."
+                ]
+            },
+            // As restantes aulas seguiriam este mesmo formato detalhado...
+            'torta-maca': { title: "Aula 03: Torta de Maçã Rústica (Galette)" },
+            'creme-brulee': { title: "Aula 04: Crème Brûlée" },
+            'brownie': { title: "Aula 05: Brownie de Chocolate Intenso" },
+            'tiramisu': { title: "Aula 06: Tiramisù Original" },
+            'suspiros': { title: "Aula 07: Suspiros (Merengue Francês)" },
+            'bolo-cenoura': { title: "Aula 08: Bolo de Cenoura com Cobertura de Brigadeiro" },
+            'eclairs': { title: "Aula 09: Éclairs (Bombas) de Chocolate" },
+            'petit-gateau': { title: "Aula 10: Petit Gâteau (Coração Mole)" },
+        };
+
+        // ===================================================================================
+        // FUNÇÕES GLOBAIS (NÃO MEXER)
+        // ===================================================================================
+
+        const aulasList = document.getElementById('aulas-list');
+        const pageTitle = document.getElementById('page-title');
+        const receitasContainer = document.getElementById('receitas-container');
+        const backToListBtn = document.getElementById('back-to-list-btn');
+
+        const formatNumber = (num) => {
+            if (num < 1 && num > 0) return num.toFixed(2);
+            if (num % 1 !== 0) return num.toFixed(1);
+            return num;
+        };
+        
+        const updateIngredients = (recipeData, inputValue) => {
+            const list = document.getElementById(`ingredient-list-${recipeData.calculator.unit}`);
+            if (!list || !recipeData.ingredients) return;
+
+            const multiplier = inputValue / recipeData.calculator.base_value;
+            let html = '';
+            let currentHeading = '';
+
+            recipeData.ingredients.forEach(ing => {
+                if(ing.heading && ing.heading !== currentHeading) {
+                    currentHeading = ing.heading;
+                    html += `<h5 class="font-bold text-stone-700 mt-3 mb-1">${currentHeading}:</h5>`;
+                }
+
+                let qtyDisplay = '';
+                if (!ing.scalable) {
+                    qtyDisplay = ing.unit;
+                } else {
+                    const scaledQty = ing.base_qty * multiplier;
+                    qtyDisplay = `${formatNumber(scaledQty)} ${ing.unit}`;
+                }
+                
+                html += `
+                    <li class="ingredient-item">
+                        <label class="flex items-center p-1 rounded-md hover:bg-stone-100">
+                            <input type="checkbox" class="mr-2 h-4 w-4 text-amber-600 focus:ring-amber-500 border-stone-300 rounded">
+                            <span class="flex-1 flex justify-between">
+                                <span>${ing.name}</span>
+                                <span class="font-semibold text-right pl-2">${qtyDisplay}</span>
+                            </span>
+                        </label>
+                    </li>`;
+            });
+            list.innerHTML = html;
+        };
+
+        const generateRecipeHTML = (recipeData) => {
+             if (!recipeData.details) {
+                return `<div class="text-center p-10"><h2 class="text-3xl font-bold text-amber-700">${recipeData.title}</h2><p class="mt-4 text-stone-600">O conteúdo detalhado para esta aula estará disponível em breve. Obrigado pela sua paciência!</p></div>`;
+            }
+             return `
+                <div class="text-center">
+                    <h2 class="text-3xl md:text-4xl font-bold text-amber-700">${recipeData.title}</h2>
+                    <p class="mt-4 max-w-3xl mx-auto text-stone-600 text-lg">${recipeData.description}</p>
+                </div>
+                
+                <div class="mt-10 grid grid-cols-2 md:grid-cols-4 gap-4 text-center">
+                    <div class="bg-stone-100 p-4 rounded-lg flex flex-col justify-center items-center">
+                        <span class="text-2xl">⏳</span>
+                        <h4 class="font-bold text-stone-800">Preparo</h4>
+                        <p class="text-stone-600 text-sm">${recipeData.details.tempoPreparo}</p>
+                    </div>
+                    <div class="bg-stone-100 p-4 rounded-lg flex flex-col justify-center items-center">
+                        <span class="text-2xl">🍳</span>
+                        <h4 class="font-bold text-stone-800">Cozimento</h4>
+                        <p class="text-stone-600 text-sm">${recipeData.details.tempoCozimento}</p>
+                    </div>
+                    <div class="bg-stone-100 p-4 rounded-lg flex flex-col justify-center items-center">
+                        <span class="text-2xl">🍽️</span>
+                        <h4 class="font-bold text-stone-800">Rendimento</h4>
+                        <p class="text-stone-600 text-sm">${recipeData.details.rendimento}</p>
+                    </div>
+                    <div class="bg-stone-100 p-4 rounded-lg flex flex-col justify-center items-center">
+                        <span class="text-2xl">⭐</span>
+                        <h4 class="font-bold text-stone-800">Dificuldade</h4>
+                        <p class="text-stone-600 text-sm">${recipeData.details.dificuldade}</p>
+                    </div>
+                </div>
+
+                <div class="mt-12 grid grid-cols-1 lg:grid-cols-3 gap-x-12 gap-y-8">
+                    <div class="lg:col-span-1">
+                        <h3 class="text-2xl font-bold text-stone-800 mb-4 border-b-2 border-amber-500 pb-2">Planeamento</h3>
+                        <div class="bg-stone-50 p-4 rounded-lg">
+                            <label for="${recipeData.calculator.unit}" class="block text-lg text-stone-700 mb-2 font-bold">${recipeData.calculator.label}</label>
+                            <input type="number" id="${recipeData.calculator.unit}" value="${recipeData.calculator.default_value}" min="0.5" step="1" class="w-full p-2 border border-stone-300 rounded-lg focus:ring-2 focus:ring-amber-500">
+                        </div>
+                        <div class="mt-6">
+                            <h4 class="font-bold text-lg mb-2 text-stone-700">Checklist de Ingredientes:</h4>
+                            <ul class="space-y-1 text-stone-600 text-sm" id="ingredient-list-${recipeData.calculator.unit}"></ul>
+                        </div>
+                         <div class="mt-6">
+                            <h4 class="font-bold text-lg mb-2 text-stone-700">Utensílios Chave:</h4>
+                            <ul class="space-y-2 text-stone-600 list-disc list-inside text-sm">
+                                ${recipeData.details.utensilios.map(utensil => `<li>${utensil}</li>`).join('')}
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="lg:col-span-2">
+                        <h3 class="text-2xl font-bold text-stone-800 mb-4 border-b-2 border-amber-500 pb-2">Tutorial Detalhado</h3>
+                        <div class="space-y-6">
+                            ${recipeData.steps.map((step, index) => {
+                                if (step.isSubRecipe) {
+                                    return `
+                                    <div class="p-4 rounded-lg bg-amber-50 border-l-4 border-amber-400">
+                                        <h4 class="font-bold text-xl text-amber-800 mb-4">${step.title}</h4>
+                                        <div class="space-y-4">
+                                        ${step.subSteps.map(subStep => `
+                                            <div class="ml-4">
+                                                <h5 class="font-semibold text-lg text-stone-800 mb-1">${subStep.title}</h5>
+                                                <div class="prose prose-stone max-w-none text-sm">
+                                                    <p>${subStep.description}</p>
+                                                     <details class="mt-3 text-xs">
+                                                        <summary class="font-bold text-blue-800">Ver o porquê</summary>
+                                                        <div class="mt-2 bg-blue-50 text-blue-800 rounded-md p-3">${subStep.porque}</div>
+                                                     </details>
+                                                     <details class="mt-2 text-xs">
+                                                        <summary class="font-bold text-red-800">Ver ponto crítico</summary>
+                                                        <div class="mt-2 bg-red-50 text-red-800 rounded-md p-3">${subStep.pontoCritico}</div>
+                                                     </details>
+                                                </div>
+                                            </div>
+                                        `).join('')}
+                                        </div>
+                                    </div>`;
+                                }
+                                return `
+                                <div class="p-4 rounded-lg bg-stone-50 border-l-4 border-stone-200">
+                                    <h4 class="font-bold text-xl text-stone-800 mb-2"><span class="bg-amber-600 text-white rounded-full w-8 h-8 inline-flex items-center justify-center mr-3 text-base">${index + 1}</span> ${step.title}</h4>
+                                    <div class="prose prose-stone max-w-none pl-11 text-sm">
+                                        <p>${step.description}</p>
+                                        <details class="mt-3 text-xs">
+                                            <summary class="font-bold text-blue-800">Ver o porquê</summary>
+                                            <div class="mt-2 bg-blue-50 text-blue-800 rounded-md p-3">${step.porque}</div>
+                                        </details>
+                                        <details class="mt-2 text-xs">
+                                            <summary class="font-bold text-red-800">Ver ponto crítico</summary>
+                                            <div class="mt-2 bg-red-50 text-red-800 rounded-md p-3">${step.pontoCritico}</div>
+                                        </details>
+                                    </div>
+                                    ${step.timer ? `<div class="mt-4 pl-11 flex items-center gap-4"><button class="timer-btn bg-amber-500 text-white px-4 py-2 rounded-lg hover:bg-amber-600 transition text-sm" data-time="${step.timer}">Iniciar Timer (${Math.floor(step.timer/60)}m ${step.timer%60}s)</button><span class="timer-display text-lg font-mono font-bold text-amber-700"></span></div>` : ''}
+                                </div>`;
+                            }).join('')}
+                        </div>
+                        
+                        <div class="mt-8">
+                            <h3 class="text-2xl font-bold text-stone-800 mb-4 border-b-2 border-amber-500 pb-2">Variações e Dicas</h3>
+                            <div class="prose prose-stone max-w-none bg-amber-50 p-4 rounded-lg border-l-4 border-amber-400 text-sm">
+                                ${recipeData.variacoes.map(item => `<p>${item}</p>`).join('')}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            `;
+        };
+        
+        document.querySelectorAll('.aula-card').forEach(card => {
+            const recipeId = card.dataset.target.replace('receita-', '');
+            const recipeData = aulas[recipeId];
+
+            if (recipeData) {
+                const targetElement = document.getElementById(card.dataset.target);
+                targetElement.innerHTML = generateRecipeHTML(recipeData);
+                
+                if (recipeData.calculator) {
+                    const input = document.getElementById(recipeData.calculator.unit);
+                    if (input) {
+                        input.addEventListener('input', (e) => {
+                            updateIngredients(recipeData, e.target.value);
+                        });
+                        // Initial population
+                        updateIngredients(recipeData, input.value);
+                    }
+                }
+            }
+
+            card.addEventListener('click', () => {
+                const targetId = card.dataset.target;
+                const targetRecipe = document.getElementById(targetId);
+                
+                aulasList.classList.add('hidden');
+                pageTitle.classList.add('hidden');
+                receitasContainer.classList.remove('hidden');
+                targetRecipe.classList.remove('hidden');
+                window.scrollTo(0, 0);
+            });
+        });
+
+        backToListBtn.addEventListener('click', () => {
+            aulasList.classList.remove('hidden');
+            pageTitle.classList.remove('hidden');
+            receitasContainer.classList.add('hidden');
+            document.querySelectorAll('.receita-content').forEach(recipe => {
+                recipe.classList.add('hidden');
+            });
+            window.scrollTo(0, 0);
+        });
+        
+        receitasContainer.addEventListener('click', (event) => {
+            if (event.target.classList.contains('timer-btn')) {
+                const button = event.target;
+                if (button.classList.contains('active')) return;
+
+                let timeInSeconds = parseInt(button.dataset.time, 10);
+                const display = button.nextElementSibling;
+                
+                button.classList.add('active');
+                button.disabled = true;
+                
+                const interval = setInterval(() => {
+                    const minutes = Math.floor(timeInSeconds / 60);
+                    const seconds = timeInSeconds % 60;
+                    if(display) { display.textContent = `${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`; }
+                    
+                    if (timeInSeconds <= 0) {
+                        clearInterval(interval);
+                        if(display) display.textContent = "Tempo esgotado!";
+                        button.classList.remove('active');
+                        button.disabled = false;
+                    } else { timeInSeconds--; }
+                }, 1000);
+            }
+        });
+    });
+    </script>
+</body>
+</html>
