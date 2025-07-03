@@ -25,29 +25,27 @@
 </head>
 <body class="antialiased">
 
-    <!-- Header -->
     <header class="bg-white/90 backdrop-blur-lg sticky top-0 z-50 shadow-md">
         <nav class="container mx-auto px-6 py-4">
             <div class="flex justify-between items-center">
                 <a href="index.html" class="text-3xl font-bold text-stone-800">Mestre<span class="text-amber-600">Culinário</span></a>
                 <div class="hidden md:flex items-center space-x-8">
-                    <a href="#categorias" class="nav-link text-stone-600 hover:text-amber-600 transition-colors">Categorias</a>
+                    <a href="#categorias" class="nav-link text-stone-600 hover:text-amber-600 transition-colors">Cursos</a>
                     <a href="#sobre" class="nav-link text-stone-600 hover:text-amber-600 transition-colors">O Nosso Método</a>
                     <a href="galeria.html" class="nav-link text-stone-600 hover:text-amber-600 transition-colors">Galeria</a>
                 </div>
                  <button id="menu-btn" class="md:hidden text-stone-600 hover:text-amber-600">
-                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path></svg>
-                </button>
+                     <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path></svg>
+                 </button>
             </div>
             <div id="mobile-menu" class="hidden md:hidden mt-4 flex flex-col space-y-2">
-                 <a href="#categorias" class="nav-link text-stone-600 hover:text-amber-600 py-2">Categorias</a>
+                 <a href="#categorias" class="nav-link text-stone-600 hover:text-amber-600 py-2">Cursos</a>
                  <a href="#sobre" class="nav-link text-stone-600 hover:text-amber-600 py-2">O Nosso Método</a>
                  <a href="galeria.html" class="nav-link text-stone-600 hover:text-amber-600 py-2">Galeria</a>
             </div>
         </nav>
     </header>
 
-    <!-- Hero Section -->
     <section class="hero-bg text-white">
         <div class="container mx-auto px-6 text-center flex flex-col justify-center items-center min-h-[80vh]">
             <h1 class="text-5xl md:text-7xl lg:text-8xl font-bold leading-tight drop-shadow-lg">
@@ -64,7 +62,6 @@
         </div>
     </section>
 
-    <!-- Sobre o Método -->
     <section id="sobre" class="py-20 bg-stone-100">
         <div class="container mx-auto px-6">
             <div class="text-center mb-12">
@@ -91,27 +88,83 @@
         </div>
     </section>
 
-    <!-- Categorias de Receitas -->
     <section id="categorias" class="py-20">
         <div class="container mx-auto px-6">
             <div class="text-center mb-12">
-                <h2 class="text-4xl font-bold text-stone-800">Explore as Nossas Receitas</h2>
-                <p class="mt-4 max-w-2xl mx-auto text-stone-600">Navegue pelas nossas categorias e encontre a sua próxima aventura culinária.</p>
+                <h2 class="text-4xl font-bold text-stone-800">Sua Formação Culinária Começa Aqui</h2>
+                <p class="mt-4 max-w-2xl mx-auto text-stone-600">Navegue pelos nossos módulos e domine novas técnicas a cada aula.</p>
             </div>
-            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-8">
-                <a href="fundamentos.html" class="category-card block bg-white rounded-lg shadow-lg overflow-hidden"><img src="https://images.unsplash.com/photo-1599043513900-ed6fe01d3833?q=80&w=2070&auto=format&fit=crop" class="w-full h-48 object-cover"><div class="p-6"><h3 class="text-2xl font-bold text-stone-800">Fundamentos</h3><p class="text-stone-600 mt-2">O início de tudo.</p></div></a>
-                <a href="carnes.html" class="category-card block bg-white rounded-lg shadow-lg overflow-hidden"><img src="https://images.unsplash.com/photo-1604321942683-05b89705a1e2?q=80&w=1974&auto=format&fit=crop" class="w-full h-48 object-cover"><div class="p-6"><h3 class="text-2xl font-bold text-stone-800">Carnes</h3><p class="text-stone-600 mt-2">Do grelhado ao assado.</p></div></a>
-                <a href="aves.html" class="category-card block bg-white rounded-lg shadow-lg overflow-hidden"><img src="https://images.unsplash.com/photo-1629505364448-6a58a5b21588?q=80&w=1974&auto=format&fit=crop" class="w-full h-48 object-cover"><div class="p-6"><h3 class="text-2xl font-bold text-stone-800">Aves</h3><p class="text-stone-600 mt-2">Receitas com frango e mais.</p></div></a>
-                <a href="peixes.html" class="category-card block bg-white rounded-lg shadow-lg overflow-hidden"><img src="https://images.unsplash.com/photo-1519708227418-c8fd9a32b7a2?q=80&w=2070&auto=format&fit=crop" class="w-full h-48 object-cover"><div class="p-6"><h3 class="text-2xl font-bold text-stone-800">Peixes</h3><p class="text-stone-600 mt-2">Leveza e sabor do mar.</p></div></a>
-                <a href="hamburguer_index.html" class="category-card block bg-white rounded-lg shadow-lg overflow-hidden"><img src="https://images.unsplash.com/photo-1571091718767-18b5b1457add?q=80&w=2072&auto=format&fit=crop" class="w-full h-48 object-cover"><div class="p-6"><h3 class="text-2xl font-bold text-stone-800">Mundo dos Hambúrgueres</h3><p class="text-stone-600 mt-2">O nosso manual completo.</p></div></a>
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+                <a href="fundamentos.html" class="category-card block bg-white rounded-lg shadow-lg overflow-hidden">
+                    <img src="https://images.unsplash.com/photo-1599043513900-ed6fe01d3833?q=80&w=2070&auto=format&fit=crop" alt="Tigela com vários grãos e temperos" class="w-full h-48 object-cover">
+                    <div class="p-6">
+                        <h3 class="text-2xl font-bold text-stone-800">Fundamentos</h3>
+                        <p class="text-stone-600 mt-2">O início de tudo. Domine as bases da cozinha.</p>
+                    </div>
+                </a>
+                <a href="carnes.html" class="category-card block bg-white rounded-lg shadow-lg overflow-hidden">
+                    <img src="https://images.unsplash.com/photo-1604321942683-05b89705a1e2?q=80&w=1974&auto=format&fit=crop" alt="Pedaço de carne a ser fatiado" class="w-full h-48 object-cover">
+                    <div class="p-6">
+                        <h3 class="text-2xl font-bold text-stone-800">Carnes</h3>
+                        <p class="text-stone-600 mt-2">Do grelhado ao assado, o ponto perfeito.</p>
+                    </div>
+                </a>
+                <a href="aves.html" class="category-card block bg-white rounded-lg shadow-lg overflow-hidden">
+                    <img src="https://images.unsplash.com/photo-1629505364448-6a58a5b21588?q=80&w=1974&auto=format&fit=crop" alt="Frango assado inteiro com ervas" class="w-full h-48 object-cover">
+                    <div class="p-6">
+                        <h3 class="text-2xl font-bold text-stone-800">Aves</h3>
+                        <p class="text-stone-600 mt-2">Receitas suculentas com frango, peru e mais.</p>
+                    </div>
+                </a>
+                <a href="peixes.html" class="category-card block bg-white rounded-lg shadow-lg overflow-hidden">
+                    <img src="https://images.unsplash.com/photo-1519708227418-c8fd9a32b7a2?q=80&w=2070&auto=format&fit=crop" alt="Filé de salmão grelhado com espargos" class="w-full h-48 object-cover">
+                    <div class="p-6">
+                        <h3 class="text-2xl font-bold text-stone-800">Peixes</h3>
+                        <p class="text-stone-600 mt-2">Leveza e sabor que vêm do mar.</p>
+                    </div>
+                </a>
+                <a href="acompanhamentos.html" class="category-card block bg-white rounded-lg shadow-lg overflow-hidden">
+                    <img src="https://images.unsplash.com/photo-1623952478953-33765355436f?q=80&w=1974&auto=format&fit=crop" alt="Vegetais assados numa travessa" class="w-full h-48 object-cover">
+                    <div class="p-6">
+                        <h3 class="text-2xl font-bold text-stone-800">Acompanhamentos</h3>
+                        <p class="text-stone-600 mt-2">Eleve qualquer prato principal com a guarnição perfeita.</p>
+                    </div>
+                </a>
+                <a href="fitness.html" class="category-card block bg-white rounded-lg shadow-lg overflow-hidden">
+                    <img src="https://images.unsplash.com/photo-1498837167922-ddd27525d352?q=80&w=2070&auto=format&fit=crop" alt="Salada colorida com vários ingredientes saudáveis" class="w-full h-48 object-cover">
+                    <div class="p-6">
+                        <h3 class="text-2xl font-bold text-stone-800">Receitas Fitness</h3>
+                        <p class="text-stone-600 mt-2">Pratos leves e nutritivos para o seu bem-estar.</p>
+                    </div>
+                </a>
+                <a href="sobremesas.html" class="category-card block bg-white rounded-lg shadow-lg overflow-hidden">
+                    <img src="https://images.unsplash.com/photo-1551024601-bec78aea704b?q=80&w=1964&auto=format&fit=crop" alt="Fatia de bolo de chocolate com cobertura" class="w-full h-48 object-cover">
+                    <div class="p-6">
+                        <h3 class="text-2xl font-bold text-stone-800">Sobremesas</h3>
+                        <p class="text-stone-600 mt-2">Adoce a vida com técnicas de confeitaria clássica.</p>
+                    </div>
+                </a>
+                <a href="sobremesas_fitness.html" class="category-card block bg-white rounded-lg shadow-lg overflow-hidden">
+                    <img src="https://images.unsplash.com/photo-1488477181142-243306c44426?q=80&w=1964&auto=format&fit=crop" alt="Tigela com iogurte, frutas e granola" class="w-full h-48 object-cover">
+                    <div class="p-6">
+                        <h3 class="text-2xl font-bold text-stone-800">Sobremesas Fitness</h3>
+                        <p class="text-stone-600 mt-2">Doces sem culpa, mas cheios de sabor e saúde.</p>
+                    </div>
+                </a>
+                 <a href="hamburguer_index.html" class="category-card block bg-white rounded-lg shadow-lg overflow-hidden">
+                    <img src="https://images.unsplash.com/photo-1571091718767-18b5b1457add?q=80&w=2072&auto=format&fit=crop" alt="Hambúrguer suculento com batatas fritas" class="w-full h-48 object-cover">
+                    <div class="p-6">
+                        <h3 class="text-2xl font-bold text-stone-800">Mundo dos Hambúrgueres</h3>
+                        <p class="text-stone-600 mt-2">O nosso manual completo para o lanche perfeito.</p>
+                    </div>
+                </a>
             </div>
         </div>
     </section>
 
-    <!-- Footer -->
     <footer class="bg-white border-t">
         <div class="container mx-auto px-6 py-8 text-center text-stone-600">
-            <p>&copy; 2024 Mestre Culinário. Todos os direitos reservados.</p>
+            <p>&copy; 2025 Mestre Culinário. Todos os direitos reservados.</p>
         </div>
     </footer>
 
