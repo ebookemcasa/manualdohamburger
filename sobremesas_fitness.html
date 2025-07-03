@@ -61,37 +61,32 @@
             border-bottom: 2px dotted #ca8a04;
             font-weight: bold;
         }
-        .tooltip .tooltip-text {
-            visibility: hidden;
+        .tooltip::after {
+            content: attr(data-tooltip); /* Puxa o texto do atributo data-tooltip */
+            position: absolute;
+            bottom: 125%;
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 10;
+            
+            /* Estilos da caixa */
             width: 220px;
             background-color: #3d3d3d;
             color: #fff;
-            text-align: center;
-            border-radius: 6px;
-            padding: 8px;
-            position: absolute;
-            z-index: 10;
-            bottom: 125%;
-            left: 50%;
-            margin-left: -110px;
-            opacity: 0;
-            transition: opacity 0.3s;
             font-family: 'Lato', sans-serif;
             font-weight: normal;
+            text-align: center;
+            padding: 8px;
+            border-radius: 6px;
+            
+            /* Animação */
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 0.3s ease;
         }
-        .tooltip .tooltip-text::after {
-            content: "";
-            position: absolute;
-            top: 100%;
-            left: 50%;
-            margin-left: -5px;
-            border-width: 5px;
-            border-style: solid;
-            border-color: #3d3d3d transparent transparent transparent;
-        }
-        .tooltip:hover .tooltip-text {
-            visibility: visible;
+        .tooltip:hover::after {
             opacity: 1;
+            visibility: visible;
         }
     </style>
 </head>
@@ -387,11 +382,128 @@
                     "<strong>Base de Aveia:</strong> Substitua metade dos frutos secos por flocos de aveia."
                 ]
             },
-            'bolo-laranja-fit': { title: "Aula 11: Bolo de Laranja com Farinha de Amêndoa" },
-            'danoninho-inhame': { title: "Aula 12: 'Danoninho' Caseiro de Morango e Inhame" },
-            'cheesecake-copo': { title: "Aula 13: Cheesecake Fit no Copo" },
-            'barra-proteina': { title: "Aula 14: Barra de Proteína Caseira" },
-            'trufas-fit': { title: "Aula 15: Trufas de Batata Doce e Cacau" }
+            'bolo-laranja-fit': {
+                title: "Aula 11: Bolo de Laranja com Farinha de Amêndoa",
+                description: "Um bolo incrivelmente húmido, fofinho e sem glúten, que usa a farinha de amêndoa para a estrutura e o sumo de laranja para um sabor vibrante. Uma forma elegante de desfrutar de um bolo clássico.",
+                calculator: { label: "Diâmetro da Forma (cm):", unit: "bolo-laranja-fit-input", base_value: 20, default_value: 20 },
+                details: { tempoPreparo: "15 min", tempoCozimento: "35-40 min", tempoDescanso: "20 min", rendimento: "1 bolo de 20cm", dificuldade: "Fácil", utensilios: ["Forma redonda", "Batedor de arame", "Tigela"] },
+                dicaDeMestre: "Para um sabor a laranja ainda mais intenso, ferva uma laranja inteira em água por 1 hora, deixe arrefecer, corte-a e remova os caroços, e depois triture-a inteira (com casca) para usar na massa. O resultado é um sabor profundo e complexo.",
+                ingredients: [
+                    { name: 'Farinha de Amêndoa', base_qty: 200, unit: 'g', scalable: true },
+                    { name: 'Ovos', base_qty: 3, unit: 'unid.', scalable: true },
+                    { name: 'Mel ou Xarope de Ácer', base_qty: 100, unit: 'ml', scalable: true },
+                    { name: 'Sumo e Raspas de Laranja', base_qty: 2, unit: 'unid.', scalable: true },
+                    { name: 'Fermento em Pó', base_qty: 1, unit: 'c. de chá', scalable: true }
+                ],
+                steps: [
+                    { title: "Preparar a Massa", description: "Pré-aqueça o forno a 180°C. Unte e forre o fundo de uma forma redonda com papel vegetal. Numa tigela grande, bata os ovos com o mel até ficar uma mistura pálida. Adicione as raspas e o sumo de laranja.", porque: "Bater os ovos com o adoçante incorpora ar, o que ajudará o bolo a crescer e a ficar mais fofo, mesmo sem farinha de trigo.", pontoCritico: "Use as raspas da laranja antes de espremer o sumo. É muito mais fácil." },
+                    { title: "Incorporar os Secos", description: "Adicione a farinha de amêndoa e o fermento à mistura de ovos. Envolva delicadamente com uma espátula apenas até combinar.", porque: "A farinha de amêndoa é naturalmente isenta de glúten, o que resulta num bolo muito húmido. Misturar pouco mantém a leveza da massa.", pontoCritico: "Não misture em excesso para não perder o ar incorporado nos ovos." },
+                    { title: "Assar o Bolo", description: "Despeje a massa na forma preparada e leve ao forno por 35 a 40 minutos. O bolo estará pronto quando estiver dourado e um palito inserido no centro sair limpo. Deixe arrefecer na forma antes de desenformar.", porque: "Bolos com farinha de amêndoa são mais húmidos e delicados, por isso é importante garantir que estão bem cozidos no centro.", pontoCritico: "Deixe o bolo arrefecer completamente antes de o fatiar, pois ele é mais quebradiço enquanto está quente.", timer: 2100 }
+                ],
+                variacoes: [
+                    "<strong>Com Calda:</strong> Ferva o sumo de mais uma laranja com uma colher de mel e regue sobre o bolo ainda morno.",
+                    "<strong>Com Iogurte:</strong> Sirva com uma colher de iogurte grego para um contraste de acidez.",
+                    "<strong>Com Sementes de Papoila:</strong> Adicione uma colher de sopa de sementes de papoila à massa para uma textura extra."
+                ]
+            },
+            'danoninho-inhame': {
+                title: "Aula 12: 'Danoninho' Caseiro de Morango e Inhame",
+                description: "Descubra o segredo do inhame para criar um creme de frutas incrivelmente parecido com o iogurte 'Danoninho', mas de forma 100% natural, sem lactose e sem conservantes.",
+                calculator: { label: "Gramas de Inhame:", unit: "danoninho-inhame-input", base_value: 300, default_value: 300 },
+                details: { tempoPreparo: "10 min", tempoCozimento: "20 min", tempoDescanso: "1 hora (geleira)", rendimento: "Serve 4 pessoas", dificuldade: "Fácil", utensilios: ["Liquidificador", "Panela"] },
+                dicaDeMestre: "O inhame deve ser cozido até estar a desfazer-se. Quanto mais macio, mais cremoso e liso será o resultado final. Descasque o inhame depois de cozido (com cuidado para não se queimar), pois a casca sai muito mais facilmente.",
+                ingredients: [
+                    { name: 'Inhame, descascado e em cubos', base_qty: 300, unit: 'g', scalable: true },
+                    { name: 'Morangos frescos ou congelados', base_qty: 250, unit: 'g', scalable: true },
+                    { name: 'Sumo de Limão', base_qty: 1, unit: 'c. de sopa', scalable: true },
+                    { name: 'Mel ou outro adoçante', base_qty: 2, unit: 'c. de sopa', scalable: true }
+                ],
+                steps: [
+                    { title: "Cozinhar o Inhame", description: "Cozinhe o inhame em água a ferver por cerca de 20 minutos, ou até estar extremamente macio e a desfazer-se.", porque: "O cozimento do inhame quebra as suas fibras e amido, o que, quando batido, cria uma base espessa e neutra, perfeita para absorver o sabor das frutas.", pontoCritico: "Não cozinhe de menos. A maciez do inhame é o fator mais importante para a textura do creme." },
+                    { title: "Bater o Creme", description: "No liquidificador, junte o inhame cozido e escorrido, os morangos, o sumo de limão e o adoçante. Bata em alta velocidade até obter um creme completamente liso, homogéneo e com uma cor vibrante.", porque: "O liquidificador emulsiona todos os ingredientes, criando a textura de iogurte. O limão realça o sabor do morango e ajuda na conservação.", pontoCritico: "Se o liquidificador tiver dificuldades, adicione 1 ou 2 colheres de sopa de água para o ajudar a funcionar." },
+                    { title: "Refrigerar e Servir", description: "Transfira o creme para um recipiente ou tacinhas individuais e leve à geleira por pelo menos 1 hora. Sirva frio.", porque: "A refrigeração firma o creme e apura os sabores.", pontoCritico: "Pode ser guardado na geleira por até 3 dias." }
+                ],
+                variacoes: [
+                    "<strong>Com Manga:</strong> Substitua os morangos por manga para uma versão tropical.",
+                    "<strong>Com Maracujá:</strong> Use a polpa de um maracujá para um sabor mais ácido.",
+                    "<strong>Versão Chocolate:</strong> Use cacau em pó e banana em vez de morangos."
+                ]
+            },
+            'cheesecake-copo': {
+                title: "Aula 13: Cheesecake Fit no Copo",
+                description: "A forma mais fácil e rápida de matar a vontade de cheesecake. Esta versão descomplicada é montada em copos, em porções individuais, e usa iogurte para um recheio leve e proteico.",
+                calculator: { label: "Porções (Copos):", unit: "cheesecake-copo-input", base_value: 4, default_value: 4 },
+                details: { tempoPreparo: "15 min", tempoCozimento: "N/A", tempoDescanso: "2 horas", rendimento: "4 copos", dificuldade: "Fácil", utensilios: ["Tigela", "Copos ou frascos de vidro"] },
+                dicaDeMestre: "Para uma base mais crocante, toste a aveia numa frigideira seca por alguns minutos até ficar dourada e aromática. Deixe arrefecer completamente antes de a misturar com os outros ingredientes da base.",
+                ingredients: [
+                    { name: 'Flocos de Aveia', base_qty: 0.5, unit: 'chávena', scalable: true, heading: 'Para a Base' },
+                    { name: 'Frutos secos (amêndoas, nozes)', base_qty: 0.25, unit: 'chávena', scalable: true },
+                    { name: 'Tâmaras ou Mel', base_qty: 2, unit: 'c. de sopa', scalable: true },
+                    { name: 'Iogurte Grego Natural, espesso', base_qty: 500, unit: 'g', scalable: true, heading: 'Para o Recheio' },
+                    { name: 'Queijo Creme Light (opcional)', base_qty: 2, unit: 'c. de sopa', scalable: true },
+                    { name: 'Sumo e Raspas de Limão', base_qty: 1, unit: 'unid.', scalable: true },
+                    { name: 'Mel ou Xarope de Ácer', base_qty: 3, unit: 'c. de sopa', scalable: true },
+                    { name: 'Frutos Vermelhos, para cobrir', base_qty: 1, unit: 'chávena', scalable: true, heading: 'Para a Cobertura' }
+                ],
+                steps: [
+                    { title: "Preparar a Base", description: "Se usar tâmaras, processe-as com os frutos secos e a aveia até formar uma areia grossa. Se usar mel, simplesmente misture todos os ingredientes da base numa tigela. Divida a mistura pelo fundo dos copos e pressione levemente para formar a base.", porque: "Esta base sem cozimento é rica em fibras e gorduras saudáveis, contrastando com o recheio cremoso.", pontoCritico: "Não pressione demasiado a base, para que não fique dura." },
+                    { title: "O Recheio Cremoso", description: "Numa tigela, misture o iogurte grego, o queijo creme (se usar), o sumo e as raspas de limão, e o adoçante. Bata bem até obter um creme liso e homogéneo. Divida o creme pelos copos, sobre a base.", porque: "O iogurte grego é a estrela, fornecendo proteína e cremosidade. O queijo creme adiciona o sabor característico do cheesecake, e o limão corta a riqueza com acidez.", pontoCritico: "Use um iogurte bem espesso para um recheio mais firme." },
+                    { title: "A Cobertura e o Descanso", description: "Faça uma calda rápida com os frutos vermelhos, levando-os ao lume com uma colher de água até se desfazerem, ou simplesmente use-os frescos. Cubra o cheesecake com os frutos. Leve os copos à geleira por pelo menos 2 horas.", porque: "A cobertura de fruta adiciona cor e um sabor agridoce. O tempo de refrigeração é essencial para que o recheio firme e os sabores se fundam.", pontoCritico: "Deixe a calda de fruta arrefecer antes de a colocar sobre o creme para não o derreter.", timer: 7200 }
+                ],
+                variacoes: [
+                    "<strong>Com Maracujá:</strong> Use uma calda de maracujá como cobertura.",
+                    "<strong>Sabor a Chocolate:</strong> Adicione cacau em pó ao recheio e use tâmaras e cacau na base.",
+                    "<strong>Com Manga:</strong> Cubra com uma camada de puré de manga fresco."
+                ]
+            },
+            'barra-proteina': {
+                title: "Aula 14: Barra de Proteína Caseira",
+                description: "Poupe dinheiro e controle exatamente o que come. Aprenda a fazer as suas próprias barras de proteína, sem cozimento, perfeitas para um lanche rápido ou para depois do treino.",
+                calculator: { label: "Porções (Barras):", unit: "barra-proteina-input", base_value: 8, default_value: 8 },
+                details: { tempoPreparo: "15 min", tempoCozimento: "N/A", tempoDescanso: "1 hora", rendimento: "8-10 barras", dificuldade: "Fácil", utensilios: ["Tigela", "Forma retangular pequena", "Papel vegetal"] },
+                dicaDeMestre: "A consistência pode variar muito dependendo da sua proteína em pó. Se a mistura estiver demasiado seca e quebradiça, adicione mais um pouco de manteiga de amendoim ou leite. Se estiver demasiado mole, adicione mais um pouco de aveia ou proteína em pó.",
+                ingredients: [
+                    { name: 'Proteína em Pó (Whey ou Vegetal), sabor baunilha ou chocolate', base_qty: 1, unit: 'chávena', scalable: true },
+                    { name: 'Manteiga de Amendoim ou Amêndoa', base_qty: 0.5, unit: 'chávena', scalable: true },
+                    { name: 'Mel ou Xarope de Ácer', base_qty: 0.25, unit: 'chávena', scalable: true },
+                    { name: 'Flocos de Aveia', base_qty: 1.5, unit: 'chávenas', scalable: true },
+                    { name: 'Leite ou bebida vegetal', base_qty: 4, unit: 'c. de sopa', scalable: true },
+                    { name: 'Pepitas de Chocolate Amargo (opcional)', base_qty: 0.25, unit: 'chávena', scalable: true }
+                ],
+                steps: [
+                    { title: "Misturar os Ingredientes", description: "Numa tigela grande, junte a proteína em pó, a aveia, a manteiga de amendoim, o mel e o leite. Misture muito bem com uma colher ou com as mãos, até formar uma 'massa' densa e homogénea. Se usar, incorpore as pepitas de chocolate.", porque: "A manteiga de amendoim e o mel atuam como agentes ligantes que unem todos os ingredientes secos. A proteína em pó e a aveia dão a estrutura.", pontoCritico: "A mistura deve ser espessa mas maleável. Ajuste a quantidade de leite se necessário, uma colher de cada vez." },
+                    { title: "Pressionar e Refrigerar", description: "Forre uma forma retangular pequena (aprox. 20x20cm) com papel vegetal. Despeje a mistura na forma e, com as mãos ou as costas de uma colher, pressione firmemente até obter uma camada uniforme e compacta. Leve à geleira por pelo menos 1 hora.", porque: "Pressionar bem a mistura garante que as barras fiquem densas e não se desfaçam. A refrigeração solidifica a manteiga de amendoim e o mel, firmando as barras.", pontoCritico: "Use as mãos molhadas ou uma folha de papel vegetal por cima para pressionar a massa sem que ela cole." }
+                ],
+                variacoes: [
+                    "<strong>Com Frutos Secos:</strong> Adicione passas ou arandos secos à mistura.",
+                    "<strong>Com Sementes:</strong> Incorpore sementes de girassol ou de abóbora para uma textura extra.",
+                    "<strong>Cobertura de Chocolate:</strong> Derreta chocolate amargo e espalhe uma fina camada por cima das barras antes de as refrigerar."
+                ]
+            },
+            'trufas-fit': {
+                title: "Aula 15: Trufas de Batata Doce e Cacau",
+                description: "Uma forma inteligente e deliciosa de matar a vontade de chocolate. Estas trufas usam a doçura e a cremosidade da batata doce como base, resultando num doce rico em fibras e de baixo índice glicémico.",
+                calculator: { label: "Gramas de Batata Doce:", unit: "trufas-fit-input", base_value: 300, default_value: 300 },
+                details: { tempoPreparo: "15 min", tempoCozimento: "25 min", tempoDescanso: "1 hora", rendimento: "Aprox. 20 trufas", dificuldade: "Fácil", utensilios: ["Panela", "Garfo ou espremedor", "Tigela"] },
+                dicaDeMestre: "Para uma textura ainda mais rica, asse a batata doce em vez de a cozinhar. O sabor ficará mais concentrado e a polpa mais seca, o que facilita a moldagem das trufas.",
+                ingredients: [
+                    { name: 'Batata Doce, cozida e amassada em puré', base_qty: 300, unit: 'g', scalable: true },
+                    { name: 'Cacau em Pó (sem açúcar)', base_qty: 4, unit: 'c. de sopa', scalable: true },
+                    { name: 'Óleo de Coco, derretido', base_qty: 2, unit: 'c. de sopa', scalable: true },
+                    { name: 'Mel ou Xarope de Ácer', base_qty: 2, unit: 'c. de sopa', scalable: true },
+                    { name: 'Coco ralado ou cacau em pó (para enrolar)', base_qty: 0, unit: 'A gosto', scalable: false }
+                ],
+                steps: [
+                    { title: "O Puré Base", description: "Cozinhe a batata doce até estar muito macia. Descasque e amasse muito bem com um garfo até obter um puré completamente liso, sem fibras ou pedaços.", porque: "A base da trufa é o puré. A sua textura lisa é essencial para imitar a cremosidade de um ganache de chocolate tradicional.", pontoCritico: "Deixe o puré arrefecer completamente antes de o misturar com os outros ingredientes." },
+                    { title: "A 'Massa' de Trufa", description: "Numa tigela, misture o puré de batata doce arrefecido, o cacau em pó, o óleo de coco e o adoçante. Misture muito bem até formar uma massa escura e homogénea. Leve à geleira por cerca de 1 hora para firmar.", porque: "O óleo de coco solidifica com o frio, o que dará a estrutura necessária à massa para ser enrolada.", pontoCritico: "Se a massa estiver demasiado mole, adicione um pouco mais de cacau em pó." },
+                    { title: "Enrolar e Servir", description: "Com a massa já firme, retire pequenas porções com uma colher e enrole com as mãos para formar bolinhas. Passe as trufas pelo coco ralado ou cacau em pó. Mantenha na geleira até à hora de servir.", porque: "A cobertura não só decora, mas também evita que as trufas fiquem pegajosas ao toque.", pontoCritico: "Mantenha as trufas refrigeradas, pois elas amolecem à temperatura ambiente." }
+                ],
+                variacoes: [
+                    "<strong>Com Frutos Secos:</strong> Misture nozes ou amêndoas picadas na massa.",
+                    "<strong>Com Essências:</strong> Adicione uma gota de extrato de baunilha, amêndoa ou rum.",
+                    "<strong>Com Café:</strong> Uma pitada de café solúvel na massa realça o sabor do cacau."
+                ]
+            }
         };
 
         // ===================================================================================
@@ -446,9 +558,6 @@
         };
 
         const generateRecipeHTML = (recipeData) => {
-             if (!recipeData.details) {
-                return `<div class="text-center p-10"><h2 class="text-3xl font-bold text-amber-700">${recipeData.title}</h2><p class="mt-4 text-stone-600">O conteúdo detalhado para esta aula estará disponível em breve. Obrigado pela sua paciência!</p></div>`;
-            }
              return `
                 <div class="text-center">
                     <h2 class="text-3xl md:text-4xl font-bold text-amber-700">${recipeData.title}</h2>
