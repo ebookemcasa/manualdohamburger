@@ -289,15 +289,109 @@
                     "<strong>Com Proteína:</strong> Junte uma colher de proteína em pó para um snack pós-treino."
                 ]
             },
-            'muffins-fit': { title: "Aula 07: Muffins de Maçã e Aveia", description: "Aprenda a fazer bolinhos fofos e húmidos usando farinha de aveia." },
-            'iogurte-grelhado': { title: "Aula 08: Iogurte Grego com Pêssegos Grelhados", description: "Uma sobremesa elegante que carameliza o açúcar natural das frutas." },
-            'brownie-feijao': { title: "Aula 09: Brownie de Feijão Preto", description: "Sim, é possível! Um brownie denso e rico, sem farinha e com proteína extra." },
-            'torta-limao-fit': { title: "Aula 10: Torta de Limão Fit", description: "Uma versão leve e proteica, com base de amêndoas e recheio de iogurte." },
-            'bolo-laranja-fit': { title: "Aula 11: Bolo de Laranja com Farinha de Amêndoa", description: "Um bolo sem glúten, fofinho e cheio do sabor cítrico da laranja." },
-            'danoninho-inhame': { title: "Aula 12: 'Danoninho' Caseiro de Morango e Inhame", description: "O segredo do inhame para um creme delicioso e sem lactose." },
-            'cheesecake-copo': { title: "Aula 13: Cheesecake Fit no Copo", description: "Uma versão descomplicada, em porções individuais e muito mais leve." },
-            'barra-proteina': { title: "Aula 14: Barra de Proteína Caseira", description: "Controle os ingredientes e o sabor das suas próprias barras de proteína." },
-            'trufas-fit': { title: "Aula 15: Trufas de Batata Doce e Cacau", description: "Um docinho para matar a vontade, com a doçura natural da batata doce." }
+            'muffins-fit': {
+                title: "Aula 07: Muffins de Maçã e Aveia",
+                description: "Aprenda a fazer muffins fofos, húmidos e saborosos, usando a doçura natural da maçã e a fibra da aveia. São perfeitos para um lanche ou pequeno-almoço saudável para levar.",
+                calculator: { label: "Número de Muffins:", unit: "muffins-fit-input", base_value: 12, default_value: 12 },
+                details: { tempoPreparo: "15 min", tempoCozimento: "20-25 min", tempoDescanso: "10 min", rendimento: "12 muffins", dificuldade: "Fácil", utensilios: ["Forma de muffins", "Tigela", "Batedor de arame"] },
+                dicaDeMestre: "Não misture a massa em excesso depois de adicionar a farinha. Misture apenas até os ingredientes secos e húmidos se combinarem. Isto evita o desenvolvimento do glúten e garante muffins mais fofos e leves.",
+                ingredients: [
+                    { name: 'Farinha de Aveia (ou flocos triturados)', base_qty: 1.5, unit: 'chávenas', scalable: true },
+                    { name: 'Maçã, descascada e ralada', base_qty: 1, unit: 'unid. grande', scalable: true },
+                    { name: 'Ovos', base_qty: 2, unit: 'unid.', scalable: true },
+                    { name: 'Mel ou Xarope de Ácer', base_qty: 0.25, unit: 'chávena', scalable: true },
+                    { name: 'Iogurte Grego Natural', base_qty: 0.25, unit: 'chávena', scalable: true },
+                    { name: 'Óleo de Coco, derretido', base_qty: 2, unit: 'c. de sopa', scalable: true },
+                    { name: 'Fermento em Pó', base_qty: 1.5, unit: 'c. de chá', scalable: true },
+                    { name: 'Canela em Pó', base_qty: 1, unit: 'c. de chá', scalable: true }
+                ],
+                steps: [
+                    { title: "Preparar a Massa", description: "Pré-aqueça o forno a 180°C e prepare uma forma de 12 muffins. Numa tigela grande, misture os ingredientes húmidos: a maçã ralada, os ovos, o mel, o iogurte e o óleo de coco.", porque: "A maçã ralada e o iogurte fornecem a maior parte da humidade, mantendo os muffins macios sem necessidade de muita gordura.", pontoCritico: "Esprema ligeiramente a maçã ralada para remover o excesso de água antes de a adicionar à mistura." },
+                    { title: "Combinar Secos e Húmidos", description: "Numa outra tigela, misture os ingredientes secos: a farinha de aveia, o fermento e a canela. Despeje os ingredientes secos sobre os húmidos e misture com uma espátula, apenas até incorporar.", porque: "Separar os ingredientes secos e húmidos primeiro garante uma distribuição uniforme do fermento e evita que se misture a massa em demasia.", pontoCritico: "Alguns grumos na massa são perfeitamente normais. É melhor ter grumos do que misturar em excesso." },
+                    { title: "Assar os Muffins", description: "Divida a massa uniformemente pelas formas de muffin, enchendo cada uma até cerca de 3/4. Leve ao forno por 20 a 25 minutos, ou até um palito inserido no centro sair limpo. Deixe arrefecer na forma por alguns minutos antes de transferir para uma grelha.", porque: "O tempo de arrefecimento na forma permite que os muffins firmem um pouco, tornando mais fácil removê-los sem que se partam.", pontoCritico: "Não encha demasiado as formas, pois os muffins irão crescer.", timer: 1200 }
+                ],
+                variacoes: [
+                    "<strong>Com Nozes:</strong> Adicione um punhado de nozes picadas à massa para uma textura crocante.",
+                    "<strong>Com Frutos Vermelhos:</strong> Substitua a maçã por mirtilos ou framboesas.",
+                    "<strong>Cobertura de Streusel Fit:</strong> Misture aveia, um pouco de óleo de coco e canela e polvilhe por cima dos muffins antes de assar."
+                ]
+            },
+            'iogurte-grelhado': {
+                title: "Aula 08: Iogurte Grego com Pêssegos Grelhados",
+                description: "Uma sobremesa incrivelmente simples, rápida e elegante. Aprenda como o calor de uma frigideira pode transformar uma fruta, caramelizando os seus açúcares naturais e criando um contraste delicioso com a acidez do iogurte.",
+                calculator: { label: "Número de Pêssegos:", unit: "iogurte-grelhado-input", base_value: 2, default_value: 2 },
+                details: { tempoPreparo: "5 min", tempoCozimento: "6-8 min", tempoDescanso: "N/A", rendimento: "Serve 2 pessoas", dificuldade: "Fácil", utensilios: ["Frigideira-grelha ou frigideira normal"] },
+                dicaDeMestre: "Escolha pêssegos que estejam maduros, mas ainda firmes ao toque. Se estiverem demasiado maduros, irão desmanchar-se com o calor. A firmeza é a chave para conseguir belas marcas de grelha.",
+                ingredients: [
+                    { name: 'Pêssegos maduros, mas firmes', base_qty: 2, unit: 'unid.', scalable: true },
+                    { name: 'Iogurte Grego Natural', base_qty: 1, unit: 'chávena', scalable: true },
+                    { name: 'Mel ou Xarope de Ácer', base_qty: 2, unit: 'c. de sopa', scalable: true },
+                    { name: 'Folhas de Hortelã Fresca', base_qty: 0, unit: 'A gosto', scalable: false }
+                ],
+                steps: [
+                    { title: "Preparar e Grelhar a Fruta", description: "Corte os pêssegos ao meio e remova o caroço. Pincele a parte cortada com um pouco de mel. Aqueça uma frigideira-grelha em lume médio-alto. Grelhe os pêssegos com a parte cortada para baixo por 3 a 4 minutos, sem mexer.", porque: "O calor alto e o contacto direto com a frigideira caramelizam o açúcar natural do pêssego e o mel, criando uma superfície dourada e um sabor tostado delicioso. Não mexer é o que cria as marcas de grelha.", pontoCritico: "Não sobrecarregue a frigideira para manter a temperatura alta." },
+                    { title: "Cozinhar o Outro Lado", description: "Vire os pêssegos e cozinhe por mais 3 a 4 minutos do lado da pele, apenas para que amoleçam por completo.", porque: "Este passo finaliza o cozimento, tornando a fruta tenra e suculenta.", pontoCritico: "Reduza o lume se o mel começar a queimar." }
+                ],
+                variacoes: [
+                    "<strong>Outras Frutas:</strong> Esta técnica funciona bem com nectarinas, ananás em fatias ou figos.",
+                    "<strong>Com Crocância:</strong> Sirva com um pouco de granola ou pistácios picados por cima.",
+                    "<strong>Toque Balsâmico:</strong> Regue com um fio de creme balsâmico no final para um contraste agridoce."
+                ]
+            },
+            'brownie-feijao': {
+                title: "Aula 09: Brownie de Feijão Preto",
+                description: "Prepare-se para se surpreender. Esta receita usa feijão preto como base secreta para criar brownies incrivelmente densos, húmidos e ricos em proteína e fibra, sem que ninguém adivinhe o ingrediente principal.",
+                calculator: { label: "Latas de Feijão Preto (400g):", unit: "brownie-feijao-input", base_value: 1, default_value: 1 },
+                details: { tempoPreparo: "10 min", tempoCozimento: "25-30 min", tempoDescanso: "30 min", rendimento: "9 brownies", dificuldade: "Fácil", utensilios: ["Processador de alimentos", "Forma quadrada (20x20cm)"] },
+                dicaDeMestre: "O segredo para ninguém descobrir o ingrediente secreto é lavar e escorrer muito bem o feijão preto enlatado para remover todo o sabor salgado da conserva. Depois, processe-o até obter um puré o mais liso possível.",
+                ingredients: [
+                    { name: 'Feijão Preto cozido, bem lavado e escorrido', base_qty: 1, unit: 'lata (400g)', scalable: true },
+                    { name: 'Ovos', base_qty: 2, unit: 'unid.', scalable: true },
+                    { name: 'Cacau em Pó (sem açúcar)', base_qty: 0.5, unit: 'chávena', scalable: true },
+                    { name: 'Açúcar de Coco ou Mascavado', base_qty: 0.75, unit: 'chávena', scalable: true },
+                    { name: 'Óleo de Coco, derretido', base_qty: 3, unit: 'c. de sopa', scalable: true },
+                    { name: 'Fermento em Pó', base_qty: 0.5, unit: 'c. de chá', scalable: true },
+                    { name: 'Pepitas de Chocolate Amargo', base_qty: 0.5, unit: 'chávena', scalable: true }
+                ],
+                steps: [
+                    { title: "Preparar a Massa", description: "Pré-aqueça o forno a 180°C. Forre uma forma quadrada (20x20cm). Num processador de alimentos, junte todos os ingredientes exceto as pepitas de chocolate. Processe em alta velocidade por vários minutos até obter uma massa completamente lisa e homogénea.", porque: "O feijão substitui a farinha e a maior parte da gordura. Processá-lo muito bem é essencial para que a sua textura se desfaça e se integre na massa, criando uma base densa e 'fudgy'.", pontoCritico: "Raspe as laterais do processador várias vezes para garantir que não ficam pedaços de feijão por triturar." },
+                    { title: "Adicionar o Chocolate e Assar", description: "Incorpore as pepitas de chocolate na massa. Despeje na forma preparada e alise a superfície. Leve ao forno por 25 a 30 minutos. O brownie está pronto quando um palito inserido no centro sai com algumas migalhas húmidas.", porque: "As pepitas de chocolate adicionam uma textura extra e mais sabor. O tempo de cozedura é crucial para um interior húmido.", pontoCritico: "Não cozinhe demais. É preferível um brownie ligeiramente mal cozido do que um seco.", timer: 1500 }
+                ],
+                variacoes: [
+                    "<strong>Com Nozes:</strong> Adicione um punhado de nozes picadas à massa.",
+                    "<strong>Extra Café:</strong> Junte uma colher de chá de café expresso em pó para intensificar o sabor do chocolate."
+                ]
+            },
+            'torta-limao-fit': {
+                title: "Aula 10: Torta de Limão Fit",
+                description: "Uma versão leve, proteica e sem cozimento da clássica torta de limão. Aprenda a fazer uma base crocante de frutos secos e um recheio cremoso e azedinho com iogurte grego.",
+                calculator: { label: "Diâmetro da Forma (cm):", unit: "torta-limao-fit-input", base_value: 20, default_value: 20 },
+                details: { tempoPreparo: "20 min", tempoCozimento: "N/A", tempoDescanso: "4 horas", rendimento: "Serve 8 pessoas", dificuldade: "Intermediário", utensilios: ["Forma de tarte com fundo amovível", "Processador de alimentos"] },
+                dicaDeMestre: "Para um creme mais firme, use gelatina incolor. Hidrate uma folha de gelatina em água fria, esprema e dissolva-a numa colher de sopa de água quente. Incorpore esta mistura ao creme de iogurte antes de o verter sobre a base.",
+                ingredients: [
+                    { name: 'Amêndoas ou Cajus', base_qty: 1.5, unit: 'chávenas', scalable: true, heading: 'Para a Base' },
+                    { name: 'Tâmaras Medjool, sem caroço', base_qty: 1, unit: 'chávena', scalable: true },
+                    { name: 'Óleo de Coco, derretido', base_qty: 2, unit: 'c. de sopa', scalable: true },
+                    { name: 'Iogurte Grego Natural (alto teor de proteína)', base_qty: 500, unit: 'g', scalable: true, heading: 'Para o Recheio' },
+                    { name: 'Sumo e Raspas de Limão', base_qty: 3, unit: 'unid.', scalable: true },
+                    { name: 'Mel ou Xarope de Ácer', base_qty: 4, unit: 'c. de sopa', scalable: true }
+                ],
+                steps: [
+                    { title: "A Base Crocante", description: "No processador de alimentos, triture as amêndoas até obter uma farinha grossa. Adicione as tâmaras e o óleo de coco e processe até a mistura se agregar e formar uma 'massa' pegajosa. Pressione esta mistura firmemente no fundo e nas laterais de uma forma de tarte.", porque: "Esta é uma base clássica de sobremesas 'raw' (cruas). As tâmaras atuam como adoçante e como 'cola' para unir os frutos secos.", pontoCritico: "Pressione a base de forma uniforme para que não haja partes mais grossas que outras." },
+                    { title: "O Recheio Cremoso e Proteico", description: "Numa tigela, misture bem o iogurte grego, o sumo e as raspas de limão e o adoçante. Prove e ajuste a doçura e a acidez a gosto. Despeje o creme sobre a base na forma.", porque: "O iogurte grego cria um recheio naturalmente espesso, cremoso e rico em proteína. As raspas de limão contêm os óleos essenciais da fruta, conferindo um aroma muito mais intenso que apenas o sumo.", pontoCritico: "Use iogurte grego gordo e não adoçado para a melhor textura e controlo sobre a doçura." },
+                    { title: "Refrigerar para Firmar", description: "Leve a torta à geleira por pelo menos 4 horas, ou até o recheio estar completamente firme. Sirva fria, decorada com mais raspas de limão.", porque: "O frio firma o óleo de coco na base e o iogurte no recheio, dando à torta a sua estrutura final.", pontoCritico: "Este passo não pode ser apressado. A torta precisa de tempo para assentar.", timer: 14400 }
+                ],
+                variacoes: [
+                    "<strong>Torta de Lima:</strong> Substitua o limão por lima para a versão 'key lime pie'.",
+                    "<strong>Com Coco:</strong> Adicione coco ralado à base e um pouco de leite de coco ao recheio.",
+                    "<strong>Base de Aveia:</strong> Substitua metade dos frutos secos por flocos de aveia."
+                ]
+            },
+            'bolo-laranja-fit': { title: "Aula 11: Bolo de Laranja com Farinha de Amêndoa" },
+            'danoninho-inhame': { title: "Aula 12: 'Danoninho' Caseiro de Morango e Inhame" },
+            'cheesecake-copo': { title: "Aula 13: Cheesecake Fit no Copo" },
+            'barra-proteina': { title: "Aula 14: Barra de Proteína Caseira" },
+            'trufas-fit': { title: "Aula 15: Trufas de Batata Doce e Cacau" }
         };
 
         // ===================================================================================
