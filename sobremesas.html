@@ -194,15 +194,237 @@
                     "<strong>Pudim de Café:</strong> Dissolva uma colher de sopa de café solúvel no leite antes de o bater."
                 ]
             },
-            // As restantes aulas seguiriam este mesmo formato detalhado...
-            'torta-maca': { title: "Aula 03: Torta de Maçã Rústica (Galette)" },
-            'creme-brulee': { title: "Aula 04: Crème Brûlée" },
-            'brownie': { title: "Aula 05: Brownie de Chocolate Intenso" },
-            'tiramisu': { title: "Aula 06: Tiramisù Original" },
-            'suspiros': { title: "Aula 07: Suspiros (Merengue Francês)" },
-            'bolo-cenoura': { title: "Aula 08: Bolo de Cenoura com Cobertura de Brigadeiro" },
-            'eclairs': { title: "Aula 09: Éclairs (Bombas) de Chocolate" },
-            'petit-gateau': { title: "Aula 10: Petit Gâteau (Coração Mole)" },
+            'torta-maca': {
+                title: "Aula 03: Torta de Maçã Rústica (Galette)",
+                description: "Aprenda a fazer uma galette, a prima descontraída e charmosa da torta de maçã. É a introdução perfeita ao mundo das massas, pois a sua beleza está justamente na sua imperfeição rústica.",
+                calculator: { label: "Número de Tortas:", unit: "torta-maca-input", base_value: 1, default_value: 1 },
+                details: { tempoPreparo: "30 min", tempoCozimento: "40-50 min", tempoDescanso: "1 hora (massa)", rendimento: "Serve 6-8 pessoas", dificuldade: "Intermediário", utensilios: ["Rolo da massa", "Tabuleiro", "Papel vegetal"] },
+                dicaDeMestre: "O segredo para uma massa folhada e crocante (<span class='tooltip' data-tooltip='Massa clássica francesa, quebradiça e amanteigada, usada como base para tortas.'>pâte brisée</span>) é manter a manteiga o mais fria possível. Se em algum momento sentir a massa a amolecer, não hesite em colocá-la na geleira por 10 minutos antes de continuar.",
+                ingredients: [
+                    { name: 'Farinha de Trigo', base_qty: 1.5, unit: 'chávenas (180g)', scalable: true, heading: 'Para a Massa' },
+                    { name: 'Manteiga sem sal, MUITO FRIA, em cubos', base_qty: 115, unit: 'g', scalable: true },
+                    { name: 'Água gelada', base_qty: 4, unit: 'c. de sopa', scalable: true },
+                    { name: 'Açúcar', base_qty: 1, unit: 'c. de chá', scalable: true },
+                    { name: 'Sal', base_qty: 0.5, unit: 'c. de chá', scalable: true },
+                    { name: 'Maçãs (Granny Smith, Fuji), fatiadas', base_qty: 3, unit: 'unid.', scalable: true, heading: 'Para o Recheio' },
+                    { name: 'Sumo de Limão', base_qty: 1, unit: 'c. de sopa', scalable: true },
+                    { name: 'Açúcar Mascavado', base_qty: 3, unit: 'c. de sopa', scalable: true },
+                    { name: 'Canela em pó', base_qty: 1, unit: 'c. de chá', scalable: true },
+                    { name: 'Ovo (para pincelar)', base_qty: 1, unit: 'unid.', scalable: false }
+                ],
+                steps: [
+                    { title: "A Massa Quebradiça", description: "Numa tigela, misture a farinha, o açúcar e o sal. Adicione os cubos de manteiga fria e, com as pontas dos dedos, 'belisque' a manteiga na farinha até obter uma mistura que parece areia grossa, com pedaços de manteiga do tamanho de ervilhas. Adicione a água gelada, uma colher de cada vez, e misture até a massa se unir. Forme um disco, enrole em película e leve à geleira por 1 hora.", porque: "Os pedaços de manteiga fria, ao derreterem no forno, criam bolsões de vapor que dão à massa a sua textura folhada e quebradiça. Trabalhar a massa o mínimo possível evita o desenvolvimento do glúten, mantendo-a tenra.", pontoCritico: "Não amasse a massa. O objetivo é apenas juntar os ingredientes. A água deve ser gelada para manter a manteiga sólida." },
+                    { title: "Montar a Galette", description: "Pré-aqueça o forno a 200°C. Numa superfície enfarinhada, estenda o disco de massa até ter um círculo de aproximadamente 30cm. Transfira para um tabuleiro forrado com papel vegetal. Numa outra tigela, misture as fatias de maçã com o sumo de limão, o açúcar mascavado e a canela.", porque: "O sumo de limão evita que as maçãs oxidem e escureçam, além de adicionar acidez que equilibra a doçura.", pontoCritico: "Não se preocupe se o círculo de massa não for perfeito. A beleza da galette está na sua rusticidade." },
+                    { title: "Dobrar e Assar", description: "Disponha as fatias de maçã no centro da massa, deixando uma borda livre de cerca de 5cm. Dobre as bordas da massa sobre as maçãs, criando uma moldura rústica. Pincele a borda da massa com o ovo batido e polvilhe com um pouco de açúcar. Asse por 40-50 minutos, ou até a massa estar bem dourada e as maçãs macias.", porque: "O ovo pincelado dá um acabamento brilhante e dourado à massa. O açúcar na borda carameliza, adicionando crocância.", pontoCritico: "Se o sumo das maçãs começar a vazar, não se preocupe, isso é normal e criará um caramelo delicioso no tabuleiro.", timer: 2700 }
+                ],
+                variacoes: [
+                    "<strong>Com outras Frutas:</strong> Esta técnica funciona maravilhosamente com pêssegos, peras, frutos vermelhos ou uma mistura.",
+                    "<strong>Toque de Sabor:</strong> Adicione uma colher de sopa de amido de milho ao recheio para o engrossar, ou espalhe um pouco de compota de alperce sobre a massa antes de adicionar as frutas.",
+                    "<strong>Servir com:</strong> Uma bola de gelado de baunilha ou um pouco de natas batidas."
+                ]
+            },
+            'creme-brulee': {
+                title: "Aula 04: Crème Brûlée",
+                description: "Uma sobremesa de restaurante que esconde uma simplicidade surpreendente. Aprenda a fazer um creme de baunilha rico e sedoso e a criar a icónica crosta de caramelo estaladiça que se parte com um 'crack' satisfatório.",
+                calculator: { label: "Porções (Ramequins):", unit: "creme-brulee-input", base_value: 4, default_value: 4 },
+                details: { tempoPreparo: "15 min", tempoCozimento: "30-40 min", tempoDescanso: "4 horas", rendimento: "Serve 4 pessoas", dificuldade: "Intermediário", utensilios: ["Ramequins de cerâmica", "Maçarico de cozinha", "Assadeira funda"] },
+                dicaDeMestre: "Para um sabor de baunilha mais intenso, use uma vagem de baunilha verdadeira. Abra a vagem ao meio, raspe as sementes e infusione tanto as sementes como a vagem nas natas quentes por 15 minutos antes de continuar.",
+                ingredients: [
+                    { name: 'Natas (35% gordura)', base_qty: 500, unit: 'ml', scalable: true },
+                    { name: 'Gemas de Ovo', base_qty: 4, unit: 'unid.', scalable: true },
+                    { name: 'Açúcar', base_qty: 60, unit: 'g', scalable: true },
+                    { name: 'Extrato de Baunilha', base_qty: 1, unit: 'c. de chá', scalable: true },
+                    { name: 'Açúcar Demerara (para caramelizar)', base_qty: 4, unit: 'c. de chá', scalable: true }
+                ],
+                steps: [
+                    { title: "Infundir as Natas", description: "Pré-aqueça o forno a 160°C. Numa panela pequena, aqueça as natas com o extrato de baunilha em lume médio, apenas até começar a formar pequenas bolhas nas bordas. Não deixe ferver. Retire do lume.", porque: "Aquecer as natas ajuda a dissolver o açúcar mais facilmente e a infundir o sabor da baunilha de forma mais eficaz.", pontoCritico: "Se as natas ferverem, podem criar uma película na superfície. O aquecimento deve ser gentil." },
+                    { title: "O Creme (Custard)", description: "Numa tigela, bata as gemas com o açúcar até a mistura ficar mais pálida e ligeiramente mais espessa. Com o batedor em movimento, despeje as natas quentes em fio sobre a mistura de gemas. Continue a bater até estar tudo bem incorporado.", porque: "Este processo de adicionar o líquido quente ao frio lentamente chama-se 'temperar'. Eleva a temperatura das gemas gradualmente, evitando que elas cozinhem e se transformem em ovos mexidos.", pontoCritico: "A adição das natas quentes deve ser lenta e em fio, especialmente no início." },
+                    { title: "Cozimento em Banho-Maria", description: "Passe a mistura por um coador fino para remover quaisquer grumos e despeje-a nos ramequins. Coloque os ramequins numa assadeira funda e leve ao forno. Com cuidado, adicione água quente na assadeira até atingir metade da altura dos ramequins. Asse por 30-40 minutos.", porque: "O <span class='tooltip' data-tooltip='Método de cozimento lento e suave em banho de água quente.'>banho-maria</span> garante que o creme cozinhe de forma suave e uniforme, resultando numa textura sedosa. Sem ele, o creme ficaria borrachudo.", pontoCritico: "O crème brûlée está pronto quando as bordas estiverem firmes, mas o centro ainda tremer ligeiramente como uma gelatina.", timer: 2100 },
+                    { title: "Arrefecer e Caramelizar", description: "Retire os ramequins do banho-maria e deixe-os arrefecer à temperatura ambiente. Depois, leve à geleira por pelo menos 4 horas. Na hora de servir, polvilhe uma camada fina e uniforme de açúcar Demerara sobre a superfície e caramelize com um maçarico de cozinha até ficar dourado e borbulhante.", porque: "O arrefecimento total firma o creme. A caramelização no último momento cria o contraste de texturas (creme frio, caramelo quente) e a crosta estaladiça.", pontoCritico: "Se não tiver maçarico, pode colocar os ramequins sob o grelhador do forno no máximo, mas fique muito atento, pois queima em segundos." }
+                ],
+                variacoes: [
+                    "<strong>De Café:</strong> Adicione 1 colher de sopa de café expresso em pó às natas quentes.",
+                    "<strong>De Lavanda:</strong> Infusione algumas flores de lavanda secas nas natas.",
+                    "<strong>De Chocolate:</strong> Derreta 100g de chocolate de boa qualidade nas natas quentes antes de as misturar com as gemas."
+                ]
+            },
+            brownie: {
+                title: "Aula 05: Brownie de Chocolate Intenso",
+                description: "Aprenda a fazer o brownie perfeito: denso, rico em chocolate, húmido por dentro e com a icónica casquinha brilhante e crocante por cima. Uma receita simples que se foca na qualidade dos ingredientes e na técnica.",
+                calculator: { label: "Tamanho da Forma (ex: 20 para 20x20cm):", unit: "brownie-input", base_value: 20, default_value: 20 },
+                details: { tempoPreparo: "15 min", tempoCozimento: "25-30 min", tempoDescanso: "1 hora", rendimento: "9-12 porções", dificuldade: "Fácil", utensilios: ["Forma quadrada (20x20cm)", "Tigela", "Batedor de arame"] },
+                dicaDeMestre: "O segredo da casquinha brilhante e estaladiça está em bater bem os ovos com o açúcar até a mistura ficar pálida e espessa, e em garantir que o chocolate derretido ainda está morno quando é incorporado. A combinação cria uma fina camada de merengue no topo do brownie ao assar.",
+                ingredients: [
+                    { name: 'Chocolate meio amargo (mín. 50%)', base_qty: 180, unit: 'g', scalable: true },
+                    { name: 'Manteiga sem sal', base_qty: 150, unit: 'g', scalable: true },
+                    { name: 'Açúcar', base_qty: 200, unit: 'g', scalable: true },
+                    { name: 'Ovos grandes', base_qty: 3, unit: 'unid.', scalable: true },
+                    { name: 'Farinha de Trigo', base_qty: 95, unit: 'g', scalable: true },
+                    { name: 'Cacau em Pó (sem açúcar)', base_qty: 30, unit: 'g', scalable: true },
+                    { name: 'Extrato de Baunilha', base_qty: 1, unit: 'c. de chá', scalable: true },
+                    { name: 'Sal', base_qty: 0.25, unit: 'c. de chá', scalable: false }
+                ],
+                steps: [
+                    { title: "Preparar a Base de Chocolate", description: "Pré-aqueça o forno a 180°C e forre uma forma quadrada (20x20cm) com papel vegetal. Derreta o chocolate e a manteiga juntos em banho-maria ou no micro-ondas. Mexa até ficar liso e reserve.", porque: "Forrar a forma permite desenformar o brownie inteiro facilmente para o cortar. Derreter a gordura (manteiga) com o chocolate garante uma mistura homogénea e um sabor intenso.", pontoCritico: "Use um chocolate de boa qualidade. Ele é a estrela do prato, e a sua qualidade irá definir o resultado final." },
+                    { title: "A Emulsão de Ovos e Açúcar", description: "Numa tigela grande, bata os ovos e o açúcar com um batedor de arame por alguns minutos, até a mistura ficar visivelmente mais pálida, espessa e arejada. Junte a baunilha.", porque: "Esta etapa é crucial para a textura e, principalmente, para a formação da casquinha crocante no topo do brownie. Estamos a dissolver o açúcar e a incorporar ar.", pontoCritico: "Bata com vontade! A mistura deve cair do batedor em fitas." },
+                    { title: "Combinar e Incorporar os Secos", description: "Despeje a mistura de chocolate morno sobre a mistura de ovos e açúcar e incorpore delicadamente. Peneire a farinha, o cacau em pó e o sal sobre a mistura húmida e, com uma espátula, envolva apenas até não haver mais vestígios de farinha.", porque: "Peneirar os ingredientes secos evita grumos. Misturar o mínimo possível depois de adicionar a farinha é o segredo para um brownie denso e 'fudgy', em oposição a um bolo ('cakey').", pontoCritico: "Não misture demais! Assim que a farinha desaparecer, pare. Misturar em excesso desenvolve o glúten e deixa o brownie com textura de bolo." },
+                    { title: "Assar e Arrefecer", description: "Despeje a massa na forma preparada e alise a superfície. Leve ao forno por 25 a 30 minutos. O brownie está pronto quando um palito inserido no centro sai com algumas migalhas húmidas, mas não massa líquida. Deixe arrefecer completamente na forma antes de cortar.", porque: "Um brownie ligeiramente mal cozido no centro garante a sua textura húmida e densa. Ele continuará a cozinhar com o calor residual. Arrefecer completamente é essencial para que ele firme e possa ser cortado em quadrados perfeitos.", pontoCritico: "É melhor errar para menos do que para mais no tempo de forno. Um brownie demasiado assado fica seco e perde a sua característica principal.", timer: 1650 }
+                ],
+                variacoes: [
+                    "<strong>Com Nozes:</strong> Adicione 1 chávena de nozes ou pecãs picadas à massa junto com os ingredientes secos.",
+                    "<strong>Extra Chocolate:</strong> Misture 100g de pepitas de chocolate na massa no final.",
+                    "<strong>Brownie Salgado:</strong> Polvilhe uma pitada de flor de sal sobre a massa antes de a levar ao forno para um contraste de sabor."
+                ]
+            },
+            tiramisu: {
+                title: "Aula 06: Tiramisù Original",
+                description: "Aprenda a fazer a sobremesa italiana que significa 'puxa-me para cima'. O Tiramisù é uma sobremesa elegante, sem cozimento, que combina a intensidade do café, a cremosidade do queijo mascarpone e a leveza dos palitos la reine.",
+                calculator: { label: "Porções:", unit: "tiramisu-input", base_value: 6, default_value: 6 },
+                details: { tempoPreparo: "30 min", tempoCozimento: "N/A", tempoDescanso: "6 horas", rendimento: "Serve 6-8 pessoas", dificuldade: "Intermediário", utensilios: ["Batedeira", "Travessa retangular", "Espátula"] },
+                dicaDeMestre: "Use café expresso forte e de boa qualidade, arrefecido. Mergulhe os palitos la reine no café por apenas 1 a 2 segundos de cada lado. Se ficarem demasiado ensopados, irão desmanchar-se e deixar o tiramisù aguado.",
+                ingredients: [
+                    { name: 'Gemas de Ovo', base_qty: 4, unit: 'unid.', scalable: true },
+                    { name: 'Açúcar', base_qty: 100, unit: 'g', scalable: true },
+                    { name: 'Queijo Mascarpone, à temp. ambiente', base_qty: 500, unit: 'g', scalable: true },
+                    { name: 'Palitos La Reine (Champagne)', base_qty: 24, unit: 'unid.', scalable: true },
+                    { name: 'Café expresso forte, frio', base_qty: 300, unit: 'ml', scalable: true },
+                    { name: 'Cacau em Pó (sem açúcar), para polvilhar', base_qty: 2, unit: 'c. de sopa', scalable: false },
+                    { name: 'Vinho Marsala ou Rum (opcional)', base_qty: 2, unit: 'c. de sopa', scalable: false }
+                ],
+                steps: [
+                    { title: "O Creme de Mascarpone (<span class='tooltip' data-tooltip='Creme italiano feito com gemas, açúcar e vinho Marsala, batido em banho-maria. É a base de muitos doces.'>Zabaglione</span>)", description: "Numa tigela resistente ao calor sobre uma panela com água a ferver (banho-maria), bata as gemas e o açúcar com um batedor de arame até a mistura ficar muito pálida, espessa e duplicar de volume (cerca de 5-8 minutos). Retire do calor e continue a bater até arrefecer.", porque: "Este processo cozinha suavemente as gemas, tornando-as seguras para consumo, e cria um creme leve e espumoso que é a base do creme do Tiramisù.", pontoCritico: "A água do banho-maria não deve ferver com força e não deve tocar no fundo da tigela, para não cozinhar as gemas." },
+                    { title: "Incorporar o Mascarpone", description: "Numa outra tigela, bata o queijo mascarpone com uma espátula para o amaciar. Adicione o creme de gemas (zabaglione) já frio ao mascarpone, envolvendo delicadamente até obter um creme liso e homogéneo.", porque: "O mascarpone deve estar à temperatura ambiente para se misturar facilmente sem formar grumos. A incorporação deve ser delicada para manter o ar que batemos no creme de gemas.", pontoCritico: "Não bata o mascarpone em excesso, pois pode talhar e ficar líquido." },
+                    { title: "Montar as Camadas", description: "Misture o vinho Marsala (se usar) ao café frio. Mergulhe rapidamente cada palito la reine no café e disponha-os numa única camada no fundo de uma travessa. Espalhe metade do creme de mascarpone por cima. Repita com outra camada de palitos embebidos em café e termine com o resto do creme.", porque: "A montagem em camadas permite que os palitos amoleçam e absorvam o sabor do café, enquanto o creme se mantém distinto e aveludado.", pontoCritico: "Mergulhe os palitos muito rapidamente. Um segundo de cada lado é suficiente." },
+                    { title: "Refrigerar e Finalizar", description: "Cubra a travessa com película aderente e leve à geleira por pelo menos 6 horas (idealmente, durante a noite). Antes de servir, polvilhe generosamente com cacau em pó peneirado.", porque: "O tempo de refrigeração é essencial para que o Tiramisù firme e os sabores se fundam. Os palitos amolecem e o creme adquire a consistência perfeita.", pontoCritico: "Polvilhe o cacau apenas no momento de servir para que ele não absorva humidade e se mantenha com uma aparência aveludada.", timer: 21600 }
+                ],
+                variacoes: [
+                    "<strong>Com Chocolate:</strong> Rale um pouco de chocolate amargo entre as camadas de creme.",
+                    "<strong>Com Frutas:</strong> Faça uma versão com frutos vermelhos, substituindo o café por uma calda de frutos vermelhos.",
+                    "<strong>Sem Álcool:</strong> Simplesmente omita o vinho Marsala. O sabor continuará delicioso."
+                ]
+            },
+            suspiros: {
+                title: "Aula 07: Suspiros (Merengue Francês)",
+                description: "Aprenda a fazer suspiros perfeitos: brancos, leves, secos e crocantes por fora, e ligeiramente macios por dentro. Dominar o merengue francês é uma habilidade fundamental na confeitaria.",
+                calculator: { label: "Número de Claras de Ovo:", unit: "suspiros-input", base_value: 3, default_value: 3 },
+                details: { tempoPreparo: "15 min", tempoCozimento: "1h 30 min", tempoDescanso: "1 hora (no forno)", rendimento: "Muitos suspiros!", dificuldade: "Intermediário", utensilios: ["Batedeira", "Saco de pasteleiro com bico", "Tabuleiro"] },
+                dicaDeMestre: "O segredo de um merengue estável é a ausência total de gordura. Certifique-se de que a sua tigela, os batedores e as suas mãos estão impecavelmente limpos e que não caiu nenhuma gota de gema nas claras.",
+                ingredients: [
+                    { name: 'Claras de Ovo, à temp. ambiente', base_qty: 3, unit: 'unid.', scalable: true },
+                    { name: 'Açúcar em pó (de confeiteiro)', base_qty: 150, unit: 'g', scalable: true },
+                    { name: 'Gotas de Sumo de Limão ou Vinagre branco', base_qty: 0.5, unit: 'c. de chá', scalable: true },
+                    { name: 'Extrato de Baunilha (opcional)', base_qty: 0.5, unit: 'c. de chá', scalable: true }
+                ],
+                steps: [
+                    { title: "Preparar o Merengue", description: "Pré-aqueça o forno à temperatura mais baixa possível (100-110°C). Forre um tabuleiro com papel vegetal. Numa tigela grande e impecavelmente limpa, comece a bater as claras em velocidade média. Quando começarem a espumar, adicione as gotas de limão.", porque: "O ácido (limão ou vinagre) ajuda a estabilizar as proteínas das claras, permitindo que elas retenham mais ar e formem um merengue mais forte e que não 'chora' (liberta líquido).", pontoCritico: "Qualquer vestígio de gordura ou água impedirá que as claras montem corretamente." },
+                    { title: "Adicionar o Açúcar", description: "Continue a bater e, quando as claras formarem picos moles, comece a adicionar o açúcar em pó, uma colher de sopa de cada vez, batendo bem entre cada adição. Continue a bater em velocidade alta por vários minutos.", porque: "Adicionar o açúcar gradualmente permite que ele se dissolva completamente nas claras, criando uma estrutura lisa e forte. Se adicionar tudo de uma vez, o peso do açúcar pode fazer as claras baixarem.", pontoCritico: "O merengue está pronto quando formar picos firmes, brilhantes e, ao esfregar um pouco entre os dedos, não sentir os grãos de açúcar." },
+                    { title: "Formar e Secar os Suspiros", description: "Incorpore a baunilha, se usar. Coloque o merengue num saco de pasteleiro com o bico da sua preferência (ex: estrela) e forme pequenos suspiros sobre o papel vegetal. Leve ao forno baixo por cerca de 1 hora e 30 minutos.", porque: "Os suspiros não 'assam', eles 'secam'. O calor baixo e o tempo longo desidratam o merengue, criando uma casca crocante e um interior que derrete na boca.", pontoCritico: "Não abra a porta do forno durante o cozimento, pois a mudança de temperatura pode fazer com que os suspiros rachem.", timer: 5400 },
+                    { title: "Arrefecer no Forno", description: "Após o tempo de cozimento, desligue o forno e deixe os suspiros arrefecerem completamente lá dentro, com a porta entreaberta (pode usar uma colher de pau para a segurar).", porque: "O arrefecimento lento e gradual evita o choque térmico, que também pode causar rachas nos suspiros. Este passo garante que eles fiquem perfeitamente secos.", pontoCritico: "Só retire os suspiros do papel vegetal quando estiverem completamente frios, pois só aí atingem a sua crocância máxima." }
+                ],
+                variacoes: [
+                    "<strong>Mini Pavlovas:</strong> Faça ninhos maiores de merengue e sirva com natas batidas e frutas frescas.",
+                    "<strong>Com Corante:</strong> Adicione algumas gotas de corante alimentar em gel no final para suspiros coloridos.",
+                    "<strong>Com Chocolate:</strong> Incorpore delicadamente raspas de chocolate no merengue pronto ou mergulhe a base dos suspiros em chocolate derretido depois de frios."
+                ]
+            },
+            'bolo-cenoura': {
+                title: "Aula 08: Bolo de Cenoura com Cobertura de Brigadeiro",
+                description: "O bolo afetivo que define a infância no Brasil. Aprenda a fazer a massa fofinha e húmida, com a cor vibrante da cenoura, e uma cobertura de brigadeiro cremosa que escorre pelas laterais.",
+                calculator: { label: "Número de Bolos:", unit: "bolo-cenoura-input", base_value: 1, default_value: 1 },
+                details: { tempoPreparo: "20 min", tempoCozimento: "40-50 min", tempoDescanso: "30 min", rendimento: "1 bolo (12-16 fatias)", dificuldade: "Fácil", utensilios: ["Liquidificador", "Forma com furo central", "Panela para a cobertura"] },
+                dicaDeMestre: "O segredo para um bolo de cenoura fofinho é a quantidade de óleo e não bater a farinha em excesso. O óleo garante a humidade, e misturar a farinha delicadamente no final evita que o bolo fique pesado e 'embatumado'.",
+                ingredients: [
+                    { name: 'Cenouras médias, descascadas e picadas', base_qty: 3, unit: 'unid.', scalable: true, heading: 'Para a Massa' },
+                    { name: 'Ovos', base_qty: 4, unit: 'unid.', scalable: true },
+                    { name: 'Óleo Vegetal', base_qty: 1, unit: 'chávena (240ml)', scalable: true },
+                    { name: 'Açúcar', base_qty: 2, unit: 'chávenas (400g)', scalable: true },
+                    { name: 'Farinha de Trigo', base_qty: 2.5, unit: 'chávenas (300g)', scalable: true },
+                    { name: 'Fermento em Pó', base_qty: 1, unit: 'c. de sopa', scalable: true },
+                    { name: 'Leite Condensado', base_qty: 1, unit: 'lata (395g)', scalable: true, heading: 'Para a Cobertura de Brigadeiro' },
+                    { name: 'Chocolate em Pó (50% cacau)', base_qty: 4, unit: 'c. de sopa', scalable: true },
+                    { name: 'Manteiga', base_qty: 1, unit: 'c. de sopa', scalable: true }
+                ],
+                steps: [
+                    { title: "A Massa no Liquidificador", description: "Pré-aqueça o forno a 180°C e unte e enfarinhe uma forma com furo no meio. No liquidificador, bata as cenouras picadas, os ovos e o óleo até obter um creme completamente liso e homogéneo.", porque: "O liquidificador desfaz a cenoura por completo, o que liberta a sua cor e humidade na massa. Bater bem esta base líquida garante que não ficam pedaços de cenoura no bolo.", pontoCritico: "Se o seu liquidificador não for muito potente, pode ralar a cenoura antes de a bater para facilitar o processo." },
+                    { title: "Incorporar os Ingredientes Secos", description: "Numa tigela grande, peneire a farinha, o açúcar e o fermento. Despeje a mistura líquida do liquidificador sobre os ingredientes secos e, com um batedor de arame (fouet), misture delicadamente apenas até a massa ficar homogénea.", porque: "Peneirar os secos evita grumos. Misturar a farinha à mão, e não no liquidificador, é o segredo para um bolo fofo. Bater a farinha desenvolve o glúten, o que deixaria o bolo pesado.", pontoCritico: "Não misture em excesso! Assim que não vir mais farinha seca, pare. Alguns pequenos grumos não são um problema." },
+                    { title: "Assar o Bolo", description: "Despeje a massa na forma preparada e leve ao forno por 40 a 50 minutos. O bolo está pronto quando um palito inserido no centro sai limpo. Deixe arrefecer um pouco antes de desenformar.", porque: "O tempo de forno pode variar. O teste do palito é a forma mais segura de verificar o ponto.", pontoCritico: "Não abra o forno nos primeiros 30 minutos, pois a mudança de temperatura pode fazer com que o bolo 'sole' (não cresça).", timer: 2700 },
+                    { title: "A Cobertura de Brigadeiro", description: "Numa panela, junte o leite condensado, o chocolate em pó e a manteiga. Leve ao lume médio-baixo, mexendo sempre com uma espátula, até a mistura começar a engrossar e a borbulhar, mas ainda líquida o suficiente para escorrer (ponto de calda). Despeje imediatamente sobre o bolo morno ou frio.", porque: "A cobertura de brigadeiro é um clássico. O ponto de calda é mais líquido do que o de enrolar, ideal para cobrir bolos.", pontoCritico: "Mexa constantemente para não queimar no fundo da panela." }
+                ],
+                variacoes: [
+                    "<strong>Com Cobertura Crocante:</strong> Adicione chocolate granulado por cima da cobertura de brigadeiro ainda quente.",
+                    "<strong>Formato Cupcake:</strong> Asse a massa em formas de cupcake por cerca de 20-25 minutos.",
+                    "<strong>Bolo Mesclado:</strong> Separe uma pequena porção da massa, misture com chocolate em pó e despeje na forma para um efeito marmorizado."
+                ]
+            },
+            eclairs: {
+                title: "Aula 09: Éclairs (Bombas) de Chocolate",
+                description: "Atreva-se a entrar na pastelaria francesa com esta aula completa. Aprenda a fazer a massa oca e leve (<span class='tooltip' data-tooltip='Massa escaldada duas vezes, que incha no forno criando um interior oco, perfeita para rechear.'>pâte à choux</span>), o creme de confeiteiro aveludado e a cobertura de chocolate brilhante.",
+                calculator: { label: "Número de Éclairs:", unit: "eclairs-input", base_value: 12, default_value: 12 },
+                details: { tempoPreparo: "45 min", tempoCozimento: "35-40 min", tempoDescanso: "1 hora", rendimento: "Aprox. 12-15 éclairs", dificuldade: "Avançado", utensilios: ["Batedeira", "Saco de pasteleiro com bico liso/canelado", "Panela"] },
+                dicaDeMestre: "O segredo da massa choux é secá-la bem na panela antes de adicionar os ovos. A massa deve formar uma bola e criar uma fina película no fundo da panela. Isto garante que a massa inchará corretamente no forno.",
+                ingredients: [
+                    { name: 'Água', base_qty: 125, unit: 'ml', scalable: true, heading: 'Para a Massa Choux' },
+                    { name: 'Leite', base_qty: 125, unit: 'ml', scalable: true },
+                    { name: 'Manteiga', base_qty: 115, unit: 'g', scalable: true },
+                    { name: 'Açúcar', base_qty: 1, unit: 'c. de chá', scalable: true },
+                    { name: 'Sal', base_qty: 0.5, unit: 'c. de chá', scalable: true },
+                    { name: 'Farinha de Trigo', base_qty: 140, unit: 'g', scalable: true },
+                    { name: 'Ovos', base_qty: 4, unit: 'unid.', scalable: true }
+                ],
+                steps: [
+                    { 
+                        isSubRecipe: true,
+                        title: "Módulo 1: Creme de Confeiteiro (<span class='tooltip' data-tooltip='Creme clássico da pastelaria francesa, à base de leite, gemas, açúcar e amido, usado para rechear bolos e éclairs.'>Crème Pâtissière</span>)",
+                        subSteps: [
+                            { title: "Preparar a Base", description: "Numa panela, aqueça 500ml de leite com 1 vagem de baunilha (ou 1 c. de chá de extrato) até começar a ferver. Numa tigela, bata 4 gemas com 100g de açúcar e 40g de amido de milho até obter um creme pálido.", porque: "O amido de milho irá engrossar o creme. A baunilha infunde o seu sabor no leite.", pontoCritico: "Misture bem o amido nas gemas para não criar grumos." },
+                            { title: "Temperar e Cozinhar", description: "Verta metade do leite quente sobre a mistura de gemas, batendo sempre (temperar). Volte a colocar esta mistura na panela com o resto do leite. Cozinhe em lume médio, mexendo constantemente com um batedor de arame, até o creme engrossar e borbulhar por 1-2 minutos.", porque: "Cozinhar por um minuto depois de engrossar elimina o sabor do amido. Mexer constantemente evita que o creme cole e queime.", pontoCritico: "Não pare de mexer! O creme pode queimar muito facilmente." },
+                            { title: "Arrefecer", description: "Transfira o creme para uma tigela limpa. Cubra com película aderente, pressionando a película diretamente sobre a superfície do creme para não criar uma pele. Leve à geleira para arrefecer completamente.", porque: "Cobrir em contacto evita a formação de uma película grossa na superfície do creme. Deve estar completamente frio antes de ser usado para rechear.", pontoCritico: "O creme quente pode amolecer ou derreter a massa choux." }
+                        ]
+                    },
+                     { 
+                        isSubRecipe: true,
+                        title: "Módulo 2: Massa Choux (<span class='tooltip' data-tooltip='Massa escaldada duas vezes, que incha no forno criando um interior oco.'>Pâte à Choux</span>)",
+                        subSteps: [
+                            { title: "Escaldar a Massa", description: "Numa panela, junte a água, o leite, a manteiga, o açúcar e o sal. Leve a ferver. Assim que ferver, retire do lume e adicione toda a farinha de uma só vez. Mexa vigorosamente com uma colher de pau até formar uma bola.", porque: "O líquido a ferver cozinha o amido da farinha, o que é o primeiro passo para a estrutura da massa.", pontoCritico: "A adição da farinha deve ser feita fora do lume para evitar a formação de grumos." },
+                            { title: "Secar a Massa", description: "Volte com a panela para o lume médio-baixo e cozinhe a massa, mexendo sempre, por 2 a 3 minutos para a secar. A massa está pronta quando formar uma fina película no fundo da panela.", porque: "Secar o excesso de humidade permite que a massa absorva mais ovos, resultando numa massa que incha mais e fica mais leve.", pontoCritico: "Este passo é crucial. Não o salte." },
+                            { title: "Adicionar os Ovos", description: "Transfira a massa para a tigela da batedeira e bata por um minuto para arrefecer um pouco. Adicione os ovos, um de cada vez, batendo bem entre cada adição. A massa estará pronta quando estiver lisa, brilhante e, ao levantar o batedor, formar um 'V' ou 'bico de pássaro'.", porque: "Os ovos fornecem a humidade e a estrutura de proteína que criarão o vapor para inchar a massa no forno. Adicioná-los um a um garante uma emulsão correta.", pontoCritico: "Pode ser que não precise do último ovo inteiro. Adicione-o aos poucos e verifique a consistência." }
+                        ]
+                    },
+                    { title: "Formar e Assar os Éclairs", description: "Pré-aqueça o forno a 200°C. Coloque a massa num saco de pasteleiro com um bico canelado ou liso. Num tabuleiro forrado com papel vegetal, forme bastões de cerca de 10-12 cm. Leve ao forno e asse por 15 minutos, depois reduza a temperatura para 180°C e asse por mais 20-25 minutos, até estarem bem dourados e ocos.", porque: "O calor inicial alto ajuda a massa a inchar rapidamente. A temperatura mais baixa a seguir seca o interior. A forma canelada ajuda os éclairs a crescerem de forma mais uniforme.", pontoCritico: "Não abra a porta do forno nos primeiros 25 minutos, ou os éclairs irão abater e não voltar a subir.", timer: 900 },
+                    { title: "Rechear e Cobrir", description: "Deixe os éclairs arrefecerem completamente. Com a ponta de uma faca, faça 2 ou 3 pequenos furos na base de cada éclair. Use um saco de pasteleiro para rechear cada um com o creme de confeiteiro frio. Mergulhe o topo de cada éclair numa cobertura de chocolate derretido.", porque: "O recheio é feito por baixo para um acabamento limpo. O éclair deve sentir-se pesado e cheio.", pontoCritico: "Recheie apenas quando os éclairs e o creme estiverem completamente frios." }
+                ],
+                variacoes: [
+                    "<strong>Paris-Brest:</strong> Forme a massa choux em forma de anel e sirva com um creme de praliné de avelã.",
+                    "<strong>Profiteroles:</strong> Forme pequenas bolas de massa e sirva com gelado e calda de chocolate quente.",
+                    "<strong>Éclairs de Café:</strong> Adicione extrato de café ao creme de confeiteiro e à cobertura."
+                ]
+            },
+            'petit-gateau': {
+                title: "Aula 10: Petit Gâteau (Coração Mole)",
+                description: "O 'pequeno bolo' francês que é uma explosão de chocolate. Aprenda a dominar o tempo e a temperatura para conseguir o exterior cozido e o interior líquido e vulcânico que fazem desta sobremesa um clássico de restaurante.",
+                calculator: { label: "Porções (Bolinhos):", unit: "petit-gateau-input", base_value: 4, default_value: 4 },
+                details: { tempoPreparo: "15 min", tempoCozimento: "12-14 min", tempoDescanso: "N/A", rendimento: "Serve 4 pessoas", dificuldade: "Intermediário", utensilios: ["Ramequins ou formas de alumínio pequenas", "Batedor de arame", "Tigela"] },
+                dicaDeMestre: "O segredo do Petit Gâteau está em conhecer o seu forno. O tempo de cozimento é tudo. É melhor errar por menos e ter um bolo mais líquido do que errar por mais e ter um simples bolinho de chocolate. Faça um teste com uma unidade primeiro.",
+                ingredients: [
+                    { name: 'Chocolate meio amargo (70% cacau)', base_qty: 100, unit: 'g', scalable: true },
+                    { name: 'Manteiga sem sal', base_qty: 100, unit: 'g', scalable: true },
+                    { name: 'Ovos inteiros', base_qty: 2, unit: 'unid.', scalable: true },
+                    { name: 'Gemas de Ovo', base_qty: 2, unit: 'unid.', scalable: true },
+                    { name: 'Açúcar', base_qty: 50, unit: 'g', scalable: true },
+                    { name: 'Farinha de Trigo', base_qty: 30, unit: 'g', scalable: true }
+                ],
+                steps: [
+                    { title: "Preparar as Formas e o Forno", description: "Pré-aqueça o forno a 200°C. Unte muito bem 4 ramequins (ou formas pequenas) com manteiga e polvilhe com cacau em pó, cobrindo todo o interior e descartando o excesso.", porque: "A camada de manteiga e cacau garante que o bolo, que é muito delicado, se desenforme perfeitamente sem se partir. O cacau é melhor que a farinha pois não deixa uma camada branca no exterior do bolo.", pontoCritico: "Não deixe um único ponto por untar, especialmente os cantos do fundo, ou o bolo irá colar." },
+                    { title: "A Base de Chocolate e a Mistura de Ovos", description: "Derreta o chocolate e a manteiga juntos em banho-maria. Numa tigela separada, bata os ovos inteiros, as gemas e o açúcar com um batedor de arame até a mistura ficar mais clara e espessa.", porque: "O uso de gemas extra adiciona riqueza e ajuda a criar um centro mais cremoso e líquido.", pontoCritico: "Não é preciso bater os ovos até ao ponto de fita, apenas até o açúcar se dissolver e a mistura ficar homogénea." },
+                    { title: "A Incorporação Final", description: "Verta a mistura de chocolate morno sobre os ovos batidos e incorpore. Por fim, peneire a farinha sobre a mistura e envolva delicadamente com uma espátula, apenas até não haver mais farinha visível.", porque: "A quantidade de farinha é muito pequena, apenas o suficiente para dar estrutura às bordas do bolo, permitindo que o centro se mantenha líquido. Peneirar é fundamental para não criar grumos.", pontoCritico: "Misturar o mínimo possível é a chave. Assim que a farinha estiver incorporada, pare." },
+                    { title: "O Cozimento Preciso", description: "Divida a massa pelas formas preparadas, enchendo até cerca de 3/4 da sua capacidade. Leve ao forno e asse por exatamente 12 a 14 minutos. As bordas devem parecer firmes e cozidas, mas o centro deve ainda parecer ligeiramente mole e tremer um pouco.", porque: "Este é o momento decisivo. O calor alto cozinha as bordas rapidamente, enquanto o centro permanece líquido. O tempo é a única variável que controla este resultado.", pontoCritico: "Cada forno é diferente. 12 minutos é um bom ponto de partida. Desenforme imediatamente sobre um prato e sirva com uma bola de gelado de baunilha para o contraste de temperaturas.", timer: 780 }
+                ],
+                variacoes: [
+                    "<strong>Com Doce de Leite:</strong> Coloque uma colher de chá de doce de leite de boa qualidade no centro da massa em cada forma antes de levar ao forno.",
+                    "<strong>Com Café:</strong> Adicione uma pitada de café solúvel ao chocolate derretido.",
+                    "<strong>Sem Farinha (Gluten-Free):</strong> Pode substituir a pequena quantidade de farinha por amido de milho."
+                ]
+            }
         };
 
         // ===================================================================================
@@ -257,9 +479,6 @@
         };
 
         const generateRecipeHTML = (recipeData) => {
-             if (!recipeData.details) {
-                return `<div class="text-center p-10"><h2 class="text-3xl font-bold text-amber-700">${recipeData.title}</h2><p class="mt-4 text-stone-600">O conteúdo detalhado para esta aula estará disponível em breve. Obrigado pela sua paciência!</p></div>`;
-            }
              return `
                 <div class="text-center">
                     <h2 class="text-3xl md:text-4xl font-bold text-amber-700">${recipeData.title}</h2>
