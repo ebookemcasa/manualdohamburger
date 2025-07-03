@@ -1,0 +1,534 @@
+<!DOCTYPE html>
+<html lang="pt-BR" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sobremesas Fitness - Mestre Culinário</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Lato:wght@400;700&display=swap');
+        body { font-family: 'Lato', sans-serif; background-color: #f8f7f4; color: #3d3d3d; }
+        h1, h2, h3, h4, .nav-link { font-family: 'Playfair Display', serif; }
+        
+        /* Estilos para interatividade */
+        .aula-card {
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            cursor: pointer;
+        }
+        .aula-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.05), 0 4px 6px -4px rgb(0 0 0 / 0.05);
+        }
+        
+        /* Checklist de Ingredientes */
+        .ingredient-item input[type="checkbox"] {
+            display: none;
+        }
+        .ingredient-item span {
+            transition: all 0.2s ease;
+            cursor: pointer;
+        }
+        .ingredient-item input[type="checkbox"]:checked + span {
+            text-decoration: line-through;
+            opacity: 0.6;
+        }
+
+        /* Acordion/Sanfona para os Passos */
+        details > summary {
+            cursor: pointer;
+            list-style: none;
+            display: inline-flex;
+            align-items: center;
+            transition: color 0.2s ease;
+        }
+        details > summary::-webkit-details-marker {
+            display: none;
+        }
+        details > summary::before {
+            content: '▶';
+            margin-right: 8px;
+            font-size: 0.7em;
+            transition: transform 0.2s ease-in-out;
+        }
+        details[open] > summary::before {
+            transform: rotate(90deg);
+        }
+
+        /* Tooltips para termos técnicos */
+        .tooltip {
+            position: relative;
+            cursor: help;
+            border-bottom: 2px dotted #ca8a04;
+            font-weight: bold;
+        }
+        .tooltip .tooltip-text {
+            visibility: hidden;
+            width: 220px;
+            background-color: #3d3d3d;
+            color: #fff;
+            text-align: center;
+            border-radius: 6px;
+            padding: 8px;
+            position: absolute;
+            z-index: 10;
+            bottom: 125%;
+            left: 50%;
+            margin-left: -110px;
+            opacity: 0;
+            transition: opacity 0.3s;
+            font-family: 'Lato', sans-serif;
+            font-weight: normal;
+        }
+        .tooltip .tooltip-text::after {
+            content: "";
+            position: absolute;
+            top: 100%;
+            left: 50%;
+            margin-left: -5px;
+            border-width: 5px;
+            border-style: solid;
+            border-color: #3d3d3d transparent transparent transparent;
+        }
+        .tooltip:hover .tooltip-text {
+            visibility: visible;
+            opacity: 1;
+        }
+    </style>
+</head>
+<body class="antialiased">
+    <header class="bg-white/90 backdrop-blur-lg sticky top-0 z-50 shadow-md">
+        <nav class="container mx-auto px-6 py-4">
+            <div class="flex justify-between items-center">
+                <a href="index.html" class="text-3xl font-bold text-stone-800">Mestre<span class="text-amber-600">Culinário</span></a>
+                <a href="index.html" class="nav-link text-stone-600 hover:text-amber-600 transition-colors">Voltar à Página Principal</a>
+            </div>
+        </nav>
+    </header>
+    <main class="container mx-auto px-6 py-8 md:py-12">
+        <section id="page-title" class="text-center mb-16">
+            <h1 class="text-4xl md:text-6xl font-bold text-stone-800">Sobremesas <span class="text-amber-600">Fitness</span></h1>
+            <p class="mt-4 max-w-2xl mx-auto text-stone-600">Descubra o prazer de um doce que nutre. Aulas para criar sobremesas deliciosas, inteligentes e sem culpa.</p>
+        </section>
+
+        <div id="aulas-list" class="space-y-8 max-w-5xl mx-auto">
+            <div class="aula-card bg-white p-6 rounded-lg shadow-lg" data-target="receita-nice-cream"><h2 class="text-2xl md:text-3xl font-bold text-amber-700">Aula 01: Sorvete de Banana ("Nice Cream")</h2><p class="text-stone-600 mt-2">O sorvete de 1 ingrediente que é pura fruta, cremoso e sem açúcar.</p></div>
+            <div class="aula-card bg-white p-6 rounded-lg shadow-lg" data-target="receita-maca-assada"><h2 class="text-2xl md:text-3xl font-bold text-amber-700">Aula 02: Maçã Assada com Canela</h2><p class="text-stone-600 mt-2">Uma sobremesa quente, reconfortante e que realça a doçura natural da fruta.</p></div>
+            <div class="aula-card bg-white p-6 rounded-lg shadow-lg" data-target="receita-pudim-chia"><h2 class="text-2xl md:text-3xl font-bold text-amber-700">Aula 03: Pudim de Chia com Frutas</h2><p class="text-stone-600 mt-2">Aprenda a usar a chia para criar um pudim rico em fibras e ómega 3.</p></div>
+            <div class="aula-card bg-white p-6 rounded-lg shadow-lg" data-target="receita-mousse-abacate"><h2 class="text-2xl md:text-3xl font-bold text-amber-700">Aula 04: Mousse de Abacate e Cacau</h2><p class="text-stone-600 mt-2">A sobremesa 'mágica' que usa gorduras boas para uma cremosidade incrível.</p></div>
+            <div class="aula-card bg-white p-6 rounded-lg shadow-lg" data-target="receita-cookies-aveia"><h2 class="text-2xl md:text-3xl font-bold text-amber-700">Aula 05: Cookies de Aveia e Banana</h2><p class="text-stone-600 mt-2">Cookies macios e saborosos com apenas 3 ingredientes base.</p></div>
+            <div class="aula-card bg-white p-6 rounded-lg shadow-lg" data-target="receita-energy-balls"><h2 class="text-2xl md:text-3xl font-bold text-amber-700">Aula 06: Bolinhas Energéticas de Tâmara</h2><p class="text-stone-600 mt-2">O snack perfeito para antes do treino, sem cozimento e cheio de energia.</p></div>
+            <div class="aula-card bg-white p-6 rounded-lg shadow-lg" data-target="receita-muffins-fit"><h2 class="text-2xl md:text-3xl font-bold text-amber-700">Aula 07: Muffins de Maçã e Aveia</h2><p class="text-stone-600 mt-2">Aprenda a fazer bolinhos fofos e húmidos usando farinha de aveia.</p></div>
+            <div class="aula-card bg-white p-6 rounded-lg shadow-lg" data-target="receita-iogurte-grelhado"><h2 class="text-2xl md:text-3xl font-bold text-amber-700">Aula 08: Iogurte Grego com Pêssegos Grelhados</h2><p class="text-stone-600 mt-2">Uma sobremesa elegante que carameliza o açúcar natural das frutas.</p></div>
+            <div class="aula-card bg-white p-6 rounded-lg shadow-lg" data-target="receita-brownie-feijao"><h2 class="text-2xl md:text-3xl font-bold text-amber-700">Aula 09: Brownie de Feijão Preto</h2><p class="text-stone-600 mt-2">Sim, é possível! Um brownie denso e rico, sem farinha e com proteína extra.</p></div>
+            <div class="aula-card bg-white p-6 rounded-lg shadow-lg" data-target="receita-torta-limao-fit"><h2 class="text-2xl md:text-3xl font-bold text-amber-700">Aula 10: Torta de Limão Fit</h2><p class="text-stone-600 mt-2">Uma versão leve e proteica, com base de amêndoas e recheio de iogurte.</p></div>
+            <div class="aula-card bg-white p-6 rounded-lg shadow-lg" data-target="receita-bolo-laranja-fit"><h2 class="text-2xl md:text-3xl font-bold text-amber-700">Aula 11: Bolo de Laranja com Farinha de Amêndoa</h2><p class="text-stone-600 mt-2">Um bolo sem glúten, fofinho e cheio do sabor cítrico da laranja.</p></div>
+            <div class="aula-card bg-white p-6 rounded-lg shadow-lg" data-target="receita-danoninho-inhame"><h2 class="text-2xl md:text-3xl font-bold text-amber-700">Aula 12: 'Danoninho' Caseiro de Morango e Inhame</h2><p class="text-stone-600 mt-2">O segredo do inhame para um creme delicioso e sem lactose.</p></div>
+            <div class="aula-card bg-white p-6 rounded-lg shadow-lg" data-target="receita-cheesecake-copo"><h2 class="text-2xl md:text-3xl font-bold text-amber-700">Aula 13: Cheesecake Fit no Copo</h2><p class="text-stone-600 mt-2">Uma versão descomplicada, em porções individuais e muito mais leve.</p></div>
+            <div class="aula-card bg-white p-6 rounded-lg shadow-lg" data-target="receita-barra-proteina"><h2 class="text-2xl md:text-3xl font-bold text-amber-700">Aula 14: Barra de Proteína Caseira</h2><p class="text-stone-600 mt-2">Controle os ingredientes e o sabor das suas próprias barras de proteína.</p></div>
+            <div class="aula-card bg-white p-6 rounded-lg shadow-lg" data-target="receita-trufas-fit"><h2 class="text-2xl md:text-3xl font-bold text-amber-700">Aula 15: Trufas de Batata Doce e Cacau</h2><p class="text-stone-600 mt-2">Um docinho para matar a vontade, com a doçura natural da batata doce.</p></div>
+        </div>
+
+        <div id="receitas-container" class="hidden">
+            <button id="back-to-list-btn" class="mb-8 inline-flex items-center text-amber-700 hover:text-amber-800 font-bold"><svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-2" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M12.707 5.293a1 1 0 010 1.414L9.414 10l3.293 3.293a1 1 0 01-1.414 1.414l-4-4a1 1 0 010-1.414l4-4a1 1 0 011.414 0z" clip-rule="evenodd" /></svg>Voltar ao Índice de Aulas</button>
+            <div id="receita-nice-cream" class="receita-content bg-white p-8 rounded-lg shadow-xl max-w-7xl mx-auto hidden"></div>
+            <div id="receita-maca-assada" class="receita-content bg-white p-8 rounded-lg shadow-xl max-w-7xl mx-auto hidden"></div>
+            <div id="receita-pudim-chia" class="receita-content bg-white p-8 rounded-lg shadow-xl max-w-7xl mx-auto hidden"></div>
+            <div id="receita-mousse-abacate" class="receita-content bg-white p-8 rounded-lg shadow-xl max-w-7xl mx-auto hidden"></div>
+            <div id="receita-cookies-aveia" class="receita-content bg-white p-8 rounded-lg shadow-xl max-w-7xl mx-auto hidden"></div>
+            <div id="receita-energy-balls" class="receita-content bg-white p-8 rounded-lg shadow-xl max-w-7xl mx-auto hidden"></div>
+            <div id="receita-muffins-fit" class="receita-content bg-white p-8 rounded-lg shadow-xl max-w-7xl mx-auto hidden"></div>
+            <div id="receita-iogurte-grelhado" class="receita-content bg-white p-8 rounded-lg shadow-xl max-w-7xl mx-auto hidden"></div>
+            <div id="receita-brownie-feijao" class="receita-content bg-white p-8 rounded-lg shadow-xl max-w-7xl mx-auto hidden"></div>
+            <div id="receita-torta-limao-fit" class="receita-content bg-white p-8 rounded-lg shadow-xl max-w-7xl mx-auto hidden"></div>
+            <div id="receita-bolo-laranja-fit" class="receita-content bg-white p-8 rounded-lg shadow-xl max-w-7xl mx-auto hidden"></div>
+            <div id="receita-danoninho-inhame" class="receita-content bg-white p-8 rounded-lg shadow-xl max-w-7xl mx-auto hidden"></div>
+            <div id="receita-cheesecake-copo" class="receita-content bg-white p-8 rounded-lg shadow-xl max-w-7xl mx-auto hidden"></div>
+            <div id="receita-barra-proteina" class="receita-content bg-white p-8 rounded-lg shadow-xl max-w-7xl mx-auto hidden"></div>
+            <div id="receita-trufas-fit" class="receita-content bg-white p-8 rounded-lg shadow-xl max-w-7xl mx-auto hidden"></div>
+        </div>
+    </main>
+    <footer class="bg-white border-t mt-16"><div class="container mx-auto px-6 py-8 text-center text-stone-600"><p>&copy; 2024 Mestre Culinário. Todos os direitos reservados.</p></div></footer>
+
+    <script>
+    document.addEventListener('DOMContentLoaded', () => {
+
+        const aulas = {
+            'nice-cream': {
+                title: "Aula 01: Sorvete de Banana ('Nice Cream')",
+                description: "A sobremesa fitness mais fácil, surpreendente e versátil. Aprenda a transformar bananas congeladas num sorvete cremoso, sem açúcar, sem lactose e com apenas um ingrediente.",
+                calculator: { label: "Número de Bananas:", unit: "nice-cream-input", base_value: 2, default_value: 2 },
+                details: { tempoPreparo: "5 min", tempoCozimento: "N/A", tempoDescanso: "2 horas (congelação)", rendimento: "1 porção por 2 bananas", dificuldade: "Fácil", utensilios: ["Processador de alimentos ou liquidificador potente", "Faca"] },
+                dicaDeMestre: "O segredo para um 'nice cream' perfeito é a banana. Use bananas bem maduras (com pintinhas pretas), pois são mais doces e cremosas. Congele-as já fatiadas para facilitar o trabalho do seu processador.",
+                ingredients: [
+                    { name: 'Banana madura, fatiada e congelada', base_qty: 2, unit: 'unid.', scalable: true },
+                    { name: 'Água ou Leite (se necessário)', base_qty: 1, unit: 'c. de sopa', scalable: false }
+                ],
+                steps: [
+                    { title: "Congelar as Bananas", description: "Descasque bananas bem maduras e corte-as em rodelas de cerca de 1cm de espessura. Disponha as rodelas numa única camada sobre um prato ou tabuleiro forrado com papel vegetal e leve ao congelador por pelo menos 2 horas.", porque: "Congelar as bananas em fatias separadas impede que elas formem um bloco de gelo sólido, o que danificaria o seu liquidificador. A banana congelada é a base estrutural e de cremosidade do 'sorvete'.", pontoCritico: "Não congele as bananas inteiras ou com casca. O processo de as preparar depois de congeladas seria muito difícil." },
+                    { title: "Processar até Ficar Cremoso", description: "Coloque as rodelas de banana congeladas no copo de um processador de alimentos ou liquidificador potente. Comece a pulsar para quebrar os pedaços. Depois, processe continuamente. A mistura irá passar por várias fases: esfarelada, pastosa e, de repente, mágica e cremosa.", porque: "A alta velocidade e a fricção quebram as células da banana congelada, libertando a sua pectina e criando uma emulsão cremosa, muito semelhante a um sorvete tradicional.", pontoCritico: "Tenha paciência. Pode demorar 2 a 4 minutos. Pare para raspar as laterais do copo algumas vezes. Se o seu liquidificador estiver com dificuldades, adicione uma colher de sopa de água ou leite para o ajudar a girar." },
+                    { title: "Servir Imediatamente", description: "Assim que a mistura atingir uma consistência de 'soft serve' (gelado de máquina), está pronta. Sirva imediatamente para uma textura cremosa. Se preferir uma consistência mais firme, pode transferir para um recipiente e levar ao congelador por mais 30 minutos.", porque: "A textura ideal é obtida logo após o processamento. Congelar por muito tempo pode torná-lo demasiado duro.", pontoCritico: "Trabalhe rápido, pois o 'nice cream' derrete mais depressa que um sorvete tradicional." }
+                ],
+                variacoes: [
+                    "<strong>Chocolate:</strong> Adicione 1 colher de sopa de cacau em pó.",
+                    "<strong>Frutos Vermelhos:</strong> Junte 1/2 chávena de morangos ou framboesas congeladas.",
+                    "<strong>Manteiga de Amendoim:</strong> Adicione 1 colher de sopa de manteiga de amendoim para um boost de proteína e sabor."
+                ]
+            },
+            'maca-assada': {
+                title: "Aula 02: Maçã Assada com Canela",
+                description: "Uma sobremesa clássica, quente e reconfortante que perfuma a casa inteira. Assar a maçã concentra a sua doçura natural, tornando-a uma opção leve e saudável para satisfazer a vontade de um doce.",
+                calculator: { label: "Número de Maçãs:", unit: "maca-assada-input", base_value: 2, default_value: 2 },
+                details: { tempoPreparo: "10 min", tempoCozimento: "30-40 min", tempoDescanso: "N/A", rendimento: "1 porção por maçã", dificuldade: "Fácil", utensilios: ["Travessa de ir ao forno", "Faca pequena", "Descaroçador de maçã (opcional)"] },
+                dicaDeMestre: "Não descasque a maçã completamente. A casca ajuda a manter a estrutura da maçã enquanto assa, evitando que ela se desfaça e se transforme em puré. Faça alguns furos na casca com um garfo para permitir que o vapor saia.",
+                ingredients: [
+                    { name: 'Maçãs (tipo Reineta ou Granny Smith)', base_qty: 2, unit: 'unid.', scalable: true },
+                    { name: 'Canela em pó', base_qty: 1, unit: 'c. de chá', scalable: true },
+                    { name: 'Mel ou Xarope de Ácer', base_qty: 2, unit: 'c. de chá', scalable: true },
+                    { name: 'Nozes ou pecãs picadas', base_qty: 2, unit: 'c. de sopa', scalable: true },
+                    { name: 'Água', base_qty: 2, unit: 'c. de sopa', scalable: true }
+                ],
+                steps: [
+                    { title: "Preparar as Maçãs", description: "Pré-aqueça o forno a 190°C. Lave bem as maçãs. Com uma faca pequena ou um descaroçador, remova o caroço central da maçã pelo topo, criando uma cavidade mas sem atravessar a base.", porque: "Criar esta cavidade permite-nos rechear a maçã com sabores que irão penetrar na polpa durante o cozimento, além de remover a parte não comestível.", pontoCritico: "Tenha cuidado para não furar a base da maçã, para que o recheio e os sucos não vazem por baixo." },
+                    { title: "Rechear e Preparar para Assar", description: "Numa tigela pequena, misture a canela, o mel (ou xarope) e as nozes picadas. Recheie a cavidade de cada maçã com esta mistura. Coloque as maçãs numa pequena travessa de forno e adicione a água no fundo da travessa.", porque: "O recheio transforma uma simples maçã assada numa sobremesa mais complexa em sabor e textura. A água no fundo da travessa cria um ambiente húmido no forno, ajudando a maçã a cozinhar no vapor e a não secar.", pontoCritico: "Não encha demasiado a travessa, deixe algum espaço entre as maçãs." },
+                    { title: "Assar até Ficar Macia", description: "Leve ao forno e asse por 30 a 40 minutos. A maçã está pronta quando a polpa estiver muito macia (um garfo deve entrar facilmente) e a pele enrugada. A meio do tempo, pode regar as maçãs com o líquido que se forma na travessa.", porque: "O calor do forno quebra as fibras da maçã, amaciando-a, e carameliza os açúcares naturais e do recheio, intensificando o sabor.", pontoCritico: "O tempo pode variar muito dependendo do tamanho e da variedade da maçã. Comece a verificar a partir dos 25 minutos.", timer: 1800 }
+                ],
+                variacoes: [
+                    "<strong>Com Passas:</strong> Adicione passas ou arandos secos ao recheio.",
+                    "<strong>Servir com:</strong> Uma colher de iogurte grego natural ou uma pequena bola de 'nice cream' de baunilha.",
+                    "<strong>No Micro-ondas:</strong> Para uma versão ultra-rápida, prepare a maçã da mesma forma e cozinhe no micro-ondas em alta potência por 4-6 minutos."
+                ]
+            },
+            'pudim-chia': {
+                title: "Aula 03: Pudim de Chia com Frutas",
+                description: "Descubra o poder das sementes de chia para criar um pudim cremoso, sem cozimento e carregado de fibras, proteínas e ómega 3. É um pequeno-almoço, lanche ou sobremesa incrivelmente versátil e saciante.",
+                calculator: { label: "Porções:", unit: "pudim-chia-input", base_value: 2, default_value: 2 },
+                details: { tempoPreparo: "5 min", tempoCozimento: "N/A", tempoDescanso: "2 horas (mínimo)", rendimento: "Serve 2 pessoas", dificuldade: "Fácil", utensilios: ["Frasco ou tigela com tampa", "Batedor de arame pequeno ou garfo"] },
+                dicaDeMestre: "O segredo para um pudim de chia sem grumos é misturá-lo duas vezes. Mexa bem quando combinar os ingredientes pela primeira vez, e depois, passados 10-15 minutos, mexa vigorosamente uma segunda vez antes de o levar à geleira. Isto quebra quaisquer aglomerados de chia que se tenham formado.",
+                ingredients: [
+                    { name: 'Sementes de Chia', base_qty: 4, unit: 'c. de sopa', scalable: true },
+                    { name: 'Leite ou bebida vegetal (amêndoa, coco)', base_qty: 1, unit: 'chávena (240ml)', scalable: true },
+                    { name: 'Extrato de Baunilha', base_qty: 0.5, unit: 'c. de chá', scalable: true },
+                    { name: 'Adoçante (mel, xarope de ácer)', base_qty: 1, unit: 'c. de sopa', scalable: true },
+                    { name: 'Frutas frescas para servir (manga, frutos vermelhos)', base_qty: 0, unit: 'A gosto', scalable: false }
+                ],
+                steps: [
+                    { title: "A Mistura Inicial", description: "Num frasco ou tigela, junte as sementes de chia, o leite, a baunilha e o adoçante. Com um batedor de arame pequeno ou um garfo, mexa muito bem por cerca de 1 minuto para garantir que todas as sementes estão em contacto com o líquido.", porque: "As sementes de chia têm uma camada exterior hidrofílica, o que significa que absorvem muitas vezes o seu peso em líquido. Esta mistura inicial é o que ativa essa propriedade.", pontoCritico: "Se não misturar bem, as sementes podem aglomerar-se no fundo e não formar o gel de forma uniforme." },
+                    { title: "O Segundo 'Round' e o Descanso", description: "Deixe a mistura descansar na bancada por 10 a 15 minutos. As sementes começarão a inchar. Mexa vigorosamente uma segunda vez. Tape e leve à geleira por pelo menos 2 horas, ou durante a noite.", porque: "A segunda mistura quebra os primeiros aglomerados que se formam, garantindo uma textura final perfeitamente lisa e homogénea. O tempo na geleira é quando o gel se forma completamente, criando a consistência de pudim.", pontoCritico: "O tempo mínimo de descanso é de 2 horas, mas o ideal é deixar de um dia para o outro para uma textura perfeita.", timer: 7200 }
+                ],
+                variacoes: [
+                    "<strong>Pudim de Chocolate:</strong> Misture 1-2 colheres de sopa de cacau em pó na mistura inicial.",
+                    "<strong>Pudim de Matcha:</strong> Adicione 1 colher de chá de chá matcha em pó.",
+                    "<strong>Em Camadas:</strong> Crie um 'parfait' alternando camadas de pudim de chia com camadas de puré de fruta e granola."
+                ]
+            },
+            'mousse-abacate': {
+                title: "Aula 04: Mousse de Abacate e Cacau",
+                description: "Uma sobremesa 'secreta' que vai enganar qualquer um. A cremosidade do abacate substitui as natas e os ovos para criar uma mousse de chocolate densa, rica e cheia de gorduras saudáveis.",
+                calculator: { label: "Porções:", unit: "mousse-abacate-input", base_value: 2, default_value: 2 },
+                details: { tempoPreparo: "10 min", tempoCozimento: "N/A", tempoDescanso: "1 hora", rendimento: "Serve 2-3 pessoas", dificuldade: "Fácil", utensilios: ["Processador de alimentos ou liquidificador"] },
+                dicaDeMestre: "Use um abacate que esteja perfeitamente maduro, mas não passado (sem manchas pretas na polpa). A maturação correta é a chave para uma textura ultra-cremosa e um sabor neutro que não interfere com o chocolate.",
+                ingredients: [
+                    { name: 'Abacate maduro', base_qty: 1, unit: 'unid. grande', scalable: true },
+                    { name: 'Cacau em Pó (sem açúcar)', base_qty: 4, unit: 'c. de sopa', scalable: true },
+                    { name: 'Mel ou Xarope de Ácer', base_qty: 4, unit: 'c. de sopa', scalable: true },
+                    { name: 'Leite ou bebida vegetal', base_qty: 4, unit: 'c. de sopa', scalable: true },
+                    { name: 'Extrato de Baunilha', base_qty: 1, unit: 'c. de chá', scalable: true }
+                ],
+                steps: [
+                    { title: "Processar os Ingredientes", description: "Num processador de alimentos ou liquidificador, junte a polpa do abacate, o cacau em pó, o adoçante escolhido, o leite e a baunilha. Processe em alta velocidade.", porque: "O processamento em alta velocidade quebra as fibras do abacate e emulsiona a sua gordura com os outros ingredientes, criando a textura rica e aveludada de uma mousse tradicional.", pontoCritico: "Pode ser necessário parar e raspar as laterais do copo algumas vezes para garantir que todos os ingredientes são incorporados e que a mistura fica perfeitamente lisa." },
+                    { title: "Ajustar e Refrigerar", description: "Continue a processar até obter um creme completamente liso e sem grumos. Prove e ajuste a doçura se necessário. Divida a mousse por taças e leve à geleira por pelo menos 1 hora para firmar e para que os sabores se fundam.", porque: "O tempo de refrigeração ajuda a mousse a firmar ligeiramente e, mais importante, permite que o sabor do cacau se desenvolva e se sobreponha a qualquer resquício de sabor do abacate.", pontoCritico: "Sirva frio. A temperatura baixa realça a textura e o sabor a chocolate." }
+                ],
+                variacoes: [
+                    "<strong>Com Café:</strong> Adicione uma colher de chá de café solúvel para intensificar o sabor do chocolate.",
+                    "<strong>Com Hortelã:</strong> Junte algumas folhas de hortelã fresca para uma versão 'after eight'.",
+                    "<strong>Com Laranja:</strong> Adicione raspas de laranja para um toque cítrico."
+                ]
+            },
+            'cookies-aveia': {
+                title: "Aula 05: Cookies de Aveia e Banana",
+                description: "Aprenda a fazer os cookies mais fáceis e saudáveis do mundo. Com apenas 3 ingredientes base, você cria um snack macio, saboroso e perfeito para quando apetece um doce sem culpa.",
+                calculator: { label: "Porções (aprox. 12 cookies):", unit: "cookies-aveia-input", base_value: 1, default_value: 1 },
+                details: { tempoPreparo: "10 min", tempoCozimento: "15-20 min", tempoDescanso: "N/A", rendimento: "Cerca de 12 cookies", dificuldade: "Fácil", utensilios: ["Tigela", "Garfo", "Tabuleiro de forno"] },
+                dicaDeMestre: "Estes cookies não se espalham no forno como os tradicionais. O formato que você lhes der antes de assar será o formato final. Use as costas de uma colher para os achatar ligeiramente e dar-lhes uma forma redonda.",
+                ingredients: [
+                    { name: 'Bananas bem maduras', base_qty: 2, unit: 'unid.', scalable: true },
+                    { name: 'Aveia em Flocos', base_qty: 1, unit: 'chávena (90g)', scalable: true },
+                    { name: 'Pepitas de Chocolate Amargo (opcional)', base_qty: 0.25, unit: 'chávena', scalable: true }
+                ],
+                steps: [
+                    { title: "Preparar a Massa", description: "Pré-aqueça o forno a 180°C e forre um tabuleiro com papel vegetal. Numa tigela, esmague as bananas com um garfo até formar um puré. Junte a aveia e as pepitas de chocolate (se usar) e misture bem.", porque: "A banana atua como o adoçante e o agente ligante desta receita, eliminando a necessidade de açúcar refinado, ovos ou gordura. A aveia dá estrutura e fibras.", pontoCritico: "Use bananas com muitas pintas pretas. Elas são muito mais doces e fáceis de esmagar, o que é essencial para esta receita." },
+                    { title: "Moldar e Assar", description: "Com uma colher, coloque pequenas porções da massa no tabuleiro preparado, formando pequenos montes. Achate-os ligeiramente. Leve ao forno por 15 a 20 minutos, ou até as bordas estarem douradas e o centro firme.", porque: "Como não têm fermento ou gordura em grande quantidade, estes cookies não mudam muito de forma, por isso a moldagem inicial é importante para o aspeto final.", pontoCritico: "Deixe espaço entre os cookies no tabuleiro, embora eles não se espalhem muito.", timer: 900 }
+                ],
+                variacoes: [
+                    "<strong>Com Frutos Secos:</strong> Substitua as pepitas de chocolate por passas, arandos ou nozes picadas.",
+                    "<strong>Com Especiarias:</strong> Adicione 1/2 colher de chá de canela ou noz-moscada à massa.",
+                    "<strong>Com Manteiga de Amendoim:</strong> Misture uma colher de sopa de manteiga de amendoim na massa para mais sabor e proteína."
+                ]
+            },
+            'energy-balls': {
+                title: "Aula 06: Bolinhas Energéticas de Tâmara",
+                description: "O snack perfeito para levar para qualquer lado, para antes do treino ou para matar a vontade de um doce. Estas bolinhas não precisam de cozimento e são adoçadas naturalmente com tâmaras.",
+                calculator: { label: "Porções (aprox. 12 bolinhas):", unit: "energy-balls-input", base_value: 1, default_value: 1 },
+                details: { tempoPreparo: "15 min", tempoCozimento: "N/A", tempoDescanso: "30 min (geleira)", rendimento: "Cerca de 12-15 bolinhas", dificuldade: "Fácil", utensilios: ["Processador de alimentos"] },
+                dicaDeMestre: "Se as suas tâmaras estiverem um pouco secas, demolhe-as em água quente por 10 minutos antes de as usar. Isso irá reidratá-las e torná-las muito mais fáceis de processar, resultando numa 'massa' mais coesa.",
+                ingredients: [
+                    { name: 'Tâmaras Medjool, sem caroço', base_qty: 1, unit: 'chávena (aprox. 12)', scalable: true },
+                    { name: 'Frutos secos (nozes, amêndoas, cajus)', base_qty: 1, unit: 'chávena', scalable: true },
+                    { name: 'Aveia em flocos', base_qty: 0.5, unit: 'chávena', scalable: true },
+                    { name: 'Manteiga de amendoim ou amêndoa', base_qty: 2, unit: 'c. de sopa', scalable: true },
+                    { name: 'Sementes de Chia ou Linhaça (opcional)', base_qty: 1, unit: 'c. de sopa', scalable: true },
+                    { name: 'Coco ralado ou cacau em pó (para enrolar)', base_qty: 0, unit: 'A gosto', scalable: false }
+                ],
+                steps: [
+                    { title: "Processar os Ingredientes", description: "Num processador de alimentos, junte as tâmaras, os frutos secos, a aveia, a manteiga de amendoim e as sementes (se usar). Processe até a mistura se começar a agregar e formar uma bola.", porque: "As tâmaras são pegajosas e atuam como o 'cimento' que une todos os ingredientes. Os frutos secos e a aveia dão a estrutura e a textura.", pontoCritico: "Não processe em demasia ao ponto de virar uma manteiga. Queremos sentir os pequenos pedaços dos frutos secos." },
+                    { title: "Moldar e Refrigerar", description: "Com as mãos, retire pequenas porções da massa e enrole-as para formar bolinhas do tamanho de uma noz. Passe as bolinhas por coco ralado, cacau em pó ou mais sementes de chia para as cobrir. Leve à geleira por pelo menos 30 minutos para firmarem.", porque: "Refrigerar ajuda as bolinhas a ficarem mais firmes e menos pegajosas, além de permitir que os sabores se fundam.", pontoCritico: "Se a mistura estiver demasiado pegajosa para enrolar, molhe ligeiramente as mãos." }
+                ],
+                variacoes: [
+                    "<strong>Sabor a Brownie:</strong> Adicione 2 colheres de sopa de cacau em pó à mistura.",
+                    "<strong>Sabor a Tarte de Cenoura:</strong> Adicione cenoura ralada, noz-moscada e canela.",
+                    "<strong>Com Proteína:</strong> Junte uma colher de proteína em pó para um snack pós-treino."
+                ]
+            },
+            'muffins-fit': { title: "Aula 07: Muffins de Maçã e Aveia", description: "Aprenda a fazer bolinhos fofos e húmidos usando farinha de aveia." },
+            'iogurte-grelhado': { title: "Aula 08: Iogurte Grego com Pêssegos Grelhados", description: "Uma sobremesa elegante que carameliza o açúcar natural das frutas." },
+            'brownie-feijao': { title: "Aula 09: Brownie de Feijão Preto", description: "Sim, é possível! Um brownie denso e rico, sem farinha e com proteína extra." },
+            'torta-limao-fit': { title: "Aula 10: Torta de Limão Fit", description: "Uma versão leve e proteica, com base de amêndoas e recheio de iogurte." },
+            'bolo-laranja-fit': { title: "Aula 11: Bolo de Laranja com Farinha de Amêndoa", description: "Um bolo sem glúten, fofinho e cheio do sabor cítrico da laranja." },
+            'danoninho-inhame': { title: "Aula 12: 'Danoninho' Caseiro de Morango e Inhame", description: "O segredo do inhame para um creme delicioso e sem lactose." },
+            'cheesecake-copo': { title: "Aula 13: Cheesecake Fit no Copo", description: "Uma versão descomplicada, em porções individuais e muito mais leve." },
+            'barra-proteina': { title: "Aula 14: Barra de Proteína Caseira", description: "Controle os ingredientes e o sabor das suas próprias barras de proteína." },
+            'trufas-fit': { title: "Aula 15: Trufas de Batata Doce e Cacau", description: "Um docinho para matar a vontade, com a doçura natural da batata doce." }
+        };
+
+        // ===================================================================================
+        // FUNÇÕES GLOBAIS (NÃO MEXER)
+        // ===================================================================================
+
+        const aulasList = document.getElementById('aulas-list');
+        const pageTitle = document.getElementById('page-title');
+        const receitasContainer = document.getElementById('receitas-container');
+        const backToListBtn = document.getElementById('back-to-list-btn');
+
+        const formatNumber = (num) => {
+            if (num < 1 && num > 0) return num.toFixed(2);
+            if (num % 1 !== 0) return num.toFixed(1);
+            return num;
+        };
+        
+        const updateIngredients = (recipeData, inputValue) => {
+            const list = document.getElementById(`ingredient-list-${recipeData.calculator.unit}`);
+            if (!list || !recipeData.ingredients) return;
+
+            const multiplier = inputValue / recipeData.calculator.base_value;
+            let html = '';
+            let currentHeading = '';
+
+            recipeData.ingredients.forEach(ing => {
+                if(ing.heading && ing.heading !== currentHeading) {
+                    currentHeading = ing.heading;
+                    html += `<h5 class="font-bold text-stone-700 mt-3 mb-1">${currentHeading}:</h5>`;
+                }
+
+                let qtyDisplay = '';
+                if (!ing.scalable) {
+                    qtyDisplay = ing.unit;
+                } else {
+                    const scaledQty = ing.base_qty * multiplier;
+                    qtyDisplay = `${formatNumber(scaledQty)} ${ing.unit}`;
+                }
+                
+                html += `
+                    <li class="ingredient-item">
+                        <label class="flex items-center p-1 rounded-md hover:bg-stone-100">
+                            <input type="checkbox" class="mr-2 h-4 w-4 text-amber-600 focus:ring-amber-500 border-stone-300 rounded">
+                            <span class="flex-1 flex justify-between">
+                                <span>${ing.name}</span>
+                                <span class="font-semibold text-right pl-2">${qtyDisplay}</span>
+                            </span>
+                        </label>
+                    </li>`;
+            });
+            list.innerHTML = html;
+        };
+
+        const generateRecipeHTML = (recipeData) => {
+             if (!recipeData.details) {
+                return `<div class="text-center p-10"><h2 class="text-3xl font-bold text-amber-700">${recipeData.title}</h2><p class="mt-4 text-stone-600">O conteúdo detalhado para esta aula estará disponível em breve. Obrigado pela sua paciência!</p></div>`;
+            }
+             return `
+                <div class="text-center">
+                    <h2 class="text-3xl md:text-4xl font-bold text-amber-700">${recipeData.title}</h2>
+                    <p class="mt-4 max-w-3xl mx-auto text-stone-600 text-lg">${recipeData.description}</p>
+                </div>
+                
+                <div class="mt-10 grid grid-cols-2 md:grid-cols-4 gap-4 text-center">
+                    <div class="bg-stone-100 p-4 rounded-lg flex flex-col justify-center items-center">
+                        <span class="text-2xl">⏳</span>
+                        <h4 class="font-bold text-stone-800">Preparo</h4>
+                        <p class="text-stone-600 text-sm">${recipeData.details.tempoPreparo}</p>
+                    </div>
+                    <div class="bg-stone-100 p-4 rounded-lg flex flex-col justify-center items-center">
+                        <span class="text-2xl">🍳</span>
+                        <h4 class="font-bold text-stone-800">Cozimento</h4>
+                        <p class="text-stone-600 text-sm">${recipeData.details.tempoCozimento}</p>
+                    </div>
+                    <div class="bg-stone-100 p-4 rounded-lg flex flex-col justify-center items-center">
+                        <span class="text-2xl">🍽️</span>
+                        <h4 class="font-bold text-stone-800">Rendimento</h4>
+                        <p class="text-stone-600 text-sm">${recipeData.details.rendimento}</p>
+                    </div>
+                    <div class="bg-stone-100 p-4 rounded-lg flex flex-col justify-center items-center">
+                        <span class="text-2xl">⭐</span>
+                        <h4 class="font-bold text-stone-800">Dificuldade</h4>
+                        <p class="text-stone-600 text-sm">${recipeData.details.dificuldade}</p>
+                    </div>
+                </div>
+
+                <div class="mt-12 grid grid-cols-1 lg:grid-cols-3 gap-x-12 gap-y-8">
+                    <div class="lg:col-span-1">
+                        <h3 class="text-2xl font-bold text-stone-800 mb-4 border-b-2 border-amber-500 pb-2">Planeamento</h3>
+                        <div class="bg-stone-50 p-4 rounded-lg">
+                            <label for="${recipeData.calculator.unit}" class="block text-lg text-stone-700 mb-2 font-bold">${recipeData.calculator.label}</label>
+                            <input type="number" id="${recipeData.calculator.unit}" value="${recipeData.calculator.default_value}" min="0.5" step="1" class="w-full p-2 border border-stone-300 rounded-lg focus:ring-2 focus:ring-amber-500">
+                        </div>
+                        <div class="mt-6">
+                            <h4 class="font-bold text-lg mb-2 text-stone-700">Checklist de Ingredientes:</h4>
+                            <ul class="space-y-1 text-stone-600 text-sm" id="ingredient-list-${recipeData.calculator.unit}"></ul>
+                        </div>
+                         <div class="mt-6">
+                            <h4 class="font-bold text-lg mb-2 text-stone-700">Utensílios Chave:</h4>
+                            <ul class="space-y-2 text-stone-600 list-disc list-inside text-sm">
+                                ${recipeData.details.utensilios.map(utensil => `<li>${utensil}</li>`).join('')}
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="lg:col-span-2">
+                        <h3 class="text-2xl font-bold text-stone-800 mb-4 border-b-2 border-amber-500 pb-2">Tutorial Detalhado</h3>
+                        <div class="space-y-6">
+                            ${recipeData.steps.map((step, index) => {
+                                if (step.isSubRecipe) {
+                                    return `
+                                    <div class="p-4 rounded-lg bg-amber-50 border-l-4 border-amber-400">
+                                        <h4 class="font-bold text-xl text-amber-800 mb-4">${step.title}</h4>
+                                        <div class="space-y-4">
+                                        ${step.subSteps.map(subStep => `
+                                            <div class="ml-4">
+                                                <h5 class="font-semibold text-lg text-stone-800 mb-1">${subStep.title}</h5>
+                                                <div class="prose prose-stone max-w-none text-sm">
+                                                    <p>${subStep.description}</p>
+                                                     <details class="mt-3 text-xs">
+                                                        <summary class="font-bold text-blue-800">Ver o porquê</summary>
+                                                        <div class="mt-2 bg-blue-50 text-blue-800 rounded-md p-3">${subStep.porque}</div>
+                                                     </details>
+                                                     <details class="mt-2 text-xs">
+                                                        <summary class="font-bold text-red-800">Ver ponto crítico</summary>
+                                                        <div class="mt-2 bg-red-50 text-red-800 rounded-md p-3">${subStep.pontoCritico}</div>
+                                                     </details>
+                                                </div>
+                                            </div>
+                                        `).join('')}
+                                        </div>
+                                    </div>`;
+                                }
+                                return `
+                                <div class="p-4 rounded-lg bg-stone-50 border-l-4 border-stone-200">
+                                    <h4 class="font-bold text-xl text-stone-800 mb-2"><span class="bg-amber-600 text-white rounded-full w-8 h-8 inline-flex items-center justify-center mr-3 text-base">${index + 1}</span> ${step.title}</h4>
+                                    <div class="prose prose-stone max-w-none pl-11 text-sm">
+                                        <p>${step.description}</p>
+                                        <details class="mt-3 text-xs">
+                                            <summary class="font-bold text-blue-800">Ver o porquê</summary>
+                                            <div class="mt-2 bg-blue-50 text-blue-800 rounded-md p-3">${step.porque}</div>
+                                        </details>
+                                        <details class="mt-2 text-xs">
+                                            <summary class="font-bold text-red-800">Ver ponto crítico</summary>
+                                            <div class="mt-2 bg-red-50 text-red-800 rounded-md p-3">${step.pontoCritico}</div>
+                                        </details>
+                                    </div>
+                                    ${step.timer ? `<div class="mt-4 pl-11 flex items-center gap-4"><button class="timer-btn bg-amber-500 text-white px-4 py-2 rounded-lg hover:bg-amber-600 transition text-sm" data-time="${step.timer}">Iniciar Timer (${Math.floor(step.timer/60)}m ${step.timer%60}s)</button><span class="timer-display text-lg font-mono font-bold text-amber-700"></span></div>` : ''}
+                                </div>`;
+                            }).join('')}
+                        </div>
+                        
+                        <div class="mt-8">
+                            <h3 class="text-2xl font-bold text-stone-800 mb-4 border-b-2 border-amber-500 pb-2">Variações e Dicas</h3>
+                            <div class="prose prose-stone max-w-none bg-amber-50 p-4 rounded-lg border-l-4 border-amber-400 text-sm">
+                                ${recipeData.variacoes.map(item => `<p>${item}</p>`).join('')}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            `;
+        };
+        
+        document.querySelectorAll('.aula-card').forEach(card => {
+            const recipeId = card.dataset.target.replace('receita-', '');
+            const recipeData = aulas[recipeId];
+
+            if (recipeData) {
+                const targetElement = document.getElementById(card.dataset.target);
+                targetElement.innerHTML = generateRecipeHTML(recipeData);
+                
+                if (recipeData.calculator) {
+                    const input = document.getElementById(recipeData.calculator.unit);
+                    if (input) {
+                        input.addEventListener('input', (e) => {
+                            updateIngredients(recipeData, e.target.value);
+                        });
+                        // Initial population
+                        updateIngredients(recipeData, input.value);
+                    }
+                }
+            }
+
+            card.addEventListener('click', () => {
+                const targetId = card.dataset.target;
+                const targetRecipe = document.getElementById(targetId);
+                
+                aulasList.classList.add('hidden');
+                pageTitle.classList.add('hidden');
+                receitasContainer.classList.remove('hidden');
+                targetRecipe.classList.remove('hidden');
+                window.scrollTo(0, 0);
+            });
+        });
+
+        backToListBtn.addEventListener('click', () => {
+            aulasList.classList.remove('hidden');
+            pageTitle.classList.remove('hidden');
+            receitasContainer.classList.add('hidden');
+            document.querySelectorAll('.receita-content').forEach(recipe => {
+                recipe.classList.add('hidden');
+            });
+            window.scrollTo(0, 0);
+        });
+        
+        receitasContainer.addEventListener('click', (event) => {
+            if (event.target.classList.contains('timer-btn')) {
+                const button = event.target;
+                if (button.classList.contains('active')) return;
+
+                let timeInSeconds = parseInt(button.dataset.time, 10);
+                const display = button.nextElementSibling;
+                
+                button.classList.add('active');
+                button.disabled = true;
+                
+                const interval = setInterval(() => {
+                    const minutes = Math.floor(timeInSeconds / 60);
+                    const seconds = timeInSeconds % 60;
+                    if(display) { display.textContent = `${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`; }
+                    
+                    if (timeInSeconds <= 0) {
+                        clearInterval(interval);
+                        if(display) display.textContent = "Tempo esgotado!";
+                        button.classList.remove('active');
+                        button.disabled = false;
+                    } else { timeInSeconds--; }
+                }, 1000);
+            }
+        });
+    });
+    </script>
+</body>
+</html>
