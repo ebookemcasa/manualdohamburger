@@ -111,7 +111,7 @@
         </section>
 
         <div id="aulas-list" class="space-y-8 max-w-5xl mx-auto">
-            <div class="aula-card bg-white p-6 rounded-lg shadow-lg" data-target="receita-arroz"><h2 class="text-2xl md:text-3xl font-bold text-amber-700">Aula 01: Arroz Branco Soltinho</h2><p class="text-stone-600 mt-2">A base universal. Aprenda a técnica infalível que funciona sempre.</p></div>
+            <div class="aula-card bg-white p-6 rounded-lg shadow-lg" data-target="receita-risoto-base"><h2 class="text-2xl md:text-3xl font-bold text-amber-700">Aula 01: Risoto Milanês (A Base para Risotos)</h2><p class="text-stone-600 mt-2">Aprenda a técnica essencial para um risoto cremoso e 'all'onda'.</p></div>
             <div class="aula-card bg-white p-6 rounded-lg shadow-lg" data-target="receita-pure"><h2 class="text-2xl md:text-3xl font-bold text-amber-700">Aula 02: Puré de Batata Cremoso</h2><p class="text-stone-600 mt-2">O clássico de conforto, aveludado e sem grumos.</p></div>
             <div class="aula-card bg-white p-6 rounded-lg shadow-lg" data-target="receita-batata-assada"><h2 class="text-2xl md:text-3xl font-bold text-amber-700">Aula 03: Batatas Assadas Crocantes</h2><p class="text-stone-600 mt-2">Douradas por fora, macias por dentro. O segredo do alecrim e alho.</p></div>
             <div class="aula-card bg-white p-6 rounded-lg shadow-lg" data-target="receita-legumes-assados"><h2 class="text-2xl md:text-3xl font-bold text-amber-700">Aula 04: Legumes Assados (Cama de Legumes)</h2><p class="text-stone-600 mt-2">Uma base colorida e saudável que serve de acompanhamento ou de cama para assados.</p></div>
@@ -125,7 +125,7 @@
 
         <div id="receitas-container" class="hidden">
             <button id="back-to-list-btn" class="mb-8 inline-flex items-center text-amber-700 hover:text-amber-800 font-bold"><svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-2" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M12.707 5.293a1 1 0 010 1.414L9.414 10l3.293 3.293a1 1 0 01-1.414 1.414l-4-4a1 1 0 010-1.414l4-4a1 1 0 011.414 0z" clip-rule="evenodd" /></svg>Voltar ao Índice de Aulas</button>
-            <div id="receita-arroz" class="receita-content bg-white p-8 rounded-lg shadow-xl max-w-7xl mx-auto hidden"></div>
+            <div id="receita-risoto-base" class="receita-content bg-white p-8 rounded-lg shadow-xl max-w-7xl mx-auto hidden"></div>
             <div id="receita-pure" class="receita-content bg-white p-8 rounded-lg shadow-xl max-w-7xl mx-auto hidden"></div>
             <div id="receita-batata-assada" class="receita-content bg-white p-8 rounded-lg shadow-xl max-w-7xl mx-auto hidden"></div>
             <div id="receita-legumes-assados" class="receita-content bg-white p-8 rounded-lg shadow-xl max-w-7xl mx-auto hidden"></div>
@@ -143,28 +143,31 @@
     document.addEventListener('DOMContentLoaded', () => {
 
         const aulas = {
-            arroz: {
-                title: "Aula 01: Arroz Branco Soltinho",
-                description: "O acompanhamento mais fundamental e versátil de todos. Dominar o arroz branco soltinho é o primeiro passo para construir qualquer refeição com confiança. Com esta técnica, você aprenderá o porquê de cada passo para um resultado que nunca falha.",
-                calculator: { label: "Chávenas de Arroz Cru:", unit: "arroz-input", base_value: 1, default_value: 2 },
-                details: { tempoPreparo: "5 min", tempoCozimento: "15 min", tempoDescanso: "5 min", rendimento: "2 porções por chávena", dificuldade: "Fácil", utensilios: ["Panela com tampa", "Garfo", "Copo medidor"] },
-                dicaDeMestre: "Depois de soltar o arroz com o garfo, coloque um pano de prato limpo entre a panela e a tampa durante o descanso. O pano absorve o excesso de vapor, garantindo um arroz ainda mais seco e soltinho.",
+            'risoto-base': {
+                title: "Aula 01: Risoto Milanês (A Base para Risotos)",
+                description: "O Risoto alla Milanese é o avô de todos os risotos. Ao dominar esta receita, você aprende os 3 Ts essenciais (Tostatura, Tecnica, Mantecatura) para criar qualquer variação de risoto com uma cremosidade perfeita e o grão 'al dente'.",
+                calculator: { label: "Gramas de Arroz:", unit: "risoto-base-input", base_value: 320, default_value: 320 },
+                details: { tempoPreparo: "10 min", tempoCozimento: "20-25 min", tempoDescanso: "2 min", rendimento: "Serve 4 pessoas", dificuldade: "Intermediário", utensilios: ["Panela larga e de fundo grosso", "Concha", "Panela para o caldo"] },
+                dicaDeMestre: "O caldo deve estar sempre a ferver suavemente numa panela ao lado. Adicionar caldo frio ao risoto interrompe o cozimento, 'choca' o grão de arroz e prejudica a libertação do amido, resultando num risoto menos cremoso.",
                 ingredients: [
-                    { name: 'Arroz Agulha', base_qty: 1, unit: 'chávena', scalable: true },
-                    { name: 'Água (a ferver)', base_qty: 2, unit: 'chávenas', scalable: true },
-                    { name: 'Azeite', base_qty: 1, unit: 'c. de sopa', scalable: true },
-                    { name: 'Dente de Alho Picado', base_qty: 1, unit: 'unid.', scalable: true },
-                    { name: 'Sal', base_qty: 0.5, unit: 'c. de chá', scalable: true }
+                    { name: 'Arroz para Risoto (Arborio ou Carnaroli)', base_qty: 320, unit: 'g', scalable: true },
+                    { name: 'Caldo de Galinha ou Legumes, quente', base_qty: 1.2, unit: 'L', scalable: true },
+                    { name: 'Cebola pequena, picada finamente', base_qty: 1, unit: 'unid.', scalable: true },
+                    { name: 'Vinho Branco Seco', base_qty: 100, unit: 'ml', scalable: true },
+                    { name: 'Pistilos de Açafrão', base_qty: 0.5, unit: 'c. de chá', scalable: true },
+                    { name: 'Manteiga sem sal, fria em cubos', base_qty: 50, unit: 'g', scalable: true },
+                    { name: 'Queijo Parmesão, ralado na hora', base_qty: 50, unit: 'g', scalable: true }
                 ],
                 steps: [
-                    { title: "O Refogado (Base de Sabor)", description: "Numa panela, aqueça o azeite em lume médio. Adicione o alho e refogue até perfumar (cerca de 30s). Adicione o arroz e 'frite-o' por cerca de 1 minuto, mexendo sempre. Este passo é crucial.", porque: "Este processo, chamado 'selar' o arroz, reveste cada grão com gordura. Isto ajuda a manter os grãos separados durante o cozimento, evitando que o amido se liberte em excesso e crie um resultado empapado.", pontoCritico: "Não deixe o alho queimar, senão amargará todo o prato. O objetivo é apenas libertar o seu aroma. Ao 'fritar' o arroz, mexa constantemente para que todos os grãos sejam revestidos." },
-                    { title: "A Cozedura Perfeita", description: "Adicione a água **já a ferver** à panela. Tempere com sal e mexa uma única vez para distribuir os grãos. Reduza para o lume mais baixo possível, semi-tape a panela e cozinhe por 10 a 15 minutos, ou até a água ser absorvida.", porque: "Adicionar água fervente mantém a temperatura constante e inicia o cozimento imediatamente e de forma uniforme. Não mexer mais evita que o amido se solte dos grãos, o que é o principal culpado do arroz 'papa'.", pontoCritico: "Resista à tentação de mexer! Apenas confie no processo. O lume deve ser o mais baixo que o seu fogão permite para que a água evapore lentamente.", timer: 720 },
-                    { title: "O Descanso (O Passo Secreto)", description: "Quando a água tiver sido absorvida, desligue o lume, tape completamente a panela e deixe o arroz descansar por pelo menos 5 minutos. Depois deste tempo, solte os grãos gentilmente com um garfo.", porque: "O vapor residual dentro da panela termina o cozimento dos grãos de forma suave e uniforme. Este passo é o que garante a textura perfeita e evita que os grãos do fundo cozinhem mais do que os de cima.", pontoCritico: "Não salte o descanso. Se servir imediatamente, o arroz pode parecer um pouco húmido. Os 5 minutos de descanso fazem toda a diferença.", timer: 300 }
+                    { title: "Preparar o Açafrão e o Sofrito", description: "Coloque os pistilos de açafrão numa pequena tigela com uma concha de caldo quente para infundir. Numa panela larga, derreta metade da manteiga em lume médio e refogue a cebola ('sofrito') até ficar macia e translúcida, sem ganhar cor (cerca de 5-8 minutos).", porque: "Infundir o açafrão previamente liberta a sua cor e sabor de forma mais eficaz. Um 'sofrito' lento e gentil cria uma base de sabor doce e aromática, sem a agressividade da cebola crua.", pontoCritico: "Não deixe a cebola dourar. O objetivo é a doçura, não a caramelização." },
+                    { title: "A 'Tostatura' (Tostar o Arroz)", description: "Aumente o lume, adicione o arroz à panela e mexa constantemente por cerca de 2 minutos. Os grãos ficarão translúcidos nas bordas e com um centro branco opaco. Este passo é a 'tostatura'.", porque: "Tostar o arroz sela o exterior do grão, ajudando-o a absorver o caldo lentamente sem se desmanchar. Também desenvolve um sabor levemente tostado, como o de nozes.", pontoCritico: "Continue a mexer para que o arroz não queime. Você deve sentir o calor nos grãos ao tocar (com cuidado)." },
+                    { title: "A Técnica (Vinho e Caldo)", description: "Adicione o vinho branco e mexa até que o álcool evapore completamente. Comece a adicionar o caldo quente, uma concha de cada vez, mexendo frequentemente. Espere que o caldo seja quase totalmente absorvido antes de adicionar a próxima concha. A meio do processo, adicione o açafrão infundido.", porque: "A adição gradual de líquido e a agitação constante fazem com que os grãos de arroz se friccionem, libertando o seu amido e criando a cremosidade natural do risoto. Este processo deve demorar cerca de 18 minutos.", pontoCritico: "O risoto não precisa de ser mexido sem parar, mas sim frequentemente. O movimento é o que cria o creme.", timer: 1080 },
+                    { title: "A 'Mantecatura' (Finalização Cremosa)", description: "Quando o arroz estiver 'al dente' (cozido mas ainda com uma leve resistência no centro), retire a panela do lume. Adicione o resto da manteiga fria e o queijo parmesão ralado. Mexa vigorosamente para emulsionar a gordura e o amido. Tape e deixe descansar por 2 minutos antes de servir.", porque: "Este passo final, a 'mantecatura', é o que cria a textura aveludada e a famosa 'onda' ('all'onda') do risoto perfeito. Fazer isto fora do lume evita que a gordura se separe.", pontoCritico: "A manteiga deve estar fria para criar o choque térmico que ajuda na emulsão. Mexa com energia para incorporar ar e criar leveza." }
                 ],
                 variacoes: [
-                    "<strong>Combinações Perfeitas:</strong> Literalmente tudo! É a base ideal para Carne de Panela, Moqueca, Frango Assado, Peixe Grelhado e pratos do dia a dia como feijão e bifes.",
-                    "<strong>Arroz com Cenoura:</strong> Adicione cenoura ralada junto com o arroz para 'fritar'.",
-                    "<strong>Arroz com Brócolos:</strong> Adicione pequenos floretes de brócolos nos últimos 5 minutos de cozimento, por cima do arroz."
+                    "<strong>Combinações Perfeitas:</strong> O acompanhamento clássico para Ossobuco. Fantástico com um Lombo de Porco Assado ou um peito de frango grelhado simples.",
+                    "<strong>Risoto de Cogumelos:</strong> Salteie cogumelos separadamente e adicione-os no final, durante a 'mantecatura'.",
+                    "<strong>Risoto de Abóbora:</strong> Cozinhe puré de abóbora junto com o arroz para uma versão de outono."
                 ]
             },
             pure: {
