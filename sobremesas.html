@@ -54,44 +54,39 @@
             transform: rotate(90deg);
         }
 
-        /* Tooltips para termos técnicos */
+        /* Tooltips para termos técnicos (VERSÃO CORRIGIDA) */
         .tooltip {
             position: relative;
             cursor: help;
             border-bottom: 2px dotted #ca8a04;
             font-weight: bold;
         }
-        .tooltip .tooltip-text {
-            visibility: hidden;
+        .tooltip::after {
+            content: attr(data-tooltip); /* Puxa o texto do atributo data-tooltip */
+            position: absolute;
+            bottom: 125%;
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 10;
+            
+            /* Estilos da caixa */
             width: 220px;
             background-color: #3d3d3d;
             color: #fff;
-            text-align: center;
-            border-radius: 6px;
-            padding: 8px;
-            position: absolute;
-            z-index: 10;
-            bottom: 125%;
-            left: 50%;
-            margin-left: -110px;
-            opacity: 0;
-            transition: opacity 0.3s;
             font-family: 'Lato', sans-serif;
             font-weight: normal;
+            text-align: center;
+            padding: 8px;
+            border-radius: 6px;
+            
+            /* Animação */
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 0.3s ease;
         }
-        .tooltip .tooltip-text::after {
-            content: "";
-            position: absolute;
-            top: 100%;
-            left: 50%;
-            margin-left: -5px;
-            border-width: 5px;
-            border-style: solid;
-            border-color: #3d3d3d transparent transparent transparent;
-        }
-        .tooltip:hover .tooltip-text {
-            visibility: visible;
+        .tooltip:hover::after {
             opacity: 1;
+            visibility: visible;
         }
     </style>
 </head>
@@ -267,7 +262,7 @@
                 steps: [
                     { title: "Preparar a Base de Chocolate", description: "Pré-aqueça o forno a 180°C e forre uma forma quadrada (20x20cm) com papel vegetal. Derreta o chocolate e a manteiga juntos em banho-maria ou no micro-ondas. Mexa até ficar liso e reserve.", porque: "Forrar a forma permite desenformar o brownie inteiro facilmente para o cortar. Derreter a gordura (manteiga) com o chocolate garante uma mistura homogénea e um sabor intenso.", pontoCritico: "Use um chocolate de boa qualidade. Ele é a estrela do prato, e a sua qualidade irá definir o resultado final." },
                     { title: "A Emulsão de Ovos e Açúcar", description: "Numa tigela grande, bata os ovos e o açúcar com um batedor de arame por alguns minutos, até a mistura ficar visivelmente mais pálida, espessa e arejada. Junte a baunilha.", porque: "Esta etapa é crucial para a textura e, principalmente, para a formação da casquinha crocante no topo do brownie. Estamos a dissolver o açúcar e a incorporar ar.", pontoCritico: "Bata com vontade! A mistura deve cair do batedor em fitas." },
-                    { title: "Combinar e Incorporar os Secos", description: "Despeje a mistura de chocolate morno sobre a mistura de ovos e açúcar e incorpore delicadamente. Peneire a farinha, o cacau em pó e o sal sobre a mistura húmida e, com uma espátula, envolva apenas até não haver mais vestígios de farinha.", porque: "Peneirar os ingredientes secos evita grumos. Misturar o mínimo possível depois de adicionar a farinha é o segredo para um brownie denso e 'fudgy', em oposição a um bolo ('cakey').", pontoCritico: "Não misture demais! Assim que a farinha desaparecer, pare. Misturar em excesso desenvolve o glúten e deixa o brownie com textura de bolo." },
+                    { title: "Combinar e Incorporar os Secos", description: "Despeje a mistura de chocolate morno sobre a mistura de ovos e açúcar e incorpore delicadamente. Peneire a farinha, o cacau em pó e o sal sobre a mistura húmida e, com uma espátula, envolva apenas até não haver mais vestígios de farinha.", porque: "Peneirar os ingredientes secos evita grumos. Misturar o mínimo possível depois de adicionar a farinha é o segredo para um brownie denso e 'fudgy', em oposição a um bolo ('cakey').", pontoCritico: "Não misture em excesso! Assim que a farinha desaparecer, pare. Misturar em excesso desenvolve o glúten e deixa o brownie com textura de bolo." },
                     { title: "Assar e Arrefecer", description: "Despeje a massa na forma preparada e alise a superfície. Leve ao forno por 25 a 30 minutos. O brownie está pronto quando um palito inserido no centro sai com algumas migalhas húmidas, mas não massa líquida. Deixe arrefecer completamente na forma antes de cortar.", porque: "Um brownie ligeiramente mal cozido no centro garante a sua textura húmida e densa. Ele continuará a cozinhar com o calor residual. Arrefecer completamente é essencial para que ele firme e possa ser cortado em quadrados perfeitos.", pontoCritico: "É melhor errar para menos do que para mais no tempo de forno. Um brownie demasiado assado fica seco e perde a sua característica principal.", timer: 1650 }
                 ],
                 variacoes: [
