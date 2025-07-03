@@ -177,8 +177,6 @@
                     "<strong>Fonte de Proteína Extra:</strong> Misture uma colher de proteína em pó (whey ou vegetal) na base para um boost proteico pós-treino."
                 ]
             },
-            // As próximas 14 aulas seriam preenchidas aqui, seguindo a mesma estrutura detalhada.
-            // Para manter a resposta concisa, vou preencher mais algumas e deixar as outras como placeholders.
              'frango-marmita': {
                 title: "Aula 02: Frango com Especiarias para Marmitas",
                 description: "Aprenda a preparar frango para a semana toda que é tudo menos aborrecido. Esta técnica de cozinhar em cubos com uma mistura de especiarias garante uma carne suculenta e cheia de sabor, perfeita para saladas, wraps ou como prato principal.",
@@ -229,19 +227,316 @@
                     "<strong>Com Espinafres:</strong> Adicione um punhado de espinafres frescos à frigideira e deixe-os murchar antes de adicionar os ovos."
                 ]
             },
-            // As restantes aulas seguiriam este mesmo formato detalhado...
-            'salada-pote': { title: "Aula 04: Salada no Pote (Montagem Correta)" },
-            'sopa-abobora': { title: "Aula 05: Sopa Cremosa de Abóbora e Gengibre" },
-            'crepioca': { title: "Aula 06: Crepioca Recheada com Frango" },
-            'salmao-limao': { title: "Aula 07: Salmão ao Forno com Limão e Endro" },
-            'zoodles-pesto': { title: "Aula 08: Esparguete de Curgete ao Pesto de Abacate" },
-            'quinoa-colorida': { title: "Aula 09: Quinoa Colorida com Legumes" },
-            'hamburguer-lentilha': { title: "Aula 10: Hambúrguer de Lentilha" },
-            'escondidinho-fit': { title: "Aula 11: Escondidinho Fit de Batata Doce" },
-            'tilapia-papillote': { title: "Aula 12: Tilápia no Papillote com Vegetais" },
-            'homus': { title: "Aula 13: Homus Caseiro com Palitos de Cenoura" },
-            'chips-batata-doce': { title: "Aula 14: Chips de Batata Doce no Forno" },
-            'panqueca-aveia': { title: "Aula 15: Panquecas de Aveia e Banana" },
+            'salada-pote': {
+                title: "Aula 04: Salada no Pote (Montagem Correta)",
+                description: "Domine a arte do 'meal prep' com a salada no pote. Aprenda a técnica de montar em camadas para garantir que a sua salada se mantém fresca, crocante e deliciosa por vários dias.",
+                calculator: { label: "Número de Potes:", unit: "salada-pote-input", base_value: 1, default_value: 1 },
+                details: { tempoPreparo: "15 min", tempoCozimento: "N/A", tempoDescanso: "N/A", rendimento: "1 porção por pote", dificuldade: "Fácil", utensilios: ["Frasco de vidro grande com tampa (aprox. 1L)", "Tábua de corte", "Faca"] },
+                dicaDeMestre: "A regra de ouro é: os ingredientes mais 'húmidos' e pesados ficam no fundo, e os mais 'secos' e delicados ficam no topo. Esta ordem é o que impede que as folhas verdes fiquem murchas e ensopadas.",
+                ingredients: [
+                    { name: 'Molho Vinagrete', base_qty: 3, unit: 'c. de sopa', scalable: true, heading: 'Camada 1: O Molho' },
+                    { name: 'Grão-de-bico ou feijão cozido', base_qty: 0.5, unit: 'chávena', scalable: true, heading: 'Camada 2: Ingredientes Duros' },
+                    { name: 'Cenoura ralada ou em cubos', base_qty: 0.5, unit: 'chávena', scalable: true },
+                    { name: 'Pepino em cubos', base_qty: 0.5, unit: 'chávena', scalable: true },
+                    { name: 'Frango cozido desfiado ou em cubos', base_qty: 100, unit: 'g', scalable: true, heading: 'Camada 3: Proteína' },
+                    { name: 'Tomate cherry, cortado ao meio', base_qty: 0.5, unit: 'chávena', scalable: true, heading: 'Camada 4: Ingredientes Macios' },
+                    { name: 'Queijo Feta ou nozes', base_qty: 2, unit: 'c. de sopa', scalable: true },
+                    { name: 'Folhas Verdes (alface, rúcula, espinafres)', base_qty: 2, unit: 'chávenas', scalable: true, heading: 'Camada 5: As Folhas' }
+                ],
+                steps: [
+                    { title: "Camada 1: O Molho no Fundo", description: "Comece por colocar o seu molho vinagrete no fundo do frasco de vidro. Esta é a primeira e mais importante camada.", porque: "Manter o molho no fundo, isolado dos outros ingredientes (especialmente das folhas), é o que garante que nada fica ensopado. Na hora de comer, você agita o frasco e o molho espalha-se por tudo.", pontoCritico: "Use um molho à base de azeite e vinagre. Molhos cremosos à base de iogurte podem não aguentar tantos dias." },
+                    { title: "Camada 2: Ingredientes Duros e Resistentes", description: "A seguir ao molho, adicione os ingredientes mais duros e que não se importam de ficar em contacto com o molho. Pense em grão-de-bico, feijão, cenoura, pimentão em cubos, beterraba cozida, etc.", porque: "Esta camada cria uma barreira protetora entre o molho e os ingredientes mais sensíveis. Eles até podem absorver um pouco do sabor do molho, o que é ótimo.", pontoCritico: "Certifique-se de que esta camada cobre completamente o molho." },
+                    { title: "Camada 3 e 4: Proteínas e Ingredientes Macios", description: "Sobre os ingredientes duros, adicione a sua fonte de proteína (frango, atum, ovo cozido) e depois os ingredientes mais macios, como tomate cherry, milho, abacate (com umas gotas de limão para não oxidar).", porque: "Continuamos a construir a salada de baixo para cima, dos ingredientes mais resistentes para os mais delicados.", pontoCritico: "Se usar abacate, adicione-o o mais tarde possível ou regue-o bem com sumo de limão." },
+                    { title: "Camada 5: As Folhas e Toppings Secos no Topo", description: "Encha o resto do frasco com as suas folhas verdes favoritas (alface, rúcula, espinafres). Pressione levemente para caber o máximo possível. Se for usar nozes, sementes ou croutons, coloque-os mesmo no topo, por cima das folhas.", porque: "As folhas ficam o mais longe possível do molho, garantindo a sua frescura e crocância. Os toppings secos no topo também se protegem da humidade.", pontoCritico: "As folhas devem estar bem secas antes de as colocar no frasco. Na hora de comer, vire o conteúdo do frasco para uma tigela grande, agite bem e desfrute!" }
+                ],
+                variacoes: [
+                    "<strong>Salada Grega:</strong> Molho de azeite e limão, pepino, tomate, azeitonas, queijo feta e folhas verdes.",
+                    "<strong>Salada Sudoeste:</strong> Molho de coentros e lima, feijão preto, milho, pimentão, frango e alface romana.",
+                    "<strong>Salada Asiática:</strong> Molho de amendoim, noodles de arroz, cenoura, edamame, frango e couve roxa."
+                ]
+            },
+            'sopa-abobora': {
+                title: "Aula 05: Sopa Cremosa de Abóbora e Gengibre",
+                description: "Aprenda a fazer uma sopa aveludada, reconfortante e cheia de sabor, que é naturalmente cremosa sem precisar de natas. O gengibre dá um toque picante e fresco que eleva a doçura da abóbora.",
+                calculator: { label: "Quilos de Abóbora:", unit: "sopa-abobora-input", base_value: 1, default_value: 1 },
+                details: { tempoPreparo: "15 min", tempoCozimento: "25-30 min", tempoDescanso: "N/A", rendimento: "Serve 4-6 pessoas", dificuldade: "Fácil", utensilios: ["Panela grande", "Varinha mágica ou liquidificador"] },
+                dicaDeMestre: "O segredo para uma sopa com sabor mais profundo é assar a abóbora no forno em vez de a cozinhar diretamente na panela. Asse os cubos de abóbora a 200°C com um fio de azeite até ficarem macios e caramelizados. Depois, junte-os ao refogado e ao caldo.",
+                ingredients: [
+                    { name: 'Abóbora (menina ou manteiga), descascada e em cubos', base_qty: 1, unit: 'kg', scalable: true },
+                    { name: 'Cebola picada', base_qty: 1, unit: 'unid.', scalable: true },
+                    { name: 'Alho picado', base_qty: 2, unit: 'dentes', scalable: true },
+                    { name: 'Gengibre fresco, ralado', base_qty: 2, unit: 'cm', scalable: true },
+                    { name: 'Caldo de Legumes', base_qty: 1, unit: 'L', scalable: true },
+                    { name: 'Azeite', base_qty: 2, unit: 'c. de sopa', scalable: true },
+                    { name: 'Sal e Pimenta Preta', base_qty: 0, unit: 'A gosto', scalable: false }
+                ],
+                steps: [
+                    { title: "A Base Aromática", description: "Numa panela grande em lume médio, aqueça o azeite. Adicione a cebola e refogue até ficar macia e translúcida. Junte o alho e o gengibre ralado e cozinhe por mais um minuto até libertarem os seus aromas.", porque: "Construir uma base de sabor com estes aromáticos é fundamental. O gengibre adiciona uma camada de calor e complexidade que contrasta maravilhosamente com a doçura da abóbora.", pontoCritico: "Cuidado para não queimar o alho e o gengibre, pois podem amargar a sopa." },
+                    { title: "Cozinhar a Abóbora", description: "Adicione os cubos de abóbora à panela e tempere com sal e pimenta. Mexa bem. Despeje o caldo de legumes até quase cobrir a abóbora. Deixe levantar fervura, reduza o lume e cozinhe, tapado, por 15-20 minutos, ou até a abóbora estar muito macia.", porque: "Cozinhar a abóbora no caldo infunde-a com sabor. Ela deve estar extremamente macia para garantir que a sopa fique perfeitamente lisa depois de triturada.", pontoCritico: "Um garfo deve entrar na abóbora sem qualquer resistência. Se estiver dura, a sopa não ficará cremosa.", timer: 1200 },
+                    { title: "Triturar até Ficar Aveludada", description: "Com uma varinha mágica, triture a sopa diretamente na panela até ficar completamente lisa e aveludada. Se não tiver uma, transfira a sopa em lotes para um liquidificador e bata até ficar cremosa, voltando a colocá-la na panela.", porque: "A trituração é o que cria a textura cremosa da sopa, quebrando todas as fibras dos legumes.", pontoCritico: "Se usar um liquidificador, tenha muito cuidado com o vapor quente. Nunca encha o copo mais do que a metade e cubra a tampa com um pano de prato." },
+                    { title: "Ajustar e Servir", description: "Prove a sopa e ajuste o sal e a pimenta. Se estiver muito espessa, pode adicionar um pouco mais de caldo ou água quente. Sirva quente, talvez com um fio de azeite, sementes de abóbora tostadas ou coentros frescos por cima.", porque: "Provar e ajustar no final é o que permite aperfeiçoar o prato ao seu gosto pessoal.", pontoCritico: "A consistência da sopa é uma preferência pessoal. Ajuste-a para ficar como mais gosta." }
+                ],
+                variacoes: [
+                    "<strong>Com Leite de Coco:</strong> Para uma cremosidade extra e um toque asiático, adicione 200ml de leite de coco no final e aqueça sem deixar ferver.",
+                    "<strong>Picante:</strong> Adicione uma pitada de pimenta caiena ou malagueta em pó junto com o gengibre.",
+                    "<strong>Sopa Fria:</strong> Esta sopa também pode ser servida fria nos dias mais quentes, como um gaspacho."
+                ]
+            },
+            'crepioca': {
+                title: "Aula 06: Crepioca Recheada com Frango",
+                description: "Aprenda a fazer crepioca, a receita campeã da versatilidade fitness. Uma mistura de tapioca e ovo que cria uma base neutra, proteica e sem glúten, pronta para receber qualquer recheio que a sua imaginação permitir.",
+                calculator: { label: "Porções (Crepiocas):", unit: "crepioca-input", base_value: 1, default_value: 1 },
+                details: { tempoPreparo: "5 min", tempoCozimento: "5 min", tempoDescanso: "N/A", rendimento: "1 crepioca por porção", dificuldade: "Fácil", utensilios: ["Frigideira pequena antiaderente", "Tigela", "Batedor de arame ou garfo"] },
+                dicaDeMestre: "Para uma crepioca mais elástica e que não se parte, adicione uma colher de sopa de polvilho azedo à mistura. Se a quiser mais fofa, adicione uma pitada de fermento em pó.",
+                ingredients: [
+                    { name: 'Ovo', base_qty: 1, unit: 'unid.', scalable: true },
+                    { name: 'Goma de Tapioca Hidratada', base_qty: 2, unit: 'c. de sopa', scalable: true },
+                    { name: 'Água ou Leite', base_qty: 1, unit: 'c. de sopa', scalable: true },
+                    { name: 'Sal e Orégãos', base_qty: 0, unit: 'A gosto', scalable: false },
+                    { name: 'Frango desfiado (já cozido)', base_qty: 100, unit: 'g', scalable: true, heading: "Sugestão de Recheio" },
+                    { name: 'Requeijão Light ou Queijo Cottage', base_qty: 2, unit: 'c. de sopa', scalable: true }
+                ],
+                steps: [
+                    { title: "A Massa da Crepioca", description: "Numa tigela, bata o ovo com um garfo ou batedor de arame. Adicione a goma de tapioca, a água (ou leite) e os temperos. Misture muito bem até obter uma massa líquida e homogénea, sem grumos de tapioca.", porque: "A mistura precisa de ser homogénea para que cozinhe de forma uniforme. A água ou leite ajuda a tornar a massa ligeiramente mais fina e maleável.", pontoCritico: "Desfaça bem todos os grumos da goma de tapioca para evitar uma textura irregular na sua crepioca." },
+                    { title: "Cozinhar a Crepioca", description: "Aqueça uma frigideira pequena antiaderente em lume médio. Não precisa de untar se a frigideira for de boa qualidade. Despeje a massa no centro e incline a frigideira para que a massa se espalhe e forme um disco.", porque: "O lume médio cozinha a crepioca sem a queimar, permitindo que a estrutura se forme corretamente. Espalhar a massa cria uma base fina e uniforme.", pontoCritico: "Espere até que a superfície da massa esteja opaca e as bordas comecem a soltar-se da frigideira. Este é o sinal de que está pronta para virar." },
+                    { title: "Virar e Rechear", description: "Com a ajuda de uma espátula, vire a crepioca e cozinhe por mais 30 segundos do outro lado. Espalhe o recheio (neste caso, frango desfiado e requeijão) sobre uma metade do disco.", porque: "Cozinhar brevemente do outro lado garante que a crepioca está totalmente cozida. Rechear na frigideira ajuda a aquecer o recheio e a derreter qualquer queijo.", pontoCritico: "Seja rápido ao virar para não se partir. Uma boa frigideira antiaderente é sua melhor amiga aqui." },
+                    { title: "Dobrar e Servir", description: "Dobre a metade sem recheio sobre a metade com recheio, formando uma meia-lua. Pressione levemente e deixe na frigideira por mais um minuto para o recheio aquecer bem. Sirva imediatamente.", porque: "Dobrar cria o formato clássico e concentra o recheio, tornando mais fácil de comer.", pontoCritico: "Pode desligar o lume neste passo para evitar que a crepioca fique demasiado seca enquanto finaliza." }
+                ],
+                variacoes: [
+                    "<strong>Recheio Doce:</strong> Banana em rodelas com canela e um fio de mel.",
+                    "<strong>Recheio Caprese:</strong> Tomate em cubos, queijo mozzarella light e folhas de manjericão.",
+                    "<strong>Recheio de Atum:</strong> Atum em lata (em água), maionese light e cenoura ralada."
+                ]
+            },
+            'salmao-limao': {
+                title: "Aula 07: Salmão ao Forno com Limão e Endro",
+                description: "Uma receita elegante, incrivelmente rápida e cheia de sabor. O método de assar no forno é uma forma infalível de cozinhar salmão, mantendo-o húmido, enquanto o limão e o endro criam um perfume clássico.",
+                calculator: { label: "Postas de Salmão (180g cada):", unit: "salmao-limao-input", base_value: 2, default_value: 2 },
+                details: { tempoPreparo: "5 min", tempoCozimento: "12-15 min", tempoDescanso: "N/A", rendimento: "1 porção", dificuldade: "Fácil", utensilios: ["Tabuleiro", "Papel vegetal"] },
+                dicaDeMestre: "Para um sabor extra e para garantir que o salmão não cola, crie uma 'cama' de rodelas de limão sobre o papel vegetal e coloque o filé de salmão por cima. O peixe será infundido com o aroma do limão por baixo.",
+                ingredients: [
+                    { name: 'Posta de Salmão, com ou sem pele', base_qty: 2, unit: 'unid.', scalable: true },
+                    { name: 'Limão Siciliano', base_qty: 1, unit: 'unid.', scalable: true },
+                    { name: 'Endro (Dill) fresco, picado', base_qty: 2, unit: 'c. de sopa', scalable: true },
+                    { name: 'Azeite', base_qty: 1, unit: 'c. de sopa', scalable: true },
+                    { name: 'Sal e Pimenta Preta', base_qty: 0, unit: 'A gosto', scalable: false }
+                ],
+                steps: [
+                    { title: "Preparar o Salmão", description: "Pré-aqueça o forno a 200°C. Forre um tabuleiro com papel vegetal. Seque bem as postas de salmão com papel toalha. Tempere ambos os lados com sal e pimenta.", porque: "Secar o peixe ajuda a pele (se tiver) a ficar mais crocante e permite que os temperos adiram melhor.", pontoCritico: "Use papel vegetal para uma limpeza fácil e para garantir que o peixe não cola no tabuleiro." },
+                    { title: "Montar e Temperar", description: "Coloque as postas de salmão no tabuleiro. Regue com o azeite. Cubra cada posta com rodelas finas de limão e polvilhe generosamente com o endro fresco picado.", porque: "O azeite protege o peixe de secar. O limão e o endro são uma combinação clássica que complementa perfeitamente a riqueza do salmão, adicionando acidez e frescura.", pontoCritico: "Use endro fresco, se possível. O seu sabor é muito superior ao seco nesta preparação." },
+                    { title: "Assar na Perfeição", description: "Leve ao forno por 12 a 15 minutos. O tempo exato dependerá da espessura das suas postas. O salmão está pronto quando se desfaz facilmente com um garfo e o centro está opaco, mas ainda ligeiramente rosado.", porque: "Assar é um método de calor seco e envolvente que cozinha o peixe de forma uniforme. É uma das formas mais fáceis de não errar o ponto.", pontoCritico: "Não cozinhe demais o salmão. É melhor retirá-lo um pouco antes do que pensa, pois ele continuará a cozinhar com o calor residual. Salmão seco é um crime culinário.", timer: 720 }
+                ],
+                variacoes: [
+                    "<strong>Com Espargos:</strong> Adicione espargos ao tabuleiro ao lado do salmão e asse tudo junto.",
+                    "<strong>Outras Ervas:</strong> Se não tiver endro, salsa ou cebolinho também funcionam bem.",
+                    "<strong>Toque Asiático:</strong> Substitua o limão e o endro por fatias de gengibre e um pouco de molho de soja."
+                ]
+            },
+            'zoodles-pesto': {
+                title: "Aula 08: Esparguete de Curgete ao Pesto de Abacate",
+                description: "Descubra o mundo das 'massas' de vegetais com esta receita vibrante e cheia de gorduras saudáveis. Os 'zoodles' (esparguete de curgete) são uma alternativa leve e low-carb, e o pesto de abacate é cremoso, saboroso e nutritivo.",
+                calculator: { label: "Porções:", unit: "zoodles-pesto-input", base_value: 2, default_value: 2 },
+                details: { tempoPreparo: "15 min", tempoCozimento: "2-3 min", tempoDescanso: "N/A", rendimento: "Serve 2 pessoas", dificuldade: "Fácil", utensilios: ["Espiralizador de vegetais ou descascador julienne", "Processador de alimentos ou liquidificador"] },
+                dicaDeMestre: "O segredo dos zoodles é cozinhá-los o mínimo possível. Um salteado rápido de 1 a 2 minutos é suficiente para os aquecer sem que libertem demasiada água e fiquem moles. Eles devem manter uma textura 'al dente'.",
+                ingredients: [
+                    { name: 'Curgete (Abobrinha) grande', base_qty: 2, unit: 'unid.', scalable: true },
+                    { name: 'Abacate maduro', base_qty: 1, unit: 'unid.', scalable: true, heading: 'Para o Pesto de Abacate' },
+                    { name: 'Manjericão fresco', base_qty: 1, unit: 'chávena', scalable: true },
+                    { name: 'Nozes ou pinhões', base_qty: 0.25, unit: 'chávena', scalable: true },
+                    { name: 'Dente de Alho', base_qty: 1, unit: 'unid.', scalable: true },
+                    { name: 'Sumo de Limão', base_qty: 2, unit: 'c. de sopa', scalable: true },
+                    { name: 'Azeite', base_qty: 2, unit: 'c. de sopa', scalable: true }
+                ],
+                steps: [
+                    { title: "Fazer os 'Zoodles'", description: "Lave bem as curgetes. Usando um espiralizador, transforme-as em 'esparguete'. Se não tiver um, pode usar um descascador de legumes para fazer fitas largas (tagliatelle) ou um descascador de julienne.", porque: "Criar a forma de 'massa' é o que torna este prato divertido e uma alternativa visualmente semelhante à massa tradicional.", pontoCritico: "Depois de espiralizar, coloque os zoodles sobre papel de cozinha para absorver o excesso de humidade." },
+                    { title: "O Pesto de Abacate Cremoso", description: "Num processador de alimentos ou liquidificador, junte o abacate, as folhas de manjericão, as nozes, o dente de alho, o sumo de limão e uma pitada de sal. Comece a triturar e, lentamente, adicione o azeite até obter um molho liso e cremoso. Se necessário, adicione 1-2 colheres de sopa de água para ajudar a bater.", porque: "O abacate substitui o queijo e parte do azeite de um pesto tradicional, criando uma cremosidade incrível com gorduras saudáveis. O limão é essencial para dar sabor e para evitar que o abacate oxide e escureça.", pontoCritico: "Prove o pesto e ajuste os temperos. Pode precisar de mais sal ou mais limão, dependendo do seu gosto." },
+                    { title: "Cozinhar (ou Não) os Zoodles", description: "Opção 1 (Cru): Simplesmente misture os zoodles com o pesto e sirva, para uma salada crocante. Opção 2 (Cozido): Aqueça um fio de azeite numa frigideira grande em lume médio-alto. Salteie os zoodles por apenas 1 a 2 minutos, até estarem ligeiramente macios mas ainda crocantes. Retire do lume e envolva com o pesto.", porque: "Cozinhar os zoodles liberta muita água. O cozimento rápido aquece-os sem os deixar moles. Retirar do lume antes de adicionar o pesto evita que o molho aqueça demais e perca a sua cor vibrante e sabor fresco.", pontoCritico: "Não adicione sal aos zoodles enquanto cozinham, pois isso fará com que libertem ainda mais água.", timer: 90 }
+                ],
+                variacoes: [
+                    "<strong>Com Proteína:</strong> Adicione camarões salteados, frango desfiado ou grão-de-bico para uma refeição mais completa.",
+                    "<strong>Toppings:</strong> Sirva com tomate cherry cortado ao meio, queijo feta esfarelado ou sementes de abóbora tostadas.",
+                    "<strong>Outros Pestos:</strong> Experimente com pesto de beterraba ou pesto de pimentão vermelho assado."
+                ]
+            },
+            'quinoa-colorida': {
+                title: "Aula 09: Quinoa Colorida com Legumes",
+                description: "Aprenda a cozinhar quinoa na perfeição – soltinha e sem amargor – e a transformá-la numa salada ou acompanhamento vibrante, nutritivo e cheio de proteína vegetal completa.",
+                calculator: { label: "Gramas de Quinoa Crua:", unit: "quinoa-colorida-input", base_value: 150, default_value: 150 },
+                details: { tempoPreparo: "15 min", tempoCozimento: "15 min", tempoDescanso: "5 min", rendimento: "Serve 2-3 pessoas", dificuldade: "Fácil", utensilios: ["Panela pequena com tampa", "Coador de malha fina"] },
+                dicaDeMestre: "O passo mais importante para uma quinoa saborosa é lavá-la muito bem em água corrente fria. A quinoa tem uma camada natural chamada saponina, que é amarga. Lavar bem remove essa camada e o resultado é um sabor suave e agradável.",
+                ingredients: [
+                    { name: 'Quinoa', base_qty: 150, unit: 'g', scalable: true },
+                    { name: 'Água ou Caldo de Legumes', base_qty: 300, unit: 'ml', scalable: true },
+                    { name: 'Pimentão vermelho, em cubos pequenos', base_qty: 0.5, unit: 'unid.', scalable: true },
+                    { name: 'Pepino, em cubos pequenos', base_qty: 0.5, unit: 'unid.', scalable: true },
+                    { name: 'Grão-de-bico cozido', base_qty: 100, unit: 'g', scalable: true },
+                    { name: 'Salsa e Hortelã frescas, picadas', base_qty: 0, unit: 'A gosto', scalable: false },
+                    { name: 'Sumo de Limão e Azeite', base_qty: 0, unit: 'Para temperar', scalable: false }
+                ],
+                steps: [
+                    { title: "Lavar e Cozinhar a Quinoa", description: "Coloque a quinoa num coador de malha fina e lave-a em água corrente por pelo menos 1 minuto, esfregando os grãos com os dedos. Numa panela, junte a quinoa lavada e a água (ou caldo) com uma pitada de sal. Leve a ferver, reduza para o lume mais baixo possível, tape e cozinhe por 15 minutos.", porque: "Lavar remove a saponina amarga. A proporção de 1 parte de quinoa para 2 partes de líquido garante que ela cozinhe perfeitamente, absorvendo toda a água.", pontoCritico: "Use um coador fino, senão os pequenos grãos de quinoa podem passar pelos buracos.", timer: 900 },
+                    { title: "Descansar e Soltar", description: "Após os 15 minutos, desligue o lume e deixe a quinoa descansar na panela tapada por mais 5 minutos. Depois, destape e use um garfo para soltar e 'fofar' os grãos.", porque: "O descanso permite que a quinoa termine de cozinhar no vapor e absorva qualquer resto de humidade. Fofar com um garfo deixa-a leve e soltinha.", pontoCritico: "Se não descansar, a quinoa pode parecer um pouco húmida e aglomerada." },
+                    { title: "Montar a Salada", description: "Numa tigela grande, junte a quinoa cozida e arrefecida, o pimentão, o pepino, o grão-de-bico e as ervas frescas picadas. Tempere com sumo de limão, azeite, sal e pimenta a gosto. Misture bem e sirva.", porque: "A combinação de legumes crocantes, a proteína do grão-de-bico e a frescura das ervas transforma a quinoa num prato completo e excitante.", pontoCritico: "Deixe a quinoa arrefecer um pouco antes de a misturar com os vegetais para que eles não murchem com o calor." }
+                ],
+                variacoes: [
+                    "<strong>Como Acompanhamento Quente:</strong> Sirva a quinoa apenas cozida como alternativa ao arroz para acompanhar carnes ou peixes.",
+                    "<strong>Com Frutas Secas e Nozes:</strong> Adicione damascos picados e amêndoas tostadas para um toque agridoce.",
+                    "<strong>Com Queijo Feta:</strong> Esfarele queijo feta por cima para um contraste salgado."
+                ]
+            },
+            'hamburguer-lentilha': {
+                title: "Aula 10: Hambúrguer de Lentilha",
+                description: "Aprenda a fazer um hambúrguer vegetariano que não tenta imitar a carne, mas sim celebrar os seus próprios sabores. É rico em fibras, proteína e tem uma textura incrível.",
+                calculator: { label: "Hambúrgueres:", unit: "hamburguer-lentilha-input", base_value: 4, default_value: 4 },
+                details: { tempoPreparo: "20 min", tempoCozimento: "25-30 min", tempoDescanso: "30 min (na geleira)", rendimento: "4-5 hambúrgueres", dificuldade: "Intermediário", utensilios: ["Processador de alimentos", "Frigideira"] },
+                dicaDeMestre: "O segredo para um hambúrguer vegetariano que não se desfaz é controlar a humidade. Depois de processar a mistura, se parecer muito mole, adicione uma ou duas colheres de sopa de farinha de aveia ou de rosca até atingir uma consistência que consiga moldar.",
+                ingredients: [
+                    { name: 'Lentilhas cozidas e escorridas', base_qty: 1.5, unit: 'chávenas', scalable: true },
+                    { name: 'Cebola pequena, picada', base_qty: 1, unit: 'unid.', scalable: true },
+                    { name: 'Alho picado', base_qty: 2, unit: 'dentes', scalable: true },
+                    { name: 'Cenoura ralada', base_qty: 1, unit: 'unid.', scalable: true },
+                    { name: 'Farinha de Aveia ou de Rosca', base_qty: 0.5, unit: 'chávena', scalable: true },
+                    { name: 'Sementes de Linhaça moídas + 3 c. sopa de água ("ovo de linhaça")', base_qty: 1, unit: 'c. de sopa', scalable: true },
+                    { name: 'Cominhos e Páprica Defumada', base_qty: 1, unit: 'c. de chá de cada', scalable: true }
+                ],
+                steps: [
+                    { title: "A Base de Sabor e o 'Ovo' Vegan", description: "Numa tigela pequena, misture a linhaça moída com a água e reserve por 5-10 minutos para formar um gel. Numa frigideira, refogue a cebola, o alho e a cenoura em azeite até ficarem bem macios.", porque: "O 'ovo de linhaça' atua como um agente ligante, ajudando a dar estrutura ao hambúrguer. Refogar os vegetais antes de os processar desenvolve a sua doçura e sabor.", pontoCritico: "Deixe o refogado arrefecer um pouco antes de o adicionar aos outros ingredientes." },
+                    { title: "Processar a Mistura", description: "Num processador de alimentos, junte as lentilhas cozidas, o refogado de vegetais, o 'ovo de linhaça' e as especiarias. Pulse o processador algumas vezes, apenas até a mistura se começar a unir. Queremos manter alguma textura, não fazer um puré.", porque: "Manter pedaços de lentilhas inteiras é crucial para a textura final do hambúrguer. Processar demais resulta numa pasta mole.", pontoCritico: "Se não tiver um processador, pode amassar tudo muito bem com um garfo ou espremedor de batata." },
+                    { title: "Moldar e Descansar", description: "Transfira a mistura para uma tigela e incorpore a farinha de aveia/rosca. Molde os hambúrgueres com as mãos. Coloque-os num prato forrado com papel vegetal e leve à geleira por pelo menos 30 minutos.", porque: "A farinha ajuda a absorver o excesso de humidade e a dar estrutura. O descanso na geleira é fundamental para que os hambúrgueres fiquem firmes e não se desfaçam na frigideira.", pontoCritico: "Não salte o tempo de descanso. É o que garante a integridade estrutural do hambúrguer." },
+                    { title: "Cozinhar o Hambúrguer", description: "Aqueça uma frigideira com um fio de azeite em lume médio. Cozinhe os hambúrgueres por 4-5 minutos de cada lado, até formarem uma crosta dourada e escura e estarem aquecidos por dentro. Sirva num pão integral com salada e os seus molhos favoritos.", porque: "Cozinhar em lume médio permite que o hambúrguer aqueça por dentro enquanto desenvolve uma crosta saborosa por fora.", pontoCritico: "Vire os hambúrgueres com cuidado, usando uma espátula larga.", timer: 300 }
+                ],
+                variacoes: [
+                    "<strong>Com Feijão Preto:</strong> Substitua as lentilhas por feijão preto para um sabor diferente.",
+                    "<strong>Com Cogumelos:</strong> Adicione cogumelos salteados à mistura para um sabor mais 'carnudo' e <span class='tooltip' data-tooltip='O 'quinto gosto', profundo e saboroso.'>umami</span>.",
+                    "<strong>No Forno:</strong> Asse os hambúrgueres a 200°C por 20-25 minutos para uma versão com menos gordura."
+                ]
+            },
+            'escondidinho-fit': {
+                title: "Aula 11: Escondidinho Fit de Batata Doce",
+                description: "Uma versão saudável e funcional de um clássico da comida de conforto brasileira. Trocamos a batata tradicional pela batata doce e usamos carne moída magra para um prato rico em nutrientes e sabor.",
+                calculator: { label: "Gramas de Carne Moída:", unit: "escondidinho-fit-input", base_value: 500, default_value: 500 },
+                details: { tempoPreparo: "20 min", tempoCozimento: "40-50 min", tempoDescanso: "N/A", rendimento: "Serve 4-6 pessoas", dificuldade: "Fácil", utensilios: ["Panela para o puré", "Frigideira para a carne", "Travessa de ir ao forno"] },
+                dicaDeMestre: "Para um puré de batata doce ainda mais saboroso e menos aguado, asse as batatas doces no forno em vez de as cozinhar em água. O sabor fica muito mais concentrado.",
+                ingredients: [
+                    { name: 'Batata Doce', base_qty: 1, unit: 'kg', scalable: true, heading: 'Para o Puré' },
+                    { name: 'Leite de Coco light ou leite magro', base_qty: 100, unit: 'ml', scalable: true },
+                    { name: 'Sal, Pimenta, Noz-moscada', base_qty: 0, unit: 'A gosto', scalable: false },
+                    { name: 'Carne Moída Magra (Patinho)', base_qty: 500, unit: 'g', scalable: true, heading: 'Para o Recheio' },
+                    { name: 'Cebola picada', base_qty: 1, unit: 'unid.', scalable: true },
+                    { name: 'Alho picado', base_qty: 2, unit: 'dentes', scalable: true },
+                    { name: 'Tomate pelado picado', base_qty: 400, unit: 'g', scalable: true }
+                ],
+                steps: [
+                    { title: "Preparar o Puré de Batata Doce", description: "Cozinhe a batata doce (descascada e em cubos) em água a ferver até ficar muito macia. Escorra bem e amasse com um garfo ou espremedor. Incorpore o leite aos poucos, até obter um puré cremoso. Tempere com sal, pimenta e noz-moscada.", porque: "A batata doce é uma excelente fonte de carboidratos complexos e fibras. O leite de coco complementa a sua doçura natural.", pontoCritico: "Certifique-se de que a batata doce está bem cozida para que o puré fique liso e sem pedaços." },
+                    { title: "O Recheio de Carne Saboroso", description: "Numa frigideira, refogue a cebola e o alho em um fio de azeite. Adicione a carne moída e cozinhe até dourar. Junte o tomate picado, tempere com sal e pimenta e cozinhe em lume baixo por 10-15 minutos, até o molho apurar.", porque: "Construir um recheio saboroso é essencial para equilibrar a doçura do puré. Deixar o molho apurar concentra os sabores.", pontoCritico: "Use carne moída magra para manter o prato alinhado com os objetivos fitness." },
+                    { title: "Montar e Gratinar", description: "Pré-aqueça o forno a 180°C. Numa travessa, espalhe o recheio de carne no fundo. Cubra com o puré de batata doce, alisando a superfície com uma colher. Opcional: polvilhe com um pouco de queijo parmesão ralado.", porque: "A montagem em camadas é a característica do 'escondidinho'. A camada de puré 'esconde' o recheio delicioso.", pontoCritico: "Alisar bem o puré ajuda a criar uma superfície uniforme para gratinar." },
+                    { title: "Levar ao Forno", description: "Leve ao forno por 20 a 25 minutos, ou até o recheio borbulhar nas bordas e o topo do puré estar ligeiramente dourado. Sirva quente.", porque: "O tempo no forno serve para aquecer tudo uniformemente e fundir os sabores. Opcionalmente, pode usar a função 'grill' do seu forno nos últimos minutos para uma crosta mais dourada.", timer: 1200 }
+                ],
+                variacoes: [
+                    "<strong>Recheio de Frango:</strong> Substitua a carne moída por frango desfiado.",
+                    "<strong>Versão Vegetariana:</strong> Use um recheio de lentilhas ou cogumelos salteados.",
+                    "<strong>Com Mandioca:</strong> Use puré de mandioca (aipim/macaxeira) para uma versão mais tradicional, mas igualmente deliciosa."
+                ]
+            },
+            'tilapia-papillote': {
+                title: "Aula 12: Tilápia no Papillote com Vegetais",
+                description: "Uma repetição da técnica 'en papillote' com um dos peixes mais acessíveis e populares. É uma forma fantástica de garantir um peixe húmido e saboroso, cozido junto com os seus acompanhamentos.",
+                calculator: { label: "Filés de Tilápia:", unit: "tilapia-papillote-input", base_value: 2, default_value: 2 },
+                details: { tempoPreparo: "15 min", tempoCozimento: "15-18 min", tempoDescanso: "N/A", rendimento: "1 por pessoa", dificuldade: "Fácil", utensilios: ["Papel vegetal", "Tesoura", "Tabuleiro"] },
+                dicaDeMestre: "Adicione um elemento de gordura (um fio de azeite, um pequeno pedaço de manteiga) e um elemento ácido (sumo de limão, vinho branco) dentro do envelope. Esta combinação cria um molho instantâneo e delicioso enquanto cozinha.",
+                ingredients: [
+                    { name: 'Filé de Tilápia', base_qty: 2, unit: 'unid.', scalable: true },
+                    { name: 'Tomate Cherry, ao meio', base_qty: 1, unit: 'chávena', scalable: true },
+                    { name: 'Rodelas finas de Curgete (Abobrinha)', base_qty: 1, unit: 'unid. pequena', scalable: true },
+                    { name: 'Azeitonas pretas', base_qty: 10, unit: 'unid.', scalable: true },
+                    { name: 'Ramo de Tomilho', base_qty: 2, unit: 'unid.', scalable: true },
+                    { name: 'Azeite, Sal, Pimenta', base_qty: 0, unit: 'A gosto', scalable: false }
+                ],
+                steps: [
+                    { title: "Preparar o Envelope e os Vegetais", description: "Pré-aqueça o forno a 200°C. Corte um grande coração de papel vegetal. Num lado do coração, faça uma 'cama' com as rodelas de curgete e os tomates cherry. Tempere com sal, pimenta e um fio de azeite.", porque: "A cama de vegetais eleva o peixe e cria uma base de sabor. O corte fino dos vegetais garante que cozinhem no mesmo tempo que o peixe.", pontoCritico: "Não corte os vegetais demasiado grossos." },
+                    { title: "Montar e Selar", description: "Coloque o filé de tilápia sobre os vegetais. Tempere o peixe. Adicione as azeitonas e o ramo de tomilho. Dobre o papel vegetal e sele as bordas com pequenas dobras sucessivas e apertadas.", porque: "A selagem perfeita do <span class='tooltip' data-tooltip='Envelope de papel vegetal usado para cozinhar alimentos no seu próprio vapor.'>papillote</span> é o que aprisiona o vapor, cozinhando tudo de forma uniforme e concentrando todos os aromas.", pontoCritico: "Garanta que o envelope está bem fechado para o vapor não escapar." },
+                    { title: "Assar e Servir", description: "Coloque os envelopes num tabuleiro e asse por 15 a 18 minutos. O envelope irá inchar. Sirva o envelope fechado no prato e abra-o à mesa.", porque: "Abrir o envelope à mesa liberta uma nuvem de vapor aromático, o que é uma parte fantástica da experiência.", pontoCritico: "Cuidado com o vapor quente ao abrir.", timer: 900 }
+                ],
+                variacoes: [
+                    "<strong>Sabor Asiático:</strong> Use molho de soja, gengibre e cogumelos shiitake.",
+                    "<strong>Sabor Cítrico:</strong> Use rodelas de laranja e funcho em vez de tomate e curgete.",
+                    "<strong>Com Batata:</strong> Use batatas em rodelas muito finas (cortadas numa mandoline) como base, pois elas cozinharão no tempo certo."
+                ]
+            },
+            homus: {
+                title: "Aula 13: Homus Caseiro com Palitos de Cenoura",
+                description: "Aprenda a fazer homus, a pasta de grão-de-bico do Médio Oriente, que é muito mais cremosa e saborosa do que qualquer versão de compra. É um snack rico em proteína vegetal e fibras.",
+                calculator: { label: "Chávenas de Grão-de-bico cozido:", unit: "homus-input", base_value: 2, default_value: 2 },
+                details: { tempoPreparo: "10 min", tempoCozimento: "N/A", tempoDescanso: "N/A", rendimento: "Aprox. 2 chávenas", dificuldade: "Fácil", utensilios: ["Processador de alimentos ou liquidificador potente", "Espátula"] },
+                dicaDeMestre: "O segredo para um homus ultra-liso é remover a pele do grão-de-bico e usar um pouco da água do cozimento (ou da lata) para ajudar a bater. Outro truque é bater o tahine com o sumo de limão primeiro, antes de adicionar o grão, para criar uma emulsão mais leve.",
+                ingredients: [
+                    { name: 'Grão-de-bico cozido e escorrido', base_qty: 2, unit: 'chávenas', scalable: true },
+                    { name: 'Tahine (pasta de gergelim)', base_qty: 0.5, unit: 'chávena', scalable: true },
+                    { name: 'Sumo de Limão fresco', base_qty: 4, unit: 'c. de sopa', scalable: true },
+                    { name: 'Dente de Alho', base_qty: 1, unit: 'unid.', scalable: true },
+                    { name: 'Azeite Extra Virgem', base_qty: 2, unit: 'c. de sopa', scalable: true },
+                    { name: 'Água gelada', base_qty: 4, unit: 'c. de sopa', scalable: true },
+                    { name: 'Cominhos em pó e Sal', base_qty: 0, unit: 'A gosto', scalable: false }
+                ],
+                steps: [
+                    { title: "Processar a Base", description: "Num processador de alimentos, junte o tahine e o sumo de limão. Processe por 1 minuto até obter um creme esbranquiçado e fofo. Adicione o alho, os cominhos e o sal, e pulse mais algumas vezes.", porque: "Bater o tahine com o limão primeiro cria uma base aerada, resultando num homus mais leve e menos denso.", pontoCritico: "Use tahine de boa qualidade. Faz toda a diferença no sabor final." },
+                    { title: "Adicionar o Grão-de-bico", description: "Adicione o grão-de-bico cozido ao processador. Bata por vários minutos, parando para raspar as laterais, até a mistura estar bem lisa.", porque: "A paciência na trituração é o que garante a cremosidade. Quanto mais tempo bater, mais liso ficará.", pontoCritico: "Se o grão-de-bico estiver com pele, o homus ficará com uma textura mais rústica. Para uma textura de restaurante, remova as peles." },
+                    { title: "Atingir a Cremosidade Perfeita", description: "Com o processador a funcionar, adicione a água gelada, uma colher de cada vez, até o homus atingir a consistência desejada: ultra-cremosa e aveludada.", porque: "A água gelada ajuda a criar uma textura mais fofa e leve, reagindo com o tahine.", pontoCritico: "Adicione a água aos poucos para não deixar o homus demasiado líquido." },
+                    { title: "Finalizar e Servir", description: "Transfira o homus para uma tigela. Crie um redemoinho na superfície com as costas de uma colher, regue com azeite extra virgem e polvilhe com um pouco de páprica. Sirva com palitos de cenoura, pepino ou pão pita integral.", porque: "A finalização não é apenas estética. O azeite adiciona riqueza e sabor.", pontoCritico: "O homus fica ainda melhor depois de algumas horas na geleira, pois os sabores se aprofundam." }
+                ],
+                variacoes: [
+                    "<strong>Com Beterraba:</strong> Adicione uma beterraba cozida à mistura para um homus rosa vibrante e adocicado.",
+                    "<strong>Com Pimentão Assado:</strong> Junte um pimentão vermelho assado (sem pele) para um sabor fumado.",
+                    "<strong>Com Abacate:</strong> Adicione meio abacate para uma versão extra-cremosa."
+                ]
+            },
+            'chips-batata-doce': {
+                title: "Aula 14: Chips de Batata Doce no Forno",
+                description: "Aprenda a fazer um snack saudável e viciante que satisfaz a vontade de comer algo crocante. Estas chips de batata doce assadas são uma alternativa fantástica às batatas fritas de pacote.",
+                calculator: { label: "Número de Batatas Doces:", unit: "chips-batata-doce-input", base_value: 2, default_value: 2 },
+                details: { tempoPreparo: "10 min", tempoCozimento: "20-25 min", tempoDescanso: "N/A", rendimento: "2-3 porções", dificuldade: "Fácil", utensilios: ["Mandoline ou faca afiada", "Tabuleiro grande", "Papel vegetal"] },
+                dicaDeMestre: "O segredo para chips verdadeiramente crocantes é a espessura. As fatias devem ser finíssimas e uniformes. Uma <span class='tooltip' data-tooltip='Utensílio de cozinha com uma lâmina ajustável para cortar fatias extremamente finas e uniformes.'>mandoline</span> é a melhor ferramenta para este trabalho.",
+                ingredients: [
+                    { name: 'Batata Doce média', base_qty: 2, unit: 'unid.', scalable: true },
+                    { name: 'Azeite', base_qty: 2, unit: 'c. de sopa', scalable: true },
+                    { name: 'Páprica Defumada', base_qty: 1, unit: 'c. de chá', scalable: true },
+                    { name: 'Sal e Pimenta Preta', base_qty: 0, unit: 'A gosto', scalable: false }
+                ],
+                steps: [
+                    { title: "Fatiar Finamente", description: "Pré-aqueça o forno a 200°C. Lave bem a batata doce (pode manter a casca). Usando uma mandoline na regulação mais fina, ou uma faca muito afiada, corte a batata em rodelas o mais finas possível.", porque: "Fatias finas desidratam e ficam crocantes mais rapidamente. Fatias grossas ficarão macias por dentro, como batatas assadas, e nicht como chips.", pontoCritico: "Tenha extremo cuidado ao usar a mandoline. Use sempre o protetor de mão." },
+                    { title: "Temperar", description: "Numa tigela grande, coloque as fatias de batata doce. Regue com o azeite e polvilhe com a páprica, sal e pimenta. Use as mãos para misturar bem, garantindo que cada fatia está levemente coberta.", porque: "O azeite ajuda a conduzir o calor e a criar a crocância, além de fazer os temperos aderirem.", pontoCritico: "Não exagere no azeite. Um leve revestimento é suficiente. Excesso de óleo deixará as chips moles." },
+                    { title: "Assar em Camada Única", description: "Disponha as fatias de batata doce num tabuleiro grande forrado com papel vegetal, numa única camada, sem se sobreporem. Leve ao forno por 10-12 minutos. Vire as chips e asse por mais 8-10 minutos, ou até estarem douradas e crocantes.", porque: "A camada única é fundamental. Se as fatias se sobrepuserem, elas irão cozinhar a vapor e não ficarão crocantes. Virar a meio garante um cozimento uniforme.", pontoCritico: "Fique muito atento nos últimos minutos. As chips podem passar de douradas a queimadas muito rapidamente devido ao teor de açúcar da batata doce.", timer: 600 }
+                ],
+                variacoes: [
+                    "<strong>Com Alecrim:</strong> Adicione alecrim seco picado à mistura de temperos.",
+                    "<strong>Picantes:</strong> Junte uma pitada de pimenta caiena.",
+                    "<strong>Diferentes Vegetais:</strong> Esta técnica funciona bem com outros vegetais de raiz, como beterraba, cenoura ou pastinaca."
+                ]
+            },
+            'panqueca-aveia': {
+                title: "Aula 15: Panquecas de Aveia e Banana",
+                description: "Uma receita mágica com apenas 2 ingredientes base que cria panquecas fofas, deliciosas e saudáveis. Perfeitas para um pequeno-almoço ou lanche sem açúcar refinado e sem glúten.",
+                calculator: { label: "Porções (aprox. 3 panquecas):", unit: "panqueca-aveia-input", base_value: 1, default_value: 1 },
+                details: { tempoPreparo: "5 min", tempoCozimento: "5-10 min", tempoDescanso: "N/A", rendimento: "1 porção", dificuldade: "Fácil", utensilios: ["Liquidificador ou garfo", "Frigideira antiaderente"] },
+                dicaDeMestre: "Para panquecas extra fofas, adicione 1/4 de colher de chá de fermento em pó à mistura. Deixe a massa descansar por 5 minutos antes de a cozinhar para permitir que o fermento comece a agir.",
+                ingredients: [
+                    { name: 'Banana madura', base_qty: 1, unit: 'unid.', scalable: true },
+                    { name: 'Ovos', base_qty: 2, unit: 'unid.', scalable: true },
+                    { name: 'Aveia em flocos (opcional, para estrutura)', base_qty: 2, unit: 'c. de sopa', scalable: true },
+                    { name: 'Canela em pó (opcional)', base_qty: 1, unit: 'pitada', scalable: false },
+                    { name: 'Óleo de coco ou azeite para untar', base_qty: 1, unit: 'c. de chá', scalable: false }
+                ],
+                steps: [
+                    { title: "Preparar a Massa", description: "Numa tigela, esmague muito bem a banana madura com um garfo até formar um puré. Junte os ovos e bata vigorosamente até a mistura estar bem combinada e ligeiramente aerada. Se usar, adicione a aveia e a canela.", porque: "A banana madura fornece a doçura e a estrutura, enquanto os ovos atuam como agente ligante e dão leveza. A aveia adiciona fibras e ajuda a dar mais corpo às panquecas.", pontoCritico: "Quanto mais madura a banana (com pintas pretas), mais doce e fácil de esmagar ela será." },
+                    { title: "Cozinhar as Panquecas", description: "Aqueça uma frigideira antiaderente em lume médio-baixo e unte levemente com óleo de coco ou azeite. Para cada panqueca, despeje cerca de 2-3 colheres de sopa de massa na frigideira. Cozinhe por 2-3 minutos de um lado, ou até pequenas bolhas aparecerem na superfície.", porque: "O lume médio-baixo é crucial para que as panquecas cozinhem por dentro sem queimar o exterior, especialmente devido ao açúcar natural da banana.", pontoCritico: "Estas panquecas são mais delicadas que as tradicionais. Não as faça demasiado grandes para serem mais fáceis de virar.", timer: 150 },
+                    { title: "Virar e Servir", description: "Com uma espátula fina, vire cuidadosamente as panquecas e cozinhe por mais 1-2 minutos do outro lado, até estarem douradas. Sirva imediatamente.", porque: "Cozinhar brevemente do outro lado finaliza o processo. Elas são melhores servidas quentes.", pontoCritico: "Espere que as bordas estejam firmes antes de tentar virar, senão a panqueca pode desmanchar-se." }
+                ],
+                variacoes: [
+                    "<strong>Com Frutas:</strong> Sirva com iogurte grego e frutas frescas por cima.",
+                    "<strong>Com Manteiga de Amendoim:</strong> Adicione uma colher de manteiga de amendoim à massa para mais proteína e sabor.",
+                    "<strong>Versão Chocolate:</strong> Misture uma colher de chá de cacau em pó na massa."
+                ]
+            }
         };
 
         // ===================================================================================
@@ -296,10 +591,6 @@
         };
 
         const generateRecipeHTML = (recipeData) => {
-            // Se a receita ainda não foi detalhada, mostra uma mensagem.
-            if (!recipeData.details) {
-                return `<div class="text-center p-10"><h2 class="text-3xl font-bold text-amber-700">${recipeData.title}</h2><p class="mt-4 text-stone-600">O conteúdo detalhado para esta aula estará disponível em breve. Obrigado pela sua paciência!</p></div>`;
-            }
              return `
                 <div class="text-center">
                     <h2 class="text-3xl md:text-4xl font-bold text-amber-700">${recipeData.title}</h2>
