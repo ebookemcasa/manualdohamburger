@@ -1,0 +1,530 @@
+<!DOCTYPE html>
+<html lang="pt-BR" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Petiscos e Entradas - Mestre Culinário</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Lato:wght@400;700&display=swap');
+        body { font-family: 'Lato', sans-serif; background-color: #f8f7f4; color: #3d3d3d; }
+        h1, h2, h3, h4, .nav-link { font-family: 'Playfair Display', serif; }
+        
+        /* Estilos para interatividade */
+        .aula-card {
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            cursor: pointer;
+        }
+        .aula-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.05), 0 4px 6px -4px rgb(0 0 0 / 0.05);
+        }
+        
+        /* Checklist de Ingredientes */
+        .ingredient-item input[type="checkbox"] {
+            display: none;
+        }
+        .ingredient-item span {
+            transition: all 0.2s ease;
+            cursor: pointer;
+        }
+        .ingredient-item input[type="checkbox"]:checked + span {
+            text-decoration: line-through;
+            opacity: 0.6;
+        }
+
+        /* Acordion/Sanfona para os Passos */
+        details > summary {
+            cursor: pointer;
+            list-style: none;
+            display: inline-flex;
+            align-items: center;
+            transition: color 0.2s ease;
+        }
+        details > summary::-webkit-details-marker {
+            display: none;
+        }
+        details > summary::before {
+            content: '▶';
+            margin-right: 8px;
+            font-size: 0.7em;
+            transition: transform 0.2s ease-in-out;
+        }
+        details[open] > summary::before {
+            transform: rotate(90deg);
+        }
+
+        /* Tooltips para termos técnicos */
+        .tooltip {
+            position: relative;
+            cursor: help;
+            border-bottom: 2px dotted #ca8a04;
+            font-weight: bold;
+        }
+        .tooltip::after {
+            content: attr(data-tooltip); /* Puxa o texto do atributo data-tooltip */
+            position: absolute;
+            bottom: 125%;
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 10;
+            
+            /* Estilos da caixa */
+            width: 220px;
+            background-color: #3d3d3d;
+            color: #fff;
+            font-family: 'Lato', sans-serif;
+            font-weight: normal;
+            text-align: center;
+            padding: 8px;
+            border-radius: 6px;
+            
+            /* Animação */
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 0.3s ease;
+        }
+        .tooltip:hover::after {
+            opacity: 1;
+            visibility: visible;
+        }
+    </style>
+</head>
+<body class="antialiased">
+    <header class="bg-white/90 backdrop-blur-lg sticky top-0 z-50 shadow-md">
+        <nav class="container mx-auto px-6 py-4">
+            <div class="flex justify-between items-center">
+                <a href="index.html" class="text-3xl font-bold text-stone-800">Mestre<span class="text-amber-600">Culinário</span></a>
+                <a href="index.html" class="nav-link text-stone-600 hover:text-amber-600 transition-colors">Voltar à Página Principal</a>
+            </div>
+        </nav>
+    </header>
+    <main class="container mx-auto px-6 py-8 md:py-12">
+        <section id="page-title" class="text-center mb-16">
+            <h1 class="text-4xl md:text-6xl font-bold text-stone-800">Petiscos e <span class="text-amber-600">Entradas</span></h1>
+            <p class="mt-4 max-w-2xl mx-auto text-stone-600">De clássicos de boteco a entradas elegantes, aprenda a fazer as delícias perfeitas para partilhar e abrir o apetite.</p>
+        </section>
+
+        <div id="aulas-list" class="space-y-8 max-w-5xl mx-auto">
+            <div class="aula-card bg-white p-6 rounded-lg shadow-lg" data-target="receita-bruschetta"><h2 class="text-2xl md:text-3xl font-bold text-amber-700">Aula 01: Bruschetta Clássica de Tomate e Manjericão</h2><p class="text-stone-600 mt-2">A entrada italiana que celebra a simplicidade e a qualidade dos ingredientes.</p></div>
+            <div class="aula-card bg-white p-6 rounded-lg shadow-lg" data-target="receita-pao-de-alho"><h2 class="text-2xl md:text-3xl font-bold text-amber-700">Aula 02: Pão de Alho Cremoso para Churrasco</h2><p class="text-stone-600 mt-2">Aprenda a fazer a pasta de alho perfeita que deixa o pão húmido e saboroso.</p></div>
+            <div class="aula-card bg-white p-6 rounded-lg shadow-lg" data-target="receita-guacamole"><h2 class="text-2xl md:text-3xl font-bold text-amber-700">Aula 03: Guacamole Fresco e Autêntico</h2><p class="text-stone-600 mt-2">O dip mexicano clássico. O segredo está no equilíbrio dos sabores.</p></div>
+            <div class="aula-card bg-white p-6 rounded-lg shadow-lg" data-target="receita-coxinha"><h2 class="text-2xl md:text-3xl font-bold text-amber-700">Aula 04: Coxinha de Frango Cremosa</h2><p class="text-stone-600 mt-2">Domine a massa, o recheio e a fritura do salgadinho mais amado do Brasil.</p></div>
+            <div class="aula-card bg-white p-6 rounded-lg shadow-lg" data-target="receita-dadinhos-tapioca"><h2 class="text-2xl md:text-3xl font-bold text-amber-700">Aula 05: Dadinhos de Tapioca com Queijo Coalho</h2><p class="text-stone-600 mt-2">Crocantes por fora, macios por dentro. O petisco moderno que virou febre.</p></div>
+            <div class="aula-card bg-white p-6 rounded-lg shadow-lg" data-target="receita-espetada-caprese"><h2 class="text-2xl md:text-3xl font-bold text-amber-700">Aula 06: Espetada Caprese</h2><p class="text-stone-600 mt-2">Uma entrada sem cozimento, fresca, colorida e muito elegante.</p></div>
+            <div class="aula-card bg-white p-6 rounded-lg shadow-lg" data-target="receita-kibe"><h2 class="text-2xl md:text-3xl font-bold text-amber-700">Aula 07: Kibe Frito Tradicional</h2><p class="text-stone-600 mt-2">Aprenda a trabalhar com o trigo e os temperos para um kibe perfeito.</p></div>
+            <div class="aula-card bg-white p-6 rounded-lg shadow-lg" data-target="receita-batatas-bravas"><h2 class="text-2xl md:text-3xl font-bold text-amber-700">Aula 08: Batatas Bravas com Aioli</h2><p class="text-stone-600 mt-2">A tapa mais famosa de Espanha: batatas crocantes com um molho picante e aioli.</p></div>
+            <div class="aula-card bg-white p-6 rounded-lg shadow-lg" data-target="receita-bolinho-bacalhau"><h2 class="text-2xl md:text-3xl font-bold text-amber-700">Aula 09: Bolinho de Bacalhau Português</h2><p class="text-stone-600 mt-2">O segredo para um bolinho que não se desfaz e fica cremoso por dentro.</p></div>
+            <div class="aula-card bg-white p-6 rounded-lg shadow-lg" data-target="receita-camarao-alho"><h2 class="text-2xl md:text-3xl font-bold text-amber-700">Aula 10: Camarão ao Alho e Óleo</h2><p class="text-stone-600 mt-2">Um petisco rápido, clássico e cheio de sabor para qualquer ocasião.</p></div>
+            <div class="aula-card bg-white p-6 rounded-lg shadow-lg" data-target="receita-cogumelos-recheados"><h2 class="text-2xl md:text-3xl font-bold text-amber-700">Aula 11: Cogumelos Recheados com Queijo e Ervas</h2><p class="text-stone-600 mt-2">Uma opção vegetariana, elegante e fácil de preparar no forno.</p></div>
+            <div class="aula-card bg-white p-6 rounded-lg shadow-lg" data-target="receita-empanadas"><h2 class="text-2xl md:text-3xl font-bold text-amber-700">Aula 12: Empanadas Argentinas de Carne</h2><p class="text-stone-600 mt-2">Aprenda a fazer a massa e o recheio suculento deste clássico sul-americano.</p></div>
+            <div class="aula-card bg-white p-6 rounded-lg shadow-lg" data-target="receita-tabua-frios"><h2 class="text-2xl md:text-3xl font-bold text-amber-700">Aula 13: A Arte de Montar uma Tábua de Frios</h2><p class="text-stone-600 mt-2">Uma aula de composição: aprenda a escolher e a dispor queijos, enchidos e acompanhamentos.</p></div>
+            <div class="aula-card bg-white p-6 rounded-lg shadow-lg" data-target="receita-rolinho-primavera"><h2 class="text-2xl md:text-3xl font-bold text-amber-700">Aula 14: Rolinho Primavera (Spring Roll) Caseiro</h2><p class="text-stone-600 mt-2">Aprenda a trabalhar com a massa delicada e a criar um recheio crocante e fresco.</p></div>
+            <div class="aula-card bg-white p-6 rounded-lg shadow-lg" data-target="receita-vol-au-vent"><h2 class="text-2xl md:text-3xl font-bold text-amber-700">Aula 15: Mini Vol-au-Vent de Camarão</h2><p class="text-stone-600 mt-2">Uma entrada francesa clássica e sofisticada, usando massa folhada.</p></div>
+        </div>
+
+        <div id="receitas-container" class="hidden">
+            <button id="back-to-list-btn" class="mb-8 inline-flex items-center text-amber-700 hover:text-amber-800 font-bold"><svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-2" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M12.707 5.293a1 1 0 010 1.414L9.414 10l3.293 3.293a1 1 0 01-1.414 1.414l-4-4a1 1 0 010-1.414l4-4a1 1 0 011.414 0z" clip-rule="evenodd" /></svg>Voltar ao Índice de Aulas</button>
+            <div id="receita-bruschetta" class="receita-content bg-white p-8 rounded-lg shadow-xl max-w-7xl mx-auto hidden"></div>
+            <div id="receita-pao-de-alho" class="receita-content bg-white p-8 rounded-lg shadow-xl max-w-7xl mx-auto hidden"></div>
+            <div id="receita-guacamole" class="receita-content bg-white p-8 rounded-lg shadow-xl max-w-7xl mx-auto hidden"></div>
+            <div id="receita-coxinha" class="receita-content bg-white p-8 rounded-lg shadow-xl max-w-7xl mx-auto hidden"></div>
+            <div id="receita-dadinhos-tapioca" class="receita-content bg-white p-8 rounded-lg shadow-xl max-w-7xl mx-auto hidden"></div>
+            <div id="receita-espetada-caprese" class="receita-content bg-white p-8 rounded-lg shadow-xl max-w-7xl mx-auto hidden"></div>
+            <div id="receita-kibe" class="receita-content bg-white p-8 rounded-lg shadow-xl max-w-7xl mx-auto hidden"></div>
+            <div id="receita-batatas-bravas" class="receita-content bg-white p-8 rounded-lg shadow-xl max-w-7xl mx-auto hidden"></div>
+            <div id="receita-bolinho-bacalhau" class="receita-content bg-white p-8 rounded-lg shadow-xl max-w-7xl mx-auto hidden"></div>
+            <div id="receita-camarao-alho" class="receita-content bg-white p-8 rounded-lg shadow-xl max-w-7xl mx-auto hidden"></div>
+            <div id="receita-cogumelos-recheados" class="receita-content bg-white p-8 rounded-lg shadow-xl max-w-7xl mx-auto hidden"></div>
+            <div id="receita-empanadas" class="receita-content bg-white p-8 rounded-lg shadow-xl max-w-7xl mx-auto hidden"></div>
+            <div id="receita-tabua-frios" class="receita-content bg-white p-8 rounded-lg shadow-xl max-w-7xl mx-auto hidden"></div>
+            <div id="receita-rolinho-primavera" class="receita-content bg-white p-8 rounded-lg shadow-xl max-w-7xl mx-auto hidden"></div>
+            <div id="receita-vol-au-vent" class="receita-content bg-white p-8 rounded-lg shadow-xl max-w-7xl mx-auto hidden"></div>
+        </div>
+    </main>
+    <footer class="bg-white border-t mt-16"><div class="container mx-auto px-6 py-8 text-center text-stone-600"><p>&copy; 2024 Mestre Culinário. Todos os direitos reservados.</p></div></footer>
+
+    <script src="database.js"></script>
+    <script>
+    document.addEventListener('DOMContentLoaded', () => {
+
+        const aulas = {
+            'bruschetta': {
+                title: "Aula 01: Bruschetta Clássica de Tomate e Manjericão",
+                description: "Aprenda a fazer a entrada italiana que é a celebração da simplicidade. O segredo de uma grande bruschetta não está numa técnica complexa, mas sim na altíssima qualidade de cada um dos seus poucos ingredientes.",
+                calculator: { label: "Fatias de Pão:", unit: "bruschetta-input", base_value: 4, default_value: 4 },
+                details: { tempoPreparo: "15 min", tempoCozimento: "5 min", tempoDescanso: "N/A", rendimento: "4 bruschettas", dificuldade: "Fácil", utensilios: ["Grelha ou frigideira", "Faca afiada", "Tigela"] },
+                dicaDeMestre: "Depois de tostar o pão, e enquanto ainda está quente, esfregue um dente de alho cortado ao meio na sua superfície. O calor do pão irá libertar os óleos essenciais do alho, perfumando a torrada com um sabor subtil e delicioso que faz toda a diferença.",
+                ingredients: [
+                    { name: 'Pão de boa qualidade (tipo italiano ou rústico)', base_qty: 4, unit: 'fatias grossas', scalable: true },
+                    { name: 'Tomates maduros, mas firmes', base_qty: 2, unit: 'unid.', scalable: true },
+                    { name: 'Dentes de Alho', base_qty: 1, unit: 'unid.', scalable: true },
+                    { name: 'Folhas de Manjericão fresco', base_qty: 8, unit: 'unid.', scalable: true },
+                    { name: 'Azeite Extra Virgem de qualidade', base_qty: 3, unit: 'c. de sopa', scalable: true },
+                    { name: 'Sal e Pimenta Preta moída na hora', base_qty: 0, unit: 'A gosto', scalable: false }
+                ],
+                steps: [
+                    { title: "Preparar a Cobertura de Tomate", description: "Corte os tomates em cubos pequenos e uniformes. Pique grosseiramente as folhas de manjericão. Numa tigela, misture o tomate, o manjericão e 2 colheres de sopa de azeite. Tempere com sal e pimenta. Deixe marinar enquanto prepara o pão.", porque: "Deixar o tomate marinar permite que os sabores se fundam. O sal ajuda a extrair o suco do tomate, que se mistura com o azeite para criar um 'molho' natural.", pontoCritico: "Use tomates de excelente qualidade, pois eles são a estrela do prato. Tempere apenas na hora de montar para o tomate não largar demasiada água." },
+                    { title: "Tostar o Pão", description: "Regue as fatias de pão com o restante azeite. Toste-as numa grelha, frigideira quente ou no forno até ficarem douradas e crocantes de ambos os lados.", porque: "A base da bruschetta precisa de ser crocante para suportar a humidade da cobertura de tomate sem ficar mole. A tostagem também adiciona uma camada de sabor.", pontoCritico: "Não queime o pão. Queremos uma textura crocante, não um sabor a queimado." },
+                    { title: "A Magia do Alho", description: "Assim que retirar o pão do calor, enquanto ainda está quente, pegue num dente de alho cortado ao meio e esfregue a parte cortada suavemente sobre a superfície de cada fatia.", porque: "Este é o truque profissional. O calor do pão 'derrete' ligeiramente o alho, libertando os seus óleos e um perfume incrível que infunde toda a torrada sem ser demasiado forte.", pontoCritico: "Faça isto com o pão ainda bem quente para que a técnica funcione." },
+                    { title: "Montar e Servir", description: "Divida a mistura de tomate sobre as fatias de pão tostado. Regue com um fio extra de azeite, se desejar, e sirva imediatamente.", porque: "A bruschetta deve ser montada apenas no momento de servir para garantir o máximo de crocância do pão e a frescura da cobertura.", pontoCritico: "Se montar com muita antecedência, o pão irá amolecer com o suco do tomate." }
+                ],
+                variacoes: [
+                    "<strong>Com Queijo:</strong> Adicione queijo de cabra cremoso ou mozzarella fresca sobre o pão antes de colocar o tomate.",
+                    "<strong>Com Presunto Cru:</strong> Adicione uma fatia de presunto de Parma ou Serrano por cima do tomate.",
+                    "<strong>Com Cogumelos:</strong> Salteie cogumelos com alho e salsa e use como cobertura."
+                ]
+            },
+            'pao-de-alho': {
+                title: "Aula 02: Pão de Alho Cremoso para Churrasco",
+                description: "O acompanhamento indispensável em qualquer churrasco brasileiro. Aprenda a fazer uma pasta de alho rica e cremosa que penetra no pão, deixando-o húmido por dentro e com uma crosta dourada por fora.",
+                calculator: { label: "Pães tipo baguete:", unit: "pao-de-alho-input", base_value: 1, default_value: 1 },
+                details: { tempoPreparo: "10 min", tempoCozimento: "15-20 min", tempoDescanso: "N/A", rendimento: "1 pão grande", dificuldade: "Fácil", utensilios: ["Tigela", "Faca de serra", "Grelha ou forno"] },
+                dicaDeMestre: "O segredo para um pão de alho que não fica seco é a generosidade. Não tenha medo de usar bastante pasta de alho, garantindo que ela entra bem dentro dos cortes do pão.",
+                ingredients: [
+                    { name: 'Pão tipo baguete ou pão de cacete', base_qty: 1, unit: 'unid.', scalable: true },
+                    { name: 'Dentes de Alho, picados ou espremidos', base_qty: 4, unit: 'unid.', scalable: true, heading: 'Para a Pasta de Alho' },
+                    { name: 'Manteiga sem sal, amolecida', base_qty: 100, unit: 'g', scalable: true },
+                    { name: 'Maionese', base_qty: 2, unit: 'c. de sopa', scalable: true },
+                    { name: 'Queijo Parmesão ou Mozzarella, ralado', base_qty: 50, unit: 'g', scalable: true },
+                    { name: 'Salsa ou coentros frescos, picados', base_qty: 2, unit: 'c. de sopa', scalable: true },
+                    { name: 'Sal e Pimenta', base_qty: 0, unit: 'A gosto', scalable: false }
+                ],
+                steps: [
+                    { title: "Preparar a Pasta de Alho", description: "Numa tigela, misture muito bem a manteiga amolecida, a maionese, o alho, o queijo ralado e a salsa picada. Tempere com sal e pimenta a gosto.", porque: "A manteiga fornece a riqueza e ajuda a dourar, enquanto a maionese adiciona cremosidade e uma ligeira acidez, evitando que a pasta fique puramente gordurosa. O queijo adiciona sabor e ajuda a gratinar.", pontoCritico: "A manteiga deve estar em ponto de pomada (bem mole), não derretida, para que a pasta fique cremosa e não oleosa." },
+                    { title: "Cortar e Rechear o Pão", description: "Com uma faca de serra, corte o pão em fatias grossas (cerca de 2cm), mas sem chegar até ao fundo. As fatias devem permanecer presas na base, como uma sanfona. Com uma faca de manteiga, espalhe generosamente a pasta de alho entre cada fatia.", porque: "Cortar em formato de sanfona permite que o calor circule e que a pasta de alho penetre em toda a extensão do pão, cozinhando-o por dentro e por fora.", pontoCritico: "Tenha cuidado para não cortar o pão até ao fim. Se acontecer, não há problema, mas o formato de sanfona é o ideal." },
+                    { title: "Grelhar ou Assar", description: "Opção 1 (Churrasqueira): Embrulhe o pão em papel de alumínio e leve à grelha em calor indireto por 10 minutos. Depois, retire o alumínio e deixe dourar. Opção 2 (Forno): Leve o pão ao forno pré-aquecido a 180°C por 15-20 minutos, ou até o queijo derreter e o pão estar dourado.", porque: "Embrulhar em alumínio inicialmente cozinha o pão a vapor, derretendo a pasta e amaciando o miolo. Retirar o alumínio no final permite que a crosta fique crocante e dourada.", pontoCritico: "Fique de olho, pois o queijo e a manteiga podem queimar rapidamente, especialmente na churrasqueira.", timer: 900 }
+                ],
+                variacoes: [
+                    "<strong>Com Requeijão:</strong> Substitua a maionese por requeijão cremoso para uma versão ainda mais cremosa.",
+                    "<strong>Picante:</strong> Adicione uma pitada de pimenta calabresa à pasta de alho.",
+                    "<strong>Com Cebola:</strong> Misture um pouco de creme de cebola em pó na pasta para um sabor extra."
+                ]
+            },
+            'guacamole': {
+                title: "Aula 03: Guacamole Fresco e Autêntico",
+                description: "O dip mexicano que conquistou o mundo. Um guacamole autêntico é sobre a qualidade dos abacates e o equilíbrio perfeito entre o cremoso, o ácido, o picante e o fresco.",
+                calculator: { label: "Número de Abacates:", unit: "guacamole-input", base_value: 2, default_value: 2 },
+                details: { tempoPreparo: "10 min", tempoCozimento: "N/A", tempoDescanso: "N/A", rendimento: "Serve 4-6 pessoas", dificuldade: "Fácil", utensilios: ["Tigela", "Garfo", "Faca"] },
+                dicaDeMestre: "Para evitar que o guacamole oxide (escureça) rapidamente, o truque é o ácido. O sumo de lima é essencial. Outra dica é colocar o caroço do abacate dentro da tigela de guacamole até à hora de servir.",
+                ingredients: [
+                    { name: 'Abacates maduros', base_qty: 2, unit: 'unid.', scalable: true },
+                    { name: 'Cebola roxa pequena, picada finamente', base_qty: 0.5, unit: 'unid.', scalable: true },
+                    { name: 'Tomate, sem sementes e picado', base_qty: 1, unit: 'unid.', scalable: true },
+                    { name: 'Coentros frescos, picados', base_qty: 0.25, unit: 'chávena', scalable: true },
+                    { name: 'Malagueta (jalapeño ou serrano), picada', base_qty: 1, unit: 'unid.', scalable: true },
+                    { name: 'Sumo de Lima', base_qty: 1, unit: 'unid.', scalable: true },
+                    { name: 'Sal', base_qty: 0, unit: 'A gosto', scalable: false }
+                ],
+                steps: [
+                    { title: "Preparar os Ingredientes", description: "Pique finamente a cebola roxa, o tomate (sem as sementes para não aguar), os coentros e a malagueta. Esprema o sumo da lima.", porque: "Ter todos os ingredientes prontos ('mise en place') é crucial para montar o guacamole rapidamente assim que o abacate for aberto, minimizando a oxidação.", pontoCritico: "A quantidade de malagueta é a gosto. Comece com metade e adicione mais se desejar mais picante." },
+                    { title: "Amassar o Abacate", description: "Corte os abacates ao meio, retire o caroço e, com uma colher, retire a polpa para uma tigela. Com um garfo, amasse o abacate grosseiramente. Deixe alguns pedaços maiores.", porque: "Um bom guacamole deve ter textura. Amassar com um garfo em vez de um processador preserva pedaços de abacate, tornando a experiência mais interessante.", pontoCritico: "Use abacates que estejam maduros, mas não passados. Eles devem ceder a uma leve pressão." },
+                    { title: "Misturar e Temperar", description: "Adicione imediatamente o sumo de lima ao abacate amassado e misture. Junte a cebola, o tomate, os coentros e a malagueta. Tempere generosamente com sal e misture tudo delicadamente.", porque: "O sumo de lima adicionado logo no início é a principal defesa contra a oxidação. O sal realça todos os sabores dos ingredientes frescos.", pontoCritico: "Prove e ajuste o sal e o sumo de lima. O equilíbrio é a chave." }
+                ],
+                variacoes: [
+                    "<strong>Cremoso:</strong> Adicione uma colher de sopa de iogurte grego ou sour cream.",
+                    "<strong>Com Frutas:</strong> Adicione manga ou romã em cubos para um toque doce e exótico.",
+                    "<strong>Com Alho:</strong> Um dente de alho pequeno e muito bem picado pode ser adicionado para mais sabor."
+                ]
+            },
+            'coxinha': {
+                title: "Aula 04: Coxinha de Frango Cremosa",
+                description: "Domine a arte de fazer o salgadinho mais icónico do Brasil. Esta aula ensina o segredo de uma massa que cozinha no próprio caldo do frango, um recheio cremoso e a técnica para empanar e fritar para uma crocância perfeita.",
+                calculator: { label: "Coxinhas:", unit: "coxinha-input", base_value: 20, default_value: 20 },
+                details: { tempoPreparo: "1 hora", tempoCozimento: "40 min", tempoDescanso: "30 min", rendimento: "Aprox. 20 coxinhas", dificuldade: "Avançado", utensilios: ["Panela de pressão", "Panela funda para fritar", "Escumadeira"] },
+                dicaDeMestre: "O segredo do recheio cremoso é adicionar uma ou duas colheres de sopa de requeijão cremoso (tipo Catupiry) ao frango desfiado. Isso dá a humidade e o sabor característicos das melhores coxinhas.",
+                ingredients: [
+                    { name: 'Peito de Frango', base_qty: 500, unit: 'g', scalable: true, heading: 'Para o Recheio' },
+                    { name: 'Caldo de Galinha', base_qty: 1, unit: 'cubo', scalable: true },
+                    { name: 'Cebola picada', base_qty: 1, unit: 'unid.', scalable: true },
+                    { name: 'Alho picado', base_qty: 2, unit: 'dentes', scalable: true },
+                    { name: 'Requeijão cremoso', base_qty: 2, unit: 'c. de sopa', scalable: true },
+                    { name: 'Farinha de Trigo', base_qty: 2, unit: 'chávenas', scalable: true, heading: 'Para a Massa' },
+                    { name: 'Manteiga', base_qty: 2, unit: 'c. de sopa', scalable: true },
+                    { name: 'Leite', base_qty: 1, unit: 'chávena', scalable: true, heading: 'Para Empanar' },
+                    { name: 'Farinha de rosca (pão ralado)', base_qty: 2, unit: 'chávenas', scalable: true }
+                ],
+                steps: [
+                    { title: "Cozinhar e Desfiar o Frango", description: "Na panela de pressão, cozinhe o peito de frango com água suficiente para cobrir, o caldo de galinha, cebola e alho por cerca de 20 minutos após pegar pressão. Guarde o caldo! Desfie o frango e misture com o requeijão.", porque: "Usar o caldo do cozimento do frango para fazer a massa é o segredo para uma massa cheia de sabor. O requeijão garante um recheio húmido.", pontoCritico: "Depois de cozido, feche a panela de pressão e chacoalhe vigorosamente. O frango irá desfiar-se sozinho. É um ótimo truque!" },
+                    { title: "Fazer a Massa", description: "Numa panela, coe cerca de 2 chávenas do caldo do frango, adicione a manteiga e leve ao lume. Quando ferver, adicione a farinha de trigo de uma só vez. Mexa vigorosamente com uma colher de pau até a massa soltar do fundo da panela.", porque: "Cozinhar a farinha no caldo quente cria uma massa elástica e saborosa, que é a base da coxinha.", pontoCritico: "A massa estará pronta quando formar uma bola lisa e coesa. É preciso mexer com força." },
+                    { title: "Modelar as Coxinhas", description: "Deixe a massa arrefecer um pouco. Pegue numa porção da massa, abra um disco na palma da mão, coloque uma porção do recheio de frango no centro e feche, modelando no formato característico de uma gota ou 'coxa' de frango.", porque: "A modelagem correta garante que não há ar dentro da coxinha, o que poderia fazê-la rebentar durante a fritura.", pontoCritico: "Certifique-se de que a massa está bem fechada à volta do recheio." },
+                    { title: "Empanar e Fritar", description: "Passe cada coxinha primeiro no leite e depois na farinha de rosca, cobrindo bem. Frite em óleo quente (180°C), poucas de cada vez, até ficarem bem douradas e crocantes.", porque: "A dupla camada (leite e farinha de rosca) cria uma crosta mais espessa e crocante. Fritar poucas de cada vez mantém a temperatura do óleo estável, garantindo uma fritura perfeita e não gordurosa.", pontoCritico: "Se o óleo estiver muito quente, a coxinha doura por fora e fica crua por dentro. Se estiver muito frio, ela encharca de óleo." }
+                ],
+                variacoes: [
+                    "<strong>Com Jaca:</strong> Para uma versão vegetariana, use jaca verde desfiada no lugar do frango.",
+                    "<strong>Com Massa de Batata:</strong> Adicione uma batata cozida e amassada à massa para uma textura diferente."
+                ]
+            },
+            'dadinhos-tapioca': { title: "Aula 05: Dadinhos de Tapioca com Queijo Coalho" },
+            'espetada-caprese': { title: "Aula 06: Espetada Caprese" },
+            'kibe': { title: "Aula 07: Kibe Frito Tradicional" },
+            'batatas-bravas': { title: "Aula 08: Batatas Bravas com Aioli" },
+            'bolinho-bacalhau': { title: "Aula 09: Bolinho de Bacalhau Português" },
+            'camarao-alho': { title: "Aula 10: Camarão ao Alho e Óleo" },
+            'cogumelos-recheados': { title: "Aula 11: Cogumelos Recheados com Queijo e Ervas" },
+            'empanadas': { title: "Aula 12: Empanadas Argentinas de Carne" },
+            'tabua-frios': { title: "Aula 13: A Arte de Montar uma Tábua de Frios" },
+            'rolinho-primavera': { title: "Aula 14: Rolinho Primavera (Spring Roll) Caseiro" },
+            'vol-au-vent': { title: "Aula 15: Mini Vol-au-Vent de Camarão" }
+        };
+
+        // ===================================================================================
+        // FUNÇÕES GLOBAIS (NÃO MEXER)
+        // ===================================================================================
+        
+        const aulasList = document.getElementById('aulas-list');
+        const pageTitle = document.getElementById('page-title');
+        const receitasContainer = document.getElementById('receitas-container');
+        const backToListBtn = document.getElementById('back-to-list-btn');
+        const menuBtn = document.getElementById('menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+
+        // Menu Mobile
+        if(menuBtn && mobileMenu){
+            menuBtn.addEventListener('click', () => {
+                mobileMenu.classList.toggle('hidden');
+            });
+        }
+
+        const formatNumber = (num) => {
+            if (num < 1 && num > 0) return num.toFixed(2);
+            if (num % 1 !== 0) return num.toFixed(1);
+            return num;
+        };
+        
+        const updateIngredients = (recipeData, inputValue) => {
+            const list = document.getElementById(`ingredient-list-${recipeData.calculator.unit}`);
+            if (!list || !recipeData.ingredients) return;
+
+            const multiplier = inputValue / recipeData.calculator.base_value;
+            let html = '';
+            let currentHeading = '';
+
+            recipeData.ingredients.forEach(ing => {
+                if(ing.heading && ing.heading !== currentHeading) {
+                    currentHeading = ing.heading;
+                    html += `<h5 class="font-bold text-stone-700 mt-3 mb-1">${currentHeading}:</h5>`;
+                }
+
+                let qtyDisplay = '';
+                if (!ing.scalable) {
+                    qtyDisplay = ing.unit;
+                } else {
+                    const scaledQty = ing.base_qty * multiplier;
+                    qtyDisplay = `${formatNumber(scaledQty)} ${ing.unit}`;
+                }
+                
+                html += `
+                    <li class="ingredient-item">
+                        <label class="flex items-center p-1 rounded-md hover:bg-stone-100">
+                            <input type="checkbox" class="mr-2 h-4 w-4 text-amber-600 focus:ring-amber-500 border-stone-300 rounded">
+                            <span class="flex-1 flex justify-between">
+                                <span>${ing.name}</span>
+                                <span class="font-semibold text-right pl-2">${qtyDisplay}</span>
+                            </span>
+                        </label>
+                    </li>`;
+            });
+            list.innerHTML = html;
+        };
+
+        const generateRecipeHTML = (recipeData) => {
+             if (!recipeData.details) {
+                return `<div class="text-center p-10"><h2 class="text-3xl font-bold text-amber-700">${recipeData.title}</h2><p class="mt-4 text-stone-600">O conteúdo detalhado para esta aula estará disponível em breve. Obrigado pela sua paciência!</p></div>`;
+            }
+             return `
+                <div class="text-center">
+                    <h2 class="text-3xl md:text-4xl font-bold text-amber-700">${recipeData.title}</h2>
+                    <p class="mt-4 max-w-3xl mx-auto text-stone-600 text-lg">${recipeData.description}</p>
+                </div>
+                
+                <div class="mt-10 grid grid-cols-2 md:grid-cols-4 gap-4 text-center">
+                    <div class="bg-stone-100 p-4 rounded-lg flex flex-col justify-center items-center">
+                        <span class="text-2xl">⏳</span>
+                        <h4 class="font-bold text-stone-800">Preparo</h4>
+                        <p class="text-stone-600 text-sm">${recipeData.details.tempoPreparo}</p>
+                    </div>
+                    <div class="bg-stone-100 p-4 rounded-lg flex flex-col justify-center items-center">
+                        <span class="text-2xl">🍳</span>
+                        <h4 class="font-bold text-stone-800">Cozimento</h4>
+                        <p class="text-stone-600 text-sm">${recipeData.details.tempoCozimento}</p>
+                    </div>
+                    <div class="bg-stone-100 p-4 rounded-lg flex flex-col justify-center items-center">
+                        <span class="text-2xl">🍽️</span>
+                        <h4 class="font-bold text-stone-800">Rendimento</h4>
+                        <p class="text-stone-600 text-sm">${recipeData.details.rendimento}</p>
+                    </div>
+                    <div class="bg-stone-100 p-4 rounded-lg flex flex-col justify-center items-center">
+                        <span class="text-2xl">⭐</span>
+                        <h4 class="font-bold text-stone-800">Dificuldade</h4>
+                        <p class="text-stone-600 text-sm">${recipeData.details.dificuldade}</p>
+                    </div>
+                </div>
+
+                <div class="mt-12 grid grid-cols-1 lg:grid-cols-3 gap-x-12 gap-y-8">
+                    <div class="lg:col-span-1">
+                        <h3 class="text-2xl font-bold text-stone-800 mb-4 border-b-2 border-amber-500 pb-2">Planeamento</h3>
+                        <div class="bg-stone-50 p-4 rounded-lg">
+                            <label for="${recipeData.calculator.unit}" class="block text-lg text-stone-700 mb-2 font-bold">${recipeData.calculator.label}</label>
+                            <input type="number" id="${recipeData.calculator.unit}" value="${recipeData.calculator.default_value}" min="0.5" step="1" class="w-full p-2 border border-stone-300 rounded-lg focus:ring-2 focus:ring-amber-500">
+                        </div>
+                        <div class="mt-6">
+                            <h4 class="font-bold text-lg mb-2 text-stone-700">Checklist de Ingredientes:</h4>
+                            <ul class="space-y-1 text-stone-600 text-sm" id="ingredient-list-${recipeData.calculator.unit}"></ul>
+                        </div>
+                         <div class="mt-6">
+                            <h4 class="font-bold text-lg mb-2 text-stone-700">Utensílios Chave:</h4>
+                            <ul class="space-y-2 text-stone-600 list-disc list-inside text-sm">
+                                ${recipeData.details.utensilios.map(utensil => `<li>${utensil}</li>`).join('')}
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="lg:col-span-2">
+                        <h3 class="text-2xl font-bold text-stone-800 mb-4 border-b-2 border-amber-500 pb-2">Tutorial Detalhado</h3>
+                        <div class="space-y-6">
+                            ${recipeData.steps.map((step, index) => {
+                                if (step.isSubRecipe) {
+                                    return `
+                                    <div class="p-4 rounded-lg bg-amber-50 border-l-4 border-amber-400">
+                                        <h4 class="font-bold text-xl text-amber-800 mb-4">${step.title}</h4>
+                                        <div class="space-y-4">
+                                        ${step.subSteps.map(subStep => `
+                                            <div class="ml-4">
+                                                <h5 class="font-semibold text-lg text-stone-800 mb-1">${subStep.title}</h5>
+                                                <div class="prose prose-stone max-w-none text-sm">
+                                                    <p>${subStep.description}</p>
+                                                     <details class="mt-3 text-xs">
+                                                        <summary class="font-bold text-blue-800">Ver o porquê</summary>
+                                                        <div class="mt-2 bg-blue-50 text-blue-800 rounded-md p-3">${subStep.porque}</div>
+                                                     </details>
+                                                     <details class="mt-2 text-xs">
+                                                        <summary class="font-bold text-red-800">Ver ponto crítico</summary>
+                                                        <div class="mt-2 bg-red-50 text-red-800 rounded-md p-3">${subStep.pontoCritico}</div>
+                                                     </details>
+                                                </div>
+                                            </div>
+                                        `).join('')}
+                                        </div>
+                                    </div>`;
+                                }
+                                return `
+                                <div class="p-4 rounded-lg bg-stone-50 border-l-4 border-stone-200">
+                                    <h4 class="font-bold text-xl text-stone-800 mb-2"><span class="bg-amber-600 text-white rounded-full w-8 h-8 inline-flex items-center justify-center mr-3 text-base">${index + 1}</span> ${step.title}</h4>
+                                    <div class="prose prose-stone max-w-none pl-11 text-sm">
+                                        <p>${step.description}</p>
+                                        <details class="mt-3 text-xs">
+                                            <summary class="font-bold text-blue-800">Ver o porquê</summary>
+                                            <div class="mt-2 bg-blue-50 text-blue-800 rounded-md p-3">${step.porque}</div>
+                                        </details>
+                                        <details class="mt-2 text-xs">
+                                            <summary class="font-bold text-red-800">Ver ponto crítico</summary>
+                                            <div class="mt-2 bg-red-50 text-red-800 rounded-md p-3">${step.pontoCritico}</div>
+                                        </details>
+                                    </div>
+                                    ${step.timer ? `<div class="mt-4 pl-11 flex items-center gap-4"><button class="timer-btn bg-amber-500 text-white px-4 py-2 rounded-lg hover:bg-amber-600 transition text-sm" data-time="${step.timer}">Iniciar Timer (${Math.floor(step.timer/60)}m ${step.timer%60}s)</button><span class="timer-display text-lg font-mono font-bold text-amber-700"></span></div>` : ''}
+                                </div>`;
+                            }).join('')}
+                        </div>
+                        
+                        <div class="mt-8">
+                            <h3 class="text-2xl font-bold text-stone-800 mb-4 border-b-2 border-amber-500 pb-2">Variações e Dicas</h3>
+                            <div class="prose prose-stone max-w-none bg-amber-50 p-4 rounded-lg border-l-4 border-amber-400 text-sm">
+                                ${recipeData.variacoes.map(item => `<p>${item}</p>`).join('')}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            `;
+        };
+        
+        const setupPage = () => {
+            const hash = window.location.hash;
+            if (hash) {
+                const targetId = hash.substring(1);
+                const targetCard = document.querySelector(`[data-target='${targetId}']`);
+                if (targetCard) {
+                    const targetRecipe = document.getElementById(targetId);
+                    aulasList.classList.add('hidden');
+                    pageTitle.classList.add('hidden');
+                    receitasContainer.classList.remove('hidden');
+                    targetRecipe.classList.remove('hidden');
+                    window.scrollTo(0, 0);
+                }
+            }
+
+            document.querySelectorAll('.aula-card').forEach(card => {
+                const recipeId = card.dataset.target.replace('receita-', '');
+                const recipeData = aulas[recipeId];
+
+                if (recipeData) {
+                    const targetElement = document.getElementById(card.dataset.target);
+                    targetElement.innerHTML = generateRecipeHTML(recipeData);
+                    
+                    if (recipeData.calculator) {
+                        const input = document.getElementById(recipeData.calculator.unit);
+                        if (input) {
+                            input.addEventListener('input', (e) => {
+                                updateIngredients(recipeData, e.target.value);
+                            });
+                            updateIngredients(recipeData, input.value);
+                        }
+                    }
+                }
+
+                card.addEventListener('click', () => {
+                    const targetId = card.dataset.target;
+                    const targetRecipe = document.getElementById(targetId);
+                    
+                    aulasList.classList.add('hidden');
+                    pageTitle.classList.add('hidden');
+                    receitasContainer.classList.remove('hidden');
+                    targetRecipe.classList.remove('hidden');
+                    window.location.hash = targetId;
+                    window.scrollTo(0, 0);
+                });
+            });
+
+            backToListBtn.addEventListener('click', () => {
+                aulasList.classList.remove('hidden');
+                pageTitle.classList.remove('hidden');
+                receitasContainer.classList.add('hidden');
+                document.querySelectorAll('.receita-content').forEach(recipe => {
+                    recipe.classList.add('hidden');
+                });
+                history.pushState("", document.title, window.location.pathname + window.location.search);
+                window.scrollTo(0, 0);
+            });
+            
+            receitasContainer.addEventListener('click', (event) => {
+                if (event.target.classList.contains('timer-btn')) {
+                    const button = event.target;
+                    if (button.classList.contains('active')) return;
+
+                    let timeInSeconds = parseInt(button.dataset.time, 10);
+                    const display = button.nextElementSibling;
+                    
+                    button.classList.add('active');
+                    button.disabled = true;
+                    
+                    const interval = setInterval(() => {
+                        const minutes = Math.floor(timeInSeconds / 60);
+                        const seconds = timeInSeconds % 60;
+                        if(display) { display.textContent = `${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`; }
+                        
+                        if (timeInSeconds <= 0) {
+                            clearInterval(interval);
+                            if(display) display.textContent = "Tempo esgotado!";
+                            button.classList.remove('active');
+                            button.disabled = false;
+                        } else { timeInSeconds--; }
+                    }, 1000);
+                }
+            });
+        };
+
+        setupPage();
+    });
+    </script>
+</body>
+</html>
