@@ -1,0 +1,672 @@
+<!DOCTYPE html>
+<html lang="pt-BR" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Massas e Molhos - Mestre Culinário</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Lato:wght@400;700&display=swap');
+        body { font-family: 'Lato', sans-serif; background-color: #f8f7f4; color: #3d3d3d; }
+        h1, h2, h3, h4, .nav-link { font-family: 'Playfair Display', serif; }
+        
+        /* Estilos para interatividade */
+        .aula-card {
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            cursor: pointer;
+        }
+        .aula-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.05), 0 4px 6px -4px rgb(0 0 0 / 0.05);
+        }
+        
+        /* Checklist de Ingredientes */
+        .ingredient-item input[type="checkbox"] {
+            display: none;
+        }
+        .ingredient-item span {
+            transition: all 0.2s ease;
+            cursor: pointer;
+        }
+        .ingredient-item input[type="checkbox"]:checked + span {
+            text-decoration: line-through;
+            opacity: 0.6;
+        }
+
+        /* Acordion/Sanfona para os Passos */
+        details > summary {
+            cursor: pointer;
+            list-style: none;
+            display: inline-flex;
+            align-items: center;
+            transition: color 0.2s ease;
+        }
+        details > summary::-webkit-details-marker {
+            display: none;
+        }
+        details > summary::before {
+            content: '▶';
+            margin-right: 8px;
+            font-size: 0.7em;
+            transition: transform 0.2s ease-in-out;
+        }
+        details[open] > summary::before {
+            transform: rotate(90deg);
+        }
+
+        /* Tooltips para termos técnicos */
+        .tooltip {
+            position: relative;
+            cursor: help;
+            border-bottom: 2px dotted #ca8a04;
+            font-weight: bold;
+        }
+        .tooltip::after {
+            content: attr(data-tooltip); /* Puxa o texto do atributo data-tooltip */
+            position: absolute;
+            bottom: 125%;
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 10;
+            
+            /* Estilos da caixa */
+            width: 220px;
+            background-color: #3d3d3d;
+            color: #fff;
+            font-family: 'Lato', sans-serif;
+            font-weight: normal;
+            text-align: center;
+            padding: 8px;
+            border-radius: 6px;
+            
+            /* Animação */
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 0.3s ease;
+        }
+        .tooltip:hover::after {
+            opacity: 1;
+            visibility: visible;
+        }
+    </style>
+</head>
+<body class="antialiased">
+    <header class="bg-white/90 backdrop-blur-lg sticky top-0 z-50 shadow-md">
+        <nav class="container mx-auto px-6 py-4">
+            <div class="flex justify-between items-center">
+                <a href="index.html" class="text-3xl font-bold text-stone-800">Mestre<span class="text-amber-600">Culinário</span></a>
+
+                <form action="pesquisa.html" method="GET" class="hidden md:flex items-center border border-stone-300 rounded-lg overflow-hidden w-1/3">
+                    <input type="search" name="q" placeholder="Buscar uma aula ou técnica..." class="px-4 py-2 w-full focus:outline-none">
+                    <button type="submit" class="bg-amber-600 text-white p-2 hover:bg-amber-700">
+                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path></svg>
+                    </button>
+                </form>
+
+                 <button id="menu-btn" class="md:hidden text-stone-600 hover:text-amber-600">
+                     <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path></svg>
+                 </button>
+            </div>
+            <div id="mobile-menu" class="hidden md:hidden mt-4 flex flex-col space-y-2">
+                 <form action="pesquisa.html" method="GET" class="flex items-center border border-stone-300 rounded-lg overflow-hidden mt-4">
+                    <input type="search" name="q" placeholder="Buscar..." class="px-4 py-2 w-full focus:outline-none">
+                    <button type="submit" class="bg-amber-600 text-white p-2 hover:bg-amber-700">
+                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path></svg>
+                    </button>
+                </form>
+            </div>
+        </nav>
+    </header>
+    <main class="container mx-auto px-6 py-8 md:py-12">
+        <section id="page-title" class="text-center mb-16">
+            <h1 class="text-4xl md:text-6xl font-bold text-stone-800">Massas e <span class="text-amber-600">Molhos</span></h1>
+            <p class="mt-4 max-w-2xl mx-auto text-stone-600">Da simplicidade de um Aglio e Olio à complexidade de uma lasanha, domine a arte italiana que conquistou o mundo.</p>
+        </section>
+
+        <div id="aulas-list" class="space-y-8 max-w-5xl mx-auto">
+            <div class="aula-card bg-white p-6 rounded-lg shadow-lg" data-target="receita-massa-fresca"><h2 class="text-2xl md:text-3xl font-bold text-amber-700">Aula 01: Massa Fresca Caseira (A Base de Tudo)</h2><p class="text-stone-600 mt-2">Aprenda a fazer a massa de ovos do zero. Uma habilidade fundamental que muda completamente a relação com o prato.</p></div>
+            <div class="aula-card bg-white p-6 rounded-lg shadow-lg" data-target="receita-pesto"><h2 class="text-2xl md:text-3xl font-bold text-amber-700">Aula 02: Molho Pesto Genovese Tradicional</h2><p class="text-stone-600 mt-2">Uma aula sobre molhos frescos, sem cozimento, focada na qualidade dos ingredientes.</p></div>
+            <div class="aula-card bg-white p-6 rounded-lg shadow-lg" data-target="receita-aglio-olio"><h2 class="text-2xl md:text-3xl font-bold text-amber-700">Aula 03: Spaghetti Aglio, Olio e Peperoncino</h2><p class="text-stone-600 mt-2">A receita mais simples que ensina a técnica crucial de emulsionar o azeite com a água da cozedura.</p></div>
+            <div class="aula-card bg-white p-6 rounded-lg shadow-lg" data-target="receita-carbonara"><h2 class="text-2xl md:text-3xl font-bold text-amber-700">Aula 04: Spaghetti alla Carbonara (O Original)</h2><p class="text-stone-600 mt-2">Uma aula sobre a técnica de cozinhar com o calor residual da massa para criar um molho cremoso sem natas.</p></div>
+            <div class="aula-card bg-white p-6 rounded-lg shadow-lg" data-target="receita-alfredo"><h2 class="text-2xl md:text-3xl font-bold text-amber-700">Aula 05: Molho Alfredo Clássico</h2><p class="text-stone-600 mt-2">Outro favorito mundial, ensinando a criar um molho de queijo e manteiga rico e aveludado.</p></div>
+            <div class="aula-card bg-white p-6 rounded-lg shadow-lg" data-target="receita-cacio-pepe"><h2 class="text-2xl md:text-3xl font-bold text-amber-700">Aula 06: Cacio e Pepe</h2><p class="text-stone-600 mt-2">Parece simples (queijo e pimenta), mas é uma das receitas mais técnicas. Uma verdadeira prova de mestre na arte da emulsão.</p></div>
+            <div class="aula-card bg-white p-6 rounded-lg shadow-lg" data-target="receita-nhoque"><h2 class="text-2xl md:text-3xl font-bold text-amber-700">Aula 07: Nhoque de Batata (Gnocchi) na Manteiga e Sálvia</h2><p class="text-stone-600 mt-2">Ensinar a trabalhar com a massa de batata para criar nhoques leves e que não desmancham.</p></div>
+            <div class="aula-card bg-white p-6 rounded-lg shadow-lg" data-target="receita-ravioli"><h2 class="text-2xl md:text-3xl font-bold text-amber-700">Aula 08: Ravioli Caseiro com Ricota e Espinafre</h2><p class="text-stone-600 mt-2">O primeiro passo no mundo das massas recheadas.</p></div>
+            <div class="aula-card bg-white p-6 rounded-lg shadow-lg" data-target="receita-lasanha"><h2 class="text-2xl md:text-3xl font-bold text-amber-700">Aula 09: Lasanha à Bolonhesa Clássica</h2><p class="text-stone-600 mt-2">A aula-projeto. Unindo a massa fresca, um bom molho bolonhesa e o molho bechamel.</p></div>
+            <div class="aula-card bg-white p-6 rounded-lg shadow-lg" data-target="receita-ragu"><h2 class="text-2xl md:text-3xl font-bold text-amber-700">Aula 10: Molho Ragu de Linguiça e Vinho Tinto</h2><p class="text-stone-600 mt-2">Um molho mais rústico e complexo, que ensina sobre cozimento lento e profundidade de sabor.</p></div>
+        </div>
+
+        <div id="receitas-container" class="hidden">
+            <button id="back-to-list-btn" class="mb-8 inline-flex items-center text-amber-700 hover:text-amber-800 font-bold"><svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-2" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M12.707 5.293a1 1 0 010 1.414L9.414 10l3.293 3.293a1 1 0 01-1.414 1.414l-4-4a1 1 0 010-1.414l4-4a1 1 0 011.414 0z" clip-rule="evenodd" /></svg>Voltar ao Índice de Aulas</button>
+            <div id="receita-massa-fresca" class="receita-content bg-white p-8 rounded-lg shadow-xl max-w-7xl mx-auto hidden"></div>
+            <div id="receita-pesto" class="receita-content bg-white p-8 rounded-lg shadow-xl max-w-7xl mx-auto hidden"></div>
+            <div id="receita-aglio-olio" class="receita-content bg-white p-8 rounded-lg shadow-xl max-w-7xl mx-auto hidden"></div>
+            <div id="receita-carbonara" class="receita-content bg-white p-8 rounded-lg shadow-xl max-w-7xl mx-auto hidden"></div>
+            <div id="receita-alfredo" class="receita-content bg-white p-8 rounded-lg shadow-xl max-w-7xl mx-auto hidden"></div>
+            <div id="receita-cacio-pepe" class="receita-content bg-white p-8 rounded-lg shadow-xl max-w-7xl mx-auto hidden"></div>
+            <div id="receita-nhoque" class="receita-content bg-white p-8 rounded-lg shadow-xl max-w-7xl mx-auto hidden"></div>
+            <div id="receita-ravioli" class="receita-content bg-white p-8 rounded-lg shadow-xl max-w-7xl mx-auto hidden"></div>
+            <div id="receita-lasanha" class="receita-content bg-white p-8 rounded-lg shadow-xl max-w-7xl mx-auto hidden"></div>
+            <div id="receita-ragu" class="receita-content bg-white p-8 rounded-lg shadow-xl max-w-7xl mx-auto hidden"></div>
+        </div>
+    </main>
+    <footer class="bg-white border-t mt-16"><div class="container mx-auto px-6 py-8 text-center text-stone-600"><p>&copy; 2024 Mestre Culinário. Todos os direitos reservados.</p></div></footer>
+
+    <script src="database.js"></script>
+    <script>
+    document.addEventListener('DOMContentLoaded', () => {
+
+        const aulas = {
+            'massa-fresca': {
+                title: "Aula 01: Massa Fresca Caseira (A Base de Tudo)",
+                description: "Aprenda a fazer massa de ovos fresca do zero. Uma habilidade transformadora que eleva qualquer prato de massa a um novo patamar. Vamos focar na proporção clássica e na técnica de amassar e esticar a massa.",
+                calculator: { label: "Porções (100g por pessoa):", unit: "massa-fresca-input", base_value: 4, default_value: 4 },
+                details: { tempoPreparo: "30 min", tempoCozimento: "2-4 min", tempoDescanso: "30 min", rendimento: "Serve 4 pessoas", dificuldade: "Intermediário", utensilios: ["Bancada de trabalho limpa", "Rolo da massa ou máquina de massa", "Faca afiada"] },
+                dicaDeMestre: "O descanso da massa não é opcional. É durante este tempo que o glúten, desenvolvido durante a amassadura, relaxa. Tentar esticar uma massa que não descansou é uma batalha perdida; ela será elástica e irá encolher constantemente.",
+                ingredients: [
+                    { name: 'Farinha de Trigo Tipo 00 (ou normal)', base_qty: 400, unit: 'g', scalable: true },
+                    { name: 'Ovos grandes', base_qty: 4, unit: 'unid.', scalable: true },
+                    { name: 'Sêmola de trigo (para polvilhar)', base_qty: 0, unit: 'A gosto', scalable: false }
+                ],
+                steps: [
+                    { title: "O Vulcão de Farinha", description: "Numa bancada limpa, faça um monte com a farinha e crie um buraco no centro, como um vulcão. Quebre os ovos dentro do vulcão.", porque: "Este método tradicional permite incorporar os ovos na farinha de forma gradual e controlada, evitando uma grande confusão.", pontoCritico: "Faça um 'vulcão' com paredes altas o suficiente para que os ovos não vazem para os lados." },
+                    { title: "A Amassadura", description: "Com um garfo, comece a bater os ovos, incorporando lentamente a farinha das paredes do vulcão. Quando a massa começar a ficar muito espessa, use as mãos. Amasse vigorosamente por cerca de 10 minutos, empurrando a massa para a frente com a base da mão e dobrando-a sobre si mesma.", porque: "A amassadura desenvolve as redes de glúten na farinha, o que dá à massa a sua estrutura elástica e a textura 'al dente' depois de cozida.", pontoCritico: "A massa está pronta quando estiver lisa, elástica e não pegajosa. Se estiver muito seca, adicione uma colher de chá de água; se estiver muito pegajosa, polvilhe um pouco de farinha." },
+                    { title: "O Descanso", description: "Forme uma bola com a massa, enrole-a em película aderente ou cubra com uma tigela e deixe-a descansar à temperatura ambiente por pelo menos 30 minutos.", porque: "O descanso relaxa o glúten, tornando a massa muito mais fácil de esticar. Saltar este passo resultará numa massa que encolhe e é difícil de trabalhar.", pontoCritico: "Cubra bem a massa para que ela não seque na superfície, o que criaria uma crosta." },
+                    { title: "Esticar e Cortar", description: "Divida a massa em 4 porções. Achate uma porção e comece a esticá-la com um rolo ou através da máquina de massa, começando na espessura mais grossa e diminuindo gradualmente. Estique até obter uma folha fina. Polvilhe com sêmola, enrole e corte na largura desejada (tagliatelle, fettuccine).", porque: "Esticar a massa de forma gradual alinha as redes de glúten, criando uma textura sedosa. A sêmola evita que a massa cole a si mesma.", pontoCritico: "Trabalhe com uma porção de massa de cada vez, mantendo as outras cobertas para não secarem." }
+                ],
+                variacoes: [
+                    "<strong>Massa Verde:</strong> Adicione 100g de espinafres cozidos, espremidos e picados aos ovos antes de os misturar.",
+                    "<strong>Massa de Sêmola:</strong> Para uma massa sem ovos (típica do sul da Itália), use 400g de sêmola de trigo duro e cerca de 200ml de água morna.",
+                    "<strong>Formatos:</strong> Uma vez esticada, a massa pode ser usada para lasanha, ravioli ou outros formatos recheados."
+                ]
+            },
+            'pesto': {
+                title: "Aula 02: Molho Pesto Genovese Tradicional",
+                description: "Aprenda a fazer o verdadeiro Pesto de Gênova, um molho vibrante, fresco e aromático que não vai ao lume. O segredo está na qualidade dos ingredientes e na técnica para não oxidar o manjericão.",
+                calculator: { label: "Porções:", unit: "pesto-input", base_value: 4, default_value: 4 },
+                details: { tempoPreparo: "15 min", tempoCozimento: "N/A", tempoDescanso: "N/A", rendimento: "Serve 4-6 pessoas", dificuldade: "Fácil", utensilios: ["Processador de alimentos ou almofariz", "Espátula"] },
+                dicaDeMestre: "Para manter a cor verde vibrante do manjericão, coloque a lâmina do processador e a tigela no congelador por 15 minutos antes de usar. O calor da fricção é o que oxida e escurece o manjericão. Manter tudo frio minimiza este efeito.",
+                ingredients: [
+                    { name: 'Manjericão fresco (folhas)', base_qty: 2, unit: 'chávenas grandes', scalable: true },
+                    { name: 'Queijo Parmesão, ralado na hora', base_qty: 0.5, unit: 'chávena', scalable: true },
+                    { name: 'Queijo Pecorino, ralado na hora (opcional)', base_qty: 2, unit: 'c. de sopa', scalable: true },
+                    { name: 'Pinoli (ou nozes)', base_qty: 3, unit: 'c. de sopa', scalable: true },
+                    { name: 'Alho', base_qty: 2, unit: 'dentes', scalable: true },
+                    { name: 'Azeite Extra Virgem de boa qualidade', base_qty: 0.5, unit: 'chávena', scalable: true },
+                    { name: 'Sal grosso', base_qty: 0.5, unit: 'c. de chá', scalable: false }
+                ],
+                steps: [
+                    { title: "Preparar os Ingredientes", description: "Lave e seque completamente as folhas de manjericão. Se usar nozes em vez de pinoli, pode tostá-las levemente numa frigideira seca para realçar o sabor.", porque: "Qualquer água nas folhas de manjericão pode diluir o molho e afetar a sua conservação. Secar bem é crucial.", pontoCritico: "Use queijo ralado na hora. O queijo pré-ralado contém antiaglomerantes que alteram a textura e o sabor do molho." },
+                    { title: "Processar o Pesto", description: "No processador de alimentos, junte o manjericão, os pinoli (ou nozes), o alho, os queijos e o sal. Pulse algumas vezes para picar tudo grosseiramente. Com o processador a funcionar em velocidade baixa, adicione o azeite em fio, até obter uma emulsão cremosa.", porque: "Adicionar o azeite em fio ajuda a criar uma emulsão estável, evitando que o molho se separe. Processar o mínimo possível também ajuda a evitar a oxidação do manjericão.", pontoCritico: "Não processe demais até virar uma pasta lisa. O pesto deve ter alguma textura." }
+                ],
+                variacoes: [
+                    "<strong>Com Rúcula:</strong> Substitua metade do manjericão por rúcula para um sabor mais picante.",
+                    "<strong>Com Tomate Seco:</strong> Adicione alguns tomates secos para um 'pesto rosso'.",
+                    "<strong>Vegano:</strong> Substitua os queijos por levedura nutricional e um pouco mais de frutos secos."
+                ]
+            },
+            'aglio-olio': {
+                title: "Aula 03: Spaghetti Aglio, Olio e Peperoncino",
+                description: "A receita que separa os amadores dos mestres. Com apenas 3 ingredientes principais, esta aula foca-se na técnica mais importante da cozinha italiana: a <span class='tooltip' data-tooltip='Mistura estável de gordura (azeite) e água (da cozedura da massa) para criar um molho cremoso.'>emulsão</span>. Aprenda a criar um molho cremoso sem usar natas ou queijo.",
+                calculator: { label: "Gramas de Spaghetti:", unit: "aglio-olio-input", base_value: 400, default_value: 400 },
+                details: { tempoPreparo: "5 min", tempoCozimento: "10-12 min", tempoDescanso: "N/A", rendimento: "Serve 4 pessoas", dificuldade: "Intermediário", utensilios: ["Panela grande para a massa", "Frigideira larga", "Pinça de cozinha"] },
+                dicaDeMestre: "O segredo é a água do cozimento da massa. Ela está cheia de amido, que é um poderoso agente emulsionante. Nunca escorra a massa completamente; transfira-a diretamente da panela para a frigideira com uma pinça, trazendo consigo um pouco dessa água preciosa.",
+                ingredients: [
+                    { name: 'Spaghetti', base_qty: 400, unit: 'g', scalable: true },
+                    { name: 'Alho, fatiado finamente', base_qty: 4, unit: 'dentes', scalable: true },
+                    { name: 'Azeite Extra Virgem', base_qty: 6, unit: 'c. de sopa', scalable: true },
+                    { name: 'Malagueta seca (Peperoncino) ou flocos de pimenta', base_qty: 1, unit: 'unid.', scalable: true },
+                    { name: 'Salsa fresca picada', base_qty: 0, unit: 'A gosto', scalable: false }
+                ],
+                steps: [
+                    { title: "Cozinhar a Massa", description: "Cozinhe o spaghetti em bastante água a ferver com sal, seguindo as instruções da embalagem, mas retire-o 2 minutos antes do tempo indicado para 'al dente'.", porque: "A massa irá terminar de cozinhar na frigideira com o molho. Retirá-la antes garante que ela não ficará demasiado cozida e que absorverá o sabor do molho.", pontoCritico: "A água deve estar salgada como o mar. É a única oportunidade de temperar a massa por dentro." },
+                    { title: "Infundir o Azeite", description: "Enquanto a massa cozinha, aqueça o azeite numa frigideira larga em lume médio-baixo. Adicione o alho fatiado e a malagueta. Cozinhe lentamente até o alho ficar dourado pálido e perfumado.", porque: "O calor baixo infunde o azeite com o sabor do alho sem o queimar. Alho queimado é amargo e estraga o prato.", pontoCritico: "Este processo é delicado. Se o alho começar a ganhar cor demasiado rápido, retire a frigideira do lume." },
+                    { title: "A Magia da Emulsão", description: "Quando a massa estiver pronta, use uma pinça para a transferir diretamente para a frigideira. Adicione uma concha da água do cozimento da massa. Aumente o lume e comece a agitar e a mexer vigorosamente a massa na frigideira.", porque: "A combinação do amido da água, do azeite e da agitação cria uma emulsão, um molho cremoso que adere perfeitamente à massa. Isto é o que os italianos chamam de 'mantecatura'.", pontoCritico: "Continue a agitar. Você verá o líquido a transformar-se num molho opaco e aveludado. Se secar, adicione mais um pouco de água da massa." },
+                    { title: "Finalizar", description: "Quando a massa estiver 'al dente' e coberta por um molho cremoso, retire do lume. Junte a salsa fresca picada e sirva imediatamente.", porque: "A salsa fresca adiciona uma nota de frescura que corta a riqueza do azeite.", pontoCritico: "Este prato deve ser servido imediatamente, pois o molho pode secar se esperar." }
+                ],
+                variacoes: [
+                    "<strong>Com Anchovas:</strong> Adicione 2 filetes de anchova ao azeite com o alho para um sabor mais profundo e salgado.",
+                    "<strong>Com Brócolos:</strong> Cozinhe alguns floretes de brócolos junto com a massa e salteie-os na frigideira.",
+                    "<strong>Com Limão:</strong> Adicione raspas de limão no final para um toque de acidez."
+                ]
+            },
+            'carbonara': {
+                title: "Aula 04: Spaghetti alla Carbonara (O Original)",
+                description: "Aprenda a fazer o verdadeiro Carbonara, um dos pratos mais amados e mal-entendidos de Roma. O segredo é um molho incrivelmente cremoso feito apenas com gemas de ovo, queijo e a gordura do guanciale, sem uma única gota de natas.",
+                calculator: { label: "Gramas de Spaghetti:", unit: "carbonara-input", base_value: 320, default_value: 320 },
+                details: { tempoPreparo: "10 min", tempoCozimento: "12-15 min", tempoDescanso: "N/A", rendimento: "Serve 4 pessoas", dificuldade: "Avançado", utensilios: ["Frigideira larga", "Tigela", "Pinça de cozinha"] },
+                dicaDeMestre: "O controlo da temperatura é tudo. A massa deve estar quente o suficiente para cozinhar as gemas e derreter o queijo, mas não tão quente a ponto de transformar as gemas em ovos mexidos. Trabalhe rápido e, se necessário, faça a mistura final fora do lume.",
+                ingredients: [
+                    { name: 'Spaghetti ou Rigatoni', base_qty: 320, unit: 'g', scalable: true },
+                    { name: 'Guanciale (bochecha de porco curada)', base_qty: 150, unit: 'g', scalable: true },
+                    { name: 'Gemas de Ovo', base_qty: 4, unit: 'unid.', scalable: true },
+                    { name: 'Queijo Pecorino Romano, ralado fino', base_qty: 100, unit: 'g', scalable: true },
+                    { name: 'Pimenta Preta moída na hora', base_qty: 0, unit: 'Muita!', scalable: false }
+                ],
+                steps: [
+                    { title: "O Creme de Ovos e Queijo", description: "Numa tigela, bata as gemas com a maior parte do queijo Pecorino e uma quantidade generosa de pimenta preta moída na hora, até obter uma pasta espessa.", porque: "Preparar este creme à parte permite um controlo total sobre a sua consistência e garante que os ingredientes se misturam de forma homogénea antes de encontrarem o calor da massa.", pontoCritico: "Use Pecorino Romano para o sabor autêntico, que é salgado e picante. Se não encontrar, o Parmesão é o segundo melhor substituto." },
+                    { title: "Cozinhar o Guanciale", description: "Corte o guanciale em tiras ou cubos. Numa frigideira fria, cozinhe o guanciale em lume médio-baixo até a gordura derreter e a carne ficar estaladiça e dourada. Retire o guanciale da frigideira, mas deixe a gordura derretida na panela.", porque: "Começar com a frigideira fria permite que a gordura do guanciale derreta lentamente, resultando em pedaços crocantes e uma gordura líquida e saborosa, que é um componente essencial do molho.", pontoCritico: "Não use azeite. O guanciale tem gordura suficiente. Se não encontrar guanciale, pode usar pancetta, mas o sabor não será o mesmo." },
+                    { title: "A União Mágica", description: "Cozinhe a massa em água salgada. Quando estiver 'al dente', transfira-a diretamente para a frigideira com a gordura do guanciale. Adicione uma concha da água da massa e mexa. Retire a frigideira do lume. Despeje o creme de ovos e queijo sobre a massa e mexa rapidamente e vigorosamente.", porque: "Este é o momento crucial. O calor da massa e da gordura irá cozinhar as gemas suavemente, enquanto o amido da água da massa ajuda a criar um molho cremoso e emulsionado. Fazer isto fora do lume evita que os ovos talhem.", pontoCritico: "Trabalhe muito rápido. Se a mistura parecer muito espessa, adicione mais um pouco de água da massa até atingir a cremosidade desejada." },
+                    { title: "Servir", description: "Junte a maior parte do guanciale crocante, misture e sirva imediatamente. Finalize cada prato com o resto do guanciale, mais queijo Pecorino e mais pimenta preta.", porque: "O Carbonara espera por ninguém. Deve ser comido assim que é feito, enquanto o molho está perfeitamente cremoso.", pontoCritico: "A pimenta preta moída na hora é um ingrediente chave, não apenas uma decoração." }
+                ],
+                variacoes: [
+                    "<strong>Menos Intenso:</strong> Pode usar uma mistura de Pecorino e Parmesão se achar o Pecorino demasiado forte.",
+                    "<strong>Com um Ovo Inteiro:</strong> Algumas receitas usam 3 gemas e 1 ovo inteiro para um molho um pouco mais leve.",
+                    "<strong>Atenção:</strong> Adicionar natas (creme de leite) não é uma variação, é outra receita. O verdadeiro Carbonara não leva natas."
+                ]
+            },
+            'alfredo': {
+                title: "Aula 05: Molho Alfredo Clássico",
+                description: "Aprenda a fazer o Fettuccine Alfredo original, um prato luxuoso e reconfortante que, na sua forma mais pura, leva apenas três ingredientes: massa, manteiga e queijo Parmigiano-Reggiano.",
+                calculator: { label: "Gramas de Fettuccine:", unit: "alfredo-input", base_value: 400, default_value: 400 },
+                details: { tempoPreparo: "5 min", tempoCozimento: "10 min", tempoDescanso: "N/A", rendimento: "Serve 4 pessoas", dificuldade: "Fácil", utensilios: ["Panela grande", "Frigideira larga", "Pinça de cozinha"] },
+                dicaDeMestre: "A qualidade dos ingredientes é tudo nesta receita. Use a melhor manteiga e, crucialmente, um pedaço de queijo Parmigiano-Reggiano verdadeiro, ralado na hora. A diferença de sabor e de como ele derrete é abismal.",
+                ingredients: [
+                    { name: 'Fettuccine fresco ou seco', base_qty: 400, unit: 'g', scalable: true },
+                    { name: 'Manteiga sem sal de boa qualidade', base_qty: 100, unit: 'g', scalable: true },
+                    { name: 'Queijo Parmigiano-Reggiano, ralado fino', base_qty: 150, unit: 'g', scalable: true },
+                    { name: 'Pimenta Preta e Noz-moscada (opcional)', base_qty: 0, unit: 'A gosto', scalable: false }
+                ],
+                steps: [
+                    { title: "Preparar a Base", description: "Cozinhe o fettuccine em água abundante e salgada. Numa frigideira larga, derreta a manteiga em lume muito baixo. Adicione uma concha da água do cozimento da massa à manteiga e mexa para criar uma emulsão inicial.", porque: "A água do cozimento, rica em amido, é o ingrediente secreto que transforma a manteiga e o queijo num molho aveludado, em vez de uma separação gordurosa.", pontoCritico: "Não deixe a manteiga ferver ou queimar. O lume deve ser o mais baixo possível." },
+                    { title: "A Emulsão Final", description: "Transfira a massa 'al dente' diretamente para a frigideira com a manteiga. Adicione o queijo Parmigiano-Reggiano ralado e mais uma concha de água da massa. Comece a mexer e a saltear vigorosamente.", porque: "A agitação constante e o calor da massa são o que cria a emulsão. O queijo derrete e, com a ajuda do amido da água, une-se à manteiga para cobrir cada fio de massa num molho cremoso.", pontoCritico: "Este processo deve ser rápido. Se o molho parecer muito espesso, adicione mais água da massa. Se parecer muito líquido, continue a mexer em lume baixo até engrossar." },
+                    { title: "Servir Imediatamente", description: "Assim que a massa estiver perfeitamente coberta por um molho cremoso e aveludado, sirva imediatamente. Finalize com um pouco mais de queijo e uma pitada de pimenta preta ou noz-moscada, se desejar.", porque: "Como o Carbonara, o Alfredo deve ser comido no momento em que é feito, antes que o molho comece a solidificar.", pontoCritico: "Não reaqueça este prato. O molho irá separar-se." }
+                ],
+                variacoes: [
+                    "<strong>Versão Americana (com Natas):</strong> A versão popularizada nos EUA inclui natas (creme de leite) para um molho mais pesado e estável. Aqueça as natas com a manteiga antes de adicionar a massa e o queijo.",
+                    "<strong>Com Frango Grelhado:</strong> Sirva com tiras de peito de frango grelhado por cima.",
+                    "<strong>Com Cogumelos:</strong> Salteie alguns cogumelos na manteiga antes de adicionar a massa."
+                ]
+            },
+            'cacio-pepe': {
+                title: "Aula 06: Cacio e Pepe",
+                description: "A trindade sagrada de Roma: queijo, pimenta e massa. Parece a receita mais simples do mundo, mas dominar o Cacio e Pepe é um verdadeiro teste de técnica. Aprenda a criar um molho perfeitamente cremoso e sem grumos.",
+                calculator: { label: "Gramas de Massa (Tonnarelli, Spaghetti):", unit: "cacio-pepe-input", base_value: 320, default_value: 320 },
+                details: { tempoPreparo: "5 min", tempoCozimento: "10-12 min", tempoDescanso: "N/A", rendimento: "Serve 4 pessoas", dificuldade: "Avançado", utensilios: ["Frigideira larga", "Moedor de pimenta", "Tigela"] },
+                dicaDeMestre: "O segredo para evitar que o queijo forme grumos é criar uma pasta de queijo e água fria antes de a adicionar à massa quente, e fazer a mistura final fora do lume. O choque de temperatura muito alto é o que faz o queijo talhar.",
+                ingredients: [
+                    { name: 'Tonnarelli ou Spaghetti alla Chitarra', base_qty: 320, unit: 'g', scalable: true },
+                    { name: 'Queijo Pecorino Romano, ralado muito fino', base_qty: 200, unit: 'g', scalable: true },
+                    { name: 'Pimenta Preta em grão', base_qty: 1, unit: 'c. de sopa', scalable: true }
+                ],
+                steps: [
+                    { title: "A Pimenta e o Queijo", description: "Toste os grãos de pimenta numa frigideira seca em lume médio até libertarem o seu aroma. Moa-os grosseiramente. Numa tigela, misture o Pecorino ralado com um pouco de água FRIA, mexendo até formar uma pasta espessa e lisa.", porque: "Tostar a pimenta liberta os seus óleos essenciais, tornando o seu sabor muito mais complexo. Criar a pasta de queijo previamente é a técnica chave para uma emulsão suave e sem grumos.", pontoCritico: "Rale o queijo o mais fino possível, como pó. Isso ajuda a derreter de forma mais rápida e uniforme." },
+                    { title: "Cozinhar a Massa", description: "Cozinhe a massa em água a ferver com pouco sal (o Pecorino já é muito salgado). Retire a massa 2 minutos antes do tempo 'al dente'.", porque: "A água do cozimento precisa de estar extra concentrada em amido. Usar menos água do que o normal ajuda. A massa terminará de cozinhar na frigideira.", pontoCritico: "Guarde pelo menos duas chávenas da água do cozimento. Ela é o ingrediente mais importante do molho." },
+                    { title: "A Emulsão na Frigideira", description: "Na frigideira onde tostou a pimenta, adicione uma concha da água da massa para recolher o sabor. Transfira a massa para a frigideira. Retire a frigideira do lume. Adicione a pasta de queijo e um pouco mais de água da massa. Mexa vigorosamente.", porque: "Fazer a emulsão fora do lume direto evita que o queijo sobreaqueça e se separe em grumos. A agitação constante é o que cria a magia.", pontoCritico: "A consistência é tudo. Adicione água da massa aos poucos até atingir um molho cremoso que cobre cada fio de massa. Se ficar aguado, volte ao lume muito baixo por breves segundos, mexendo sempre." }
+                ],
+                variacoes: [
+                    "<strong>Com Manteiga:</strong> Alguns chefs adicionam uma noz de manteiga à frigideira para ajudar na cremosidade, embora não seja tradicional.",
+                    "<strong>Com Lima:</strong> Raspas de lima no final podem adicionar um toque de frescura surpreendente."
+                ]
+            },
+            'nhoque': {
+                title: "Aula 07: Nhoque de Batata (Gnocchi) na Manteiga e Sálvia",
+                description: "Aprenda a fazer gnocchi (nhoque) de batata leves como nuvens, que derretem na boca. O segredo é usar a batata certa e trabalhar a massa o mínimo possível. Servido com um molho simples de manteiga e sálvia para deixar o nhoque brilhar.",
+                calculator: { label: "Quilos de Batata:", unit: "nhoque-input", base_value: 1, default_value: 1 },
+                details: { tempoPreparo: "40 min", tempoCozimento: "5-10 min", tempoDescanso: "N/A", rendimento: "Serve 4-6 pessoas", dificuldade: "Intermediário", utensilios: ["Espremedor de batata ou garfo", "Bancada de trabalho", "Faca ou tarraxa"] },
+                dicaDeMestre: "O maior inimigo do nhoque leve é o excesso de farinha. Use batatas 'secas' (com mais amido e menos água), como a Asterix (casca rosa). Cozinhe-as com casca para que absorvam menos água. Passe-as pelo espremedor ainda quentes.",
+                ingredients: [
+                    { name: 'Batatas (Asterix é ideal)', base_qty: 1, unit: 'kg', scalable: true },
+                    { name: 'Farinha de Trigo', base_qty: 200, unit: 'g (aproximadamente)', scalable: true },
+                    { name: 'Ovo', base_qty: 1, unit: 'unid.', scalable: true },
+                    { name: 'Sal e Noz-moscada', base_qty: 0, unit: 'A gosto', scalable: false },
+                    { name: 'Manteiga', base_qty: 100, unit: 'g', scalable: true, heading: 'Para o Molho' },
+                    { name: 'Folhas de Sálvia fresca', base_qty: 10, unit: 'unid.', scalable: true }
+                ],
+                steps: [
+                    { title: "Preparar as Batatas", description: "Cozinhe as batatas inteiras e com casca em água a ferver até estarem muito macias. Escorra e, enquanto ainda estão quentes, descasque-as (use um pano para não se queimar). Passe as batatas por um espremedor de batatas ou amasse muito bem com um garfo.", porque: "Cozinhar com casca evita que as batatas fiquem encharcadas. Espremê-las quentes resulta num puré mais leve e fofo.", pontoCritico: "Deixe o vapor sair do puré por alguns minutos antes de adicionar os outros ingredientes para que a massa não fique demasiado húmida." },
+                    { title: "Fazer a Massa", description: "Sobre o puré morno, adicione o ovo, o sal, a noz-moscada e a maior parte da farinha. Com as mãos, misture delicadamente os ingredientes apenas até formar uma massa homogénea. Não amasse em excesso.", porque: "Trabalhar demais a massa desenvolve o glúten e deixa os nhoques pesados e borrachudos. O objetivo é usar o mínimo de farinha e de trabalho possível.", pontoCritico: "A massa deve estar macia, mas não pegajosa. Se necessário, adicione um pouco mais de farinha, mas com muita moderação." },
+                    { title: "Moldar os Nhoques", description: "Numa bancada enfarinhada, divida a massa em porções. Role cada porção para formar um 'cordão' com cerca de 2cm de diâmetro. Corte os cordões em pedaços de 2cm. Se desejar, pode passar cada nhoque sobre os dentes de um garfo para criar ranhuras.", porque: "As ranhuras não são apenas decorativas; elas ajudam o molho a aderir melhor ao nhoque.", pontoCritico: "Trabalhe rapidamente e mantenha a bancada bem enfarinhada para que a massa não cole." },
+                    { title: "Cozinhar e Finalizar", description: "Cozinhe os nhoques em bastante água a ferver com sal. Eles estão prontos quando sobem à superfície (cerca de 2-3 minutos). Enquanto isso, derreta a manteiga numa frigideira larga com as folhas de sálvia até a manteiga ficar acastanhada e aromática (beurre noisette). Retire os nhoques com uma escumadeira e salteie-os na manteiga de sálvia.", porque: "Cozinhar em lotes evita que os nhoques colem. Salteá-los na manteiga no final dá-lhes uma crosta dourada e deliciosa.", pontoCritico: "Não sobrecarregue a panela ao cozinhar os nhoques." }
+                ],
+                variacoes: [
+                    "<strong>Com Abóbora:</strong> Substitua a batata por puré de abóbora assada para uma versão diferente.",
+                    "<strong>Com Ricota:</strong> Adicione ricota fresca à massa para nhoques ainda mais leves (gnudi).",
+                    "<strong>Com Molho de Tomate:</strong> Sirva com um simples molho de tomate e manjericão."
+                ]
+            },
+            'ravioli': {
+                title: "Aula 08: Ravioli Caseiro com Ricota e Espinafre",
+                description: "Entre no mundo das massas recheadas. Aprenda a fazer raviólis clássicos, desde a massa fresca até um recheio cremoso de ricota e espinafre, e a selá-los corretamente para que não abram durante o cozimento.",
+                calculator: { label: "Porções:", unit: "ravioli-input", base_value: 4, default_value: 4 },
+                details: { tempoPreparo: "1 hora", tempoCozimento: "4-6 min", tempoDescanso: "30 min (massa)", rendimento: "Serve 4 pessoas", dificuldade: "Avançado", utensilios: ["Máquina de massa ou rolo", "Saco de pasteleiro (opcional)", "Cortador de ravioli ou faca"] },
+                dicaDeMestre: "O recheio deve ser relativamente seco. Esprema muito bem os espinafres cozidos e use uma ricota de boa qualidade e bem escorrida. Um recheio aguado irá humedecer a massa e pode fazer com que os raviólis se abram.",
+                ingredients: [
+                    { name: 'Massa Fresca Caseira (ver Aula 01)', base_qty: 1, unit: 'receita', scalable: false, heading: 'Para a Massa' },
+                    { name: 'Ricota fresca, bem escorrida', base_qty: 250, unit: 'g', scalable: true, heading: 'Para o Recheio' },
+                    { name: 'Espinafres frescos', base_qty: 200, unit: 'g', scalable: true },
+                    { name: 'Queijo Parmesão, ralado', base_qty: 50, unit: 'g', scalable: true },
+                    { name: 'Noz-moscada, Sal, Pimenta', base_qty: 0, unit: 'A gosto', scalable: false }
+                ],
+                steps: [
+                    { title: "Preparar o Recheio", description: "Cozinhe os espinafres numa frigideira com um pouco de água até murcharem. Escorra e, quando estiverem frios o suficiente para manusear, esprema-os com as mãos para remover o máximo de água possível. Pique os espinafres finamente. Numa tigela, misture a ricota, os espinafres picados, o parmesão, sal, pimenta e uma pitada de noz-moscada.", porque: "Remover a água dos ingredientes do recheio é o passo mais crítico para o sucesso. Um recheio seco garante que a massa não fica encharcada.", pontoCritico: "Prove o recheio e ajuste o tempero. Ele deve ser bem saboroso, pois o sabor dilui-se um pouco após o cozimento." },
+                    { title: "Esticar a Massa e Rechear", description: "Estique a massa fresca em folhas longas e finas. Numa folha de massa, coloque pequenas colheradas do recheio em filas, com cerca de 4-5 cm de espaço entre elas. Pincele a massa à volta do recheio com um pouco de água.", porque: "A água atua como 'cola' para ajudar a selar as duas camadas de massa.", pontoCritico: "Pode usar um saco de pasteleiro para distribuir o recheio de forma mais rápida e uniforme." },
+                    { title: "Selar e Cortar os Raviolis", description: "Coloque outra folha de massa por cima. Com os dedos, pressione cuidadosamente à volta de cada monte de recheio para remover todo o ar e selar bem as bordas. Use um cortador de ravioli ou uma faca para cortar os raviólis em quadrados.", porque: "Remover o ar é crucial. O ar preso expande-se com o calor durante o cozimento e pode fazer os raviólis rebentarem.", pontoCritico: "Certifique-se de que as bordas estão bem seladas. Pode pressionar com os dentes de um garfo para uma segurança extra." },
+                    { title: "Cozinhar e Servir", description: "Cozinhe os raviólis em água a ferver com sal por 4 a 6 minutos. Sirva com um molho simples, como manteiga derretida e sálvia ou um molho de tomate leve, e mais queijo parmesão.", porque: "Um molho simples permite que o sabor do recheio do ravioli seja a estrela do prato.", pontoCritico: "Retire os raviólis da água com uma escumadeira, não os escorra num escorredor, pois são delicados." }
+                ],
+                variacoes: [
+                    "<strong>Com Abóbora:</strong> Use puré de abóbora assada em vez de espinafres para um recheio mais adocicado.",
+                    "<strong>Com Carne:</strong> Use um recheio de carne de vitela ou porco cozida lentamente.",
+                    "<strong>Agnolotti:</strong> Dobre a massa sobre o recheio para criar uma forma de meia-lua."
+                ]
+            },
+            'lasanha': {
+                title: "Aula 09: Lasanha à Bolonhesa Clássica",
+                description: "A rainha das massas de forno. Esta aula é um projeto que une três componentes fundamentais: massa fresca, um rico molho à bolonhesa e um cremoso molho bechamel. Aprenda a montar as camadas para uma lasanha perfeita.",
+                calculator: { label: "Porções:", unit: "lasanha-input", base_value: 6, default_value: 6 },
+                details: { tempoPreparo: "30 min", tempoCozimento: "2h (molho) + 30 min (forno)", tempoDescanso: "15 min", rendimento: "Serve 6-8 pessoas", dificuldade: "Avançado", utensilios: ["Travessa de forno retangular", "Panelas grandes"] },
+                dicaDeMestre: "O segredo de uma boa lasanha é o equilíbrio. Não exagere em nenhuma das camadas. Uma fina camada de cada molho é suficiente. E deixe a lasanha descansar por pelo menos 15 minutos depois de sair do forno, para que as camadas assentem e não se desfaçam ao cortar.",
+                ingredients: [
+                    { name: 'Massa Fresca para Lasanha', base_qty: 1, unit: 'receita', scalable: false, heading: 'Componentes' },
+                    { name: 'Molho à Bolonhesa (ver aula de Carnes)', base_qty: 1, unit: 'receita', scalable: false },
+                    { name: 'Queijo Parmesão, ralado', base_qty: 150, unit: 'g', scalable: true },
+                    { name: 'Leite', base_qty: 1, unit: 'L', scalable: true, heading: 'Para o Molho Bechamel' },
+                    { name: 'Manteiga', base_qty: 60, unit: 'g', scalable: true },
+                    { name: 'Farinha de Trigo', base_qty: 60, unit: 'g', scalable: true },
+                    { name: 'Noz-moscada', base_qty: 0, unit: 'A gosto', scalable: false }
+                ],
+                steps: [
+                    { 
+                        isSubRecipe: true,
+                        title: "Módulo 1: O Molho Bechamel",
+                        subSteps: [
+                            { title: "O Roux", description: "Numa panela, derreta a manteiga em lume médio. Adicione a farinha e cozinhe, mexendo sempre, por 2 minutos. Isto chama-se '<span class='tooltip' data-tooltip='Mistura de gordura e farinha cozida, usada para engrossar molhos. Cozinhá-la remove o sabor a farinha crua.'>roux</span>'.", porque: "Cozinhar o roux é essencial para remover o sabor a farinha crua do molho final.", pontoCritico: "Não deixe o roux ganhar cor para um bechamel branco." },
+                            { title: "Adicionar o Leite", description: "Aqueça o leite numa outra panela. Adicione o leite quente ao roux, aos poucos, mexendo vigorosamente com um batedor de arame para não formar grumos. Cozinhe em lume baixo, mexendo, até o molho engrossar. Tempere com sal e noz-moscada.", porque: "Adicionar o líquido quente ao roux quente (ou frio a frio) e mexer constantemente é a chave para um bechamel liso.", pontoCritico: "O molho deve cobrir as costas de uma colher." }
+                        ]
+                    },
+                    { title: "Montar a Lasanha", description: "Pré-aqueça o forno a 180°C. Espalhe uma fina camada de bechamel no fundo da travessa. Coloque a primeira camada de massa. Cubra com uma camada de molho à bolonhesa, seguida de uma camada de bechamel e uma pitada de parmesão.", porque: "A camada de bechamel no fundo evita que a massa cole. A ordem das camadas garante que a massa cozinha na humidade dos molhos.", pontoCritico: "Use camadas finas de molho. Uma lasanha com demasiado molho ficará aguada." },
+                    { title: "Repetir e Finalizar", description: "Continue a alternar as camadas: massa, bolonhesa, bechamel, parmesão. Termine com uma camada de massa, coberta generosamente com bechamel e uma boa quantidade de parmesão por cima.", porque: "A camada final de bechamel e parmesão cria a crosta dourada e gratinada característica da lasanha.", pontoCritico: "Normalmente, 4 a 5 camadas de massa são suficientes." },
+                    { title: "Assar e Descansar", description: "Leve ao forno por cerca de 30 minutos, ou até estar a borbulhar e dourada por cima. Deixe a lasanha descansar fora do forno por pelo menos 15 minutos antes de a cortar e servir.", porque: "O descanso é crucial. Permite que as camadas assentem e que a lasanha mantenha a sua forma ao ser cortada. Cortá-la a direito do forno resulta numa confusão no prato.", pontoCritico: "Se a lasanha começar a dourar demasiado rápido, pode cobri-la com papel de alumínio nos últimos 10 minutos.", timer: 1800 }
+                ],
+                variacoes: [
+                    "<strong>Com Espinafres e Ricota:</strong> Substitua o molho à bolonhesa por um recheio de espinafres e ricota para uma versão vegetariana.",
+                    "<strong>Com Pesto:</strong> Adicione uma camada de molho pesto entre as outras camadas para um sabor extra."
+                ]
+            },
+            'ragu': {
+                title: "Aula 10: Molho Ragu de Linguiça e Vinho Tinto",
+                description: "Aprenda a fazer um ragu rústico, rico e profundamente saboroso. Esta receita ensina a construir camadas de sabor através do cozimento lento, usando linguiça de porco e vinho tinto como base.",
+                calculator: { label: "Gramas de Linguiça Fresca:", unit: "ragu-input", base_value: 500, default_value: 500 },
+                details: { tempoPreparo: "20 min", tempoCozimento: "1.5 - 2 horas", tempoDescanso: "N/A", rendimento: "Serve 6-8 pessoas", dificuldade: "Intermediário", utensilios: ["Panela de fundo grosso (tipo caçarola)", "Colher de pau"] },
+                dicaDeMestre: "O segredo de um grande ragu é o tempo. Não apresse o cozimento. O lume baixo e o tempo longo quebram as fibras da carne e fundem todos os sabores, resultando num molho muito mais complexo e delicioso.",
+                ingredients: [
+                    { name: 'Linguiça de Porco fresca, sem pele', base_qty: 500, unit: 'g', scalable: true },
+                    { name: 'Cebola, picada', base_qty: 1, unit: 'unid.', scalable: true },
+                    { name: 'Cenoura, picada', base_qty: 1, unit: 'unid.', scalable: true },
+                    { name: 'Aipo, picado', base_qty: 1, unit: 'talo', scalable: true },
+                    { name: 'Vinho Tinto Seco', base_qty: 1, unit: 'chávena', scalable: true },
+                    { name: 'Tomate Pelado em lata, esmagado', base_qty: 800, unit: 'g', scalable: true },
+                    { name: 'Caldo de Carne ou Frango', base_qty: 1, unit: 'chávena', scalable: true },
+                    { name: 'Folha de Louro', base_qty: 1, unit: 'unid.', scalable: false }
+                ],
+                steps: [
+                    { title: "O Soffritto e a Linguiça", description: "Numa panela grande de fundo grosso, aqueça um pouco de azeite. Adicione a cebola, a cenoura e o aipo (o '<span class='tooltip' data-tooltip='Base aromática da cozinha italiana, composta por cebola, cenoura e aipo picados e refogados lentamente.'>soffritto</span>') e cozinhe em lume médio-baixo até ficarem muito macios. Adicione a carne da linguiça e cozinhe, desfazendo-a com uma colher, até dourar.", porque: "O soffritto é a base de sabor de muitos molhos italianos. Cozinhá-lo lentamente liberta a sua doçura. Dourar a carne cria a reação de Maillard, adicionando profundidade.", pontoCritico: "Tenha paciência com o soffritto. Ele deve suar, não fritar." },
+                    { title: "Deglacear com Vinho", description: "Aumente o lume e adicione o vinho tinto, raspando o fundo da panela para soltar quaisquer pedaços caramelizados. Cozinhe até o vinho ter reduzido quase por completo.", porque: "O vinho não só adiciona o seu próprio sabor, mas também dissolve os 'fondos' (os pedacinhos de carne e vegetais presos ao fundo da panela), que são puro sabor.", pontoCritico: "Deixe o álcool evaporar completamente, senão o molho ficará com um gosto adstringente." },
+                    { title: "O Cozimento Lento", description: "Adicione o tomate esmagado, o caldo e a folha de louro. Tempere com sal e pimenta. Deixe levantar fervura, depois reduza o lume para o mínimo possível, tape e deixe cozinhar lentamente por pelo menos 1 hora e 30 minutos, mexendo ocasionalmente.", porque: "O cozimento lento e longo é o que transforma os ingredientes num ragu coeso e rico. A carne fica incrivelmente tenra e os sabores fundem-se.", pontoCritico: "O molho deve borbulhar muito suavemente, 'plop, plop'. Se ferver com força, a carne pode ficar dura.", timer: 5400 },
+                    { title: "Finalização", description: "Após o tempo de cozimento, o ragu deve estar espesso e o óleo pode ter-se separado ligeiramente na superfície (um bom sinal). Remova a folha de louro. Prove e ajuste o tempero. Sirva com uma massa larga, como pappardelle ou rigatoni, e queijo parmesão ralado.", porque: "Massas largas são ideais para segurar molhos robustos como o ragu.", pontoCritico: "Um bom ragu é ainda melhor no dia seguinte, quando os sabores tiveram ainda mais tempo para se desenvolverem." }
+                ],
+                variacoes: [
+                    "<strong>Com Natas:</strong> Adicione um pouco de natas ou leite no final para um ragu mais cremoso ('ragu bianco' se não usar tomate).",
+                    "<strong>Com Cogumelos:</strong> Adicione cogumelos secos (previamente hidratados) para um sabor mais terroso.",
+                    "<strong>Com Ervas:</strong> Adicione um ramo de alecrim ou tomilho durante o cozimento lento."
+                ]
+            }
+        };
+
+        // ===================================================================================
+        // FUNÇÕES GLOBAIS (NÃO MEXER)
+        // ===================================================================================
+        
+        const aulasList = document.getElementById('aulas-list');
+        const pageTitle = document.getElementById('page-title');
+        const receitasContainer = document.getElementById('receitas-container');
+        const backToListBtn = document.getElementById('back-to-list-btn');
+        const menuBtn = document.getElementById('menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+
+        // Menu Mobile
+        if(menuBtn && mobileMenu){
+            menuBtn.addEventListener('click', () => {
+                mobileMenu.classList.toggle('hidden');
+            });
+        }
+
+        const formatNumber = (num) => {
+            if (num < 1 && num > 0) return num.toFixed(2);
+            if (num % 1 !== 0) return num.toFixed(1);
+            return num;
+        };
+        
+        const updateIngredients = (recipeData, inputValue) => {
+            const list = document.getElementById(`ingredient-list-${recipeData.calculator.unit}`);
+            if (!list || !recipeData.ingredients) return;
+
+            const multiplier = inputValue / recipeData.calculator.base_value;
+            let html = '';
+            let currentHeading = '';
+
+            recipeData.ingredients.forEach(ing => {
+                if(ing.heading && ing.heading !== currentHeading) {
+                    currentHeading = ing.heading;
+                    html += `<h5 class="font-bold text-stone-700 mt-3 mb-1">${currentHeading}:</h5>`;
+                }
+
+                let qtyDisplay = '';
+                if (!ing.scalable) {
+                    qtyDisplay = ing.unit;
+                } else {
+                    const scaledQty = ing.base_qty * multiplier;
+                    qtyDisplay = `${formatNumber(scaledQty)} ${ing.unit}`;
+                }
+                
+                html += `
+                    <li class="ingredient-item">
+                        <label class="flex items-center p-1 rounded-md hover:bg-stone-100">
+                            <input type="checkbox" class="mr-2 h-4 w-4 text-amber-600 focus:ring-amber-500 border-stone-300 rounded">
+                            <span class="flex-1 flex justify-between">
+                                <span>${ing.name}</span>
+                                <span class="font-semibold text-right pl-2">${qtyDisplay}</span>
+                            </span>
+                        </label>
+                    </li>`;
+            });
+            list.innerHTML = html;
+        };
+
+        const generateRecipeHTML = (recipeData) => {
+             return `
+                <div class="text-center">
+                    <h2 class="text-3xl md:text-4xl font-bold text-amber-700">${recipeData.title}</h2>
+                    <p class="mt-4 max-w-3xl mx-auto text-stone-600 text-lg">${recipeData.description}</p>
+                </div>
+                
+                <div class="mt-10 grid grid-cols-2 md:grid-cols-4 gap-4 text-center">
+                    <div class="bg-stone-100 p-4 rounded-lg flex flex-col justify-center items-center">
+                        <span class="text-2xl">⏳</span>
+                        <h4 class="font-bold text-stone-800">Preparo</h4>
+                        <p class="text-stone-600 text-sm">${recipeData.details.tempoPreparo}</p>
+                    </div>
+                    <div class="bg-stone-100 p-4 rounded-lg flex flex-col justify-center items-center">
+                        <span class="text-2xl">🍳</span>
+                        <h4 class="font-bold text-stone-800">Cozimento</h4>
+                        <p class="text-stone-600 text-sm">${recipeData.details.tempoCozimento}</p>
+                    </div>
+                    <div class="bg-stone-100 p-4 rounded-lg flex flex-col justify-center items-center">
+                        <span class="text-2xl">🍽️</span>
+                        <h4 class="font-bold text-stone-800">Rendimento</h4>
+                        <p class="text-stone-600 text-sm">${recipeData.details.rendimento}</p>
+                    </div>
+                    <div class="bg-stone-100 p-4 rounded-lg flex flex-col justify-center items-center">
+                        <span class="text-2xl">⭐</span>
+                        <h4 class="font-bold text-stone-800">Dificuldade</h4>
+                        <p class="text-stone-600 text-sm">${recipeData.details.dificuldade}</p>
+                    </div>
+                </div>
+
+                <div class="mt-12 grid grid-cols-1 lg:grid-cols-3 gap-x-12 gap-y-8">
+                    <div class="lg:col-span-1">
+                        <h3 class="text-2xl font-bold text-stone-800 mb-4 border-b-2 border-amber-500 pb-2">Planeamento</h3>
+                        <div class="bg-stone-50 p-4 rounded-lg">
+                            <label for="${recipeData.calculator.unit}" class="block text-lg text-stone-700 mb-2 font-bold">${recipeData.calculator.label}</label>
+                            <input type="number" id="${recipeData.calculator.unit}" value="${recipeData.calculator.default_value}" min="0.5" step="1" class="w-full p-2 border border-stone-300 rounded-lg focus:ring-2 focus:ring-amber-500">
+                        </div>
+                        <div class="mt-6">
+                            <h4 class="font-bold text-lg mb-2 text-stone-700">Checklist de Ingredientes:</h4>
+                            <ul class="space-y-1 text-stone-600 text-sm" id="ingredient-list-${recipeData.calculator.unit}"></ul>
+                        </div>
+                         <div class="mt-6">
+                            <h4 class="font-bold text-lg mb-2 text-stone-700">Utensílios Chave:</h4>
+                            <ul class="space-y-2 text-stone-600 list-disc list-inside text-sm">
+                                ${recipeData.details.utensilios.map(utensil => `<li>${utensil}</li>`).join('')}
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="lg:col-span-2">
+                        <h3 class="text-2xl font-bold text-stone-800 mb-4 border-b-2 border-amber-500 pb-2">Tutorial Detalhado</h3>
+                        <div class="space-y-6">
+                            ${recipeData.steps.map((step, index) => {
+                                if (step.isSubRecipe) {
+                                    return `
+                                    <div class="p-4 rounded-lg bg-amber-50 border-l-4 border-amber-400">
+                                        <h4 class="font-bold text-xl text-amber-800 mb-4">${step.title}</h4>
+                                        <div class="space-y-4">
+                                        ${step.subSteps.map(subStep => `
+                                            <div class="ml-4">
+                                                <h5 class="font-semibold text-lg text-stone-800 mb-1">${subStep.title}</h5>
+                                                <div class="prose prose-stone max-w-none text-sm">
+                                                    <p>${subStep.description}</p>
+                                                     <details class="mt-3 text-xs">
+                                                        <summary class="font-bold text-blue-800">Ver o porquê</summary>
+                                                        <div class="mt-2 bg-blue-50 text-blue-800 rounded-md p-3">${subStep.porque}</div>
+                                                     </details>
+                                                     <details class="mt-2 text-xs">
+                                                        <summary class="font-bold text-red-800">Ver ponto crítico</summary>
+                                                        <div class="mt-2 bg-red-50 text-red-800 rounded-md p-3">${subStep.pontoCritico}</div>
+                                                     </details>
+                                                </div>
+                                            </div>
+                                        `).join('')}
+                                        </div>
+                                    </div>`;
+                                }
+                                return `
+                                <div class="p-4 rounded-lg bg-stone-50 border-l-4 border-stone-200">
+                                    <h4 class="font-bold text-xl text-stone-800 mb-2"><span class="bg-amber-600 text-white rounded-full w-8 h-8 inline-flex items-center justify-center mr-3 text-base">${index + 1}</span> ${step.title}</h4>
+                                    <div class="prose prose-stone max-w-none pl-11 text-sm">
+                                        <p>${step.description}</p>
+                                        <details class="mt-3 text-xs">
+                                            <summary class="font-bold text-blue-800">Ver o porquê</summary>
+                                            <div class="mt-2 bg-blue-50 text-blue-800 rounded-md p-3">${step.porque}</div>
+                                        </details>
+                                        <details class="mt-2 text-xs">
+                                            <summary class="font-bold text-red-800">Ver ponto crítico</summary>
+                                            <div class="mt-2 bg-red-50 text-red-800 rounded-md p-3">${step.pontoCritico}</div>
+                                        </details>
+                                    </div>
+                                    ${step.timer ? `<div class="mt-4 pl-11 flex items-center gap-4"><button class="timer-btn bg-amber-500 text-white px-4 py-2 rounded-lg hover:bg-amber-600 transition text-sm" data-time="${step.timer}">Iniciar Timer (${Math.floor(step.timer/60)}m ${step.timer%60}s)</button><span class="timer-display text-lg font-mono font-bold text-amber-700"></span></div>` : ''}
+                                </div>`;
+                            }).join('')}
+                        </div>
+                        
+                        <div class="mt-8">
+                            <h3 class="text-2xl font-bold text-stone-800 mb-4 border-b-2 border-amber-500 pb-2">Variações e Dicas</h3>
+                            <div class="prose prose-stone max-w-none bg-amber-50 p-4 rounded-lg border-l-4 border-amber-400 text-sm">
+                                ${recipeData.variacoes.map(item => `<p>${item}</p>`).join('')}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            `;
+        };
+        
+        const setupPage = () => {
+            const hash = window.location.hash;
+            if (hash) {
+                const targetId = hash.substring(1);
+                const targetCard = document.querySelector(`[data-target='${targetId}']`);
+                if (targetCard) {
+                    const targetRecipe = document.getElementById(targetId);
+                    aulasList.classList.add('hidden');
+                    pageTitle.classList.add('hidden');
+                    receitasContainer.classList.remove('hidden');
+                    targetRecipe.classList.remove('hidden');
+                    window.scrollTo(0, 0);
+                }
+            }
+
+            document.querySelectorAll('.aula-card').forEach(card => {
+                const recipeId = card.dataset.target.replace('receita-', '');
+                const recipeData = aulas[recipeId];
+
+                if (recipeData) {
+                    const targetElement = document.getElementById(card.dataset.target);
+                    targetElement.innerHTML = generateRecipeHTML(recipeData);
+                    
+                    if (recipeData.calculator) {
+                        const input = document.getElementById(recipeData.calculator.unit);
+                        if (input) {
+                            input.addEventListener('input', (e) => {
+                                updateIngredients(recipeData, e.target.value);
+                            });
+                            updateIngredients(recipeData, input.value);
+                        }
+                    }
+                }
+
+                card.addEventListener('click', () => {
+                    const targetId = card.dataset.target;
+                    const targetRecipe = document.getElementById(targetId);
+                    
+                    aulasList.classList.add('hidden');
+                    pageTitle.classList.add('hidden');
+                    receitasContainer.classList.remove('hidden');
+                    targetRecipe.classList.remove('hidden');
+                    window.location.hash = targetId;
+                    window.scrollTo(0, 0);
+                });
+            });
+
+            backToListBtn.addEventListener('click', () => {
+                aulasList.classList.remove('hidden');
+                pageTitle.classList.remove('hidden');
+                receitasContainer.classList.add('hidden');
+                document.querySelectorAll('.receita-content').forEach(recipe => {
+                    recipe.classList.add('hidden');
+                });
+                history.pushState("", document.title, window.location.pathname + window.location.search);
+                window.scrollTo(0, 0);
+            });
+            
+            receitasContainer.addEventListener('click', (event) => {
+                if (event.target.classList.contains('timer-btn')) {
+                    const button = event.target;
+                    if (button.classList.contains('active')) return;
+
+                    let timeInSeconds = parseInt(button.dataset.time, 10);
+                    const display = button.nextElementSibling;
+                    
+                    button.classList.add('active');
+                    button.disabled = true;
+                    
+                    const interval = setInterval(() => {
+                        const minutes = Math.floor(timeInSeconds / 60);
+                        const seconds = timeInSeconds % 60;
+                        if(display) { display.textContent = `${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`; }
+                        
+                        if (timeInSeconds <= 0) {
+                            clearInterval(interval);
+                            if(display) display.textContent = "Tempo esgotado!";
+                            button.classList.remove('active');
+                            button.disabled = false;
+                        } else { timeInSeconds--; }
+                    }, 1000);
+                }
+            });
+        };
+
+        setupPage();
+    });
+    </script>
+</body>
+</html>
