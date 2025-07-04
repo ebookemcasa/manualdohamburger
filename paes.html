@@ -163,10 +163,83 @@
                     "<strong>Integral:</strong> Substitua 1/3 da farinha branca por farinha de trigo integral."
                 ]
             },
-            // As restantes 9 aulas serão preenchidas com a mesma estrutura detalhada...
-            'pao-rustico': { title: "Aula 02: Pão Rústico Caseiro" },
-            'pao-de-queijo': { title: "Aula 03: Pão de Queijo Tradicional" },
-            'focaccia': { title: "Aula 04: Focaccia com Alecrim e Sal Grosso" },
+            'pao-rustico': {
+                title: "Aula 02: Pão Rústico Caseiro",
+                description: "Esta aula é a sua introdução à arte de sovar. Aprenda a desenvolver o glúten com as próprias mãos para criar um pão clássico de casca grossa e miolo macio, perfeito para o dia a dia.",
+                calculator: { label: "Gramas de Farinha:", unit: "pao-rustico-input", base_value: 500, default_value: 500 },
+                details: { tempoPreparo: "20 min", tempoCozimento: "30-40 min", tempoDescanso: "2 horas", rendimento: "1 pão grande", dificuldade: "Intermediário", utensilios: ["Bancada de trabalho", "Tigela grande", "Lâmina ou faca afiada para cortar"] },
+                dicaDeMestre: "O 'teste do ponto de véu' é a forma profissional de saber se a massa está bem sovada. Pegue num pequeno pedaço de massa e estique-o delicadamente com os dedos. Se conseguir formar uma membrana fina e translúcida sem rasgar, o glúten está bem desenvolvido.",
+                ingredients: [
+                    { name: 'Farinha de Trigo (de força, se possível)', base_qty: 500, unit: 'g', scalable: true },
+                    { name: 'Água morna', base_qty: 320, unit: 'ml', scalable: true },
+                    { name: 'Fermento Biológico Seco', base_qty: 7, unit: 'g', scalable: true },
+                    { name: 'Sal', base_qty: 10, unit: 'g', scalable: true },
+                    { name: 'Azeite', base_qty: 2, unit: 'c. de sopa', scalable: true }
+                ],
+                steps: [
+                    { title: "Ativar o Fermento", description: "Numa tigela pequena, misture a água morna com o fermento e uma pitada de açúcar (opcional). Deixe descansar por 5-10 minutos até espumar.", porque: "Este passo prova que o seu fermento está ativo e pronto para trabalhar. Se não espumar, o fermento pode estar morto e o seu pão não irá crescer.", pontoCritico: "A água deve estar morna, não quente. Água quente pode matar o fermento." },
+                    { title: "Sovar a Massa", description: "Numa tigela grande, misture a farinha e o sal. Faça um buraco no meio e adicione a mistura de fermento e o azeite. Misture até formar uma massa. Transfira para uma bancada e comece a <span class='tooltip' data-tooltip='Trabalhar a massa vigorosamente para desenvolver a rede de glúten, o que dá estrutura e elasticidade ao pão.'>sovar</span> por 10 a 15 minutos.", porque: "A sova é o exercício que fortalece o glúten. Uma rede de glúten forte aprisiona os gases da fermentação, permitindo que o pão cresça e tenha um miolo fofo.", pontoCritico: "A massa estará pronta quando estiver lisa, elástica e passar no 'teste do ponto de véu'." },
+                    { title: "Primeira Fermentação", description: "Forme uma bola com a massa, coloque-a numa tigela levemente untada com azeite, cubra e deixe levedar num local morno por cerca de 1 a 1.5 horas, ou até duplicar de volume.", porque: "Durante este tempo, o fermento alimenta-se e liberta dióxido de carbono, fazendo a massa crescer e desenvolvendo o sabor do pão.", pontoCritico: "Um bom truque para saber se a massa levedou o suficiente é pressionar um dedo nela. Se a marca ficar, está pronta." },
+                    { title: "Modelar e Segunda Fermentação", description: "Retire o ar da massa e modele-a no formato desejado (uma bola 'boule' ou um 'batard' alongado). Coloque num tabuleiro forrado com papel vegetal, cubra e deixe levedar por mais 30-45 minutos.", porque: "A modelagem cria tensão na superfície da massa, o que a ajuda a manter a forma e a crescer para cima no forno. A segunda fermentação recupera parte do ar perdido.", pontoCritico: "Não deixe levedar demais na segunda vez, ou o pão pode abater no forno." },
+                    { title: "Cortar e Assar", description: "Pré-aqueça o forno a 220°C. Com uma lâmina ou faca muito afiada, faça um ou mais cortes na superfície do pão. Borrife o forno com água para criar vapor e asse por 30-40 minutos, até a crosta estar bem dourada e o pão soar oco ao bater no fundo.", porque: "O corte permite que o pão se expanda de forma controlada no forno. O vapor inicial ajuda a criar uma crosta mais crocante e estaladiça.", pontoCritico: "Os cortes devem ser rápidos e confiantes, com cerca de 1cm de profundidade." }
+                ],
+                variacoes: [
+                    "<strong>Pão de Chouriço:</strong> Incorpore pedaços de chouriço na massa durante a modelagem.",
+                    "<strong>Com Queijo e Alho:</strong> Adicione queijo ralado e alho em pó à farinha.",
+                    "<strong>Pãezinhos Individuais:</strong> Divida a massa em porções menores e modele pãezinhos."
+                ]
+            },
+            'pao-de-queijo': {
+                title: "Aula 03: Pão de Queijo Tradicional",
+                description: "Aprenda a fazer o pão de queijo mineiro autêntico, com a casquinha crocante e o interior elástico e 'puxa-puxa'. O segredo está em escaldar o polvilho e na qualidade do queijo.",
+                calculator: { label: "Gramas de Polvilho Azedo:", unit: "pao-de-queijo-input", base_value: 500, default_value: 500 },
+                details: { tempoPreparo: "20 min", tempoCozimento: "25-35 min", tempoDescanso: "N/A", rendimento: "Aprox. 30 pães de queijo", dificuldade: "Fácil", utensilios: ["Panela", "Tigela grande", "Colher de pau"] },
+                dicaDeMestre: "Para um pão de queijo com o interior mais oco, use apenas polvilho azedo. Para um interior mais denso e macio, use uma mistura de metade polvilho azedo e metade polvilho doce. Esta receita foca-se no tradicional polvilho azedo.",
+                ingredients: [
+                    { name: 'Polvilho Azedo', base_qty: 500, unit: 'g', scalable: true },
+                    { name: 'Leite', base_qty: 250, unit: 'ml', scalable: true },
+                    { name: 'Óleo Vegetal', base_qty: 100, unit: 'ml', scalable: true },
+                    { name: 'Sal', base_qty: 1, unit: 'c. de chá', scalable: true },
+                    { name: 'Ovos', base_qty: 2, unit: 'unid.', scalable: true },
+                    { name: 'Queijo Minas Curado ou Parmesão, ralado', base_qty: 200, unit: 'g', scalable: true }
+                ],
+                steps: [
+                    { title: "Escaldar o Polvilho", description: "Numa panela, ferva o leite, o óleo e o sal. Assim que levantar fervura, despeje esta mistura quente de uma só vez sobre o polvilho azedo numa tigela grande. Misture com uma colher até formar uma massa granulada e pegajosa. Deixe arrefecer.", porque: "Este processo de <span class='tooltip' data-tooltip='Adicionar um líquido a ferver sobre um amido (como o polvilho) para pré-cozinhar e gelatinizar parte dele.'>escaldar</span> o polvilho pré-gelatiniza o amido, o que é o segredo para a textura elástica e o crescimento do pão de queijo. É o passo mais importante.", pontoCritico: "É crucial deixar a massa arrefecer o suficiente para que não cozinhe os ovos quando os adicionar. Deve estar morna ao toque." },
+                    { title: "Adicionar Ovos e Queijo", description: "Quando a massa estiver morna, adicione os ovos, um de cada vez, misturando bem. A massa parecerá desunida no início, mas continue a misturar. Por fim, adicione o queijo ralado e amasse com as mãos até obter uma massa lisa e homogénea.", porque: "Os ovos e o queijo dão a liga final, a gordura e o sabor. Amassar com as mãos ajuda a incorporar tudo de forma uniforme.", pontoCritico: "A massa estará pronta quando não colar nas mãos. Se estiver muito pegajosa, pode adicionar um pouco mais de polvilho, mas com cuidado para não secar a massa." },
+                    { title: "Moldar e Assar", description: "Pré-aqueça o forno a 180°C. Unte as mãos com um pouco de óleo e enrole pequenas porções da massa para formar bolinhas. Disponha-as num tabuleiro, deixando espaço entre elas. Leve ao forno por 25 a 35 minutos.", porque: "O calor do forno faz com que a água na massa se transforme em vapor, inflando o pão de queijo e criando o seu interior aerado.", pontoCritico: "Eles estão prontos quando estiverem crescidos e bem dourados. Não asse demais para que o interior não seque.", timer: 1800 }
+                ],
+                variacoes: [
+                    "<strong>Recheado:</strong> Pode rechear as bolinhas com um cubo de queijo ou goiabada antes de assar.",
+                    "<strong>Congelamento:</strong> Pode congelar as bolinhas cruas num tabuleiro e depois transferi-las para um saco. Asse diretamente do congelador, adicionando 5-10 minutos ao tempo de forno.",
+                    "<strong>Com Ervas:</strong> Adicione orégãos ou alecrim picado à massa."
+                ]
+            },
+            'focaccia': {
+                title: "Aula 04: Focaccia com Alecrim e Sal Grosso",
+                description: "Aprenda a fazer focaccia, o pão achatado italiano que é uma tela em branco para a sua criatividade. Esta aula foca-se numa massa de alta hidratação e na técnica de 'furar' com os dedos para criar a textura clássica.",
+                calculator: { label: "Gramas de Farinha:", unit: "focaccia-input", base_value: 500, default_value: 500 },
+                details: { tempoPreparo: "20 min", tempoCozimento: "20-25 min", tempoDescanso: "2 horas", rendimento: "1 focaccia grande", dificuldade: "Intermediário", utensilios: ["Assadeira retangular", "Tigela grande"] },
+                dicaDeMestre: "Não tenha medo da massa pegajosa! A <span class='tooltip' data-tooltip='A quantidade de água em relação à quantidade de farinha numa massa. Massas com alta hidratação são mais húmidas e resultam em pães com miolo mais aberto e aerado.'>alta hidratação</span> é o segredo para o miolo fofo e cheio de bolhas da focaccia. Use as mãos untadas com azeite para manusear a massa e evitar que cole.",
+                ingredients: [
+                    { name: 'Farinha de Trigo', base_qty: 500, unit: 'g', scalable: true },
+                    { name: 'Água morna', base_qty: 400, unit: 'ml', scalable: true },
+                    { name: 'Fermento Biológico Seco', base_qty: 7, unit: 'g', scalable: true },
+                    { name: 'Sal', base_qty: 10, unit: 'g', scalable: true },
+                    { name: 'Azeite Extra Virgem', base_qty: 50, unit: 'ml', scalable: true },
+                    { name: 'Alecrim fresco e Sal grosso', base_qty: 0, unit: 'Para cobrir', scalable: false }
+                ],
+                steps: [
+                    { title: "A Massa Húmida", description: "Numa tigela, misture a farinha, o fermento e o sal. Adicione a água morna e 2 colheres de sopa de azeite. Misture até formar uma massa muito húmida e pegajosa. Cubra e deixe levedar por 1 a 1.5 horas, ou até duplicar.", porque: "Uma massa com alta percentagem de água desenvolve o glúten com o tempo, sem precisar de muita sova, e resulta num miolo muito mais leve e aerado.", pontoCritico: "A massa estará correta se for demasiado pegajosa para sovar numa bancada. Confie no processo." },
+                    { title: "Esticar e Segunda Fermentação", description: "Unte generosamente uma assadeira retangular com azeite. Despeje a massa na assadeira. Com as pontas dos dedos untadas em azeite, estique e pressione a massa delicadamente para que ela preencha a forma. Cubra e deixe levedar por mais 30-45 minutos.", porque: "O azeite na assadeira não só impede que a focaccia cole, mas também 'frita' a base, deixando-a crocante. A segunda fermentação cria mais bolhas de ar.", pontoCritico: "Seja gentil ao esticar a massa para não rebentar as bolhas de ar que se formaram." },
+                    { title: "Furar e Temperar", description: "Pré-aqueça o forno a 220°C. Unte novamente as pontas dos dedos com azeite e pressione firmemente a massa, criando as 'covinhas' características da focaccia. Regue com mais azeite, polvilhe com os ramos de alecrim e sal grosso.", porque: "As covinhas criam uma textura irregular e são perfeitas para reter o azeite e os temperos, infundindo sabor na massa durante o cozimento.", pontoCritico: "Pressione os dedos até ao fundo da assadeira para criar covinhas bem definidas." },
+                    { title: "Assar em Forno Quente", description: "Leve ao forno quente por 20 a 25 minutos, ou até estar bem dourada e cozida. Retire da forma e deixe arrefecer sobre uma grelha.", porque: "O calor alto ajuda a focaccia a crescer rapidamente e a criar uma crosta dourada, mantendo o interior fofo.", pontoCritico: "Arrefecer sobre uma grelha evita que a base fique húmida e amolecida pelo vapor.", timer: 1200 }
+                ],
+                variacoes: [
+                    "<strong>Com Tomate Cherry e Azeitonas:</strong> Pressione tomates cherry e azeitonas nas covinhas antes de assar.",
+                    "<strong>Com Pesto:</strong> Espalhe uma camada de pesto sobre a massa antes da segunda fermentação.",
+                    "<strong>Recheada:</strong> Divida a massa em duas, estique uma parte, cubra com queijo e presunto, e coloque a outra parte da massa por cima antes de fazer as covinhas."
+                ]
+            },
             'pao-de-leite': { title: "Aula 05: Pão de Leite Fofinho" },
             'baguete': { title: "Aula 06: Baguete Francesa Simplificada" },
             'pao-integral': { title: "Aula 07: Pão Integral com Sementes" },
