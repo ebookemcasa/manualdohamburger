@@ -258,7 +258,7 @@
                 steps: [
                     { title: "A Massa Rica", description: "Numa tigela, misture o leite morno e o fermento. Numa tigela maior (ou na da batedeira), junte a farinha, o açúcar e o sal. Adicione a mistura de leite, o ovo e a manteiga amolecida. Comece a misturar até formar uma massa.", porque: "As massas ricas contêm gordura (manteiga) e açúcar, que amaciam o glúten e resultam num miolo mais macio e menos elástico do que o de um pão rústico.", pontoCritico: "A manteiga deve estar amolecida, não derretida, para se incorporar melhor na massa." },
                     { title: "Sovar até Ficar Elástica", description: "Sove a massa numa bancada por 10-15 minutos (ou 8-10 minutos na batedeira com o gancho) até ficar lisa, elástica e macia.", porque: "Mesmo sendo uma massa rica, o desenvolvimento do glúten ainda é necessário para dar estrutura ao pão e permitir que ele cresça.", pontoCritico: "A massa ficará um pouco pegajosa devido ao açúcar e à gordura. Evite adicionar demasiada farinha extra." },
-                    { title: "Fermentação e Moldagem", description: "Faça uma bola com a massa, coloque numa tigela untada, cubra e deixe levedar por 1 a 1.5 horas. Depois, divida a massa em 12 porções iguais e modele pequenas bolas. Coloque-as num tabuleiro, cubra e deixe levedar por mais 45 minutos.", porque: "A fermentação dupla garante um pão mais leve e com um sabor mais desenvolvido.", pontoCritico: "Deixe espaço entre as bolinhas no tabuleiro, pois elas irão crescer e podem juntar-se, o que é normal para este tipo de pão." },
+                    { title: "Fermentação e Moldagem", description: "Faça uma bola com a massa, coloque-a numa tigela untada, cubra e deixe levedar por 1 a 1.5 horas. Depois, divida a massa em 12 porções iguais e modele pequenas bolas. Coloque-as num tabuleiro, cubra e deixe levedar por mais 45 minutos.", porque: "A fermentação dupla garante um pão mais leve e com um sabor mais desenvolvido.", pontoCritico: "Deixe espaço entre as bolinhas no tabuleiro, pois elas irão crescer e podem juntar-se, o que é normal para este tipo de pão." },
                     { title: "Pincelar e Assar", description: "Pré-aqueça o forno a 180°C. Pincele os pães com uma mistura de gema e leite. Leve ao forno por 20 a 25 minutos, ou até estarem bem dourados. Deixe arrefecer sobre uma grelha.", porque: "O 'egg wash' dá a cor e o brilho característicos. O calor moderado do forno cozinha a massa rica de forma mais gentil.", pontoCritico: "Como contêm açúcar, estes pães douram mais rápido. Fique atento para não queimarem.", timer: 1200 }
                 ],
                 variacoes: [
@@ -267,8 +267,55 @@
                     "<strong>Formato de Forma:</strong> Asse a massa inteira numa forma de pão para um pão de leite de fatiar."
                 ]
             },
-            'baguete': { title: "Aula 06: Baguete Francesa Simplificada" },
-            'pao-integral': { title: "Aula 07: Pão Integral com Sementes" },
+            'baguete': {
+                title: "Aula 06: Baguete Francesa Simplificada",
+                description: "Domine a arte de modelar uma baguete e conseguir a sua casca estaladiça e o miolo aberto e arejado. Esta é uma versão simplificada que se foca nas técnicas chave sem exigir um vapor profissional.",
+                calculator: { label: "Número de Baguetes:", unit: "baguete-input", base_value: 2, default_value: 2 },
+                details: { tempoPreparo: "20 min", tempoCozimento: "25-30 min", tempoDescanso: "3 horas", rendimento: "2 baguetes", dificuldade: "Avançado", utensilios: ["Tabuleiro de baguetes ou papel vegetal", "Lâmina de padeiro", "Tigela grande"] },
+                dicaDeMestre: "O vapor é o segredo da crosta da baguete. Em casa, pode simular um forno a vapor colocando um tabuleiro vazio na prateleira de baixo do forno enquanto ele aquece. Assim que colocar o pão, deite um copo de água a ferver nesse tabuleiro quente. Feche a porta rapidamente.",
+                ingredients: [
+                    { name: 'Farinha de Trigo T65 (ou de pão)', base_qty: 500, unit: 'g', scalable: true },
+                    { name: 'Água', base_qty: 350, unit: 'ml', scalable: true },
+                    { name: 'Sal', base_qty: 10, unit: 'g', scalable: true },
+                    { name: 'Fermento Biológico Seco', base_qty: 4, unit: 'g', scalable: true }
+                ],
+                steps: [
+                    { title: "Autólise e Primeira Fermentação", description: "Misture a farinha e a água até não haver farinha seca. Deixe descansar por 30 minutos (este processo chama-se <span class='tooltip' data-tooltip='Técnica onde se mistura apenas farinha e água, deixando descansar. Facilita a sova e melhora a textura do pão.'>autólise</span>). Adicione o sal e o fermento e sove por 10 minutos. Deixe levedar por 1.5 a 2 horas, fazendo dobras na massa a cada 30 minutos.", porque: "A autólise hidrata a farinha e começa a desenvolver o glúten passivamente. As dobras (stretches and folds) fortalecem o glúten sem uma sova intensa, ideal para massas mais húmidas.", pontoCritico: "A massa será pegajosa. Use as mãos molhadas para fazer as dobras e evitar que cole." },
+                    { title: "Pré-modelagem e Modelagem", description: "Divida a massa em duas. Pré-modele cada porção num retângulo. Deixe descansar por 15 minutos. Depois, modele a baguete: dobre a massa como se fosse uma carta, sele as pontas, e enrole para formar um cilindro longo e fino.", porque: "A modelagem cria tensão na superfície da massa, o que é crucial para um bom 'oven spring' e para o formato final.", pontoCritico: "A modelagem da baguete requer prática. Veja vídeos para entender o movimento de enrolar e selar." },
+                    { title: "Segunda Fermentação e Cortar", description: "Coloque as baguetes num pano de padeiro (couche) ou em papel vegetal, criando uma dobra para as separar. Deixe levedar por 30-45 minutos. Pré-aqueça o forno e a pedra/tabuleiro a 240°C. Transfira as baguetes para o tabuleiro quente e faça 3 a 5 cortes diagonais com uma lâmina.", porque: "A segunda fermentação desenvolve o sabor final. Os cortes permitem que a baguete se expanda e criem as 'orelhas' características.", pontoCritico: "Use uma lâmina muito afiada (gillette) num ângulo de 45 graus para os cortes." },
+                    { title: "Assar com Vapor", description: "Coloque o pão no forno e adicione água a ferver no tabuleiro de baixo para criar vapor. Asse por 10 minutos com vapor. Retire o tabuleiro com a água e continue a assar por mais 15-20 minutos, até ficarem bem douradas.", porque: "O vapor inicial mantém a crosta húmida, permitindo o máximo crescimento. O ambiente seco a seguir cria a crosta estaladiça.", pontoCritico: "Cuidado com o vapor ao abrir a porta do forno." }
+                ],
+                variacoes: [
+                    "<strong>Com Gergelim:</strong> Borrife com água e polvilhe com sementes de gergelim antes de assar.",
+                    "<strong>Baguete Rústica:</strong> Use uma parte de farinha de centeio na mistura."
+                ]
+            },
+            'pao-integral': {
+                title: "Aula 07: Pão Integral com Sementes",
+                description: "Aprenda a fazer um pão integral fofo e saboroso. O segredo é saber como lidar com a farinha integral, que se comporta de forma diferente da branca, e enriquecer a massa com sementes para mais textura e nutrientes.",
+                calculator: { label: "Pães (Forma):", unit: "pao-integral-input", base_value: 1, default_value: 1 },
+                details: { tempoPreparo: "25 min", tempoCozimento: "40-45 min", tempoDescanso: "2 horas", rendimento: "1 pão de forma grande", dificuldade: "Intermediário", utensilios: ["Forma de pão", "Tigela grande"] },
+                dicaDeMestre: "A farinha integral absorve mais água que a branca. Para um miolo mais húmido, use a técnica do '<span class='tooltip' data-tooltip='Mistura de farinha e água (e por vezes outros ingredientes) que é deixada a demolhar antes da sova, para hidratar completamente o amido e o farelo.'>soaker</span>': misture a farinha integral e as sementes com a água da receita e deixe demolhar por 1 a 2 horas antes de adicionar o resto dos ingredientes.",
+                ingredients: [
+                    { name: 'Farinha de Trigo Integral', base_qty: 300, unit: 'g', scalable: true },
+                    { name: 'Farinha de Trigo Branca', base_qty: 200, unit: 'g', scalable: true },
+                    { name: 'Mistura de sementes (girassol, linhaça, abóbora)', base_qty: 100, unit: 'g', scalable: true },
+                    { name: 'Água morna', base_qty: 350, unit: 'ml', scalable: true },
+                    { name: 'Mel', base_qty: 2, unit: 'c. de sopa', scalable: true },
+                    { name: 'Azeite', base_qty: 2, unit: 'c. de sopa', scalable: true },
+                    { name: 'Fermento Biológico Seco', base_qty: 7, unit: 'g', scalable: true },
+                    { name: 'Sal', base_qty: 10, unit: 'g', scalable: true }
+                ],
+                steps: [
+                    { title: "Preparar a Massa", description: "Numa tigela grande, misture as farinhas, as sementes e o sal. Noutra tigela, misture a água morna, o mel, o azeite e o fermento. Junte os líquidos aos secos e misture até formar uma massa pegajosa.", porque: "A combinação de farinha integral e branca dá o equilíbrio perfeito entre sabor, nutrição (integral) e estrutura de glúten (branca), resultando num pão mais fofo do que um 100% integral.", pontoCritico: "A massa será mais densa e menos elástica do que uma massa apenas com farinha branca. Isto é normal." },
+                    { title: "Sovar e Fermentar", description: "Sove a massa por cerca de 10 minutos numa bancada levemente enfarinhada até ficar mais elástica. Forme uma bola, coloque numa tigela untada, cubra e deixe levedar por 1 a 1.5 horas, ou até duplicar.", porque: "Mesmo com farinha integral, a sova é importante para desenvolver o glúten necessário para um bom crescimento.", pontoCritico: "Não espere a mesma elasticidade do 'ponto de véu' de uma massa branca. A fibra da farinha integral 'corta' as redes de glúten." },
+                    { title: "Modelar e Assar", description: "Modele a massa num rolo e coloque-a numa forma de pão untada. Cubra e deixe levedar por mais 45 minutos. Pré-aqueça o forno a 200°C. Pincele o topo com um pouco de água e polvilhe com mais sementes. Asse por 40 a 45 minutos.", porque: "Modelar para uma forma de pão dá suporte à massa mais densa, ajudando-a a crescer para cima.", pontoCritico: "O pão integral está pronto quando soa oco ao bater no fundo e a temperatura interna atinge cerca de 90°C." }
+                ],
+                variacoes: [
+                    "<strong>Com Frutos Secos:</strong> Adicione passas ou damascos picados à massa.",
+                    "<strong>Pão de Centeio:</strong> Substitua parte da farinha integral por farinha de centeio para um sabor mais robusto."
+                ]
+            },
             'massa-pizza': { title: "Aula 08: Massa de Pizza Clássica (Longa Fermentação)" },
             'pao-biga': { title: "Aula 09: Pão Italiano com Biga" },
             'sourdough': { title: "Aula 10: Introdução ao Pão de Fermentação Natural" }
