@@ -316,9 +316,93 @@
                     "<strong>Pão de Centeio:</strong> Substitua parte da farinha integral por farinha de centeio para um sabor mais robusto."
                 ]
             },
-            'massa-pizza': { title: "Aula 08: Massa de Pizza Clássica (Longa Fermentação)" },
-            'pao-biga': { title: "Aula 09: Pão Italiano com Biga" },
-            'sourdough': { title: "Aula 10: Introdução ao Pão de Fermentação Natural" }
+            'massa-pizza': {
+                title: "Aula 08: Massa de Pizza Clássica (Longa Fermentação)",
+                description: "O segredo de uma pizza de restaurante está na massa. Aprenda a fazer uma massa de pizza com longa fermentação a frio, que desenvolve um sabor complexo e uma textura com bolhas e leveza incríveis.",
+                calculator: { label: "Número de Pizzas (250g cada):", unit: "massa-pizza-input", base_value: 4, default_value: 4 },
+                details: { tempoPreparo: "20 min", tempoCozimento: "8-12 min", tempoDescanso: "24-72 horas", rendimento: "4 bases de pizza", dificuldade: "Intermediário", utensilios: ["Bancada de trabalho", "Recipientes individuais com tampa", "Pedra ou tabuleiro de pizza"] },
+                dicaDeMestre: "A <span class='tooltip' data-tooltip='Processo de fermentar a massa lentamente na geleira por um ou mais dias. Desenvolve sabores muito mais complexos e melhora a textura.'>longa fermentação a frio</span> na geleira é o que diferencia uma pizza boa de uma pizza extraordinária. O sabor que se desenvolve é impossível de alcançar com uma fermentação rápida.",
+                ingredients: [
+                    { name: 'Farinha de Trigo Tipo 00 (ou de pão)', base_qty: 600, unit: 'g', scalable: true },
+                    { name: 'Água fria', base_qty: 390, unit: 'ml', scalable: true },
+                    { name: 'Sal fino', base_qty: 18, unit: 'g', scalable: true },
+                    { name: 'Fermento Biológico Seco', base_qty: 1, unit: 'g', scalable: true },
+                    { name: 'Azeite', base_qty: 1, unit: 'c. de sopa', scalable: true }
+                ],
+                steps: [
+                    { title: "A Massa", description: "Numa tigela, misture a farinha e o fermento. Noutra, dissolva o sal na água fria. Adicione a água à farinha e misture até formar uma massa. Adicione o azeite e sove por 10 minutos até ficar lisa.", porque: "Usar água fria e pouco fermento é a chave para uma fermentação lenta e controlada, que é o objetivo desta receita.", pontoCritico: "Dissolver o sal na água antes de o juntar à farinha garante que ele se distribui de forma uniforme sem entrar em contacto direto com o fermento, o que poderia retardar a sua atividade." },
+                    { title: "Fermentação a Frio", description: "Divida a massa em 4 bolas de cerca de 250g cada. Coloque cada bola num recipiente individual levemente untado com azeite, tape e leve à geleira por 24 a 72 horas.", porque: "A geleira abranda drasticamente a atividade do fermento, permitindo que as enzimas na farinha atuem e desenvolvam açúcares complexos. Isto resulta num sabor profundo e numa crosta que doura lindamente.", pontoCritico: "Quanto mais tempo na geleira (até 3 dias), mais sabor a massa terá." },
+                    { title: "Temperar e Esticar", description: "Retire as bolas de massa da geleira 2 a 3 horas antes de usar, para que atinjam a temperatura ambiente. Numa bancada enfarinhada, estique a massa com as pontas dos dedos, do centro para fora, deixando uma borda mais grossa (o 'cornicione').", porque: "Deixar a massa aquecer torna-a mais maleável e fácil de esticar. Esticar com os dedos preserva as bolhas de ar da fermentação, resultando numa crosta mais aerada.", pontoCritico: "Nunca use um rolo da massa para esticar massa de pizza! Isso esmaga todas as bolhas de ar." },
+                    { title: "Assar em Forno Muito Quente", description: "Pré-aqueça o seu forno na temperatura máxima (250°C ou mais) com uma pedra ou tabuleiro de pizza lá dentro. Adicione o seu recheio à base de pizza, transfira-a para a pedra quente e asse por 8 a 12 minutos.", porque: "A pizza precisa de um choque de calor intenso e rápido para que a base fique crocante e a crosta infle antes que o recheio seque.", pontoCritico: "O forno e a superfície de cozimento devem estar o mais quente possível. É o segredo para uma base de pizza perfeita em casa." }
+                ],
+                variacoes: [
+                    "<strong>Margherita:</strong> Molho de tomate, mozzarella fresca, manjericão.",
+                    "<strong>Calabresa:</strong> Molho de tomate, queijo, fatias de linguiça calabresa e cebola.",
+                    "<strong>Branca:</strong> Use azeite e alho como base em vez de molho de tomate."
+                ]
+            },
+            'pao-biga': {
+                title: "Aula 09: Pão Italiano com Biga",
+                description: "Dê um passo em direção à panificação avançada com a Biga, um <span class='tooltip' data-tooltip='Uma porção de massa feita no dia anterior (farinha, água e fermento) que é adicionada à massa final para melhorar o sabor, a estrutura e a durabilidade do pão.'>pré-fermento</span> italiano. Esta técnica resulta num pão com um miolo muito mais complexo e aromático.",
+                calculator: { label: "Pães:", unit: "pao-biga-input", base_value: 2, default_value: 2 },
+                details: { tempoPreparo: "30 min", tempoCozimento: "35-45 min", tempoDescanso: "12h (biga) + 3h (massa)", rendimento: "2 pães", dificuldade: "Avançado", utensilios: ["Batedeira com gancho", "Tigela"] },
+                dicaDeMestre: "A Biga é uma massa relativamente seca. É importante garantir que toda a farinha está hidratada. Misture bem até não haver pontos secos. A sua consistência final será firme e pouco elástica.",
+                ingredients: [
+                    { name: 'Farinha de Trigo', base_qty: 300, unit: 'g', scalable: true, heading: 'Para a Biga (fazer na noite anterior)' },
+                    { name: 'Água', base_qty: 150, unit: 'ml', scalable: true },
+                    { name: 'Fermento Biológico Seco', base_qty: 0.5, unit: 'g (uma pitada)', scalable: true },
+                    { name: 'Farinha de Trigo', base_qty: 200, unit: 'g', scalable: true, heading: 'Para a Massa Final' },
+                    { name: 'Água', base_qty: 180, unit: 'ml', scalable: true },
+                    { name: 'Sal', base_qty: 10, unit: 'g', scalable: true }
+                ],
+                steps: [
+                    { 
+                        isSubRecipe: true,
+                        title: "Módulo: Preparar a Biga (12-16 horas antes)",
+                        subSteps: [
+                            { title: "Misturar a Biga", description: "Numa tigela, misture a farinha da biga, a água e a pitada de fermento. Misture apenas até os ingredientes se combinarem. Não precisa de sovar. A massa será firme.", porque: "A biga é um pré-fermento que desenvolve ácidos e álcoois aromáticos durante uma longa fermentação, o que dará ao pão final um sabor muito mais profundo e complexo.", pontoCritico: "Use uma quantidade muito pequena de fermento, pois o objetivo é uma fermentação muito lenta." },
+                            { title: "Fermentação Lenta", description: "Cubra a tigela e deixe a biga fermentar à temperatura ambiente por 12 a 16 horas. Estará pronta quando tiver um cheiro forte a álcool e estiver cheia de bolhas.", porque: "Este longo período é onde toda a complexidade de sabor é criada. É um processo puramente químico e biológico.", pontoCritico: "O tempo pode variar com a temperatura da sua cozinha." }
+                        ]
+                    },
+                    { title: "Massa Final", description: "Na tigela da batedeira, desfaça a biga na água da massa final. Adicione a farinha e o sal. Com o gancho, misture em velocidade baixa até combinar, e depois aumente para velocidade média e sove por 8-10 minutos.", porque: "A biga já contém a maior parte do sabor. A sova agora serve para desenvolver o glúten da nova farinha e criar a estrutura final do pão.", pontoCritico: "A massa será pegajosa. É normal. Evite adicionar muita farinha." },
+                    { title: "Fermentação e Dobras", description: "Coloque a massa numa tigela untada e deixe levedar por cerca de 2 horas, fazendo um conjunto de <span class='tooltip' data-tooltip='Técnica de esticar e dobrar a massa sobre si mesma durante a fermentação para fortalecer o glúten sem sovar intensamente.'>dobras</span> a cada 45 minutos para fortalecer a massa.", porque: "As dobras ajudam a fortalecer a rede de glúten de uma massa mais húmida, dando-lhe a força necessária para crescer bem.", pontoCritico: "Use as mãos molhadas para fazer as dobras e evitar que a massa cole." },
+                    { title: "Modelar e Assar", description: "Divida a massa em duas, pré-modele, deixe descansar por 15 minutos e depois modele no formato final. Deixe levedar por mais 1 hora. Asse num forno muito quente (230°C) com vapor, preferencialmente numa panela de ferro.", porque: "As técnicas de modelagem e cozedura são semelhantes às de outros pães rústicos, mas o resultado em sabor e textura, graças à biga, será muito superior.", pontoCritico: "Este pão beneficia enormemente do método de cozedura em panela de ferro (Dutch oven)." }
+                ],
+                variacoes: [
+                    "<strong>Com Poolish:</strong> Experimente usar um 'poolish' (um pré-fermento líquido, com 100% de hidratação) em vez de uma biga para um sabor ligeiramente diferente.",
+                    "<strong>Ciabatta:</strong> Com uma hidratação ainda maior e uma manipulação gentil, esta massa pode ser usada para fazer pão Ciabatta."
+                ]
+            },
+            'sourdough': {
+                title: "Aula 10: Introdução ao Pão de Fermentação Natural",
+                description: "A jornada final da panificação caseira. Esta aula é uma introdução ao mundo do <span class='tooltip' data-tooltip='Também conhecido como sourdough ou massa mãe, é uma cultura viva de leveduras e bactérias selvagens usada para fermentar o pão.'>levain</span>. Aprenda o que é, como alimentá-lo e os passos para fazer o seu primeiro pão de fermentação natural.",
+                calculator: { label: "Pães:", unit: "sourdough-input", base_value: 1, default_value: 1 },
+                details: { tempoPreparo: "Vários dias (para o levain) + 40 min (massa)", tempoCozimento: "45 min", tempoDescanso: "24 horas", rendimento: "1 pão grande", dificuldade: "Perito", utensilios: ["Balança de precisão", "Banneton (cesto de fermentação)", "Panela de ferro"] },
+                dicaDeMestre: "A panificação com fermento natural é um processo de observação e intuição, não apenas de seguir tempos. Aprenda a 'ler' a sua massa: observe o seu crescimento, as bolhas, a sua textura. Cada dia é diferente.",
+                ingredients: [
+                    { name: 'Levain (fermento natural) ativo', base_qty: 100, unit: 'g', scalable: true, heading: 'Para a Massa' },
+                    { name: 'Farinha de Trigo de força', base_qty: 450, unit: 'g', scalable: true },
+                    { name: 'Farinha de Trigo Integral', base_qty: 50, unit: 'g', scalable: true },
+                    { name: 'Água', base_qty: 375, unit: 'g', scalable: true },
+                    { name: 'Sal', base_qty: 10, unit: 'g', scalable: true }
+                ],
+                steps: [
+                    { 
+                        isSubRecipe: true,
+                        title: "Módulo 1: O que é o Levain e Como o Alimentar",
+                        subSteps: [
+                            { title: "O que é?", description: "O Levain (ou Sourdough Starter) é uma cultura simbiótica de leveduras e bactérias lácticas que vivem numa mistura de farinha e água. Estas leveduras são 'selvagens' e estão presentes no ar e na própria farinha. Elas são responsáveis por fazer o pão crescer e por lhe dar o seu sabor característico, ligeiramente ácido.", porque: "Ao contrário do fermento comercial, o levain cria uma fermentação mais lenta e complexa, que pré-digere parcialmente o glúten e desenvolve uma profundidade de sabor inigualável.", pontoCritico: "Criar um levain do zero leva cerca de 7 a 10 dias de alimentação diária. Pode também obter uma 'isca' de um padeiro amigo." },
+                            { title: "Alimentar o Levain", description: "Para que o levain esteja 'ativo' e pronto a usar, ele precisa de ser alimentado. Descarte uma parte do seu levain 'mãe' e alimente o restante com partes iguais de farinha e água (ex: 50g de levain, 50g de farinha, 50g de água). Ele estará no seu pico de atividade quando duplicar ou triplicar de volume e estiver cheio de bolhas (normalmente 4 a 8 horas depois de alimentado).", porque: "Alimentar o levain dá 'comida' (farinha fresca) às leveduras, que se multiplicam e se tornam ativas. Usar o levain no seu pico garante a máxima força de fermentação para o seu pão.", pontoCritico: "O 'teste da gota' é uma boa indicação: uma pequena colher de levain ativo deve flutuar num copo de água." }
+                        ]
+                    },
+                    { title: "Autólise e Mistura", description: "Numa tigela, misture as farinhas e a água. Deixe descansar por 1 hora (<span class='tooltip' data-tooltip='Período de descanso inicial de farinha e água que hidrata o glúten.'>autólise</span>). Adicione o levain ativo e o sal. Misture bem e comece a fazer séries de <span class='tooltip' data-tooltip='Técnica de esticar e dobrar a massa sobre si mesma para fortalecer o glúten.'>dobras</span> a cada 30 minutos, durante 2 a 3 horas.", porque: "A fermentação natural beneficia de uma manipulação gentil. As dobras fortalecem o glúten sem sovar intensamente, preservando a estrutura de ar da massa.", pontoCritico: "A massa será pegajosa e viva. Trabalhe com as mãos molhadas." },
+                    { title: "Fermentação em Bloco e Modelagem", description: "Deixe a massa fermentar à temperatura ambiente até aumentar cerca de 30-50% em volume (fermentação em bloco). Depois, pré-modele, deixe descansar e faça a modelagem final. Coloque a massa modelada num cesto de fermentação (banneton) bem enfarinhado.", porque: "A fermentação em bloco é onde a maior parte do sabor se desenvolve. A modelagem cria a tensão necessária para um bom crescimento no forno.", pontoCritico: "É fácil sobre-fermentar a massa. Aprenda a reconhecer os sinais visuais de uma fermentação correta (bolhas, aumento de volume) em vez de seguir apenas o relógio." },
+                    { title: "Fermentação a Frio e Cozimento", description: "Cubra o banneton e leve à geleira para uma longa fermentação a frio, de 12 a 24 horas. No dia seguinte, asse o pão diretamente da geleira, numa panela de ferro muito quente, a 240°C, com tampa por 20 minutos e sem tampa por mais 25 minutos.", porque: "A fermentação a frio desenvolve ainda mais o sabor complexo e ácido do pão, e torna a massa mais fácil de cortar. Assar a frio ajuda a massa a manter a sua forma e a ter um 'oven spring' melhor.", pontoCritico: "Este é o auge da panificação. Requer prática, paciência e observação. Não desanime se o seu primeiro pão não for perfeito. Cada pão é uma aula." }
+                ],
+                variacoes: [
+                    "<strong>Este é o fim de uma jornada e o começo de outra. As variações são infinitas:</strong> use diferentes tipos de farinha (centeio, espelta), adicione sementes, frutos, queijos... O mundo da fermentação natural é o seu recreio."
+                ]
+            }
         };
 
         // ===================================================================================
@@ -382,9 +466,6 @@
         };
 
         const generateRecipeHTML = (recipeData) => {
-             if (!recipeData.details) {
-                return `<div class="text-center p-10"><h2 class="text-3xl font-bold text-amber-700">${recipeData.title}</h2><p class="mt-4 text-stone-600">O conteúdo detalhado para esta aula estará disponível em breve. Obrigado pela sua paciência!</p></div>`;
-            }
              return `
                 <div class="text-center">
                     <h2 class="text-3xl md:text-4xl font-bold text-amber-700">${recipeData.title}</h2>
