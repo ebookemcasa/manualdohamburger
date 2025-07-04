@@ -240,7 +240,33 @@
                     "<strong>Recheada:</strong> Divida a massa em duas, estique uma parte, cubra com queijo e presunto, e coloque a outra parte da massa por cima antes de fazer as covinhas."
                 ]
             },
-            'pao-de-leite': { title: "Aula 05: Pão de Leite Fofinho" },
+            'pao-de-leite': {
+                title: "Aula 05: Pão de Leite Fofinho",
+                description: "Aprenda a fazer o pão de leite clássico, com uma textura ultra macia e um sabor ligeiramente adocicado. Esta aula é uma introdução às <span class='tooltip' data-tooltip='Massas que contêm uma maior percentagem de gordura, açúcar e laticínios, resultando numa textura mais macia e rica.'>massas ricas</span>, perfeitas para o lanche ou pequeno-almoço.",
+                calculator: { label: "Pães:", unit: "pao-de-leite-input", base_value: 12, default_value: 12 },
+                details: { tempoPreparo: "25 min", tempoCozimento: "20-25 min", tempoDescanso: "2 horas", rendimento: "12 pãezinhos", dificuldade: "Intermediário", utensilios: ["Batedeira com gancho (opcional)", "Tigela", "Tabuleiro"] },
+                dicaDeMestre: "Pincelar os pães com uma mistura de gema de ovo e um pouco de leite antes de assar (egg wash) é o segredo para obter uma crosta brilhante e com uma cor dourada profunda e uniforme.",
+                ingredients: [
+                    { name: 'Farinha de Trigo', base_qty: 500, unit: 'g', scalable: true },
+                    { name: 'Leite morno', base_qty: 250, unit: 'ml', scalable: true },
+                    { name: 'Açúcar', base_qty: 50, unit: 'g', scalable: true },
+                    { name: 'Manteiga sem sal, amolecida', base_qty: 50, unit: 'g', scalable: true },
+                    { name: 'Ovo', base_qty: 1, unit: 'unid.', scalable: true },
+                    { name: 'Fermento Biológico Seco', base_qty: 7, unit: 'g', scalable: true },
+                    { name: 'Sal', base_qty: 1, unit: 'c. de chá', scalable: true }
+                ],
+                steps: [
+                    { title: "A Massa Rica", description: "Numa tigela, misture o leite morno e o fermento. Numa tigela maior (ou na da batedeira), junte a farinha, o açúcar e o sal. Adicione a mistura de leite, o ovo e a manteiga amolecida. Comece a misturar até formar uma massa.", porque: "As massas ricas contêm gordura (manteiga) e açúcar, que amaciam o glúten e resultam num miolo mais macio e menos elástico do que o de um pão rústico.", pontoCritico: "A manteiga deve estar amolecida, não derretida, para se incorporar melhor na massa." },
+                    { title: "Sovar até Ficar Elástica", description: "Sove a massa numa bancada por 10-15 minutos (ou 8-10 minutos na batedeira com o gancho) até ficar lisa, elástica e macia.", porque: "Mesmo sendo uma massa rica, o desenvolvimento do glúten ainda é necessário para dar estrutura ao pão e permitir que ele cresça.", pontoCritico: "A massa ficará um pouco pegajosa devido ao açúcar e à gordura. Evite adicionar demasiada farinha extra." },
+                    { title: "Fermentação e Moldagem", description: "Faça uma bola com a massa, coloque numa tigela untada, cubra e deixe levedar por 1 a 1.5 horas. Depois, divida a massa em 12 porções iguais e modele pequenas bolas. Coloque-as num tabuleiro, cubra e deixe levedar por mais 45 minutos.", porque: "A fermentação dupla garante um pão mais leve e com um sabor mais desenvolvido.", pontoCritico: "Deixe espaço entre as bolinhas no tabuleiro, pois elas irão crescer e podem juntar-se, o que é normal para este tipo de pão." },
+                    { title: "Pincelar e Assar", description: "Pré-aqueça o forno a 180°C. Pincele os pães com uma mistura de gema e leite. Leve ao forno por 20 a 25 minutos, ou até estarem bem dourados. Deixe arrefecer sobre uma grelha.", porque: "O 'egg wash' dá a cor e o brilho característicos. O calor moderado do forno cozinha a massa rica de forma mais gentil.", pontoCritico: "Como contêm açúcar, estes pães douram mais rápido. Fique atento para não queimarem.", timer: 1200 }
+                ],
+                variacoes: [
+                    "<strong>Com Chocolate:</strong> Adicione pepitas de chocolate à massa.",
+                    "<strong>Pão Doce:</strong> Aumente a quantidade de açúcar e cubra com uma calda de açúcar em pó e leite depois de assados.",
+                    "<strong>Formato de Forma:</strong> Asse a massa inteira numa forma de pão para um pão de leite de fatiar."
+                ]
+            },
             'baguete': { title: "Aula 06: Baguete Francesa Simplificada" },
             'pao-integral': { title: "Aula 07: Pão Integral com Sementes" },
             'massa-pizza': { title: "Aula 08: Massa de Pizza Clássica (Longa Fermentação)" },
