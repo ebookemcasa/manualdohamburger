@@ -1,0 +1,437 @@
+<!DOCTYPE html>
+<html lang="pt-BR" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pães Artesanais - Mestre Culinário</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Lato:wght@400;700&display=swap');
+        body { font-family: 'Lato', sans-serif; background-color: #f8f7f4; color: #3d3d3d; }
+        h1, h2, h3, h4, .nav-link { font-family: 'Playfair Display', serif; }
+        
+        /* Estilos para interatividade */
+        .aula-card {
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            cursor: pointer;
+        }
+        .aula-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.05), 0 4px 6px -4px rgb(0 0 0 / 0.05);
+        }
+        
+        /* Checklist de Ingredientes */
+        .ingredient-item input[type="checkbox"] {
+            display: none;
+        }
+        .ingredient-item span {
+            transition: all 0.2s ease;
+            cursor: pointer;
+        }
+        .ingredient-item input[type="checkbox"]:checked + span {
+            text-decoration: line-through;
+            opacity: 0.6;
+        }
+
+        /* Acordion/Sanfona para os Passos */
+        details > summary {
+            cursor: pointer;
+            list-style: none;
+            display: inline-flex;
+            align-items: center;
+            transition: color 0.2s ease;
+        }
+        details > summary::-webkit-details-marker {
+            display: none;
+        }
+        details > summary::before {
+            content: '▶';
+            margin-right: 8px;
+            font-size: 0.7em;
+            transition: transform 0.2s ease-in-out;
+        }
+        details[open] > summary::before {
+            transform: rotate(90deg);
+        }
+
+        /* Tooltips para termos técnicos */
+        .tooltip {
+            position: relative;
+            cursor: help;
+            border-bottom: 2px dotted #ca8a04;
+            font-weight: bold;
+        }
+        .tooltip::after {
+            content: attr(data-tooltip); /* Puxa o texto do atributo data-tooltip */
+            position: absolute;
+            bottom: 125%;
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 10;
+            
+            /* Estilos da caixa */
+            width: 220px;
+            background-color: #3d3d3d;
+            color: #fff;
+            font-family: 'Lato', sans-serif;
+            font-weight: normal;
+            text-align: center;
+            padding: 8px;
+            border-radius: 6px;
+            
+            /* Animação */
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 0.3s ease;
+        }
+        .tooltip:hover::after {
+            opacity: 1;
+            visibility: visible;
+        }
+    </style>
+</head>
+<body class="antialiased">
+    <header class="bg-white/90 backdrop-blur-lg sticky top-0 z-50 shadow-md">
+        <nav class="container mx-auto px-6 py-4">
+            <div class="flex justify-between items-center">
+                <a href="index.html" class="text-3xl font-bold text-stone-800">Mestre<span class="text-amber-600">Culinário</span></a>
+                <a href="index.html" class="nav-link text-stone-600 hover:text-amber-600 transition-colors">Voltar à Página Principal</a>
+            </div>
+        </nav>
+    </header>
+    <main class="container mx-auto px-6 py-8 md:py-12">
+        <section id="page-title" class="text-center mb-16">
+            <h1 class="text-4xl md:text-6xl font-bold text-stone-800">Pães <span class="text-amber-600">Artesanais</span></h1>
+            <p class="mt-4 max-w-2xl mx-auto text-stone-600">Descubra a magia de transformar farinha, água e sal. Aulas que o guiam desde o seu primeiro pão até à arte da fermentação natural.</p>
+        </section>
+
+        <div id="aulas-list" class="space-y-8 max-w-5xl mx-auto">
+            <div class="aula-card bg-white p-6 rounded-lg shadow-lg" data-target="receita-pao-sem-sova"><h2 class="text-2xl md:text-3xl font-bold text-amber-700">Aula 01: Pão Sem Sova (No-Knead Bread)</h2><p class="text-stone-600 mt-2">A forma mais fácil de começar. Deixe o tempo fazer o trabalho por si.</p></div>
+            <div class="aula-card bg-white p-6 rounded-lg shadow-lg" data-target="receita-pao-rustico"><h2 class="text-2xl md:text-3xl font-bold text-amber-700">Aula 02: Pão Rústico Caseiro</h2><p class="text-stone-600 mt-2">Aprenda a sovar e a formar o seu primeiro pão de casca crocante.</p></div>
+            <div class="aula-card bg-white p-6 rounded-lg shadow-lg" data-target="receita-pao-de-queijo"><h2 class="text-2xl md:text-3xl font-bold text-amber-700">Aula 03: Pão de Queijo Tradicional</h2><p class="text-stone-600 mt-2">O clássico mineiro, elástico por dentro e dourado por fora.</p></div>
+            <div class="aula-card bg-white p-6 rounded-lg shadow-lg" data-target="receita-focaccia"><h2 class="text-2xl md:text-3xl font-bold text-amber-700">Aula 04: Focaccia com Alecrim e Sal Grosso</h2><p class="text-stone-600 mt-2">Aprenda a trabalhar com massas de alta hidratação para um resultado fofo e aerado.</p></div>
+            <div class="aula-card bg-white p-6 rounded-lg shadow-lg" data-target="receita-pao-de-leite"><h2 class="text-2xl md:text-3xl font-bold text-amber-700">Aula 05: Pão de Leite Fofinho</h2><p class="text-stone-600 mt-2">Uma introdução às massas ricas, resultando num pão de textura macia.</p></div>
+            <div class="aula-card bg-white p-6 rounded-lg shadow-lg" data-target="receita-baguete"><h2 class="text-2xl md:text-3xl font-bold text-amber-700">Aula 06: Baguete Francesa Simplificada</h2><p class="text-stone-600 mt-2">Concentre-se na técnica de modelagem para conseguir o formato icónico.</p></div>
+            <div class="aula-card bg-white p-6 rounded-lg shadow-lg" data-target="receita-pao-integral"><h2 class="text-2xl md:text-3xl font-bold text-amber-700">Aula 07: Pão Integral com Sementes</h2><p class="text-stone-600 mt-2">Aprenda a trabalhar com farinhas integrais para um pão nutritivo e saboroso.</p></div>
+            <div class="aula-card bg-white p-6 rounded-lg shadow-lg" data-target="receita-massa-pizza"><h2 class="text-2xl md:text-3xl font-bold text-amber-700">Aula 08: Massa de Pizza Clássica (Longa Fermentação)</h2><p class="text-stone-600 mt-2">O segredo de uma base de pizza com bolhas e sabor de pizzaria.</p></div>
+            <div class="aula-card bg-white p-6 rounded-lg shadow-lg" data-target="receita-pao-biga"><h2 class="text-2xl md:text-3xl font-bold text-amber-700">Aula 09: Pão Italiano com Biga</h2><p class="text-stone-600 mt-2">Um passo avançado: aprenda a usar um pré-fermento para mais sabor e estrutura.</p></div>
+            <div class="aula-card bg-white p-6 rounded-lg shadow-lg" data-target="receita-sourdough"><h2 class="text-2xl md:text-3xl font-bold text-amber-700">Aula 10: Introdução ao Pão de Fermentação Natural</h2><p class="text-stone-600 mt-2">O guia para criar e manter o seu próprio levain (massa mãe) e fazer o seu primeiro pão.</p></div>
+        </div>
+
+        <div id="receitas-container" class="hidden">
+            <button id="back-to-list-btn" class="mb-8 inline-flex items-center text-amber-700 hover:text-amber-800 font-bold"><svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-2" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M12.707 5.293a1 1 0 010 1.414L9.414 10l3.293 3.293a1 1 0 01-1.414 1.414l-4-4a1 1 0 010-1.414l4-4a1 1 0 011.414 0z" clip-rule="evenodd" /></svg>Voltar ao Índice de Aulas</button>
+            <div id="receita-pao-sem-sova" class="receita-content bg-white p-8 rounded-lg shadow-xl max-w-7xl mx-auto hidden"></div>
+            <div id="receita-pao-rustico" class="receita-content bg-white p-8 rounded-lg shadow-xl max-w-7xl mx-auto hidden"></div>
+            <div id="receita-pao-de-queijo" class="receita-content bg-white p-8 rounded-lg shadow-xl max-w-7xl mx-auto hidden"></div>
+            <div id="receita-focaccia" class="receita-content bg-white p-8 rounded-lg shadow-xl max-w-7xl mx-auto hidden"></div>
+            <div id="receita-pao-de-leite" class="receita-content bg-white p-8 rounded-lg shadow-xl max-w-7xl mx-auto hidden"></div>
+            <div id="receita-baguete" class="receita-content bg-white p-8 rounded-lg shadow-xl max-w-7xl mx-auto hidden"></div>
+            <div id="receita-pao-integral" class="receita-content bg-white p-8 rounded-lg shadow-xl max-w-7xl mx-auto hidden"></div>
+            <div id="receita-massa-pizza" class="receita-content bg-white p-8 rounded-lg shadow-xl max-w-7xl mx-auto hidden"></div>
+            <div id="receita-pao-biga" class="receita-content bg-white p-8 rounded-lg shadow-xl max-w-7xl mx-auto hidden"></div>
+            <div id="receita-sourdough" class="receita-content bg-white p-8 rounded-lg shadow-xl max-w-7xl mx-auto hidden"></div>
+        </div>
+    </main>
+    <footer class="bg-white border-t mt-16"><div class="container mx-auto px-6 py-8 text-center text-stone-600"><p>&copy; 2024 Mestre Culinário. Todos os direitos reservados.</p></div></footer>
+
+    <script src="database.js"></script>
+    <script>
+    document.addEventListener('DOMContentLoaded', () => {
+
+        const aulas = {
+            'pao-sem-sova': {
+                title: "Aula 01: Pão Sem Sova (No-Knead Bread)",
+                description: "A receita que revolucionou a panificação caseira. Aprenda a fazer um pão de casca crocante e miolo aerado com qualidade de padaria, com um esforço ativo de menos de 5 minutos. O tempo fará todo o trabalho por si.",
+                calculator: { label: "Gramas de Farinha:", unit: "pao-sem-sova-input", base_value: 400, default_value: 400 },
+                details: { tempoPreparo: "5 min", tempoCozimento: "45 min", tempoDescanso: "12-18 horas", rendimento: "1 pão redondo", dificuldade: "Fácil", utensilios: ["Panela de ferro fundido com tampa (Dutch Oven)", "Tigela grande", "Espátula"] },
+                dicaDeMestre: "O segredo do sucesso desta receita é a panela de ferro superaquecida. Ela funciona como um 'mini-forno', aprisionando o vapor libertado pelo pão. Este vapor mantém a crosta macia no início, permitindo que o pão cresça ao máximo, e depois escapa, criando uma crosta estaladiça.",
+                ingredients: [
+                    { name: 'Farinha de Trigo', base_qty: 400, unit: 'g', scalable: true },
+                    { name: 'Água morna', base_qty: 300, unit: 'ml', scalable: true },
+                    { name: 'Sal', base_qty: 8, unit: 'g (1.5 c. de chá)', scalable: true },
+                    { name: 'Fermento Biológico Seco', base_qty: 1, unit: 'g (1/4 c. de chá)', scalable: true }
+                ],
+                steps: [
+                    { title: "A Mistura", description: "Numa tigela grande, misture a farinha, o sal e o fermento. Adicione a água morna e misture com uma espátula ou colher apenas até não haver mais farinha seca visível. A massa será pegajosa e desgrenhada. Não precisa de sovar.", porque: "A longa fermentação fará o trabalho de desenvolver o <span class='tooltip' data-tooltip='Rede de proteínas que dá elasticidade e estrutura à massa.'>glúten</span>, eliminando a necessidade da sova manual. A alta hidratação da massa também contribui para um miolo mais aberto.", pontoCritico: "Apenas misture. Não trabalhe a massa. A beleza desta receita está na sua simplicidade." },
+                    { title: "A Longa Fermentação", description: "Cubra a tigela com película aderente ou um pano e deixe a massa descansar à temperatura ambiente por 12 a 18 horas. A massa estará pronta quando estiver cheia de bolhas e tiver mais do que duplicado de volume.", porque: "É durante este longo período que a fermentação lenta acontece. O fermento consome os açúcares da farinha, libertando dióxido de carbono (as bolhas) e desenvolvendo sabores complexos que uma fermentação rápida não consegue criar.", pontoCritico: "O tempo exato dependerá da temperatura da sua cozinha. Em dias mais quentes, 12 horas pode ser suficiente. Em dias frios, pode precisar de 18 ou mais." },
+                    { title: "Pré-aquecer a Panela", description: "Pelo menos 30 minutos antes de assar, coloque a sua panela de ferro com a tampa dentro do forno e pré-aqueça-o a 230°C. A panela precisa de estar incrivelmente quente.", porque: "O choque térmico de colocar a massa fria na panela a ferver é o que cria a 'explosão de forno' (<span class='tooltip' data-tooltip='O rápido crescimento do pão nos primeiros minutos no forno.'>oven spring</span>), fazendo o pão crescer dramaticamente.", pontoCritico: "Não salte este passo. Uma panela que não está suficientemente quente resultará num pão denso e pálido." },
+                    { title: "Assar o Pão", description: "Com cuidado, retire a panela quente do forno. Despeje a massa (que estará pegajosa) na panela. Tape e leve ao forno por 30 minutos. Após 30 minutos, retire a tampa e asse por mais 15 minutos, ou até a crosta estar bem dourada.", porque: "Os primeiros 30 minutos com tampa criam um ambiente cheio de vapor, permitindo o crescimento máximo. Retirar a tampa permite que o vapor escape, secando a superfície e criando a crosta estaladiça.", pontoCritico: "Tenha muito cuidado ao manusear a panela quente. Use luvas de forno de boa qualidade.", timer: 1800 }
+                ],
+                variacoes: [
+                    "<strong>Com Sementes:</strong> Adicione um punhado de sementes de girassol ou abóbora à mistura inicial.",
+                    "<strong>Com Azeitonas:</strong> Incorpore azeitonas picadas e um pouco de alecrim na massa.",
+                    "<strong>Integral:</strong> Substitua 1/3 da farinha branca por farinha de trigo integral."
+                ]
+            },
+            // As restantes 9 aulas serão preenchidas com a mesma estrutura detalhada...
+            'pao-rustico': { title: "Aula 02: Pão Rústico Caseiro" },
+            'pao-de-queijo': { title: "Aula 03: Pão de Queijo Tradicional" },
+            'focaccia': { title: "Aula 04: Focaccia com Alecrim e Sal Grosso" },
+            'pao-de-leite': { title: "Aula 05: Pão de Leite Fofinho" },
+            'baguete': { title: "Aula 06: Baguete Francesa Simplificada" },
+            'pao-integral': { title: "Aula 07: Pão Integral com Sementes" },
+            'massa-pizza': { title: "Aula 08: Massa de Pizza Clássica (Longa Fermentação)" },
+            'pao-biga': { title: "Aula 09: Pão Italiano com Biga" },
+            'sourdough': { title: "Aula 10: Introdução ao Pão de Fermentação Natural" }
+        };
+
+        // ===================================================================================
+        // FUNÇÕES GLOBAIS (NÃO MEXER)
+        // ===================================================================================
+        
+        const aulasList = document.getElementById('aulas-list');
+        const pageTitle = document.getElementById('page-title');
+        const receitasContainer = document.getElementById('receitas-container');
+        const backToListBtn = document.getElementById('back-to-list-btn');
+        const menuBtn = document.getElementById('menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+
+        // Menu Mobile
+        if(menuBtn && mobileMenu){
+            menuBtn.addEventListener('click', () => {
+                mobileMenu.classList.toggle('hidden');
+            });
+        }
+
+        const formatNumber = (num) => {
+            if (num < 1 && num > 0) return num.toFixed(2);
+            if (num % 1 !== 0) return num.toFixed(1);
+            return num;
+        };
+        
+        const updateIngredients = (recipeData, inputValue) => {
+            const list = document.getElementById(`ingredient-list-${recipeData.calculator.unit}`);
+            if (!list || !recipeData.ingredients) return;
+
+            const multiplier = inputValue / recipeData.calculator.base_value;
+            let html = '';
+            let currentHeading = '';
+
+            recipeData.ingredients.forEach(ing => {
+                if(ing.heading && ing.heading !== currentHeading) {
+                    currentHeading = ing.heading;
+                    html += `<h5 class="font-bold text-stone-700 mt-3 mb-1">${currentHeading}:</h5>`;
+                }
+
+                let qtyDisplay = '';
+                if (!ing.scalable) {
+                    qtyDisplay = ing.unit;
+                } else {
+                    const scaledQty = ing.base_qty * multiplier;
+                    qtyDisplay = `${formatNumber(scaledQty)} ${ing.unit}`;
+                }
+                
+                html += `
+                    <li class="ingredient-item">
+                        <label class="flex items-center p-1 rounded-md hover:bg-stone-100">
+                            <input type="checkbox" class="mr-2 h-4 w-4 text-amber-600 focus:ring-amber-500 border-stone-300 rounded">
+                            <span class="flex-1 flex justify-between">
+                                <span>${ing.name}</span>
+                                <span class="font-semibold text-right pl-2">${qtyDisplay}</span>
+                            </span>
+                        </label>
+                    </li>`;
+            });
+            list.innerHTML = html;
+        };
+
+        const generateRecipeHTML = (recipeData) => {
+             if (!recipeData.details) {
+                return `<div class="text-center p-10"><h2 class="text-3xl font-bold text-amber-700">${recipeData.title}</h2><p class="mt-4 text-stone-600">O conteúdo detalhado para esta aula estará disponível em breve. Obrigado pela sua paciência!</p></div>`;
+            }
+             return `
+                <div class="text-center">
+                    <h2 class="text-3xl md:text-4xl font-bold text-amber-700">${recipeData.title}</h2>
+                    <p class="mt-4 max-w-3xl mx-auto text-stone-600 text-lg">${recipeData.description}</p>
+                </div>
+                
+                <div class="mt-10 grid grid-cols-2 md:grid-cols-4 gap-4 text-center">
+                    <div class="bg-stone-100 p-4 rounded-lg flex flex-col justify-center items-center">
+                        <span class="text-2xl">⏳</span>
+                        <h4 class="font-bold text-stone-800">Preparo</h4>
+                        <p class="text-stone-600 text-sm">${recipeData.details.tempoPreparo}</p>
+                    </div>
+                    <div class="bg-stone-100 p-4 rounded-lg flex flex-col justify-center items-center">
+                        <span class="text-2xl">🍳</span>
+                        <h4 class="font-bold text-stone-800">Cozimento</h4>
+                        <p class="text-stone-600 text-sm">${recipeData.details.tempoCozimento}</p>
+                    </div>
+                    <div class="bg-stone-100 p-4 rounded-lg flex flex-col justify-center items-center">
+                        <span class="text-2xl">🍽️</span>
+                        <h4 class="font-bold text-stone-800">Rendimento</h4>
+                        <p class="text-stone-600 text-sm">${recipeData.details.rendimento}</p>
+                    </div>
+                    <div class="bg-stone-100 p-4 rounded-lg flex flex-col justify-center items-center">
+                        <span class="text-2xl">⭐</span>
+                        <h4 class="font-bold text-stone-800">Dificuldade</h4>
+                        <p class="text-stone-600 text-sm">${recipeData.details.dificuldade}</p>
+                    </div>
+                </div>
+
+                <div class="mt-12 grid grid-cols-1 lg:grid-cols-3 gap-x-12 gap-y-8">
+                    <div class="lg:col-span-1">
+                        <h3 class="text-2xl font-bold text-stone-800 mb-4 border-b-2 border-amber-500 pb-2">Planeamento</h3>
+                        <div class="bg-stone-50 p-4 rounded-lg">
+                            <label for="${recipeData.calculator.unit}" class="block text-lg text-stone-700 mb-2 font-bold">${recipeData.calculator.label}</label>
+                            <input type="number" id="${recipeData.calculator.unit}" value="${recipeData.calculator.default_value}" min="0.5" step="1" class="w-full p-2 border border-stone-300 rounded-lg focus:ring-2 focus:ring-amber-500">
+                        </div>
+                        <div class="mt-6">
+                            <h4 class="font-bold text-lg mb-2 text-stone-700">Checklist de Ingredientes:</h4>
+                            <ul class="space-y-1 text-stone-600 text-sm" id="ingredient-list-${recipeData.calculator.unit}"></ul>
+                        </div>
+                         <div class="mt-6">
+                            <h4 class="font-bold text-lg mb-2 text-stone-700">Utensílios Chave:</h4>
+                            <ul class="space-y-2 text-stone-600 list-disc list-inside text-sm">
+                                ${recipeData.details.utensilios.map(utensil => `<li>${utensil}</li>`).join('')}
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="lg:col-span-2">
+                        <h3 class="text-2xl font-bold text-stone-800 mb-4 border-b-2 border-amber-500 pb-2">Tutorial Detalhado</h3>
+                        <div class="space-y-6">
+                            ${recipeData.steps.map((step, index) => {
+                                if (step.isSubRecipe) {
+                                    return `
+                                    <div class="p-4 rounded-lg bg-amber-50 border-l-4 border-amber-400">
+                                        <h4 class="font-bold text-xl text-amber-800 mb-4">${step.title}</h4>
+                                        <div class="space-y-4">
+                                        ${step.subSteps.map(subStep => `
+                                            <div class="ml-4">
+                                                <h5 class="font-semibold text-lg text-stone-800 mb-1">${subStep.title}</h5>
+                                                <div class="prose prose-stone max-w-none text-sm">
+                                                    <p>${subStep.description}</p>
+                                                     <details class="mt-3 text-xs">
+                                                        <summary class="font-bold text-blue-800">Ver o porquê</summary>
+                                                        <div class="mt-2 bg-blue-50 text-blue-800 rounded-md p-3">${subStep.porque}</div>
+                                                     </details>
+                                                     <details class="mt-2 text-xs">
+                                                        <summary class="font-bold text-red-800">Ver ponto crítico</summary>
+                                                        <div class="mt-2 bg-red-50 text-red-800 rounded-md p-3">${subStep.pontoCritico}</div>
+                                                     </details>
+                                                </div>
+                                            </div>
+                                        `).join('')}
+                                        </div>
+                                    </div>`;
+                                }
+                                return `
+                                <div class="p-4 rounded-lg bg-stone-50 border-l-4 border-stone-200">
+                                    <h4 class="font-bold text-xl text-stone-800 mb-2"><span class="bg-amber-600 text-white rounded-full w-8 h-8 inline-flex items-center justify-center mr-3 text-base">${index + 1}</span> ${step.title}</h4>
+                                    <div class="prose prose-stone max-w-none pl-11 text-sm">
+                                        <p>${step.description}</p>
+                                        <details class="mt-3 text-xs">
+                                            <summary class="font-bold text-blue-800">Ver o porquê</summary>
+                                            <div class="mt-2 bg-blue-50 text-blue-800 rounded-md p-3">${step.porque}</div>
+                                        </details>
+                                        <details class="mt-2 text-xs">
+                                            <summary class="font-bold text-red-800">Ver ponto crítico</summary>
+                                            <div class="mt-2 bg-red-50 text-red-800 rounded-md p-3">${step.pontoCritico}</div>
+                                        </details>
+                                    </div>
+                                    ${step.timer ? `<div class="mt-4 pl-11 flex items-center gap-4"><button class="timer-btn bg-amber-500 text-white px-4 py-2 rounded-lg hover:bg-amber-600 transition text-sm" data-time="${step.timer}">Iniciar Timer (${Math.floor(step.timer/60)}m ${step.timer%60}s)</button><span class="timer-display text-lg font-mono font-bold text-amber-700"></span></div>` : ''}
+                                </div>`;
+                            }).join('')}
+                        </div>
+                        
+                        <div class="mt-8">
+                            <h3 class="text-2xl font-bold text-stone-800 mb-4 border-b-2 border-amber-500 pb-2">Variações e Dicas</h3>
+                            <div class="prose prose-stone max-w-none bg-amber-50 p-4 rounded-lg border-l-4 border-amber-400 text-sm">
+                                ${recipeData.variacoes.map(item => `<p>${item}</p>`).join('')}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            `;
+        };
+        
+        const setupPage = () => {
+            const hash = window.location.hash;
+            if (hash) {
+                const targetId = hash.substring(1);
+                const targetCard = document.querySelector(`[data-target='${targetId}']`);
+                if (targetCard) {
+                    const targetRecipe = document.getElementById(targetId);
+                    aulasList.classList.add('hidden');
+                    pageTitle.classList.add('hidden');
+                    receitasContainer.classList.remove('hidden');
+                    targetRecipe.classList.remove('hidden');
+                    window.scrollTo(0, 0);
+                }
+            }
+
+            document.querySelectorAll('.aula-card').forEach(card => {
+                const recipeId = card.dataset.target.replace('receita-', '');
+                const recipeData = aulas[recipeId];
+
+                if (recipeData) {
+                    const targetElement = document.getElementById(card.dataset.target);
+                    targetElement.innerHTML = generateRecipeHTML(recipeData);
+                    
+                    if (recipeData.calculator) {
+                        const input = document.getElementById(recipeData.calculator.unit);
+                        if (input) {
+                            input.addEventListener('input', (e) => {
+                                updateIngredients(recipeData, e.target.value);
+                            });
+                            updateIngredients(recipeData, input.value);
+                        }
+                    }
+                }
+
+                card.addEventListener('click', () => {
+                    const targetId = card.dataset.target;
+                    const targetRecipe = document.getElementById(targetId);
+                    
+                    aulasList.classList.add('hidden');
+                    pageTitle.classList.add('hidden');
+                    receitasContainer.classList.remove('hidden');
+                    targetRecipe.classList.remove('hidden');
+                    window.location.hash = targetId;
+                    window.scrollTo(0, 0);
+                });
+            });
+
+            backToListBtn.addEventListener('click', () => {
+                aulasList.classList.remove('hidden');
+                pageTitle.classList.remove('hidden');
+                receitasContainer.classList.add('hidden');
+                document.querySelectorAll('.receita-content').forEach(recipe => {
+                    recipe.classList.add('hidden');
+                });
+                history.pushState("", document.title, window.location.pathname + window.location.search);
+                window.scrollTo(0, 0);
+            });
+            
+            receitasContainer.addEventListener('click', (event) => {
+                if (event.target.classList.contains('timer-btn')) {
+                    const button = event.target;
+                    if (button.classList.contains('active')) return;
+
+                    let timeInSeconds = parseInt(button.dataset.time, 10);
+                    const display = button.nextElementSibling;
+                    
+                    button.classList.add('active');
+                    button.disabled = true;
+                    
+                    const interval = setInterval(() => {
+                        const minutes = Math.floor(timeInSeconds / 60);
+                        const seconds = timeInSeconds % 60;
+                        if(display) { display.textContent = `${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`; }
+                        
+                        if (timeInSeconds <= 0) {
+                            clearInterval(interval);
+                            if(display) display.textContent = "Tempo esgotado!";
+                            button.classList.remove('active');
+                            button.disabled = false;
+                        } else { timeInSeconds--; }
+                    }, 1000);
+                }
+            });
+        };
+
+        setupPage();
+    });
+    </script>
+</body>
+</html>
