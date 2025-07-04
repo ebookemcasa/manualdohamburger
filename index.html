@@ -21,6 +21,27 @@
             transform: translateY(-10px);
             box-shadow: 0 20px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1);
         }
+        /* Efeito de zoom na imagem do card */
+        .category-card .overflow-hidden {
+            overflow: hidden;
+        }
+        .category-card img {
+            transition: transform 0.4s ease-in-out;
+        }
+        .category-card:hover img {
+            transform: scale(1.05);
+        }
+
+        /* Animação de fade-in ao rolar */
+        .fade-in-section {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+        }
+        .fade-in-section.is-visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
     </style>
 </head>
 <body class="antialiased">
@@ -47,26 +68,52 @@
     <section class="hero-bg text-white">
         <div class="container mx-auto px-6 text-center flex flex-col justify-center items-center min-h-[80vh]">
             <h1 class="text-5xl md:text-7xl lg:text-8xl font-bold leading-tight drop-shadow-lg">
-                Transforme a sua Cozinha. Domine qualquer Receita.
+                Sua Jornada Culinária Começa Agora.
             </h1>
             <p class="mt-6 max-w-2xl text-lg text-stone-200">
-                A sua jornada para se tornar um mestre na cozinha começa aqui. Desde o arroz perfeito a pratos de assinatura, ensinamos as técnicas, não apenas os passos.
+                Domine as técnicas, não apenas as receitas. Explore os nossos cursos e transforme para sempre a sua forma de cozinhar.
             </p>
             <div class="mt-10">
                 <a href="#categorias" class="bg-amber-600 text-white font-bold text-lg px-10 py-4 rounded-lg hover:bg-amber-700 transition-transform hover:scale-105 duration-300">
-                    Começar a Aprender
+                    Explorar Cursos
                 </a>
             </div>
         </div>
     </section>
 
+    <section id="destaque" class="py-20 bg-white">
+        <div class="container mx-auto px-6">
+             <div class="text-center mb-12 fade-in-section">
+                <h2 class="text-4xl font-bold text-stone-800">Aula em Destaque</h2>
+                <p class="mt-4 max-w-2xl mx-auto text-stone-600">Mergulhe numa das nossas aulas mais aclamadas e descubra o nosso método de ensino na prática.</p>
+            </div>
+            <div class="flex flex-col lg:flex-row items-center gap-12 fade-in-section">
+                <div class="lg:w-1/2">
+                    <div class="rounded-lg shadow-2xl overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1607431525428-2b881116243a?q=80&w=2070&auto=format&fit=crop" alt="Éclairs de chocolate perfeitamente alinhados" class="w-full h-auto object-cover">
+                    </div>
+                </div>
+                <div class="lg:w-1/2">
+                    <span class="text-amber-600 font-semibold">Módulo de Sobremesas</span>
+                    <h3 class="text-4xl font-bold text-stone-800 mt-2">Éclairs (Bombas) de Chocolate</h3>
+                    <p class="text-stone-600 mt-4 text-lg">Atreva-se a entrar na pastelaria francesa com esta aula completa. Aprenda a fazer a massa oca e leve (<i class="font-semibold">pâte à choux</i>), o aveludado <i class="font-semibold">crème pâtissière</i> e uma cobertura de chocolate brilhante para criar esta sobremesa icónica do zero.</p>
+                    <div class="mt-6">
+                        <a href="sobremesas.html#receita-eclairs" class="bg-stone-800 text-white font-bold text-lg px-8 py-3 rounded-lg hover:bg-stone-900 transition-colors duration-300">
+                            Ver a Aula Completa
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
     <section id="sobre" class="py-20 bg-stone-100">
         <div class="container mx-auto px-6">
-            <div class="text-center mb-12">
+            <div class="text-center mb-12 fade-in-section">
                 <h2 class="text-4xl font-bold text-stone-800">O Nosso Método de Ensino</h2>
                 <p class="mt-4 max-w-3xl mx-auto text-stone-600">Acreditamos que qualquer pessoa pode cozinhar pratos incríveis. O segredo não é seguir cegamente, mas sim entender o "porquê" de cada passo.</p>
             </div>
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-12 text-center">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-12 text-center fade-in-section">
                 <div class="p-8">
                     <div class="text-5xl text-amber-600 mb-4">🍚</div>
                     <h3 class="text-2xl font-bold text-stone-800 mb-2">Dos Fundamentos...</h3>
@@ -88,72 +135,35 @@
 
     <section id="categorias" class="py-20">
         <div class="container mx-auto px-6">
-            <div class="text-center mb-12">
-                <h2 class="text-4xl font-bold text-stone-800">Sua Formação Culinária Começa Aqui</h2>
-                <p class="mt-4 max-w-2xl mx-auto text-stone-600">Navegue pelos nossos módulos e domine novas técnicas a cada aula.</p>
+            <div class="text-center mb-12 fade-in-section">
+                <h2 class="text-4xl font-bold text-stone-800">Nossos Módulos de Ensino</h2>
+                <p class="mt-4 max-w-2xl mx-auto text-stone-600">Escolha a sua jornada e domine novas técnicas a cada aula.</p>
             </div>
-            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
-                
-                <a href="fundamentos.html" class="category-card block bg-white rounded-lg shadow-lg overflow-hidden">
-                    <img src="https://images.unsplash.com/photo-1599043513900-ed6fe01d3833?q=80&w=2070&auto=format&fit=crop" alt="Tigela com vários grãos e temperos" class="w-full h-48 object-cover">
-                    <div class="p-6"><h3 class="text-2xl font-bold text-stone-800">Fundamentos</h3><p class="text-stone-600 mt-2">O início de tudo. Domine as bases da cozinha.</p></div>
-                </a>
-                
-                <a href="carnes.html" class="category-card block bg-white rounded-lg shadow-lg overflow-hidden">
-                    <img src="https://images.unsplash.com/photo-1604321942683-05b89705a1e2?q=80&w=1974&auto=format&fit=crop" alt="Pedaço de carne a ser fatiado" class="w-full h-48 object-cover">
-                    <div class="p-6"><h3 class="text-2xl font-bold text-stone-800">Carnes</h3><p class="text-stone-600 mt-2">Do grelhado ao assado, o ponto perfeito.</p></div>
-                </a>
-                
-                <a href="aves.html" class="category-card block bg-white rounded-lg shadow-lg overflow-hidden">
-                    <img src="https://images.unsplash.com/photo-1629505364448-6a58a5b21588?q=80&w=1974&auto=format&fit=crop" alt="Frango assado inteiro com ervas" class="w-full h-48 object-cover">
-                    <div class="p-6"><h3 class="text-2xl font-bold text-stone-800">Aves</h3><p class="text-stone-600 mt-2">Receitas suculentas com frango, peru e mais.</p></div>
-                </a>
-                
-                <a href="peixes.html" class="category-card block bg-white rounded-lg shadow-lg overflow-hidden">
-                    <img src="https://images.unsplash.com/photo-1519708227418-c8fd9a32b7a2?q=80&w=2070&auto=format&fit=crop" alt="Filé de salmão grelhado com espargos" class="w-full h-48 object-cover">
-                    <div class="p-6"><h3 class="text-2xl font-bold text-stone-800">Peixes</h3><p class="text-stone-600 mt-2">Leveza e sabor que vêm do mar.</p></div>
-                </a>
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 fade-in-section">
+                <a href="fundamentos.html" class="category-card block bg-white rounded-lg shadow-lg overflow-hidden"><div class="overflow-hidden rounded-t-lg"><img src="https://images.unsplash.com/photo-1599043513900-ed6fe01d3833?q=80&w=2070&auto=format&fit=crop" alt="Tigela com vários grãos e temperos" class="w-full h-48 object-cover"></div><div class="p-6"><h3 class="text-2xl font-bold text-stone-800">Fundamentos</h3><p class="text-stone-600 mt-2">O início de tudo. Domine as bases da cozinha.</p></div></a>
+                <a href="carnes.html" class="category-card block bg-white rounded-lg shadow-lg overflow-hidden"><div class="overflow-hidden rounded-t-lg"><img src="https://images.unsplash.com/photo-1604321942683-05b89705a1e2?q=80&w=1974&auto=format&fit=crop" alt="Pedaço de carne a ser fatiado" class="w-full h-48 object-cover"></div><div class="p-6"><h3 class="text-2xl font-bold text-stone-800">Carnes</h3><p class="text-stone-600 mt-2">Do grelhado ao assado, o ponto perfeito.</p></div></a>
+                <a href="aves.html" class="category-card block bg-white rounded-lg shadow-lg overflow-hidden"><div class="overflow-hidden rounded-t-lg"><img src="https://images.unsplash.com/photo-1629505364448-6a58a5b21588?q=80&w=1974&auto=format&fit=crop" alt="Frango assado inteiro com ervas" class="w-full h-48 object-cover"></div><div class="p-6"><h3 class="text-2xl font-bold text-stone-800">Aves</h3><p class="text-stone-600 mt-2">Receitas suculentas com frango, peru e mais.</p></div></a>
+                <a href="peixes.html" class="category-card block bg-white rounded-lg shadow-lg overflow-hidden"><div class="overflow-hidden rounded-t-lg"><img src="https://images.unsplash.com/photo-1519708227418-c8fd9a32b7a2?q=80&w=2070&auto=format&fit=crop" alt="Filé de salmão grelhado com espargos" class="w-full h-48 object-cover"></div><div class="p-6"><h3 class="text-2xl font-bold text-stone-800">Peixes</h3><p class="text-stone-600 mt-2">Leveza e sabor que vêm do mar.</p></div></a>
+                <a href="massas.html" class="category-card block bg-white rounded-lg shadow-lg overflow-hidden"><div class="overflow-hidden rounded-t-lg"><img src="https://images.unsplash.com/photo-1589227365533-5f830a79a104?q=80&w=1974&auto=format&fit=crop" alt="Massa fresca a ser preparada numa bancada" class="w-full h-48 object-cover"></div><div class="p-6"><h3 class="text-2xl font-bold text-stone-800">Massas e Molhos</h3><p class="text-stone-600 mt-2">De clássicos italianos a criações modernas.</p></div></a>
+                <a href="acompanhamentos.html" class="category-card block bg-white rounded-lg shadow-lg overflow-hidden"><div class="overflow-hidden rounded-t-lg"><img src="https://images.unsplash.com/photo-1623952478953-33765355436f?q=80&w=1974&auto=format&fit=crop" alt="Vegetais assados numa travessa" class="w-full h-48 object-cover"></div><div class="p-6"><h3 class="text-2xl font-bold text-stone-800">Acompanhamentos</h3><p class="text-stone-600 mt-2">Eleve qualquer prato principal.</p></div></a>
+                <a href="paes.html" class="category-card block bg-white rounded-lg shadow-lg overflow-hidden"><div class="overflow-hidden rounded-t-lg"><img src="https://images.unsplash.com/photo-1533083328462-d18B48551785?q=80&w=1974&auto=format&fit=crop" alt="Pão artesanal rústico sobre uma tábua de madeira" class="w-full h-48 object-cover"></div><div class="p-6"><h3 class="text-2xl font-bold text-stone-800">Pães Artesanais</h3><p class="text-stone-600 mt-2">Aprenda a fazer pães incríveis em casa.</p></div></a>
+                <a href="petiscos.html" class="category-card block bg-white rounded-lg shadow-lg overflow-hidden"><div class="overflow-hidden rounded-t-lg"><img src="https://images.unsplash.com/photo-1590424433246-0f81881723f3?q=80&w=1974&auto=format&fit=crop" alt="Tábua de frios com queijos, presunto e azeitonas" class="w-full h-48 object-cover"></div><div class="p-6"><h3 class="text-2xl font-bold text-stone-800">Petiscos e Entradas</h3><p class="text-stone-600 mt-2">Para abrir o apetite ou partilhar com amigos.</p></div></a>
+                <a href="fitness.html" class="category-card block bg-white rounded-lg shadow-lg overflow-hidden"><div class="overflow-hidden rounded-t-lg"><img src="https://images.unsplash.com/photo-1498837167922-ddd27525d352?q=80&w=2070&auto=format&fit=crop" alt="Salada colorida com vários ingredientes saudáveis" class="w-full h-48 object-cover"></div><div class="p-6"><h3 class="text-2xl font-bold text-stone-800">Receitas Fitness</h3><p class="text-stone-600 mt-2">Leveza e sabor para o seu bem-estar.</p></div></a>
+                <a href="sobremesas.html" class="category-card block bg-white rounded-lg shadow-lg overflow-hidden"><div class="overflow-hidden rounded-t-lg"><img src="https://images.unsplash.com/photo-1551024601-bec78aea704b?q=80&w=1964&auto=format&fit=crop" alt="Fatia de bolo de chocolate com cobertura" class="w-full h-48 object-cover"></div><div class="p-6"><h3 class="text-2xl font-bold text-stone-800">Sobremesas</h3><p class="text-stone-600 mt-2">Técnicas de confeitaria clássica.</p></div></a>
+                <a href="sobremesas_fitness.html" class="category-card block bg-white rounded-lg shadow-lg overflow-hidden"><div class="overflow-hidden rounded-t-lg"><img src="https://images.unsplash.com/photo-1488477181142-243306c44426?q=80&w=1964&auto=format&fit=crop" alt="Tigela com iogurte, frutas e granola" class="w-full h-48 object-cover"></div><div class="p-6"><h3 class="text-2xl font-bold text-stone-800">Sobremesas Fitness</h3><p class="text-stone-600 mt-2">Doces sem culpa, cheios de sabor.</p></div></a>
+                <a href="hamburguer_index.html" class="category-card block bg-white rounded-lg shadow-lg overflow-hidden"><div class="overflow-hidden rounded-t-lg"><img src="https://images.unsplash.com/photo-1571091718767-18b5b1457add?q=80&w=2072&auto=format&fit=crop" alt="Hambúrguer suculento com batatas fritas" class="w-full h-48 object-cover"></div><div class="p-6"><h3 class="text-2xl font-bold text-stone-800">Mundo dos Hambúrgueres</h3><p class="text-stone-600 mt-2">O nosso manual completo para o lanche perfeito.</p></div></a>
+            </div>
+        </div>
+    </section>
 
-                <a href="massas.html" class="category-card block bg-white rounded-lg shadow-lg overflow-hidden">
-                    <img src="https://images.unsplash.com/photo-1589227365533-5f830a79a104?q=80&w=1974&auto=format&fit=crop" alt="Massa fresca a ser preparada numa bancada" class="w-full h-48 object-cover">
-                    <div class="p-6"><h3 class="text-2xl font-bold text-stone-800">Massas e Molhos</h3><p class="text-stone-600 mt-2">De clássicos italianos a criações modernas.</p></div>
+    <section class="bg-amber-600 text-white">
+        <div class="container mx-auto px-6 py-20 text-center">
+            <h2 class="text-4xl font-bold drop-shadow-md">Pronto para Começar?</h2>
+            <p class="mt-4 max-w-2xl mx-auto text-amber-100">Milhares de receitas e técnicas esperam por si. O seu próximo prato memorável está a apenas um clique de distância.</p>
+            <div class="mt-8">
+                <a href="#categorias" class="bg-white text-amber-700 font-bold text-lg px-10 py-4 rounded-lg hover:bg-stone-100 transition-colors duration-300">
+                    Ver todos os Cursos
                 </a>
-
-                <a href="acompanhamentos.html" class="category-card block bg-white rounded-lg shadow-lg overflow-hidden">
-                    <img src="https://images.unsplash.com/photo-1623952478953-33765355436f?q=80&w=1974&auto=format&fit=crop" alt="Vegetais assados numa travessa" class="w-full h-48 object-cover">
-                    <div class="p-6"><h3 class="text-2xl font-bold text-stone-800">Acompanhamentos</h3><p class="text-stone-600 mt-2">Eleve qualquer prato principal.</p></div>
-                </a>
-                
-                <a href="fitness.html" class="category-card block bg-white rounded-lg shadow-lg overflow-hidden">
-                    <img src="https://images.unsplash.com/photo-1498837167922-ddd27525d352?q=80&w=2070&auto=format&fit=crop" alt="Salada colorida com vários ingredientes saudáveis" class="w-full h-48 object-cover">
-                    <div class="p-6"><h3 class="text-2xl font-bold text-stone-800">Receitas Fitness</h3><p class="text-stone-600 mt-2">Leveza e sabor para o seu bem-estar.</p></div>
-                </a>
-                
-                <a href="sobremesas.html" class="category-card block bg-white rounded-lg shadow-lg overflow-hidden">
-                    <img src="https://images.unsplash.com/photo-1551024601-bec78aea704b?q=80&w=1964&auto=format&fit=crop" alt="Fatia de bolo de chocolate com cobertura" class="w-full h-48 object-cover">
-                    <div class="p-6"><h3 class="text-2xl font-bold text-stone-800">Sobremesas</h3><p class="text-stone-600 mt-2">Técnicas de confeitaria clássica.</p></div>
-                </a>
-                
-                <a href="sobremesas_fitness.html" class="category-card block bg-white rounded-lg shadow-lg overflow-hidden">
-                    <img src="https://images.unsplash.com/photo-1488477181142-243306c44426?q=80&w=1964&auto=format&fit=crop" alt="Tigela com iogurte, frutas e granola" class="w-full h-48 object-cover">
-                    <div class="p-6"><h3 class="text-2xl font-bold text-stone-800">Sobremesas Fitness</h3><p class="text-stone-600 mt-2">Doces sem culpa, cheios de sabor.</p></div>
-                </a>
-
-                <a href="paes.html" class="category-card block bg-white rounded-lg shadow-lg overflow-hidden">
-                    <img src="https://images.unsplash.com/photo-1533083328462-d18B48551785?q=80&w=1974&auto=format&fit=crop" alt="Pão artesanal rústico sobre uma tábua de madeira" class="w-full h-48 object-cover">
-                    <div class="p-6"><h3 class="text-2xl font-bold text-stone-800">Pães Artesanais</h3><p class="text-stone-600 mt-2">Aprenda a fazer pães incríveis em casa.</p></div>
-                </a>
-                
-                <a href="petiscos.html" class="category-card block bg-white rounded-lg shadow-lg overflow-hidden">
-                    <img src="https://images.unsplash.com/photo-1590424433246-0f81881723f3?q=80&w=1974&auto=format&fit=crop" alt="Tábua de frios com queijos, presunto e azeitonas" class="w-full h-48 object-cover">
-                    <div class="p-6"><h3 class="text-2xl font-bold text-stone-800">Petiscos e Entradas</h3><p class="text-stone-600 mt-2">Para abrir o apetite ou partilhar com amigos.</p></div>
-                </a>
-                
-                <a href="hamburguer_index.html" class="category-card block bg-white rounded-lg shadow-lg overflow-hidden">
-                    <img src="https://images.unsplash.com/photo-1571091718767-18b5b1457add?q=80&w=2072&auto=format&fit=crop" alt="Hambúrguer suculento com batatas fritas" class="w-full h-48 object-cover">
-                    <div class="p-6"><h3 class="text-2xl font-bold text-stone-800">Mundo dos Hambúrgueres</h3><p class="text-stone-600 mt-2">O nosso manual completo para o lanche perfeito.</p></div>
-                </a>
-
             </div>
         </div>
     </section>
@@ -166,10 +176,27 @@
 
     <script>
         document.addEventListener('DOMContentLoaded', () => {
+            // Script para o menu mobile
             const menuBtn = document.getElementById('menu-btn');
             const mobileMenu = document.getElementById('mobile-menu');
             menuBtn.addEventListener('click', () => {
                 mobileMenu.classList.toggle('hidden');
+            });
+
+            // Script para animação de fade-in
+            const sections = document.querySelectorAll('.fade-in-section');
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('is-visible');
+                    }
+                });
+            }, {
+                threshold: 0.1
+            });
+
+            sections.forEach(section => {
+                observer.observe(section);
             });
         });
     </script>
