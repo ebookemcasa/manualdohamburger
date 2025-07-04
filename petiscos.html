@@ -255,17 +255,289 @@
                     "<strong>Com Massa de Batata:</strong> Adicione uma batata cozida e amassada à massa para uma textura diferente."
                 ]
             },
-            'dadinhos-tapioca': { title: "Aula 05: Dadinhos de Tapioca com Queijo Coalho" },
-            'espetada-caprese': { title: "Aula 06: Espetada Caprese" },
-            'kibe': { title: "Aula 07: Kibe Frito Tradicional" },
-            'batatas-bravas': { title: "Aula 08: Batatas Bravas com Aioli" },
-            'bolinho-bacalhau': { title: "Aula 09: Bolinho de Bacalhau Português" },
-            'camarao-alho': { title: "Aula 10: Camarão ao Alho e Óleo" },
-            'cogumelos-recheados': { title: "Aula 11: Cogumelos Recheados com Queijo e Ervas" },
-            'empanadas': { title: "Aula 12: Empanadas Argentinas de Carne" },
-            'tabua-frios': { title: "Aula 13: A Arte de Montar uma Tábua de Frios" },
-            'rolinho-primavera': { title: "Aula 14: Rolinho Primavera (Spring Roll) Caseiro" },
-            'vol-au-vent': { title: "Aula 15: Mini Vol-au-Vent de Camarão" }
+            'dadinhos-tapioca': {
+                title: "Aula 05: Dadinhos de Tapioca com Queijo Coalho",
+                description: "Crocantes por fora, macios e elásticos por dentro. Aprenda a fazer o petisco de bar que virou febre, perfeito para servir com geleia de pimenta.",
+                calculator: { label: "Gramas de Tapioca Granulada:", unit: "dadinhos-tapioca-input", base_value: 250, default_value: 250 },
+                details: { tempoPreparo: "15 min", tempoCozimento: "10 min", tempoDescanso: "2 horas", rendimento: "Aprox. 30 dadinhos", dificuldade: "Fácil", utensilios: ["Panela", "Travessa retangular", "Faca"] },
+                dicaDeMestre: "O leite precisa estar a ferver quando for vertido sobre a tapioca e o queijo. É este choque térmico que hidrata os grânulos de tapioca corretamente e derrete o queijo, formando uma massa coesa.",
+                ingredients: [
+                    { name: 'Tapioca Granulada (não é a goma)', base_qty: 250, unit: 'g', scalable: true },
+                    { name: 'Queijo Coalho, ralado grosso', base_qty: 250, unit: 'g', scalable: true },
+                    { name: 'Leite integral, a ferver', base_qty: 500, unit: 'ml', scalable: true },
+                    { name: 'Sal e Pimenta Branca', base_qty: 0, unit: 'A gosto', scalable: false }
+                ],
+                steps: [
+                    { title: "Misturar os Secos", description: "Numa tigela grande, misture bem a tapioca granulada, o queijo coalho ralado e os temperos (sal e pimenta branca).", porque: "Garantir que a tapioca e o queijo estão bem distribuídos antes de adicionar o líquido é essencial para uma massa homogénea.", pontoCritico: "Use tapioca granulada, não a goma de fazer tapioca na frigideira. São produtos diferentes." },
+                    { title: "Hidratar a Massa", description: "Ferva o leite. Assim que ferver, despeje-o de uma só vez sobre a mistura de tapioca e queijo, mexendo vigorosamente com uma colher por 1 a 2 minutos, até obter uma massa espessa e homogénea.", porque: "O leite a ferver hidrata os grânulos de tapioca e derrete o queijo, criando a liga da massa. É um processo rápido.", pontoCritico: "Mexa rapidamente e sem parar para evitar a formação de grumos." },
+                    { title: "Arrefecer e Cortar", description: "Despeje a massa numa travessa forrada com película aderente, espalhando numa camada uniforme com cerca de 2cm de altura. Leve à geleira por pelo menos 2 horas, ou até estar completamente firme.", porque: "A refrigeração solidifica a massa, permitindo que seja cortada em cubos perfeitos sem se desmanchar.", pontoCritico: "A massa precisa de estar bem fria e firme antes do corte." },
+                    { title: "Fritar os Dadinhos", description: "Corte a massa em cubos ('dadinhos') de 2cm. Frite em óleo quente (180°C) por imersão, poucos de cada vez, até ficarem dourados e crocantes por todos os lados. Sirva imediatamente com geleia de pimenta.", porque: "A fritura em alta temperatura cria a casca crocante e deixa o interior macio e elástico.", pontoCritico: "Não sobrecarregue a panela. Pode também fazê-los na airfryer, pincelados com azeite, a 200°C." }
+                ],
+                 variacoes: [
+                    "<strong>Com Ervas:</strong> Adicione orégãos ou salsa picada à massa.",
+                    "<strong>Picante:</strong> Misture uma pitada de pimenta calabresa na massa.",
+                    "<strong>Diferentes Queijos:</strong> Experimente com queijo parmesão ou provolone para sabores diferentes."
+                ]
+            },
+            'espetada-caprese': {
+                title: "Aula 06: Espetada Caprese",
+                description: "Uma entrada ou petisco sem cozimento que é a essência do verão italiano: fresco, aromático e incrivelmente simples. A qualidade dos ingredientes é o segredo.",
+                calculator: { label: "Número de Espetadas:", unit: "espetada-caprese-input", base_value: 8, default_value: 8 },
+                details: { tempoPreparo: "15 min", tempoCozimento: "N/A", tempoDescanso: "N/A", rendimento: "8 espetadas", dificuldade: "Fácil", utensilios: ["Palitos de espetada", "Tigela"] },
+                dicaDeMestre: "Para um toque extra de sabor, faça um molho pesto rápido e regue as espetadas com ele antes de servir, ou sirva-o à parte para mergulhar.",
+                ingredients: [
+                    { name: 'Tomate Cherry', base_qty: 16, unit: 'unid.', scalable: true },
+                    { name: 'Mozzarella de búfala (cereja)', base_qty: 16, unit: 'unid.', scalable: true },
+                    { name: 'Folhas de Manjericão fresco', base_qty: 16, unit: 'unid.', scalable: true },
+                    { name: 'Azeite Extra Virgem', base_qty: 3, unit: 'c. de sopa', scalable: true },
+                    { name: 'Creme Balsâmico (redução)', base_qty: 0, unit: 'Opcional', scalable: false }
+                ],
+                steps: [
+                    { title: "Montar as Espetadas", description: "Comece a montar os palitos, alternando um tomate cherry, uma folha de manjericão dobrada e uma bola de mozzarella. Repita a sequência até preencher o palito.", porque: "A alternância de cores e sabores cria um apelo visual imediato e garante que cada dentada tenha o equilíbrio perfeito dos três componentes.", pontoCritico: "Use queijo mozzarella de búfala em tamanho 'cereja' (cilliegine) para uma melhor apresentação e sabor. Se não encontrar, pode cortar um pedaço maior em cubos." },
+                    { title: "Temperar e Servir", description: "Disponha as espetadas num prato de servir. Regue generosamente com azeite extra virgem e tempere com sal e pimenta preta moída na hora. Se usar, finalize com um fio de creme balsâmico. Sirva imediatamente.", porque: "Temperar no final preserva a frescura dos ingredientes. O azeite realça os sabores e o balsâmico adiciona uma nota agridoce.", pontoCritico: "Não tempere com muita antecedência, pois o sal pode fazer o tomate e o queijo libertarem água." }
+                ],
+                variacoes: [
+                    "<strong>Com Presunto:</strong> Adicione um pedaço de presunto de Parma enrolado à espetada.",
+                    "<strong>Com Pêssego:</strong> Em vez de tomate, use pedaços de pêssego fresco para uma versão de verão.",
+                    "<strong>Marinada:</strong> Deixe as bolas de mozzarella a marinar em azeite com alho e ervas por 30 minutos antes de montar."
+                ]
+            },
+            'kibe': {
+                title: "Aula 07: Kibe Frito Tradicional",
+                description: "Aprenda os segredos para fazer o kibe árabe perfeito: crocante por fora, húmido e bem temperado por dentro. Esta aula foca-se na hidratação correta do trigo e na proporção ideal de carne e temperos.",
+                calculator: { label: "Gramas de Carne Moída:", unit: "kibe-input", base_value: 500, default_value: 500 },
+                details: { tempoPreparo: "30 min", tempoCozimento: "15 min", tempoDescanso: "1 hora (trigo)", rendimento: "Aprox. 25 kibes", dificuldade: "Intermediário", utensilios: ["Tigela grande", "Panela para fritar"] },
+                dicaDeMestre: "Para um kibe mais saboroso, use uma mistura de carne moída e um pouco de carne de cordeiro. A gordura do cordeiro adiciona uma riqueza e um sabor autêntico inigualáveis.",
+                ingredients: [
+                    { name: 'Trigo para Kibe', base_qty: 250, unit: 'g', scalable: true },
+                    { name: 'Carne Moída (magra)', base_qty: 500, unit: 'g', scalable: true },
+                    { name: 'Cebola picada muito finamente', base_qty: 1, unit: 'unid.', scalable: true },
+                    { name: 'Hortelã fresca, picada', base_qty: 0.5, unit: 'chávena', scalable: true },
+                    { name: 'Sal, Pimenta Síria (ou do reino)', base_qty: 0, unit: 'A gosto', scalable: false }
+                ],
+                steps: [
+                    { title: "Hidratar o Trigo", description: "Coloque o trigo para kibe numa tigela e cubra com água a ferver, deixando passar cerca de 2 dedos. Deixe hidratar por cerca de 1 hora. Depois, escorra-o num pano fino e esprema muito bem para remover todo o excesso de água.", porque: "A hidratação amacia o trigo, tornando-o comestível. Remover o excesso de água é o passo mais crucial para que o kibe não se desfaça ao fritar e para que a massa fique com a liga correta.", pontoCritico: "Esprema o trigo com força. Ele deve ficar húmido, mas não encharcado." },
+                    { title: "A Massa do Kibe", description: "Numa tigela grande, junte o trigo hidratado, a carne moída, a cebola, a hortelã e os temperos. Com as mãos, amasse muito bem a mistura por vários minutos, como se estivesse a sovar pão.", porque: "Amassar bem a mistura desenvolve as proteínas da carne, o que cria a 'liga' necessária para que o kibe mantenha a sua forma e não se desmanche. É o que o torna coeso.", pontoCritico: "A mistura está pronta quando estiver homogénea e pegajosa." },
+                    { title: "Modelar e Fritar", description: "Com as mãos ligeiramente húmidas, pegue em porções da massa e modele no formato característico de zepelim (ou de bola). Frite em óleo quente (180°C), poucos de cada vez, até ficarem bem escuros e crocantes por fora.", porque: "O formato de zepelim é tradicional e ajuda a cozinhar o interior de forma uniforme. Fritar em lotes mantém a temperatura do óleo, garantindo uma crosta perfeita.", pontoCritico: "Não cozinhe demais, ou o interior ficará seco. Cerca de 3-4 minutos por lote é suficiente." }
+                ],
+                variacoes: [
+                    "<strong>Kibe de Bandeja (Assado):</strong> Espalhe metade da massa numa travessa, coloque um recheio (ex: carne refogada com nozes), cubra com o resto da massa, regue com azeite e asse.",
+                    "<strong>Kibe Cru:</strong> Use carne de alta qualidade e muito fresca, e sirva a massa crua com hortelã fresca, cebola e azeite.",
+                    "<strong>Vegetariano:</strong> Substitua a carne por abóbora cozida e amassada ou lentilhas."
+                ]
+            },
+            'batatas-bravas': {
+                title: "Aula 08: Batatas Bravas com Aioli",
+                description: "A tapa mais famosa de Espanha. O segredo está na dupla fritura das batatas para máxima crocância e em dois molhos clássicos: um picante de tomate (salsa brava) e um aioli cremoso de alho.",
+                calculator: { label: "Quilos de Batata:", unit: "batatas-bravas-input", base_value: 1, default_value: 1 },
+                details: { tempoPreparo: "20 min", tempoCozimento: "20-25 min", tempoDescanso: "N/A", rendimento: "Serve 4-6 pessoas", dificuldade: "Intermediário", utensilios: ["Panela para fritar", "Liquidificador ou varinha mágica"] },
+                dicaDeMestre: "A dupla fritura é a chave para batatas perfeitamente crocantes. A primeira fritura a uma temperatura mais baixa cozinha o interior. A segunda, a uma temperatura mais alta, cria a crosta dourada e estaladiça.",
+                ingredients: [
+                    { name: 'Batatas', base_qty: 1, unit: 'kg', scalable: true },
+                    { name: 'Óleo para fritar', base_qty: 1, unit: 'L', scalable: false },
+                    { name: 'Tomate triturado', base_qty: 200, unit: 'g', scalable: true, heading: 'Para o Molho Bravo' },
+                    { name: 'Páprica Picante', base_qty: 1, unit: 'c. de chá', scalable: true },
+                    { name: 'Vinagre', base_qty: 1, unit: 'c. de sopa', scalable: true },
+                    { name: 'Alho', base_qty: 1, unit: 'dente', scalable: true, heading: 'Para o Aioli' },
+                    { name: 'Gema de Ovo', base_qty: 1, unit: 'unid.', scalable: true },
+                    { name: 'Óleo de Girassol', base_qty: 150, unit: 'ml', scalable: true }
+                ],
+                steps: [
+                    { title: "A Dupla Fritura das Batatas", description: "Descasque as batatas e corte-as em cubos irregulares de 2-3 cm. Frite-as uma primeira vez em óleo a 140°C por cerca de 8-10 minutos. Elas devem ficar cozidas mas pálidas. Retire e escorra. Aumente a temperatura do óleo para 180°C e frite uma segunda vez até ficarem bem douradas e crocantes.", porque: "A primeira fritura cozinha o interior lentamente. A segunda fritura em alta temperatura desidrata rapidamente a superfície, criando uma crosta estaladiça sem queimar o interior.", pontoCritico: "Seque bem as batatas antes da primeira fritura para evitar salpicos de óleo." },
+                    { 
+                        isSubRecipe: true,
+                        title: 'Módulo: Os Molhos Clássicos',
+                        subSteps: [
+                            { title: "Molho Bravo", description: "Numa panela pequena, refogue um pouco de alho em azeite, adicione a páprica picante e cozinhe por 30 segundos. Junte o tomate triturado e o vinagre. Cozinhe por 10 minutos até apurar.", porque: "Cozinhar a páprica brevemente no azeite liberta todo o seu sabor fumado e picante. O vinagre adiciona a acidez característica.", pontoCritico: "Cuidado para não queimar a páprica." },
+                            { title: "Aioli (Maionese de Alho)", description: "Numa tigela, amasse o alho até formar uma pasta. Junte a gema de ovo. Batendo vigorosamente com um batedor de arame, adicione o óleo em fio, muito lentamente, até formar uma maionese espessa.", porque: "Esta é a técnica clássica de emulsão. O alho e a gema atuam como agentes emulsionantes para unir o óleo.", pontoCritico: "O óleo deve ser adicionado gota a gota no início para que a emulsão não talhe." }
+                        ]
+                    },
+                    { title: "Servir", description: "Disponha as batatas quentes e crocantes num prato. Regue generosamente primeiro com o molho bravo e depois com o aioli. Sirva imediatamente.", porque: "A combinação do molho picante com o aioli cremoso sobre as batatas quentes é a essência deste prato.", pontoCritico: "Os molhos podem ser feitos com antecedência, mas as batatas devem ser fritas na hora." }
+                ],
+                variacoes: [
+                    "<strong>Mais Simples:</strong> Use uma maionese de boa qualidade e misture com alho espremido para um aioli rápido.",
+                    "<strong>Outros Formatos:</strong> Pode usar batatas pequenas inteiras ou em gomos."
+                ]
+            },
+            'bolinho-bacalhau': {
+                title: "Aula 09: Bolinho de Bacalhau Português",
+                description: "Aprenda a fazer o verdadeiro bolinho de bacalhau, como em Portugal. O segredo para um bolinho que não se desfaz, fica crocante por fora e cremoso por dentro, está na proporção certa de bacalhau e batata.",
+                calculator: { label: "Gramas de Bacalhau (peso seco):", unit: "bolinho-bacalhau-input", base_value: 500, default_value: 500 },
+                details: { tempoPreparo: "40 min", tempoCozimento: "30 min", tempoDescanso: "24h (demolhar) + 1h (massa)", rendimento: "Aprox. 30 bolinhos", dificuldade: "Avançado", utensilios: ["Panela funda para fritar", "Espremedor de batata"] },
+                dicaDeMestre: "O bacalhau e a batata devem estar o mais secos possível. Depois de cozer o bacalhau, desfie-o e aperte-o num pano para remover toda a água. Depois de escorrer as batatas, leve-as de volta à panela quente por um minuto para secar.",
+                ingredients: [
+                    { name: 'Bacalhau seco e salgado', base_qty: 500, unit: 'g', scalable: true },
+                    { name: 'Batatas', base_qty: 750, unit: 'g', scalable: true },
+                    { name: 'Ovos', base_qty: 3, unit: 'unid.', scalable: true },
+                    { name: 'Cebola picada muito finamente', base_qty: 1, unit: 'unid.', scalable: true },
+                    { name: 'Salsa fresca picada', base_qty: 1, unit: 'chávena', scalable: true },
+                    { name: 'Sal e Pimenta', base_qty: 0, unit: 'A gosto', scalable: false }
+                ],
+                steps: [
+                    { title: "Demolhar o Bacalhau", description: "Este é o passo mais longo. Lave o bacalhau em água corrente para remover o excesso de sal. Coloque-o numa tigela grande com água fria e leve à geleira por 24 a 48 horas, trocando a água 3 a 4 vezes por dia.", porque: "A dessalga (<span class='tooltip' data-tooltip='Processo de remover o sal do bacalhau seco através de banhos sucessivos em água fria.'>demolhar</span>) é essencial para reidratar o peixe e torná-lo comestível. Sem este passo, ele será insuportavelmente salgado.", pontoCritico: "O tempo de demolhar depende da espessura das postas. Prove um pequeno pedaço para verificar o ponto de sal." },
+                    { title: "Preparar a Massa", description: "Cozinhe o bacalhau demolhado em água por 10 minutos. Escorra, remova pele e espinhas, e desfie finamente. Cozinhe as batatas em água até ficarem muito macias e passe-as por um espremedor. Numa tigela, misture o puré de batata, o bacalhau desfiado, a cebola e a salsa. Adicione os ovos, um a um, misturando bem. Tempere.", porque: "A batata dá a base e a liga para os bolinhos. A proporção de mais batata que bacalhau é tradicional para garantir uma boa textura.", pontoCritico: "A massa deve estar coesa mas não demasiado mole. Se estiver muito húmida, os bolinhos podem abrir ao fritar." },
+                    { title: "Moldar e Fritar", description: "Com a ajuda de duas colheres de sopa, molde os bolinhos no formato oval característico (quenelle). Frite em óleo quente (170°C), poucos de cada vez, até dourarem por igual. Escorra em papel absorvente.", porque: "A moldagem com duas colheres é a técnica tradicional portuguesa. Fritar em óleo não demasiado quente permite que o interior cozinhe antes de o exterior queimar.", pontoCritico: "Se não se sentir confortável com a técnica das colheres, pode moldá-los à mão." }
+                ],
+                variacoes: [
+                    "<strong>Com Pimenta:</strong> Adicione uma pitada de pimenta branca ou noz-moscada à massa.",
+                    "<strong>Com Alho:</strong> Refogue a cebola com um dente de alho picado antes de a adicionar à massa.",
+                    "<strong>Assados:</strong> Para uma versão mais leve, asse os bolinhos num forno pré-aquecido a 200°C até dourarem."
+                ]
+            },
+            'camarao-alho': {
+                title: "Aula 10: Camarão ao Alho e Óleo",
+                description: "Um clássico mediterrânico que é rápido, simples e absolutamente delicioso. O segredo é usar camarões de boa qualidade e não os cozinhar em excesso para que fiquem suculentos e tenros.",
+                calculator: { label: "Gramas de Camarão:", unit: "camarao-alho-input", base_value: 500, default_value: 500 },
+                details: { tempoPreparo: "10 min", tempoCozimento: "5-7 min", tempoDescanso: "N/A", rendimento: "Serve 2-3 pessoas", dificuldade: "Fácil", utensilios: ["Frigideira larga"] },
+                dicaDeMestre: "Para um molho mais rico, depois de retirar os camarões, <span class='tooltip' data-tooltip='Adicionar um líquido (vinho, conhaque, caldo) a uma panela quente para soltar os pedaços de comida caramelizados (fond) do fundo.'>deglaceie</span> a frigideira com um pouco de vinho branco ou sumo de limão, raspando o fundo. Adicione uma noz de manteiga e salsa picada, e regue sobre os camarões.",
+                ingredients: [
+                    { name: 'Camarão grande, limpo', base_qty: 500, unit: 'g', scalable: true },
+                    { name: 'Azeite Extra Virgem', base_qty: 4, unit: 'c. de sopa', scalable: true },
+                    { name: 'Alho, fatiado finamente', base_qty: 4, unit: 'dentes', scalable: true },
+                    { name: 'Malagueta seca ou flocos de pimenta', base_qty: 1, unit: 'unid.', scalable: true },
+                    { name: 'Salsa fresca picada', base_qty: 0, unit: 'A gosto', scalable: false }
+                ],
+                steps: [
+                    { title: "Preparar o Camarão", description: "Seque bem os camarões com papel toalha. Tempere com sal e pimenta.", porque: "Camarões secos irão dourar melhor na frigideira em vez de cozerem no seu próprio vapor.", pontoCritico: "Se usar camarão congelado, descongele-o completamente e seque-o muito bem antes de usar." },
+                    { title: "Saltear o Alho", description: "Numa frigideira larga, aqueça o azeite em lume médio. Adicione o alho fatiado e a malagueta. Cozinhe por 1 a 2 minutos, mexendo, até o alho começar a dourar e a perfumar o azeite.", porque: "Infundir o azeite com o sabor do alho e da pimenta cria a base de sabor do prato.", pontoCritico: "Não deixe o alho queimar, ou ficará amargo. Retire-o da frigideira se necessário." },
+                    { title: "Cozinhar os Camarões", description: "Aumente o lume para médio-alto. Adicione os camarões à frigideira numa única camada. Cozinhe por 1 a 2 minutos de cada lado, apenas até ficarem rosados e opacos.", porque: "Os camarões cozinham muito rapidamente. O calor alto garante que eles dorem por fora sem que o interior fique borrachudo.", pontoCritico: "O camarão está pronto quando forma uma letra 'C'. Se formar um 'O', está demasiado cozido.", timer: 120 }
+                ],
+                variacoes: [
+                    "<strong>Com Limão:</strong> Esprema sumo de limão fresco sobre os camarões no final.",
+                    "<strong>Com Tomate Cherry:</strong> Adicione alguns tomates cherry cortados ao meio junto com os camarões.",
+                    "<strong>Para Massa:</strong> Use esta base para fazer um esparguete 'al ajillo'."
+                ]
+            },
+            'cogumelos-recheados': {
+                title: "Aula 11: Cogumelos Recheados com Queijo e Ervas",
+                description: "Uma entrada vegetariana elegante e cheia de sabor. Os cogumelos Portobello servem como base perfeita para um recheio cremoso de queijos, ervas e pão ralado.",
+                calculator: { label: "Cogumelos Portobello:", unit: "cogumelos-recheados-input", base_value: 8, default_value: 8 },
+                details: { tempoPreparo: "15 min", tempoCozimento: "20-25 min", tempoDescanso: "N/A", rendimento: "8 cogumelos", dificuldade: "Fácil", utensilios: ["Tabuleiro de forno", "Tigela"] },
+                dicaDeMestre: "Não lave os cogumelos em água, pois eles agem como esponjas e absorvem humidade, o que os torna moles. Limpe-os com um pano húmido ou uma escova macia.",
+                ingredients: [
+                    { name: 'Cogumelos Portobello grandes', base_qty: 8, unit: 'unid.', scalable: true },
+                    { name: 'Queijo creme (cream cheese)', base_qty: 100, unit: 'g', scalable: true },
+                    { name: 'Queijo Parmesão ralado', base_qty: 50, unit: 'g', scalable: true },
+                    { name: 'Pão ralado (farinha de rosca)', base_qty: 4, unit: 'c. de sopa', scalable: true },
+                    { name: 'Alho picado', base_qty: 2, unit: 'dentes', scalable: true },
+                    { name: 'Salsa fresca picada', base_qty: 2, unit: 'c. de sopa', scalable: true },
+                    { name: 'Azeite', base_qty: 2, unit: 'c. de sopa', scalable: true }
+                ],
+                steps: [
+                    { title: "Preparar os Cogumelos", description: "Limpe os cogumelos e remova cuidadosamente os talos. Pique os talos em pedaços muito pequenos. Pincele os 'chapéus' dos cogumelos com azeite e coloque-os num tabuleiro de forno.", porque: "Usar os talos picados no recheio evita o desperdício e adiciona mais sabor e textura de cogumelo.", pontoCritico: "Seja gentil ao remover os talos para não quebrar os chapéus dos cogumelos." },
+                    { title: "Fazer o Recheio", description: "Numa tigela, misture o queijo creme, o queijo parmesão, o pão ralado, o alho, a salsa e os talos de cogumelo picados. Tempere com sal e pimenta. A mistura deve ficar espessa e cremosa.", porque: "A combinação de queijo creme e parmesão oferece cremosidade e um sabor salgado, enquanto o pão ralado dá estrutura ao recheio.", pontoCritico: "Se o recheio parecer muito seco, adicione uma colher de sopa de azeite." },
+                    { title: "Rechear e Assar", description: "Divida o recheio uniformemente entre os chapéus dos cogumelos, formando um pequeno monte. Leve ao forno pré-aquecido a 200°C por 20-25 minutos, ou até os cogumelos estarem macios e o topo dourado e borbulhante.", porque: "O calor do forno cozinha os cogumelos, tornando-os tenros, e derrete o recheio, criando uma cobertura gratinada e deliciosa.", pontoCritico: "Não recheie em excesso para que não transborde durante o cozimento.", timer: 1200 }
+                ],
+                variacoes: [
+                    "<strong>Com Bacon:</strong> Adicione bacon frito e picado ao recheio.",
+                    "<strong>Com Espinafres:</strong> Salteie espinafres com alho e misture no recheio.",
+                    "<strong>Vegano:</strong> Use queijo creme vegano, levedura nutricional no lugar do parmesão e um recheio de nozes picadas e ervas."
+                ]
+            },
+            'empanadas': {
+                title: "Aula 12: Empanadas Argentinas de Carne",
+                description: "Aprenda a fazer as famosas empanadas argentinas, com uma massa amanteigada e um recheio de carne suculento e cheio de sabor. Esta aula cobre tanto a massa caseira como o recheio tradicional.",
+                calculator: { label: "Empanadas:", unit: "empanadas-input", base_value: 12, default_value: 12 },
+                details: { tempoPreparo: "1 hora", tempoCozimento: "20-25 min", tempoDescanso: "1 hora (massa)", rendimento: "12 empanadas", dificuldade: "Avançado", utensilios: ["Rolo da massa", "Tabuleiro de forno"] },
+                dicaDeMestre: "O segredo de um recheio suculento é usar carne cortada à faca em vez de carne moída, e adicionar batata cozida em cubos pequenos e ovo cozido picado. Deixe o recheio arrefecer completamente na geleira antes de usar.",
+                ingredients: [
+                    { name: 'Farinha de Trigo', base_qty: 500, unit: 'g', scalable: true, heading: 'Para a Massa' },
+                    { name: 'Manteiga ou Banha, fria', base_qty: 100, unit: 'g', scalable: true },
+                    { name: 'Água morna', base_qty: 200, unit: 'ml', scalable: true },
+                    { name: 'Carne (ex: acém), cortada em cubos pequenos', base_qty: 400, unit: 'g', scalable: true, heading: 'Para o Recheio' },
+                    { name: 'Cebola picada', base_qty: 2, unit: 'unid.', scalable: true },
+                    { name: 'Páprica Doce, Cominhos, Orégãos', base_qty: 1, unit: 'c. de chá de cada', scalable: true },
+                    { name: 'Ovo cozido, picado', base_qty: 2, unit: 'unid.', scalable: true }
+                ],
+                steps: [
+                    { title: "Preparar a Massa", description: "Numa tigela, misture a farinha e o sal. Adicione a manteiga fria em cubos e, com as pontas dos dedos, incorpore-a até obter uma textura de areia grossa. Adicione a água morna aos poucos, amassando até formar uma bola. Embrulhe e leve à geleira por 1 hora.", porque: "A manteiga fria cria pequenas bolsas na massa que, ao derreterem no forno, geram vapor e tornam a massa folhada e estaladiça.", pontoCritico: "Não trabalhe a massa em excesso para não desenvolver o glúten, o que a tornaria dura." },
+                    { title: "Fazer o Recheio", description: "Refogue a cebola em azeite até ficar macia. Adicione a carne e cozinhe até dourar. Junte os temperos (páprica, cominhos, orégãos), sal e pimenta. Deixe arrefecer completamente e só depois misture o ovo cozido picado.", porque: "Arrefecer o recheio antes de montar as empanadas é crucial. Um recheio quente derreteria a manteiga da massa, resultando numa empanada mole e difícil de fechar.", pontoCritico: "A carne cortada à faca oferece uma textura muito superior à carne moída." },
+                    { title: "Montar e Fechar as Empanadas", description: "Estique a massa e corte discos de cerca de 12-14 cm. Coloque uma colher de recheio no centro de cada disco. Humedeça as bordas com água, dobre ao meio e feche, pressionando bem. Faça o 'repulgue' (a dobra decorativa tradicional) ou use um garfo para selar.", porque: "O 'repulgue' não é apenas decorativo; ele cria uma selagem forte que impede o recheio de vazar durante o cozimento.", pontoCritico: "Não coloque recheio em excesso para conseguir fechar a empanada corretamente." },
+                    { title: "Assar", description: "Pincele as empanadas com gema de ovo e coloque-as num tabuleiro. Leve ao forno pré-aquecido a 200°C por cerca de 20-25 minutos, ou até estarem bem douradas.", porque: "A gema de ovo dá um acabamento brilhante e uma cor dourada apetitosa.", pontoCritico: "Fique atento para não as queimar; o tempo pode variar de forno para forno." }
+                ],
+                variacoes: [
+                    "<strong>De Frango:</strong> Use frango desfiado no recheio.",
+                    "<strong>Humita:</strong> Um recheio cremoso de milho, típico do norte da Argentina.",
+                    "<strong>Fritas:</strong> Em vez de assadas, as empanadas podem ser fritas em óleo quente."
+                ]
+            },
+            'tabua-frios': {
+                title: "Aula 13: A Arte de Montar uma Tábua de Frios",
+                description: "Uma tábua de frios não é uma receita, é uma aula de composição, equilíbrio e abundância. Aprenda a escolher os elementos certos e a dispô-los de uma forma visualmente deslumbrante.",
+                calculator: { label: "Pessoas a servir:", unit: "tabua-frios-input", base_value: 4, default_value: 4 },
+                details: { tempoPreparo: "30 min", tempoCozimento: "N/A", tempoDescanso: "N/A", rendimento: "Serve 4-6 pessoas", dificuldade: "Fácil", utensilios: ["Tábua de madeira ou ardósia", "Facas de queijo", "Pequenas tigelas"] },
+                dicaDeMestre: "Pense em texturas e sabores contrastantes. Se tem um queijo mole e cremoso, coloque ao lado umas tostas crocantes. Se tem um salame picante, adicione umas uvas doces para equilibrar.",
+                ingredients: [
+                    { name: 'Queijos (variedade)', base_qty: 3, unit: 'tipos', scalable: true, heading: 'Elementos Chave' },
+                    { name: 'Enchidos/Carnes Curadas', base_qty: 2, unit: 'tipos', scalable: true },
+                    { name: 'Pães e Tostas', base_qty: 2, unit: 'tipos', scalable: true },
+                    { name: 'Frutas Frescas e Secas', base_qty: 2, unit: 'tipos', scalable: true },
+                    { name: 'Frutos Secos e Azeitonas', base_qty: 1, unit: 'tipo de cada', scalable: true },
+                    { name: 'Patês, Compotas ou Mel', base_qty: 1, unit: 'tipo', scalable: true }
+                ],
+                steps: [
+                    { title: "A Escolha dos Queijos", description: "Escolha uma variedade de 3 a 5 queijos com diferentes texturas e intensidades. Pense em: 1 Queijo Mole (Brie, Camembert), 1 Queijo Duro ou Semi-duro (Manchego, Gruyère, Cheddar maturado) e 1 Queijo Azul ou de Cabra (Gorgonzola, Roquefort, Chèvre).", porque: "A variedade garante que há algo para todos os gostos e torna a experiência de degustação mais interessante.", pontoCritico: "Retire os queijos da geleira 30 minutos antes de servir para que os seus sabores e aromas se desenvolvam." },
+                    { title: "A Escolha das Carnes e dos Hidratos", description: "Escolha 2 a 3 tipos de carnes curadas. Salame, presunto de Parma, chouriço ou lombo embuchado são ótimas opções. Para acompanhar, inclua uma variedade de pães, como fatias de baguete, e tostas ou gressinos para textura crocante.", porque: "As carnes adicionam um elemento salgado e rico. Os pães e tostas servem como veículo para os queijos e patês.", pontoCritico: "Disponha as carnes de formas diferentes: dobradas, enroladas ou em leque para criar interesse visual." },
+                    { title: "Adicionar Cor e Doçura", description: "Use frutas para adicionar cor e um contraponto doce. Uvas, figos, fatias de pera ou maçã são excelentes. Frutos secos como damascos ou tâmaras também funcionam bem. Coloque uma pequena tigela com compota de fruta ou mel.", porque: "A doçura das frutas e compotas corta a gordura dos queijos e carnes, limpando o paladar.", pontoCritico: "Use frutas da época para o melhor sabor." },
+                    { title: "Preencher os Espaços", description: "Use os elementos mais pequenos para preencher todos os espaços vazios na tábua. Coloque pequenos montes de frutos secos (nozes, amêndoas), azeitonas e raminhos de ervas frescas como alecrim ou tomilho para decorar.", porque: "Uma tábua de frios deve parecer abundante e generosa. Não deixe espaços vazios. O objetivo é criar um 'banquete' visual.", pontoCritico: "Comece por colocar os itens maiores (queijos, tigelas) e depois vá preenchendo o espaço à volta deles." }
+                ],
+                variacoes: [
+                    "<strong>Tábua Mediterrânica:</strong> Foque-se em queijo feta, azeitonas Kalamata, húmus, pepino e pão pita.",
+                    "<strong>Tábua Italiana:</strong> Use Provolone, Gorgonzola, presunto de Parma, salame, azeitonas e pão focaccia.",
+                    "<strong>Tábua de Sobremesa:</strong> Use queijos mais suaves, chocolate, frutas vermelhas, mel e biscoitos doces."
+                ]
+            },
+            'rolinho-primavera': {
+                title: "Aula 14: Rolinho Primavera (Spring Roll) Caseiro",
+                description: "Aprenda a fazer o clássico rolinho primavera, com uma casquinha ultra crocante e um recheio fresco de vegetais. O segredo está na massa e na técnica de enrolar.",
+                calculator: { label: "Rolinhos:", unit: "rolinho-primavera-input", base_value: 10, default_value: 10 },
+                details: { tempoPreparo: "30 min", tempoCozimento: "15 min", tempoDescanso: "N/A", rendimento: "10 rolinhos", dificuldade: "Intermediário", utensilios: ["Wok ou frigideira grande", "Panela para fritar"] },
+                dicaDeMestre: "Para garantir que os rolinhos fiquem crocantes e não moles, o recheio deve estar completamente frio e o mais seco possível antes de enrolar. Deixe-o escorrer num passador se necessário.",
+                ingredients: [
+                    { name: 'Massa para rolinho primavera (spring roll pastry)', base_qty: 10, unit: 'folhas', scalable: true },
+                    { name: 'Repolho fatiado finamente', base_qty: 2, unit: 'chávenas', scalable: true, heading: 'Para o Recheio' },
+                    { name: 'Cenoura ralada', base_qty: 1, unit: 'chávena', scalable: true },
+                    { name: 'Rebentos de feijão (moyashi)', base_qty: 1, unit: 'chávena', scalable: true },
+                    { name: 'Molho de Soja (Shoyu)', base_qty: 2, unit: 'c. de sopa', scalable: true },
+                    { name: 'Óleo de Sésamo', base_qty: 1, unit: 'c. de chá', scalable: true }
+                ],
+                steps: [
+                    { title: "Preparar o Recheio", description: "Aqueça um wok ou frigideira grande com um fio de óleo. Salteie o repolho e a cenoura por 2-3 minutos até começarem a amolecer, mas ainda crocantes. Adicione os rebentos de feijão e salteie por mais 1 minuto. Tempere com o molho de soja e o óleo de sésamo. Retire do lume e deixe arrefecer completamente.", porque: "Os vegetais devem ser cozinhados rapidamente em lume alto para manterem a sua crocância. O recheio deve estar frio para não rasgar a massa delicada.", pontoCritico: "Não cozinhe os vegetais em excesso. Eles devem ficar 'al dente'." },
+                    { title: "Enrolar os Rolinhos", description: "Coloque uma folha de massa na sua frente, com uma das pontas virada para si (formando um losango). Coloque 2-3 colheres de sopa do recheio na parte inferior. Dobre a ponta de baixo sobre o recheio. Dobre as pontas laterais para dentro, como um envelope. Enrole firmemente até ao fim. Use um pouco de água para selar a ponta final.", porque: "Enrolar firmemente é crucial para que o rolinho não se desfaça na fritura e para que o óleo não entre.", pontoCritico: "Mantenha as folhas de massa que não está a usar cobertas com um pano húmido para não secarem." },
+                    { title: "Fritar", description: "Aqueça óleo numa panela a 180°C. Frite os rolinhos, poucos de cada vez, por cerca de 3-4 minutos, virando-os, até ficarem dourados e estaladiços. Escorra em papel absorvente e sirva com molho agridoce.", porque: "A fritura em óleo quente garante que a massa fique crocante e não gordurosa.", pontoCritico: "Certifique-se de que os rolinhos estão bem selados antes de os colocar no óleo." }
+                ],
+                variacoes: [
+                    "<strong>Com Carne:</strong> Adicione carne de porco moída ou camarão picado ao recheio.",
+                    "<strong>Com Cogumelos:</strong> Adicione cogumelos shiitake fatiados ao salteado de vegetais.",
+                    "<strong>Na Airfryer:</strong> Pincele os rolinhos com óleo e asse a 200°C por 15-20 minutos, virando a meio."
+                ]
+            },
+            'vol-au-vent': {
+                title: "Aula 15: Mini Vol-au-Vent de Camarão",
+                description: "Uma entrada clássica da culinária francesa, que significa 'voo ao vento' pela sua leveza. Aprenda a trabalhar com massa folhada para criar estas caixinhas crocantes e a fazer um recheio cremoso de camarão.",
+                calculator: { label: "Vol-au-vents:", unit: "vol-au-vent-input", base_value: 8, default_value: 8 },
+                details: { tempoPreparo: "25 min", tempoCozimento: "25-30 min", tempoDescanso: "N/A", rendimento: "8 mini vol-au-vents", dificuldade: "Intermediário", utensilios: ["Massa folhada de compra", "Cortadores redondos (2 tamanhos)"] },
+                dicaDeMestre: "Para que a massa folhada cresça bem e fique com as camadas visíveis, é crucial que esteja bem fria quando entrar no forno muito quente. Mantenha a massa na geleira até ao momento de usar.",
+                ingredients: [
+                    { name: 'Massa Folhada retangular', base_qty: 1, unit: 'rolo', scalable: true },
+                    { name: 'Gema de Ovo (para pincelar)', base_qty: 1, unit: 'unid.', scalable: true },
+                    { name: 'Camarão pequeno, limpo', base_qty: 200, unit: 'g', scalable: true, heading: 'Para o Recheio Cremoso' },
+                    { name: 'Natas (creme de leite)', base_qty: 100, unit: 'ml', scalable: true },
+                    { name: 'Cebola picada', base_qty: 2, unit: 'c. de sopa', scalable: true },
+                    { name: 'Vinho Branco', base_qty: 50, unit: 'ml', scalable: true }
+                ],
+                steps: [
+                    { title: "Criar as Caixinhas de Massa Folhada", description: "Estique a massa folhada. Com um cortador redondo grande (aprox. 7cm), corte 16 discos. Em 8 desses discos, use um cortador redondo mais pequeno (aprox. 4cm) para cortar e remover o centro, criando 8 anéis. Pincele os 8 discos inteiros (as bases) com gema de ovo e coloque um anel por cima de cada um. Pincele os anéis. Pique o centro das bases com um garfo.", porque: "Esta técnica cria uma base e uma 'parede'. O anel irá crescer no forno, formando a caixinha. Picar a base evita que ela infle tanto quanto as paredes.", pontoCritico: "Trabalhe rapidamente para manter a massa o mais fria possível." },
+                    { title: "Assar a Massa", description: "Leve as caixinhas ao forno pré-aquecido a 200°C por 15-20 minutos, ou até estarem bem tufadas e douradas. Se o centro tiver tufado, pressione-o para baixo com uma colher.", porque: "O choque térmico do forno quente na massa fria é o que faz as camadas de manteiga e massa separarem-se, criando o efeito folhado.", pontoCritico: "Não abra a porta do forno nos primeiros 10 minutos para não interromper o crescimento." },
+                    { title: "Fazer o Recheio Cremoso", description: "Enquanto a massa assa, refogue a cebola em manteiga. Adicione os camarões e cozinhe até ficarem rosados. Adicione o vinho branco e deixe evaporar. Junte as natas e cozinhe até o molho engrossar ligeiramente. Tempere com sal, pimenta e salsa picada.", porque: "O recheio deve ser cremoso e saboroso, mas não demasiado líquido para não amolecer a massa folhada.", pontoCritico: "Não cozinhe demais os camarões para não ficarem borrachudos." },
+                    { title: "Rechear e Servir", description: "Assim que os vol-au-vents saírem do forno, recheie cada caixinha com o creme de camarão quente. Sirva imediatamente.", porque: "Este prato deve ser servido quente para apreciar o contraste entre a massa crocante e o recheio cremoso.", pontoCritico: "Recheie apenas na hora de servir para que a massa não perca a sua textura estaladiça." }
+                ],
+                variacoes: [
+                    "<strong>Com Frango:</strong> Use frango desfiado e cogumelos para um recheio clássico.",
+                    "<strong>Com Espinafres e Ricota:</strong> Para uma opção vegetariana, use um recheio cremoso de espinafres e queijo ricota.",
+                    "<strong>Doce:</strong> Asse as caixinhas sem recheio, polvilhadas com açúcar, e depois recheie com chantilly e frutas frescas."
+                ]
+            }
         };
 
         // ===================================================================================
@@ -329,9 +601,6 @@
         };
 
         const generateRecipeHTML = (recipeData) => {
-             if (!recipeData.details) {
-                return `<div class="text-center p-10"><h2 class="text-3xl font-bold text-amber-700">${recipeData.title}</h2><p class="mt-4 text-stone-600">O conteúdo detalhado para esta aula estará disponível em breve. Obrigado pela sua paciência!</p></div>`;
-            }
              return `
                 <div class="text-center">
                     <h2 class="text-3xl md:text-4xl font-bold text-amber-700">${recipeData.title}</h2>
