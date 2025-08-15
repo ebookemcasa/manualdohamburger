@@ -13,11 +13,18 @@
         .aula-card:hover { transform: translateY(-5px); box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.05), 0 4px 6px -4px rgb(0 0 0 / 0.05); }
         
         /* Estilos da Janela Modal */
-        #recipe-modal { display: none; }
-        #recipe-modal.is-active { display: flex; }
-        body.modal-open { overflow: hidden; }
+        #recipe-modal {
+            display: none; /* Escondido por padrão */
+            transition: opacity 0.3s ease;
+        }
+        #recipe-modal.is-active {
+            display: flex; /* Visível quando ativo */
+        }
+        body.modal-open {
+            overflow: hidden; /* Impede o scroll da página de fundo */
+        }
         
-        /* Estilos do conteúdo interativo da aula (copiados de outras páginas) */
+        /* Estilos para o conteúdo interativo DENTRO da modal */
         .ingredient-item input[type="checkbox"] { display: none; }
         .ingredient-item span { transition: all 0.2s ease; cursor: pointer; }
         .ingredient-item input[type="checkbox"]:checked + span { text-decoration: line-through; opacity: 0.6; }
@@ -26,7 +33,7 @@
         details > summary::before { content: '▶'; margin-right: 8px; font-size: 0.7em; transition: transform 0.2s ease-in-out; }
         details[open] > summary::before { transform: rotate(90deg); }
         .tooltip { position: relative; cursor: help; border-bottom: 2px dotted #ca8a04; font-weight: bold; }
-        .tooltip::after { content: attr(data-tooltip); position: absolute; bottom: 125%; left: 50%; transform: translateX(-50%); z-index: 10; width: 220px; background-color: #3d3d3d; color: #fff; font-family: 'Lato', sans-serif; font-weight: normal; text-align: center; padding: 8px; border-radius: 6px; opacity: 0; visibility: hidden; transition: opacity 0.3s ease; }
+        .tooltip::after { content: attr(data-tooltip); position: absolute; bottom: 125%; left: 50%; transform: translateX(-50%); z-index: 60; width: 220px; background-color: #3d3d3d; color: #fff; font-family: 'Lato', sans-serif; font-weight: normal; text-align: center; padding: 8px; border-radius: 6px; opacity: 0; visibility: hidden; transition: opacity 0.3s ease; }
         .tooltip:hover::after { opacity: 1; visibility: visible; }
     </style>
 </head>
@@ -50,10 +57,11 @@
             <button id="modal-close-btn" class="absolute top-4 right-4 text-stone-500 hover:text-stone-800 z-10">
                 <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
             </button>
-            <div id="modal-content" class="p-8">
+            <div id="modal-content-wrapper">
                 </div>
         </div>
     </div>
+
     <footer class="bg-white border-t mt-16">
         </footer>
 
