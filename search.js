@@ -1,10 +1,14 @@
 document.addEventListener('DOMContentLoaded', () => {
+    // Elementos da página
     const resultsContainer = document.getElementById('search-results');
     const queryTitle = document.getElementById('query-title');
+    
+    // Elementos da Modal
     const modal = document.getElementById('recipe-modal');
     const modalContentWrapper = document.getElementById('modal-content-wrapper');
     const modalCloseBtn = document.getElementById('modal-close-btn');
     const modalOverlay = document.getElementById('modal-overlay');
+
     const urlParams = new URLSearchParams(window.location.search);
     const query = urlParams.get('q');
 
@@ -28,6 +32,11 @@ document.addEventListener('DOMContentLoaded', () => {
 
     modalCloseBtn.addEventListener('click', closeModal);
     modalOverlay.addEventListener('click', closeModal);
+    document.addEventListener('keydown', (event) => {
+        if (event.key === 'Escape') {
+            closeModal();
+        }
+    });
 
     const performSearch = (searchQuery) => {
         const results = [];
@@ -54,7 +63,7 @@ document.addEventListener('DOMContentLoaded', () => {
         results.forEach(aula => {
             const card = `
                 <div data-aula-key="${aula.key}" class="aula-card block bg-white p-6 rounded-lg shadow-lg hover:shadow-xl transition-shadow duration-300">
-                    <p class="text-sm font-bold text-amber-600">${aula.module}</p>
+                    <p class="text-sm font-bold text-amber-600 pointer-events-none">${aula.module}</p>
                     <h3 class="text-2xl font-bold text-stone-800 mt-1 pointer-events-none">${aula.title}</h3>
                     <p class="text-stone-600 mt-2 pointer-events-none">${aula.description}</p>
                 </div>
@@ -74,28 +83,25 @@ document.addEventListener('DOMContentLoaded', () => {
     const searchResults = performSearch(query);
     displayResults(searchResults);
     
-    // FUNÇÕES GLOBAIS PARA GERAR O HTML DA AULA
     const formatNumber = (num) => {
         if (num < 1 && num > 0) return num.toFixed(2);
         if (num % 1 !== 0) return num.toFixed(1);
         return num;
     };
+    
     const generateRecipeHTML = (recipeData) => {
-         const ingredientsHTML = recipeData.ingredients.map(ing => {
-            let heading = '';
-            if (ing.heading) {
-                heading = `<h5 class="font-bold text-stone-700 mt-3 mb-1">${ing.heading}:</h5>`;
-            }
+        const ingredientsHTML = recipeData.ingredients.map(ing => {
+            let heading = ing.heading ? `<h5 class="font-bold text-stone-700 mt-3 mb-1">${ing.heading}:</h5>` : '';
             return `${heading}<li class="ingredient-item"><label class="flex items-center p-1 rounded-md hover:bg-stone-100"><input type="checkbox" class="mr-2 h-4 w-4 text-amber-600 focus:ring-amber-500 border-stone-300 rounded"><span class="flex-1 flex justify-between"><span>${ing.name}</span><span class="font-semibold text-right pl-2">${ing.base_qty} ${ing.unit}</span></span></label></li>`;
         }).join('');
 
         const stepsHTML = recipeData.steps.map((step, index) => {
+            let stepCounter = index + 1;
             if (step.isSubRecipe) {
                 const subStepsHTML = step.subSteps.map(subStep => `
                     <div class="ml-4">
                         <h5 class="font-semibold text-lg text-stone-800 mb-1">${subStep.title}</h5>
-                        <div class="prose prose-stone max-w-none text-sm">
-                            <p>${subStep.description}</p>
+                        <div class="prose prose-stone max-w-none text-sm"><p>${subStep.description}</p>
                             <details class="mt-3 text-xs"><summary class="font-bold text-blue-800">Ver o porquê</summary><div class="mt-2 bg-blue-50 text-blue-800 rounded-md p-3">${subStep.porque}</div></details>
                             <details class="mt-2 text-xs"><summary class="font-bold text-red-800">Ver ponto crítico</summary><div class="mt-2 bg-red-50 text-red-800 rounded-md p-3">${subStep.pontoCritico}</div></details>
                         </div>
@@ -104,9 +110,8 @@ document.addEventListener('DOMContentLoaded', () => {
             }
             return `
                 <div class="p-4 rounded-lg bg-stone-50 border-l-4 border-stone-200">
-                    <h4 class="font-bold text-xl text-stone-800 mb-2"><span class="bg-amber-600 text-white rounded-full w-8 h-8 inline-flex items-center justify-center mr-3 text-base">${index + 1}</span> ${step.title}</h4>
-                    <div class="prose prose-stone max-w-none pl-11 text-sm">
-                        <p>${step.description}</p>
+                    <h4 class="font-bold text-xl text-stone-800 mb-2"><span class="bg-amber-600 text-white rounded-full w-8 h-8 inline-flex items-center justify-center mr-3 text-base">${stepCounter}</span> ${step.title}</h4>
+                    <div class="prose prose-stone max-w-none pl-11 text-sm"><p>${step.description}</p>
                         <details class="mt-3 text-xs"><summary class="font-bold text-blue-800">Ver o porquê</summary><div class="mt-2 bg-blue-50 text-blue-800 rounded-md p-3">${step.porque}</div></details>
                         <details class="mt-2 text-xs"><summary class="font-bold text-red-800">Ver ponto crítico</summary><div class="mt-2 bg-red-50 text-red-800 rounded-md p-3">${step.pontoCritico}</div></details>
                     </div>
@@ -114,7 +119,7 @@ document.addEventListener('DOMContentLoaded', () => {
         }).join('');
 
         return `
-            <div class="p-8">
+            <div class="p-6 md:p-8">
                 <div class="text-center">
                     <h2 class="text-3xl md:text-4xl font-bold text-amber-700">${recipeData.title}</h2>
                     <p class="mt-4 max-w-3xl mx-auto text-stone-600 text-lg">${recipeData.description}</p>
