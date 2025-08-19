@@ -1,9 +1,213 @@
 const masterAulas = {
+    "fundamentos-da-cozinha-mise-en-place": {
+        "title": "Aula 01: Mise en Place (A Arte da Organização)",
+        "description": "A técnica francesa que significa 'tudo no seu lugar'. É o segredo dos chefs para cozinhar de forma calma, organizada e sem stress, garantindo que todos os ingredientes estão prontos antes de ligar o fogão.",
+        "details": {
+            "tempoPreparo": "Variável",
+            "tempoCozimento": "N/A",
+            "tempoDescanso": "N/A",
+            "rendimento": "1 cozinha organizada",
+            "dificuldade": "Essencial",
+            "utensilios": [
+                "Tigelas pequenas (ramequins)",
+                "Tábua de corte",
+                "Faca de chef"
+            ]
+        },
+        "dicaDeMestre": "Faça o 'mise en place' até para as receitas mais simples, como um ovo estrelado. Pese o sal, coloque a gordura à mão. Isto cria o hábito da organização, que é a fundação de toda a boa cozinha.",
+        "ingredients": [],
+        "steps": [
+            {
+                "title": "Ler a Receita Completa",
+                "description": "Antes de tocar em qualquer ingrediente, leia a receita do início ao fim, duas vezes. Entenda cada passo, cada tempo de cozedura e cada técnica necessária.",
+                "porque": "Isto evita surpresas a meio do processo, como descobrir que um ingrediente precisava de marinar por 2 horas ou que necessita de um utensílio que não tem.",
+                "pontoCritico": "Não se limite a ler os ingredientes. Entenda o processo. Visualize-se a executar cada passo."
+            },
+            {
+                "title": "Reunir e Preparar os Ingredientes",
+                "description": "Junte todos os ingredientes na sua bancada. Lave, descasque, pique, rale e meça tudo o que for necessário. Coloque cada ingrediente preparado em tigelas pequenas e separadas.",
+                "porque": "Ter tudo pronto e medido permite-lhe focar-se exclusivamente na técnica de cozinhar (o controlo do calor, o ponto de cozedura) sem ter de parar para picar uma cebola enquanto o alho já está a queimar na panela.",
+                "pontoCritico": "A preparação inclui líquidos. Meça a água, o vinho, o caldo e tenha-os prontos a usar."
+            },
+            {
+                "title": "Organizar a Estação de Trabalho",
+                "description": "Posicione os seus ingredientes preparados na ordem em que serão usados. Mantenha a sua tábua de corte limpa e tenha uma tigela para o lixo/desperdícios. Posicione as panelas e ferramentas que irá usar.",
+                "porque": "Uma estação de trabalho lógica e limpa cria um fluxo de trabalho eficiente e seguro. Reduz o movimento desnecessário e a confusão, o que por sua vez reduz o stress e a probabilidade de erros.",
+                "pontoCritico": "Cozinhe num ambiente limpo. Limpe à medida que avança ('clean as you go') para manter a organização do início ao fim."
+            }
+        ],
+        "variacoes": [],
+        "module": "Fundamentos da Cozinha",
+        "url": "fundamentos.html#receita-mise-en-place"
+    },
+    "fundamentos-da-cozinha-cortes": {
+        "title": "Aula 02: As Técnicas de Corte Essenciais",
+        "description": "Aprenda a manusear uma faca de chef com segurança e a executar os cortes fundamentais (Julienne, Brunoise, Chiffonade). Cortes uniformes não são apenas bonitos, são a chave para um cozimento perfeito.",
+        "details": {
+            "tempoPreparo": "20 min (prática)",
+            "tempoCozimento": "N/A",
+            "tempoDescanso": "N/A",
+            "rendimento": "Legumes bem cortados",
+            "dificuldade": "Intermediário",
+            "utensilios": [
+                "Faca de chef afiada",
+                "Tábua de corte estável"
+            ]
+        },
+        "dicaDeMestre": "Use a técnica da 'garra' (mão-guia). Curve os dedos da mão que segura o alimento para dentro, usando os nós dos dedos como um guia seguro para a lâmina da faca. A ponta da faca deve manter-se sempre em contacto com a tábua.",
+        "ingredients": [
+            {
+                "name": "Cenoura (para Julienne/Brunoise)",
+                "base_qty": 1,
+                "unit": "unid."
+            },
+            {
+                "name": "Cebola (para Brunoise)",
+                "base_qty": 1,
+                "unit": "unid."
+            },
+            {
+                "name": "Folhas de Manjericão ou Couve (para Chiffonade)",
+                "base_qty": 1,
+                "unit": "punhado"
+            }
+        ],
+        "steps": [
+            {
+                "title": "Julienne (Tiras Finas)",
+                "description": "Corte o legume (ex: cenoura) em secções de 5-7 cm. Crie uma base estável, cortando uma fatia fina de um dos lados. Corte o legume em fatias finas e uniformes. Empilhe as fatias e corte-as novamente em tiras muito finas, como palitos de fósforo.",
+                "porque": "Este corte é ideal para salteados rápidos ou guarnições, pois a sua grande área de superfície permite um cozimento muito rápido e uniforme.",
+                "pontoCritico": "A uniformidade é a chave. Todas as tiras devem ter a mesma espessura para cozinharem ao mesmo tempo."
+            },
+            {
+                "title": "Brunoise (Cubos Pequenos)",
+                "description": "Comece por fazer um corte Julienne. Junte os 'palitos' e corte-os transversalmente para formar cubos minúsculos e perfeitos (idealmente 2mm x 2mm x 2mm).",
+                "porque": "O corte Brunoise é a base de muitos refogados (<span class='tooltip' data-tooltip='Base clássica de 2 partes de cebola, 1 de cenoura e 1 de aipo, cortados em brunoise.'>mirepoix</span>) e molhos, pois os pequenos cubos dissolvem-se e libertam o seu sabor de forma eficiente.",
+                "pontoCritico": "Mantenha a ponta da faca na tábua e use um movimento de balanço para mais controlo e precisão."
+            },
+            {
+                "title": "Chiffonade (Tiras de Folhas)",
+                "description": "Empilhe as folhas (ex: manjericão) umas sobre as outras. Enrole-as firmemente, como um charuto. Fatie o 'charuto' transversalmente o mais fino que conseguir.",
+                "porque": "Esta técnica permite cortar ervas e folhas delicadas em fitas finas e elegantes, perfeitas para guarnições, sem as esmagar ou oxidar.",
+                "pontoCritico": "Use uma faca muito bem afiada para não rasgar as folhas."
+            }
+        ],
+        "variacoes": [],
+        "module": "Fundamentos da Cozinha",
+        "url": "fundamentos.html#receita-cortes"
+    },
+    "fundamentos-da-cozinha-caldo": {
+        "title": "Aula 03: Caldo de Legumes Caseiro",
+        "description": "O caldo é a alma de inúmeros pratos. Aprenda a fazer um caldo de legumes rico, dourado e cheio de sabor, que servirá de base para as suas sopas, molhos e risotos. A diferença para um caldo industrializado é abismal.",
+        "calculator": {
+            "label": "Litros de Caldo:",
+            "unit": "caldo-input",
+            "base_value": 2,
+            "default_value": 2
+        },
+        "details": {
+            "tempoPreparo": "15 min",
+            "tempoCozimento": "1-2 horas",
+            "tempoDescanso": "N/A",
+            "rendimento": "Aprox. 2 litros",
+            "dificuldade": "Fácil",
+            "utensilios": [
+                "Panela grande e alta (caldeirão)",
+                "Coador de malha fina",
+                "Faca de chef"
+            ]
+        },
+        "dicaDeMestre": "Para um caldo mais escuro e com sabor mais tostado (ideal para molhos de carne), asse os legumes no forno a 200°C com um fio de azeite até ficarem bem dourados antes de os colocar na panela com água.",
+        "ingredients": [
+            {
+                "name": "Cebolas, com casca, cortadas ao meio",
+                "base_qty": 2,
+                "unit": "unid.",
+                "scalable": true
+            },
+            {
+                "name": "Cenouras, em pedaços grandes",
+                "base_qty": 2,
+                "unit": "unid.",
+                "scalable": true
+            },
+            {
+                "name": "Talos de Aipo, em pedaços grandes",
+                "base_qty": 2,
+                "unit": "unid.",
+                "scalable": true
+            },
+            {
+                "name": "Alho-francês (parte branca e verde clara)",
+                "base_qty": 1,
+                "unit": "unid.",
+                "scalable": true
+            },
+            {
+                "name": "Cabeça de Alho, cortada ao meio",
+                "base_qty": 1,
+                "unit": "unid.",
+                "scalable": true
+            },
+            {
+                "name": "Folhas de Louro",
+                "base_qty": 2,
+                "unit": "unid.",
+                "scalable": false
+            },
+            {
+                "name": "Grãos de Pimenta Preta",
+                "base_qty": 1,
+                "unit": "c. de chá",
+                "scalable": false
+            },
+            {
+                "name": "Talos de Salsa ou Coentros",
+                "base_qty": 1,
+                "unit": "punhado",
+                "scalable": false
+            },
+            {
+                "name": "Água fria",
+                "base_qty": 3,
+                "unit": "litros",
+                "scalable": true
+            }
+        ],
+        "steps": [
+            {
+                "title": "Preparar os Aromáticos",
+                "description": "Lave bem todos os legumes. Não precisa de os descascar (exceto se estiverem muito sujos), apenas corte-os em pedaços grandes. A casca da cebola, por exemplo, adiciona uma bela cor dourada ao caldo.",
+                "porque": "Um caldo é uma infusão lenta. Cortes grandes expõem a superfície dos legumes o suficiente para libertar o sabor ao longo do tempo, sem se desintegrarem e turvarem o caldo.",
+                "pontoCritico": "Evite usar vegetais crucíferos em excesso (como brócolos ou couve-flor), pois podem dar um sabor amargo ao caldo."
+            },
+            {
+                "title": "O Cozimento Lento",
+                "description": "Coloque todos os ingredientes (legumes, ervas, pimenta) numa panela grande. Cubra com água FRIA. Leve ao lume alto até começar a ferver, e depois reduza imediatamente para o lume mais baixo possível, para um <span class='tooltip' data-tooltip='Cozimento muito lento em líquido, onde apenas uma ou duas bolhas sobem à superfície de vez em quando.'>simmer</span> muito suave. Cozinhe por 1 a 2 horas, sem tapar.",
+                "porque": "Começar com água fria extrai o sabor dos legumes de forma mais eficiente. Um simmer suave mantém o caldo límpido; uma fervura forte agita os ingredientes e turva o caldo.",
+                "pontoCritico": "Não adicione sal ao caldo! O caldo é uma base que será usada noutras receitas que levarão sal. Salgá-lo agora limitaria o seu uso e poderia resultar num prato final demasiado salgado.",
+                "timer": 5400
+            },
+            {
+                "title": "Coar e Armazenar",
+                "description": "Retire os legumes com uma escumadeira. Coe o líquido através de um passador de malha fina para uma tigela ou recipiente grande. Deixe o caldo arrefecer completamente antes de o guardar.",
+                "porque": "Coar remove todas as impurezas, resultando num caldo límpido e puro. Arrefecer rapidamente (pode colocar a tigela num banho de gelo) é importante para a segurança alimentar.",
+                "pontoCritico": "Não pressione os legumes contra o coador para extrair mais líquido. Isso irá turvar o seu caldo. Deixe a gravidade fazer o trabalho."
+            }
+        ],
+        "variacoes": [],
+        "module": "Fundamentos da Cozinha",
+        "url": "fundamentos.html#receita-caldo"
+    },
     "fundamentos-da-cozinha-arroz": {
-        "title": "Aula 01: O Arroz Perfeito (Soltinho)",
+        "title": "Aula 04: O Arroz Perfeito (Soltinho)",
         "description": "Dominar o arroz branco soltinho é o primeiro passo para se sentir confiante na cozinha. Com esta técnica, você aprenderá a importância de cada etapa para um resultado que nunca falha.",
-        "calculatorLabel": "Chávenas de Arroz Cru:",
-        "calculatorUnit": "arroz-input",
+        "calculator": {
+            "label": "Chávenas de Arroz Cru:",
+            "unit": "arroz-input",
+            "base_value": 1,
+            "default_value": 1
+        },
         "details": {
             "tempoPreparo": "5 min",
             "tempoCozimento": "15 min",
@@ -17,12 +221,44 @@ const masterAulas = {
             ]
         },
         "dicaDeMestre": "Depois de soltar o arroz com o garfo, coloque um pano de prato limpo entre a panela e a tampa durante o descanso. O pano absorve o excesso de vapor, garantindo um arroz ainda mais seco e soltinho.",
+        "ingredients": [
+            {
+                "name": "Arroz Agulha",
+                "base_qty": 1,
+                "unit": "chávena",
+                "scalable": true
+            },
+            {
+                "name": "Água a ferver",
+                "base_qty": 2,
+                "unit": "chávenas",
+                "scalable": true
+            },
+            {
+                "name": "Azeite ou Óleo",
+                "base_qty": 1,
+                "unit": "c. de sopa",
+                "scalable": true
+            },
+            {
+                "name": "Alho Picado",
+                "base_qty": 1,
+                "unit": "dente",
+                "scalable": true
+            },
+            {
+                "name": "Sal",
+                "base_qty": 0.5,
+                "unit": "c. de chá",
+                "scalable": true
+            }
+        ],
         "steps": [
             {
                 "title": "O Refogado (Base de Sabor)",
                 "description": "Numa panela, aqueça o azeite em lume médio. Adicione o alho e refogue até perfumar (cerca de 30s). Adicione o arroz e 'frite-o' por cerca de 1 minuto, mexendo sempre. Este passo é crucial.",
                 "porque": "Este processo, chamado 'selar' o arroz, reveste cada grão com gordura. Isto ajuda a manter os grãos separados durante o cozimento, evitando que o amido se liberte em excesso e crie um resultado empapado.",
-                "pontoCritico": "Não deixe o alho queimar, senão amargará todo o prato. O objetivo é apenas libertar o seu aroma. Ao 'fritar' o arroz, mexa constantemente para que todos os grãos sejam revestidos."
+                "pontoCritico": "Não deixe o alho queimar, senão amargará todo o prato. Ao 'fritar' o arroz, mexa constantemente para que todos os grãos sejam revestidos."
             },
             {
                 "title": "A Cozedura Perfeita",
@@ -39,19 +275,166 @@ const masterAulas = {
                 "timer": 300
             }
         ],
-        "variacoes": [
-            "<strong>Arroz com Cenoura:</strong> Adicione cenoura ralada junto com o arroz para 'fritar'.",
-            "<strong>Arroz com Brócolos:</strong> Adicione pequenos floretes de brócolos nos últimos 5 minutos de cozimento, por cima do arroz.",
-            "<strong>Arroz Amarelo:</strong> Adicione uma pitada de açafrão-da-terra (cúrcuma) na água para dar cor e um sabor extra."
-        ],
+        "variacoes": [],
         "module": "Fundamentos da Cozinha",
         "url": "fundamentos.html#receita-arroz"
     },
-    "fundamentos-da-cozinha-molho": {
-        "title": "Aula 02: Molho de Tomate Caseiro",
+    "fundamentos-da-cozinha-refogado": {
+        "title": "Aula 05: A Base de Sabor (Mirepoix e Sofrito)",
+        "description": "Aprenda a construir a fundação de sabor de inúmeros pratos. Dominar o refogado lento de aromáticos é o que separa a cozinha amadora da profissional.",
+        "details": {
+            "tempoPreparo": "10 min",
+            "tempoCozimento": "10-15 min",
+            "tempoDescanso": "N/A",
+            "rendimento": "Base para 1 receita",
+            "dificuldade": "Fácil",
+            "utensilios": [
+                "Panela ou frigideira",
+                "Faca de chef"
+            ]
+        },
+        "dicaDeMestre": "O segredo de um bom refogado é o tempo e o lume baixo. Não tenha pressa. O objetivo não é dourar ou fritar os legumes, mas sim 'suá-los' lentamente para que libertem os seus açúcares e sabor sem ganhar cor.",
+        "ingredients": [
+            {
+                "name": "Cebola, em brunoise",
+                "base_qty": 1,
+                "unit": "unid.",
+                "heading": "Mirepoix/Sofrito Clássico"
+            },
+            {
+                "name": "Cenoura, em brunoise",
+                "base_qty": 1,
+                "unit": "unid."
+            },
+            {
+                "name": "Aipo, em brunoise",
+                "base_qty": 1,
+                "unit": "talo"
+            },
+            {
+                "name": "Azeite ou Manteiga",
+                "base_qty": 2,
+                "unit": "c. de sopa"
+            }
+        ],
+        "steps": [
+            {
+                "title": "O Corte Uniforme",
+                "description": "Pique a cebola, a cenoura e o aipo em <span class='tooltip' data-tooltip='Corte em cubos muito pequenos e uniformes (aprox. 2mm).'>brunoise</span> (cubos pequenos e uniformes).",
+                "porque": "Um corte uniforme garante que todos os legumes cozinham ao mesmo tempo, criando uma base de sabor homogénea.",
+                "pontoCritico": "A proporção clássica do Mirepoix francês é 2 partes de cebola para 1 de cenoura e 1 de aipo."
+            },
+            {
+                "title": "O Cozimento Lento",
+                "description": "Aqueça a gordura (azeite ou manteiga) numa panela em lume médio-baixo. Adicione a cebola e uma pitada de sal. Cozinhe por 5 minutos até amolecer. Adicione a cenoura e o aipo e cozinhe por mais 10 minutos, mexendo ocasionalmente, até todos os legumes estarem muito macios e perfumados.",
+                "porque": "O sal ajuda a extrair a humidade dos legumes, ajudando-os a 'suar' em vez de fritar. O cozimento lento quebra as fibras e liberta a doçura natural dos vegetais, criando uma base de sabor profunda e complexa.",
+                "pontoCritico": "Mantenha o lume baixo. Se os legumes começarem a ganhar cor (a dourar), o lume está muito alto."
+            }
+        ],
+        "variacoes": [
+            "<strong>Sofrito Latino/Italiano:</strong> Geralmente inclui alho e, por vezes, pimento. O alho é adicionado no final, pois cozinha mais rápido.",
+            "<strong>Holy Trinity (Cajun):</strong> Substitui a cenoura por pimento verde. A proporção é 1 parte de cebola, 1 de aipo e 1 de pimento verde.",
+            "<strong>Refogado Português/Brasileiro:</strong> Frequentemente começa com cebola e alho, e pode incluir tomate e louro."
+        ],
+        "module": "Fundamentos da Cozinha",
+        "url": "fundamentos.html#receita-refogado"
+    },
+    "fundamentos-da-cozinha-cebola-caramelizada": {
+        "title": "Aula 06: Cebola Caramelizada",
+        "description": "Paciência é o ingrediente secreto. Aprenda a cozinhar cebolas lentamente para libertar os seus açúcares naturais, transformando-as num acompanhamento doce, profundo e incrivelmente versátil.",
+        "calculator": {
+            "label": "Quilos de Cebola:",
+            "unit": "cebola-caramelizada-input",
+            "base_value": 1,
+            "default_value": 1
+        },
+        "details": {
+            "tempoPreparo": "5 min",
+            "tempoCozimento": "45-60 min",
+            "tempoDescanso": "N/A",
+            "rendimento": "Aprox. 1 chávena",
+            "dificuldade": "Fácil",
+            "utensilios": [
+                "Frigideira larga e de fundo grosso",
+                "Colher de pau"
+            ]
+        },
+        "dicaDeMestre": "Não tenha pressa. A caramelização é um processo lento. Se aumentar o lume para acelerar, as cebolas irão queimar por fora em vez de cozinharem e libertarem os seus açúcares de forma uniforme.",
+        "ingredients": [
+            {
+                "name": "Cebolas amarelas grandes",
+                "base_qty": 1,
+                "unit": "kg",
+                "scalable": true
+            },
+            {
+                "name": "Manteiga sem sal",
+                "base_qty": 2,
+                "unit": "c. de sopa",
+                "scalable": true
+            },
+            {
+                "name": "Azeite",
+                "base_qty": 1,
+                "unit": "c. de sopa",
+                "scalable": true
+            },
+            {
+                "name": "Sal",
+                "base_qty": 0.5,
+                "unit": "c. de chá",
+                "scalable": true
+            },
+            {
+                "name": "Açúcar (opcional, para acelerar)",
+                "base_qty": 1,
+                "unit": "c. de chá",
+                "scalable": true
+            },
+            {
+                "name": "Água ou Vinho Branco (para deglacear)",
+                "base_qty": 50,
+                "unit": "ml",
+                "scalable": true
+            }
+        ],
+        "steps": [
+            {
+                "title": "Preparar as Cebolas",
+                "description": "Descasque as cebolas e corte-as em fatias finas e uniformes.",
+                "porque": "Fatias uniformes garantem que todas as cebolas cozinham ao mesmo tempo, evitando que umas queimem enquanto outras ainda estão cruas.",
+                "pontoCritico": "Corte no sentido do comprimento (de polo a polo) para fatias que mantêm melhor a sua forma, ou contra as fibras para uma caramelização mais rápida."
+            },
+            {
+                "title": "O Cozimento Lento",
+                "description": "Numa frigideira larga, derreta a manteiga com o azeite em lume médio-baixo. Adicione as cebolas fatiadas e o sal. Cozinhe lentamente, mexendo ocasionalmente, por 45 a 60 minutos.",
+                "porque": "O sal ajuda a extrair a humidade das cebolas, o que as impede de fritar e as ajuda a cozinhar no seu próprio líquido. O lume baixo é crucial para não queimar os açúcares.",
+                "pontoCritico": "Nos primeiros 10 minutos, pode tapar a panela para acelerar a libertação de água. Depois, cozinhe sempre destapado."
+            },
+            {
+                "title": "Deglacear e Finalizar",
+                "description": "À medida que as cebolas cozinham, elas começarão a colar no fundo da panela, criando uma crosta acastanhada (o 'fond'). Quando isso acontecer, adicione um pouco de água ou vinho para <span class='tooltip' data-tooltip='Adicionar um líquido a uma panela quente para soltar os pedaços de comida caramelizados (fond) do fundo.'>deglacear</span>, raspando o fundo com a colher. Repita este processo sempre que necessário. As cebolas estão prontas quando estiverem muito macias, doces e com uma cor de caramelo profundo.",
+                "porque": "O 'fond' no fundo da panela é sabor concentrado. Deglacear reincorpora esse sabor nas cebolas, intensificando o resultado final.",
+                "pontoCritico": "A cor final deve ser um castanho-escuro rico, não preto. Se começar a cheirar a queimado, o lume está muito alto."
+            }
+        ],
+        "variacoes": [
+            "<strong>Com Vinagre Balsâmico:</strong> Adicione um fio de vinagre balsâmico no final para um toque agridoce.",
+            "<strong>Com Ervas:</strong> Junte um ramo de tomilho às cebolas durante o cozimento.",
+            "<strong>Para Congelar:</strong> Pode fazer uma grande quantidade e congelar em pequenas porções para usar em sopas, molhos e recheios."
+        ],
+        "module": "Fundamentos da Cozinha",
+        "url": "fundamentos.html#receita-cebola-caramelizada"
+    },
+    "fundamentos-da-cozinha-molho-tomate": {
+        "title": "Aula 07: Molho de Tomate Caseiro",
         "description": "Abandone os molhos de compra. Fazer o seu próprio molho de tomate é simples, mais saudável e resulta num sabor incomparavelmente mais fresco e autêntico. É a base perfeita para massas, pizzas, lasanhas e muito mais.",
-        "calculatorLabel": "Quilos de Tomate Fresco:",
-        "calculatorUnit": "tomate-input",
+        "calculator": {
+            "label": "Quilos de Tomate Fresco:",
+            "unit": "tomate-input",
+            "base_value": 1,
+            "default_value": 1
+        },
         "details": {
             "tempoPreparo": "15 min",
             "tempoCozimento": "45 min",
@@ -65,6 +448,50 @@ const masterAulas = {
             ]
         },
         "dicaDeMestre": "Para um molho com uma textura mais aveludada, passe-o por um passador de legumes (passe-vite) ou bata-o com uma varinha mágica no final do cozimento. Se não tiver nenhum dos dois, um liquidificador também serve (com cuidado, pois o molho estará quente).",
+        "ingredients": [
+            {
+                "name": "Tomate maduro (italiano é ideal)",
+                "base_qty": 1,
+                "unit": "kg",
+                "scalable": true
+            },
+            {
+                "name": "Azeite Extra Virgem",
+                "base_qty": 2,
+                "unit": "c. de sopa",
+                "scalable": true
+            },
+            {
+                "name": "Cebola Média Picada",
+                "base_qty": 1,
+                "unit": "unid.",
+                "scalable": true
+            },
+            {
+                "name": "Alho Picado",
+                "base_qty": 2,
+                "unit": "dente(s)",
+                "scalable": true
+            },
+            {
+                "name": "Manjericão Fresco",
+                "base_qty": 1,
+                "unit": "ramo",
+                "scalable": false
+            },
+            {
+                "name": "Sal e Pimenta",
+                "base_qty": 0,
+                "unit": "A gosto",
+                "scalable": false
+            },
+            {
+                "name": "Açúcar (opcional)",
+                "base_qty": 1,
+                "unit": "pitada",
+                "scalable": false
+            }
+        ],
         "steps": [
             {
                 "title": "Preparar os Tomates",
@@ -73,7 +500,7 @@ const masterAulas = {
                 "pontoCritico": "Use sempre tomates bem maduros. Tomates verdes ou pouco maduros resultarão num molho ácido e com menos cor."
             },
             {
-                "title": "O <span class=\"tooltip\" data-tooltip=\"Refogado lento de aromáticos (como cebola e alho) em gordura (azeite, manteiga) para criar uma base de sabor profunda para um prato.\">Sofrito</span> (A Base Aromática)",
+                "title": "O Sofrito (A Base Aromática)",
                 "description": "Numa panela grande, aqueça o azeite em lume médio. Adicione a cebola e refogue até ficar macia e translúcida (cerca de 5-7 minutos). Junte o alho e cozinhe por mais um minuto. Este refogado constrói a primeira camada de sabor do molho.",
                 "porque": "Cozinhar a cebola lentamente liberta os seus açúcares naturais, conferindo uma doçura de base ao molho. O alho é adicionado depois pois cozinha mais rápido e queima facilmente.",
                 "pontoCritico": "Não doure a cebola, apenas a deixe 'suar' e ficar macia. Se a cebola ou o alho queimarem, o molho ficará amargo."
@@ -86,427 +513,253 @@ const masterAulas = {
                 "timer": 2700
             }
         ],
-        "variacoes": [
-            "<strong>Molho 'Arrabbiata':</strong> Adicione uma malagueta seca ou flocos de pimenta ao refogado de alho para um toque picante.",
-            "<strong>Com Vegetais:</strong> Adicione cenoura e aipo picados junto com a cebola (um <span class='tooltip' data-tooltip='Base clássica de 2 partes de cebola, 1 de cenoura e 1 de aipo, usada para dar sabor a molhos, sopas e estufados.'>mirepoix</span>) para uma base de sabor mais complexa.",
-            "<strong>Com Vinho:</strong> Depois de refogar o alho, adicione um pouco de vinho tinto e deixe evaporar antes de juntar os tomates."
-        ],
+        "variacoes": [],
         "module": "Fundamentos da Cozinha",
-        "url": "fundamentos.html#receita-molho"
-    },
-    "fundamentos-da-cozinha-caldo": {
-        "title": "Aula 03: Caldo de Legumes Caseiro",
-        "description": "Este é um dos grandes segredos da cozinha profissional. Um bom caldo caseiro é a alma de sopas, risotos e molhos, elevando qualquer prato de 'bom' para 'inesquecível'.",
-        "calculatorLabel": "Litros de Água:",
-        "calculatorUnit": "caldo-input",
-        "details": {
-            "tempoPreparo": "10 min",
-            "tempoCozimento": "1 hora",
-            "tempoDescanso": "N/A",
-            "rendimento": "~1 litro de caldo por 1.5L de água",
-            "dificuldade": "Fácil",
-            "utensilios": [
-                "Panela grande (caldeirão)",
-                "Coador de malha fina"
-            ]
-        },
-        "dicaDeMestre": "Guarde as aparas de legumes (cascas de cebola, pontas de cenoura, talos de salsa) num saco no congelador. Quando tiver uma boa quantidade, use-as para fazer o seu caldo. É uma forma fantástica de reduzir o desperdício e aproveitar 100% dos ingredientes.",
-        "steps": [
-            {
-                "title": "A Base Aromática",
-                "description": "Não precisa de picar finamente. Corte a cebola, cenoura e aipo em pedaços grandes e grosseiros. A casca da cebola pode ser mantida para dar uma cor dourada ao caldo. Esmague os dentes de alho com a lateral da faca para libertar os seus óleos.",
-                "porque": "O objetivo é a extração lenta do sabor. Pedaços grandes são ideais para cozimentos longos e fáceis de coar no final.",
-                "pontoCritico": "Evite usar vegetais crucíferos como brócolos ou couve-flor em excesso, pois podem deixar o caldo com um sabor amargo."
-            },
-            {
-                "title": "A Extração a Frio",
-                "description": "Coloque todos os vegetais e aromáticos (louro, pimenta em grão) numa panela grande. Cubra com água fria. É importante começar com água fria.",
-                "porque": "Começar com água fria permite uma extração de sabor muito mais eficiente. À medida que a água aquece lentamente, ela 'puxa' os sabores dos vegetais de forma gradual e completa.",
-                "pontoCritico": "Nunca adicione sal ao seu caldo base. A falta de sal torna-o um ingrediente versátil. Você irá temperar com sal o prato final (a sopa, o risoto) onde usar o caldo."
-            },
-            {
-                "title": "O Cozimento Gentil",
-                "description": "Leve a panela ao lume alto até levantar fervura. Assim que ferver, reduza imediatamente para o lume mais baixo possível. O caldo deve cozinhar num <span class='tooltip' data-tooltip='Cozinhar um líquido logo abaixo do ponto de fervura, com apenas algumas bolhas suaves a subir à superfície.'>simmer</span> muito, muito gentil por pelo menos 1 hora.",
-                "porque": "Ferver o caldo vigorosamente torna-o turvo e pode extrair sabores amargos. O cozimento lento e gentil é a chave para um caldo límpido e com sabor puro.",
-                "pontoCritico": "Se formar alguma espuma na superfície, pode retirá-la com uma escumadeira para um caldo ainda mais limpo.",
-                "timer": 3600
-            },
-            {
-                "title": "Coar e Armazenar",
-                "description": "Após o tempo de cozimento, desligue o lume. Coe o caldo através de um coador de malha fina, descartando os sólidos. O seu 'ouro líquido' está pronto. Deixe arrefecer e guarde no frigorífico (até 5 dias) ou congele em porções (até 3 meses).",
-                "porque": "Coar remove todas as impurezas e fibras, deixando apenas o sabor puro. Congelar em porções (ex: cuvetes de gelo) é extremamente prático para o uso no dia a dia.",
-                "pontoCritico": "Deixe o caldo arrefecer completamente antes de o tapar e guardar no frigorífico, para evitar a proliferação de bactérias."
-            }
-        ],
-        "variacoes": [
-            "<strong>Caldo de Cogumelos:</strong> Adicione cogumelos secos (porcini) para um sabor <span class='tooltip' data-tooltip='O 'quinto gosto', profundo e saboroso, encontrado em queijos curados, cogumelos e carnes.'>umami</span> intenso.",
-            "<strong>Caldo Tostado:</strong> Asse os legumes no forno a 200°C até ficarem bem dourados antes de os colocar na panela com água. Isto resultará num caldo mais escuro e com sabor tostado.",
-            "<strong>Caldo de Frango:</strong> Adicione uma carcaça de frango assado ou pedaços de frango com osso junto com os legumes para um caldo de ave rico."
-        ],
-        "module": "Fundamentos da Cozinha",
-        "url": "fundamentos.html#receita-caldo"
-    },
-    "fundamentos-da-cozinha-ovo": {
-        "title": "Aula 04: O Ovo Estrelado Perfeito",
-        "description": "Parece simples, mas um ovo estrelado perfeito é uma arte. Com esta técnica, você conseguirá sempre uma clara totalmente cozida, bordas rendadas e uma gema cremosa e perfeitamente líquida para mergulhar o pão.",
-        "calculatorLabel": "Quantidade de Ovos:",
-        "calculatorUnit": "ovo-input",
-        "details": {
-            "tempoPreparo": "2 min",
-            "tempoCozimento": "3-4 min",
-            "tempoDescanso": "N/A",
-            "rendimento": "1 por pessoa",
-            "dificuldade": "Fácil",
-            "utensilios": [
-                "Frigideira antiaderente pequena",
-                "Tampa ou prato",
-                "Espátula de silicone"
-            ]
-        },
-        "dicaDeMestre": "Para uma apresentação de restaurante, quebre o ovo primeiro numa peneira fina sobre uma tigela. O excesso de clara líquida (a parte mais aguada) irá escorrer, deixando apenas a clara mais espessa. O resultado é um ovo estrelado mais compacto e redondo.",
-        "steps": [
-            {
-                "title": "A Temperatura Certa",
-                "description": "Aqueça uma frigideira antiaderente em lume **médio-baixo**. Este é o passo mais importante. Adicione a manteiga ou azeite e deixe aquecer lentamente. A gordura deve brilhar, mas não fumegar.",
-                "porque": "Lume alto cozinha a parte de baixo do ovo muito rápido, deixando a clara de cima crua e a gema superaquecida. O lume baixo permite um cozimento gentil e controlado.",
-                "pontoCritico": "Se a manteiga espumar e ficar castanha, a frigideira está demasiado quente. Retire do lume, deixe arrefecer um pouco e comece de novo."
-            },
-            {
-                "title": "Quebrar o Ovo Corretamente",
-                "description": "Quebre o ovo primeiro numa tigela pequena, não diretamente na frigideira. Isto permite-lhe remover qualquer pedaço de casca e garante que a gema não se parte ao cair na panela. Deslize o ovo cuidadosamente da tigela para a frigideira.",
-                "porque": "Este passo dá-lhe controlo total sobre o processo, evitando acidentes e garantindo um resultado perfeito.",
-                "pontoCritico": "Ovos frescos têm uma gema mais firme e menos probabilidade de se partirem. Use os ovos mais frescos que tiver."
-            },
-            {
-                "title": "O Truque do Vapor",
-                "description": "Deixe o ovo fritar sem mexer por cerca de 2 minutos, até as bordas da clara estarem firmes. Adicione uma colher de sopa de água na frigideira (num canto, longe do ovo) e tape imediatamente com uma tampa ou um prato.",
-                "porque": "Esta é a técnica 'basted egg'. A água cria vapor instantaneamente, que fica preso pela tampa. O vapor cozinha suavemente a superfície da clara e da gema, garantindo que a clara fica totalmente cozida sem que a gema endureça.",
-                "pontoCritico": "Tape rapidamente para não deixar o vapor escapar. Um pingo de água é suficiente. Demasiada água irá cozer o ovo em vez de o fritar."
-            },
-            {
-                "title": "Finalização e Tempero",
-                "description": "Cozinhe tapado por mais 1-2 minutos, ou até a clara estar opaca e firme. Deslize o ovo para o prato. Tempere com sal e pimenta apenas agora.",
-                "porque": "Temperar o ovo na frigideira pode fazer com que a gema fique manchada e com uma textura estranha. Temperar no prato mantém a aparência perfeita.",
-                "pontoCritico": "Sirva imediatamente. Um ovo estrelado perfeito não espera por ninguém!",
-                "timer": 90
-            }
-        ],
-        "variacoes": [
-            "<strong>Com Ervas:</strong> Polvilhe com cebolinho ou salsa picada no final.",
-            "<strong>Picante:</strong> Adicione uma pitada de flocos de pimenta ou páprica fumada.",
-            "<strong>Sunny-side up vs Over easy:</strong> A nossa técnica resulta num 'sunny-side up' cozido no vapor. Para um 'over easy', não adicione água, e em vez disso, vire cuidadosamente o ovo e cozinhe por 10 segundos do outro lado."
-        ],
-        "module": "Fundamentos da Cozinha",
-        "url": "fundamentos.html#receita-ovo"
-    },
-    "fundamentos-da-cozinha-maionese": {
-        "title": "Aula 05: Maionese Caseira (A Emulsão)",
-        "description": "Dominar uma emulsão estável é uma das técnicas mais gratificantes na cozinha. Nesta aula, você aprenderá a ciência por trás da maionese e como criar um molho incrivelmente cremoso e versátil, muito superior a qualquer versão de compra.",
-        "calculatorLabel": "Quantidade de Gemas:",
-        "calculatorUnit": "maionese-input",
-        "details": {
-            "tempoPreparo": "10 min",
-            "tempoCozimento": "N/A",
-            "tempoDescanso": "N/A",
-            "rendimento": "~250ml por gema",
-            "dificuldade": "Intermediário",
-            "utensilios": [
-                "Tigela redonda",
-                "Batedor de arame (fouet)",
-                "Pano húmido"
-            ]
-        },
-        "dicaDeMestre": "Coloque a tigela sobre um pano de prato húmido enrolado. Isto cria uma base antiderrapante, libertando as duas mãos: uma para bater vigorosamente e outra para adicionar o óleo em fio contínuo. É o truque que torna o processo muito mais fácil.",
-        "steps": [
-            {
-                "title": "A Base da <span class=\"tooltip\" data-tooltip=\"Mistura estável de dois líquidos que normalmente não se misturam, como óleo e água. A gema e a mostarda atuam como agentes emulsionantes.\">Emulsão</span>",
-                "description": "Numa tigela, junte a gema de ovo, a mostarda e o sumo de limão/vinagre. Todos os ingredientes devem estar à temperatura ambiente. Bata bem com um batedor de arames até a mistura ficar homogénea e ligeiramente mais pálida.",
-                "porque": "A gema contém lecitina e a mostarda contém mucilagem, ambos são agentes emulsionantes poderosos. Eles criam a ponte entre as moléculas de gordura (óleo) e de água (limão/vinagre). A temperatura ambiente facilita esta ligação.",
-                "pontoCritico": "Ingredientes frios (especialmente a gema) podem fazer com que a emulsão não se forme corretamente. Garanta que tudo está à temperatura ambiente."
-            },
-            {
-                "title": "Adicionar o Óleo (O Passo Crítico)",
-                "description": "Este é o momento que define o sucesso. Enquanto bate vigorosamente, comece a adicionar o óleo **gota a gota**. Literalmente, uma gota de cada vez no início. Assim que notar que a mistura começa a engrossar (a 'agarrar'), pode começar a adicionar o óleo num fio muito fino e contínuo.",
-                "porque": "As moléculas emulsionantes precisam de tempo para 'agarrar' cada pequena gota de óleo e envolvê-la na base de água. Se adicionar demasiado óleo de uma vez, as moléculas ficam sobrecarregadas e a mistura separa-se.",
-                "pontoCritico": "Paciência. Se apressar o início, a maionese vai 'talhar' (separar). Se isso acontecer, não deite fora! Numa tigela limpa, comece com uma nova gema e vá adicionando a mistura talhada aos poucos, como se fosse o óleo."
-            },
-            {
-                "title": "Ajustar a Consistência e o Sabor",
-                "description": "Continue a adicionar óleo em fio, batendo sempre, até a maionese atingir a consistência desejada. Deverá ficar espessa, cremosa e formar picos. No final, tempere com sal e pimenta branca. Prove e ajuste a acidez com mais limão, se necessário.",
-                "porque": "A quantidade de óleo determina a espessura. Mais óleo resulta numa maionese mais firme. O tempero no final permite-lhe controlar o sabor perfeitamente.",
-                "pontoCritico": "Se a maionese ficar demasiado espessa, adicione uma colher de chá de água morna ou sumo de limão para a diluir ligeiramente. Use pimenta branca para não criar pontinhos pretos no molho."
-            }
-        ],
-        "variacoes": [
-            "<strong>Aioli (Maionese de Alho):</strong> Esmague 1-2 dentes de alho junto com a gema no início.",
-            "<strong>Com Ervas:</strong> No final, adicione salsa, cebolinho ou estragão picados.",
-            "<strong>Cor e Sabor:</strong> Misture uma colher de chá de pasta de pimentão, caril em pó ou páprica fumada no final para criar maioneses com sabores diferentes."
-        ],
-        "module": "Fundamentos da Cozinha",
-        "url": "fundamentos.html#receita-maionese"
-    },
-    "fundamentos-da-cozinha-cebola": {
-        "title": "Aula 06: Cebola Caramelizada Perfeita",
-        "description": "Aprenda a transformar uma simples cebola num condimento adocicado, profundo e complexo. A caramelização é uma técnica de paciência que recompensa com um sabor incrível para hambúrgueres, sopas, quiches e muito mais.",
-        "calculatorLabel": "Quantidade de Cebolas Grandes:",
-        "calculatorUnit": "cebola-input",
-        "details": {
-            "tempoPreparo": "10 min",
-            "tempoCozimento": "30-50 min",
-            "tempoDescanso": "N/A",
-            "rendimento": "Reduz para ~1/4 do volume inicial",
-            "dificuldade": "Fácil",
-            "utensilios": [
-                "Frigideira larga e de fundo grosso",
-                "Colher de pau"
-            ]
-        },
-        "dicaDeMestre": "Para acelerar ligeiramente o processo e adicionar uma camada de sabor, adicione uma colher de sopa de vinagre balsâmico nos últimos 5 minutos de cozimento. Ajuda a intensificar a cor e adiciona uma acidez adocicada.",
-        "steps": [
-            {
-                "title": "O Corte e a Preparação",
-                "description": "Descasque as cebolas, corte-as ao meio e depois em fatias finas e uniformes. A uniformidade do corte é importante para que cozinhem por igual. Numa frigideira larga de fundo grosso, derreta a manteiga com o azeite em lume médio-baixo.",
-                "porque": "Uma frigideira larga permite que as cebolas fiquem mais espalhadas, promovendo a evaporação da água e a caramelização, em vez de cozinharem a vapor. A mistura de manteiga (sabor) e azeite (ponto de fumo mais alto) é ideal.",
-                "pontoCritico": "Não use lume alto. A tentação é grande, mas resultará em cebolas queimadas por fora e cruas por dentro."
-            },
-            {
-                "title": "A Paciência da Transformação",
-                "description": "Adicione as cebolas à frigideira e tempere com sal. Cozinhe em lume baixo a médio-baixo, mexendo ocasionalmente (a cada 5-10 minutos), por 30 a 50 minutos. As cebolas irão passar por várias fases: primeiro amolecem, depois ficam translúcidas, douradas e, finalmente, atingem um castanho profundo.",
-                "porque": "Este processo lento quebra as moléculas de açúcar complexas da cebola em açúcares simples, que depois caramelizam, criando centenas de novos compostos de sabor. O sal ajuda a extrair a humidade da cebola, acelerando o processo.",
-                "pontoCritico": "A chave é 'ocasionalmente'. Se mexer demasiado, as cebolas não ganham cor. Se mexer de menos, podem queimar. Encontre o equilíbrio.",
-                "timer": 2400
-            },
-            {
-                "title": "O <span class=\"tooltip\" data-tooltip=\"Adicionar um líquido (água, vinho, caldo) a uma panela quente para soltar os pedaços de comida caramelizados (fond) do fundo.\">Deglacear</span> (O Toque Final)",
-                "description": "Quando as cebolas estiverem bem escuras e caramelizadas, um fundo acastanhado ('fond') terá se formado na frigideira. Adicione uma ou duas colheres de sopa de água (ou vinho branco/vinagre) para 'deglacear', raspando o fundo com a colher para soltar todo esse sabor. Deixe o líquido evaporar completamente.",
-                "porque": "O 'fond' no fundo da panela é sabor puro e concentrado. Deglacear dissolve esse sabor e incorpora-o de volta nas cebolas, resultando num sabor final muito mais rico e complexo.",
-                "pontoCritico": "Faça este passo rapidamente e com a frigideira quente para que o líquido evapore e não deixe as cebolas ensopadas."
-            }
-        ],
-        "variacoes": [
-            "<strong>Sopa de Cebola Francesa:</strong> Esta é a base perfeita para a sopa. Basta adicionar caldo de carne e tostar uma fatia de pão com queijo Gruyère por cima.",
-            "<strong>Com Tomilho:</strong> Adicione alguns ramos de tomilho fresco junto com as cebolas para um aroma extra.",
-            "<strong>Doce e Salgado:</strong> Use em hambúrgueres, sanduíches de queijo quente, pizzas, ou como cobertura para carnes grelhadas."
-        ],
-        "module": "Fundamentos da Cozinha",
-        "url": "fundamentos.html#receita-cebola"
-    },
-    "fundamentos-da-cozinha-mirepoix": {
-        "title": "Aula 07: Mirepoix (A Base Aromática)",
-        "description": "Aprenda a fazer a 'Santíssima Trindade' da culinária clássica. O Mirepoix é uma base de vegetais aromáticos que, cozinhada lentamente, forma a espinha dorsal de sabor de inúmeras sopas, molhos e estufados.",
-        "calculatorLabel": "Peso final desejado (em gramas):",
-        "calculatorUnit": "mirepoix-input",
-        "details": {
-            "tempoPreparo": "10 min",
-            "tempoCozimento": "10-15 min",
-            "tempoDescanso": "N/A",
-            "rendimento": "Base para 1 receita grande",
-            "dificuldade": "Fácil",
-            "utensilios": [
-                "Faca de Chef afiada",
-                "Tábua de corte",
-                "Panela ou frigideira"
-            ]
-        },
-        "dicaDeMestre": "Pode congelar o mirepoix já refogado em pequenas porções (como em cuvetes de gelo). Depois, basta adicionar um ou dois cubos diretamente à panela para iniciar qualquer receita, poupando imenso tempo.",
-        "steps": [
-            {
-                "title": "A Proporção Clássica 2:1:1",
-                "description": "O Mirepoix tradicional consiste em **2 partes de cebola, 1 parte de cenoura e 1 parte de aipo**, por peso. Descasque a cebola e a cenoura e corte todos os três vegetais em cubos pequenos e uniformes (um corte <span class='tooltip' data-tooltip='Corte em cubos muito pequenos e uniformes, com cerca de 3mm de lado.'>brunoise</span> ou um pouco maior).",
-                "porque": "A cebola é a base principal de sabor e doçura. A cenoura adiciona mais doçura e cor, enquanto o aipo contribui com um sabor ligeiramente amargo e fresco que equilibra o conjunto. A proporção é a chave para este equilíbrio clássico.",
-                "pontoCritico": "O tamanho do corte depende do tempo de cozimento do prato final. Para pratos rápidos, use um corte mais fino. Para estufados longos, pode usar um corte maior."
-            },
-            {
-                "title": "'Suar' os Vegetais (<span class=\"tooltip\" data-tooltip=\"Cozinhar vegetais em lume baixo, geralmente com tampa, para que libertem a sua humidade e amoleçam sem ganhar cor.\">Sweating</span>)",
-                "description": "Numa panela em lume médio-baixo, aqueça a manteiga ou azeite. Adicione o mirepoix picado e uma pitada de sal. Cozinhe lentamente, mexendo ocasionalmente, por 10-15 minutos. O objetivo é que os vegetais fiquem muito macios e translúcidos, mas **sem dourar**.",
-                "porque": "Este processo, chamado 'suar' os vegetais, quebra as suas paredes celulares e liberta os seus açúcares e sabores naturais de forma suave. Cozinhar sem dourar cria uma base de sabor limpa, doce e complexa.",
-                "pontoCritico": "Mantenha o lume baixo. Se os vegetais começarem a dourar, você está a caramelizá-los, o que cria um perfil de sabor diferente (mais tostado), conhecido como 'pinçage'. Para um mirepoix clássico, evite a cor.",
-                "timer": 720
-            },
-            {
-                "title": "Pronto para Usar",
-                "description": "Assim que os vegetais estiverem macios e a sua cozinha cheirar maravilhosamente bem, o mirepoix está pronto. A partir daqui, ele torna-se o primeiro passo para inúmeras receitas. Pode adicionar alho, extrato de tomate, carne para dourar, ou simplesmente cobrir com caldo para fazer uma sopa.",
-                "porque": "Ter uma base de sabor bem construída é o que separa uma receita amadora de uma profissional. O mirepoix é essa base.",
-                "pontoCritico": "O mirepoix não é um prato final, mas sim o começo. É a tela em branco sobre a qual você irá pintar os outros sabores da sua receita."
-            }
-        ],
-        "variacoes": [
-            "<strong>Mirepoix Branco:</strong> Substitua a cenoura por alho-francês (parte branca) para pratos de cor clara, como molhos de peixe ou veloutés.",
-            "<strong>Santíssima Trindade Cajun:</strong> Na culinária da Louisiana, a cenoura é substituída por pimentão verde.",
-            "<strong>Com Alho e Ervas:</strong> Adicione alho picado nos últimos minutos e/ou ervas como tomilho e louro para mais complexidade."
-        ],
-        "module": "Fundamentos da Cozinha",
-        "url": "fundamentos.html#receita-mirepoix"
-    },
-    "fundamentos-da-cozinha-risoto": {
-        "title": "Aula 08: Risoto Base (A Técnica da Cremosidade)",
-        "description": "Domine a arte do risoto e abra um mundo de possibilidades na sua cozinha. Esta aula foca-se na técnica essencial para obter um risoto perfeitamente cremoso, 'al dente' e cheio de sabor, sem precisar de natas.",
-        "calculatorLabel": "Chávenas de Arroz de Risoto:",
-        "calculatorUnit": "risoto-input",
-        "details": {
-            "tempoPreparo": "10 min",
-            "tempoCozimento": "25-30 min",
-            "tempoDescanso": "2 min",
-            "rendimento": "2 porções por chávena",
-            "dificuldade": "Intermediário",
-            "utensilios": [
-                "Panela larga e de fundo grosso",
-                "Concha",
-                "Panela pequena para o caldo"
-            ]
-        },
-        "dicaDeMestre": "O segredo da cremosidade não está nas natas, mas sim no amido do arroz. Ao mexer constantemente, você 'raspa' a camada exterior de amido de cada grão, que se dissolve no caldo e cria um molho naturalmente cremoso e aveludado.",
-        "steps": [
-            {
-                "isSubRecipe": true,
-                "title": "Módulo: A Preparação Essencial",
-                "subSteps": [
-                    {
-                        "title": "O Caldo Quente",
-                        "description": "O passo mais importante acontece antes de começar. Despeje o seu caldo (ver Aula 03) numa panela pequena e mantenha-o num <span class=\"tooltip\" data-tooltip=\"Cozinhar um líquido logo abaixo do ponto de fervura, com apenas algumas bolhas suaves a subir à superfície.\">simmer</span> gentil durante todo o processo.",
-                        "porque": "Adicionar caldo frio ao arroz quente causaria um choque térmico, interrompendo o cozimento e impedindo que o grão liberte o seu amido de forma correta. Caldo quente garante um cozimento contínuo e cremosidade.",
-                        "pontoCritico": "O caldo deve estar sempre quente ao lado da panela do risoto. É uma regra inquebrável."
-                    },
-                    {
-                        "title": "O Sofrito",
-                        "description": "Numa panela larga, derreta metade da manteiga em lume médio. Adicione a cebola picada e refogue lentamente até ficar macia e translúcida, mas sem ganhar cor (cerca de 5 minutos).",
-                        "porque": "Esta base de cebola adocicada constrói a primeira camada de sabor do risoto.",
-                        "pontoCritico": "Não queime a cebola. Se começar a dourar, baixe o lume."
-                    }
-                ]
-            },
-            {
-                "title": "A <span class=\"tooltip\" data-tooltip=\"Termo italiano para 'tostar'. É o processo de fritar o arroz na gordura antes de adicionar o líquido, selando o exterior do grão.\">Tostatura</span> do Arroz",
-                "description": "Adicione o arroz à panela e aumente um pouco o lume. Mexa constantemente por cerca de 2 minutos, até os grãos ficarem quentes ao toque e as suas bordas se tornarem translúcidas.",
-                "porque": "Tostar o arroz sela o exterior do grão. Isto ajuda-o a absorver o caldo lentamente sem se desmanchar, e a libertar o amido de forma gradual, o que é essencial para a cremosidade.",
-                "pontoCritico": "Não deixe o arroz ganhar cor, apenas tostar. Continue a mexer para que todos os grãos sejam aquecidos por igual.",
-                "timer": 120
-            },
-            {
-                "title": "Deglacear com Vinho",
-                "description": "Adicione o vinho branco de uma só vez. Mexa constantemente enquanto o vinho borbulha e o cheiro a álcool evapora. Continue até o vinho ser quase totalmente absorvido pelo arroz.",
-                "porque": "O vinho adiciona uma camada de acidez e complexidade que equilibra a riqueza do risoto. A evaporação do álcool deixa apenas o sabor.",
-                "pontoCritico": "Use um vinho branco seco que você beberia. Se não for bom para beber, não será bom para cozinhar."
-            },
-            {
-                "title": "O Cozimento com o Caldo",
-                "description": "Reduza o lume para médio. Comece a adicionar o caldo quente, uma concha de cada vez. Mexa o risoto com frequência, mas não precisa de ser sem parar. Adicione a próxima concha de caldo apenas quando a anterior tiver sido quase totalmente absorvida. Repita o processo por 15 a 18 minutos.",
-                "porque": "Este método de adição gradual de líquido, combinado com a agitação, é o que 'massaja' os grãos de arroz, fazendo com que libertem o seu amido cremoso. É assim que a magia acontece.",
-                "pontoCritico": "Prove o arroz a partir dos 15 minutos. Ele deve estar 'al dente': cozido, mas com uma leve resistência no centro. Não o cozinhe demais!",
-                "timer": 1080
-            },
-            {
-                "title": "A <span class=\"tooltip\" data-tooltip=\"Termo italiano para 'bater com manteiga'. É o passo final de adicionar gordura (manteiga, queijo) fora do lume e bater vigorosamente para criar a emulsão final cremosa.\">Mantecatura</span> Final",
-                "description": "Retire a panela do lume. Adicione a manteiga fria restante e o queijo parmesão ralado. Mexa vigorosamente por cerca de 1 minuto. O risoto ficará incrivelmente cremoso. Tape e deixe descansar por 2 minutos antes de servir.",
-                "porque": "Adicionar a gordura fora do lume e bater cria uma emulsão final que dá ao risoto o seu brilho e textura aveludada característicos. A manteiga fria ajuda a estabilizar esta emulsão.",
-                "pontoCritico": "Este passo deve ser feito fora do lume para não separar a gordura. O risoto deve estar 'all'onda' (ondulante), ou seja, cremoso o suficiente para se espalhar suavemente no prato, não ficar como um bolo sólido."
-            }
-        ],
-        "variacoes": [
-            "<strong>Risoto de Cogumelos:</strong> Refogue cogumelos fatiados depois da cebola e antes de adicionar o arroz.",
-            "<strong>Risoto de Abóbora:</strong> Adicione puré de abóbora cozida junto com as últimas conchas de caldo.",
-            "<strong>Risoto Primavera:</strong> Adicione ervilhas, espargos e outros vegetais verdes nos últimos 5 minutos de cozimento."
-        ],
-        "module": "Fundamentos da Cozinha",
-        "url": "fundamentos.html#receita-risoto"
-    },
-    "fundamentos-da-cozinha-cortes": {
-        "title": "Aula 09: Cortes Básicos de Legumes",
-        "description": "Cozinhar como um chef começa com cortar como um chef. Aprender os cortes básicos não só torna os seus pratos mais bonitos, mas também garante que os ingredientes cozinhem de forma uniforme, resultando num sabor e textura superiores.",
-        "calculatorLabel": "Quantidade de Legumes para praticar:",
-        "calculatorUnit": "cortes-input",
-        "details": {
-            "tempoPreparo": "Variável",
-            "tempoCozimento": "N/A",
-            "tempoDescanso": "N/A",
-            "rendimento": "Uma nova habilidade!",
-            "dificuldade": "Intermediário",
-            "utensilios": [
-                "Faca de Chef bem afiada",
-                "Tábua de corte estável"
-            ]
-        },
-        "dicaDeMestre": "Segurança primeiro! Dobre os dedos da mão que segura o legume para dentro (a 'garra de urso'), usando os nós dos dedos como guia para a faca. A ponta da faca deve manter-se em contacto com a tábua. Nunca se apresse.",
-        "steps": [
-            {
-                "title": "Criar uma Base Estável",
-                "description": "Qualquer que seja o legume, o primeiro passo é sempre criar uma base plana e estável. Para uma cenoura ou batata, corte uma fatia fina de um dos lados. Para uma cebola, corte-a ao meio através da raiz. Coloque o lado plano virado para a tábua.",
-                "porque": "Uma base estável impede que o legume role na tábua, o que é a principal causa de acidentes e cortes irregulares. É o passo de segurança mais importante.",
-                "pontoCritico": "Nunca tente cortar um legume redondo sem primeiro criar uma base. Coloque um pano húmido por baixo da tábua de corte para que ela também não deslize."
-            },
-            {
-                "title": "O Corte <span class=\"tooltip\" data-tooltip=\"Corte clássico francês em tiras muito finas e compridas, como palitos de fósforo.\">Julienne</span> (Tiras Finas)",
-                "description": "Com a sua base estável, corte o legume em fatias finas e uniformes (ex: 2-3mm de espessura). Deite as fatias e empilhe-as. Agora, corte a pilha de fatias em palitos muito finos e uniformes. O resultado são tiras perfeitas, ideais para saladas, stir-fries ou como guarnição.",
-                "porque": "O corte Julienne aumenta a área de superfície do legume, permitindo que cozinhe muito rapidamente ou que se misture delicadamente em saladas.",
-                "pontoCritico": "A consistência é a chave. Tente fazer com que todos os palitos tenham a mesma espessura para um resultado profissional."
-            },
-            {
-                "title": "O Corte <span class=\"tooltip\" data-tooltip=\"Corte clássico francês em cubos muito pequenos e uniformes (2-3mm), geralmente feito a partir de um corte Julienne.\">Brunoise</span> (Cubos Pequenos)",
-                "description": "Comece por fazer o corte Julienne. Junte os palitos, alinhando-os. Com a ponta da faca como guia, corte os palitos transversalmente em cubos muito pequenos e uniformes. O resultado são cubos minúsculos, perfeitos para bases de molhos e sopas (<span class='tooltip' data-tooltip='Base clássica de 2 partes de cebola, 1 de cenoura e 1 de aipo, usada para dar sabor a molhos, sopas e estufados.'>mirepoix</span>).",
-                "porque": "O corte Brunoise permite que os vegetais derretam na boca e libertem o seu sabor de forma uniforme num molho ou sopa, sem que se notem pedaços grandes.",
-                "pontoCritico": "Mantenha os palitos Julienne bem juntos e alinhados para garantir que os cubos saiam uniformes e não em formas estranhas."
-            }
-        ],
-        "variacoes": [
-            "<strong>Bâtonnet:</strong> Um corte em palitos mais grossos, como batatas fritas (cerca de 6mm de espessura).",
-            "<strong>Paysanne:</strong> Fatias finas e quadradas ou redondas, que seguem a forma natural do vegetal.",
-            "<strong>Concassé:</strong> Tomates sem pele e sem sementes, cortados em cubos."
-        ],
-        "module": "Fundamentos da Cozinha",
-        "url": "fundamentos.html#receita-cortes"
+        "url": "fundamentos.html#receita-molho-tomate"
     },
     "fundamentos-da-cozinha-bechamel": {
-        "title": "Aula 10: Molho Branco (Bechamel)",
-        "description": "O Bechamel é um dos cinco 'molhos mãe' da culinária francesa. Dominar esta receita simples é abrir a porta para lasanhas, croque-monsieur, gratinados e inúmeros outros pratos cremosos e reconfortantes.",
-        "calculatorLabel": "Litros de Leite:",
-        "calculatorUnit": "bechamel-input",
+        "title": "Aula 08: Molho Béchamel (Molho Branco)",
+        "description": "Domine um dos cinco 'molhos mãe' da culinária francesa. Aprenda a fazer um béchamel perfeitamente liso, cremoso e sem grumos, a base para lasanhas, croque monsieur e inúmeros gratinados.",
+        "calculator": {
+            "label": "Litros de Leite:",
+            "unit": "bechamel-input",
+            "base_value": 1,
+            "default_value": 1
+        },
         "details": {
             "tempoPreparo": "5 min",
             "tempoCozimento": "10 min",
             "tempoDescanso": "N/A",
-            "rendimento": "~1 litro de molho por litro de leite",
+            "rendimento": "Aprox. 1 litro",
             "dificuldade": "Fácil",
             "utensilios": [
-                "Panela de fundo grosso",
+                "Panela",
                 "Batedor de arame (fouet)"
             ]
         },
-        "dicaDeMestre": "Se o seu molho ficar com grumos, não entre em pânico! A solução mais rápida é passá-lo por um coador de malha fina. Alternativamente, alguns segundos com uma varinha mágica (mixer de mão) deixá-lo-ão perfeitamente liso e aveludado.",
-        "steps": [
+        "dicaDeMestre": "Para evitar a formação de uma película na superfície do molho enquanto arrefece, cubra-o com película aderente, garantindo que o plástico toca diretamente na superfície do molho. Isto impede o contacto com o ar.",
+        "ingredients": [
             {
-                "title": "O <span class=\"tooltip\" data-tooltip=\"Pasta de gordura (manteiga) e farinha cozinhada, usada como agente espessante para molhos e sopas.\">Roux</span> (A Base Espessante)",
-                "description": "Numa panela em lume médio, derreta a manteiga. Assim que derreter, adicione a farinha de uma só vez. Com um batedor de arames, mexa constantemente por cerca de 2 minutos. A mistura vai formar uma pasta e borbulhar.",
-                "porque": "O 'roux' é o agente espessante do nosso molho. Cozinhar a farinha na manteiga por alguns minutos é essencial para eliminar o sabor de farinha crua e desagradável do resultado final.",
-                "pontoCritico": "Não pare de mexer e não deixe o roux ganhar cor (a não ser que queira um 'roux blond' ou 'brun' para outros molhos). Para um Bechamel clássico, o roux deve ser branco.",
-                "timer": 120
+                "name": "Leite",
+                "base_qty": 1,
+                "unit": "litro",
+                "scalable": true
             },
             {
-                "title": "Incorporar o Leite",
-                "description": "Comece a adicionar o leite (quente ou à temperatura ambiente) ao roux, um pouco de cada vez. No início, adicione apenas o suficiente para transformar a pasta do roux num creme espesso, batendo vigorosamente para dissolver todos os grumos. Depois, pode adicionar o resto do leite em 2 ou 3 partes, continuando a bater.",
-                "porque": "Esta adição gradual é a chave para um molho sem grumos. Diluir o roux numa pasta primeiro garante que ele se dissolverá suavemente no resto do líquido. Leite quente também ajuda a evitar grumos e acelera o processo.",
-                "pontoCritico": "Use um batedor de arames (fouet), não uma colher. O batedor é muito mais eficaz para quebrar quaisquer potenciais grumos."
+                "name": "Manteiga",
+                "base_qty": 60,
+                "unit": "g",
+                "scalable": true
             },
             {
-                "title": "Cozinhar até Engrossar",
-                "description": "Continue a cozinhar em lume médio-baixo, mexendo regularmente (especialmente nos cantos da panela), por cerca de 5 a 10 minutos. O molho irá engrossar gradualmente até atingir uma consistência que cobre as costas de uma colher (nappé).",
-                "porque": "O cozimento ativa o amido da farinha, que absorve o líquido e engrossa o molho. Este tempo também garante que o sabor da farinha esteja completamente cozido.",
-                "pontoCritico": "Não pare de mexer ou o molho vai colar no fundo da panela e queimar. Raspe bem os cantos e o fundo da panela.",
-                "timer": 480
+                "name": "Farinha de Trigo",
+                "base_qty": 60,
+                "unit": "g",
+                "scalable": true
             },
             {
-                "title": "Finalizar e Temperar",
-                "description": "Retire a panela do lume. Tempere com sal, pimenta branca (para não ter pontos pretos) e noz-moscada ralada na hora. O seu Bechamel está pronto.",
-                "porque": "O tempero é sempre o último passo, permitindo um controlo preciso do sabor final. A noz-moscada é o tempero clássico e essencial do Bechamel, conferindo-lhe o seu aroma característico.",
-                "pontoCritico": "Rale a noz-moscada na hora. O sabor e aroma são infinitamente superiores aos da noz-moscada pré-moída."
+                "name": "Noz-moscada, moída na hora",
+                "base_qty": 1,
+                "unit": "pitada",
+                "scalable": false
+            },
+            {
+                "name": "Sal e Pimenta Branca",
+                "base_qty": 0,
+                "unit": "A gosto",
+                "scalable": false
             }
         ],
-        "variacoes": [
-            "<strong>Molho Mornay (de Queijo):</strong> No final, fora do lume, adicione queijo ralado (como Gruyère, Emmental ou Cheddar) e mexa até derreter.",
-            "<strong>Para Gratinar:</strong> Use uma camada generosa de Bechamel sobre lasanhas ou pratos de vegetais antes de levar ao forno.",
-            "<strong>Infusão de Sabor:</strong> Aqueça o leite primeiro com meia cebola, uma folha de louro e alguns cravos-da-índia. Coe o leite antes de o adicionar ao roux para um sabor mais complexo."
+        "steps": [
+            {
+                "title": "O Roux (O Espessante)",
+                "description": "Numa panela, derreta a manteiga em lume médio. Adicione a farinha de uma só vez e mexa bem com o batedor de arame. Cozinhe esta pasta, chamada <span class='tooltip' data-tooltip='Mistura de gordura e farinha cozida, usada para engrossar molhos. Cozinhá-la remove o sabor a farinha crua.'>roux</span>, por 2 minutos, mexendo sempre.",
+                "porque": "Cozinhar o roux é o passo mais importante para evitar o sabor a farinha crua no molho final. Este processo também ativa a capacidade de espessamento do amido.",
+                "pontoCritico": "O roux para o béchamel deve ser 'branco', ou seja, não deve ganhar cor. Mantenha o lume médio-baixo e mexa constantemente."
+            },
+            {
+                "title": "A Incorporação do Leite",
+                "description": "Aqueça o leite noutra panela ou no micro-ondas. Retire a panela com o roux do lume e comece a adicionar o leite quente, um pouco de cada vez, batendo vigorosamente com o fouet para incorporar bem antes de adicionar mais.",
+                "porque": "Adicionar o líquido quente a uma base quente (o roux) e bater vigorosamente é a técnica infalível para um molho sem grumos. Fazer isto fora do lume dá-lhe mais controlo no início.",
+                "pontoCritico": "Não deite o leite todo de uma vez. A incorporação gradual é o segredo para uma textura perfeitamente lisa."
+            },
+            {
+                "title": "O Cozimento Final",
+                "description": "Depois de todo o leite estar incorporado, volte com a panela ao lume médio-baixo. Continue a cozinhar, mexendo sempre, por 5 a 8 minutos, até o molho engrossar e cobrir as costas de uma colher. Tempere com sal, pimenta branca e noz-moscada.",
+                "porque": "O cozimento final é necessário para que o amido da farinha cozinhe completamente e atinja o seu poder máximo de espessamento.",
+                "pontoCritico": "Mexa continuamente, prestando atenção aos cantos da panela para evitar que o molho cole e queime.",
+                "timer": 480
+            }
         ],
+        "variacoes": [],
         "module": "Fundamentos da Cozinha",
         "url": "fundamentos.html#receita-bechamel"
+    },
+    "fundamentos-da-cozinha-risoto-base": {
+        "title": "Aula 09: Risoto Base (Tostatura e Mantecatura)",
+        "description": "Aprenda os pilares da técnica italiana para um risoto perfeitamente cremoso, 'al dente' e aveludado. Dominar o risoto base permite-lhe criar infinitas variações, como um verdadeiro chef.",
+        "calculator": {
+            "label": "Gramas de Arroz:",
+            "unit": "risoto-base-input",
+            "base_value": 320,
+            "default_value": 320
+        },
+        "details": {
+            "tempoPreparo": "10 min",
+            "tempoCozimento": "20-25 min",
+            "tempoDescanso": "2 min",
+            "rendimento": "Serve 4 pessoas",
+            "dificuldade": "Intermediário",
+            "utensilios": [
+                "Panela larga e de fundo grosso",
+                "Concha",
+                "Panela para o caldo"
+            ]
+        },
+        "dicaDeMestre": "O caldo deve estar sempre a ferver suavemente numa panela ao lado. Adicionar caldo frio ao risoto interrompe o cozimento, 'choca' o grão de arroz e prejudica a libertação do amido, resultando num risoto menos cremoso.",
+        "ingredients": [
+            {
+                "name": "Caldo de Legumes Caseiro (ver aula correspondente)",
+                "base_qty": 1.5,
+                "unit": "litros",
+                "scalable": true,
+                "heading": "Ingredientes Principais"
+            },
+            {
+                "name": "Arroz para Risoto (Arborio ou Carnaroli)",
+                "base_qty": 320,
+                "unit": "g",
+                "scalable": true
+            },
+            {
+                "name": "Cebola pequena, picada finamente",
+                "base_qty": 1,
+                "unit": "unid.",
+                "scalable": true
+            },
+            {
+                "name": "Vinho Branco Seco",
+                "base_qty": 100,
+                "unit": "ml",
+                "scalable": true
+            },
+            {
+                "name": "Manteiga sem sal, fria em cubos",
+                "base_qty": 50,
+                "unit": "g",
+                "scalable": true
+            },
+            {
+                "name": "Queijo Parmesão, ralado na hora",
+                "base_qty": 50,
+                "unit": "g",
+                "scalable": true
+            }
+        ],
+        "steps": [
+            {
+                "isSubRecipe": true,
+                "title": "Módulo Essencial: Caldo de Legumes Caseiro",
+                "subSteps": [
+                    {
+                        "title": "Preparar e Cozinhar",
+                        "description": "Numa panela grande, junte 2 cebolas, 2 cenouras, 2 talos de aipo (tudo em pedaços grandes) e cubra com cerca de 2-3 litros de água fria. Leve a ferver e depois reduza para um simmer muito suave. Cozinhe por 1 a 2 horas.",
+                        "porque": "Um caldo caseiro é a alma de um bom risoto, fornecendo uma base de sabor muito superior a qualquer caldo industrial. Manter o caldo quente é essencial para a técnica do risoto.",
+                        "pontoCritico": "Não adicione sal ao caldo. O sal do risoto será ajustado no final, principalmente através do queijo."
+                    },
+                    {
+                        "title": "Coar e Manter Quente",
+                        "description": "Coe o caldo para uma panela limpa, descartando os legumes. Mantenha este caldo a ferver suavemente numa panela ao lado durante todo o processo de fazer o risoto.",
+                        "porque": "Precisamos apenas do líquido saboroso. O caldo deve estar quente para não interromper o cozimento do arroz a cada adição.",
+                        "pontoCritico": "Tenha sempre mais caldo do que pensa que vai precisar."
+                    }
+                ]
+            },
+            {
+                "title": "O Sofrito e a 'Tostatura'",
+                "description": "Numa panela larga, refogue a cebola picada em metade da manteiga até ficar macia e translúcida. Adicione o arroz e mexa constantemente por 2 minutos. Os grãos devem ficar quentes e translúcidos nas bordas.",
+                "porque": "Tostar o arroz (<span class='tooltip' data-tooltip='Termo italiano para tostar o arroz na gordura antes de adicionar líquido. Sela o grão e melhora a textura.'>tostatura</span>) sela o exterior do grão, ajudando-o a absorver o caldo lentamente sem se desmanchar e a libertar o seu amido de forma controlada.",
+                "pontoCritico": "Não deixe a cebola ou o arroz queimarem. O objetivo é um calor gentil e constante."
+            },
+            {
+                "title": "Adicionar o Caldo, Concha a Concha",
+                "description": "Adicione o vinho branco e deixe evaporar completamente. Comece a adicionar o caldo quente, uma concha de cada vez. Mexa frequentemente e espere que o caldo seja quase totalmente absorvido antes de adicionar a próxima concha. Continue este processo por 18-20 minutos.",
+                "porque": "A adição gradual de líquido e a agitação constante fazem com que os grãos de arroz se friccionem, libertando o seu amido exterior e criando a cremosidade natural e característica do risoto.",
+                "pontoCritico": "O risoto não precisa de ser mexido sem parar, mas sim frequentemente. O movimento é o que cria o creme.",
+                "timer": 1080
+            },
+            {
+                "title": "A 'Mantecatura' Final",
+                "description": "Quando o arroz estiver 'al dente' (cozido mas ainda com uma leve resistência no centro), retire a panela do lume. Adicione o resto da manteiga fria e o queijo parmesão ralado. Mexa vigorosamente para emulsionar a gordura e o amido. Tape e deixe descansar por 2 minutos antes de servir.",
+                "porque": "Este passo final, a <span class='tooltip' data-tooltip='Ato de finalizar um risoto fora do lume, adicionando gordura (manteiga, queijo) para criar uma emulsão final cremosa e aveludada.'>mantecatura</span>, é o que cria a textura aveludada e a famosa 'onda' ('all'onda') do risoto perfeito. Fazer isto fora do lume evita que a gordura se separe.",
+                "pontoCritico": "A manteiga deve estar fria para criar o choque térmico que ajuda na emulsão. Mexa com energia para incorporar ar e criar leveza."
+            }
+        ],
+        "variacoes": [],
+        "module": "Fundamentos da Cozinha",
+        "url": "fundamentos.html#receita-risoto-base"
+    },
+    "fundamentos-da-cozinha-branqueamento": {
+        "title": "Aula 10: Branqueamento e Choque Térmico",
+        "description": "Aprenda a técnica profissional para pré-cozinhar vegetais, mantendo a sua cor vibrante, a sua textura crocante e os seus nutrientes. Ideal para preparar legumes para saladas, congelamento ou salteados.",
+        "details": {
+            "tempoPreparo": "5 min",
+            "tempoCozimento": "2-5 min",
+            "tempoDescanso": "N/A",
+            "rendimento": "Qualquer quantidade",
+            "dificuldade": "Fácil",
+            "utensilios": [
+                "Panela grande",
+                "Tigela grande com água e gelo",
+                "Escumadeira"
+            ]
+        },
+        "dicaDeMestre": "O tempo de cozimento no branqueamento é muito curto e varia para cada vegetal. Tenha o banho de gelo pronto antes mesmo de colocar os legumes na água a ferver, pois a transição tem de ser imediata.",
+        "ingredients": [
+            {
+                "name": "Legumes (ex: brócolos, vagem, espargos)",
+                "base_qty": 1,
+                "unit": "molho/cabeça"
+            },
+            {
+                "name": "Água",
+                "base_qty": 0,
+                "unit": "bastante"
+            },
+            {
+                "name": "Sal",
+                "base_qty": 1,
+                "unit": "c. de sopa por litro"
+            },
+            {
+                "name": "Gelo",
+                "base_qty": 0,
+                "unit": "bastante"
+            }
+        ],
+        "steps": [
+            {
+                "title": "Preparar a Água e o Gelo",
+                "description": "Encha uma panela grande com água e adicione uma boa quantidade de sal. Leve a ferver vigorosamente. Ao lado, prepare uma tigela grande com água muito fria e bastante gelo (o banho de choque térmico).",
+                "porque": "A água deve estar a ferver com força para que a sua temperatura não baixe muito quando os legumes frios forem adicionados. O banho de gelo é essencial para parar o cozimento imediatamente.",
+                "pontoCritico": "Use bastante sal na água (deve saber a água do mar). Isto tempera os legumes e ajuda a fixar a clorofila, mantendo a cor verde mais vibrante."
+            },
+            {
+                "title": "O Branqueamento",
+                "description": "Mergulhe os legumes na água a ferver. Cozinhe por um tempo muito curto, apenas até ficarem com uma cor verde-viva e ligeiramente tenros, mas ainda crocantes (ex: 2-3 minutos para brócolos).",
+                "porque": "O <span class='tooltip' data-tooltip='Técnica de cozinhar um alimento brevemente em água a ferver.'>branqueamento</span> cozinha o exterior do legume, desativa enzimas que o fariam perder cor e sabor, e remove qualquer sabor a cru.",
+                "pontoCritico": "Não cozinhe demais. O objetivo é um pré-cozimento, não um cozimento completo. É melhor errar para menos tempo do que para mais."
+            },
+            {
+                "title": "O Choque Térmico",
+                "description": "Com uma escumadeira, retire imediatamente os legumes da água a ferver e mergulhe-os diretamente no banho de água com gelo. Deixe-os na água gelada até arrefecerem completamente.",
+                "porque": "O choque térmico para o cozimento de forma instantânea. Se saltar este passo, o calor residual continuará a cozinhar os legumes, deixando-os moles, empapados e com uma cor baça.",
+                "pontoCritico": "A transição deve ser o mais rápida possível. Tenha o banho de gelo mesmo ao lado da panela."
+            }
+        ],
+        "variacoes": [],
+        "module": "Fundamentos da Cozinha",
+        "url": "fundamentos.html#receita-branqueamento"
     },
     "receitas-de-carnes-bife": {
         "title": "Aula 01: O Bife Grelhado Perfeito",
