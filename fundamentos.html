@@ -529,6 +529,372 @@
 
         setupPage();
     });
-    </script>
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+        const aulas = {
+            'mise-en-place': {
+                title: "Aula 01: Mise en Place (A Arte da Organização)",
+                description: "A técnica francesa que significa 'tudo no seu lugar'. É o segredo dos chefs para cozinhar de forma calma, organizada e sem stress, garantindo que todos os ingredientes estão prontos antes de ligar o fogão.",
+                details: { tempoPreparo: "Variável", tempoCozimento: "N/A", tempoDescanso: "N/A", rendimento: "1 cozinha organizada", dificuldade: "Essencial", utensilios: ["Tigelas pequenas (ramequins)", "Tábua de corte", "Faca de chef"] },
+                dicaDeMestre: "Faça o 'mise en place' até para as receitas mais simples, como um ovo estrelado. Pese o sal, coloque a gordura à mão. Isto cria o hábito da organização, que é a fundação de toda a boa cozinha.",
+                ingredients: [],
+                steps: [
+                    { title: "Ler a Receita Completa", description: "Antes de tocar em qualquer ingrediente, leia a receita do início ao fim, duas vezes. Entenda cada passo, cada tempo de cozedura e cada técnica necessária.", porque: "Isto evita surpresas a meio do processo, como descobrir que um ingrediente precisava de marinar por 2 horas ou que necessita de um utensílio que não tem.", pontoCritico: "Não se limite a ler os ingredientes. Entenda o processo. Visualize-se a executar cada passo." },
+                    { title: "Reunir e Preparar os Ingredientes", description: "Junte todos os ingredientes na sua bancada. Lave, descasque, pique, rale e meça tudo o que for necessário. Coloque cada ingrediente preparado em tigelas pequenas e separadas.", porque: "Ter tudo pronto e medido permite-lhe focar-se exclusivamente na técnica de cozinhar (o controlo do calor, o ponto de cozedura) sem ter de parar para picar uma cebola enquanto o alho já está a queimar na panela.", pontoCritico: "A preparação inclui líquidos. Meça a água, o vinho, o caldo e tenha-os prontos a usar." },
+                    { title: "Organizar a Estação de Trabalho", description: "Posicione os seus ingredientes preparados na ordem em que serão usados. Mantenha a sua tábua de corte limpa e tenha uma tigela para o lixo/desperdícios. Posicione as panelas e ferramentas que irá usar.", porque: "Uma estação de trabalho lógica e limpa cria um fluxo de trabalho eficiente e seguro. Reduz o movimento desnecessário e a confusão, o que por sua vez reduz o stress e a probabilidade de erros.", pontoCritico: "Cozinhe num ambiente limpo. Limpe à medida que avança ('clean as you go') para manter a organização do início ao fim." }
+                ],
+                variacoes: []
+            },
+            'cortes': {
+                title: "Aula 02: As Técnicas de Corte Essenciais",
+                description: "Aprenda a manusear uma faca de chef com segurança e a executar os cortes fundamentais (Julienne, Brunoise, Chiffonade). Cortes uniformes não são apenas bonitos, são a chave para um cozimento perfeito.",
+                details: { tempoPreparo: "20 min (prática)", tempoCozimento: "N/A", tempoDescanso: "N/A", rendimento: "Legumes bem cortados", dificuldade: "Intermediário", utensilios: ["Faca de chef afiada", "Tábua de corte estável"] },
+                dicaDeMestre: "Use a técnica da 'garra' (mão-guia). Curve os dedos da mão que segura o alimento para dentro, usando os nós dos dedos como um guia seguro para a lâmina da faca. A ponta da faca deve manter-se sempre em contacto com a tábua.",
+                ingredients: [
+                    { name: 'Cenoura (para Julienne/Brunoise)', base_qty: 1, unit: 'unid.' },
+                    { name: 'Cebola (para Brunoise)', base_qty: 1, unit: 'unid.' },
+                    { name: 'Folhas de Manjericão ou Couve (para Chiffonade)', base_qty: 1, unit: 'punhado' }
+                ],
+                steps: [
+                    { title: "Julienne (Tiras Finas)", description: "Corte o legume (ex: cenoura) em secções de 5-7 cm. Crie uma base estável, cortando uma fatia fina de um dos lados. Corte o legume em fatias finas e uniformes. Empilhe as fatias e corte-as novamente em tiras muito finas, como palitos de fósforo.", porque: "Este corte é ideal para salteados rápidos ou guarnições, pois a sua grande área de superfície permite um cozimento muito rápido e uniforme.", pontoCritico: "A uniformidade é a chave. Todas as tiras devem ter a mesma espessura para cozinharem ao mesmo tempo." },
+                    { title: "Brunoise (Cubos Pequenos)", description: "Comece por fazer um corte Julienne. Junte os 'palitos' e corte-os transversalmente para formar cubos minúsculos e perfeitos (idealmente 2mm x 2mm x 2mm).", porque: "O corte Brunoise é a base de muitos refogados (<span class='tooltip' data-tooltip='Base clássica de 2 partes de cebola, 1 de cenoura e 1 de aipo, cortados em brunoise.'>mirepoix</span>) e molhos, pois os pequenos cubos dissolvem-se e libertam o seu sabor de forma eficiente.", pontoCritico: "Mantenha a ponta da faca na tábua e use um movimento de balanço para mais controlo e precisão." },
+                    { title: "Chiffonade (Tiras de Folhas)", description: "Empilhe as folhas (ex: manjericão) umas sobre as outras. Enrole-as firmemente, como um charuto. Fatie o 'charuto' transversalmente o mais fino que conseguir.", porque: "Esta técnica permite cortar ervas e folhas delicadas em fitas finas e elegantes, perfeitas para guarnições, sem as esmagar ou oxidar.", pontoCritico: "Use uma faca muito bem afiada para não rasgar as folhas." }
+                ],
+                variacoes: []
+            },
+            'caldo': {
+                title: "Aula 03: Caldo de Legumes Caseiro",
+                description: "O caldo é a alma de inúmeros pratos. Aprenda a fazer um caldo de legumes rico, dourado e cheio de sabor, que servirá de base para as suas sopas, molhos e risotos. A diferença para um caldo industrializado é abismal.",
+                calculator: { label: "Litros de Caldo:", unit: "caldo-input", base_value: 2, default_value: 2 },
+                details: { tempoPreparo: "15 min", tempoCozimento: "1-2 horas", tempoDescanso: "N/A", rendimento: "Aprox. 2 litros", dificuldade: "Fácil", utensilios: ["Panela grande e alta (caldeirão)", "Coador de malha fina", "Faca de chef"] },
+                dicaDeMestre: "Para um caldo mais escuro e com sabor mais tostado (ideal para molhos de carne), asse os legumes no forno a 200°C com um fio de azeite até ficarem bem dourados antes de os colocar na panela com água.",
+                ingredients: [
+                    { name: 'Cebolas, com casca, cortadas ao meio', base_qty: 2, unit: 'unid.', scalable: true },
+                    { name: 'Cenouras, em pedaços grandes', base_qty: 2, unit: 'unid.', scalable: true },
+                    { name: 'Talos de Aipo, em pedaços grandes', base_qty: 2, unit: 'unid.', scalable: true },
+                    { name: 'Alho-francês (parte branca e verde clara)', base_qty: 1, unit: 'unid.', scalable: true },
+                    { name: 'Cabeça de Alho, cortada ao meio', base_qty: 1, unit: 'unid.', scalable: true },
+                    { name: 'Folhas de Louro', base_qty: 2, unit: 'unid.', scalable: false },
+                    { name: 'Grãos de Pimenta Preta', base_qty: 1, unit: 'c. de chá', scalable: false },
+                    { name: 'Talos de Salsa ou Coentros', base_qty: 1, unit: 'punhado', scalable: false },
+                    { name: 'Água fria', base_qty: 3, unit: 'litros', scalable: true }
+                ],
+                steps: [
+                    { title: "Preparar os Aromáticos", description: "Lave bem todos os legumes. Não precisa de os descascar (exceto se estiverem muito sujos), apenas corte-os em pedaços grandes. A casca da cebola, por exemplo, adiciona uma bela cor dourada ao caldo.", porque: "Um caldo é uma infusão lenta. Cortes grandes expõem a superfície dos legumes o suficiente para libertar o sabor ao longo do tempo, sem se desintegrarem e turvarem o caldo.", pontoCritico: "Evite usar vegetais crucíferos em excesso (como brócolos ou couve-flor), pois podem dar um sabor amargo ao caldo." },
+                    { title: "O Cozimento Lento", description: "Coloque todos os ingredientes (legumes, ervas, pimenta) numa panela grande. Cubra com água FRIA. Leve ao lume alto até começar a ferver, e depois reduza imediatamente para o lume mais baixo possível, para um <span class='tooltip' data-tooltip='Cozimento muito lento em líquido, onde apenas uma ou duas bolhas sobem à superfície de vez em quando.'>simmer</span> muito suave. Cozinhe por 1 a 2 horas, sem tapar.", porque: "Começar com água fria extrai o sabor dos legumes de forma mais eficiente. Um simmer suave mantém o caldo límpido; uma fervura forte agita os ingredientes e turva o caldo.", pontoCritico: "Não adicione sal ao caldo! O caldo é uma base que será usada noutras receitas que levarão sal. Salgá-lo agora limitaria o seu uso e poderia resultar num prato final demasiado salgado.", timer: 5400 },
+                    { title: "Coar e Armazenar", description: "Retire os legumes com uma escumadeira. Coe o líquido através de um passador de malha fina para uma tigela ou recipiente grande. Deixe o caldo arrefecer completamente antes de o guardar.", porque: "Coar remove todas as impurezas, resultando num caldo límpido e puro. Arrefecer rapidamente (pode colocar a tigela num banho de gelo) é importante para a segurança alimentar.", pontoCritico: "Não pressione os legumes contra o coador para extrair mais líquido. Isso irá turvar o seu caldo. Deixe a gravidade fazer o trabalho." }
+                ],
+                 variacoes: []
+            },
+            'arroz': {
+                title: "Aula 04: O Arroz Perfeito (Soltinho)",
+                description: "Dominar o arroz branco soltinho é o primeiro passo para se sentir confiante na cozinha. Com esta técnica, você aprenderá a importância de cada etapa para um resultado que nunca falha.",
+                calculator: { label: "Chávenas de Arroz Cru:", unit: "arroz-input", base_value: 1, default_value: 1 },
+                details: { tempoPreparo: "5 min", tempoCozimento: "15 min", tempoDescanso: "5 min", rendimento: "2 porções por chávena", dificuldade: "Fácil", utensilios: ["Panela com tampa", "Garfo", "Copo medidor"] },
+                dicaDeMestre: "Depois de soltar o arroz com o garfo, coloque um pano de prato limpo entre a panela e a tampa durante o descanso. O pano absorve o excesso de vapor, garantindo um arroz ainda mais seco e soltinho.",
+                ingredients: [
+                    { name: 'Arroz Agulha', base_qty: 1, unit: 'chávena', scalable: true },
+                    { name: 'Água a ferver', base_qty: 2, unit: 'chávenas', scalable: true },
+                    { name: 'Azeite ou Óleo', base_qty: 1, unit: 'c. de sopa', scalable: true },
+                    { name: 'Alho Picado', base_qty: 1, unit: 'dente', scalable: true },
+                    { name: 'Sal', base_qty: 0.5, unit: 'c. de chá', scalable: true }
+                ],
+                steps: [
+                    { title: "O Refogado (Base de Sabor)", description: "Numa panela, aqueça o azeite em lume médio. Adicione o alho e refogue até perfumar (cerca de 30s). Adicione o arroz e 'frite-o' por cerca de 1 minuto, mexendo sempre. Este passo é crucial.", porque: "Este processo, chamado 'selar' o arroz, reveste cada grão com gordura. Isto ajuda a manter os grãos separados durante o cozimento, evitando que o amido se liberte em excesso e crie um resultado empapado.", pontoCritico: "Não deixe o alho queimar, senão amargará todo o prato. Ao 'fritar' o arroz, mexa constantemente para que todos os grãos sejam revestidos." },
+                    { title: "A Cozedura Perfeita", description: "Adicione a água **já a ferver** à panela. Tempere com sal e mexa uma única vez para distribuir os grãos. Reduza para o lume mais baixo possível, semi-tape a panela e cozinhe por 10 a 15 minutos, ou até a água ser absorvida.", porque: "Adicionar água fervente mantém a temperatura constante e inicia o cozimento imediatamente e de forma uniforme. Não mexer mais evita que o amido se solte dos grãos, o que é o principal culpado do arroz 'papa'.", pontoCritico: "Resista à tentação de mexer! Apenas confie no processo. O lume deve ser o mais baixo que o seu fogão permite para que a água evapore lentamente.", timer: 720 },
+                    { title: "O Descanso (O Passo Secreto)", description: "Quando a água tiver sido absorvida, desligue o lume, tape completamente a panela e deixe o arroz descansar por pelo menos 5 minutos. Depois deste tempo, solte os grãos gentilmente com um garfo.", porque: "O vapor residual dentro da panela termina o cozimento dos grãos de forma suave e uniforme. Este passo é o que garante a textura perfeita e evita que os grãos do fundo cozinhem mais do que os de cima.", pontoCritico: "Não salte o descanso. Se servir imediatamente, o arroz pode parecer um pouco húmido. Os 5 minutos de descanso fazem toda a diferença.", timer: 300 }
+                ],
+                variacoes: []
+            },
+            'refogado': {
+                title: "Aula 05: A Base de Sabor (Mirepoix e Sofrito)",
+                description: "Aprenda a construir a fundação de sabor de inúmeros pratos. Dominar o refogado lento de aromáticos é o que separa a cozinha amadora da profissional.",
+                details: { tempoPreparo: "10 min", tempoCozimento: "10-15 min", tempoDescanso: "N/A", rendimento: "Base para 1 receita", dificuldade: "Fácil", utensilios: ["Panela ou frigideira", "Faca de chef"] },
+                dicaDeMestre: "O segredo de um bom refogado é o tempo e o lume baixo. Não tenha pressa. O objetivo não é dourar ou fritar os legumes, mas sim 'suá-los' lentamente para que eles libertem os seus açúcares e sabor sem ganhar cor.",
+                ingredients: [
+                    { name: 'Cebola, em brunoise', base_qty: 1, unit: 'unid.', heading: 'Mirepoix/Sofrito Clássico' },
+                    { name: 'Cenoura, em brunoise', base_qty: 1, unit: 'unid.' },
+                    { name: 'Aipo, em brunoise', base_qty: 1, unit: 'talo' },
+                    { name: 'Azeite ou Manteiga', base_qty: 2, unit: 'c. de sopa' }
+                ],
+                steps: [
+                    { title: "O Corte Uniforme", description: "Pique a cebola, a cenoura e o aipo em <span class='tooltip' data-tooltip='Corte em cubos muito pequenos e uniformes (aprox. 2mm).'>brunoise</span> (cubos pequenos e uniformes).", porque: "Um corte uniforme garante que todos os legumes cozinham ao mesmo tempo, criando uma base de sabor homogénea.", pontoCritico: "A proporção clássica do Mirepoix francês é 2 partes de cebola para 1 de cenoura e 1 de aipo." },
+                    { title: "O Cozimento Lento", description: "Aqueça a gordura (azeite ou manteiga) numa panela em lume médio-baixo. Adicione a cebola e uma pitada de sal. Cozinhe por 5 minutos até amolecer. Adicione a cenoura e o aipo e cozinhe por mais 10 minutos, mexendo ocasionalmente, até todos os legumes estarem muito macios e perfumados.", porque: "O sal ajuda a extrair a humidade dos legumes, ajudando-os a 'suar' em vez de fritar. O cozimento lento quebra as fibras e liberta a doçura natural dos vegetais, criando uma base de sabor profunda e complexa.", pontoCritico: "Mantenha o lume baixo. Se os legumes começarem a ganhar cor (a dourar), o lume está muito alto." }
+                ],
+                variacoes: []
+            },
+            'cebola-caramelizada': {
+                title: "Aula 06: Cebola Caramelizada",
+                description: "Paciência é o ingrediente secreto. Aprenda a cozinhar cebolas lentamente para libertar os seus açúcares naturais, transformando-as num acompanhamento doce, profundo e incrivelmente versátil.",
+                calculator: { label: "Quilos de Cebola:", unit: "cebola-caramelizada-input", base_value: 1, default_value: 1 },
+                details: { tempoPreparo: "5 min", tempoCozimento: "45-60 min", tempoDescanso: "N/A", rendimento: "Aprox. 1 chávena", dificuldade: "Fácil", utensilios: ["Frigideira larga e de fundo grosso", "Colher de pau"] },
+                dicaDeMestre: "Não tenha pressa. A caramelização é um processo lento. Se aumentar o lume para acelerar, as cebolas irão queimar por fora em vez de cozinharem e libertarem os seus açúcares de forma uniforme.",
+                ingredients: [
+                    { name: 'Cebolas amarelas grandes', base_qty: 1, unit: 'kg', scalable: true },
+                    { name: 'Manteiga sem sal', base_qty: 2, unit: 'c. de sopa', scalable: true },
+                    { name: 'Azeite', base_qty: 1, unit: 'c. de sopa', scalable: true },
+                    { name: 'Sal', base_qty: 0.5, unit: 'c. de chá', scalable: true },
+                    { name: 'Açúcar (opcional, para acelerar)', base_qty: 1, unit: 'c. de chá', scalable: true },
+                    { name: 'Água ou Vinho Branco (para deglacear)', base_qty: 50, unit: 'ml', scalable: true }
+                ],
+                steps: [
+                    { title: "Preparar as Cebolas", description: "Descasque as cebolas e corte-as em fatias finas e uniformes.", porque: "Fatias uniformes garantem que todas as cebolas cozinham ao mesmo tempo, evitando que umas queimem enquanto outras ainda estão cruas.", pontoCritico: "Corte no sentido do comprimento (de polo a polo) para fatias que mantêm melhor a sua forma, ou contra as fibras para uma caramelização mais rápida." },
+                    { title: "O Cozimento Lento", description: "Numa frigideira larga, derreta a manteiga com o azeite em lume médio-baixo. Adicione as cebolas fatiadas e o sal. Cozinhe lentamente, mexendo ocasionalmente, por 45 a 60 minutos.", porque: "O sal ajuda a extrair a humidade das cebolas, o que as impede de fritar e as ajuda a cozinhar no seu próprio líquido. O lume baixo é crucial para não queimar os açúcares.", pontoCritico: "Nos primeiros 10 minutos, pode tapar a panela para acelerar a libertação de água. Depois, cozinhe sempre destapado." },
+                    { title: "Deglacear e Finalizar", description: "À medida que as cebolas cozinham, elas começarão a colar no fundo da panela, criando uma crosta acastanhada (o 'fond'). Quando isso acontecer, adicione um pouco de água ou vinho para <span class='tooltip' data-tooltip='Adicionar um líquido a uma panela quente para soltar os pedaços de comida caramelizados (fond) do fundo.'>deglacear</span>, raspando o fundo com a colher. Repita este processo sempre que necessário. As cebolas estão prontas quando estiverem muito macias, doces e com uma cor de caramelo profundo.", porque: "O 'fond' no fundo da panela é sabor concentrado. Deglacear reincorpora esse sabor nas cebolas, intensificando o resultado final.", pontoCritico: "A cor final deve ser um castanho-escuro rico, não preto. Se começar a cheirar a queimado, o lume está muito alto." }
+                ],
+                variacoes: []
+            },
+            'molho-tomate': {
+                title: "Aula 07: Molho de Tomate Caseiro",
+                description: "Abandone os molhos de compra. Fazer o seu próprio molho de tomate é simples, mais saudável e resulta num sabor incomparavelmente mais fresco e autêntico. É a base perfeita para massas, pizzas, lasanhas e muito mais.",
+                calculator: { label: "Quilos de Tomate Fresco:", unit: "tomate-input", base_value: 1, default_value: 1 },
+                details: { tempoPreparo: "15 min", tempoCozimento: "45 min", tempoDescanso: "N/A", rendimento: "~750ml por kg de tomate", dificuldade: "Fácil", utensilios: ["Panela grande", "Faca", "Colher de pau"] },
+                dicaDeMestre: "Para um molho com uma textura mais aveludada, passe-o por um passador de legumes (passe-vite) ou bata-o com uma varinha mágica no final do cozimento. Se não tiver nenhum dos dois, um liquidificador também serve (com cuidado, pois o molho estará quente).",
+                ingredients: [
+                    { name: 'Tomate maduro (italiano é ideal)', base_qty: 1, unit: 'kg', scalable: true },
+                    { name: 'Azeite Extra Virgem', base_qty: 2, unit: 'c. de sopa', scalable: true },
+                    { name: 'Cebola Média Picada', base_qty: 1, unit: 'unid.', scalable: true },
+                    { name: 'Alho Picado', base_qty: 2, unit: 'dente(s)', scalable: true },
+                    { name: 'Manjericão Fresco', base_qty: 1, unit: 'ramo', scalable: false },
+                    { name: 'Sal e Pimenta', base_qty: 0, unit: 'A gosto', scalable: false },
+                    { name: 'Açúcar (opcional)', base_qty: 1, unit: 'pitada', scalable: false }
+                ],
+                steps: [
+                    { title: "Preparar os Tomates", description: "Lave bem os tomates. Pode usá-los com pele e sementes para um molho mais rústico ou, para um resultado mais refinado, retire-as. Para retirar a pele, faça um 'X' na base de cada tomate, mergulhe em água fervente por 30 segundos e depois em água gelada. A pele sairá facilmente.", porque: "Retirar a pele e as sementes resulta num molho menos ácido e com uma textura mais suave. O choque térmico (branqueamento) é a técnica profissional para pelar tomates de forma eficiente.", pontoCritico: "Use sempre tomates bem maduros. Tomates verdes ou pouco maduros resultarão num molho ácido e com menos cor." },
+                    { title: `O Sofrito (A Base Aromática)`, description: "Numa panela grande, aqueça o azeite em lume médio. Adicione a cebola e refogue até ficar macia e translúcida (cerca de 5-7 minutos). Junte o alho e cozinhe por mais um minuto. Este refogado constrói a primeira camada de sabor do molho.", porque: "Cozinhar a cebola lentamente liberta os seus açúcares naturais, conferindo uma doçura de base ao molho. O alho é adicionado depois pois cozinha mais rápido e queima facilmente.", pontoCritico: "Não doure a cebola, apenas a deixe 'suar' e ficar macia. Se a cebola ou o alho queimarem, o molho ficará amargo." },
+                    { title: "Cozinhar e Apurar o Sabor", description: "Adicione os tomates picados (ou triturados) à panela. Tempere com sal, pimenta e a pitada de açúcar (se usar). Adicione o ramo de manjericão inteiro. Deixe levantar fervura, reduza para o lume mais baixo possível e cozinhe, semi-tampado, por pelo menos 45 minutos.", porque: "O cozimento lento e prolongado ('apurar') é o que funde todos os sabores, evapora o excesso de água e concentra a doçura do tomate. O manjericão inteiro infunde o seu sabor sem se desintegrar.", pontoCritico: "Mexa o molho ocasionalmente para não colar no fundo da panela. Quanto mais tempo cozinhar, mais espesso e saboroso ficará.", timer: 2700 }
+                ],
+                variacoes: []
+            },
+            'bechamel': {
+                title: "Aula 08: Molho Béchamel (Molho Branco)",
+                description: "Domine um dos cinco 'molhos mãe' da culinária francesa. Aprenda a fazer um béchamel perfeitamente liso, cremoso e sem grumos, a base para lasanhas, croque monsieur e inúmeros gratinados.",
+                calculator: { label: "Litros de Leite:", unit: "bechamel-input", base_value: 1, default_value: 1 },
+                details: { tempoPreparo: "5 min", tempoCozimento: "10 min", tempoDescanso: "N/A", rendimento: "Aprox. 1 litro", dificuldade: "Fácil", utensilios: ["Panela", "Batedor de arame (fouet)"] },
+                dicaDeMestre: "Para evitar a formação de uma película na superfície do molho enquanto arrefece, cubra-o com película aderente, garantindo que o plástico toca diretamente na superfície do molho. Isto impede o contacto com o ar.",
+                ingredients: [
+                    { name: 'Leite', base_qty: 1, unit: 'litro', scalable: true },
+                    { name: 'Manteiga', base_qty: 60, unit: 'g', scalable: true },
+                    { name: 'Farinha de Trigo', base_qty: 60, unit: 'g', scalable: true },
+                    { name: 'Noz-moscada, moída na hora', base_qty: 1, unit: 'pitada', scalable: false },
+                    { name: 'Sal e Pimenta Branca', base_qty: 0, unit: 'A gosto', scalable: false }
+                ],
+                steps: [
+                    { title: "O Roux (O Espessante)", description: "Numa panela, derreta a manteiga em lume médio. Adicione a farinha de uma só vez e mexa bem com o batedor de arame. Cozinhe esta pasta, chamada <span class='tooltip' data-tooltip='Mistura de gordura e farinha cozida, usada para engrossar molhos. Cozinhá-la remove o sabor a farinha crua.'>roux</span>, por 2 minutos, mexendo sempre.", porque: "Cozinhar o roux é o passo mais importante para evitar o sabor a farinha crua no molho final. Este processo também ativa a capacidade de espessamento do amido.", pontoCritico: "O roux para o béchamel deve ser 'branco', ou seja, não deve ganhar cor. Mantenha o lume médio-baixo e mexa constantemente." },
+                    { title: "A Incorporação do Leite", description: "Aqueça o leite noutra panela ou no micro-ondas. Retire a panela com o roux do lume e comece a adicionar o leite quente, um pouco de cada vez, batendo vigorosamente com o fouet para incorporar bem antes de adicionar mais.", porque: "Adicionar o líquido quente a uma base quente (o roux) e bater vigorosamente é a técnica infalível para um molho sem grumos. Fazer isto fora do lume dá-lhe mais controlo no início.", pontoCritico: "Não deite o leite todo de uma vez. A incorporação gradual é o segredo para uma textura perfeitamente lisa." },
+                    { title: "O Cozimento Final", description: "Depois de todo o leite estar incorporado, volte com a panela ao lume médio-baixo. Continue a cozinhar, mexendo sempre, por 5 a 8 minutos, até o molho engrossar e cobrir as costas de uma colher. Tempere com sal, pimenta branca e noz-moscada.", porque: "O cozimento final é necessário para que o amido da farinha cozinhe completamente e atinja o seu poder máximo de espessamento.", pontoCritico: "Mexa continuamente, prestando atenção aos cantos da panela para evitar que o molho cole e queime.", timer: 480 }
+                ],
+                variacoes: []
+            },
+            'risoto-base': {
+                title: "Aula 09: Risoto Base (Tostatura e Mantecatura)",
+                description: "Aprenda os pilares da técnica italiana para um risoto perfeitamente cremoso, 'al dente' e aveludado. Dominar o risoto base permite-lhe criar infinitas variações, como um verdadeiro chef.",
+                calculator: { label: "Gramas de Arroz:", unit: "risoto-base-input", base_value: 320, default_value: 320 },
+                details: { tempoPreparo: "10 min", tempoCozimento: "20-25 min", tempoDescanso: "2 min", rendimento: "Serve 4 pessoas", dificuldade: "Intermediário", utensilios: ["Panela larga e de fundo grosso", "Concha", "Panela para o caldo"] },
+                dicaDeMestre: "O caldo deve estar sempre a ferver suavemente numa panela ao lado. Adicionar caldo frio ao risoto interrompe o cozimento, 'choca' o grão de arroz e prejudica a libertação do amido, resultando num risoto menos cremoso.",
+                ingredients: [
+                    { name: 'Cebola, com casca, cortadas ao meio', base_qty: 2, unit: 'unid.', scalable: true, heading: 'Para o Caldo de Legumes' },
+                    { name: 'Cenouras, em pedaços grandes', base_qty: 2, unit: 'unid.', scalable: true },
+                    { name: 'Talos de Aipo, em pedaços grandes', base_qty: 2, unit: 'unid.', scalable: true },
+                    { name: 'Água fria', base_qty: 3, unit: 'litros', scalable: true },
+                    { name: 'Arroz para Risoto (Arborio ou Carnaroli)', base_qty: 320, unit: 'g', scalable: true, heading: 'Para o Risoto' },
+                    { name: 'Cebola pequena, picada finamente', base_qty: 1, unit: 'unid.', scalable: true },
+                    { name: 'Vinho Branco Seco', base_qty: 100, unit: 'ml', scalable: true },
+                    { name: 'Manteiga sem sal, fria em cubos', base_qty: 50, unit: 'g', scalable: true },
+                    { name: 'Queijo Parmesão, ralado na hora', base_qty: 50, unit: 'g', scalable: true }
+                ],
+                steps: [
+                    { 
+                        isSubRecipe: true,
+                        title: 'Módulo Essencial: Caldo de Legumes Caseiro',
+                        subSteps: [
+                            { title: "Preparar e Cozinhar", description: "Numa panela grande, junte os legumes do caldo (cebolas, cenouras, aipo) numa panela grande com a água fria. Leve a ferver e depois reduza para um simmer muito suave. Cozinhe por 1 a 2 horas.", porque: "Um caldo caseiro é a alma de um bom risoto, fornecendo uma base de sabor muito superior a qualquer caldo industrial. Manter o caldo quente é essencial para a técnica do risoto.", pontoCritico: "Não adicione sal ao caldo. O sal do risoto será ajustado no final, principalmente através do queijo." },
+                            { title: "Coar e Manter Quente", description: "Coe o caldo para uma panela limpa, descartando os legumes. Mantenha este caldo a ferver suavemente numa panela ao lado durante todo o processo de fazer o risoto.", porque: "Precisamos apenas do líquido saboroso. O caldo deve estar quente para não interromper o cozimento do arroz a cada adição.", pontoCritico: "Tenha sempre mais caldo do que pensa que vai precisar." }
+                        ]
+                    },
+                    { title: "O Sofrito e a 'Tostatura'", description: "Numa panela larga, refogue a cebola picada em metade da manteiga até ficar macia e translúcida. Adicione o arroz e mexa constantemente por 2 minutos. Os grãos devem ficar quentes e translúcidos nas bordas.", porque: "Tostar o arroz (<span class='tooltip' data-tooltip='Termo italiano para tostar o arroz na gordura antes de adicionar líquido. Sela o grão e melhora a textura.'>tostatura</span>) sela o exterior do grão, ajudando-o a absorver o caldo lentamente sem se desmanchar e a libertar o seu amido de forma controlada.", pontoCritico: "Não deixe a cebola ou o arroz queimarem. O objetivo é um calor gentil e constante." },
+                    { title: "Adicionar o Caldo, Concha a Concha", description: "Adicione o vinho branco e deixe evaporar completamente. Comece a adicionar o caldo quente, uma concha de cada vez. Mexa frequentemente e espere que o caldo seja quase totalmente absorvido antes de adicionar a próxima concha. Continue este processo por 18-20 minutos.", porque: "A adição gradual de líquido e a agitação constante fazem com que os grãos de arroz se friccionem, libertando o seu amido exterior e criando a cremosidade natural e característica do risoto.", pontoCritico: "O risoto não precisa de ser mexido sem parar, mas sim frequentemente. O movimento é o que cria o creme.", timer: 1080 },
+                    { title: "A 'Mantecatura' Final", description: "Quando o arroz estiver 'al dente' (cozido mas ainda com uma leve resistência no centro), retire a panela do lume. Adicione o resto da manteiga fria e o queijo parmesão ralado. Mexa vigorosamente para emulsionar a gordura e o amido. Tape e deixe descansar por 2 minutos antes de servir.", porque: "Este passo final, a <span class='tooltip' data-tooltip='Ato de finalizar um risoto fora do lume, adicionando gordura (manteiga, queijo) para criar uma emulsão final cremosa e aveludada.'>mantecatura</span>, é o que cria a textura aveludada e a famosa 'onda' ('all'onda') do risoto perfeito. Fazer isto fora do lume evita que a gordura se separe.", pontoCritico: "A manteiga deve estar fria para criar o choque térmico que ajuda na emulsão. Mexa com energia para incorporar ar e criar leveza." }
+                ],
+                variacoes: []
+            },
+            'branqueamento': {
+                title: "Aula 10: Branqueamento e Choque Térmico",
+                description: "Aprenda a técnica profissional para pré-cozinhar vegetais, mantendo a sua cor vibrante, a sua textura crocante e os seus nutrientes. Ideal para preparar legumes para saladas, congelamento ou salteados.",
+                details: { tempoPreparo: "5 min", tempoCozimento: "2-5 min", tempoDescanso: "N/A", rendimento: "Qualquer quantidade", dificuldade: "Fácil", utensilios: ["Panela grande", "Tigela grande com água e gelo", "Escumadeira"] },
+                dicaDeMestre: "O tempo de cozimento no branqueamento é muito curto e varia para cada vegetal. Tenha o banho de gelo pronto antes mesmo de colocar os legumes na água a ferver, pois a transição tem de ser imediata.",
+                ingredients: [
+                    { name: 'Legumes (ex: brócolos, vagem, espargos)', base_qty: 1, unit: 'molho/cabeça' },
+                    { name: 'Água', base_qty: 0, unit: 'bastante' },
+                    { name: 'Sal', base_qty: 1, unit: 'c. de sopa por litro' },
+                    { name: 'Gelo', base_qty: 0, unit: 'bastante' }
+                ],
+                steps: [
+                    { title: "Preparar a Água e o Gelo", description: "Encha uma panela grande com água e adicione uma boa quantidade de sal. Leve a ferver vigorosamente. Ao lado, prepare uma tigela grande com água muito fria e bastante gelo (o banho de choque térmico).", porque: "A água deve estar a ferver com força para que a sua temperatura não baixe muito quando os legumes frios forem adicionados. O banho de gelo é essencial para parar o cozimento imediatamente.", pontoCritico: "Use bastante sal na água (deve saber a água do mar). Isto tempera os legumes e ajuda a fixar a clorofila, mantendo a cor verde mais vibrante." },
+                    { title: "O Branqueamento", description: "Mergulhe os legumes na água a ferver. Cozinhe por um tempo muito curto, apenas até ficarem com uma cor verde-viva e ligeiramente tenros, mas ainda crocantes (ex: 2-3 minutos para brócolos).", porque: "O <span class='tooltip' data-tooltip='Técnica de cozinhar um alimento brevemente em água a ferver.'>branqueamento</span> cozinha o exterior do legume, desativa enzimas que o fariam perder cor e sabor, e remove qualquer sabor a cru.", pontoCritico: "Não cozinhe demais. O objetivo é um pré-cozimento, não um cozimento completo. É melhor errar para menos tempo do que para mais." },
+                    { title: "O Choque Térmico", description: "Com uma escumadeira, retire imediatamente os legumes da água a ferver e mergulhe-os diretamente no banho de água com gelo. Deixe-os na água gelada até arrefecerem completamente.", porque: "O choque térmico para o cozimento de forma instantânea. Se saltar este passo, o calor residual continuará a cozinhar os legumes, deixando-os moles, empapados e com uma cor baça.", pontoCritico: "A transição deve ser o mais rápida possível. Tenha o banho de gelo mesmo ao lado da panela." }
+                ],
+                variacoes: []
+            }
+        };
+
+        const aulasList = document.getElementById('aulas-list');
+        const pageTitle = document.getElementById('page-title');
+        const receitasContainer = document.getElementById('receitas-container');
+        const backToListBtn = document.getElementById('back-to-list-btn');
+        const menuBtn = document.querySelector('header button');
+        const mobileMenu = document.getElementById('mobile-menu');
+
+        if(menuBtn && mobileMenu){
+            menuBtn.addEventListener('click', () => {
+                mobileMenu.classList.toggle('hidden');
+            });
+        }
+        
+        const formatNumber = (num) => {
+            if (num < 1 && num > 0) return num.toFixed(2);
+            if (num % 1 !== 0) return num.toFixed(1);
+            return num;
+        };
+        
+        const updateIngredients = (recipeData, inputValue, recipeId) => {
+            const list = document.getElementById(`ingredient-list-${recipeId}`);
+            if (!list || !recipeData.ingredients) return;
+
+            const baseValue = recipeData.calculator ? recipeData.calculator.base_value : 1;
+            const multiplier = inputValue / baseValue;
+            let html = '';
+            let currentHeading = '';
+
+            recipeData.ingredients.forEach(ing => {
+                if(ing.heading && ing.heading !== currentHeading) {
+                    currentHeading = ing.heading;
+                    html += `<h5 class="font-bold text-stone-700 mt-3 mb-1">${currentHeading}:</h5>`;
+                }
+                let qtyDisplay = '';
+                if ('scalable' in ing && !ing.scalable) {
+                    qtyDisplay = ing.unit;
+                } else if(ing.base_qty) {
+                    const scaledQty = ing.base_qty * multiplier;
+                    qtyDisplay = `${formatNumber(scaledQty)} ${ing.unit}`;
+                } else {
+                    qtyDisplay = ing.unit || '';
+                }
+                html += `
+                    <li class="ingredient-item">
+                        <label class="flex items-center p-1 rounded-md hover:bg-stone-100">
+                            <input type="checkbox" class="mr-2 h-4 w-4 text-amber-600 focus:ring-amber-500 border-stone-300 rounded">
+                            <span class="flex-1 flex justify-between">
+                                <span>${ing.name}</span>
+                                <span class="font-semibold text-right pl-2">${qtyDisplay}</span>
+                            </span>
+                        </label>
+                    </li>`;
+            });
+            list.innerHTML = html;
+        };
+
+        const generateRecipeHTML = (recipeData, recipeId) => {
+             return `
+                <div class="text-center">
+                    <h2 class="text-3xl md:text-4xl font-bold text-amber-700">${recipeData.title}</h2>
+                    <p class="mt-4 max-w-3xl mx-auto text-stone-600 text-lg">${recipeData.description}</p>
+                </div>
+                <div class="mt-10 grid grid-cols-2 md:grid-cols-4 gap-4 text-center">
+                    <div class="bg-stone-100 p-4 rounded-lg flex flex-col justify-center items-center"><span class="text-2xl">⏳</span><h4 class="font-bold text-stone-800">Preparo</h4><p class="text-stone-600 text-sm">${recipeData.details.tempoPreparo}</p></div>
+                    <div class="bg-stone-100 p-4 rounded-lg flex flex-col justify-center items-center"><span class="text-2xl">🍳</span><h4 class="font-bold text-stone-800">Cozimento</h4><p class="text-stone-600 text-sm">${recipeData.details.tempoCozimento}</p></div>
+                    <div class="bg-stone-100 p-4 rounded-lg flex flex-col justify-center items-center"><span class="text-2xl">🍽️</span><h4 class="font-bold text-stone-800">Rendimento</h4><p class="text-stone-600 text-sm">${recipeData.details.rendimento}</p></div>
+                    <div class="bg-stone-100 p-4 rounded-lg flex flex-col justify-center items-center"><span class="text-2xl">⭐</span><h4 class="font-bold text-stone-800">Dificuldade</h4><p class="text-stone-600 text-sm">${recipeData.details.dificuldade}</p></div>
+                </div>
+                <div class="mt-12 grid grid-cols-1 lg:grid-cols-3 gap-x-12 gap-y-8">
+                    <div class="lg:col-span-1">
+                        <h3 class="text-2xl font-bold text-stone-800 mb-4 border-b-2 border-amber-500 pb-2">Planeamento</h3>
+                        ${recipeData.calculator ? `<div class="bg-stone-50 p-4 rounded-lg"><label for="${recipeId}-input" class="block text-lg text-stone-700 mb-2 font-bold">${recipeData.calculator.label}</label><input type="number" id="${recipeId}-input" value="${recipeData.calculator.default_value}" min="0.5" step="1" class="w-full p-2 border border-stone-300 rounded-lg focus:ring-2 focus:ring-amber-500"></div>` : ''}
+                        <div class="mt-6"><h4 class="font-bold text-lg mb-2 text-stone-700">Checklist de Ingredientes:</h4><ul class="space-y-1 text-stone-600 text-sm" id="ingredient-list-${recipeId}"></ul></div>
+                        <div class="mt-6"><h4 class="font-bold text-lg mb-2 text-stone-700">Utensílios Chave:</h4><ul class="space-y-2 text-stone-600 list-disc list-inside text-sm">${recipeData.details.utensilios.map(utensil => `<li>${utensil}</li>`).join('')}</ul></div>
+                    </div>
+                    <div class="lg:col-span-2">
+                        <h3 class="text-2xl font-bold text-stone-800 mb-4 border-b-2 border-amber-500 pb-2">Tutorial Detalhado</h3>
+                        <div class="space-y-6">${recipeData.steps.map((step, index) => {
+                             if (step.isSubRecipe) {
+                                const subStepsHTML = step.subSteps.map(subStep => `<div class="ml-4"><h5 class="font-semibold text-lg text-stone-800 mb-1">${subStep.title}</h5><div class="prose prose-stone max-w-none text-sm"><p>${subStep.description}</p><details class="mt-3 text-xs"><summary class="font-bold text-blue-800">Ver o porquê</summary><div class="mt-2 bg-blue-50 text-blue-800 rounded-md p-3">${subStep.porque}</div></details><details class="mt-2 text-xs"><summary class="font-bold text-red-800">Ver ponto crítico</summary><div class="mt-2 bg-red-50 text-red-800 rounded-md p-3">${subStep.pontoCritico}</div></details></div></div>`).join('');
+                                return `<div class="p-4 rounded-lg bg-amber-50 border-l-4 border-amber-400"><h4 class="font-bold text-xl text-amber-800 mb-4">${step.title}</h4><div class="space-y-4">${subStepsHTML}</div></div>`;
+                            }
+                            return `<div class="p-4 rounded-lg bg-stone-50 border-l-4 border-stone-200"><h4 class="font-bold text-xl text-stone-800 mb-2"><span class="bg-amber-600 text-white rounded-full w-8 h-8 inline-flex items-center justify-center mr-3 text-base">${index + 1}</span> ${step.title}</h4><div class="prose prose-stone max-w-none pl-11 text-sm"><p>${step.description}</p><details class="mt-3 text-xs"><summary class="font-bold text-blue-800">Ver o porquê</summary><div class="mt-2 bg-blue-50 text-blue-800 rounded-md p-3">${step.porque}</div></details><details class="mt-2 text-xs"><summary class="font-bold text-red-800">Ver ponto crítico</summary><div class="mt-2 bg-red-50 text-red-800 rounded-md p-3">${step.pontoCritico}</div></details></div></div>`;
+                        }).join('')}</div>
+                        ${recipeData.variacoes && recipeData.variacoes.length > 0 ? `<div class="mt-8"><h3 class="text-2xl font-bold text-stone-800 mb-4 border-b-2 border-amber-500 pb-2">Variações e Dicas</h3><div class="prose prose-stone max-w-none bg-amber-50 p-4 rounded-lg border-l-4 border-amber-400 text-sm">${recipeData.variacoes.map(item => `<p>${item}</p>`).join('')}</div></div>` : ''}
+                    </div>
+                </div>
+            `;
+        };
+        
+        const setupPage = () => {
+            const showList = () => {
+                aulasList.classList.remove('hidden');
+                pageTitle.classList.remove('hidden');
+                receitasContainer.classList.add('hidden');
+                document.querySelectorAll('.receita-content').forEach(recipe => recipe.classList.add('hidden'));
+                history.pushState("", document.title, window.location.pathname + window.location.search);
+                window.scrollTo(0, 0);
+            };
+
+            const showRecipe = (recipeId) => {
+                const recipeData = aulas[recipeId];
+                if (recipeData) {
+                    const targetId = `receita-${recipeId}`;
+                    const targetElement = document.getElementById(targetId);
+                    document.querySelectorAll('.receita-content').forEach(el => el.classList.add('hidden'));
+                    
+                    targetElement.innerHTML = generateRecipeHTML(recipeData, recipeId);
+                    aulasList.classList.add('hidden');
+                    pageTitle.classList.add('hidden');
+                    receitasContainer.classList.remove('hidden');
+                    targetElement.classList.remove('hidden');
+                    window.scrollTo(0, 0);
+
+                    if (recipeData.calculator) {
+                        const input = document.getElementById(`${recipeId}-input`);
+                        if(input) {
+                            input.addEventListener('input', () => updateIngredients(recipeData, input.value, recipeId));
+                            updateIngredients(recipeData, input.value, recipeId);
+                        }
+                    } else if (recipeData.ingredients && recipeData.ingredients.length > 0) {
+                        updateIngredients(recipeData, 1, recipeId);
+                    }
+                }
+            };
+            
+            window.addEventListener('hashchange', () => {
+                const hash = window.location.hash;
+                if (hash) {
+                    const recipeId = hash.substring(1).replace('receita-', '');
+                    showRecipe(recipeId);
+                } else {
+                    showList();
+                }
+            });
+
+            if (window.location.hash) {
+                const recipeId = window.location.hash.substring(1).replace('receita-', '');
+                showRecipe(recipeId);
+            }
+
+            document.querySelectorAll('.aula-card').forEach(card => {
+                card.addEventListener('click', () => {
+                    const targetId = card.dataset.target;
+                    window.location.hash = targetId;
+                });
+            });
+
+            backToListBtn.addEventListener('click', () => {
+                showList();
+            });
+        };
+
+        setupPage();
+    });
+</script>
+</body>
+</html>
 </body>
 </html>
